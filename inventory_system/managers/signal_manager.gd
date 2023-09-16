@@ -23,3 +23,6 @@ signal heal_player( health_points )
 
 # Save Manager
 signal saving_game()
+
+signal pc_opened()
+signal pc_closed()

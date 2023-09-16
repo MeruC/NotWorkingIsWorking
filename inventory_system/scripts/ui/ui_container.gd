@@ -10,12 +10,3 @@ func _input( event ):
 func _on_settings_pressed():
 	settings.visible = ! settings.visible
 	settings.raise()
-
-func _on_quit_pressed():
-	get_tree().quit()
-
-func _on_save_pressed():
-	SaveManager.save_game()
-
-func _on_load_pressed():
-	SaveManager.load_game()
