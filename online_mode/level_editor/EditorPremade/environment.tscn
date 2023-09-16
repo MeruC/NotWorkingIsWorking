@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://global/chapters/environment.tres" type="Environment" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[node name="environment" type="Spatial"]
+
+[node name="actual_wall2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 16.8432, 0, 0, 0, 1, 0, 32, 0 )
+cast_shadow = 0
+use_collision = true
+width = 142.0
+height = 4.0
+depth = 142.0
+material = SubResource( 1 )
+
+[node name="hollow" type="CSGBox" parent="actual_wall2"]
+cast_shadow = 0
+operation = 2
+width = 138.0
+height = 6.0
+depth = 138.0
+material = SubResource( 2 )
+
+[node name="light" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="light" type="DirectionalLight" parent="light"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
+light_energy = 0.3
+light_indirect_energy = 0.0
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_normal_bias = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )

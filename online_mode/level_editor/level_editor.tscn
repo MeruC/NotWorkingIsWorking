@@ -1,0 +1,566 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
+[ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://global/player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://online_mode/level_editor/Item_Select_Menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://global/objects/remove.tscn" type="PackedScene" id=5]
+[ext_resource path="res://online_mode/level_editor/scripts/Editor_Camera.gd" type="Script" id=6]
+[ext_resource path="res://online_mode/level_editor/scripts/Editor_Object.gd" type="Script" id=7]
+[ext_resource path="res://online_mode/level_editor/scripts/FileDialog.gd" type="Script" id=8]
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://global/objects/rotate.tscn" type="PackedScene" id=11]
+[ext_resource path="res://online_mode/level_editor/scripts/level_editor.gd" type="Script" id=12]
+[ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=13]
+[ext_resource path="res://inventory_system/scenes/ui/settings.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/settings.tscn" type="PackedScene" id=15]
+[ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=16]
+[ext_resource path="res://online_mode/level_editor/scripts/modes.gd" type="Script" id=17]
+[ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=18]
+[ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=19]
+[ext_resource path="res://mobile_controls/joystick/virtual_joystick.tscn" type="PackedScene" id=20]
+[ext_resource path="res://online_mode/level_editor/move.gd" type="Script" id=21]
+[ext_resource path="res://resources/Sprites/rotate.png" type="Texture" id=22]
+[ext_resource path="res://online_mode/level_editor/rotate.gd" type="Script" id=23]
+[ext_resource path="res://online_mode/level_editor/place.gd" type="Script" id=24]
+[ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=25]
+[ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=26]
+[ext_resource path="res://inventory_system/scenes/ui/inventory_container.tscn" type="PackedScene" id=27]
+[ext_resource path="res://inventory_system/scenes/ui/inventory_player.tscn" type="PackedScene" id=28]
+[ext_resource path="res://inventory_system/scenes/inventory/hotbar_node.tscn" type="PackedScene" id=29]
+[ext_resource path="res://inventory_system/scenes/ui/crafting_list.tscn" type="PackedScene" id=30]
+[ext_resource path="res://inventory_system/scenes/ui/player_stats_window.tscn" type="PackedScene" id=31]
+
+[sub_resource type="CameraTexture" id=14]
+
+[sub_resource type="PlaneMesh" id=11]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+
+[sub_resource type="BoxShape" id=13]
+
+[node name="main" type="Spatial"]
+script = ExtResource( 12 )
+
+[node name="pixelizer" type="TextureRect" parent="."]
+material = ExtResource( 13 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+stretch_mode = 1
+flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="editor" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 11.0
+margin_right = -13.0
+margin_bottom = -11.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="rotate" type="Control" parent="UI/editor"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 44.0
+margin_top = -31.0
+margin_right = 92.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 31 )
+script = ExtResource( 23 )
+
+[node name="rotate" type="Button" parent="UI/editor/rotate"]
+anchor_right = 1.0
+margin_bottom = 20.0
+icon = ExtResource( 22 )
+icon_align = 1
+
+[node name="done" type="Button" parent="UI/editor/rotate"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+text = "Done"
+
+[node name="FileDialog" type="FileDialog" parent="UI/editor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -210.0
+margin_top = -150.0
+margin_right = 210.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 52.5 )
+rect_pivot_offset = Vector2( 210, 150 )
+filters = PoolStringArray( "*.tscn" )
+script = ExtResource( 8 )
+
+[node name="file" type="Control" parent="UI/editor"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -119.0
+margin_top = -35.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 119, 35 )
+mouse_filter = 2
+script = ExtResource( 19 )
+
+[node name="New" type="Button" parent="UI/editor/file"]
+anchor_right = 1.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 119, 20 )
+text = "New"
+
+[node name="Load" type="Button" parent="UI/editor/file"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -10.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 119, 20 )
+text = "Load"
+
+[node name="Save" type="Button" parent="UI/editor/file"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+rect_pivot_offset = Vector2( 119, 20 )
+text = "Save"
+icon = SubResource( 14 )
+
+[node name="Orphan" type="Button" parent="UI/editor/file"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 6.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 119, 20 )
+text = "Orphan"
+icon = SubResource( 14 )
+
+[node name="modes" type="HBoxContainer" parent="UI/editor"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 211.0
+rect_pivot_offset = Vector2( 0, 40 )
+mouse_filter = 2
+custom_constants/separation = 8
+script = ExtResource( 17 )
+main = NodePath("../../..")
+current = NodePath("current_mode")
+ui = NodePath("../..")
+previews = NodePath("../../../previews")
+no_sign = NodePath("../../../no-sign")
+item_select = NodePath("../place")
+other_ui = NodePath("../../../other_ui")
+playerSpawn = ExtResource( 3 )
+
+[node name="play" type="Button" parent="UI/editor/modes"]
+margin_right = 38.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Play"
+
+[node name="place" type="Button" parent="UI/editor/modes"]
+margin_left = 46.0
+margin_right = 92.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Place"
+
+[node name="select" type="Button" parent="UI/editor/modes"]
+margin_left = 100.0
+margin_right = 151.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Select"
+
+[node name="rotate" type="Button" parent="UI/editor/modes"]
+margin_left = 159.0
+margin_right = 212.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 34, 40 )
+text = "Rotate"
+
+[node name="remove" type="Button" parent="UI/editor/modes"]
+margin_left = 220.0
+margin_right = 284.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 40 )
+text = "Remove"
+
+[node name="current_mode" type="Label" parent="UI/editor/modes"]
+margin_left = 292.0
+margin_top = 13.0
+margin_right = 387.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 40 )
+text = "Current Mode: "
+valign = 1
+
+[node name="move" type="Control" parent="UI/editor"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -179.0
+margin_top = -113.0
+rect_pivot_offset = Vector2( 50, 50 )
+mouse_filter = 2
+script = ExtResource( 21 )
+
+[node name="up" type="Button" parent="UI/editor/move"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -55.0
+margin_right = 25.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Up"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="down" type="Button" parent="UI/editor/move"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Down"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="left" type="Button" parent="UI/editor/move"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.0
+margin_top = -25.0
+margin_right = -32.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Left"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="right" type="Button" parent="UI/editor/move"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -25.0
+margin_right = 82.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 65, 40 )
+text = "Right"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Virtual joystick" parent="UI/editor" instance=ExtResource( 20 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 9.0
+margin_right = 212.0
+margin_bottom = 209.0
+rect_pivot_offset = Vector2( 0, 100 )
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+
+[node name="place" type="Control" parent="UI/editor"]
+margin_right = 87.0
+margin_bottom = 52.0
+script = ExtResource( 24 )
+objects_btn = NodePath("objects")
+current = NodePath("current_obj")
+objects_menu = NodePath("../../container/Item_Select_Menu")
+
+[node name="objects" type="Button" parent="UI/editor/place"]
+anchor_right = 1.0
+margin_bottom = 33.0
+text = "OBJECTS"
+
+[node name="current_obj" type="Label" parent="UI/editor/place"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 64.0
+text = "Currently Selected: Null"
+valign = 1
+
+[node name="container" parent="UI" instance=ExtResource( 15 )]
+mouse_filter = 2
+
+[node name="Item_Select_Menu" parent="UI/container" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="level" type="Spatial" parent="."]
+script = ExtResource( 25 )
+
+[node name="floor" type="CSGMesh" parent="level"]
+transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
+use_collision = true
+mesh = SubResource( 11 )
+material = ExtResource( 9 )
+
+[node name="environment" parent="level" instance=ExtResource( 2 )]
+
+[node name="wall" type="CSGBox" parent="level"]
+use_collision = true
+width = 138.0
+height = 8.0
+depth = 138.0
+material = SubResource( 15 )
+
+[node name="playarea" type="CSGBox" parent="level/wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+operation = 2
+width = 128.0
+height = 10.0
+depth = 128.0
+material = ExtResource( 9 )
+
+[node name="inventory" type="CanvasLayer" parent="level"]
+
+[node name="ui_container" type="Control" parent="level/inventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+settings = NodePath("windows/settings")
+player_inventory = NodePath("windows/inventory_player")
+
+[node name="windows" type="Control" parent="level/inventory/ui_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="settings" parent="level/inventory/ui_container/windows" instance=ExtResource( 14 )]
+visible = false
+margin_left = -64.6146
+margin_top = -127.633
+margin_right = 79.3854
+margin_bottom = -45.6325
+
+[node name="inventory_container" parent="level/inventory/ui_container/windows" instance=ExtResource( 27 )]
+visible = false
+margin_left = -66.4254
+margin_top = -119.801
+margin_right = 77.5746
+margin_bottom = -59.8009
+
+[node name="inventory_player" parent="level/inventory/ui_container/windows" instance=ExtResource( 28 )]
+margin_left = -454.0
+margin_top = -103.0
+margin_right = -310.0
+margin_bottom = 71.0
+
+[node name="crafting_list" parent="level/inventory/ui_container/windows" instance=ExtResource( 30 )]
+visible = false
+
+[node name="player_stats" parent="level/inventory/ui_container/windows" instance=ExtResource( 31 )]
+margin_left = -391.0
+margin_top = -241.0
+margin_right = -295.0
+margin_bottom = -189.0
+
+[node name="hotbar" parent="level/inventory/ui_container" instance=ExtResource( 29 )]
+rect_pivot_offset = Vector2( 63, 32 )
+
+[node name="buttons" type="Control" parent="level/inventory/ui_container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="settings" type="Button" parent="level/inventory/ui_container/buttons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -71.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 28.0
+text = "Settings"
+
+[node name="quit" type="Button" parent="level/inventory/ui_container/buttons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -71.0
+margin_top = 32.0
+margin_right = -8.0
+margin_bottom = 52.0
+text = "Quit"
+
+[node name="save" type="Button" parent="level/inventory/ui_container/buttons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -71.0
+margin_top = 72.0
+margin_right = -8.0
+margin_bottom = 92.0
+text = "Save"
+
+[node name="load" type="Button" parent="level/inventory/ui_container/buttons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -71.0
+margin_top = 96.0
+margin_right = -8.0
+margin_bottom = 116.0
+text = "Load"
+
+[node name="mobile_controls" parent="level" instance=ExtResource( 16 )]
+visible = false
+
+[node name="other_ui" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 11.0
+margin_right = -10.0
+margin_bottom = -11.0
+mouse_filter = 2
+
+[node name="edit" type="Button" parent="other_ui"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 36.0
+rect_pivot_offset = Vector2( 0, 40 )
+text = "Edit"
+script = ExtResource( 19 )
+
+[node name="Editor_Camera" type="KinematicBody" parent="."]
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Editor_Camera"]
+transform = Transform( 23, 0, 0, 0, 1, 0, 0, 0, 13, -0.00794983, 35.0018, -0.00646972 )
+shape = SubResource( 13 )
+
+[node name="Camera" type="Camera" parent="Editor_Camera"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 32, 0 )
+projection = 1
+current = true
+size = 25.0
+
+[node name="previews" type="Spatial" parent="."]
+
+[node name="place" parent="previews" instance=ExtResource( 1 )]
+visible = false
+
+[node name="rotate" parent="previews" instance=ExtResource( 11 )]
+visible = false
+
+[node name="remove" parent="previews" instance=ExtResource( 5 )]
+visible = false
+
+[node name="no-sign" parent="." instance=ExtResource( 18 )]
+
+[node name="Editor_Object" type="Spatial" parent="."]
+script = ExtResource( 7 )
+level = NodePath("../level")
+preview_parent = NodePath("../previews")
+place_preview = NodePath("../previews/place")
+remove_preview = NodePath("../previews/remove")
+rotate_preview = NodePath("../previews/rotate")
+no_sign = NodePath("../no-sign")
+rotate_object = NodePath("../UI/editor/rotate")
+editor_camera = NodePath("../Editor_Camera")
+
+[connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
+[connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
+[connection signal="confirmed" from="UI/editor/FileDialog" to="UI/editor/FileDialog" method="_on_FileDialog_confirmed"]
+[connection signal="popup_hide" from="UI/editor/FileDialog" to="UI/editor/FileDialog" method="_on_FileDialog_popup_hide"]
+[connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog" method="_on_New_pressed"]
+[connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog" method="_on_Load_pressed"]
+[connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog" method="_on_Save_pressed"]
+[connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog" method="_on_Orphan_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/place" to="UI/editor/modes" method="_on_place_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/select" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/select" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/select" to="UI/editor/modes" method="_on_select_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/rotate" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/rotate" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/rotate" to="UI/editor/modes" method="_on_rotate_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/remove" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/remove" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/remove" to="UI/editor/modes" method="_on_remove_pressed"]
+[connection signal="mouse_entered" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="mouse_entered" from="UI/editor/move/down" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/move/down" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="mouse_entered" from="UI/editor/move/left" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/move/left" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="mouse_entered" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="gui_input" from="UI/editor/Virtual joystick" to="UI/editor/Virtual joystick" method="_on_Virtual_joystick_gui_input"]
+[connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
+[connection signal="pressed" from="level/inventory/ui_container/buttons/settings" to="level/inventory/ui_container" method="_on_settings_pressed"]
+[connection signal="pressed" from="level/inventory/ui_container/buttons/quit" to="level/inventory/ui_container" method="_on_quit_pressed"]
+[connection signal="pressed" from="level/inventory/ui_container/buttons/save" to="level/inventory/ui_container" method="_on_save_pressed"]
+[connection signal="pressed" from="level/inventory/ui_container/buttons/load" to="level/inventory/ui_container" method="_on_load_pressed"]
+[connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
+
+[editable path="UI/editor/Virtual joystick"]
+[editable path="UI/container"]
+[editable path="level/environment"]
+[editable path="level/mobile_controls"]

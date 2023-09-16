@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
+[ext_resource path="res://resources/Models/Materials/computer/parts-2-keyboard.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://resources/Models/Materials/computer/parts-2-keyboard.png" type="Texture" id=4]
+[ext_resource path="res://resources/Models/Materials/computer/parts-1-mouse.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://resources/Models/Materials/computer/parts-1-mouse.png" type="Texture" id=6]
+[ext_resource path="res://global/objects/scripts/pc.gd" type="Script" id=7]
+[ext_resource path="res://global/objects/scripts/pc_ui.gd" type="Script" id=8]
+[ext_resource path="res://inventory_system/scenes/inventory/inventory_slot_node.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/inventory.tscn" type="PackedScene" id=10]
+[ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=11]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="BoxShape" id=6]
+
+[node name="object_monitor" type="StaticBody"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="ui@ColorRect@holder@inv@inventory@MarginContainer@slot_container@inventory_slot" parent="." instance=ExtResource( 9 )]
+margin_left = 531.0
+margin_top = 252.0
+margin_right = 551.0
+margin_bottom = 272.0
+
+[node name="ui" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource( 8 )
+
+[node name="mode" type="CanvasLayer" parent="ui"]
+
+[node name="ColorRect" type="ColorRect" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.705882 )
+
+[node name="holder" type="Control" parent="ui/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 20.0
+margin_right = -39.0
+margin_bottom = -22.0
+
+[node name="group" type="Control" parent="ui/ColorRect/holder"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -52.5
+margin_top = -40.0
+margin_right = 52.5
+
+[node name="Button" type="Button" parent="ui/ColorRect/holder/group"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -63.0
+text = "Turn On"
+
+[node name="Exit" type="Button" parent="ui/ColorRect/holder/group"]
+anchor_bottom = 1.0
+margin_right = 35.0
+text = "Exit"
+
+[node name="inv" type="Control" parent="ui/ColorRect/holder"]
+margin_left = 732.0
+margin_top = 268.0
+margin_right = 752.0
+margin_bottom = 294.0
+script = ExtResource( 11 )
+
+[node name="inventory" parent="ui/ColorRect/holder/inv" instance=ExtResource( 10 )]
+margin_left = -18.0
+margin_top = -8.0
+margin_right = 18.0
+margin_bottom = 34.0
+
+[node name="CollisionShape2D" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0, -1, 0.75 )
+mesh = ExtResource( 1 )
+material = SubResource( 5 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.125, -1, -0.5 )
+mesh = ExtResource( 3 )
+material = SubResource( 3 )
+
+[node name="CSGMesh3" type="CSGMesh" parent="CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -0.75, -1, -0.625 )
+mesh = ExtResource( 5 )
+material = SubResource( 4 )
+
+[node name="interaction_area" type="Area" parent="."]
+transform = Transform( 1.04329, 0, 0, 0, 1.04329, 0, 0, 0, 1.04329, 0, 0, 0 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 7 )
+pc_name = "PC"
+ui = NodePath("../ui")
+
+[node name="CollisionShape2" type="CollisionShape" parent="interaction_area"]
+transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
+shape = SubResource( 6 )
+
+[connection signal="pressed" from="ui/ColorRect/holder/group/Exit" to="ui" method="_on_Exit_pressed"]
+
+[editable path="ui/ColorRect/holder/inv/inventory"]
+[editable path="ui/ColorRect/holder/inv/inventory/ui/settings"]
