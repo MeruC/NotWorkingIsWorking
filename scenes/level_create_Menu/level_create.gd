@@ -5,11 +5,20 @@ export( NodePath ) onready var depth = get_node(depth) as SpinBox
 export( NodePath ) onready var playarea = get_node(playarea) as CSGBox
 export( NodePath ) onready var camera = get_node(camera) as Camera
 
+
+
 var cur_w = 10
 var cur_d = 10
-# Called when the node enters the scene tree for the first time.
+
+var menu = 0
+
+onready var player = get_node("AnimationPlayer")
+onready var idle = $idle
+
+
 func _ready():
-	pass # Replace with function body.
+	player.get_animation("ui").set_loop(true)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,3 +53,17 @@ func _on_d_value_changed(value):
 
 func _on_inventory_test_pressed():
 	get_tree().change_scene_to(load("res://nodes/inventory.tscn"))
+
+
+func _on_back_pressed():
+	match(menu):
+		0:
+			player.play("set_size")
+			menu = 1
+			yield(player, "animation_finished")
+			idle.play("ui")
+		1: 
+			idle.stop()
+			player.play_backwards("set_size")
+			menu = 0
+

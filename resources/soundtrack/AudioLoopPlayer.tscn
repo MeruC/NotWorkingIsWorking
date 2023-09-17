@@ -7,7 +7,7 @@ export (bool) var loop_sound = true
 
 func _on_AudioStreamPlayer_finished():
 	if loop_sound == true:
-		play();
+		play()
 "
 
 [node name="AudioLoopPlayer" type="AudioStreamPlayer"]

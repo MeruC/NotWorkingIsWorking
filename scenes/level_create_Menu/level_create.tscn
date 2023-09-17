@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level_create_Menu/level_create.gd" type="Script" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=5]
 [ext_resource path="res://resources/soundtrack/menu/track_08.wav" type="AudioStream" id=6]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://global/chapters/environment.tres" type="Environment" id=9]
+[ext_resource path="res://resources/Textures/button_3D_level_normal.png" type="Texture" id=8]
+[ext_resource path="res://resources/Textures/button_3D_level_pressed.png" type="Texture" id=9]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=10]
 [ext_resource path="res://resources/Textures/thick_patterns/pattern_0004.png" type="Texture" id=11]
 [ext_resource path="res://resources/Textures/shapes/shape_01.png" type="Texture" id=12]
@@ -54,24 +55,145 @@ shader_param/level = 0.5
 size = 54
 font_data = ExtResource( 14 )
 
-[sub_resource type="ViewportTexture" id=14]
-viewport_path = NodePath("Viewport")
-
 [sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 4 )
 
+[sub_resource type="ViewportTexture" id=14]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="DynamicFont" id=20]
+size = 650
+font_data = ExtResource( 14 )
+
 [sub_resource type="PlaneMesh" id=6]
+
+[sub_resource type="Environment" id=15]
+background_mode = 1
+background_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+background_energy = 0.0
+ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "set_size"
+tracks/0/type = "value"
+tracks/0/path = NodePath("3dlevel/left:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -269, -131 ), Vector2( -69, -25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("3dlevel/left/ColorRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -53.8174, -10.4252 ), Vector2( 9.04161, -14.6373 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("3dlevel/left/ColorRect2/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 141.586, 5.68298 ), Vector2( 154.503, 887.698 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("3dlevel/left/ColorRect2/Label2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128.354, -10.1907 ), Vector2( 135.786, 72.0741 ), Vector2( 132.151, 706.977 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("3dlevel/left/ColorRect2/Label3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 123.066, -49.2734 ), Vector2( 111.036, 417.703 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("3dlevel/preview/ColorRect7:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 355, -583 ), Vector2( 355, 112 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("3dlevel/preview/ColorRect5:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 253, -690 ), Vector2( 253, 69 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("3dlevel/preview/ColorRect6:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 221, -693 ), Vector2( 221, 96 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("3dlevel/preview:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, -39 ), Vector2( 11, 11 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "ui"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("3dlevel/ColorRect5:rect_position")
+tracks/0/path = NodePath("3dlevel/preview/ColorRect5:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -83,7 +205,7 @@ tracks/0/keys = {
 "values": [ Vector2( 253, 69 ), Vector2( 237, 78 ), Vector2( 231, 68 ), Vector2( 249, 75 ), Vector2( 253, 69 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("3dlevel/ColorRect6:rect_position")
+tracks/1/path = NodePath("3dlevel/preview/ColorRect6:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -95,7 +217,7 @@ tracks/1/keys = {
 "values": [ Vector2( 221, 96 ), Vector2( 233, 93 ), Vector2( 212, 81 ), Vector2( 216, 101 ), Vector2( 221, 96 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("3dlevel/ColorRect5:rect_rotation")
+tracks/2/path = NodePath("3dlevel/preview/ColorRect5:rect_rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -107,7 +229,7 @@ tracks/2/keys = {
 "values": [ 0.0, -0.982726, -1.6512, 0.41287, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("3dlevel/ColorRect6:rect_rotation")
+tracks/3/path = NodePath("3dlevel/preview/ColorRect6:rect_rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -119,14 +241,172 @@ tracks/3/keys = {
 "values": [ -2.90868, -1.95614, -3.4998, -2.32358, -2.90868 ]
 }
 
-[sub_resource type="GDScript" id=13]
-script/source = "extends AnimationPlayer
+[sub_resource type="Animation" id=19]
+resource_name = "choosetype"
 
-func _ready():
-	var anim = $\".\".get_animation(\"ui\")
-	anim.set_loop(true)
-	$\".\".play(\"ui\")
-"
+[sub_resource type="Animation" id=17]
+resource_name = "set_size"
+tracks/0/type = "value"
+tracks/0/path = NodePath("3dlevel/left:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -269, -131 ), Vector2( -69, -25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("3dlevel/left/ColorRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -53.8174, -10.4252 ), Vector2( 9.04161, -14.6373 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("3dlevel/left/ColorRect2/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 141.586, 5.68298 ), Vector2( 154.503, 887.698 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("3dlevel/left/ColorRect2/Label2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128.354, -10.1907 ), Vector2( 135.786, 72.0741 ), Vector2( 132.151, 706.977 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("3dlevel/left/ColorRect2/Label3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 123.066, -49.2734 ), Vector2( 111.036, 417.703 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("3dlevel/preview/ColorRect7:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 355, -583 ), Vector2( 355, 112 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("3dlevel/preview/ColorRect5:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 253, -690 ), Vector2( 253, 69 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("3dlevel/preview/ColorRect6:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 221, -693 ), Vector2( 221, 96 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("3dlevel/preview:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, -39 ), Vector2( 11, 11 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "ui"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("3dlevel/preview/ColorRect5:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 253, 69 ), Vector2( 237, 78 ), Vector2( 231, 68 ), Vector2( 249, 75 ), Vector2( 253, 69 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("3dlevel/preview/ColorRect6:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 221, 96 ), Vector2( 233, 93 ), Vector2( 212, 81 ), Vector2( 216, 101 ), Vector2( 221, 96 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("3dlevel/preview/ColorRect5:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -0.982726, -1.6512, 0.41287, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("3dlevel/preview/ColorRect6:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -2.90868, -1.95614, -3.4998, -2.32358, -2.90868 ]
+}
 
 [node name="level_create" type="Control"]
 anchor_right = 1.0
@@ -136,8 +416,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-width = NodePath("3dlevel/size/w")
-depth = NodePath("3dlevel/size/d")
+width = NodePath("3dlevel/size/size/w")
+depth = NodePath("3dlevel/size/size/d")
 playarea = NodePath("wall/playarea")
 camera = NodePath("Viewport/Camera")
 
@@ -165,34 +445,38 @@ __meta__ = {
 }
 
 [node name="3dlevel" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="ColorRect" type="ColorRect" parent="3dlevel"]
-margin_left = -69.0
-margin_top = -14.0
-margin_right = 189.0
-margin_bottom = 1017.0
+[node name="left" type="ColorRect" parent="3dlevel"]
+margin_left = -269.0
+margin_top = -131.0
+margin_right = -11.0
+margin_bottom = 976.0
 rect_rotation = 3.83359
 color = Color( 0.709804, 0.682353, 0.00392157, 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="ColorRect2" type="ColorRect" parent="3dlevel/ColorRect"]
+[node name="ColorRect2" type="ColorRect" parent="3dlevel/left"]
 margin_left = 9.04161
 margin_top = -14.6373
 margin_right = 247.042
-margin_bottom = 1072.36
+margin_bottom = 1163.36
 rect_rotation = 1.32893
 color = Color( 1, 0.960784, 0, 1 )
 
-[node name="Label" type="Label" parent="3dlevel/ColorRect/ColorRect2"]
+[node name="Label" type="Label" parent="3dlevel/left/ColorRect2"]
 margin_left = 154.503
 margin_top = 887.698
-margin_right = 270.503
-margin_bottom = 970.698
+margin_right = 270.5
+margin_bottom = 970.699
 rect_rotation = -90.3794
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "3D"
 
-[node name="Label2" type="Label" parent="3dlevel/ColorRect/ColorRect2"]
+[node name="Label2" type="Label" parent="3dlevel/left/ColorRect2"]
 margin_left = 132.151
 margin_top = 706.977
 margin_right = 422.151
@@ -202,7 +486,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "LEVEL"
 
-[node name="Label3" type="Label" parent="3dlevel/ColorRect/ColorRect2"]
+[node name="Label3" type="Label" parent="3dlevel/left/ColorRect2"]
 margin_left = 111.036
 margin_top = 417.703
 margin_right = 459.036
@@ -212,49 +496,105 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "CREATE"
 
-[node name="Control" type="Control" parent="3dlevel"]
+[node name="size" type="Control" parent="3dlevel"]
 margin_left = 177.0
 margin_top = 185.0
 margin_right = 217.0
 margin_bottom = 225.0
 
-[node name="TextureRect3" type="TextureRect" parent="3dlevel"]
+[node name="TextureRect3" type="TextureRect" parent="3dlevel/size"]
 modulate = Color( 0.133333, 0.133333, 0.133333, 1 )
-margin_left = 1190.0
-margin_top = 240.0
-margin_right = 2040.0
-margin_bottom = 998.0
+margin_left = 1013.0
+margin_top = 55.0
+margin_right = 1863.0
+margin_bottom = 813.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="TextureRect2" type="TextureRect" parent="3dlevel"]
-margin_left = 1188.0
-margin_top = 272.0
-margin_right = 2077.0
-margin_bottom = 993.0
+[node name="TextureRect2" type="TextureRect" parent="3dlevel/size"]
+margin_left = 1011.0
+margin_top = 87.0
+margin_right = 1900.0
+margin_bottom = 808.0
 texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 
-[node name="ColorRect4" type="ColorRect" parent="3dlevel"]
-modulate = Color( 1, 1, 1, 0.392157 )
+[node name="size" type="Control" parent="3dlevel/size"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1361.0
+margin_top = 348.0
+margin_right = 1534.0
+margin_bottom = 379.0
+rect_pivot_offset = Vector2( 87.5, 15 )
+script = ExtResource( 1 )
+
+[node name="w" type="SpinBox" parent="3dlevel/size/size"]
+anchor_bottom = 1.0
+margin_left = 52.0
+margin_top = -54.0
+margin_right = 126.0
+margin_bottom = -54.0
+rect_pivot_offset = Vector2( 37, 13 )
+theme = ExtResource( 5 )
+min_value = 10.0
+max_value = 64.0
+step = 2.0
+value = 10.0
+
+[node name="d" type="SpinBox" parent="3dlevel/size/size"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -123.0
+margin_top = 51.0
+margin_right = -49.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 37, 11 )
+theme = ExtResource( 5 )
+min_value = 10.0
+max_value = 64.0
+step = 2.0
+value = 10.0
+
+[node name="Label" type="Label" parent="3dlevel/size/size"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4.5
+margin_top = -6.5
+margin_right = 3.5
+margin_bottom = 7.5
+rect_pivot_offset = Vector2( 4, 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+
+[node name="bottom" type="Control" parent="3dlevel"]
 margin_left = -79.0
 margin_top = 937.0
-margin_right = 2053.0
-margin_bottom = 1336.0
+margin_right = -39.0
+margin_bottom = 977.0
+
+[node name="ColorRect4" type="ColorRect" parent="3dlevel/bottom"]
+modulate = Color( 1, 1, 1, 0.392157 )
+margin_right = 2132.0
+margin_bottom = 399.0
 rect_rotation = -6.02349
 color = Color( 0, 0, 0, 1 )
 
-[node name="ColorRect2" type="ColorRect" parent="3dlevel"]
-margin_left = -79.0
-margin_top = 943.0
-margin_right = 1995.0
-margin_bottom = 1312.0
+[node name="ColorRect2" type="ColorRect" parent="3dlevel/bottom"]
+margin_top = 6.0
+margin_right = 2074.0
+margin_bottom = 375.0
 rect_rotation = -6.02349
 color = Color( 0.623529, 0.168627, 0, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="3dlevel/ColorRect2"]
+[node name="TextureRect" type="TextureRect" parent="3dlevel/bottom/ColorRect2"]
 modulate = Color( 0.568627, 0.152941, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -262,15 +602,15 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 2
 
-[node name="ColorRect3" type="ColorRect" parent="3dlevel"]
+[node name="ColorRect3" type="ColorRect" parent="3dlevel/bottom"]
 material = SubResource( 10 )
-margin_left = 605.0
-margin_top = 870.0
-margin_right = 1312.0
-margin_bottom = 1253.0
+margin_left = 684.0
+margin_top = -67.0
+margin_right = 1391.0
+margin_bottom = 316.0
 rect_rotation = -6.02349
 
-[node name="Label" type="Label" parent="3dlevel/ColorRect3"]
+[node name="Label" type="Label" parent="3dlevel/bottom/ColorRect3"]
 margin_left = -25.8257
 margin_top = 82.7468
 margin_right = 635.174
@@ -280,56 +620,17 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Set the size of the level"
 
-[node name="ColorRect6" type="ColorRect" parent="3dlevel"]
-margin_left = 221.0
-margin_top = 96.0
-margin_right = 1297.0
-margin_bottom = 684.0
-rect_rotation = -2.90868
-rect_scale = Vector2( 1.155, 1.1 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect5" type="ColorRect" parent="3dlevel"]
-margin_left = 253.0
-margin_top = 69.0
-margin_right = 1357.0
-margin_bottom = 678.0
-rect_scale = Vector2( 1.085, 1.066 )
-color = Color( 0.623529, 0.168627, 0, 1 )
-
-[node name="ColorRect7" type="ColorRect" parent="3dlevel"]
-anchor_left = 0.003125
-anchor_right = 0.505469
-anchor_bottom = 0.505556
-margin_left = 360.0
-margin_top = 103.0
-margin_right = 288.499
-margin_bottom = 62.9995
-rect_rotation = 0.745192
-rect_scale = Vector2( 1.1, 1.1 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="TextureRect" type="TextureRect" parent="3dlevel/ColorRect7"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 9.0
-margin_right = -12.0
-margin_bottom = -9.0
-texture = SubResource( 14 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="buttons" type="TextureRect" parent="3dlevel"]
+[node name="buttons" type="TextureRect" parent="3dlevel/bottom"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -115.0
+margin_left = 79.0
+margin_top = -12.0
+margin_right = 1964.0
+margin_bottom = 103.0
 rect_pivot_offset = Vector2( 112, 71 )
 
-[node name="create" type="Button" parent="3dlevel/buttons"]
+[node name="create" type="Button" parent="3dlevel/bottom/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -345,7 +646,7 @@ theme = ExtResource( 5 )
 enabled_focus_mode = 0
 text = "Create"
 
-[node name="back" type="Button" parent="3dlevel/buttons"]
+[node name="back" type="Button" parent="3dlevel/bottom/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -353,7 +654,7 @@ anchor_bottom = 0.5
 margin_left = -856.0
 margin_top = -130.5
 margin_right = -519.0
-margin_bottom = 3.5
+margin_bottom = 3.49994
 rect_rotation = -2.60862
 rect_pivot_offset = Vector2( 986, -279 )
 focus_mode = 0
@@ -361,7 +662,7 @@ theme = ExtResource( 5 )
 enabled_focus_mode = 0
 text = "back"
 
-[node name="inventory test" type="Button" parent="3dlevel/buttons"]
+[node name="inventory test" type="Button" parent="3dlevel/bottom/buttons"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -378,58 +679,104 @@ custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Inventory Test"
 
-[node name="size" type="Control" parent="3dlevel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 598.0
-margin_top = 13.0
-margin_right = 771.0
-margin_bottom = 44.0
-rect_pivot_offset = Vector2( 87.5, 15 )
-script = ExtResource( 1 )
+[node name="preview" type="Control" parent="3dlevel"]
+margin_left = 11.0
+margin_top = -39.0
+margin_right = 1087.0
+margin_bottom = 567.0
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="w" type="SpinBox" parent="3dlevel/size"]
-anchor_bottom = 1.0
-margin_left = 52.0
-margin_top = -54.0
-margin_right = 126.0
-margin_bottom = -54.0
-rect_pivot_offset = Vector2( 37, 13 )
-theme = ExtResource( 5 )
-min_value = 10.0
-max_value = 64.0
-step = 2.0
-value = 10.0
-
-[node name="d" type="SpinBox" parent="3dlevel/size"]
-anchor_left = 1.0
+[node name="ColorRect6" type="ColorRect" parent="3dlevel/preview"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -123.0
-margin_top = 51.0
-margin_right = -49.0
-margin_bottom = 51.0
-rect_pivot_offset = Vector2( 37, 11 )
-theme = ExtResource( 5 )
-min_value = 10.0
-max_value = 64.0
-step = 2.0
-value = 10.0
+margin_left = 221.0
+margin_top = -693.0
+margin_right = 221.0
+margin_bottom = -693.0
+rect_rotation = -2.90868
+rect_scale = Vector2( 1.155, 1.1 )
+color = Color( 0, 0, 0, 1 )
 
-[node name="Label" type="Label" parent="3dlevel/size"]
+[node name="ColorRect5" type="ColorRect" parent="3dlevel/preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 253.0
+margin_top = 69.0
+margin_right = 253.0
+margin_bottom = 69.0
+rect_scale = Vector2( 1.085, 1.066 )
+color = Color( 0.623529, 0.168627, 0, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="3dlevel/preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 355.0
+margin_top = 112.0
+margin_right = 151.0
+margin_bottom = -1.99988
+rect_rotation = 0.745192
+rect_scale = Vector2( 1.1, 1.1 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="3dlevel/preview/ColorRect7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 9.0
+margin_right = -12.0
+margin_bottom = -9.0
+texture = SubResource( 14 )
+expand = true
+
+[node name="choosetype" type="CanvasLayer" parent="."]
+
+[node name="create" type="Label" parent="choosetype"]
+margin_left = -320.0
+margin_top = -122.0
+margin_right = 2048.0
+margin_bottom = 628.0
+custom_colors/font_color = Color( 0, 0, 0, 0.196078 )
+custom_fonts/font = SubResource( 20 )
+text = "CREATE"
+
+[node name="level" type="Label" parent="choosetype"]
+margin_left = 575.0
+margin_top = 622.0
+margin_right = 2375.0
+margin_bottom = 1372.0
+custom_colors/font_color = Color( 0, 0, 0, 0.196078 )
+custom_fonts/font = SubResource( 20 )
+text = "LEVEL"
+
+[node name="TextureButton" type="TextureButton" parent="choosetype"]
+margin_left = 990.0
+margin_top = 132.0
+margin_right = 1740.0
+margin_bottom = 950.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="back" type="Button" parent="choosetype"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -4.5
-margin_top = -6.5
-margin_right = 3.5
-margin_bottom = 7.5
-rect_pivot_offset = Vector2( 4, 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "X"
+margin_left = -878.0
+margin_top = 321.0
+margin_right = -541.0
+margin_bottom = 455.0
+rect_rotation = -2.60862
+rect_pivot_offset = Vector2( 986, -279 )
+focus_mode = 0
+theme = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "back"
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 6 )
@@ -441,7 +788,7 @@ mesh = SubResource( 6 )
 material = ExtResource( 10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="floor"]
-environment = ExtResource( 9 )
+environment = SubResource( 15 )
 
 [node name="wall" type="CSGBox" parent="."]
 use_collision = true
@@ -460,11 +807,18 @@ material = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
+playback_speed = 2.0
+anims/set_size = SubResource( 16 )
 anims/ui = SubResource( 12 )
-script = SubResource( 13 )
 
-[connection signal="pressed" from="3dlevel/buttons/create" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="3dlevel/buttons/back" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="3dlevel/buttons/inventory test" to="." method="_on_inventory_test_pressed"]
-[connection signal="value_changed" from="3dlevel/size/w" to="." method="_on_w_value_changed"]
-[connection signal="value_changed" from="3dlevel/size/d" to="." method="_on_d_value_changed"]
+[node name="idle" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/choosetype = SubResource( 19 )
+anims/set_size = SubResource( 17 )
+anims/ui = SubResource( 18 )
+
+[connection signal="value_changed" from="3dlevel/size/size/w" to="." method="_on_w_value_changed"]
+[connection signal="value_changed" from="3dlevel/size/size/d" to="." method="_on_d_value_changed"]
+[connection signal="pressed" from="3dlevel/bottom/buttons/create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="3dlevel/bottom/buttons/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="3dlevel/bottom/buttons/inventory test" to="." method="_on_inventory_test_pressed"]
