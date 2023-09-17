@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
+size = 64
 outline_color = Color( 0.545098, 0.545098, 0.545098, 1 )
 extra_spacing_top = 12
 extra_spacing_bottom = 6
@@ -18,6 +18,7 @@ margin_left = 32.0956
 margin_right = 38.2788
 margin_top = 8.95609
 margin_bottom = 15.1124
+modulate_color = Color( 1, 0.588235, 0, 1 )
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 1 )
@@ -26,6 +27,7 @@ margin_left = 41.3694
 margin_right = 37.4199
 margin_top = 18.4803
 margin_bottom = 10.5574
+modulate_color = Color( 1, 0.588235, 0, 1 )
 
 [resource]
 Button/colors/font_color = Color( 1, 1, 1, 1 )

@@ -51,10 +51,10 @@ margin_bottom = -59.8009
 custom_styles/panel = SubResource( 2 )
 
 [node name="inventory_player" parent="ui_container/windows" instance=ExtResource( 10 )]
-margin_left = -624.0
-margin_top = -95.0
-margin_right = -480.0
-margin_bottom = 79.0
+margin_left = -891.0
+margin_top = -86.0
+margin_right = -747.0
+margin_bottom = 88.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="crafting_list" parent="ui_container/windows" instance=ExtResource( 9 )]
@@ -62,13 +62,17 @@ visible = false
 custom_styles/panel = SubResource( 2 )
 
 [node name="player_stats" parent="ui_container/windows" instance=ExtResource( 15 )]
-margin_left = -613.0
-margin_top = -220.0
-margin_right = -517.0
-margin_bottom = -168.0
+margin_left = -858.0
+margin_top = -224.0
+margin_right = -762.0
+margin_bottom = -172.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="hotbar" parent="ui_container" instance=ExtResource( 11 )]
 rect_pivot_offset = Vector2( 63, 32 )
 
 [node name="settings_node" parent="ui_container" instance=ExtResource( 1 )]
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
