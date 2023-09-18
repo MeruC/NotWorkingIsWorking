@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/main_screen/direct.gd" type="Script" id=3]
 [ext_resource path="res://scenes/user_profile/buttons and panels/button1..png" type="Texture" id=4]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/soundtrack/menu/Track 03.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/user_profile/mascot/mascot-sheet.png" type="Texture" id=7]
 [ext_resource path="res://resources/Sprites/welcome_screen.png" type="Texture" id=8]
 
@@ -45,7 +47,7 @@ script = ExtResource( 3 )
 script = SubResource( 3 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 4285, 0 )
+motion_mirroring = Vector2( 4284, 0 )
 
 [node name="WelcomeScreen" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 2142.01, 555.5 )
@@ -132,10 +134,12 @@ position = Vector2( 297, 400 )
 scale = Vector2( 2.11146, 2.04297 )
 texture = ExtResource( 7 )
 hframes = 5
-frame = 1
 
 [node name="mascot_animation" type="AnimationPlayer" parent="."]
 anims/mascot_animation = SubResource( 2 )
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 6 )
 
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="GridContainer/offline_button" to="." method="_on_offline_button_pressed"]

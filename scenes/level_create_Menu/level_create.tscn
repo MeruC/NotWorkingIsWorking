@@ -458,7 +458,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 37, -0.25, 0, 0.25, 0, -405, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 37, -0.25, 0, 0.25, 0, -833, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/12/type = "bezier"
@@ -1249,16 +1249,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -923.0
-margin_top = -542.0
-margin_right = -586.0
-margin_bottom = -408.0
+margin_left = -842.0
+margin_top = -544.0
+margin_right = -453.0
+margin_bottom = -370.0
 rect_rotation = -2.60862
 rect_pivot_offset = Vector2( 986, -279 )
 focus_mode = 0
 theme = ExtResource( 5 )
 enabled_focus_mode = 0
-text = "back"
+text = "BACK"
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 6 )
@@ -1306,3 +1306,4 @@ anims/ui = SubResource( 18 )
 [connection signal="pressed" from="3dlevel/bottom/buttons/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="3dlevel/bottom/buttons/inventory test" to="." method="_on_inventory_test_pressed"]
 [connection signal="pressed" from="choosetype/Control/3dlevel" to="." method="_on_3dlevel_pressed"]
+[connection signal="pressed" from="choosetype/back" to="." method="_on_backtoMain_pressed"]

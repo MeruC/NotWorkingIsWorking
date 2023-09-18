@@ -72,3 +72,7 @@ func _on_3dlevel_pressed():
 	yield(player, "animation_finished")
 	idle.play("ui")
 	choosetype.set_visible(false)
+
+
+func _on_backtoMain_pressed():
+	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
