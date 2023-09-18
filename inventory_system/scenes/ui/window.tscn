@@ -62,7 +62,7 @@ margin_top = -16.0
 margin_bottom = -5.0
 grow_vertical = 0
 mouse_filter = 1
-custom_colors/font_color = Color( 0.301961, 0.34902, 0.4, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Window's Name"
 align = 1
@@ -80,5 +80,8 @@ patch_margin_left = 8
 patch_margin_top = 6
 patch_margin_right = 8
 patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="pressed" from="title/close" to="." method="_on_close_pressed"]

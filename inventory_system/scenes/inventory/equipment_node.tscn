@@ -34,6 +34,7 @@ margin_left = -10.0
 margin_right = 10.0
 
 [node name="equipment_chest" parent="MarginContainer/slot_container" index="1" instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -10.0
@@ -42,6 +43,7 @@ margin_right = 10.0
 margin_bottom = 48.0
 
 [node name="equipment_main_hand" parent="MarginContainer/slot_container" index="2" instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -40.0
@@ -50,6 +52,7 @@ margin_right = -20.0
 margin_bottom = 48.0
 
 [node name="equipment_offhand" parent="MarginContainer/slot_container" index="3" instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 21.4399
