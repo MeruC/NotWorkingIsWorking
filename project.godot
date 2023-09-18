@@ -268,7 +268,7 @@ _global_script_class_icons={
 
 config/name="IsWorking"
 config/description="The Refactor!"
-run/main_scene="res://scenes/level_create_Menu/level_create.tscn"
+run/main_scene="res://scenes/main_screen/main_screen.tscn"
 config/icon="res://iconNW.png"
 
 [autoload]

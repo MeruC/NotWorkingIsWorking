@@ -1,0 +1,298 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://offline_levels/level5/level5_discussion/level5_discussion.gd" type="Script" id=1]
+[ext_resource path="res://resources/font/sev7cyr.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=3]
+[ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/osi_layer.png" type="Texture" id=4]
+[ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=7]
+size = 51
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "application_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "datalink_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "ending"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/NinePatchRect/title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 247, 134 ), Vector2( 250, 192 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 244, 170 ), Vector2( 247, 253 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "introduction"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/NinePatchRect/title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 247, 134 ), Vector2( 242, 58 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "network_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "osi_laayer"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "physical_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 249, 178 ), Vector2( 251, 113 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/osi_layer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0247057, 0.134613 ), Vector2( 0.503529, 0.421589 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "presentation_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "session_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "transport_layer"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 4 ]
+}
+
+[node name="level5_discussion" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+VoiceGen = NodePath("VoiceGeneratorAudioStreamPlayer")
+dialog = NodePath("CanvasLayer/NinePatchRect/dialog")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+margin_right = 1280.0
+margin_bottom = 721.0
+texture = ExtResource( 3 )
+
+[node name="title" type="Label" parent="CanvasLayer/NinePatchRect"]
+margin_left = 247.0
+margin_top = 134.0
+margin_right = 1050.0
+margin_bottom = 211.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "aaaaaaaaaaaaaaaa"
+align = 1
+autowrap = true
+
+[node name="dialog" type="Label" parent="CanvasLayer/NinePatchRect"]
+visible = false
+margin_left = 244.0
+margin_top = 170.0
+margin_right = 1050.0
+margin_bottom = 304.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "aaaaaa"
+autowrap = true
+
+[node name="osi_layer" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 651, 282.5 )
+scale = Vector2( 0.503529, 0.421589 )
+texture = ExtResource( 4 )
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/application_layer = SubResource( 15 )
+anims/datalink_layer = SubResource( 11 )
+anims/ending = SubResource( 18 )
+anims/introduction = SubResource( 9 )
+anims/network_layer = SubResource( 12 )
+anims/osi_laayer = SubResource( 17 )
+anims/physical_layer = SubResource( 10 )
+anims/presentation_layer = SubResource( 16 )
+anims/session_layer = SubResource( 14 )
+anims/transport_layer = SubResource( 13 )
+
+[node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 5 )]
