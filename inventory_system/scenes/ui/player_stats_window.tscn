@@ -6,7 +6,7 @@
 [ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 8
+size = 7
 font_data = ExtResource( 2 )
 
 [node name="player_stats" instance=ExtResource( 1 )]
@@ -39,7 +39,7 @@ margin_right = 78.0
 margin_bottom = 6.0
 
 [node name="Label" type="Label" parent="VBoxContainer/str" index="0"]
-margin_right = 45.0
+margin_right = 39.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -48,7 +48,7 @@ text = "- Strength -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/str" index="1"]
-margin_left = 49.0
+margin_left = 43.0
 margin_right = 78.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
@@ -64,7 +64,7 @@ margin_right = 78.0
 margin_bottom = 13.0
 
 [node name="Label" type="Label" parent="VBoxContainer/dex" index="0"]
-margin_right = 48.0
+margin_right = 41.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -73,7 +73,7 @@ text = "- Dexterity -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/dex" index="1"]
-margin_left = 52.0
+margin_left = 45.0
 margin_right = 78.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
@@ -89,7 +89,7 @@ margin_right = 78.0
 margin_bottom = 20.0
 
 [node name="Label" type="Label" parent="VBoxContainer/int" index="0"]
-margin_right = 54.0
+margin_right = 47.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -98,7 +98,7 @@ text = "- Inteligence -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/int" index="1"]
-margin_left = 58.0
+margin_left = 51.0
 margin_right = 78.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
@@ -114,7 +114,7 @@ margin_right = 78.0
 margin_bottom = 27.0
 
 [node name="Label" type="Label" parent="VBoxContainer/vit" index="0"]
-margin_right = 42.0
+margin_right = 37.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -123,7 +123,7 @@ text = "- Vitality -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/vit" index="1"]
-margin_left = 46.0
+margin_left = 41.0
 margin_right = 78.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
@@ -139,7 +139,7 @@ margin_right = 78.0
 margin_bottom = 34.0
 
 [node name="Label" type="Label" parent="VBoxContainer/msp" index="0"]
-margin_right = 52.0
+margin_right = 47.0
 margin_bottom = 6.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -148,7 +148,7 @@ text = "- Move Speed -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/msp" index="1"]
-margin_left = 56.0
+margin_left = 51.0
 margin_right = 78.0
 margin_bottom = 6.0
 size_flags_horizontal = 3

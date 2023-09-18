@@ -14,6 +14,10 @@ var menu = 0
 
 onready var player = get_node("AnimationPlayer")
 onready var idle = $idle
+onready var choosetype = $choosetype
+onready var level3d = $"3dlevel"
+
+
 
 
 func _ready():
@@ -56,14 +60,15 @@ func _on_inventory_test_pressed():
 
 
 func _on_back_pressed():
-	match(menu):
-		0:
-			player.play("set_size")
-			menu = 1
-			yield(player, "animation_finished")
-			idle.play("ui")
-		1: 
-			idle.stop()
-			player.play_backwards("set_size")
-			menu = 0
+	choosetype.set_visible(true)
+	idle.stop()
+	player.play_backwards("set_size")
+	yield(player, "animation_finished")
+	level3d.set_visible(false)
 
+func _on_3dlevel_pressed():
+	level3d.set_visible(true)
+	player.play("set_size")
+	yield(player, "animation_finished")
+	idle.play("ui")
+	choosetype.set_visible(false)
