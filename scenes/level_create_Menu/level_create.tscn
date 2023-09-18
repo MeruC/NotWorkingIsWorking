@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level_create_Menu/level_create.gd" type="Script" id=2]
@@ -314,6 +314,150 @@ tracks/22/enabled = true
 tracks/22/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("choosetype/Control/3dlevel:rect_scale:x")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/24/type = "bezier"
+tracks/24/path = NodePath("choosetype/Control/3dlevel:rect_scale:y")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("choosetype/Control/quiz:rect_scale:x")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("choosetype/Control/quiz:rect_scale:y")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "intro"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("choosetype/Control/3dlevel:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("choosetype/Control/3dlevel:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("choosetype/Control/quiz:rect_scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.8, 1.1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("choosetype/Control/quiz:rect_scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 0.8, 1.1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("choosetype/back:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -469, -0.25, 0, 0.25, 0, 37, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("choosetype/back:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -2.00024, -0.25, 0, 0.25, 0, -2.00024, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("choosetype/create:rect_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 2006, -0.25, 0, 0.25, 0, -320, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("choosetype/create:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -122, -0.25, 0, 0.25, 0, -122, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("choosetype/level:rect_position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( -1658, -0.25, 0, 0.25, 0, 575, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 1 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("choosetype/level:rect_position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 622, -0.25, 0, 0.25, 0, 622, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 1 )
 }
 
 [sub_resource type="Animation" id=16]
@@ -1249,10 +1393,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -842.0
-margin_top = -544.0
-margin_right = -453.0
-margin_bottom = -370.0
+margin_left = -923.0
+margin_top = -542.0
+margin_right = -533.998
+margin_bottom = -368.0
 rect_rotation = -2.60862
 rect_pivot_offset = Vector2( 986, -279 )
 focus_mode = 0
@@ -1288,9 +1432,11 @@ depth = 20.0
 material = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "intro"
 reset_on_save = false
 playback_speed = 2.0
 anims/RESET = SubResource( 21 )
+anims/intro = SubResource( 22 )
 anims/set_size = SubResource( 16 )
 anims/ui = SubResource( 12 )
 
