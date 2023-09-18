@@ -54,7 +54,7 @@ custom_styles/panel = SubResource( 2 )
 margin_left = -891.0
 margin_top = -86.0
 margin_right = -747.0
-margin_bottom = 88.0
+margin_bottom = 15.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="crafting_list" parent="ui_container/windows" instance=ExtResource( 9 )]
