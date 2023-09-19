@@ -1042,6 +1042,7 @@ __meta__ = {
 }
 
 [node name="3dlevel" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="left" type="ColorRect" parent="3dlevel"]
 margin_left = -269.0
@@ -1333,7 +1334,6 @@ texture = SubResource( 14 )
 expand = true
 
 [node name="choosetype" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="create" type="Label" parent="choosetype"]
 margin_left = -320.0
