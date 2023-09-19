@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://offline_levels/level1/folder.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/offline_mode_Asset/level_1/info_folder.png" type="Texture" id=2]
 [ext_resource path="res://offline_levels/level1/file.tscn" type="PackedScene" id=3]
 [ext_resource path="res://offline_levels/level1/manager.gd" type="Script" id=4]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=6]
-[ext_resource path="res://resources/offline_mode_Asset/level_1/notepad.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=8]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=9]
 [ext_resource path="res://offline_levels/general_scenes/pause.tscn" type="PackedScene" id=10]
@@ -52,9 +49,8 @@ playback_speed = 0.25
 anims/RESET = SubResource( 2 )
 
 [node name="DesktopBg" type="Sprite" parent="."]
-position = Vector2( 959.852, 539.997 )
-scale = Vector2( 0.320049, 0.320002 )
-texture = ExtResource( 6 )
+position = Vector2( 640, 360 )
+scale = Vector2( 0.213333, 0.213333 )
 
 [node name="data_folder" parent="." instance=ExtResource( 1 )]
 position = Vector2( 226, 456 )
@@ -63,9 +59,6 @@ folder_type = "data"
 [node name="info_folder" parent="." instance=ExtResource( 1 )]
 position = Vector2( 619, 458 )
 folder_type = "info"
-
-[node name="data_folder" parent="info_folder" index="0"]
-texture = ExtResource( 2 )
 
 [node name="manager" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -86,7 +79,6 @@ instructions_sprite = NodePath("../popup_layer/instructions/main_popup/Animation
 [node name="notepad" type="Sprite" parent="."]
 position = Vector2( 960, 355 )
 scale = Vector2( 0.307903, 0.307903 )
-texture = ExtResource( 7 )
 
 [node name="notepad_content" type="Label" parent="."]
 margin_left = 781.0

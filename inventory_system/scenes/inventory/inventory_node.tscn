@@ -5,14 +5,21 @@
 
 [node name="inventory" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-inventory_name = ""
-size = 0
 slot_container = NodePath("MarginContainer/slot_container")
 
+[node name="Label" parent="title/TextureRect" index="0"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MarginContainer" parent="." index="1"]
+margin_top = 8.0
+custom_constants/margin_top = 12
+
 [node name="slot_container" type="GridContainer" parent="MarginContainer" index="0"]
-margin_top = 6.0
-margin_right = 69.0
-margin_bottom = 24.0
+margin_top = 12.0
+margin_right = 106.0
+margin_bottom = 58.0
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 10

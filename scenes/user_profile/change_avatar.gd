@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-var default_character = load("res://user_profile/avatar_boy_picture/default_character.png")
-var orange_shirt = load("res://user_profile/avatar_boy_picture/orange_shirt.png")
-var formal_attire = load("res://user_profile/avatar_boy_picture/character_formal.png")
-var blue_shirt = load("res://user_profile/avatar_boy_picture/blue_shirt.png")
-var cict_shirt = load("res://user_profile/avatar_boy_picture/cict_shirt.png")
+var default_character = load("res://scenes/user_profile/avatar_boy_picture/default_character.png")
+var orange_shirt = load("res://scenes/user_profile/avatar_boy_picture/orange_shirt.png")
+var formal_attire = load("res://scenes/user_profile/avatar_boy_picture/character_formal.png")
+var blue_shirt = load("res://scenes/user_profile/avatar_boy_picture/blue_shirt.png")
+var cict_shirt = load("res://scenes/user_profile/avatar_boy_picture/cict_shirt.png")
 var user_profile = "res://user_profile/user_profile.tscn"
 var selectedAvatar = "res://user_profile/avatar_boy_picture/default_character.png"
 var click = 0

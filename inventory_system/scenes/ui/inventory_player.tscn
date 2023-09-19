@@ -5,16 +5,24 @@
 [ext_resource path="res://inventory_system/scenes/ui/window.tscn" type="PackedScene" id=6]
 
 [node name="inventory_player" instance=ExtResource( 6 )]
+margin_left = -261.0
+margin_top = -234.5
+margin_right = 261.0
+margin_bottom = 234.5
 script = ExtResource( 1 )
 inventory_container = NodePath("inventory_container")
 player_data = ExtResource( 2 )
+
+[node name="title" parent="." index="0"]
+margin_right = 500.0
+margin_bottom = 447.0
 
 [node name="Label" parent="title" index="1"]
 text = "Player's Inventory"
 
 [node name="inventory_container" type="VBoxContainer" parent="." index="1"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 135.0
-margin_bottom = 51.0
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 500.0
+margin_bottom = 447.0
 custom_constants/separation = 2
