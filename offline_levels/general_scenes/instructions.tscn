@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://offline_mode_Asset/level_1/tutorial.png" type="Texture" id=3]
+[ext_resource path="res://resources/offline_mode_Asset/level_1/tutorial.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
@@ -106,14 +106,15 @@ root_node = NodePath("Sprite")
 anims/animation = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="main_popup/AnimationPlayer"]
-position = Vector2( 640, 524 )
+position = Vector2( 954, 714 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 hframes = 10
-frame = 6
 
 [node name="tap" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0.0980392 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0

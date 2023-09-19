@@ -437,7 +437,6 @@ anims/animation = SubResource( 4 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
-frame = 0
 
 [connection signal="pressed" from="submit" to="manager" method="_on_submit_pressed"]
 [connection signal="pressed" from="clear" to="manager" method="_on_clear_pressed"]

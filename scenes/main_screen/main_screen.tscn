@@ -130,7 +130,7 @@ clip_text = true
 icon_align = 1
 
 [node name="mascot" type="Sprite" parent="."]
-position = Vector2( 297, 400 )
+position = Vector2( 553, 545 )
 scale = Vector2( 2.11146, 2.04297 )
 texture = ExtResource( 7 )
 hframes = 5
