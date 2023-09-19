@@ -267,7 +267,6 @@ _global_script_class_icons={
 [application]
 
 config/name="IsWorking"
-config/description="The Refactor!"
 run/main_scene="res://scenes/main_screen/main_screen.tscn"
 config/icon="res://iconNW.png"
 
@@ -420,6 +419,10 @@ use_pixel_snap=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation.mobile=2
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
+quality/shadows/filter_mode.mobile=1
+quality/shading/force_vertex_shading.mobile=false
+gles2/compatibility/enable_high_float.Android=true
 environment/default_clear_color=Color( 0.0784314, 0.105882, 0.145098, 1 )
+quality/filters/msaa=3

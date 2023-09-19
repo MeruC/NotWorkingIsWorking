@@ -3,16 +3,18 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/1.png-e051627d117b645394b92ee963fff6af.s3tc.stex"
+path.etc2="res://.import/1.png-e051627d117b645394b92ee963fff6af.etc2.stex"
 path.etc="res://.import/1.png-e051627d117b645394b92ee963fff6af.etc.stex"
+path.pvrtc="res://.import/1.png-e051627d117b645394b92ee963fff6af.pvrtc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "bptc", "s3tc", "etc2", "etc", "pvrtc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Models/Character skin boy/blue_shirt/walk/1.png"
-dest_files=[ "res://.import/1.png-e051627d117b645394b92ee963fff6af.s3tc.stex", "res://.import/1.png-e051627d117b645394b92ee963fff6af.etc.stex" ]
+dest_files=[ "res://.import/1.png-e051627d117b645394b92ee963fff6af.s3tc.stex", "res://.import/1.png-e051627d117b645394b92ee963fff6af.etc2.stex", "res://.import/1.png-e051627d117b645394b92ee963fff6af.etc.stex", "res://.import/1.png-e051627d117b645394b92ee963fff6af.pvrtc.stex" ]
 
 [params]
 

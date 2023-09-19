@@ -332,8 +332,9 @@ text = "OBJECTS"
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = 76.0
 margin_right = 64.0
+margin_bottom = 90.0
 text = "Currently Selected: Null"
 valign = 1
 
