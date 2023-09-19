@@ -1,18 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://offline_levels/level5/level5_discussion/level5_discussion.gd" type="Script" id=1]
-[ext_resource path="res://resources/font/sev7cyr.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=3]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/osi_layer.png" type="Texture" id=4]
 [ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=5]
-
-[sub_resource type="DynamicFont" id=7]
-size = 51
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 30
-font_data = ExtResource( 2 )
+[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Animation" id=15]
 resource_name = "application_layer"
@@ -83,7 +76,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 247, 134 ), Vector2( 242, 58 ) ]
+"values": [ Vector2( 412, 323 ), Vector2( 420, 93 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
@@ -145,48 +138,24 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=10]
 resource_name = "physical_layer"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_position")
+tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 249, 178 ), Vector2( 251, 113 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/osi_layer:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/osi_layer:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/osi_layer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -249,39 +218,40 @@ dialog = NodePath("CanvasLayer/NinePatchRect/dialog")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-margin_right = 1280.0
-margin_bottom = 721.0
+margin_right = 1910.0
+margin_bottom = 1073.0
 texture = ExtResource( 3 )
 
 [node name="title" type="Label" parent="CanvasLayer/NinePatchRect"]
-margin_left = 247.0
-margin_top = 134.0
-margin_right = 1050.0
-margin_bottom = 211.0
+margin_left = 412.0
+margin_top = 323.0
+margin_right = 1589.0
+margin_bottom = 400.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 6 )
 text = "aaaaaaaaaaaaaaaa"
 align = 1
 autowrap = true
 
 [node name="dialog" type="Label" parent="CanvasLayer/NinePatchRect"]
 visible = false
-margin_left = 244.0
-margin_top = 170.0
-margin_right = 1050.0
-margin_bottom = 304.0
+margin_left = 394.0
+margin_top = 220.0
+margin_right = 1172.0
+margin_bottom = 546.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
 text = "aaaaaa"
 autowrap = true
 
 [node name="osi_layer" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 651, 282.5 )
-scale = Vector2( 0.503529, 0.421589 )
+position = Vector2( 1359, 382.5 )
+scale = Vector2( 0.0247057, 0.134613 )
 texture = ExtResource( 4 )
 hframes = 8
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/application_layer = SubResource( 15 )

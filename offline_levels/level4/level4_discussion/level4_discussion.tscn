@@ -15,18 +15,12 @@
 [ext_resource path="res://offline_levels/level4/level4_discussion/gif_asset/video_cover.png" type="Texture" id=13]
 [ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=14]
 [ext_resource path="res://offline_levels/level4/level4_discussion/gif_asset/level4.ogv" type="VideoStream" id=15]
+[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=16]
+[ext_resource path="res://resources/font/level3-4_dialog_fonr.tres" type="DynamicFont" id=17]
 
 [sub_resource type="DynamicFont" id=11]
-size = 51
+size = 90
 font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=12]
-size = 51
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=13]
-size = 30
-font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 78
@@ -107,7 +101,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.108889, 0.0393939 ), Vector2( 1.34222, 0.951515 ) ]
+"values": [ Vector2( 0.108889, 0.0393939 ), Vector2( 2.36, 1.5697 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -146,7 +140,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.0466667, 0.0133333 ), Vector2( 1.12917, 0.901667 ) ]
+"values": [ Vector2( 0.0466667, 0.0133333 ), Vector2( 1.85, 1.79333 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -158,10 +152,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 127, 105 ), Vector2( 80, 208 ) ]
+"values": [ Vector2( 127, 105 ), Vector2( 280, 369 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/dialog:rect_position")
@@ -173,7 +167,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 184, 176 ), Vector2( 77, 311 ) ]
+"values": [ Vector2( 148, 241 ), Vector2( 142, 491 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CanvasLayer/dialog:visible")
@@ -239,7 +233,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 184, 518 ), Vector2( 184, 176 ) ]
+"values": [ Vector2( 184, 518 ), Vector2( 146, 219 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CanvasLayer/dialog:visible")
@@ -290,7 +284,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.122093, 0.194161 ), Vector2( 0.934063, 1.05304 ) ]
+"values": [ Vector2( 0.122093, 0.194161 ), Vector2( 1.6592, 1.5321 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/play_btn:visible")
@@ -354,16 +348,16 @@ dialog = NodePath("CanvasLayer/dialog")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-margin_right = 1277.0
-margin_bottom = 715.0
+margin_right = 1917.0
+margin_bottom = 1076.0
 texture = ExtResource( 2 )
 
 [node name="well_done" type="Label" parent="CanvasLayer"]
 visible = false
-margin_left = 786.0
-margin_top = 577.0
-margin_right = 999.0
-margin_bottom = 616.0
+margin_left = 1092.0
+margin_top = 808.0
+margin_right = 1467.0
+margin_bottom = 877.0
 rect_rotation = -14.8823
 custom_colors/font_color = Color( 0, 1, 0.278431, 1 )
 custom_fonts/font = SubResource( 11 )
@@ -374,52 +368,51 @@ valign = 1
 [node name="title" type="Label" parent="CanvasLayer"]
 margin_left = 127.0
 margin_top = 105.0
-margin_right = 1119.0
+margin_right = 1685.0
 margin_bottom = 234.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = ExtResource( 16 )
 text = "title"
 align = 1
-valign = 3
+valign = 1
 autowrap = true
 
 [node name="dialog" type="Label" parent="CanvasLayer"]
-visible = false
-margin_left = 184.0
-margin_top = 176.0
-margin_right = 1027.0
-margin_bottom = 492.0
+margin_left = 148.0
+margin_top = 241.0
+margin_right = 1755.0
+margin_bottom = 547.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = ExtResource( 17 )
 text = "dialog here"
 autowrap = true
 
 [node name="MAN" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 597, 483 )
-scale = Vector2( 0.30669, 0.185679 )
+position = Vector2( 871, 705 )
+scale = Vector2( 2.36, 1.5697 )
 texture = ExtResource( 5 )
 hframes = 3
 
 [node name="LAN" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 580.5, 482 )
-scale = Vector2( 0.192826, 0.232199 )
+position = Vector2( 830, 680 )
+scale = Vector2( 0.329435, 0.373951 )
 texture = ExtResource( 4 )
 hframes = 11
 
 [node name="WAN" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 553.75, 491.25 )
-scale = Vector2( 0.197639, 0.137226 )
+position = Vector2( 823, 691 )
+scale = Vector2( 1.85, 1.79333 )
 texture = ExtResource( 6 )
 hframes = 11
 
 [node name="channel" type="Label" parent="CanvasLayer"]
-margin_left = 1083.0
-margin_top = 81.0
-margin_right = 1212.0
-margin_bottom = 168.0
+margin_left = 1687.0
+margin_top = 115.0
+margin_right = 1816.0
+margin_bottom = 202.0
 custom_colors/font_color = Color( 0, 1, 0.278431, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "TV"
@@ -434,16 +427,16 @@ stream = ExtResource( 15 )
 
 [node name="video_cover" type="Sprite" parent="CanvasLayer"]
 visible = false
-position = Vector2( 636, 445 )
+position = Vector2( 831.25, 674.391 )
 scale = Vector2( 0.122093, 0.194161 )
 texture = ExtResource( 13 )
 
 [node name="play_btn" type="Button" parent="CanvasLayer"]
 visible = false
-margin_left = 320.0
-margin_top = 271.0
-margin_right = 6787.0
-margin_bottom = 3844.0
+margin_left = 299.0
+margin_top = 400.0
+margin_right = 10985.0
+margin_bottom = 6044.0
 rect_scale = Vector2( 0.100041, 0.0999204 )
 icon = ExtResource( 14 )
 flat = true
