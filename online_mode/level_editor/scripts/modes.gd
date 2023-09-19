@@ -1,4 +1,4 @@
-extends Scale_Control
+extends HBoxContainer
 
 export( NodePath ) onready var main = get_node(main) as Spatial
 export( NodePath ) onready var current = get_node(current) as Label

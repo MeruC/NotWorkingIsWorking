@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://inventory_system/scripts/ui/crafting_list.gd" type="Script" id=1]
+[ext_resource path="res://inventory_system/resources/sprites/title.png" type="Texture" id=2]
+[ext_resource path="res://inventory_system/resources/sprites/x_pressed.png" type="Texture" id=3]
+[ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=4]
+[ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=5]
+[ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=6]
+[ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=7]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=8]
+[ext_resource path="res://inventory_system/scenes/ui/inventory_player.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 8 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends PanelContainer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = 2.0
+margin_right = 45.0
+margin_bottom = 2.0
+
+[node name="crafting_list" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 168.0
+margin_top = -434.0
+margin_right = 864.0
+margin_bottom = 182.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+lbl_title = NodePath("title/Label")
+recipe_list = NodePath("recipe_list")
+
+[node name="title" type="Control" parent="crafting_list"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 674.0
+margin_bottom = 594.0
+mouse_filter = 1
+
+[node name="close" type="TextureButton" parent="crafting_list/title"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = -12.0
+margin_right = 11.0
+margin_bottom = -3.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="crafting_list/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -94.0
+margin_right = -49.0
+margin_bottom = -28.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="crafting_list/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0518265
+anchor_top = -0.136545
+anchor_right = 1.03221
+anchor_bottom = 1.09091
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 2 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="recipe_list" type="VBoxContainer" parent="crafting_list"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 674.0
+margin_bottom = 594.0
+
+[node name="inventory_player" parent="." instance=ExtResource( 9 )]
+margin_left = -992.0
+margin_top = -474.0
+margin_right = -470.0
+margin_bottom = -305.0
+script = SubResource( 4 )
+
+[connection signal="pressed" from="crafting_list/title/close" to="crafting_list" method="_on_close_pressed"]

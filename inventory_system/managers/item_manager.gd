@@ -20,6 +20,8 @@ var type_names = {
 	Game_Enums.ITEM_TYPE.CONSUMABLE: "Consumable",
 	Game_Enums.ITEM_TYPE.CURRENCY: "Currency",
 	Game_Enums.ITEM_TYPE.MATERIAL: "Material",
+	Game_Enums.ITEM_TYPE.CABLE: "Cable",
+	Game_Enums.ITEM_TYPE.TOOL: "Tool",
 }
 
 

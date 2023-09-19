@@ -13,8 +13,16 @@ recipe_list = NodePath("recipe_list")
 margin_right = 442.0
 margin_bottom = 61.0
 
-[node name="Label" parent="title" index="1"]
+[node name="Label" parent="title" index="0"]
+margin_top = -74.0
+margin_bottom = -32.0
 text = "Crafting"
+
+[node name="close" parent="title" index="1"]
+margin_left = 418.0
+margin_top = -58.0
+margin_right = 476.0
+margin_bottom = 5.0
 
 [node name="recipe_list" type="VBoxContainer" parent="." index="1"]
 margin_left = 22.0

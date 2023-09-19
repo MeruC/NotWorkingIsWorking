@@ -1,4 +1,4 @@
-extends Scale_Control
+extends Control
 
 export( NodePath ) onready var objects_btn = get_node(objects_btn) as Button 
 export( NodePath ) onready var current = get_node(current) as Label

@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 fullscreen = false
 scale = 1.0
+gold_coins = 1000

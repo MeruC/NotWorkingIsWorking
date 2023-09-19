@@ -2,19 +2,21 @@ class_name Player_Data extends Resource
 
 export( Vector2 ) var global_position = Vector2( 368, 347 )
 export( Dictionary ) var inventories
+export( int ) var coins
 
 var base_stats = {
 	Game_Enums.STAT.STRENGTH: 5,
 	Game_Enums.STAT.DEXTERITY: 5,
 	Game_Enums.STAT.VITALITY: 5,
 	Game_Enums.STAT.INTELLIGENCE: 5,
-	Game_Enums.STAT.MOVE_SPEED: 150
+	Game_Enums.STAT.MOVE_SPEED: 150,
 }
 
 var equipment : Equipment
 var inventory_left : Inventory
 var inventory_right : Inventory
 var hotbar : Hotbar
+var coin : int
 
 # Initialise the player's inventories.
 func _init():
@@ -36,6 +38,7 @@ func _init():
 func set_data( data ):
 	global_position = data.global_position
 	inventories = data.inventories
+	coin = data.coins
 	emit_changed()
 	changed_data()
 
@@ -48,7 +51,8 @@ func get_data():
 	
 	return {
 		"global_position": global_position,
-		"inventories": inventories
+		"inventories": inventories,
+		"coins": coins
 	}
 
 func get_stat( stat ):
@@ -67,15 +71,15 @@ func get_stat( stat ):
 	
 	return int( round( stat_total ) )
 
+func get_coins():
+	return coins
+
 func changed_data():
 	if inventories.size() > 0:
 		equipment.set_data( inventories.equipment )
 		inventory_left.set_data( inventories.inventory_left )
 		inventory_right.set_data( inventories.inventory_right )
 		hotbar.set_data( inventories.hotbar )
-
-
-
 
 
 

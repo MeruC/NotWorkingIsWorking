@@ -20,6 +20,21 @@ var sprites = {
 	"rarity_upgrade": preload( "res://inventory_system/resources/sprites/items/rarity_upgrade.png" ),
 	"plank": preload( "res://inventory_system/resources/sprites/items/plank.png" ),
 	"rock": preload( "res://inventory_system/resources/sprites/items/rock.png" ),
+	"rj45": preload( "res://inventory_system/resources/sprites/items/rj45.png" ),
+	"cable_tester": preload( "res://inventory_system/resources/sprites/items/cable_tester.png" ),
+	"crimping": preload( "res://inventory_system/resources/sprites/items/crimping.png" ),
+	"cross_over": preload( "res://inventory_system/resources/sprites/items/cross_over.png" ),
+	"hdmi": preload( "res://inventory_system/resources/sprites/items/hdmi.png" ),
+	"hub": preload( "res://inventory_system/resources/sprites/items/hub.png" ),
+	"laptop": preload( "res://inventory_system/resources/sprites/items/laptop.png" ),
+	"monitor": preload( "res://inventory_system/resources/sprites/items/monitor.png" ),
+	"router": preload( "res://inventory_system/resources/sprites/items/router.png" ),
+	"router2": preload( "res://inventory_system/resources/sprites/items/router2.png" ),
+	"server": preload( "res://inventory_system/resources/sprites/items/server.png" ),
+	"straight_through": preload( "res://inventory_system/resources/sprites/items/server.png" ),
+	"switch": preload( "res://inventory_system/resources/sprites/items/switch.png" ),
+	"system_unit": preload( "res://inventory_system/resources/sprites/items/system_unit.png" ),
+	
 }
 
 var fonts = {

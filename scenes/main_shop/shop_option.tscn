@@ -1,0 +1,259 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=1]
+[ext_resource path="res://inventory_system/resources/sprites/button/disabled.png" type="Texture" id=2]
+[ext_resource path="res://inventory_system/resources/sprites/button/normal.png" type="Texture" id=3]
+[ext_resource path="res://inventory_system/resources/sprites/button/hover.png" type="Texture" id=4]
+[ext_resource path="res://inventory_system/resources/sprites/arrow.png" type="Texture" id=5]
+[ext_resource path="res://inventory_system/resources/sprites/button/pressed.png" type="Texture" id=6]
+[ext_resource path="res://scenes/main_shop/shop_option.gd" type="Script" id=7]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
+[ext_resource path="res://inventory_system/resources/sprites/bar.png" type="Texture" id=9]
+[ext_resource path="res://inventory_system/resources/font/font_8.tres" type="DynamicFont" id=10]
+[ext_resource path="res://inventory_system/resources/sprites/item_slot.png" type="Texture" id=11]
+[ext_resource path="res://inventory_system/scripts/ui/item_quantity.gd" type="Script" id=12]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=13]
+[ext_resource path="res://inventory_system/resources/sprites/items/gold_coin.png" type="Texture" id=14]
+[ext_resource path="res://inventory_system/resources/sprites/items/rj45.png" type="Texture" id=15]
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 18, 18 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+extra_spacing_top = 5
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.0
+margin_bottom = 5.0
+
+[node name="shop_option" type="PanelContainer"]
+margin_right = 610.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/panel = SubResource( 7 )
+script = ExtResource( 7 )
+lbl_panel_title = NodePath("title/TextureRect/Label")
+price_list = NodePath("MarginContainer/HBoxContainer/price")
+produce_list = NodePath("MarginContainer/HBoxContainer/produce")
+craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
+settings_data = ExtResource( 8 )
+
+[node name="title" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 602.0
+margin_bottom = 119.0
+
+[node name="TextureRect" type="TextureRect" parent="title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 29.0
+margin_right = 18.0
+margin_bottom = 31.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="title/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -89.5
+margin_top = -31.0
+margin_right = 89.5
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0.74902, 0.623529, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "- RJ45 -"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 602.0
+margin_bottom = 119.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 31
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 31.0
+margin_right = 584.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="price" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 171.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="item_quantity" type="ColorRect" parent="MarginContainer/HBoxContainer/price"]
+margin_top = 35.0
+margin_right = 171.0
+margin_bottom = 35.0
+color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 12 )
+item_container = NodePath("inventory_slot/item_container")
+lbl_quantity = NodePath("Label")
+
+[node name="inventory_slot" type="TextureRect" parent="MarginContainer/HBoxContainer/price/item_quantity"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -28.0
+margin_bottom = 27.0
+mouse_filter = 0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="item_container" type="CenterContainer" parent="MarginContainer/HBoxContainer/price/item_quantity/inventory_slot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/price/item_quantity/inventory_slot/item_container"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 47.0
+margin_bottom = 47.0
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/price/item_quantity"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -26.0
+margin_right = -53.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "50"
+align = 1
+valign = 1
+
+[node name="arrow" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 187.0
+margin_right = 200.0
+margin_bottom = 70.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="produce" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 216.0
+margin_right = 387.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="item_quantity" type="ColorRect" parent="MarginContainer/HBoxContainer/produce"]
+margin_top = 35.0
+margin_right = 171.0
+margin_bottom = 35.0
+color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 12 )
+item_container = NodePath("inventory_slot/item_container")
+lbl_quantity = NodePath("Label")
+
+[node name="inventory_slot" type="TextureRect" parent="MarginContainer/HBoxContainer/produce/item_quantity"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -28.0
+margin_bottom = 27.0
+mouse_filter = 0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="item_container" type="CenterContainer" parent="MarginContainer/HBoxContainer/produce/item_quantity/inventory_slot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/produce/item_quantity/inventory_slot/item_container"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 47.0
+margin_bottom = 47.0
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/produce/item_quantity"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -27.0
+margin_right = -53.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="commands" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 403.0
+margin_right = 574.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="craft" type="Button" parent="MarginContainer/HBoxContainer/commands"]
+margin_top = 16.0
+margin_right = 171.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 4 )
+text = "BUY"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/commands/craft" to="." method="_on_craft_pressed"]

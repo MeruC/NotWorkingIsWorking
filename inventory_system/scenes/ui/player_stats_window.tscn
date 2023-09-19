@@ -1,40 +1,66 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://inventory_system/scenes/ui/window.tscn" type="PackedScene" id=1]
-[ext_resource path="res://inventory_system/resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://inventory_system/scripts/ui/player_stats_window.gd" type="Script" id=3]
-[ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 12
+[sub_resource type="DynamicFont" id=16]
+size = 100
 font_data = ExtResource( 2 )
 
 [node name="player_stats" instance=ExtResource( 1 )]
 margin_right = 24.0
 margin_bottom = 16.0
 script = ExtResource( 3 )
-lbl_str = NodePath("VBoxContainer/str/Label2")
-lbl_dex = NodePath("VBoxContainer/dex/Label2")
-lbl_int = NodePath("VBoxContainer/int/Label2")
-lbl_vit = NodePath("VBoxContainer/vit/Label2")
-lbl_msp = NodePath("VBoxContainer/msp/Label2")
-player_data = ExtResource( 4 )
+lbl_coin = NodePath("VBoxContainer/str2/Label2")
+settings_data = null
 
 [node name="title" parent="." index="0"]
-margin_right = 230.0
+margin_right = 510.0
 margin_bottom = 199.0
 
-[node name="Label" parent="title" index="1"]
+[node name="Label" parent="title" index="0"]
 text = "Stats"
+
+[node name="close" parent="title" index="1"]
+margin_left = -9.0
+margin_top = -55.0
+margin_right = 49.0
+margin_bottom = 8.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
 margin_left = 22.0
 margin_top = 22.0
-margin_right = 230.0
+margin_right = 510.0
 margin_bottom = 199.0
 custom_constants/separation = 1
 
-[node name="str" type="HBoxContainer" parent="VBoxContainer" index="0"]
+[node name="str2" type="HBoxContainer" parent="VBoxContainer" index="0"]
+margin_right = 488.0
+margin_bottom = 137.0
+
+[node name="Label" type="Label" parent="VBoxContainer/str2" index="0"]
+margin_right = 427.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "- COINS -"
+valign = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/str2" index="1"]
+margin_left = 431.0
+margin_right = 488.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="str" type="HBoxContainer" parent="VBoxContainer" index="1"]
+visible = false
 margin_right = 208.0
 margin_bottom = 10.0
 
@@ -43,7 +69,7 @@ margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "- Strength -"
 valign = 1
 
@@ -53,22 +79,22 @@ margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "0"
 align = 2
 valign = 1
 
-[node name="dex" type="HBoxContainer" parent="VBoxContainer" index="1"]
-margin_top = 11.0
+[node name="dex" type="HBoxContainer" parent="VBoxContainer" index="2"]
+visible = false
 margin_right = 208.0
-margin_bottom = 21.0
+margin_bottom = 10.0
 
 [node name="Label" type="Label" parent="VBoxContainer/dex" index="0"]
 margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "- Dexterity -"
 valign = 1
 
@@ -78,22 +104,22 @@ margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "0"
 align = 2
 valign = 1
 
-[node name="int" type="HBoxContainer" parent="VBoxContainer" index="2"]
-margin_top = 22.0
+[node name="int" type="HBoxContainer" parent="VBoxContainer" index="3"]
+visible = false
 margin_right = 208.0
-margin_bottom = 32.0
+margin_bottom = 10.0
 
 [node name="Label" type="Label" parent="VBoxContainer/int" index="0"]
 margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "- Inteligence -"
 valign = 1
 
@@ -103,22 +129,22 @@ margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "0"
 align = 2
 valign = 1
 
-[node name="vit" type="HBoxContainer" parent="VBoxContainer" index="3"]
-margin_top = 33.0
+[node name="vit" type="HBoxContainer" parent="VBoxContainer" index="4"]
+visible = false
 margin_right = 208.0
-margin_bottom = 43.0
+margin_bottom = 10.0
 
 [node name="Label" type="Label" parent="VBoxContainer/vit" index="0"]
 margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "- Vitality -"
 valign = 1
 
@@ -128,22 +154,22 @@ margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "0"
 align = 2
 valign = 1
 
-[node name="msp" type="HBoxContainer" parent="VBoxContainer" index="4"]
-margin_top = 44.0
+[node name="msp" type="HBoxContainer" parent="VBoxContainer" index="5"]
+visible = false
 margin_right = 208.0
-margin_bottom = 54.0
+margin_bottom = 10.0
 
 [node name="Label" type="Label" parent="VBoxContainer/msp" index="0"]
 margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "- Move Speed -"
 valign = 1
 
@@ -153,7 +179,7 @@ margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 16 )
 text = "0"
 align = 2
 valign = 1

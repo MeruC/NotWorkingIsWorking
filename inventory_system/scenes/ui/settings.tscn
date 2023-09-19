@@ -12,7 +12,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=10]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 212.231, 212.181 )
 margin_left = 22.0
@@ -22,11 +22,11 @@ margin_bottom = 22.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=18]
 size = 40
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 8 )
 
@@ -49,10 +49,10 @@ anchor_bottom = 0.5
 margin_left = -191.0
 margin_top = -156.0
 margin_right = 191.0
-margin_bottom = 156.0
-rect_pivot_offset = Vector2( 72, 40 )
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 17 )
 script = ExtResource( 9 )
 scale_slider = NodePath("setting list/scale/HSlider")
 fullscreen_check = NodePath("setting list/fullscreen/CheckBox")
@@ -65,7 +65,7 @@ settings_data = ExtResource( 3 )
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 360.0
-margin_bottom = 290.0
+margin_bottom = 285.0
 mouse_filter = 1
 
 [node name="close" type="TextureButton" parent="settings/title"]
@@ -87,7 +87,7 @@ margin_bottom = -37.0
 grow_vertical = 0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 18 )
 text = "Settings"
 align = 1
 valign = 1
@@ -113,24 +113,20 @@ patch_margin_bottom = 2
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 360.0
-margin_bottom = 290.0
-custom_constants/separation = 2
+margin_bottom = 285.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="scale" type="NinePatchRect" parent="settings/setting list"]
 margin_right = 338.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 62.0
+size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="current" type="Label" parent="settings/setting list/scale"]
 anchor_left = 0.5
@@ -140,7 +136,7 @@ margin_top = 4.0
 margin_right = 59.0
 margin_bottom = 10.0
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 19 )
 text = "- Scale -"
 align = 1
 valign = 1
@@ -148,24 +144,24 @@ valign = 1
 [node name="min" type="Label" parent="settings/setting list/scale"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -56.0
+margin_left = -160.0
 margin_top = 4.0
-margin_right = -24.0
-margin_bottom = 10.0
+margin_right = -110.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 19 )
 text = "Min: #"
 valign = 1
 
 [node name="max" type="Label" parent="settings/setting list/scale"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 25.0
+margin_left = 107.0
 margin_top = 4.0
-margin_right = 57.0
-margin_bottom = 10.0
+margin_right = 162.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 19 )
 text = "Max: #"
 align = 2
 valign = 1
@@ -187,18 +183,15 @@ step = 0.5
 value = 4.0
 
 [node name="fullscreen" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 32.0
+margin_top = 66.0
 margin_right = 338.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 129.0
+size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="settings/setting list/fullscreen"]
 anchor_left = 0.5
@@ -208,7 +201,7 @@ margin_top = 4.0
 margin_right = 59.0
 margin_bottom = 10.0
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 19 )
 text = "- Fullscreen -"
 align = 1
 valign = 1
@@ -230,10 +223,10 @@ margin_bottom = 15.8597
 margin_right = 126.0
 
 [node name="others" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 64.0
+margin_top = 133.0
 margin_right = 338.0
-margin_bottom = 94.0
-rect_min_size = Vector2( 0, 30 )
+margin_bottom = 196.0
+size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -255,21 +248,28 @@ margin_bottom = 10.0
 
 [node name="save" type="Button" parent="settings/setting list/others/holder"]
 anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -8.5
 margin_right = 41.0
+margin_bottom = 8.5
 text = "Save"
 
 [node name="load" type="Button" parent="settings/setting list/others/holder"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -42.0
+margin_left = -43.0
+margin_top = -9.5
+margin_right = 26.0
+margin_bottom = 8.5
 text = "Load"
 
 [node name="quit" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 96.0
+margin_top = 200.0
 margin_right = 338.0
-margin_bottom = 126.0
+margin_bottom = 263.0
 rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -282,10 +282,10 @@ __meta__ = {
 [node name="quit" type="Button" parent="settings/setting list/quit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 42.0
-margin_top = 5.0
-margin_right = -42.0
-margin_bottom = -5.0
+margin_left = 117.0
+margin_top = 11.0
+margin_right = -117.0
+margin_bottom = -11.0
 text = "Quit"
 
 [connection signal="pressed" from="settings/title/close" to="settings" method="_on_close_pressed"]

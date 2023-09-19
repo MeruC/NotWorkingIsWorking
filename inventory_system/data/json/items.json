@@ -2,7 +2,25 @@
 	"gold_coin": {
 		"name": "Gold Coin",
 		"type": "CURRENCY",
-		"stack_size": 3,
+		"stack_size": 999,
+		"level": 1
+	},
+	"cable_tester": {
+		"name": "Cable Tester",
+		"type": "TOOL",
+		"stack_size": 1,
+		"level": 1
+	},
+	"rj45": {
+		"name": "RJ45 Cable",
+		"type": "MATERIAL",
+		"stack_size": 64,
+		"level": 1
+	},
+	"hdmi": {
+		"name": "HDMI Cable",
+		"type": "CABLE",
+		"stack_size": 64,
 		"level": 1
 	},
 	"crystal": {

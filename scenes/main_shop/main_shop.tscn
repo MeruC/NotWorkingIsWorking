@@ -1,0 +1,706 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
+[ext_resource path="res://inventory_system/resources/sprites/title.png" type="Texture" id=3]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/soundtrack/menu/Track 12.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=6]
+[ext_resource path="res://inventory_system/scripts/ui/player_stats_window.gd" type="Script" id=7]
+[ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=8]
+[ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=9]
+[ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=10]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://inventory_system/scenes/ui/inventory_container.tscn" type="PackedScene" id=13]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=14]
+[ext_resource path="res://scenes/main_shop/shop_option.tscn" type="PackedScene" id=15]
+[ext_resource path="res://inventory_system/scripts/ui/settings.gd" type="Script" id=16]
+[ext_resource path="res://inventory_system/resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://inventory_system/resources/sprites/x_pressed.png" type="Texture" id=18]
+[ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=19]
+[ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=20]
+[ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=21]
+
+[sub_resource type="GDScript" id=13]
+script/source = "extends ParallaxBackground
+
+export (float) var scrolling_speed = 250.0
+
+func _process(delta):
+	scroll_offset.x -= scrolling_speed * delta
+"
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends PanelContainer
+
+export ( NodePath ) onready var recipe_list = get_node( recipe_list ) as VBoxContainer
+
+func _ready():
+	SignalManager.connect( \"crafting_opened\", self, \"_on_crafting_opened\" )
+	SignalManager.connect( \"crafting_out_of_range\", self, \"_on_crafting_out_of_range\" )
+
+# Display the list of recipes.
+func display( recipes ):
+	for c in recipe_list.get_children():
+		recipe_list.remove_child( c )
+		c.queue_free()
+	
+	for recipe_id in recipes:
+		var recipe_node = ResourceManager.get_instance( \"crafting_option\" )
+		recipe_list.add_child( recipe_node )
+		recipe_node.set_info( recipe_id, recipes[ recipe_id ].price, recipes[ recipe_id ].produce )
+	
+	show()
+	rect_size = Vector2( 440, 0 )
+
+# When closed, set the shop opened to false.
+func close():
+	.close()
+	InventoryManager.is_shop_open = false
+
+# When opened, display the ui, and if it's a shop, allow selling.
+func _on_crafting_opened( list_id ):
+	display( ResourceManager.get_recipes( list_id ) )
+	if list_id == \"shop\":
+		InventoryManager.is_shop_open = true
+
+# When out of range, close the window.
+func _on_crafting_out_of_range():
+	close()
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 11 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends PanelContainer
+
+export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
+
+export( Resource ) var player_data
+
+# Draw the player's inventories from the player's data.
+func _ready():
+	#var equipment_panel = ResourceManager.get_instance( \"equipment_node\" )
+	var inventory_left_panel = ResourceManager.get_instance( \"inventory_node\" )
+	var inventory_right_panel = ResourceManager.get_instance( \"inventory_node\" )
+	#inventory_container.add_child( equipment_panel )
+	inventory_container.add_child( inventory_left_panel )
+	inventory_container.add_child( inventory_right_panel )
+	#equipment_panel.inventory = player_data.equipment
+	inventory_left_panel.inventory = player_data.inventory_left
+	inventory_right_panel.inventory = player_data.inventory_right
+"
+
+[sub_resource type="DynamicFont" id=12]
+size = 40
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="DynamicFont" id=15]
+size = 40
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 100
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="DynamicFont" id=18]
+size = 40
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 24
+font_data = ExtResource( 17 )
+
+[node name="shop" type="CanvasLayer"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource( 13 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Bg01" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+settings = NodePath("settings_node/settings")
+player_inventory = NodePath("windows/inventory_player")
+
+[node name="windows" type="Control" parent="ui_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="inventory_container" parent="ui_container/windows" instance=ExtResource( 13 )]
+visible = false
+margin_left = -66.4254
+margin_top = -119.801
+margin_right = 77.5746
+margin_bottom = -59.8009
+custom_styles/panel = SubResource( 3 )
+
+[node name="crafting_list" type="PanelContainer" parent="ui_container/windows"]
+margin_left = 904.0
+margin_top = 151.0
+margin_right = 1558.0
+margin_bottom = 317.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+script = SubResource( 6 )
+recipe_list = NodePath("recipe_list")
+
+[node name="title" type="Control" parent="ui_container/windows/crafting_list"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 632.0
+margin_bottom = 144.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="ui_container/windows/crafting_list/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -94.0
+margin_right = -49.0
+margin_bottom = -28.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="ui_container/windows/crafting_list/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0518265
+anchor_top = -0.136545
+anchor_right = 1.03221
+anchor_bottom = 1.09091
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 632.0
+margin_bottom = 144.0
+size_flags_vertical = 3
+
+[node name="shop_option" parent="ui_container/windows/crafting_list/recipe_list" instance=ExtResource( 15 )]
+margin_bottom = 122.0
+size_flags_vertical = 3
+
+[node name="inventory_player" type="PanelContainer" parent="ui_container/windows"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -895.0
+margin_top = -391.0
+margin_right = -359.0
+margin_bottom = -269.0
+rect_pivot_offset = Vector2( 0, -60 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+inventory_container = NodePath("inventory_container")
+player_data = ExtResource( 10 )
+
+[node name="title" type="Control" parent="ui_container/windows/inventory_player"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 514.0
+margin_bottom = 100.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="ui_container/windows/inventory_player/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -71.0
+margin_right = -49.1727
+margin_bottom = -29.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Player's Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="ui_container/windows/inventory_player/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="inventory_container" type="VBoxContainer" parent="ui_container/windows/inventory_player"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 514.0
+margin_bottom = 100.0
+custom_constants/separation = 2
+
+[node name="Control" type="ColorRect" parent="ui_container/windows"]
+visible = false
+margin_left = 197.0
+margin_top = 53.0
+margin_right = 893.0
+margin_bottom = 637.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="settings_node" parent="ui_container" instance=ExtResource( 1 )]
+visible = false
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 5 )
+
+[node name="player_stats" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -848.0
+margin_top = 1.0
+margin_right = -429.0
+margin_bottom = 182.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 14 )
+script = ExtResource( 7 )
+lbl_title = NodePath("title/Label")
+lbl_coin = NodePath("VBoxContainer/coins/Label2")
+settings_data = ExtResource( 14 )
+
+[node name="title" type="Control" parent="player_stats"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 397.0
+margin_bottom = 159.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="player_stats/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -71.0
+margin_right = -40.0
+margin_bottom = -29.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "COINS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="player_stats/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="player_stats"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 397.0
+margin_bottom = 159.0
+custom_constants/separation = 1
+
+[node name="coins" type="HBoxContainer" parent="player_stats/VBoxContainer"]
+margin_right = 375.0
+margin_bottom = 137.0
+
+[node name="Label2" type="Label" parent="player_stats/VBoxContainer/coins"]
+margin_right = 375.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="settings2" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 257.0
+margin_top = 106.0
+margin_right = 639.0
+margin_bottom = 413.0
+rect_pivot_offset = Vector2( 191, 156 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 17 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+scale_slider = NodePath("setting list/scale/HSlider")
+fullscreen_check = NodePath("setting list/fullscreen/CheckBox")
+lbl_min = NodePath("setting list/scale/min")
+lbl_max = NodePath("setting list/scale/max")
+lbl_current = NodePath("setting list/scale/current")
+settings_data = ExtResource( 14 )
+
+[node name="title" type="Control" parent="settings2"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 360.0
+margin_bottom = 285.0
+mouse_filter = 1
+
+[node name="close" type="TextureButton" parent="settings2/title"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = -23.0
+margin_right = 25.0
+margin_bottom = -14.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 21 )
+texture_disabled = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="settings2/title"]
+anchor_right = 1.0
+margin_top = -79.0
+margin_bottom = -37.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="settings2/title/Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+margin_right = 6.0
+margin_bottom = 17.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[node name="setting list" type="VBoxContainer" parent="settings2"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 360.0
+margin_bottom = 285.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scale" type="NinePatchRect" parent="settings2/setting list"]
+margin_right = 338.0
+margin_bottom = 62.0
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="current" type="Label" parent="settings2/setting list/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -59.0
+margin_top = 4.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "- Scale -"
+align = 1
+valign = 1
+
+[node name="min" type="Label" parent="settings2/setting list/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.0
+margin_top = 4.0
+margin_right = -110.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Min: #"
+valign = 1
+
+[node name="max" type="Label" parent="settings2/setting list/scale"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 107.0
+margin_top = 4.0
+margin_right = 162.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Max: #"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="settings2/setting list/scale"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = 22.0
+min_value = 1.0
+max_value = 5.0
+step = 0.5
+value = 4.0
+
+[node name="fullscreen" type="NinePatchRect" parent="settings2/setting list"]
+margin_top = 66.0
+margin_right = 338.0
+margin_bottom = 129.0
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="settings2/setting list/fullscreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -59.0
+margin_top = 4.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "- Fullscreen -"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="settings2/setting list/fullscreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -8.14029
+margin_right = 12.0
+margin_bottom = 15.8597
+
+[node name="Others" type="NinePatchRect" parent="settings2/setting list/fullscreen"]
+margin_right = 126.0
+
+[node name="others" type="NinePatchRect" parent="settings2/setting list"]
+margin_top = 133.0
+margin_right = 338.0
+margin_bottom = 196.0
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="holder" type="NinePatchRect" parent="settings2/setting list/others"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -10.0
+margin_right = 47.0
+margin_bottom = 10.0
+
+[node name="save" type="Button" parent="settings2/setting list/others/holder"]
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -8.5
+margin_right = 41.0
+margin_bottom = 8.5
+text = "Save"
+
+[node name="load" type="Button" parent="settings2/setting list/others/holder"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -43.0
+margin_top = -9.5
+margin_right = 26.0
+margin_bottom = 8.5
+text = "Load"
+
+[node name="quit" type="NinePatchRect" parent="settings2/setting list"]
+margin_top = 200.0
+margin_right = 338.0
+margin_bottom = 263.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Button" parent="settings2/setting list/quit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 117.0
+margin_top = 11.0
+margin_right = -117.0
+margin_bottom = -11.0
+text = "Quit"
+
+[node name="settings" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[connection signal="pressed" from="settings2/title/close" to="settings2" method="_on_close_pressed"]
+[connection signal="gui_input" from="settings2/setting list/scale/HSlider" to="settings2" method="_on_scale_slider_gui_input"]
+[connection signal="toggled" from="settings2/setting list/fullscreen/CheckBox" to="settings2" method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="settings2/setting list/others/holder/save" to="settings2" method="_on_save_pressed"]
+[connection signal="pressed" from="settings2/setting list/others/holder/load" to="settings2" method="_on_load_pressed"]
+[connection signal="pressed" from="settings2/setting list/quit/quit" to="settings2" method="_on_quit_pressed"]

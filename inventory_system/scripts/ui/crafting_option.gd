@@ -7,8 +7,10 @@ export ( NodePath ) onready var craft_btn = get_node( craft_btn ) as Button
 var price: Array
 var produce: Array
 
+
 func _ready():
 	SignalManager.connect( "inventory_group_content_changed", self, "_on_inventory_group_changed" )
+	
 
 # Set the price and produce list.
 func set_info( recipe_id, price_items, produce_items ):
@@ -37,6 +39,8 @@ func set_craft_button():
 
 # When crafting, remove the price tiems, adds the produces.
 func _on_craft_pressed():
+	print(price)
+	print(produce)
 	InventoryManager.remove_items( ItemManager.get_items( price ), "crafting" )
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
 
