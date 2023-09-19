@@ -6,16 +6,22 @@
 
 [node name="inventory_player" instance=ExtResource( 6 )]
 margin_left = -261.0
-margin_top = -234.5
+margin_top = -234.0
 margin_right = 261.0
-margin_bottom = 234.5
+margin_bottom = -65.0
 script = ExtResource( 1 )
 inventory_container = NodePath("inventory_container")
 player_data = ExtResource( 2 )
 
 [node name="title" parent="." index="0"]
 margin_right = 500.0
-margin_bottom = 447.0
+margin_bottom = 147.0
+
+[node name="close" parent="title" index="0"]
+margin_left = 15.0
+margin_top = -23.5
+margin_right = 24.0
+margin_bottom = -14.5
 
 [node name="Label" parent="title" index="1"]
 text = "Player's Inventory"
@@ -24,5 +30,5 @@ text = "Player's Inventory"
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 500.0
-margin_bottom = 447.0
+margin_bottom = 147.0
 custom_constants/separation = 2

@@ -9,15 +9,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -63.0
-margin_top = -32.0
-margin_right = 63.0
+margin_left = -151.0
+margin_top = -97.0
+margin_right = 151.0
+margin_bottom = -29.0
+rect_pivot_offset = Vector2( 63, 32 )
 texture = ExtResource( 1 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 slot_container = NodePath("slot_container")
 player_data = ExtResource( 3 )
 
@@ -31,6 +36,3 @@ margin_bottom = -6.0
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}

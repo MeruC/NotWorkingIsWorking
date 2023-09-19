@@ -3,16 +3,18 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.s3tc.stex"
+path.etc2="res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.etc2.stex"
 path.etc="res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.etc.stex"
+path.pvrtc="res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.pvrtc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "bptc", "s3tc", "etc2", "etc", "pvrtc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Models/Materials/router/router-0-huawei router.png"
-dest_files=[ "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.s3tc.stex", "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.etc.stex" ]
+dest_files=[ "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.s3tc.stex", "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.etc2.stex", "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.etc.stex", "res://.import/router-0-huawei router.png-4741a64e24db1bc587bb5bdbddc25dd8.pvrtc.stex" ]
 
 [params]
 

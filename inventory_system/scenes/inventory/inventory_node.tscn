@@ -13,13 +13,16 @@ __meta__ = {
 }
 
 [node name="MarginContainer" parent="." index="1"]
-margin_top = 8.0
-custom_constants/margin_top = 12
+custom_constants/margin_right = 10
+custom_constants/margin_top = 24
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
 [node name="slot_container" type="GridContainer" parent="MarginContainer" index="0"]
-margin_top = 12.0
-margin_right = 106.0
-margin_bottom = 58.0
+margin_left = 10.0
+margin_top = 24.0
+margin_right = 171.0
+margin_bottom = 88.0
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 10

@@ -7,7 +7,7 @@ export(NodePath) onready var level_name = get_node(level_name) as LineEdit
 export(NodePath) onready var question_vbox = get_node(question_vbox) as VBoxContainer
 export(NodePath) onready var selected_vbox = get_node(selected_vbox) as VBoxContainer
 export(NodePath) onready var lesson_button = get_node(lesson_button) as Button
-export(NodePath) onready var lessons_container = get_node(lessons_container) as GridContainer
+export(NodePath) onready var lessons_container = get_node(lessons_container) as VBoxContainer
 export(NodePath) onready var level_selection = get_node(level_selection) as Control
 export(NodePath) onready var delete_confirmation = get_node(delete_confirmation) as Control
 export(NodePath) onready var confirmation_yes_button = get_node(confirmation_yes_button) as Button
@@ -108,17 +108,6 @@ func _on_no_pressed():
 	delete_confirmation.visible = false
 	create_confirmation.visible = false
 	
-func is_code_unique(folder_path: String, code: String):
-	var dir = Directory.new()
-	dir.open(folder_path)
-	
-	while dir.next() == OK:
-		if dir.get_file() == code:
-			dir.close()
-			return true
-	dir.close()
-	return false
-	
 func generate_unique_code(length: int = 8) -> String:
 	# To generate a unique level code
 	var isNotUnique = true
@@ -126,15 +115,10 @@ func generate_unique_code(length: int = 8) -> String:
 	var code = ""
 	var file_name
 	
-	while (isNotUnique):
-		for i in range(length):
-			var random_index = randi() % charset.length()
-			code += charset.substr(random_index, 1)
-			file_name = code + ".tscn"
-			if is_code_unique(saved_levels_folder, file_name):
-				isNotUnique = true
-			else:
-				isNotUnique = false	
+	for i in range(length):
+		var random_index = randi() % charset.length()
+		code += charset.substr(random_index, 1)
+		file_name = code + ".tscn"
 	return code
 	##
 

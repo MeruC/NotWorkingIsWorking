@@ -343,12 +343,10 @@ margin_top = -415.0
 margin_right = 325.0
 margin_bottom = -15.0
 
-[node name="lessons_container" type="GridContainer" parent="popup/level_selection/ColorRect/ScrollContainer"]
-margin_right = 600.0
-rect_min_size = Vector2( 600, 0 )
-custom_constants/vseparation = 25
-custom_constants/hseparation = 25
-columns = 3
+[node name="lessons_container" type="VBoxContainer" parent="popup/level_selection/ColorRect/ScrollContainer"]
+margin_right = 650.0
+rect_min_size = Vector2( 650, 0 )
+alignment = 1
 
 [node name="delete_confirmation" type="Control" parent="popup"]
 visible = false

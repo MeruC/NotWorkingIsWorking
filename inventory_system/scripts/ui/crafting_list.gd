@@ -18,7 +18,7 @@ func display( recipes ):
 		recipe_node.set_info( recipe_id, recipes[ recipe_id ].price, recipes[ recipe_id ].produce )
 	
 	show()
-	rect_size = Vector2( 140, 0 )
+	rect_size = Vector2( 440, 0 )
 
 # When closed, set the shop opened to false.
 func close():

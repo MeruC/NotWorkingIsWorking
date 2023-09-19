@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://online_mode/level_editor/scripts/level_editor.gd" type="Script" id=12]
 [ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=13]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=15]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=16]
 [ext_resource path="res://online_mode/level_editor/scripts/modes.gd" type="Script" id=17]
 [ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=18]
@@ -105,34 +106,44 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -119.0
-margin_top = -35.0
-margin_bottom = 35.0
+margin_left = -370.0
+margin_top = -247.0
+margin_right = -251.0
+margin_bottom = -177.0
 rect_pivot_offset = Vector2( 119, 35 )
 mouse_filter = 2
-script = ExtResource( 19 )
 
 [node name="New" type="Button" parent="UI/editor/file"]
 anchor_right = 1.0
-margin_bottom = 20.0
+margin_left = 135.0
+margin_right = 242.374
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 119, 20 )
+theme = ExtResource( 15 )
 text = "New"
 
 [node name="Load" type="Button" parent="UI/editor/file"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -10.0
-margin_bottom = 10.0
+margin_left = 101.0
+margin_top = 88.0
+margin_right = 248.374
+margin_bottom = 202.068
 rect_pivot_offset = Vector2( 119, 20 )
+theme = ExtResource( 15 )
 text = "Load"
 
 [node name="Save" type="Button" parent="UI/editor/file"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
+margin_left = 81.0
+margin_top = 177.0
+margin_right = 243.374
+margin_bottom = 291.068
 rect_pivot_offset = Vector2( 119, 20 )
+theme = ExtResource( 15 )
 text = "Save"
 icon = SubResource( 14 )
 
@@ -140,21 +151,27 @@ icon = SubResource( 14 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 6.0
-margin_bottom = 26.0
+margin_top = 298.0
+margin_right = 258.374
+margin_bottom = 412.068
 rect_pivot_offset = Vector2( 119, 20 )
+theme = ExtResource( 15 )
 text = "Orphan"
 icon = SubResource( 14 )
 
 [node name="modes" type="HBoxContainer" parent="UI/editor"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -40.0
-margin_right = 211.0
+margin_top = -124.0
+margin_right = 1805.0
+margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 40 )
 mouse_filter = 2
 custom_constants/separation = 8
 script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
 main = NodePath("../../..")
 current = NodePath("current_mode")
 ui = NodePath("../..")
@@ -165,44 +182,49 @@ other_ui = NodePath("../../../other_ui")
 playerSpawn = ExtResource( 3 )
 
 [node name="play" type="Button" parent="UI/editor/modes"]
-margin_right = 38.0
-margin_bottom = 40.0
+margin_right = 268.374
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 65, 40 )
+theme = ExtResource( 15 )
 text = "Play"
 
 [node name="place" type="Button" parent="UI/editor/modes"]
-margin_left = 46.0
-margin_right = 92.0
-margin_bottom = 40.0
+margin_left = 276.0
+margin_right = 583.374
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 65, 40 )
+theme = ExtResource( 15 )
 text = "Place"
 
 [node name="select" type="Button" parent="UI/editor/modes"]
-margin_left = 100.0
-margin_right = 151.0
-margin_bottom = 40.0
+margin_left = 591.0
+margin_right = 935.374
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 65, 40 )
+theme = ExtResource( 15 )
 text = "Select"
 
 [node name="rotate" type="Button" parent="UI/editor/modes"]
-margin_left = 159.0
-margin_right = 212.0
-margin_bottom = 40.0
+margin_left = 943.0
+margin_right = 1312.37
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 34, 40 )
+theme = ExtResource( 15 )
 text = "Rotate"
 
 [node name="remove" type="Button" parent="UI/editor/modes"]
-margin_left = 220.0
-margin_right = 284.0
-margin_bottom = 40.0
+margin_left = 1320.0
+margin_right = 1702.37
+margin_bottom = 114.068
 rect_pivot_offset = Vector2( 0, 40 )
+theme = ExtResource( 15 )
 text = "Remove"
 
 [node name="current_mode" type="Label" parent="UI/editor/modes"]
-margin_left = 292.0
-margin_top = 13.0
-margin_right = 387.0
-margin_bottom = 27.0
+margin_left = 1710.0
+margin_top = 50.0
+margin_right = 1805.0
+margin_bottom = 64.0
 rect_pivot_offset = Vector2( 0, 40 )
 text = "Current Mode: "
 valign = 1
@@ -303,14 +325,16 @@ objects_menu = NodePath("../../Item_Select_Menu")
 [node name="objects" type="Button" parent="UI/editor/place"]
 anchor_right = 1.0
 margin_bottom = 33.0
+theme = ExtResource( 15 )
 text = "OBJECTS"
 
 [node name="current_obj" type="Label" parent="UI/editor/place"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = 76.0
 margin_right = 64.0
+margin_bottom = 90.0
 text = "Currently Selected: Null"
 valign = 1
 

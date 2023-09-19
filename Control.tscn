@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 25.0
+margin_right = 410.374
+margin_bottom = 139.068
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "BUTTON"

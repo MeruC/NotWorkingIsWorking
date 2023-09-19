@@ -14,15 +14,16 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [sub_resource type="DynamicFont" id=1]
+size = 32
 font_data = ExtResource( 4 )
 
 [node name="inner panel" type="PanelContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -63.0
-margin_top = -1.0
-margin_right = 59.0
-margin_bottom = 73.0
+anchor_bottom = 0.012
+margin_left = -98.5
+margin_right = 98.5
+margin_bottom = 102.0
 rect_min_size = Vector2( 0, 40 )
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 1 )
@@ -31,28 +32,25 @@ lbl_panel_title = NodePath("title/TextureRect/Label")
 [node name="title" type="Control" parent="."]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 114.0
-margin_bottom = 66.0
+margin_right = 189.0
+margin_bottom = 106.96
 
 [node name="TextureRect" type="TextureRect" parent="title"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -18.0
-margin_top = 7.0
+margin_top = 17.0
 margin_right = 18.0
-margin_bottom = 9.0
+margin_bottom = 19.0
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="title/TextureRect"]
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -59.0
-margin_top = -15.0
-margin_right = 59.0
-margin_bottom = -3.0
-custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+margin_left = -89.5
+margin_top = -24.0
+margin_right = 89.5
+custom_colors/font_color = Color( 0.74902, 0.623529, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "- panel name -"
 align = 1
@@ -60,7 +58,7 @@ valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 8.0
-margin_top = 20.0
-margin_right = 114.0
-margin_bottom = 66.0
+margin_top = 8.0
+margin_right = 189.0
+margin_bottom = 106.96
 custom_constants/margin_top = 6

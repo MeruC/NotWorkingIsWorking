@@ -21,25 +21,25 @@ lbl_msp = NodePath("VBoxContainer/msp/Label2")
 player_data = ExtResource( 4 )
 
 [node name="title" parent="." index="0"]
-margin_right = 97.0
-margin_bottom = 63.0
+margin_right = 230.0
+margin_bottom = 199.0
 
 [node name="Label" parent="title" index="1"]
 text = "Stats"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 97.0
-margin_bottom = 63.0
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 230.0
+margin_bottom = 199.0
 custom_constants/separation = 1
 
 [node name="str" type="HBoxContainer" parent="VBoxContainer" index="0"]
-margin_right = 88.0
+margin_right = 208.0
 margin_bottom = 10.0
 
 [node name="Label" type="Label" parent="VBoxContainer/str" index="0"]
-margin_right = 62.0
+margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -48,8 +48,8 @@ text = "- Strength -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/str" index="1"]
-margin_left = 66.0
-margin_right = 88.0
+margin_left = 106.0
+margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -60,11 +60,11 @@ valign = 1
 
 [node name="dex" type="HBoxContainer" parent="VBoxContainer" index="1"]
 margin_top = 11.0
-margin_right = 88.0
+margin_right = 208.0
 margin_bottom = 21.0
 
 [node name="Label" type="Label" parent="VBoxContainer/dex" index="0"]
-margin_right = 66.0
+margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -73,8 +73,8 @@ text = "- Dexterity -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/dex" index="1"]
-margin_left = 70.0
-margin_right = 88.0
+margin_left = 106.0
+margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -85,11 +85,11 @@ valign = 1
 
 [node name="int" type="HBoxContainer" parent="VBoxContainer" index="2"]
 margin_top = 22.0
-margin_right = 88.0
+margin_right = 208.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="VBoxContainer/int" index="0"]
-margin_right = 77.0
+margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -98,8 +98,8 @@ text = "- Inteligence -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/int" index="1"]
-margin_left = 81.0
-margin_right = 88.0
+margin_left = 106.0
+margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -110,11 +110,11 @@ valign = 1
 
 [node name="vit" type="HBoxContainer" parent="VBoxContainer" index="3"]
 margin_top = 33.0
-margin_right = 88.0
+margin_right = 208.0
 margin_bottom = 43.0
 
 [node name="Label" type="Label" parent="VBoxContainer/vit" index="0"]
-margin_right = 56.0
+margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -123,8 +123,8 @@ text = "- Vitality -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/vit" index="1"]
-margin_left = 60.0
-margin_right = 88.0
+margin_left = 106.0
+margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -135,11 +135,11 @@ valign = 1
 
 [node name="msp" type="HBoxContainer" parent="VBoxContainer" index="4"]
 margin_top = 44.0
-margin_right = 88.0
+margin_right = 208.0
 margin_bottom = 54.0
 
 [node name="Label" type="Label" parent="VBoxContainer/msp" index="0"]
-margin_right = 72.0
+margin_right = 102.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
@@ -148,8 +148,8 @@ text = "- Move Speed -"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/msp" index="1"]
-margin_left = 76.0
-margin_right = 88.0
+margin_left = 106.0
+margin_right = 208.0
 margin_bottom = 10.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )

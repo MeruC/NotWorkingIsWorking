@@ -4,7 +4,7 @@ extends Control
 
 var previous_scene = "res://online_mode/online_sub-menu/main.tscn"
 var join_scene = "res://online_mode/join_level/join_level.tscn"
-var create_subMenu = "res://online_mode/create_sub-menu/create_sub-menu.tscn"
+var create_subMenu = "res://online_mode/level_create_Menu/level_create.tscn"
 
 func _ready():
 	pass # Replace with function body.
