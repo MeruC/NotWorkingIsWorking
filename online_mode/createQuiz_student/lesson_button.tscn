@@ -4,9 +4,9 @@
 [ext_resource path="res://online_mode/createQuiz_student/lesson_button.gd" type="Script" id=2]
 
 [node name="lesson_button" type="Button"]
-margin_right = 200.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 200, 50 )
+margin_right = 500.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 500, 75 )
 custom_fonts/font = ExtResource( 1 )
 text = "Lesson 1"
 script = ExtResource( 2 )
