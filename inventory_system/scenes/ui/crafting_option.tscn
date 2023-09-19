@@ -42,55 +42,65 @@ margin_top = 3.0
 margin_bottom = 5.0
 
 [node name="crafting_option" instance=ExtResource( 3 )]
-margin_right = 76.0
+anchor_bottom = 0.0
+margin_left = -109.5
+margin_right = 109.5
+margin_bottom = 95.0
 script = ExtResource( 1 )
 price_list = NodePath("MarginContainer/HBoxContainer/price")
 produce_list = NodePath("MarginContainer/HBoxContainer/produce")
 craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
 
 [node name="title" parent="." index="0"]
-margin_right = 131.0
+margin_right = 211.0
+margin_bottom = 87.0
 
 [node name="MarginContainer" parent="." index="1"]
-margin_right = 131.0
+margin_right = 211.0
+margin_bottom = 87.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 31
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
-margin_top = 6.0
-margin_right = 123.0
-margin_bottom = 24.0
+margin_left = 10.0
+margin_top = 31.0
+margin_right = 193.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 
 [node name="price" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
-margin_right = 32.0
-margin_bottom = 18.0
+margin_right = 27.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
+custom_constants/separation = 0
 alignment = 1
 
 [node name="arrow" type="TextureRect" parent="MarginContainer/HBoxContainer" index="1"]
-margin_left = 36.0
-margin_right = 49.0
-margin_bottom = 18.0
+margin_left = 31.0
+margin_right = 44.0
+margin_bottom = 38.0
 texture = ExtResource( 7 )
 stretch_mode = 4
 
 [node name="produce" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="2"]
-margin_left = 53.0
-margin_right = 86.0
-margin_bottom = 18.0
+margin_left = 48.0
+margin_right = 75.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="commands" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="3"]
-margin_left = 90.0
-margin_right = 123.0
-margin_bottom = 18.0
+margin_left = 79.0
+margin_right = 183.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="craft" type="Button" parent="MarginContainer/HBoxContainer/commands" index="0"]
-margin_top = 2.0
-margin_right = 33.0
-margin_bottom = 16.0
+margin_right = 104.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )

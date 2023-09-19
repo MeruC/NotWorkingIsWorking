@@ -4,8 +4,14 @@
 [ext_resource path="res://inventory_system/scripts/ui/crafting_list.gd" type="Script" id=2]
 
 [node name="crafting_list" instance=ExtResource( 1 )]
+margin_right = 236.0
+margin_bottom = -122.0
 script = ExtResource( 2 )
 recipe_list = NodePath("recipe_list")
+
+[node name="title" parent="." index="0"]
+margin_right = 442.0
+margin_bottom = 61.0
 
 [node name="Label" parent="title" index="1"]
 text = "Crafting"
@@ -13,5 +19,5 @@ text = "Crafting"
 [node name="recipe_list" type="VBoxContainer" parent="." index="1"]
 margin_left = 22.0
 margin_top = 22.0
-margin_right = 434.0
-margin_bottom = 388.0
+margin_right = 442.0
+margin_bottom = 61.0

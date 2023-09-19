@@ -1,21 +1,21 @@
 [gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=1]
-[ext_resource path="res://scenes/level_create_Menu/level_create.gd" type="Script" id=2]
-[ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=3]
-[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=5]
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=1]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://online_mode/level_create_Menu/level_create.gd" type="Script" id=5]
 [ext_resource path="res://resources/soundtrack/menu/track_08.wav" type="AudioStream" id=6]
-[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://resources/Textures/button_3D_level_normal.png" type="Texture" id=8]
-[ext_resource path="res://resources/Textures/button_3D_level_pressed.png" type="Texture" id=9]
-[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=10]
-[ext_resource path="res://resources/Textures/thick_patterns/pattern_0004.png" type="Texture" id=11]
+[ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=7]
+[ext_resource path="res://resources/Textures/shapes/shape_01_dot.png" type="Texture" id=8]
+[ext_resource path="res://resources/Textures/button_quiz_level_pressed.png" type="Texture" id=9]
+[ext_resource path="res://resources/Textures/button_3D_level_pressed.png" type="Texture" id=10]
+[ext_resource path="res://resources/Textures/button_quiz_level_normal.png" type="Texture" id=11]
 [ext_resource path="res://resources/Textures/shapes/shape_01.png" type="Texture" id=12]
-[ext_resource path="res://resources/Textures/shapes/shape_01_dot.png" type="Texture" id=13]
-[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=14]
-[ext_resource path="res://resources/Textures/button_quiz_level_pressed.png" type="Texture" id=15]
-[ext_resource path="res://resources/Textures/button_quiz_level_normal.png" type="Texture" id=16]
+[ext_resource path="res://resources/Textures/thick_patterns/pattern_0004.png" type="Texture" id=13]
+[ext_resource path="res://resources/Textures/button_3D_level_normal.png" type="Texture" id=14]
+[ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=15]
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=16]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
@@ -28,15 +28,15 @@ func _process(delta):
 
 [sub_resource type="DynamicFont" id=3]
 size = 70
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 100
-font_data = ExtResource( 14 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 110
-font_data = ExtResource( 14 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -55,18 +55,18 @@ shader_param/level = 0.5
 
 [sub_resource type="DynamicFont" id=11]
 size = 54
-font_data = ExtResource( 14 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="ViewportTexture" id=14]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="DynamicFont" id=20]
 size = 650
-font_data = ExtResource( 14 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="PlaneMesh" id=6]
 
@@ -1010,7 +1010,7 @@ tracks/3/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1037,7 +1037,7 @@ motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Bg01" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 960, 540 )
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1099,7 +1099,6 @@ margin_left = 1218.0
 margin_top = 117.0
 margin_right = 2209.0
 margin_bottom = 1027.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 478, 447 )
 __meta__ = {
 "_edit_group_": true
@@ -1120,7 +1119,7 @@ margin_left = 41.0
 margin_top = 89.0
 margin_right = 930.0
 margin_bottom = 810.0
-texture = ExtResource( 13 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
@@ -1134,7 +1133,7 @@ margin_top = -53.0
 margin_right = 88.5
 margin_bottom = -22.0
 rect_pivot_offset = Vector2( 87.5, 15 )
-script = ExtResource( 1 )
+script = ExtResource( 15 )
 
 [node name="w" type="SpinBox" parent="3dlevel/size/size"]
 anchor_bottom = 1.0
@@ -1143,7 +1142,7 @@ margin_top = -54.0
 margin_right = 126.0
 margin_bottom = -54.0
 rect_pivot_offset = Vector2( 37, 13 )
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 min_value = 10.0
 max_value = 64.0
 step = 2.0
@@ -1158,7 +1157,7 @@ margin_top = 51.0
 margin_right = -49.0
 margin_bottom = 51.0
 rect_pivot_offset = Vector2( 37, 11 )
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 min_value = 10.0
 max_value = 64.0
 step = 2.0
@@ -1178,10 +1177,10 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="bottom" type="Control" parent="3dlevel"]
-margin_left = 28.0
-margin_top = 1285.0
-margin_right = 68.0
-margin_bottom = 1325.0
+margin_left = -79.0
+margin_top = 937.0
+margin_right = -39.0
+margin_bottom = 977.0
 
 [node name="ColorRect4" type="ColorRect" parent="3dlevel/bottom"]
 modulate = Color( 1, 1, 1, 0.392157 )
@@ -1201,16 +1200,16 @@ color = Color( 0.623529, 0.168627, 0, 1 )
 modulate = Color( 0.568627, 0.152941, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 2
 
 [node name="ColorRect3" type="ColorRect" parent="3dlevel/bottom"]
 material = SubResource( 10 )
-margin_left = -11.0
-margin_top = 6.0
-margin_right = 2260.0
-margin_bottom = 389.0
+margin_left = 684.0
+margin_top = -67.0
+margin_right = 1391.0
+margin_bottom = 316.0
 rect_rotation = -6.02349
 
 [node name="Label" type="Label" parent="3dlevel/bottom/ColorRect3"]
@@ -1244,11 +1243,10 @@ margin_top = -183.5
 margin_right = 887.5
 margin_bottom = 4.50006
 rect_rotation = 1.23408
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 250, 94 )
 rect_clip_content = true
 focus_mode = 0
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "Create"
 
@@ -1262,10 +1260,9 @@ margin_top = -104.5
 margin_right = -471.5
 margin_bottom = 29.4999
 rect_rotation = -2.60862
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 168, 67 )
 focus_mode = 0
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "back"
 
@@ -1281,7 +1278,7 @@ margin_right = -126.0
 margin_bottom = 9.5
 rect_pivot_offset = Vector2( 53, 17 )
 focus_mode = 0
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Inventory Test"
@@ -1373,9 +1370,9 @@ margin_top = 127.0
 margin_right = -251.0
 margin_bottom = -135.0
 rect_pivot_offset = Vector2( 42, 409 )
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 14 )
 
 [node name="quiz" type="TextureButton" parent="choosetype/Control"]
 anchor_bottom = 1.0
@@ -1384,9 +1381,9 @@ margin_top = 108.0
 margin_right = 977.0
 margin_bottom = -94.0
 rect_pivot_offset = Vector2( 731, 439 )
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 11 )
 
 [node name="back" type="Button" parent="choosetype"]
 anchor_left = 0.5
@@ -1400,18 +1397,18 @@ margin_bottom = -368.0
 rect_rotation = -2.60862
 rect_pivot_offset = Vector2( 986, -279 )
 focus_mode = 0
-theme = ExtResource( 5 )
+theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "BACK"
 
-[node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 6 )
 
 [node name="floor" type="CSGMesh" parent="."]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
 use_collision = true
 mesh = SubResource( 6 )
-material = ExtResource( 10 )
+material = ExtResource( 16 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="floor"]
 environment = SubResource( 15 )
@@ -1429,7 +1426,7 @@ operation = 2
 width = 20.0
 height = 10.0
 depth = 20.0
-material = ExtResource( 10 )
+material = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
@@ -1452,4 +1449,5 @@ anims/ui = SubResource( 18 )
 [connection signal="pressed" from="3dlevel/bottom/buttons/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="3dlevel/bottom/buttons/inventory test" to="." method="_on_inventory_test_pressed"]
 [connection signal="pressed" from="choosetype/Control/3dlevel" to="." method="_on_3dlevel_pressed"]
+[connection signal="pressed" from="choosetype/Control/quiz" to="." method="_on_quiz_pressed"]
 [connection signal="pressed" from="choosetype/back" to="." method="_on_backtoMain_pressed"]

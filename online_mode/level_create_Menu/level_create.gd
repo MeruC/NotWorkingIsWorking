@@ -5,6 +5,7 @@ export( NodePath ) onready var depth = get_node(depth) as SpinBox
 export( NodePath ) onready var playarea = get_node(playarea) as CSGBox
 export( NodePath ) onready var camera = get_node(camera) as Camera
 
+var quiz_subMenu = "res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn"
 
 
 var cur_w = 10
@@ -76,3 +77,7 @@ func _on_3dlevel_pressed():
 
 func _on_backtoMain_pressed():
 	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_quiz_pressed():
+	get_tree().change_scene(quiz_subMenu)
