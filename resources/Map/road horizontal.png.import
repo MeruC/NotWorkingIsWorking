@@ -5,16 +5,15 @@ type="StreamTexture"
 path.s3tc="res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.s3tc.stex"
 path.etc2="res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc2.stex"
 path.etc="res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc.stex"
-path.pvrtc="res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.pvrtc.stex"
 metadata={
-"imported_formats": [ "bptc", "s3tc", "etc2", "etc", "pvrtc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Map/road horizontal.png"
-dest_files=[ "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.s3tc.stex", "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc2.stex", "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc.stex", "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.pvrtc.stex" ]
+dest_files=[ "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.s3tc.stex", "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc2.stex", "res://.import/road horizontal.png-e031fce5aee0d23c1bb6f62649c393e5.etc.stex" ]
 
 [params]
 

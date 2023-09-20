@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
+[ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
+[ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=3]
+[ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/log_in_screen/login_signup_screen.gd" type="Script" id=7]
+[ext_resource path="res://scenes/log_in_screen/login.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 5 )
+
+[node name="login_signup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="login_signup_screen" type="CanvasLayer" parent="."]
+script = ExtResource( 7 )
+
+[node name="login_btn" type="Button" parent="login_signup_screen"]
+margin_left = 621.0
+margin_top = 238.0
+margin_right = 929.0
+margin_bottom = 323.0
+rect_min_size = Vector2( 200, 0 )
+rect_scale = Vector2( 2.28996, 2.75177 )
+icon = ExtResource( 2 )
+flat = true
+
+[node name="login" type="Label" parent="login_signup_screen/login_btn"]
+margin_left = 63.7566
+margin_top = 11.9923
+margin_right = 237.757
+margin_bottom = 72.9923
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Login"
+
+[node name="signup_btn" type="Button" parent="login_signup_screen"]
+margin_left = 613.0
+margin_top = 641.0
+margin_right = 921.0
+margin_bottom = 726.0
+rect_scale = Vector2( 2.25562, 2.46719 )
+icon = ExtResource( 2 )
+flat = true
+
+[node name="sign_up" type="Label" parent="login_signup_screen/signup_btn"]
+margin_left = 36.9177
+margin_top = 11.1889
+margin_right = 263.918
+margin_bottom = 72.1889
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Sign up"
+
+[node name="or" type="Label" parent="login_signup_screen"]
+margin_left = 884.0
+margin_top = 505.0
+margin_right = 1006.0
+margin_bottom = 607.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "OR"
+
+[node name="login_screen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource( 8 )
+
+[node name="Login_title" type="Label" parent="login_screen"]
+margin_left = 773.0
+margin_top = 117.0
+margin_right = 1063.0
+margin_bottom = 219.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Login"
+align = 1
+
+[node name="username" type="Label" parent="login_screen"]
+margin_left = 365.0
+margin_top = 265.0
+margin_right = 672.0
+margin_bottom = 326.0
+custom_fonts/font = ExtResource( 4 )
+text = "Username:"
+
+[node name="username" type="TextEdit" parent="login_screen/username"]
+margin_left = 337.0
+margin_top = -14.0
+margin_right = 1137.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 3 )
+
+[node name="password" type="Label" parent="login_screen"]
+margin_left = 356.0
+margin_top = 412.0
+margin_right = 673.0
+margin_bottom = 473.0
+custom_fonts/font = ExtResource( 4 )
+text = "Password:"
+
+[node name="password" type="TextEdit" parent="login_screen/password"]
+margin_left = 351.0
+margin_top = -10.0
+margin_right = 1151.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "aaaaa"
+
+[node name="login_enter_btn" type="Button" parent="login_screen"]
+margin_left = 617.0
+margin_top = 603.0
+margin_right = 925.0
+margin_bottom = 688.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 2 )
+flat = true
+
+[node name="Label" type="Label" parent="login_screen/login_enter_btn"]
+margin_left = 81.5
+margin_top = 15.0
+margin_right = 223.5
+margin_bottom = 66.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Enter"
+
+[node name="signup_screen" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 3 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 972, 542 )
+texture = ExtResource( 1 )
+
+[connection signal="pressed" from="login_signup_screen/login_btn" to="login_signup_screen" method="_on_login_btn_pressed"]
+[connection signal="pressed" from="login_signup_screen/signup_btn" to="login_signup_screen" method="_on_signup_btn_pressed"]

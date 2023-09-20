@@ -5,16 +5,15 @@ type="StreamTexture"
 path.s3tc="res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.s3tc.stex"
 path.etc2="res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc2.stex"
 path.etc="res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc.stex"
-path.pvrtc="res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.pvrtc.stex"
 metadata={
-"imported_formats": [ "bptc", "s3tc", "etc2", "etc", "pvrtc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resources/Models/Character skin boy/formal_attire/idle/idle.png"
-dest_files=[ "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.s3tc.stex", "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc2.stex", "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc.stex", "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.pvrtc.stex" ]
+dest_files=[ "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.s3tc.stex", "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc2.stex", "res://.import/idle.png-c59f540d1b10850132d1b0bc47bdc244.etc.stex" ]
 
 [params]
 
