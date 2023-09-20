@@ -81,3 +81,13 @@ func _on_backtoMain_pressed():
 
 func _on_quiz_pressed():
 	get_tree().change_scene(quiz_subMenu)
+
+
+
+
+func _on_create_level_pressed():
+	player.play("choosetype")
+
+
+func _on_back2menu_pressed():
+	player.play_backwards("choosetype")
