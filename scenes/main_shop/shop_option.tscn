@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/button/disabled.png" type="Texture" id=2]
@@ -13,8 +13,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/item_slot.png" type="Texture" id=11]
 [ext_resource path="res://inventory_system/scripts/ui/item_quantity.gd" type="Script" id=12]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=13]
-[ext_resource path="res://inventory_system/resources/sprites/items/gold_coin.png" type="Texture" id=14]
-[ext_resource path="res://inventory_system/resources/sprites/items/rj45.png" type="Texture" id=15]
+[ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 1 )
@@ -75,6 +74,7 @@ lbl_panel_title = NodePath("title/TextureRect/Label")
 price_list = NodePath("MarginContainer/HBoxContainer/price")
 produce_list = NodePath("MarginContainer/HBoxContainer/produce")
 craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
+price_lbl = NodePath("MarginContainer/HBoxContainer/price/item_quantity/price")
 settings_data = ExtResource( 8 )
 
 [node name="title" type="Control" parent="."]
@@ -99,9 +99,12 @@ margin_left = -89.5
 margin_top = -31.0
 margin_right = 89.5
 margin_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 117, 16 )
 custom_colors/font_color = Color( 0.74902, 0.623529, 0, 1 )
 custom_fonts/font = SubResource( 12 )
-text = "- RJ45 -"
+text = "-  ITEM NAME -"
 align = 1
 valign = 1
 
@@ -137,7 +140,7 @@ margin_bottom = 35.0
 color = Color( 0, 0, 0, 0.392157 )
 script = ExtResource( 12 )
 item_container = NodePath("inventory_slot/item_container")
-lbl_quantity = NodePath("Label")
+lbl_quantity = NodePath("price")
 
 [node name="inventory_slot" type="TextureRect" parent="MarginContainer/HBoxContainer/price/item_quantity"]
 anchor_left = 1.0
@@ -165,7 +168,7 @@ margin_right = 47.0
 margin_bottom = 47.0
 texture = ExtResource( 14 )
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/price/item_quantity"]
+[node name="price" type="Label" parent="MarginContainer/HBoxContainer/price/item_quantity"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -26.0
@@ -173,7 +176,7 @@ margin_right = -53.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "50"
+text = "0"
 align = 1
 valign = 1
 
@@ -190,53 +193,6 @@ margin_right = 387.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 alignment = 1
-
-[node name="item_quantity" type="ColorRect" parent="MarginContainer/HBoxContainer/produce"]
-margin_top = 35.0
-margin_right = 171.0
-margin_bottom = 35.0
-color = Color( 0, 0, 0, 0.392157 )
-script = ExtResource( 12 )
-item_container = NodePath("inventory_slot/item_container")
-lbl_quantity = NodePath("Label")
-
-[node name="inventory_slot" type="TextureRect" parent="MarginContainer/HBoxContainer/produce/item_quantity"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -55.0
-margin_top = -28.0
-margin_bottom = 27.0
-mouse_filter = 0
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="item_container" type="CenterContainer" parent="MarginContainer/HBoxContainer/produce/item_quantity/inventory_slot"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/produce/item_quantity/inventory_slot/item_container"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 47.0
-margin_bottom = 47.0
-texture = ExtResource( 15 )
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/produce/item_quantity"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -27.0
-margin_right = -53.0
-margin_bottom = 27.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "1"
-align = 1
-valign = 1
 
 [node name="commands" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 403.0
