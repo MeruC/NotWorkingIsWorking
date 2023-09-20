@@ -6,6 +6,7 @@ var edit_mode = true
 var can_place = true
 var is_usingJoystick = false
 var just_onMenu = false
+
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
 
 var w = 10

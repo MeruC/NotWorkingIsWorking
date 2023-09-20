@@ -17,6 +17,7 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [node name="inventory_manager" type="CanvasLayer"]
+layer = 3
 script = ExtResource( 5 )
 item_in_hand_node = NodePath("item_in_hand")
 item_info = NodePath("item_info")
@@ -49,6 +50,7 @@ custom_styles/panel = SubResource( 2 )
 visible = false
 
 [node name="behind" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="item_void" type="Control" parent="behind"]
 anchor_right = 1.0

@@ -41,6 +41,30 @@ margin_bottom = 22.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends PanelContainer
+
+export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
+
+export( Resource ) var player_data
+
+# Draw the player's inventories from the player's data.
+func _ready():
+	#var equipment_panel = ResourceManager.get_instance( \"equipment_node\" )
+	var inventory_left_panel = ResourceManager.get_instance( \"inventory_node\" )
+	var inventory_right_panel = ResourceManager.get_instance( \"inventory_node\" )
+	#inventory_container.add_child( equipment_panel )
+	inventory_container.add_child( inventory_left_panel )
+	inventory_container.add_child( inventory_right_panel )
+	#equipment_panel.inventory = player_data.equipment
+	inventory_left_panel.inventory = player_data.inventory_left
+	inventory_right_panel.inventory = player_data.inventory_right
+"
+
+[sub_resource type="DynamicFont" id=12]
+size = 40
+font_data = ExtResource( 11 )
+
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 212.231, 212.181 )
@@ -92,30 +116,6 @@ func _on_crafting_out_of_range():
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
-font_data = ExtResource( 11 )
-
-[sub_resource type="GDScript" id=5]
-script/source = "extends PanelContainer
-
-export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
-
-export( Resource ) var player_data
-
-# Draw the player's inventories from the player's data.
-func _ready():
-	#var equipment_panel = ResourceManager.get_instance( \"equipment_node\" )
-	var inventory_left_panel = ResourceManager.get_instance( \"inventory_node\" )
-	var inventory_right_panel = ResourceManager.get_instance( \"inventory_node\" )
-	#inventory_container.add_child( equipment_panel )
-	inventory_container.add_child( inventory_left_panel )
-	inventory_container.add_child( inventory_right_panel )
-	#equipment_panel.inventory = player_data.equipment
-	inventory_left_panel.inventory = player_data.inventory_left
-	inventory_right_panel.inventory = player_data.inventory_right
-"
-
-[sub_resource type="DynamicFont" id=12]
-size = 40
 font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxTexture" id=14]
@@ -190,6 +190,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="inventory_player" type="PanelContainer" parent="ui_container/windows"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -895.0
+margin_top = -391.0
+margin_right = -359.0
+margin_bottom = -269.0
+rect_pivot_offset = Vector2( 0, -60 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+inventory_container = NodePath("inventory_container")
+player_data = ExtResource( 10 )
+
+[node name="title" type="Control" parent="ui_container/windows/inventory_player"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 514.0
+margin_bottom = 100.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="ui_container/windows/inventory_player/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -71.0
+margin_right = -49.1727
+margin_bottom = -29.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Player's Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="ui_container/windows/inventory_player/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="inventory_container" type="VBoxContainer" parent="ui_container/windows/inventory_player"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 514.0
+margin_bottom = 100.0
+custom_constants/separation = 2
+
 [node name="inventory_container" parent="ui_container/windows" instance=ExtResource( 13 )]
 visible = false
 margin_left = -66.4254
@@ -263,76 +333,6 @@ size_flags_vertical = 3
 [node name="shop_option" parent="ui_container/windows/crafting_list/recipe_list" instance=ExtResource( 15 )]
 margin_bottom = 122.0
 size_flags_vertical = 3
-
-[node name="inventory_player" type="PanelContainer" parent="ui_container/windows"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -895.0
-margin_top = -391.0
-margin_right = -359.0
-margin_bottom = -269.0
-rect_pivot_offset = Vector2( 0, -60 )
-mouse_filter = 1
-custom_styles/panel = SubResource( 3 )
-script = SubResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-inventory_container = NodePath("inventory_container")
-player_data = ExtResource( 10 )
-
-[node name="title" type="Control" parent="ui_container/windows/inventory_player"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 514.0
-margin_bottom = 100.0
-mouse_filter = 1
-
-[node name="Label" type="Label" parent="ui_container/windows/inventory_player/title"]
-anchor_right = 1.0
-margin_left = 49.0
-margin_top = -71.0
-margin_right = -49.1727
-margin_bottom = -29.0
-grow_vertical = 0
-mouse_filter = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Player's Inventory"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="title" type="NinePatchRect" parent="ui_container/windows/inventory_player/title/Label"]
-show_behind_parent = true
-anchor_left = -0.0515799
-anchor_top = -0.286
-anchor_right = 1.052
-anchor_bottom = 1.28571
-margin_left = -36.2881
-margin_top = 0.012001
-margin_right = 36.1529
-margin_bottom = 2.0
-mouse_filter = 1
-texture = ExtResource( 3 )
-patch_margin_left = 36
-patch_margin_top = 9
-patch_margin_right = 36
-patch_margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="inventory_container" type="VBoxContainer" parent="ui_container/windows/inventory_player"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 514.0
-margin_bottom = 100.0
-custom_constants/separation = 2
 
 [node name="Control" type="ColorRect" parent="ui_container/windows"]
 visible = false
