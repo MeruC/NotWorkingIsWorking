@@ -40,12 +40,21 @@ func _http_request_completed(result, response_code, headers, body):
 	
 	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
 		var response_dict = response["response"]
-		if "authenticated" in response_dict and response_dict["authenticated"] == true:
-			# Authentication was successful, redirect to the main screen
-			get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
-		else:
-			# Authentication failed, you can show an error message
-			print("Authentication failed")
+		if "authenticated" in response_dict:
+			if response_dict["authenticated"] == true:
+				 # Authentication was successful, show a success message with the nickname
+				$"../login_sucess".visible = true
+				$"../login_sucess/AnimationPlayer".play("login_sucessful")
+				var nickname = response_dict["nickname"]
+				$"../login_sucess/panel/message".text = "Welcome, " + nickname
+			else:
+				# Authentication failed, check if the response contains "account_exists" key
+				if "account_exists" in response_dict and response_dict["account_exists"] == false:
+					print("Account doesn't exist")
+				else:
+					$"../warning".visible = true
+					$"../warning/warning/warning".text = "email/password incorrect"
+					
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
 		_send_request(next_request)
@@ -65,7 +74,7 @@ func _send_request(request : Dictionary):
 
 	# Make request to the server:
 	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
-
+	
 	# Check if there were problems:
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
@@ -82,5 +91,7 @@ func _authenticate():
 	var data = {"username": username, "password": user_password}
 	request_queue.push_back({"command": command, "data": data})
 
-	# Make the request to the server
-	_send_request(request_queue.back())
+
+func _on_AnimationPlayer_animation_finished(login_sucessful):
+	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+

@@ -13,7 +13,7 @@ func _ready():
 	# Connect our request handler:
 	add_child(http_request)
 	http_request.connect("request_completed", self, "_http_request_completed")
-	$signup_btn.connect("pressed", self, "_add_user")
+	$sign_in_btn.connect("pressed", self, "_add_user")
 
 func _process(_delta):
 	# Check if we have pending requests in the queue:
