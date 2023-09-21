@@ -129,6 +129,7 @@ func save_level(game_code):
 	template.json_code = game_code
 	toSave.pack(template)
 	ResourceSaver.save(saved_levels_folder + game_code + ".tscn", toSave)
+	successful_popup.find_node("message").text = "Your Level Code is: " + str(game_code)
 	successful_popup.visible = true
 	##
 	

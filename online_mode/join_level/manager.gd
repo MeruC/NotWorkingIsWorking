@@ -2,7 +2,7 @@ extends Control
 
 # This script for directing users into another scene
 
-var previous_scene = "res://online_mode/online_sub-menu/main.tscn"
+var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
 var levels_folder = "res://online_mode/saved_levels/"
 
 export(NodePath) onready var textfield = get_node(textfield) as LineEdit

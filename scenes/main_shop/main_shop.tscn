@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/soundtrack/menu/Track 12.wav" type="AudioStream" id=5]
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=6]
-[ext_resource path="res://scenes/main_shop/coins.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=8]
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=9]
 [ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=10]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://inventory_system/scripts/ui/player_stats_window.gd" type="Script" id=12]
 [ext_resource path="res://inventory_system/scenes/ui/inventory_container.tscn" type="PackedScene" id=13]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=14]
 [ext_resource path="res://scenes/main_shop/shop_option.tscn" type="PackedScene" id=15]
@@ -20,6 +21,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=19]
 [ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=20]
 [ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=21]
+[ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=22]
 
 [sub_resource type="GDScript" id=13]
 script/source = "extends ParallaxBackground
@@ -28,6 +30,7 @@ export (float) var scrolling_speed = 250.0
 
 func _process(delta):
 	scroll_offset.x -= scrolling_speed * delta
+
 "
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -115,6 +118,25 @@ func _on_crafting_out_of_range():
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 212.231, 212.181 )
+margin_left = 22.0
+margin_right = 22.0
+margin_top = 22.0
+margin_bottom = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="DynamicFont" id=16]
+size = 80
+extra_spacing_bottom = 5
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 40
 font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxTexture" id=17]
@@ -264,7 +286,7 @@ recipe_list = NodePath("recipe_list")
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 632.0
-margin_bottom = 144.0
+margin_bottom = 216.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="ui_container/windows/crafting_list/title"]
@@ -308,15 +330,24 @@ __meta__ = {
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 632.0
-margin_bottom = 144.0
+margin_bottom = 216.0
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/recipe_list" instance=ExtResource( 15 )]
-margin_bottom = 122.0
+margin_bottom = 95.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable"
 price = 50
 item_id = "rj45"
+quantity = 1
+
+[node name="shop_option2" parent="ui_container/windows/crafting_list/recipe_list" instance=ExtResource( 15 )]
+margin_top = 99.0
+margin_bottom = 194.0
+size_flags_vertical = 3
+panel_title = "adsda"
+price = 100
+item_id = "gold_coin"
 quantity = 1
 
 [node name="Control" type="ColorRect" parent="ui_container/windows"]
@@ -340,21 +371,107 @@ __meta__ = {
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 5 )
 
-[node name="coins" parent="." instance=ExtResource( 7 )]
+[node name="coins" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -844.0
-margin_top = 0.0
 margin_right = -425.0
 margin_bottom = 181.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 14 )
+script = ExtResource( 12 )
+lbl_title = NodePath("title/Label")
+lbl_coin = NodePath("container/player_coins")
+settings_data = ExtResource( 14 )
+
+[node name="container" type="Control" parent="coins"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 397.0
+margin_bottom = 159.0
+
+[node name="TextureRect" type="TextureRect" parent="coins/container"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.5
+margin_top = -20.5
+margin_right = 60.5
+margin_bottom = 19.5
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 22 )
+
+[node name="player_coins" type="Label" parent="coins/container"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -259.0
+margin_right = 2.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="title" type="Control" parent="coins"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 397.0
+margin_bottom = 159.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="coins/title"]
+anchor_right = 1.0
+margin_left = 49.0
+margin_top = -71.0
+margin_right = -40.0
+margin_bottom = -29.0
+grow_vertical = 0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "COINS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="NinePatchRect" parent="coins/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -36.2881
+margin_top = 0.012001
+margin_right = 36.1529
+margin_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 36
+patch_margin_top = 9
+patch_margin_right = 36
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="settings2" type="PanelContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 257.0
-margin_top = 106.0
-margin_right = 639.0
-margin_bottom = 413.0
+margin_left = 234.0
+margin_top = 65.0
+margin_right = 616.0
+margin_bottom = 372.0
 rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
 custom_styles/panel = SubResource( 17 )

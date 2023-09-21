@@ -17,7 +17,8 @@ onready var produce = [{
 
 var recipe_id = "RJ45"
 
-onready var coins = $"../../../../../player_stats/VBoxContainer/coins/player_coins"
+onready var coins = $"%player_coins"
+
 
 export( Resource ) var settings_data
 

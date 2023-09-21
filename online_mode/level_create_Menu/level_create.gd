@@ -6,7 +6,8 @@ export( NodePath ) onready var playarea = get_node(playarea) as CSGBox
 export( NodePath ) onready var camera = get_node(camera) as Camera
 
 var quiz_subMenu = "res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn"
-
+var join_scene = "res://online_mode/join_level/join_level.tscn"
+var level_editor = "res://online_mode/level_editor/level_editor.tscn"
 
 var cur_w = 10
 var cur_d = 10
@@ -34,7 +35,7 @@ func _ready():
 func _on_create_pressed():
 	Global.w = cur_w
 	Global.d = cur_d
-	get_tree().change_scene_to(load("res://online_mode/level_editor/level_editor.tscn"))
+	get_tree().change_scene(level_editor)
 
 
 func _on_w_value_changed(value):
@@ -91,3 +92,8 @@ func _on_create_level_pressed():
 
 func _on_back2menu_pressed():
 	player.play_backwards("choosetype")
+
+
+func _on_play_pressed():
+	get_tree().change_scene(join_scene)
+	pass # Replace with function body.
