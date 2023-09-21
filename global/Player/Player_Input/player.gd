@@ -12,8 +12,6 @@ export var acceleration = 70
 export var friction = 60
 var velocity := Vector3.ZERO
 
-export( Resource ) var player_data
-
 var start_pos = Vector3(0, .5, 0)
 
 var is_moving = false

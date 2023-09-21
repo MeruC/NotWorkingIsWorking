@@ -13,7 +13,7 @@ export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
 export( NodePath ) onready var item_select = get_node(item_select) as Control
 export( NodePath ) onready var other_ui = get_node(other_ui) as Control
 
-export(PackedScene) var playerSpawn
+var playerSpawn = preload("res://global/Player/player.tscn")
 var last_mode = "place"
 
 func _ready():
