@@ -6,8 +6,10 @@
 script = ExtResource( 1 )
 global_position = Vector2( 368, 347 )
 inventories = {
+"coins": 0,
 "equipment": {
 },
+"gender": "Male",
 "inventory_left": {
 3: {
 "id": "gold_coin",
@@ -15,6 +17,11 @@ inventories = {
 }
 },
 "inventory_right": {
-}
+},
+"player_name": "Billy"
 }
 coins = 0
+player_info = {
+}
+player_name = ""
+gender = ""

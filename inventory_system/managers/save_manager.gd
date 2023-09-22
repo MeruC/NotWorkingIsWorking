@@ -35,6 +35,7 @@ func save_game():
 	var file = File.new()
 	var save_path = SAVE_FOLDER + SAVE_FILE
 	file.open( save_path, File.WRITE )
+	
 	file.store_var( game_data.get_data(), true )
 	print(game_data.get_data())
 	file.close()

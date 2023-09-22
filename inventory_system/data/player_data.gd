@@ -3,6 +3,7 @@ class_name Player_Data extends Resource
 export( Vector2 ) var global_position = Vector2( 368, 347 )
 export( Dictionary ) var inventories
 export( int ) var coins
+export ( Dictionary ) var player_info
 
 var base_stats = {
 	Game_Enums.STAT.STRENGTH: 5,
@@ -17,8 +18,8 @@ var inventory_left : Inventory
 var inventory_right : Inventory
 var hotbar : Hotbar
 var coin : int
-var player_name: String
-var gender: String
+export var player_name: String
+export var gender: String
 
 # Initialise the player's inventories.
 func _init():
@@ -35,12 +36,15 @@ func _init():
 	inventory_right.groups = [ "player", "crafting" ]
 	hotbar = Hotbar.new().duplicate()
 	hotbar.size = 5
+	
 
 # Set the data from a Dictionary.
 func set_data( data ):
 	global_position = data.global_position
 	inventories = data.inventories
 	coin = data.coins
+	player_name = data.player_name
+	gender = data.gender
 	emit_changed()
 	changed_data()
 
@@ -85,8 +89,6 @@ func changed_data():
 		inventory_right.set_data( inventories.inventory_right )
 		hotbar.set_data( inventories.hotbar )
 		
-func get_player_info():
-	return player_name and gender
 
 
 

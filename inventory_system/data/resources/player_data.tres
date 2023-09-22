@@ -8,3 +8,7 @@ global_position = Vector2( 368, 347 )
 inventories = {
 }
 coins = 100
+player_info = {
+}
+player_name = "billy"
+gender = "a"

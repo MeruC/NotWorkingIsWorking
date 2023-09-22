@@ -11,11 +11,13 @@ func set_data( data ):
 	fullscreen = data.fullscreen
 	scale = data.scale
 	gold_coins = data.gold_coins
+	player_name = data.player_name
+	gender = data.gender
 	emit_changed()
 
 func player_data(data):
-	player_name = data.player_name
-	gender = data.gender
+	player_name = data
+	gender = data
 	emit_changed()
 
 # Pack the data in a Dictionary.

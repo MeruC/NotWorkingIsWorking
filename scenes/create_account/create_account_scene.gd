@@ -14,7 +14,7 @@ func _on_confirm_pressed():
 		$Label.text = "Invalid nickname"
 	else:
 		# Update the player_name property of settings_data
-		settings_data.player_name = nickname
+		settings_data.player_data(nickname)
 
 		# Hide elements and perform other actions as needed
 		$".".visible = false
