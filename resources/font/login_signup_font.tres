@@ -3,5 +3,6 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
 
 [resource]
-size = 80
+size = 46
+extra_spacing_bottom = 28
 font_data = ExtResource( 1 )

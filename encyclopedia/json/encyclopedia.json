@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "word": "Router",
+      "definition": "Router is a device that connects two or more packet-switched networks",
+      "image": ""
+    },
+    {
+      "word": "Switch",
+      "definition": "Swithces connect multiple devices, such as computers, wireless access points, printers, and servers. It enables connected devices to share information and talk to each other.",
+      "image": ""
+    },
+    {
+      "word": "Modem",
+      "definition": "modem transforms digital information from your computer into analog signals that can transmit over wires (and vice versa) by modulating and demodulating electrical impulses sent through phone lines, coaxial cables, or other types of wiring.",
+      "image": ""
+    },
+    {
+      "word": "IP Address",
+      "definition": "An IP address is a 32-bit number. It uniquely identifies a host (computer or other device, such as a printer or router) on a TCP/IP network.",
+      "image": ""
+    },
+    {
+      "word": "Internet",
+      "definition": "The Internet, sometimes called simply 'the Net,' is a worldwide system of computer networks -- a network of networks in which users at any one computer can, if they have permission, get information from any other computer",
+      "image": ""
+    }
+  ]
+}

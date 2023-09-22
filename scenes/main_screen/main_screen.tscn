@@ -122,7 +122,6 @@ margin_right = 924.0
 margin_bottom = 1182.0
 rect_min_size = Vector2( 450, 100 )
 custom_fonts/font = ExtResource( 1 )
-disabled = true
 text = "Encyclopedia"
 icon = ExtResource( 4 )
 flat = true
@@ -163,3 +162,4 @@ stream = ExtResource( 6 )
 [connection signal="pressed" from="GridContainer/offline_button" to="." method="_on_offline_button_pressed"]
 [connection signal="pressed" from="GridContainer/online_button" to="." method="_on_online_button_pressed"]
 [connection signal="pressed" from="GridContainer/shop_button" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="GridContainer/encyclopedia_button" to="." method="_on_encyclopedia_button_pressed"]
