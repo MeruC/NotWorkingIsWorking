@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 40
 extra_spacing_top = 5
 font_data = ExtResource( 3 )
 
@@ -39,11 +39,12 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -29.0
-margin_right = -53.0
-margin_bottom = -29.0
+margin_left = -9.0
+margin_top = -24.0
+margin_right = -62.0
+margin_bottom = -24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "5"
-align = 1
+align = 2
 valign = 1

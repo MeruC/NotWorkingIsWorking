@@ -28,7 +28,7 @@ size = 32
 font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 40
 extra_spacing_top = 5
 font_data = ExtResource( 13 )
 
@@ -66,8 +66,9 @@ margin_bottom = 5.0
 
 [node name="shop_option" type="PanelContainer"]
 margin_right = 610.0
-margin_bottom = 127.0
+margin_bottom = 141.0
 rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
 custom_styles/panel = SubResource( 7 )
 script = ExtResource( 7 )
 lbl_panel_title = NodePath("title/TextureRect/Label")
@@ -81,7 +82,8 @@ settings_data = ExtResource( 8 )
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 602.0
-margin_bottom = 119.0
+margin_bottom = 133.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="title"]
 anchor_left = 0.5
@@ -90,6 +92,7 @@ margin_left = -18.0
 margin_top = 29.0
 margin_right = 18.0
 margin_bottom = 31.0
+mouse_filter = 2
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="title/TextureRect"]
@@ -112,31 +115,34 @@ valign = 1
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 602.0
-margin_bottom = 119.0
+margin_bottom = 133.0
+mouse_filter = 2
 custom_constants/margin_right = 10
-custom_constants/margin_top = 31
+custom_constants/margin_top = 50
 custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+custom_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_left = 10.0
-margin_top = 31.0
+margin_top = 50.0
 margin_right = 584.0
-margin_bottom = 101.0
+margin_bottom = 105.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/separation = 16
 
 [node name="price" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_right = 171.0
-margin_bottom = 70.0
+margin_bottom = 55.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/separation = 0
 alignment = 1
 
 [node name="item_quantity" type="ColorRect" parent="MarginContainer/HBoxContainer/price"]
-margin_top = 35.0
+margin_top = 27.0
 margin_right = 171.0
-margin_bottom = 35.0
+margin_bottom = 27.0
 color = Color( 0, 0, 0, 0.392157 )
 script = ExtResource( 12 )
 item_container = NodePath("inventory_slot/item_container")
@@ -171,40 +177,45 @@ texture = ExtResource( 14 )
 [node name="price" type="Label" parent="MarginContainer/HBoxContainer/price/item_quantity"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -11.0
 margin_top = -26.0
-margin_right = -53.0
+margin_right = -64.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0"
-align = 1
+align = 2
 valign = 1
 
 [node name="arrow" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 margin_left = 187.0
 margin_right = 200.0
-margin_bottom = 70.0
+margin_bottom = 55.0
+mouse_filter = 2
 texture = ExtResource( 5 )
 stretch_mode = 4
 
 [node name="produce" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 216.0
 margin_right = 387.0
-margin_bottom = 70.0
+margin_bottom = 55.0
+mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="commands" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 403.0
 margin_right = 574.0
-margin_bottom = 70.0
+margin_bottom = 55.0
+mouse_filter = 2
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="craft" type="Button" parent="MarginContainer/HBoxContainer/commands"]
-margin_top = 16.0
+margin_top = 8.0
 margin_right = 171.0
-margin_bottom = 54.0
+margin_bottom = 46.0
+mouse_filter = 1
 custom_fonts/font = ExtResource( 10 )
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )

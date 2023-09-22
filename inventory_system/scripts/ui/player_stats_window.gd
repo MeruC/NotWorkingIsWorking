@@ -1,4 +1,4 @@
-extends Window
+extends ColorRect
 
 export( NodePath ) onready var lbl_coin = get_node( lbl_coin ) as Label
 

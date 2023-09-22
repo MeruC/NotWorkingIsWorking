@@ -41,7 +41,6 @@ func set_info( produce_items ):
 		var produce_node = ResourceManager.get_instance( "item_quantity" )
 		produce_list.add_child( produce_node )
 		var item = ItemManager.get_item( item_data.id )
-		print(ItemManager.get_item( item_data.id ))
 		produce_node.set_info( item, item_data.quantity )
 
 # Activate the craft button if the 'crafting' inventories has the needed items
