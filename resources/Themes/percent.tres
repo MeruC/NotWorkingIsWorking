@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/user_profile/buttons and panels/percent.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=18]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 923, 145 )
+margin_left = 15.0
+modulate_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.4, 0.768627, 0.776471, 1 )
+border_width_left = 7
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[resource]
+default_font = SubResource( 18 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 18 )
+ProgressBar/styles/bg = SubResource( 19 )
+ProgressBar/styles/fg = SubResource( 20 )
