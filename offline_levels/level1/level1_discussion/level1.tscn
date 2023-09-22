@@ -1,0 +1,244 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://global/objects/computer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=2]
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=3]
+[ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=5]
+[ext_resource path="res://resources/Models/Materials/computer/parts-2-keyboard.png" type="Texture" id=6]
+[ext_resource path="res://resources/Models/Materials/computer/parts-1-mouse.png" type="Texture" id=7]
+[ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=8]
+[ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=10]
+[ext_resource path="res://offline_levels/level1/level1_discussion/level1.gd" type="Script" id=11]
+[ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://resources/Models/Materials/computer/parts-1-mouse.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://resources/Models/Materials/computer/parts-2-keyboard.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://offline_levels/level1/level1_discussion/level1_interaction.gd" type="Script" id=15]
+[ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=16]
+[ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=17]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=18]
+[ext_resource path="res://scenes/user_profile/buttons and panels/button1..png" type="Texture" id=19]
+[ext_resource path="res://scenes/user_profile/buttons and panels/button1.2.png" type="Texture" id=20]
+
+[sub_resource type="PlaneMesh" id=11]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+
+[sub_resource type="BoxShape" id=16]
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="BoxShape" id=20]
+
+[sub_resource type="DynamicFont" id=21]
+size = 60
+extra_spacing_top = 7
+extra_spacing_bottom = 7
+extra_spacing_space = 11
+font_data = ExtResource( 18 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 912, 252 )
+modulate_color = Color( 1, 1, 1, 0.486275 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 912, 252 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 912, 252 )
+
+[sub_resource type="Theme" id=25]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 21 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 22 )
+Button/styles/normal = SubResource( 23 )
+Button/styles/pressed = SubResource( 24 )
+
+[sub_resource type="Theme" id=26]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 21 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 22 )
+Button/styles/normal = SubResource( 23 )
+Button/styles/pressed = SubResource( 24 )
+
+[node name="level" type="Spatial"]
+unique_name_in_owner = true
+script = ExtResource( 11 )
+setting_data = ExtResource( 2 )
+
+[node name="floor" type="CSGMesh" parent="."]
+transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
+use_collision = true
+mesh = SubResource( 11 )
+material = ExtResource( 3 )
+
+[node name="environment" parent="." instance=ExtResource( 9 )]
+
+[node name="actual_wall2" parent="environment" index="0"]
+material = SubResource( 1 )
+
+[node name="hollow" parent="environment/actual_wall2" index="0"]
+material = SubResource( 2 )
+
+[node name="wall" type="CSGBox" parent="."]
+unique_name_in_owner = true
+use_collision = true
+width = 138.0
+height = 8.0
+depth = 138.0
+material = SubResource( 15 )
+
+[node name="playarea" type="CSGBox" parent="wall"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+operation = 2
+width = 20.0
+height = 10.0
+depth = 20.0
+material = ExtResource( 3 )
+
+[node name="inventory" parent="." instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="mobile_controls" parent="." instance=ExtResource( 8 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="joystick" parent="mobile_controls" index="0"]
+margin_left = 52.0
+margin_top = -302.0
+margin_right = 252.0
+margin_bottom = -102.0
+pressed_color = Color( 0.745098, 0.745098, 0.745098, 1 )
+
+[node name="camLeft" parent="mobile_controls" index="1"]
+position = Vector2( 1438, 907 )
+
+[node name="camRight" parent="mobile_controls" index="2"]
+position = Vector2( 1575, 907 )
+
+[node name="E" parent="mobile_controls" index="3"]
+position = Vector2( 1713, 909 )
+
+[node name="object_table" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="@object_table@134" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="object_tower" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -2 )
+
+[node name="@object_tower@135" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -2 )
+
+[node name="object_monitor" type="StaticBody" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.951887, -2.02387 )
+
+[node name="CollisionShape2D" type="CollisionShape" parent="object_monitor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 16 )
+
+[node name="CSGMesh" type="CSGMesh" parent="object_monitor/CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0, -1, 0.75 )
+mesh = ExtResource( 12 )
+material = SubResource( 17 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="object_monitor/CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.125, -1, -0.5 )
+mesh = ExtResource( 14 )
+material = SubResource( 18 )
+
+[node name="CSGMesh3" type="CSGMesh" parent="object_monitor/CollisionShape2D"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -0.75, -1, -0.625 )
+mesh = ExtResource( 13 )
+material = SubResource( 19 )
+
+[node name="interaction_area" type="Area" parent="object_monitor"]
+transform = Transform( 1.04329, 0, 0, 0, 1.04329, 0, 0, 0, 1.04329, 0, 0, 0 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 15 )
+pc_name = "pc.gd"
+setting_data = ExtResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="object_monitor/interaction_area"]
+transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
+shape = SubResource( 20 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="bg" type="TextureRect" parent="ui"]
+margin_right = 6000.0
+margin_bottom = 3375.0
+rect_scale = Vector2( 0.319761, 0.319562 )
+texture = ExtResource( 16 )
+
+[node name="message" type="Label" parent="ui"]
+margin_left = 302.0
+margin_top = 102.0
+margin_right = 1349.0
+margin_bottom = 497.0
+rect_scale = Vector2( 1.14011, 1.15755 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 17 )
+align = 1
+autowrap = true
+
+[node name="yes" type="Button" parent="ui"]
+margin_left = 504.0
+margin_top = 636.0
+margin_right = 725.0
+margin_bottom = 750.0
+theme = SubResource( 25 )
+text = "Yes"
+
+[node name="no" type="Button" parent="ui"]
+margin_left = 824.0
+margin_top = 632.0
+margin_right = 1019.0
+margin_bottom = 746.0
+theme = SubResource( 26 )
+text = "No"
+
+[connection signal="pressed" from="ui/yes" to="object_monitor/interaction_area" method="_on_yes_pressed"]
+[connection signal="pressed" from="ui/no" to="object_monitor/interaction_area" method="_on_no_pressed"]
+
+[editable path="environment"]
+[editable path="mobile_controls"]
