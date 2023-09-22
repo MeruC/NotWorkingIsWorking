@@ -21,7 +21,6 @@ inventories = {
 "player_name": "Billy"
 }
 coins = 0
-player_info = {
-}
 player_name = ""
 gender = ""
+rank = ""

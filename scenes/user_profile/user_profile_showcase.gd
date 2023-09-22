@@ -1,6 +1,6 @@
-extends Spatial
+extends CSGMesh
 
-var rotation_speed = 1.0
+var rotation_speed = 0.1
 
 func _process(delta):
 	$".".rotate_y(rotation_speed * delta)

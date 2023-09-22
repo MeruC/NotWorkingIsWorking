@@ -18,7 +18,6 @@ var avatar : Sprite
 func _ready():
 		change_avatar = $avatar_selection
 		current_avatar = $current_avatar
-		avatar = $"../user_profile/name_background/avatar"
 		change_avatar.texture = default_character
 		current_avatar.texture = default_character
 
