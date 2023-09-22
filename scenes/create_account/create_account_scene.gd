@@ -1,20 +1,26 @@
 extends CanvasLayer
 
-var gender
+export( Resource ) var settings_data
 
-func _on_CheckButton_toggled(button_pressed):
-	var player_gender_selection = get_node(".")
-	if player_gender_selection:
-		# The node was found, so emit the signal.
-		if button_pressed:
-			gender = "male"
-			player_gender_selection.emit_signal("selected_gender", gender)
-			print("male")
-		else:
-			gender = "female"
-			print("female")
-			player_gender_selection.emit_signal("selected_gender", gender)
+func _ready():
+
+	settings_data.connect("changed", self, "_on_data_changed")
+	
+
+func _on_confirm_pressed():
+	var nickname_input = $Username/LineEdit
+	var nickname = nickname_input.text
+	if nickname == "":
+		$Label.text = "Invalid nickname"
 	else:
-		# The node was not found. Print an error message.
-		print("Error: 'path/to/Spatial_node' not found in the scene.")
+		# Update the player_name property of settings_data
+		settings_data.player_name = nickname
 
+		# Hide elements and perform other actions as needed
+		$".".visible = false
+		$"../select_gender".visible = true
+		SaveManager.save_game()
+
+func _on_data_changed():
+	# Update the input field with the player's name from settings_data
+	$Username/LineEdit.text = settings_data.player_name

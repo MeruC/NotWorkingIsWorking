@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=2]
@@ -8,10 +8,128 @@
 [ext_resource path="res://resources/Themes/gender_toggle_buttons.tres" type="Theme" id=6]
 [ext_resource path="res://scenes/create_account/player_gender_selection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=9]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 300
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 200
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "female_anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2263.88, -1132.43 ), Vector2( 1721.84, -271.597 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect3:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2437.66, -925.543 ), Vector2( 1706.74, -167.591 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect2:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1185.09, -1925.72 ), Vector2( 1650.04, -125.659 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1740.25, 1258.04 ), Vector2( 1386.35, -2.6015 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "male_anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../choose_male/ColorRect2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -225.814, -11.8722 ), Vector2( -202.724, 934.03 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../choose_male/ColorRect3:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -234.401, 157.949 ), Vector2( -295.019, 916.632 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../choose_male/ColorRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -259.434, -252.535 ), Vector2( -333.891, 956.392 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../choose_male/Label:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2829.86, 864.798 ), Vector2( 1365.3, 998.711 ) ]
+}
 
 [node name="create_account_control" type="Control"]
 anchor_right = 1.0
@@ -22,20 +140,21 @@ position = Vector2( 972, 539 )
 
 [node name="create_account_scene" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
+settings_data = ExtResource( 10 )
 
 [node name="title" type="Label" parent="create_account_scene"]
-margin_left = 173.0
-margin_top = 43.0
-margin_right = 1196.0
-margin_bottom = 165.0
+margin_left = 452.0
+margin_top = 285.0
+margin_right = 1475.0
+margin_bottom = 407.0
 custom_fonts/font = SubResource( 1 )
 text = "Create Character"
 
 [node name="Username" type="Label" parent="create_account_scene"]
-margin_left = 123.0
-margin_top = 214.0
-margin_right = 430.0
-margin_bottom = 275.0
+margin_left = 345.0
+margin_top = 486.0
+margin_right = 652.0
+margin_bottom = 547.0
 custom_fonts/font = ExtResource( 3 )
 text = "Name:"
 
@@ -45,36 +164,156 @@ margin_top = -18.0
 margin_right = 1087.0
 margin_bottom = 82.0
 custom_fonts/font = ExtResource( 8 )
+align = 1
 
-[node name="gender" type="Label" parent="create_account_scene"]
-margin_left = 107.0
-margin_top = 505.0
-margin_right = 338.0
-margin_bottom = 566.0
-custom_fonts/font = ExtResource( 3 )
-text = "gender:"
+[node name="confirm" type="Button" parent="create_account_scene"]
+margin_left = 796.0
+margin_top = 697.0
+margin_right = 1197.37
+margin_bottom = 811.068
+theme = ExtResource( 9 )
+text = "confirm"
 
-[node name="CheckButton" type="CheckButton" parent="create_account_scene"]
-margin_left = 389.0
-margin_top = 465.0
-margin_right = 954.0
-margin_bottom = 552.0
+[node name="Label" type="Label" parent="create_account_scene"]
+margin_left = 691.0
+margin_top = 583.0
+margin_right = 731.0
+margin_bottom = 628.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+
+[node name="select_gender" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="gender" type="Label" parent="select_gender"]
+margin_left = 811.0
+margin_top = 41.0
+margin_right = 1097.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 2 )
+text = "Gender"
+
+[node name="CheckButton" type="CheckButton" parent="select_gender"]
+margin_left = 539.0
+margin_top = 142.0
+margin_right = 1104.0
+margin_bottom = 229.0
 rect_scale = Vector2( 1.5, 1.5 )
 theme = ExtResource( 6 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="create_account_scene"]
-margin_left = 1365.0
-margin_top = 154.0
-margin_right = 1865.0
-margin_bottom = 654.0
+[node name="ViewportContainer" type="ViewportContainer" parent="select_gender"]
+margin_left = 643.0
+margin_top = 278.0
+margin_right = 1243.0
+margin_bottom = 878.0
 
-[node name="Viewport" type="Viewport" parent="create_account_scene/ViewportContainer"]
-size = Vector2( 500, 500 )
+[node name="Viewport" type="Viewport" parent="select_gender/ViewportContainer"]
+size = Vector2( 600, 600 )
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
-[node name="Spatial" parent="create_account_scene/ViewportContainer/Viewport" instance=ExtResource( 7 )]
+[node name="Spatial" parent="select_gender/ViewportContainer/Viewport" instance=ExtResource( 7 )]
+
+[node name="confirm" type="Button" parent="select_gender"]
+margin_left = 740.0
+margin_top = 888.0
+margin_right = 1148.37
+margin_bottom = 1002.07
+theme = ExtResource( 9 )
+text = "CONFIRM"
+
+[node name="choose_male" type="Control" parent="."]
+margin_left = -1076.0
+margin_top = 1147.0
+margin_right = -1036.0
+margin_bottom = 1187.0
+rect_rotation = -82.0475
+
+[node name="ColorRect2" type="ColorRect" parent="choose_male"]
+margin_left = -225.814
+margin_top = -11.8722
+margin_right = 1637.19
+margin_bottom = 488.128
+
+[node name="ColorRect3" type="ColorRect" parent="choose_male"]
+margin_left = -234.401
+margin_top = 157.949
+margin_right = 1628.6
+margin_bottom = 657.949
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="choose_male"]
+margin_left = -259.434
+margin_top = -252.535
+margin_right = 1603.57
+margin_bottom = 247.465
+rect_rotation = -3.62755
+color = Color( 0.980392, 0.478431, 0, 1 )
+
+[node name="Label" type="Label" parent="choose_male"]
+margin_left = 2829.86
+margin_top = 864.798
+margin_right = 3100.86
+margin_bottom = 2089.8
+rect_rotation = 86.8519
+custom_colors/font_color = Color( 0, 0, 0, 0.580392 )
+custom_fonts/font = SubResource( 3 )
+text = "M
+A
+L
+E"
+
+[node name="choose_female" type="Control" parent="."]
+margin_left = 266.0
+margin_top = -462.0
+margin_right = 306.0
+margin_bottom = -422.0
+rect_rotation = 18.3072
+
+[node name="ColorRect" type="ColorRect" parent="choose_female"]
+margin_left = 2263.88
+margin_top = -1132.43
+margin_right = 4083.88
+margin_bottom = -712.427
+rect_rotation = 75.5542
+
+[node name="ColorRect3" type="ColorRect" parent="choose_female"]
+margin_left = 2437.66
+margin_top = -925.543
+margin_right = 4257.66
+margin_bottom = -505.543
+rect_rotation = 74.1372
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="choose_female"]
+margin_left = 1185.09
+margin_top = -1925.72
+margin_right = 3005.09
+margin_bottom = -1505.72
+rect_rotation = 74.6206
+color = Color( 0.866667, 0.356863, 0.596078, 1 )
+
+[node name="Label" type="Label" parent="choose_female"]
+margin_left = 1740.25
+margin_top = 1258.04
+margin_right = 2011.25
+margin_bottom = 2697.04
+rect_rotation = -15.4706
+custom_colors/font_color = Color( 0, 0, 0, 0.611765 )
+custom_fonts/font = SubResource( 4 )
+text = "F
+E
+M
+A
+L
+E
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../choose_female")
+anims/female_anim = SubResource( 6 )
+anims/male_anim = SubResource( 5 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 2 )
@@ -86,4 +325,6 @@ motion_mirroring = Vector2( 1920, 0 )
 position = Vector2( 967, 532 )
 texture = ExtResource( 1 )
 
-[connection signal="toggled" from="create_account_scene/CheckButton" to="create_account_scene/ViewportContainer/Viewport/Spatial" method="_on_CheckButton_toggled"]
+[connection signal="pressed" from="create_account_scene/confirm" to="create_account_scene" method="_on_confirm_pressed"]
+[connection signal="toggled" from="select_gender/CheckButton" to="select_gender/ViewportContainer/Viewport/Spatial" method="_on_CheckButton_toggled"]
+[connection signal="pressed" from="select_gender/confirm" to="select_gender/ViewportContainer/Viewport/Spatial" method="_on_confirm_pressed"]

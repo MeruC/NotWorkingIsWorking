@@ -1839,38 +1839,38 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="3dlevel/left"]
-margin_left = -53.8174
-margin_top = -10.4252
-margin_right = 184.183
+margin_left = -53.8147
+margin_top = -10.4254
+margin_right = 184.186
 margin_bottom = 1167.57
 rect_rotation = 1.32893
 color = Color( 1, 0.960784, 0, 1 )
 
 [node name="Label" type="Label" parent="3dlevel/left/ColorRect2"]
-margin_left = 141.586
-margin_top = 5.68302
-margin_right = 257.583
-margin_bottom = 88.6841
+margin_left = 142.159
+margin_top = 44.7936
+margin_right = 258.156
+margin_bottom = 127.795
 rect_rotation = -90.3794
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "3D"
 
 [node name="Label2" type="Label" parent="3dlevel/left/ColorRect2"]
-margin_left = 128.354
-margin_top = -10.1907
-margin_right = 418.354
-margin_bottom = 89.8095
+margin_left = 129.672
+margin_top = 4.40056
+margin_right = 419.672
+margin_bottom = 104.401
 rect_rotation = -90.3794
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "LEVEL"
 
 [node name="Label3" type="Label" parent="3dlevel/left/ColorRect2"]
-margin_left = 123.066
-margin_top = -49.2734
-margin_right = 471.066
-margin_bottom = 60.7266
+margin_left = 122.987
+margin_top = -46.2098
+margin_right = 470.987
+margin_bottom = 63.7902
 rect_rotation = -90.3794
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
@@ -1881,7 +1881,6 @@ margin_left = 1218.0
 margin_top = 117.0
 margin_right = 2209.0
 margin_bottom = 1027.0
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 478, 447 )
 
 [node name="TextureRect3" type="TextureRect" parent="3dlevel/size"]
@@ -1957,10 +1956,10 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "X"
 
 [node name="bottom" type="Control" parent="3dlevel"]
-margin_left = 28.0
-margin_top = 1285.0
-margin_right = 68.0
-margin_bottom = 1325.0
+margin_left = -79.0
+margin_top = 937.0
+margin_right = -39.0
+margin_bottom = 977.0
 
 [node name="ColorRect4" type="ColorRect" parent="3dlevel/bottom"]
 modulate = Color( 1, 1, 1, 0.392157 )
@@ -1986,10 +1985,10 @@ stretch_mode = 2
 
 [node name="ColorRect3" type="ColorRect" parent="3dlevel/bottom"]
 material = SubResource( 10 )
-margin_left = -11.0
-margin_top = 6.0
-margin_right = 2260.0
-margin_bottom = 389.0
+margin_left = 684.0
+margin_top = -67.0
+margin_right = 1391.0
+margin_bottom = 316.0
 rect_rotation = -6.02349
 
 [node name="Label" type="Label" parent="3dlevel/bottom/ColorRect3"]
@@ -2023,7 +2022,6 @@ margin_top = -183.5
 margin_right = 887.5
 margin_bottom = 4.50006
 rect_rotation = 1.23408
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 250, 94 )
 rect_clip_content = true
 focus_mode = 0
@@ -2041,7 +2039,6 @@ margin_top = -104.5
 margin_right = -471.5
 margin_bottom = 29.4999
 rect_rotation = -2.60862
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 168, 67 )
 focus_mode = 0
 theme = ExtResource( 1 )
@@ -2089,9 +2086,9 @@ color = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 253.0
-margin_top = -690.0
+margin_top = -689.968
 margin_right = 253.0
-margin_bottom = -690.0
+margin_bottom = -689.968
 rect_scale = Vector2( 1.085, 1.066 )
 color = Color( 0.623529, 0.168627, 0, 1 )
 
@@ -2099,9 +2096,9 @@ color = Color( 0.623529, 0.168627, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 355.0
-margin_top = -583.0
+margin_top = -552.182
 margin_right = 151.0
-margin_bottom = -697.0
+margin_bottom = -666.182
 rect_rotation = 0.745192
 rect_scale = Vector2( 1.1, 1.1 )
 color = Color( 0, 0, 0, 1 )
@@ -2123,18 +2120,18 @@ expand = true
 visible = false
 
 [node name="create" type="Label" parent="choosetype"]
-margin_left = -320.0
+margin_left = 2006.0
 margin_top = -122.0
-margin_right = 2048.0
+margin_right = 4374.0
 margin_bottom = 628.0
 custom_colors/font_color = Color( 0, 0, 0, 0.196078 )
 custom_fonts/font = SubResource( 20 )
 text = "CREATE"
 
 [node name="level" type="Label" parent="choosetype"]
-margin_left = 575.0
+margin_left = -1658.0
 margin_top = 622.0
-margin_right = 2375.0
+margin_right = 142.001
 margin_bottom = 1372.0
 custom_colors/font_color = Color( 0, 0, 0, 0.196078 )
 custom_fonts/font = SubResource( 20 )
@@ -2152,7 +2149,7 @@ margin_left = -1001.0
 margin_top = 127.0
 margin_right = -251.0
 margin_bottom = -135.0
-rect_scale = Vector2( 1.175, 1.175 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 42, 409 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 10 )
@@ -2164,6 +2161,7 @@ margin_left = 201.0
 margin_top = 108.0
 margin_right = 977.0
 margin_bottom = -94.0
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 731, 439 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 9 )
@@ -2174,9 +2172,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -923.0
+margin_left = -1429.0
 margin_top = -542.0
-margin_right = -534.01
+margin_right = -1040.01
 margin_bottom = -368.0
 rect_rotation = -2.60862
 rect_pivot_offset = Vector2( 986, -279 )
@@ -2194,23 +2192,25 @@ margin_right = -271.0
 margin_bottom = 30.9894
 
 [node name="ColorRect3" type="ColorRect" parent="play/Control"]
-margin_right = 2294.0
-margin_bottom = 421.0
+margin_left = -143.0
+margin_top = -354.989
+margin_right = 2151.0
+margin_bottom = 66.011
 rect_rotation = -11.0243
 
 [node name="ColorRect2" type="ColorRect" parent="play/Control"]
-margin_left = -24.0
-margin_top = -48.0
-margin_right = 2270.0
-margin_bottom = 373.0
+margin_left = -183.0
+margin_top = -368.989
+margin_right = 2111.0
+margin_bottom = 52.011
 rect_rotation = -10.1177
 color = Color( 0, 0, 0, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="play/Control"]
-margin_left = -75.0
-margin_top = -51.0
-margin_right = 1788.0
-margin_bottom = 370.0
+margin_left = -233.0
+margin_top = -339.989
+margin_right = 1630.0
+margin_bottom = 81.011
 rect_rotation = -11.5601
 color = Color( 0.980392, 0.478431, 0, 1 )
 __meta__ = {
@@ -2218,10 +2218,10 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="play/Control"]
-margin_left = 238.0
-margin_top = -4.98944
-margin_right = 2291.0
-margin_bottom = 345.011
+margin_left = 1627.0
+margin_top = -277.989
+margin_right = 3680.0
+margin_bottom = 72.0113
 rect_rotation = -11.1229
 custom_colors/font_color = Color( 1, 1, 1, 0.45098 )
 custom_fonts/font = SubResource( 27 )
@@ -2235,23 +2235,25 @@ margin_bottom = 1131.0
 rect_rotation = -180.0
 
 [node name="ColorRect3" type="ColorRect" parent="play/Control2"]
-margin_right = 2294.0
-margin_bottom = 421.0
+margin_left = -146.001
+margin_top = -361.999
+margin_right = 2148.0
+margin_bottom = 59.001
 rect_rotation = -11.0243
 
 [node name="ColorRect2" type="ColorRect" parent="play/Control2"]
-margin_left = -24.0
-margin_top = -48.0
-margin_right = 2270.0
-margin_bottom = 373.0
+margin_left = -141.001
+margin_top = -352.999
+margin_right = 2153.0
+margin_bottom = 68.001
 rect_rotation = -10.1177
 color = Color( 0, 0, 0, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="play/Control2"]
-margin_left = -75.0
-margin_top = -51.0
-margin_right = 1788.0
-margin_bottom = 370.0
+margin_left = -184.001
+margin_top = -354.999
+margin_right = 1679.0
+margin_bottom = 66.001
 rect_rotation = -11.5601
 color = Color( 0.980392, 0.478431, 0, 1 )
 __meta__ = {
@@ -2259,10 +2261,10 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="play/Control2"]
-margin_left = 2256.0
-margin_top = -75.01
-margin_right = 4309.01
-margin_bottom = 274.99
+margin_left = 3735.0
+margin_top = -370.017
+margin_right = 5788.01
+margin_bottom = -20.0169
 rect_rotation = -191.582
 custom_colors/font_color = Color( 1, 1, 1, 0.45098 )
 custom_fonts/font = SubResource( 27 )
@@ -2273,9 +2275,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -462.0
+margin_left = 979.0
 margin_top = -262.0
-margin_right = 1002.0
+margin_right = 2443.0
 margin_bottom = -9.0
 rect_pivot_offset = Vector2( 1071, 72 )
 focus_mode = 0
@@ -2288,9 +2290,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1000.0
+margin_left = -2456.0
 margin_top = 9.0
-margin_right = 463.961
+margin_right = -992.04
 margin_bottom = 262.0
 rect_pivot_offset = Vector2( 1071, 72 )
 focus_mode = 0
@@ -2308,6 +2310,7 @@ margin_top = -502.0
 margin_right = -526.998
 margin_bottom = -328.0
 rect_rotation = -2.60862
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 194.501, 87 )
 focus_mode = 0
 theme = SubResource( 32 )

@@ -17,6 +17,8 @@ var inventory_left : Inventory
 var inventory_right : Inventory
 var hotbar : Hotbar
 var coin : int
+var player_name: String
+var gender: String
 
 # Initialise the player's inventories.
 func _init():
@@ -52,7 +54,9 @@ func get_data():
 	return {
 		"global_position": global_position,
 		"inventories": inventories,
-		"coins": coins
+		"coins": coins,
+		"player_name": player_name,
+		"gender": gender
 	}
 
 func get_stat( stat ):
@@ -80,8 +84,9 @@ func changed_data():
 		inventory_left.set_data( inventories.inventory_left )
 		inventory_right.set_data( inventories.inventory_right )
 		hotbar.set_data( inventories.hotbar )
-
-
+		
+func get_player_info():
+	return player_name and gender
 
 
 
