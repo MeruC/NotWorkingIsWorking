@@ -9,7 +9,7 @@ onready var wall = $"%wall"
 onready var playarea = $"%playarea"
 onready var inventory = $"%inventory"
 onready var other_ui = $"%other_ui"
-
+onready var mobile_controls = $"%mobile_controls"
 
 var timer = null
 var x = 1
@@ -20,6 +20,7 @@ func _ready():
 	playarea.owner = level
 	inventory.owner = level
 	#other_ui.owner = level
+	mobile_controls.owner = level
 	playarea.set_width(Global.w * 2)
 	playarea.set_depth(Global.d * 2)
 	pass

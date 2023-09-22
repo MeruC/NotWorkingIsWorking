@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=1]
+[ext_resource path="res://global/objects/chest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=9]
+[ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=10]
+
+[sub_resource type="PlaneMesh" id=11]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+
+[node name="level" type="Spatial"]
+unique_name_in_owner = true
+script = ExtResource( 10 )
+
+[node name="floor" type="CSGMesh" parent="."]
+transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
+use_collision = true
+mesh = SubResource( 11 )
+material = ExtResource( 1 )
+
+[node name="environment" parent="." instance=ExtResource( 8 )]
+
+[node name="actual_wall2" parent="environment" index="0"]
+material = SubResource( 1 )
+
+[node name="hollow" parent="environment/actual_wall2" index="0"]
+material = SubResource( 2 )
+
+[node name="wall" type="CSGBox" parent="."]
+unique_name_in_owner = true
+use_collision = true
+width = 138.0
+height = 8.0
+depth = 138.0
+material = SubResource( 15 )
+
+[node name="playarea" type="CSGBox" parent="wall"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+operation = 2
+width = 20.0
+height = 10.0
+depth = 20.0
+material = ExtResource( 1 )
+
+[node name="inventory" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="mobile_controls" parent="." instance=ExtResource( 9 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="joystick" parent="mobile_controls" index="0"]
+margin_left = 52.0
+margin_top = -302.0
+margin_right = 252.0
+margin_bottom = -102.0
+pressed_color = Color( 0.745098, 0.745098, 0.745098, 1 )
+
+[node name="camLeft" parent="mobile_controls" index="1"]
+position = Vector2( 1438, 907 )
+
+[node name="camRight" parent="mobile_controls" index="2"]
+position = Vector2( 1575, 907 )
+
+[node name="E" parent="mobile_controls" index="3"]
+position = Vector2( 1713, 909 )
+
+[node name="object_chest" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+
+[node name="@object_chest@121" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+
+[editable path="environment"]
+[editable path="mobile_controls"]

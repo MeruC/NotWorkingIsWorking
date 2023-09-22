@@ -97,6 +97,7 @@ margin_right = 210.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 52.5 )
 rect_pivot_offset = Vector2( 210, 150 )
+access = 1
 filters = PoolStringArray( "*.tscn" )
 script = ExtResource( 8 )
 
@@ -376,6 +377,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="mobile_controls" parent="level" instance=ExtResource( 16 )]
+unique_name_in_owner = true
 visible = false
 
 [node name="joystick" parent="level/mobile_controls" index="0"]
