@@ -6,7 +6,19 @@ export( Resource ) var settings_data
 
 func _ready():
 	$user_profile/name_background/name.text = settings_data.player_name
-	print(settings_data.player_name)
+	$user_profile/name_background/rank.text = settings_data.gender
+	var gender = settings_data.gender
+	if gender == "male":
+		var boy = preload("res://resources/Models/Player/Idle/1.obj")
+		var boy_skin = preload("res://resources/Models/Player/1.png")
+		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMeshmesh.mesh = boy
+		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.material = boy_skin
+	elif gender == "female":
+		var girl = preload("res://resources/Models/Player -girl/idle/idle- Girl.obj")
+		var girl_skin = preload("res://resources/Models/Player -girl/idle/idle- Girl.png")
+		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.mesh = girl
+		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.material = girl_skin
+		
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
 	$edit_avatar.visible = true

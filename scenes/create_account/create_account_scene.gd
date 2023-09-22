@@ -3,9 +3,7 @@ extends CanvasLayer
 export( Resource ) var settings_data
 
 func _ready():
-
 	settings_data.connect("changed", self, "_on_data_changed")
-	
 
 func _on_confirm_pressed():
 	var nickname_input = $Username/LineEdit
@@ -24,3 +22,6 @@ func _on_confirm_pressed():
 func _on_data_changed():
 	# Update the input field with the player's name from settings_data
 	$Username/LineEdit.text = settings_data.player_name
+
+
+		

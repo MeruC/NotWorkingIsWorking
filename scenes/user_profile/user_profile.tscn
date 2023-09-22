@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -18,10 +18,12 @@
 [ext_resource path="res://inventory_system/resources/font/font_14.tres" type="DynamicFont" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
-
-[sub_resource type="DynamicFont" id=8]
-size = 50
-font_data = ExtResource( 1 )
+[ext_resource path="res://resources/Models/Player/Idle/1.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=20]
+[ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=21]
+[ext_resource path="res://resources/Models/Player/1.png" type="Texture" id=22]
+[ext_resource path="res://global/chapters/environment.tres" type="Environment" id=23]
+[ext_resource path="res://scenes/user_profile/user_profile_showcase.gd" type="Script" id=24]
 
 [sub_resource type="DynamicFont" id=9]
 size = 30
@@ -46,9 +48,8 @@ font_data = ExtResource( 1 )
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=14]
-size = 140
-font_data = ExtResource( 1 )
+[sub_resource type="SpatialMaterial" id=17]
+albedo_texture = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -90,7 +91,7 @@ margin_top = -1.0
 margin_right = 576.0
 margin_bottom = 143.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 21 )
 align = 1
 valign = 1
 
@@ -123,11 +124,6 @@ margin_right = 556.0
 margin_bottom = 648.0
 rect_scale = Vector2( 0.859738, 0.835239 )
 texture = ExtResource( 7 )
-
-[node name="avatar" type="Sprite" parent="user_profile/name_background"]
-position = Vector2( 275, 359 )
-scale = Vector2( 1.33518, 1.2624 )
-texture = ExtResource( 6 )
 
 [node name="skill_mastery_bg" type="NinePatchRect" parent="user_profile"]
 margin_left = 1081.0
@@ -234,17 +230,36 @@ custom_fonts/font = SubResource( 6 )
 text = "Log out"
 flat = true
 
+[node name="ViewportContainer" type="ViewportContainer" parent="user_profile"]
+margin_left = 219.0
+margin_top = 271.0
+margin_right = 819.0
+margin_bottom = 871.0
+
+[node name="Viewport" type="Viewport" parent="user_profile/ViewportContainer"]
+size = Vector2( 600, 600 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Spatial2" type="Spatial" parent="user_profile/ViewportContainer/Viewport"]
+
+[node name="Camera" type="Camera" parent="user_profile/ViewportContainer/Viewport/Spatial2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73063, 4.09754 )
+environment = ExtResource( 23 )
+
+[node name="CSGMesh" type="CSGMesh" parent="user_profile/ViewportContainer/Viewport/Spatial2"]
+mesh = ExtResource( 19 )
+material = SubResource( 17 )
+script = ExtResource( 24 )
+
 [node name="back_btn" type="Button" parent="user_profile"]
-margin_left = 12.0
-margin_top = 6.0
-margin_right = 762.0
-margin_bottom = 492.0
-rect_scale = Vector2( 0.279956, 0.170022 )
-custom_fonts/font = SubResource( 14 )
-text = "home"
-icon = ExtResource( 13 )
-flat = true
-clip_text = true
+margin_left = 14.0
+margin_top = 15.0
+margin_right = 294.374
+margin_bottom = 129.068
+theme = ExtResource( 20 )
+text = "Home"
 icon_align = 1
 
 [node name="edit_avatar" type="CanvasLayer" parent="."]
@@ -425,6 +440,7 @@ position = Vector2( 959, 539 )
 texture = ExtResource( 9 )
 
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
+[connection signal="tree_entered" from="user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh" to="." method="_on_CSGMesh_tree_entered"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
 [connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]

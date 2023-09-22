@@ -10,5 +10,5 @@ inventories = {
 coins = 100
 player_info = {
 }
-player_name = "billy"
-gender = "a"
+player_name = ""
+gender = ""
