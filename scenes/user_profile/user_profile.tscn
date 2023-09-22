@@ -55,7 +55,7 @@ font_data = ExtResource( 1 )
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=21]
 albedo_texture = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -257,7 +257,7 @@ environment = ExtResource( 23 )
 
 [node name="CSGMesh" type="CSGMesh" parent="user_profile/ViewportContainer/Viewport/Spatial2"]
 mesh = ExtResource( 19 )
-material = SubResource( 17 )
+material = SubResource( 21 )
 script = ExtResource( 24 )
 
 [node name="back_btn" type="Button" parent="user_profile"]
