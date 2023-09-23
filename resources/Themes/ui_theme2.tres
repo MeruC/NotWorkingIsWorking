@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=4]
-size = 100
+size = 64
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]

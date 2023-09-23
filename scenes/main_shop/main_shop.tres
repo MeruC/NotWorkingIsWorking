@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
+[ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=26]
+size = 40
+extra_spacing_top = 10
+extra_spacing_bottom = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=29]
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 296, 79 )
+margin_left = 30.0
+margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 296, 79 )
+margin_left = 30.0
+margin_right = 25.0
+margin_top = 6.0
+
+[resource]
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 26 )
+TabContainer/styles/panel = SubResource( 29 )
+TabContainer/styles/tab_bg = SubResource( 25 )
+TabContainer/styles/tab_disabled = SubResource( 28 )
+TabContainer/styles/tab_fg = SubResource( 28 )
