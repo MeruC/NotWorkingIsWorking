@@ -189,6 +189,7 @@ transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
 shape = SubResource( 20 )
 
 [node name="ui" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="bg" type="TextureRect" parent="ui"]
 margin_right = 6000.0
