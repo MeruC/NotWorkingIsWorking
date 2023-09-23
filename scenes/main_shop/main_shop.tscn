@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -6,10 +6,10 @@
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/soundtrack/menu/Track 12.wav" type="AudioStream" id=5]
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=6]
-[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=8]
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=9]
-[ext_resource path="res://inventory_system/scenes/ui/inventory_player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=10]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=12]
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=13]
@@ -22,6 +22,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=20]
 [ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=21]
 [ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=22]
+[ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=24]
 
 [sub_resource type="GDScript" id=13]
 script/source = "extends ParallaxBackground
@@ -61,6 +62,26 @@ font_data = ExtResource( 13 )
 size = 80
 font_data = ExtResource( 13 )
 
+[sub_resource type="GDScript" id=33]
+script/source = "extends PanelContainer
+
+export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
+
+export( Resource ) var player_data
+
+# Draw the player's inventories from the player's data.
+func _ready():
+	#var equipment_panel = ResourceManager.get_instance( \"equipment_node\" )
+	var inventory_left_panel = ResourceManager.get_instance( \"inventory_node\" )
+	var inventory_right_panel = ResourceManager.get_instance( \"inventory_node\" )
+	#inventory_container.add_child( equipment_panel )
+	inventory_container.add_child( inventory_left_panel )
+	inventory_container.add_child( inventory_right_panel )
+	#equipment_panel.inventory = player_data.equipment
+	inventory_left_panel.inventory = player_data.inventory_left
+	inventory_right_panel.inventory = player_data.inventory_right
+"
+
 [sub_resource type="GDScript" id=6]
 script/source = "extends Control
 
@@ -99,25 +120,6 @@ func _on_crafting_opened( list_id ):
 func _on_crafting_out_of_range():
 	close()
 "
-
-[sub_resource type="StyleBoxFlat" id=33]
-bg_color = Color( 0, 0, 0, 0.588235 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 9
-
-[sub_resource type="StyleBoxFlat" id=34]
-bg_color = Color( 0, 0, 0, 1 )
-border_width_right = 25
-border_color = Color( 1, 0.847059, 0, 1 )
-
-[sub_resource type="Theme" id=30]
-VScrollBar/styles/grabber = SubResource( 33 )
-VScrollBar/styles/grabber_highlight = SubResource( 33 )
-VScrollBar/styles/grabber_pressed = SubResource( 33 )
-VScrollBar/styles/scroll = SubResource( 34 )
 
 [sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 9 )
@@ -178,10 +180,10 @@ rect_rotation = -9.04409
 [node name="TextureRect" type="TextureRect" parent="coins/container"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -1.75586
-margin_top = -18.491
-margin_right = 38.2441
-margin_bottom = 21.509
+margin_left = -6.76556
+margin_top = -20.4666
+margin_right = 33.2344
+margin_bottom = 19.5334
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 0, 20 )
 size_flags_horizontal = 3
@@ -193,10 +195,9 @@ unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -241.998
-margin_top = 0.117065
-margin_right = -30.9982
-margin_bottom = 0.117065
+margin_left = -246.0
+margin_top = 12.0
+margin_right = -49.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
 custom_fonts/font = SubResource( 16 )
@@ -226,10 +227,10 @@ custom_fonts/font = SubResource( 20 )
 text = "SHOP"
 
 [node name="Label4" type="Label" parent="coins"]
-margin_left = 683.359
-margin_top = 88.4578
-margin_right = 903.359
-margin_bottom = 168.458
+margin_left = 674.817
+margin_top = 85.8067
+margin_right = 894.817
+margin_bottom = 165.807
 rect_rotation = -9.506
 custom_colors/font_color = Color( 0, 0, 0, 0.647059 )
 custom_fonts/font = SubResource( 21 )
@@ -247,11 +248,65 @@ __meta__ = {
 settings = NodePath("settings_node/settings")
 player_inventory = NodePath("inventory_player")
 
-[node name="inventory_player" parent="ui_container" instance=ExtResource( 10 )]
-margin_left = -926.0
-margin_top = 226.0
-margin_right = -404.0
-margin_bottom = 395.0
+[node name="inventory_player" type="PanelContainer" parent="ui_container"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -964.0
+margin_top = 128.0
+margin_right = -452.0
+margin_bottom = 384.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 0, -60 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+script = SubResource( 33 )
+inventory_container = NodePath("inventory_container")
+player_data = ExtResource( 24 )
+
+[node name="title" type="Control" parent="ui_container/inventory_player"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 236.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="ui_container/inventory_player/title"]
+anchor_right = 1.0
+margin_top = -65.0
+margin_bottom = -23.0
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "Your Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="PanelContainer" parent="ui_container/inventory_player/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -17.3397
+margin_top = 0.012001
+margin_right = 17.204
+margin_bottom = 2.00018
+mouse_filter = 1
+
+[node name="inventory_container" type="VBoxContainer" parent="ui_container/inventory_player"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 236.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="windows" type="Control" parent="ui_container"]
 anchor_right = 1.0
@@ -283,9 +338,9 @@ margin_bottom = 599.0
 mouse_filter = 1
 
 [node name="TabContainer" type="TabContainer" parent="ui_container/windows/crafting_list"]
-margin_left = 10.0
+margin_left = 12.0
 margin_top = -87.0
-margin_right = 681.0
+margin_right = 682.0
 margin_bottom = 620.0
 theme = ExtResource( 12 )
 
@@ -305,19 +360,19 @@ margin_top = 2.0
 margin_right = -2.00006
 rect_min_size = Vector2( 0, 538 )
 size_flags_horizontal = 3
-theme = SubResource( 30 )
+theme = ExtResource( 12 )
 scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer"]
 margin_right = 595.0
-margin_bottom = 1020.0
+margin_bottom = 1124.0
 rect_min_size = Vector2( 595, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_right = 595.0
-margin_bottom = 124.0
+margin_bottom = 137.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable"
 price = 50
@@ -325,9 +380,9 @@ item_id = "rj45"
 quantity = 1
 
 [node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 128.0
+margin_top = 141.0
 margin_right = 595.0
-margin_bottom = 252.0
+margin_bottom = 278.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -335,9 +390,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option3" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 256.0
+margin_top = 282.0
 margin_right = 595.0
-margin_bottom = 380.0
+margin_bottom = 419.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -345,9 +400,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option4" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 384.0
+margin_top = 423.0
 margin_right = 595.0
-margin_bottom = 508.0
+margin_bottom = 560.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -355,9 +410,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option5" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 512.0
+margin_top = 564.0
 margin_right = 595.0
-margin_bottom = 636.0
+margin_bottom = 701.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -365,9 +420,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option6" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 640.0
+margin_top = 705.0
 margin_right = 595.0
-margin_bottom = 764.0
+margin_bottom = 842.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -375,9 +430,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option7" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 768.0
+margin_top = 846.0
 margin_right = 595.0
-margin_bottom = 892.0
+margin_bottom = 983.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -385,9 +440,9 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="shop_option8" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 896.0
+margin_top = 987.0
 margin_right = 595.0
-margin_bottom = 1020.0
+margin_bottom = 1124.0
 size_flags_vertical = 3
 panel_title = "adsda"
 price = 100
@@ -405,9 +460,9 @@ margin_bottom = -20.0
 
 [node name="ColorRect" type="ColorRect" parent="ui_container/windows/crafting_list"]
 show_behind_parent = true
-margin_left = 206.667
+margin_left = 209.334
 margin_top = -390.667
-margin_right = 905.667
+margin_right = 908.334
 margin_bottom = 25.3333
 rect_rotation = 26.0
 mouse_filter = 2
@@ -446,10 +501,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -732.0
-margin_top = -272.0
-margin_right = -350.0
-margin_bottom = 35.0
+margin_left = -941.0
+margin_top = -240.0
+margin_right = -559.0
+margin_bottom = 67.0
 rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
 custom_styles/panel = SubResource( 17 )
