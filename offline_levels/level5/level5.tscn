@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://offline_levels/level5/layer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://offline_mode_Asset/level_5/application_layer.png" type="Texture" id=2]
-[ext_resource path="res://offline_mode_Asset/level_5/physical_layer.png" type="Texture" id=3]
-[ext_resource path="res://offline_mode_Asset/level_5/network_layer.png" type="Texture" id=4]
-[ext_resource path="res://offline_mode_Asset/level_5/transport_layer.png" type="Texture" id=5]
-[ext_resource path="res://offline_mode_Asset/level_5/session_layer.png" type="Texture" id=6]
-[ext_resource path="res://offline_mode_Asset/level_5/presentation_layer.png" type="Texture" id=7]
-[ext_resource path="res://offline_mode_Asset/level_5/data_link_layer.png" type="Texture" id=8]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/application_layer.png" type="Texture" id=2]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/physical_layer.png" type="Texture" id=3]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/network_layer.png" type="Texture" id=4]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/transport_layer.png" type="Texture" id=5]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/session_layer.png" type="Texture" id=6]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/presentation_layer.png" type="Texture" id=7]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/data_link_layer.png" type="Texture" id=8]
 [ext_resource path="res://offline_levels/level5/slot.tscn" type="PackedScene" id=9]
 [ext_resource path="res://offline_levels/level5/manager.gd" type="Script" id=10]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=11]
@@ -194,6 +194,10 @@ id = "6"
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 14 )]
+visible = false
+
+[node name="pause_popup" parent="popup_layer/pause" index="1"]
+visible = false
 
 [node name="game_over" parent="popup_layer" instance=ExtResource( 11 )]
 visible = false
@@ -213,7 +217,6 @@ anims/animation = SubResource( 3 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
-frame = 0
 
 [connection signal="pressed" from="button_container/reload" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="button_container/submit" to="." method="_on_submit_pressed"]

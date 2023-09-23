@@ -18,9 +18,8 @@ export (NodePath) onready var wire_container =  get_node(wire_container) as HBox
 export (NodePath) onready var slot_container =  get_node(slot_container) as Control
 export (NodePath) onready var submit_button =  get_node(submit_button) as Button
 export (NodePath) onready var type_label =  get_node(type_label) as Label
-export (NodePath) onready var game_over =  get_node(game_over) as Control
-export (NodePath) onready var gameover_indicator =  get_node(gameover_indicator) as Label
-export (NodePath) onready var gameover_score =  get_node(gameover_score) as Label
+
+export(String) var type
 
 var level6 = "res://offline_levels/level6/level6.tscn"
 var textures_holder = []
@@ -65,19 +64,14 @@ func _on_crimp_pressed():
 		for child in slot_container.get_children(): 
 			slot_textures.append(child.texture)
 		##
-			
-		if type_label.text.to_upper() == "WIRING STANDARD: T-568A":
+		
+		if type.to_upper() == "A":
 			if slot_textures == arrangement_A:
-				gameover_indicator.text = "Level Complete!"
-				gameover_score.text = "Your Score: 5 / 5"
+				print("tama")
 			else:
-				gameover_indicator.text = "Level Failed"
-				gameover_score.text = "Your Score: 0 / 5"
-		elif type_label.text.to_upper() == "WIRING STANDARD: T-568B":
+				print("mali")
+		elif type.to_upper() == "B":
 			if slot_textures == arrangement_B:
-				gameover_indicator.text = "Level Complete!"
-				gameover_score.text = "Your Score: 5 / 5"
+				print("tama")
 			else:
-				gameover_indicator.text = "Level Failed"
-				gameover_score.text = "Your Score: 0 / 5"
-		game_over.visible = true
+				print("mali")
