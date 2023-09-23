@@ -1,21 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://inventory_system/scripts/ui/inner_panel.gd" type="Script" id=1]
-[ext_resource path="res://inventory_system/resources/sprites/bar.png" type="Texture" id=2]
-[ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=3]
-[ext_resource path="res://inventory_system/resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=2]
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 18, 18 )
-margin_left = 8.0
-margin_right = 8.0
-margin_top = 8.0
-margin_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 0.294118 )
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 4 )
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 2 )
 
 [node name="inner panel" type="PanelContainer"]
 anchor_left = 0.5
@@ -25,7 +25,7 @@ margin_left = -98.5
 margin_right = 98.5
 margin_bottom = 102.0
 rect_min_size = Vector2( 0, 40 )
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 lbl_panel_title = NodePath("title/TextureRect/Label")
 
@@ -42,16 +42,16 @@ margin_left = -18.0
 margin_top = 17.0
 margin_right = 18.0
 margin_bottom = 19.0
-texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="title/TextureRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -89.5
-margin_top = -24.0
-margin_right = 89.5
-custom_colors/font_color = Color( 0.74902, 0.623529, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+margin_left = -118.5
+margin_top = -21.0
+margin_right = 118.5
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "- panel name -"
 align = 1
 valign = 1

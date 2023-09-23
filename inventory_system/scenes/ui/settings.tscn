@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/title.png" type="Texture" id=2]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
-[ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=4]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 [ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=5]
 [ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=6]
 [ext_resource path="res://inventory_system/resources/sprites/x_pressed.png" type="Texture" id=7]
@@ -11,16 +11,16 @@
 [ext_resource path="res://inventory_system/scripts/ui/settings.gd" type="Script" id=9]
 [ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=10]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=12]
 
-[sub_resource type="StyleBoxTexture" id=17]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 212.231, 212.181 )
-margin_left = 22.0
-margin_right = 22.0
-margin_top = 22.0
-margin_bottom = 22.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 0.847059, 0, 1 )
+skew = Vector2( 0.311, 0.016 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=18]
 size = 40
@@ -46,26 +46,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -191.0
-margin_top = -156.0
-margin_right = 191.0
-margin_bottom = 151.0
+margin_left = -667.0
+margin_top = -443.0
+margin_right = 667.0
+margin_bottom = 445.0
 rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 20 )
 script = ExtResource( 9 )
 scale_slider = NodePath("setting list/scale/HSlider")
-fullscreen_check = NodePath("setting list/fullscreen/CheckBox")
+fullscreen_check = NodePath("setting list/CheckBox")
 lbl_min = NodePath("setting list/scale/min")
 lbl_max = NodePath("setting list/scale/max")
 lbl_current = NodePath("setting list/scale/current")
 settings_data = ExtResource( 3 )
 
 [node name="title" type="Control" parent="settings"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 360.0
-margin_bottom = 285.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1324.0
+margin_bottom = 878.0
 mouse_filter = 1
 
 [node name="close" type="TextureButton" parent="settings/title"]
@@ -82,8 +82,8 @@ texture_disabled = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="settings/title"]
 anchor_right = 1.0
-margin_top = -79.0
-margin_bottom = -37.0
+margin_top = -105.0
+margin_bottom = -63.0
 grow_vertical = 0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -109,18 +109,16 @@ patch_margin_top = 6
 patch_margin_right = 8
 patch_margin_bottom = 2
 
-[node name="setting list" type="VBoxContainer" parent="settings"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 360.0
-margin_bottom = 285.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="setting list" type="Control" parent="settings"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1324.0
+margin_bottom = 878.0
 
 [node name="scale" type="NinePatchRect" parent="settings/setting list"]
-margin_right = 338.0
-margin_bottom = 62.0
+visible = false
+margin_right = 890.0
+margin_bottom = 208.0
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
@@ -182,115 +180,67 @@ max_value = 5.0
 step = 0.5
 value = 4.0
 
-[node name="fullscreen" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 66.0
-margin_right = 338.0
-margin_bottom = 129.0
-size_flags_vertical = 3
-texture = ExtResource( 1 )
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="Label" type="Label" parent="settings/setting list/fullscreen"]
+[node name="CheckBox" type="CheckBox" parent="settings/setting list"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -59.0
-margin_top = 4.0
-margin_right = 59.0
-margin_bottom = 10.0
-custom_colors/font_color = Color( 0.423529, 0.247059, 0.121569, 1 )
-custom_fonts/font = SubResource( 19 )
-text = "- Fullscreen -"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = -421.5
+margin_top = 31.0
+margin_right = 421.5
+margin_bottom = 204.0
+focus_mode = 0
+theme = ExtResource( 12 )
+enabled_focus_mode = 0
+text = "FULLSCREEN"
 
-[node name="CheckBox" type="CheckBox" parent="settings/setting list/fullscreen"]
+[node name="holder" type="NinePatchRect" parent="settings/setting list"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -12.0
-margin_top = -8.14029
-margin_right = 12.0
-margin_bottom = 15.8597
+margin_left = -110.0
+margin_top = 191.0
+margin_right = -16.0
+margin_bottom = 211.0
 
-[node name="Others" type="NinePatchRect" parent="settings/setting list/fullscreen"]
-margin_right = 126.0
-
-[node name="others" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 133.0
-margin_right = 338.0
-margin_bottom = 196.0
-size_flags_vertical = 3
-texture = ExtResource( 1 )
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="holder" type="NinePatchRect" parent="settings/setting list/others"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -47.0
-margin_top = -10.0
-margin_right = 47.0
-margin_bottom = 10.0
-
-[node name="save" type="Button" parent="settings/setting list/others/holder"]
+[node name="save" type="Button" parent="settings/setting list/holder"]
 anchor_bottom = 1.0
-margin_left = -32.0
-margin_top = -8.5
-margin_right = 41.0
-margin_bottom = 8.5
+margin_left = -416.0
+margin_top = -294.0
+margin_right = 42.0
+margin_bottom = -141.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
 text = "Save"
 
-[node name="load" type="Button" parent="settings/setting list/others/holder"]
+[node name="load" type="Button" parent="settings/setting list/holder"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -43.0
-margin_top = -9.5
-margin_right = 26.0
-margin_bottom = 8.5
+margin_left = 32.0
+margin_top = -294.0
+margin_right = 511.0
+margin_bottom = -141.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
 text = "Load"
 
-[node name="quit" type="NinePatchRect" parent="settings/setting list"]
-margin_top = 200.0
-margin_right = 338.0
-margin_bottom = 263.0
-rect_min_size = Vector2( 0, 30 )
-size_flags_vertical = 3
-texture = ExtResource( 1 )
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="quit" type="Button" parent="settings/setting list/quit"]
+[node name="quit2" type="Button" parent="settings/setting list"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 117.0
-margin_top = 11.0
-margin_right = -117.0
-margin_bottom = -11.0
+margin_left = 335.0
+margin_top = 548.0
+margin_right = -366.0
+margin_bottom = -67.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
 text = "Quit"
 
 [connection signal="pressed" from="settings/title/close" to="settings" method="_on_close_pressed"]
 [connection signal="gui_input" from="settings/setting list/scale/HSlider" to="settings" method="_on_scale_slider_gui_input"]
-[connection signal="toggled" from="settings/setting list/fullscreen/CheckBox" to="settings" method="_on_CheckBox_toggled"]
-[connection signal="pressed" from="settings/setting list/others/holder/save" to="settings" method="_on_save_pressed"]
-[connection signal="pressed" from="settings/setting list/others/holder/load" to="settings" method="_on_load_pressed"]
-[connection signal="pressed" from="settings/setting list/quit/quit" to="settings" method="_on_quit_pressed"]
+[connection signal="toggled" from="settings/setting list/CheckBox" to="settings" method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="settings/setting list/holder/save" to="settings" method="_on_save_pressed"]
+[connection signal="pressed" from="settings/setting list/holder/load" to="settings" method="_on_load_pressed"]
+[connection signal="pressed" from="settings/setting list/quit2" to="settings" method="_on_quit_pressed"]

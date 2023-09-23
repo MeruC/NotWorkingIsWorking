@@ -4,10 +4,14 @@
 [ext_resource path="res://inventory_system/scenes/ui/inner_panel.tscn" type="PackedScene" id=2]
 
 [node name="inventory" instance=ExtResource( 2 )]
+size_flags_vertical = 3
 script = ExtResource( 1 )
 slot_container = NodePath("MarginContainer/slot_container")
 
 [node name="Label" parent="title/TextureRect" index="0"]
+margin_top = -20.0
+margin_bottom = 13.0
+rect_rotation = 0.00755168
 __meta__ = {
 "_editor_description_": ""
 }

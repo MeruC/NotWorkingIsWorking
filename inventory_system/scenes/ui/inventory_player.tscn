@@ -15,26 +15,25 @@ inventory_container = NodePath("inventory_container")
 player_data = ExtResource( 2 )
 
 [node name="title" parent="." index="0"]
-margin_right = 500.0
-margin_bottom = 147.0
+margin_right = 502.0
+margin_bottom = 149.0
 
 [node name="Label" parent="title" index="0"]
-margin_top = -72.0
-margin_right = -45.0
-margin_bottom = -30.0
+margin_top = -65.0
+margin_bottom = -23.0
 text = "Player's Inventory"
 
 [node name="close" parent="title" index="1"]
-margin_left = -3.0
-margin_top = -54.0
-margin_right = 55.0
-margin_bottom = 9.0
+margin_left = 12.0
+margin_top = -77.0
+margin_right = 70.0
+margin_bottom = -14.0
 
 [node name="inventory_container" type="VBoxContainer" parent="." index="1"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 500.0
-margin_bottom = 147.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 502.0
+margin_bottom = 149.0
 custom_constants/separation = 2
 __meta__ = {
 "_edit_lock_": true

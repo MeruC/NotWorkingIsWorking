@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -9,9 +9,8 @@
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=8]
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=9]
-[ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=10]
+[ext_resource path="res://inventory_system/scenes/ui/inventory_player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
-[ext_resource path="res://inventory_system/scripts/ui/player_stats_window.gd" type="Script" id=12]
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=13]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=14]
 [ext_resource path="res://scenes/main_shop/shop_option.tscn" type="PackedScene" id=15]
@@ -35,6 +34,21 @@ func _process(delta):
 
 "
 
+[sub_resource type="GDScript" id=32]
+script/source = "extends ColorRect
+
+export( NodePath ) onready var lbl_coin = get_node( lbl_coin ) as Label
+
+export( Resource ) var settings_data
+
+func _ready():
+	settings_data.connect( \"changed\", self, \"_on_data_changed\" )
+	lbl_coin.text = str( settings_data.gold_coins )
+
+func _on_data_changed():
+	lbl_coin.text = str( settings_data.gold_coins )
+"
+
 [sub_resource type="DynamicFont" id=16]
 size = 80
 extra_spacing_bottom = 5
@@ -47,40 +61,6 @@ font_data = ExtResource( 13 )
 [sub_resource type="DynamicFont" id=21]
 size = 80
 font_data = ExtResource( 13 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 212.231, 212.181 )
-margin_left = 22.0
-margin_right = 22.0
-margin_top = 22.0
-margin_bottom = 22.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[sub_resource type="GDScript" id=5]
-script/source = "extends PanelContainer
-
-export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
-
-export( Resource ) var player_data
-
-# Draw the player's inventories from the player's data.
-func _ready():
-	#var equipment_panel = ResourceManager.get_instance( \"equipment_node\" )
-	var inventory_left_panel = ResourceManager.get_instance( \"inventory_node\" )
-	var inventory_right_panel = ResourceManager.get_instance( \"inventory_node\" )
-	#inventory_container.add_child( equipment_panel )
-	inventory_container.add_child( inventory_left_panel )
-	inventory_container.add_child( inventory_right_panel )
-	#equipment_panel.inventory = player_data.equipment
-	inventory_left_panel.inventory = player_data.inventory_left
-	inventory_right_panel.inventory = player_data.inventory_right
-"
-
-[sub_resource type="DynamicFont" id=12]
-size = 40
-font_data = ExtResource( 11 )
 
 [sub_resource type="GDScript" id=6]
 script/source = "extends TextureRect
@@ -216,7 +196,7 @@ margin_bottom = -415.0
 rect_rotation = 9.32357
 mouse_filter = 1
 color = Color( 1, 0.847059, 0, 1 )
-script = ExtResource( 12 )
+script = SubResource( 32 )
 lbl_coin = NodePath("container/player_coins")
 settings_data = ExtResource( 14 )
 
@@ -226,9 +206,6 @@ margin_top = 170.332
 margin_right = 949.743
 margin_bottom = 307.332
 rect_rotation = -9.04409
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TextureRect" type="TextureRect" parent="coins/container"]
 anchor_top = 0.5
@@ -298,7 +275,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 settings = NodePath("settings_node/settings")
-player_inventory = NodePath("windows/inventory_player")
+player_inventory = NodePath("inventory_player")
+
+[node name="inventory_player" parent="ui_container" instance=ExtResource( 10 )]
+margin_left = -926.0
+margin_top = 226.0
+margin_right = -404.0
+margin_bottom = 395.0
 
 [node name="windows" type="Control" parent="ui_container"]
 anchor_right = 1.0
@@ -308,77 +291,6 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="inventory_player" type="PanelContainer" parent="ui_container/windows"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -961.0
-margin_top = 141.0
-margin_right = -378.0
-margin_bottom = 303.0
-rect_scale = Vector2( 1.45, 1.45 )
-rect_pivot_offset = Vector2( 0, -60 )
-mouse_filter = 1
-custom_styles/panel = SubResource( 3 )
-script = SubResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-inventory_container = NodePath("inventory_container")
-player_data = ExtResource( 10 )
-
-[node name="title" type="Control" parent="ui_container/windows/inventory_player"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 561.0
-margin_bottom = 140.0
-mouse_filter = 1
-
-[node name="Label" type="Label" parent="ui_container/windows/inventory_player/title"]
-anchor_right = 1.0
-margin_left = 49.0
-margin_top = -71.0
-margin_right = -49.1727
-margin_bottom = -29.0
-grow_vertical = 0
-mouse_filter = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Player's Inventory"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="title" type="NinePatchRect" parent="ui_container/windows/inventory_player/title/Label"]
-show_behind_parent = true
-anchor_left = -0.0515799
-anchor_top = -0.286
-anchor_right = 1.052
-anchor_bottom = 1.28571
-margin_left = -36.2881
-margin_top = 0.012001
-margin_right = 36.1529
-margin_bottom = 2.0
-mouse_filter = 1
-texture = ExtResource( 3 )
-patch_margin_left = 36
-patch_margin_top = 9
-patch_margin_right = 36
-patch_margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="inventory_container" type="VBoxContainer" parent="ui_container/windows/inventory_player"]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 561.0
-margin_bottom = 140.0
-custom_constants/separation = 2
 
 [node name="crafting_list" type="TextureRect" parent="ui_container/windows"]
 margin_left = 939.0

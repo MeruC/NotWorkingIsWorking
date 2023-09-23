@@ -7,9 +7,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 13.0
-margin_top = -3.0
+margin_top = 25.0
 margin_right = 13.0
-margin_bottom = -3.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 2051, 0 )
 
 [node name="bg" type="ColorRect" parent="."]
@@ -43,8 +43,19 @@ enabled_focus_mode = 0
 text = "BUTTON"
 
 [node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 288.0
-margin_top = 433.0
-margin_right = 482.0
-margin_bottom = 606.0
+margin_left = 112.0
+margin_top = 445.0
+margin_right = 864.0
+margin_bottom = 618.0
+focus_mode = 0
 theme = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "CHECKBOX"
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 106.0
+margin_top = 756.0
+margin_right = 958.0
+margin_bottom = 838.0
+theme = ExtResource( 1 )
+value = 100.0
