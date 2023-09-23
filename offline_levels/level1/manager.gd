@@ -118,8 +118,16 @@ func _on_tap_pressed():
 	instructions_sprite.visible = false
 	
 func _on_data_changed():
+	#update coins
 	var coins = setting_data.gold_coins
 	var current = coins+100
+	
+	#update skills
+	var skills = setting_data.net1_skills
+	var update_skills = skills+10
+	
+	setting_data.net1_skills = update_skills
 	setting_data.gold_coins = current
-	print(setting_data.gold_coins)
+	
+	#save the progress
 	SaveManager.save_game()

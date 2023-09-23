@@ -9,7 +9,6 @@ inventories = {
 "coins": 0,
 "equipment": {
 },
-"gender": "Male",
 "inventory_left": {
 3: {
 "id": "gold_coin",
@@ -18,9 +17,13 @@ inventories = {
 },
 "inventory_right": {
 },
-"player_name": "Billy"
+"player_info":{
+"player_name": "Billy",
+"gender": "male",
+"rank" : "rookie",
+"account_status": "new",
+"net1_skills": 0,
+"net2_skills":0
+}
 }
 coins = 0
-player_name = ""
-gender = ""
-rank = ""
