@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=1]
 [ext_resource path="res://global/objects/chest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=8]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=9]
@@ -23,6 +24,7 @@ albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
 script = ExtResource( 10 )
+setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="."]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
