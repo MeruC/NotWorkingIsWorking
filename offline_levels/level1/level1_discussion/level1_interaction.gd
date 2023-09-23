@@ -11,17 +11,15 @@ func _ready():
 
 func interact():
 	$"../../ui".visible = true
-	$"../../ui/message".text = "Welcome "+setting_data.player_name+" are you ready to gain new things about networking?"
+	$"../../ui/AnimationPlayer".play("loading_anim")
 	SignalManager.emit_signal( "pc_opened")
 
 func out_of_range():
 	SignalManager.emit_signal( "pc_closed")
 
 
-func _on_yes_pressed():
-	SignalManager.emit_signal( "pc_closed")
-	get_tree().change_scene("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
-
-
-func _on_no_pressed():
-	SignalManager.emit_signal( "pc_closed")
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$"../../ui/level_selection".visible = true
+	$"../../ui/cat_loading".visible = false
+	$"../../ui/loading_text".visible = false
+	$"../../ui/bg2".visible = false

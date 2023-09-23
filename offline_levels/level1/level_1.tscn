@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://offline_levels/level1/folder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=2]
 [ext_resource path="res://offline_levels/level1/file.tscn" type="PackedScene" id=3]
 [ext_resource path="res://offline_levels/level1/manager.gd" type="Script" id=4]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
@@ -49,8 +50,9 @@ playback_speed = 0.25
 anims/RESET = SubResource( 2 )
 
 [node name="DesktopBg" type="Sprite" parent="."]
-position = Vector2( 640, 360 )
-scale = Vector2( 0.213333, 0.213333 )
+position = Vector2( 961.116, 541.196 )
+scale = Vector2( 0.321039, 0.318699 )
+texture = ExtResource( 2 )
 
 [node name="data_folder" parent="." instance=ExtResource( 1 )]
 position = Vector2( 226, 456 )

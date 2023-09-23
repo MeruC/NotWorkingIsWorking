@@ -3,7 +3,7 @@ extends Control
 # This script for directing users into another scene
 
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
-var level1 = "res://offline_levels/level1/level1_discussion/level1.tscn"
+var level1 = "res://offline_levels/level1/level1_discussion/level1_discussion.tscn"
 var level2 = "res://offline_levels/level2/level2_discussion/level2_discussion.tscn"
 var level3 = "res://offline_levels/level3/level3_discussion.tscn"
 var level4 = "res://offline_levels/level4/level4_discussion/level4_discussion.tscn"
