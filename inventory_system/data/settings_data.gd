@@ -3,9 +3,9 @@ class_name Settings_Data extends Resource
 export( bool ) var fullscreen = true
 export( float ) var scale = 1
 export( int ) var gold_coins = 1000
-export (String) var player_name
-export (String) var gender
-export (String) var rank
+export (String) var player_name = "Billy"
+export (String) var gender = "male"
+export (String) var rank = "1"
 export (String) var account_status
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0

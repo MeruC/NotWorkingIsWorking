@@ -364,14 +364,14 @@ theme = ExtResource( 12 )
 scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer"]
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 1124.0
-rect_min_size = Vector2( 595, 0 )
+rect_min_size = Vector2( 594, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 137.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable"
@@ -381,7 +381,7 @@ quantity = 1
 
 [node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 141.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 278.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -391,7 +391,7 @@ quantity = 1
 
 [node name="shop_option3" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 282.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 419.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -401,7 +401,7 @@ quantity = 1
 
 [node name="shop_option4" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 423.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 560.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -411,7 +411,7 @@ quantity = 1
 
 [node name="shop_option5" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 564.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 701.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -421,7 +421,7 @@ quantity = 1
 
 [node name="shop_option6" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 705.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 842.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -431,7 +431,7 @@ quantity = 1
 
 [node name="shop_option7" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 846.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 983.0
 size_flags_vertical = 3
 panel_title = "adsda"
@@ -441,7 +441,7 @@ quantity = 1
 
 [node name="shop_option8" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 987.0
-margin_right = 595.0
+margin_right = 594.0
 margin_bottom = 1124.0
 size_flags_vertical = 3
 panel_title = "adsda"
