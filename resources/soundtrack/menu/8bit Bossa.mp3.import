@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/8bit Bossa.mp3-769944c8ec57dbcde2c497ef113d6944.mp3str"
+
+[deps]
+
+source_file="res://resources/soundtrack/menu/8bit Bossa.mp3"
+dest_files=[ "res://.import/8bit Bossa.mp3-769944c8ec57dbcde2c497ef113d6944.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

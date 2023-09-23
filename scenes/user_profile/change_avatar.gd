@@ -82,6 +82,6 @@ func _on_select_btn_pressed():
 		$c_avatar_name.text = "Default Character"
 
 
-func _on_back_btn2_pressed():
+func _on_back_btn_pressed():
 	$".".visible = false
 	$"../user_profile".visible = true

@@ -25,12 +25,16 @@ export(NodePath) onready var instructions_popup = get_node(instructions_popup) a
 export(NodePath) onready var instructions_sprite = get_node(instructions_sprite) as Sprite
 ##
 
-var home_scene = "res://main_screen/main_screen.tscn"
+#saving_progress path
+export (Resource) var setting_data
+
+var home_scene = "res://scenes/main_screen/main_screen.tscn"
 var next_scene = "res://offline_levels/level2/level2_discussion/level2_discussion.tscn"
 var level1_scene = "res://offline_levels/level1/level_1.tscn"
 
 func _ready():
 	# To play the animation in instruction popup
+	setting_data.connect("changed", self, "_on_data_changed")
 	animation_player.play("animation")
 	##
 	
@@ -92,6 +96,7 @@ func spawn_new():
 	if int(score_label.text) >= 7:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		_on_data_changed()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
@@ -111,3 +116,10 @@ func _on_next_pressed():
 func _on_tap_pressed():
 	instructions_popup.visible = false
 	instructions_sprite.visible = false
+	
+func _on_data_changed():
+	var coins = setting_data.gold_coins
+	var current = coins+100
+	setting_data.gold_coins = current
+	print(setting_data.gold_coins)
+	SaveManager.save_game()

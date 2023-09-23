@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=10]
 [ext_resource path="res://scenes/user_profile/white_bg.jpg" type="Texture" id=11]
 [ext_resource path="res://scenes/log_in_screen/warning.gd" type="Script" id=12]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
 [ext_resource path="res://scenes/log_in_screen/back_btn.gd" type="Script" id=14]
 [ext_resource path="res://scenes/log_in_screen/back_btn2.gd" type="Script" id=15]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=16]
@@ -90,6 +91,7 @@ anchor_bottom = 1.0
 
 [node name="login_signup_screen" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
+settings_data = ExtResource( 13 )
 
 [node name="login_btn" type="Button" parent="login_signup_screen"]
 margin_left = 791.0

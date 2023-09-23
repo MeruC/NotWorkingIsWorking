@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/user_profile/user_profile.gd" type="Script" id=5]
 [ext_resource path="res://scenes/user_profile/avatar_boy_picture/default_character.png" type="Texture" id=6]
 [ext_resource path="res://scenes/user_profile/BSU_bg.png" type="Texture" id=7]
-[ext_resource path="res://scenes/user_profile/buttons and panels/button1..png" type="Texture" id=8]
+[ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=8]
 [ext_resource path="res://scenes/user_profile/main_menu2_bg.png" type="Texture" id=9]
 [ext_resource path="res://scenes/user_profile/buttons and panels/crown.png" type="Texture" id=10]
 [ext_resource path="res://scenes/user_profile/buttons and panels/panel.png" type="Texture" id=11]
@@ -15,7 +15,7 @@
 [ext_resource path="res://scenes/user_profile/buttons and panels/arrow.png" type="Texture" id=13]
 [ext_resource path="res://scenes/user_profile/podium.png" type="Texture" id=14]
 [ext_resource path="res://scenes/user_profile/change_avatar.gd" type="Script" id=15]
-[ext_resource path="res://resources/Themes/percent.tres" type="Theme" id=16]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
 [ext_resource path="res://resources/Models/Player/Idle/1.obj" type="ArrayMesh" id=19]
@@ -25,6 +25,8 @@
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=23]
 [ext_resource path="res://scenes/user_profile/user_profile_showcase.gd" type="Script" id=24]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=25]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=26]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=9]
 size = 30
@@ -70,13 +72,10 @@ font_data = ExtResource( 1 )
 size = 80
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=16]
-size = 200
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 140
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=22]
+size = 170
+extra_spacing_bottom = 28
+font_data = ExtResource( 25 )
 
 [node name="user_profile" type="Node2D"]
 script = ExtResource( 5 )
@@ -97,6 +96,7 @@ margin_left = -4.0
 margin_top = -1.0
 margin_right = 576.0
 margin_bottom = 143.0
+theme = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 21 )
 align = 1
@@ -151,45 +151,44 @@ margin_top = 87.0
 margin_right = 1576.0
 margin_bottom = 129.0
 rect_scale = Vector2( 1.26352, 1.68121 )
+theme = ExtResource( 26 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 18 )
 text = "Knowledge Obtain"
 
 [node name="router_progress" type="ProgressBar" parent="user_profile"]
-margin_left = 1457.0
-margin_top = 245.0
-margin_right = 1755.0
-margin_bottom = 294.0
+margin_left = 1269.0
+margin_top = 292.0
+margin_right = 1567.0
+margin_bottom = 347.0
 rect_scale = Vector2( 1.20649, 1.7043 )
 theme = ExtResource( 16 )
-value = 30.0
 rounded = true
 
 [node name="router_skills" type="Label" parent="user_profile"]
-margin_left = 1130.0
-margin_top = 254.0
-margin_right = 1427.0
-margin_bottom = 321.0
+margin_left = 1305.0
+margin_top = 211.0
+margin_right = 1602.0
+margin_bottom = 253.0
 rect_scale = Vector2( 1.05001, 1.62573 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 19 )
 text = "Networking 1"
 
 [node name="term_progress" type="ProgressBar" parent="user_profile"]
-margin_left = 1464.0
-margin_top = 442.0
-margin_right = 1762.0
-margin_bottom = 491.0
+margin_left = 1269.0
+margin_top = 529.0
+margin_right = 1567.0
+margin_bottom = 584.0
 rect_scale = Vector2( 1.17865, 1.82219 )
 theme = ExtResource( 16 )
-value = 50.0
 rounded = true
 
 [node name="networking_term" type="Label" parent="user_profile"]
-margin_left = 1132.0
-margin_top = 458.0
-margin_right = 1428.0
-margin_bottom = 500.0
+margin_left = 1302.0
+margin_top = 439.0
+margin_right = 1598.0
+margin_bottom = 481.0
 rect_scale = Vector2( 0.963552, 1.77096 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 20 )
@@ -224,6 +223,7 @@ margin_left = 1175.0
 margin_top = 914.0
 margin_right = 1772.0
 margin_bottom = 1047.0
+theme = ExtResource( 16 )
 texture = ExtResource( 3 )
 
 [node name="logout_btn" type="Button" parent="user_profile/logout_bg"]
@@ -394,27 +394,14 @@ align = 1
 valign = 1
 
 [node name="select_btn" type="Button" parent="edit_avatar"]
-margin_left = 1315.0
-margin_top = 942.0
-margin_right = 2239.0
-margin_bottom = 1200.0
+margin_left = 1300.0
+margin_top = 970.0
+margin_right = 2224.0
+margin_bottom = 1231.0
 rect_scale = Vector2( 0.234231, 0.364656 )
-custom_fonts/font = SubResource( 16 )
+theme = ExtResource( 16 )
+custom_fonts/font = SubResource( 22 )
 text = "Select"
-icon = ExtResource( 8 )
-clip_text = true
-icon_align = 1
-
-[node name="back_btn2" type="Button" parent="edit_avatar"]
-margin_left = 9.0
-margin_top = 14.0
-margin_right = 759.0
-margin_bottom = 500.0
-rect_scale = Vector2( 0.307402, 0.247193 )
-custom_fonts/font = SubResource( 5 )
-text = "Back"
-icon = ExtResource( 13 )
-flat = true
 clip_text = true
 icon_align = 1
 
@@ -436,6 +423,14 @@ position = Vector2( 1433, 570 )
 scale = Vector2( 1.18297, 1.06684 )
 texture = ExtResource( 6 )
 
+[node name="back_btn" type="Button" parent="edit_avatar"]
+margin_left = 72.0
+margin_top = 30.0
+margin_right = 351.0
+margin_bottom = 162.0
+theme = ExtResource( 16 )
+text = "Back"
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 12 )
 
@@ -446,9 +441,12 @@ motion_mirroring = Vector2( 1920, 0 )
 position = Vector2( 959, 539 )
 texture = ExtResource( 9 )
 
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 27 )]
+stream = ExtResource( 8 )
+
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
 [connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
 [connection signal="pressed" from="edit_avatar/select_btn" to="edit_avatar" method="_on_select_btn_pressed"]
-[connection signal="pressed" from="edit_avatar/back_btn2" to="edit_avatar" method="_on_back_btn2_pressed"]
+[connection signal="pressed" from="edit_avatar/back_btn" to="edit_avatar" method="_on_back_btn_pressed"]

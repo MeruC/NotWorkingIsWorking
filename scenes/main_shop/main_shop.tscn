@@ -290,7 +290,6 @@ margin_bottom = 620.0
 theme = ExtResource( 12 )
 
 [node name="Materials" type="Tabs" parent="ui_container/windows/crafting_list/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -311,7 +310,7 @@ scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer"]
 margin_right = 595.0
-margin_bottom = 569.0
+margin_bottom = 1020.0
 rect_min_size = Vector2( 595, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
@@ -396,6 +395,7 @@ item_id = "gold_coin"
 quantity = 1
 
 [node name="Equipments" type="Tabs" parent="ui_container/windows/crafting_list/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0

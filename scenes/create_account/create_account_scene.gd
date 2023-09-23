@@ -18,6 +18,7 @@ func _on_confirm_pressed():
 		$".".visible = false
 		$"../select_gender".visible = true
 		SaveManager.save_game()
+		$"../AnimationPlayer".play("male_anim")
 
 func _on_data_changed():
 	# Update the input field with the player's name from settings_data

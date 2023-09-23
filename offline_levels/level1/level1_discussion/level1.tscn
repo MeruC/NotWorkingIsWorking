@@ -21,7 +21,7 @@
 [ext_resource path="res://scenes/user_profile/white_bg.jpg" type="Texture" id=19]
 [ext_resource path="res://offline_levels/level_selection/level_selection.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/user_profile/buttons and panels/cat_loding.png" type="Texture" id=21]
-[ext_resource path="res://resources/soundtrack/menu/track_08.wav" type="AudioStream" id=22]
+[ext_resource path="res://resources/soundtrack/menu/Curious Critters (Extended Version) 1.mp3" type="AudioStream" id=22]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=23]
 
 [sub_resource type="PlaneMesh" id=11]
