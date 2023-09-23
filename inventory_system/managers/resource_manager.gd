@@ -42,10 +42,10 @@ var fonts = {
 }
 
 var colors = {
-	Game_Enums.RARITY.NORMAL : Color( "905c32" ),
-	Game_Enums.RARITY.MAGIC : Color( "5b6ee1" ),
-	Game_Enums.RARITY.RARE : Color( "999200" ),
-	Game_Enums.RARITY.UNIQUE : Color( "bf3d00" ),
+	Game_Enums.RARITY.NORMAL : Color( "000000" ),
+	Game_Enums.RARITY.MAGIC : Color( "000000" ),
+	Game_Enums.RARITY.RARE : Color( "000000" ),
+	Game_Enums.RARITY.UNIQUE : Color( "000000" ),
 }
 
 var tscn = {

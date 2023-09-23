@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://global/objects/computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://scenes/user_profile/buttons and panels/cat_loding.png" type="Texture" id=21]
 [ext_resource path="res://resources/soundtrack/menu/Curious Critters (Extended Version) 1.mp3" type="AudioStream" id=22]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=23]
+[ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=24]
+[ext_resource path="res://icon.png" type="Texture" id=25]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -87,6 +89,15 @@ font_data = ExtResource( 18 )
 unique_name_in_owner = true
 script = ExtResource( 11 )
 setting_data = ExtResource( 2 )
+
+[node name="pixelizer" type="TextureRect" parent="."]
+material = ExtResource( 24 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 25 )
+stretch_mode = 1
+flip_v = true
 
 [node name="floor" type="CSGMesh" parent="."]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )

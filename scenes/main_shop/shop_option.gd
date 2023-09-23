@@ -55,10 +55,9 @@ func set_craft_button():
 func _on_craft_pressed():
 	var current_coins = int(coins.text)
 	if current_coins < price:
-		pass
+		return
 	coins.text = str(current_coins - price)
 	settings_data.gold_coins = int(coins.text)
-	print(settings_data.gold_coins)
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
 
 # Check to see if it's possible to craft after a change in the player/crafting inventories.

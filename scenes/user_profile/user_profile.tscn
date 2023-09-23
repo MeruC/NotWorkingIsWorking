@@ -163,6 +163,7 @@ margin_right = 1567.0
 margin_bottom = 347.0
 rect_scale = Vector2( 1.20649, 1.7043 )
 theme = ExtResource( 16 )
+value = 50.0
 rounded = true
 
 [node name="router_skills" type="Label" parent="user_profile"]
@@ -182,6 +183,7 @@ margin_right = 1567.0
 margin_bottom = 584.0
 rect_scale = Vector2( 1.17865, 1.82219 )
 theme = ExtResource( 16 )
+value = 90.0
 rounded = true
 
 [node name="networking_term" type="Label" parent="user_profile"]

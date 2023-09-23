@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://online_mode/level_editor/place.gd" type="Script" id=24]
 [ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=25]
 
+[sub_resource type="Theme" id=16]
+
 [sub_resource type="CameraTexture" id=14]
 
 [sub_resource type="PlaneMesh" id=11]
@@ -39,6 +41,7 @@ albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
 script = ExtResource( 12 )
 
 [node name="pixelizer" type="TextureRect" parent="."]
+visible = false
 material = ExtResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -98,6 +101,8 @@ margin_right = 210.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 52.5 )
 rect_pivot_offset = Vector2( 210, 150 )
+theme = SubResource( 16 )
+mode_overrides_title = false
 access = 1
 filters = PoolStringArray( "*.tscn" )
 script = ExtResource( 8 )
@@ -348,6 +353,16 @@ playback_process_mode = 0
 unique_name_in_owner = true
 script = ExtResource( 25 )
 setting_data = ExtResource( 3 )
+
+[node name="pixelizer" type="TextureRect" parent="level"]
+unique_name_in_owner = true
+material = ExtResource( 13 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+stretch_mode = 1
+flip_v = true
 
 [node name="floor" type="CSGMesh" parent="level"]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )

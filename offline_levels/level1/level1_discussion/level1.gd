@@ -6,13 +6,15 @@ var mobile_controls
 var joystick
 export (Resource) var setting_data
 var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
+
 func _ready():
-	if setting_data.gender == "male":
-		player = preload("res://global/Player/Player.tscn")
-		add_child(player.instance())
-	elif setting_data.gender == "female":
-		player = preload("res://global/Player_girl/player-girl.tscn")
-		add_child(player.instance())
+	match(setting_data.gender):
+		"male":
+			player = preload("res://global/Player/Player.tscn")
+			add_child(player.instance())
+		"female":
+			player = preload("res://global/Player_girl/player-girl.tscn")
+			add_child(player.instance())
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
 

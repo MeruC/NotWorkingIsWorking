@@ -6,7 +6,11 @@ export( Resource ) var settings_data
 
 func _ready():
 	$user_profile/name_background/name.text = settings_data.player_name
-	$user_profile/name_background/rank.text = settings_data.gender
+	$user_profile/name_background/rank.text = settings_data.rank
+	$user_profile/router_progress.min_value = 0  # Set the minimum value
+	$user_profile/term_progress.min_value = 0  # Set the minimum value
+	$user_profile/router_progress.value = settings_data.net1_skills  # Set the current progress
+	$user_profile/term_progress.value = settings_data.net2_skills  # Set the current progress
 	var gender = settings_data.gender
 	if gender == "female":
 		var girl = preload("res://resources/Models/Player -girl/idle/idle- Girl.obj")
