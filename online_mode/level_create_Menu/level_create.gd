@@ -35,7 +35,7 @@ func _ready():
 func _on_create_pressed():
 	Global.w = cur_w
 	Global.d = cur_d
-	get_tree().change_scene(level_editor)
+	Load.load_scene(self, level_editor)
 
 
 func _on_w_value_changed(value):

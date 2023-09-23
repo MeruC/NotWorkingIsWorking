@@ -1,9 +1,9 @@
 extends FileDialog
 
-onready var level = get_node("/root/main/level")
-onready var ui = get_node("/root/main/UI")
-onready var play = get_node("/root/main/UI/editor/modes/play")
-onready var main = get_node("/root/main")
+onready var level = get_node("/root/editor/level")
+onready var ui = get_node("/root/editor/UI")
+onready var play = get_node("/root/editor/UI/editor/modes/play")
+onready var main = get_node("/root/editor")
 
 func refresh():
 	self._draw()
@@ -11,7 +11,7 @@ func refresh():
 func _draw():
 	set_current_dir("res://online_mode/level_editor/SavedLevels/")
 
-onready var popup : FileDialog = get_node("/root/main/UI/editor/FileDialog")
+onready var popup : FileDialog = get_node("/root/editor/UI/editor/FileDialog")
 
 func _on_Save_pressed():
 

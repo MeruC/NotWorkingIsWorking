@@ -280,6 +280,7 @@ InventoryManager="*res://inventory_system/managers/inventory_manager.tscn"
 SaveManager="*res://inventory_system/managers/save_manager.gd"
 CooldownManager="*res://inventory_system/managers/cooldown_manager.gd"
 Global="*res://global/Global.gd"
+Load="*res://scenes/loading/load.gd"
 
 [debug]
 

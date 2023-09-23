@@ -13,10 +13,10 @@ func _on_play_pressed():
 		var new_item = playerSpawn.instance() 
 		main.add_child(new_item)
 		new_item.owner = main
-		player = get_node("/root/main/Player")
+		player = get_node("/root/editor/Player")
 		#new_item.global_translation = Vec
-		get_node("root/main/Editor_Camera/Camera").current=false
-		get_node("root/main/Player/Camera/Camera").current=true
+		get_node("root/editor/Editor_Camera/Camera").current=false
+		get_node("root/editor/Player/Camera/Camera").current=true
 		Global.can_place = false
 		player.can_move = true
 		player.set_visible(true)
@@ -27,7 +27,7 @@ func _on_play_pressed():
 	elif(Global.edit_mode==false):
 		get_parent().remove_child(player)
 		player.queue_free()
-		get_node("root/main/Editor_Camera/Camera").current=true
+		get_node("root/editor/Editor_Camera/Camera").current=true
 		Global.can_place = true
 		player.can_move = false
 		player.set_visible(false)
@@ -51,7 +51,7 @@ func _on_play_mouse_exited():
 		var new_item = playerSpawn.instance() 
 		main.add_child(new_item)
 		new_item.owner = main
-		player = get_node("/root/main/Player")
+		player = get_node("/root/editor/Player")
 		#new_item.global_translation = Vec
 		$"../Editor_Camera/Camera".current=false
 		$"../Player/Camera/Camera".current=true

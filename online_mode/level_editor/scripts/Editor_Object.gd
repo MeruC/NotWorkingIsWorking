@@ -69,7 +69,7 @@ func _process(delta):
 	#	$"../UI/editor/modes/current_mode2".text = "can_place"
 	#else:
 	#	$"../UI/editor/modes/current_mode2".text = "no_place"
-	level = get_node("/root/main/level")
+	level = get_node("/root/editor/level")
 	
 	if(Global.editor_mode != "play"):
 		preview_parent.set_visible(false)

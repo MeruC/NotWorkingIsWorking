@@ -1,6 +1,6 @@
 extends TabContainer
 
-onready var object_cursor = get_node("/root/main/Editor_Object")
+onready var object_cursor = get_node("/root/editor/Editor_Object")
 
 func _on_TabContainer_mouse_entered():
 	Global.can_place = false

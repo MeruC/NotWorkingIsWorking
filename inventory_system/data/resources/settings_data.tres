@@ -7,5 +7,5 @@ script = ExtResource( 1 )
 fullscreen = false
 scale = 1.0
 gold_coins = 1000
-player_name = ""
-gender = ""
+player_name = "Test"
+gender = "male"
