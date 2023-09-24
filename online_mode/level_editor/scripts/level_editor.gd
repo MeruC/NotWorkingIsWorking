@@ -27,6 +27,7 @@ func _ready():
 	playarea.set_width(Global.w * 2)
 	playarea.set_depth(Global.d * 2)
 	pixelizer.owner = level
+	pixelizer.owner = level
 	
 	var dir = Directory.new()
 	if not dir.dir_exists( SAVE_FOLDER ):
