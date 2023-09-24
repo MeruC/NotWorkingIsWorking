@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -28,11 +28,10 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=26]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=27]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=28]
+[ext_resource path="res://online_mode/level_editor/scripts/modeMenu.gd" type="Script" id=29]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=30]
 
 [sub_resource type="CameraTexture" id=14]
-
-[sub_resource type="Animation" id=42]
-resource_name = "mode"
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -46,7 +45,7 @@ content_margin_right = 169.0
 content_margin_top = 72.0
 content_margin_bottom = 9.0
 bg_color = Color( 0, 0.741176, 1, 1 )
-skew = Vector2( -0.159, -0.322 )
+skew = Vector2( -0.159, -0.273 )
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
@@ -65,7 +64,7 @@ content_margin_right = 169.0
 content_margin_top = 72.0
 content_margin_bottom = 9.0
 bg_color = Color( 0, 0.34902, 0.47451, 1 )
-skew = Vector2( -0.159, -0.322 )
+skew = Vector2( -0.159, -0.273 )
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
@@ -316,6 +315,173 @@ albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
 
 [sub_resource type="BoxShape" id=13]
 
+[sub_resource type="Animation" id=43]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -80.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -716.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -66.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -514.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -46.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -333.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("UI/editor/modes/modeMenu/place:rect_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -28.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("UI/editor/modes/modeMenu/place:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -190.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "mode"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -80.5583, -0.25, 0, 0.25, 0, -80.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 221, -0.25, 0, 0.25, 0, -716.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -66.5583, -0.25, 0, 0.25, 0, -66.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 216, -0.25, 0, 0.25, 0, -514.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -46.5583, -0.25, 0, 0.25, 0, -46.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 216, -0.25, 0, 0.25, 0, -333.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("UI/editor/modes/modeMenu/place:rect_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -28.5583, -0.25, 0, 0.25, 0, -28.5583, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("UI/editor/modes/modeMenu/place:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 195, -0.25, 0, 0.25, 0, -190.289, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+
 [node name="editor" type="Spatial"]
 script = ExtResource( 12 )
 
@@ -523,25 +689,23 @@ rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 26 )
 text = "Play"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/editor/modes"]
-root_node = NodePath("")
-anims/mode = SubResource( 42 )
-
 [node name="modeMenu" type="Button" parent="UI/editor/modes"]
 margin_left = -21.0
 margin_top = 508.0
-margin_right = 473.0
-margin_bottom = 680.0
+margin_right = 613.0
+margin_bottom = 691.0
 theme = SubResource( 39 )
 toggle_mode = true
-text = "MODE"
+text = "Place"
+align = 0
+script = ExtResource( 29 )
 
 [node name="select" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -46.5583
-margin_top = -333.289
+margin_top = 216.0
 margin_right = 569.442
-margin_bottom = -160.289
+margin_bottom = 389.0
 rect_rotation = -1.47408
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 26 )
@@ -552,28 +716,28 @@ custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
 text = " Select "
 
-[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
-margin_left = -80.5583
-margin_top = -716.289
-margin_right = 527.442
-margin_bottom = -543.289
-rect_rotation = -0.632662
-rect_pivot_offset = Vector2( 0, 40 )
+margin_left = -28.5583
+margin_top = 195.0
+margin_right = 530.442
+margin_bottom = 368.0
+rect_rotation = 5.48748
+rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 26 )
 custom_fonts/font = SubResource( 19 )
 custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = "Remove"
+text = " Place "
 
 [node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -66.5583
-margin_top = -514.289
+margin_top = 216.0
 margin_right = 590.442
-margin_bottom = -341.289
+margin_bottom = 389.0
 rect_rotation = -5.19831
 rect_pivot_offset = Vector2( 34, 40 )
 theme = ExtResource( 26 )
@@ -584,21 +748,21 @@ custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
 text = " Rotate "
 
-[node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
-margin_left = -28.5583
-margin_top = -190.289
-margin_right = 530.442
-margin_bottom = -17.2889
-rect_rotation = 5.48748
-rect_pivot_offset = Vector2( 65, 40 )
+margin_left = -80.5583
+margin_top = 221.0
+margin_right = 527.442
+margin_bottom = 394.0
+rect_rotation = -0.632662
+rect_pivot_offset = Vector2( 0, 40 )
 theme = ExtResource( 26 )
 custom_fonts/font = SubResource( 19 )
 custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = " Place "
+text = "Remove"
 
 [node name="current_mode" type="Label" parent="UI/editor/modes"]
 margin_left = 1760.0
@@ -734,6 +898,7 @@ playback_process_mode = 0
 [node name="level" type="Spatial" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 25 )
+setting_data = ExtResource( 30 )
 
 [node name="pixelizer" type="TextureRect" parent="level"]
 unique_name_in_owner = true
@@ -838,6 +1003,13 @@ no_sign = NodePath("../no-sign")
 rotate_object = NodePath("../UI/editor/rotate")
 editor_camera = NodePath("../Editor_Camera")
 
+[node name="MenuAnimations" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+reset_on_save = false
+playback_speed = 2.0
+anims/RESET = SubResource( 43 )
+anims/mode = SubResource( 42 )
+
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
 [connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
 [connection signal="confirmed" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_confirmed"]
@@ -849,18 +1021,19 @@ editor_camera = NodePath("../Editor_Camera")
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_select_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_remove_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_rotate_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_place_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_rotate_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_remove_pressed"]
 [connection signal="mouse_entered" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="mouse_entered" from="UI/editor/move/down" to="UI/editor/modes" method="_on_modes_mouse_entered"]

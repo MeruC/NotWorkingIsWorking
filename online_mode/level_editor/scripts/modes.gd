@@ -13,6 +13,8 @@ export( NodePath ) onready var previews = get_node(previews) as Spatial
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
 export( NodePath ) onready var item_select = get_node(item_select) as Control
 export( NodePath ) onready var other_ui = get_node(other_ui) as Control
+onready var mode_menu = $modeMenu
+onready var menu_animations = $"%MenuAnimations"
 
 
 var playerSpawn = preload("res://global/Player/player.tscn")
@@ -49,16 +51,25 @@ func _on_place_pressed():
 	item_select.set_visible(true)
 	yield(get_tree().create_timer(0.2),"timeout")
 	Global.can_place = true
+	mode_menu.text = "Place"
+	mode_menu.pressed = false
+	menu_animations.play_backwards("mode")
 
 
 func _on_rotate_pressed():
 	Global.editor_mode = "rotate"
 	item_select.set_visible(false)
+	mode_menu.text = "Rotate"
+	mode_menu.pressed = false
+	menu_animations.play_backwards("mode")
 
 
 func _on_remove_pressed():
 	Global.editor_mode = "remove"
 	item_select.set_visible(false)
+	mode_menu.text = "Remove"
+	mode_menu.pressed = false
+	menu_animations.play_backwards("mode")
 
 func _on_play_pressed():
 	inventory = main.get_node("level/inventory")
@@ -112,3 +123,6 @@ func _on_play_pressed():
 func _on_select_pressed():
 	Global.editor_mode = "select"
 	item_select.set_visible(false)
+	mode_menu.text = "Select"
+	mode_menu.pressed = false
+	menu_animations.play_backwards("mode")
