@@ -17,7 +17,7 @@ onready var mode_menu = $modeMenu
 onready var menu_animations = $"%MenuAnimations"
 
 
-var playerSpawn = preload("res://global/player/player.tscn")
+var playerSpawn = preload("res://global/player/player_editor.tscn")
 var last_mode = "place"
 
 func _ready():
@@ -85,7 +85,6 @@ func _on_play_pressed():
 		
 		#Changing Camera
 		CameraTransition.transition_camera3D(main.get_node("Editor_Camera/Camera"), main.get_node("Player/Camera/Camera"), 1.5)
-	
 		#Editor Mode
 		last_mode = Global.editor_mode
 		Global.editor_mode = "play"

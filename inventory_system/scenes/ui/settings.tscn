@@ -1,34 +1,29 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=1]
-[ext_resource path="res://inventory_system/resources/sprites/title.png" type="Texture" id=2]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
-[ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=5]
-[ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=6]
-[ext_resource path="res://inventory_system/resources/sprites/x_pressed.png" type="Texture" id=7]
 [ext_resource path="res://inventory_system/resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://inventory_system/scripts/ui/settings.gd" type="Script" id=9]
-[ext_resource path="res://inventory_system/resources/sprites/x_disabled.png" type="Texture" id=10]
-[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=12]
-
-[sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 1, 0.847059, 0, 1 )
-skew = Vector2( 0.311, 0.016 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 40
-font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.398, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
 
 [node name="settings" type="ColorRect"]
 anchor_left = 0.5
@@ -39,86 +34,62 @@ margin_left = -960.0
 margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
-color = Color( 0, 0, 0, 0.588235 )
-
-[node name="settings" type="PanelContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -667.0
-margin_top = -443.0
-margin_right = 667.0
-margin_bottom = 445.0
-rect_pivot_offset = Vector2( 191, 156 )
-mouse_filter = 1
-custom_styles/panel = SubResource( 20 )
-script = ExtResource( 9 )
-scale_slider = NodePath("setting list/scale/HSlider")
-fullscreen_check = NodePath("setting list/CheckBox")
-lbl_min = NodePath("setting list/scale/min")
-lbl_max = NodePath("setting list/scale/max")
-lbl_current = NodePath("setting list/scale/current")
-settings_data = ExtResource( 3 )
-
-[node name="title" type="Control" parent="settings"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1324.0
-margin_bottom = 878.0
-mouse_filter = 1
-
-[node name="close" type="TextureButton" parent="settings/title"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = -23.0
-margin_right = 25.0
-margin_bottom = -14.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 10 )
-
-[node name="Label" type="Label" parent="settings/title"]
-anchor_right = 1.0
-margin_top = -105.0
-margin_bottom = -63.0
-grow_vertical = 0
-mouse_filter = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 18 )
-text = "Settings"
-align = 1
-valign = 1
+color = Color( 0, 0, 0, 0.686275 )
 __meta__ = {
-"_edit_group_": true
+"_edit_lock_": true
 }
 
-[node name="title" type="NinePatchRect" parent="settings/title/Label"]
-show_behind_parent = true
+[node name="settings" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -18.0
-margin_right = 6.0
-margin_bottom = 17.0
+margin_left = 451.0
+margin_top = 119.0
+margin_right = -451.0
+margin_bottom = -119.0
+rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
-texture = ExtResource( 2 )
-patch_margin_left = 8
-patch_margin_top = 6
-patch_margin_right = 8
-patch_margin_bottom = 2
+theme = ExtResource( 4 )
+script = ExtResource( 9 )
+scale_slider = NodePath("../setting list/VBoxContainer/scale/HSlider")
+fullscreen_check = NodePath("../setting list/VBoxContainer/fullscreen")
+lbl_min = NodePath("../setting list/VBoxContainer/scale/min")
+lbl_max = NodePath("../setting list/VBoxContainer/scale/max")
+lbl_current = NodePath("../setting list/VBoxContainer/scale/current")
+settings_data = ExtResource( 3 )
 
-[node name="setting list" type="Control" parent="settings"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1324.0
-margin_bottom = 878.0
+[node name="setting list" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 474.0
+margin_top = 232.0
+margin_right = -474.0
+margin_bottom = -199.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 538 )
+size_flags_horizontal = 3
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
 
-[node name="scale" type="NinePatchRect" parent="settings/setting list"]
+[node name="VBoxContainer" type="VBoxContainer" parent="setting list"]
+margin_left = 194.0
+margin_right = 777.0
+margin_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_constants/separation = 70
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="setting list/VBoxContainer"]
+margin_right = 583.0
+
+[node name="scale" type="NinePatchRect" parent="setting list/VBoxContainer"]
 visible = false
-margin_right = 890.0
-margin_bottom = 208.0
+margin_right = 583.0
+margin_bottom = 16.0
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 patch_margin_left = 8
@@ -126,7 +97,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="current" type="Label" parent="settings/setting list/scale"]
+[node name="current" type="Label" parent="setting list/VBoxContainer/scale"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -59.0
@@ -139,7 +110,7 @@ text = "- Scale -"
 align = 1
 valign = 1
 
-[node name="min" type="Label" parent="settings/setting list/scale"]
+[node name="min" type="Label" parent="setting list/VBoxContainer/scale"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -160.0
@@ -151,7 +122,7 @@ custom_fonts/font = SubResource( 19 )
 text = "Min: #"
 valign = 1
 
-[node name="max" type="Label" parent="settings/setting list/scale"]
+[node name="max" type="Label" parent="setting list/VBoxContainer/scale"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 107.0
@@ -167,7 +138,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSlider" type="HSlider" parent="settings/setting list/scale"]
+[node name="HSlider" type="HSlider" parent="setting list/VBoxContainer/scale"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -180,67 +151,84 @@ max_value = 5.0
 step = 0.5
 value = 4.0
 
-[node name="CheckBox" type="CheckBox" parent="settings/setting list"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -421.5
-margin_top = 31.0
-margin_right = 421.5
-margin_bottom = 204.0
+[node name="fullscreen" type="CheckBox" parent="setting list/VBoxContainer"]
+margin_top = 70.0
+margin_right = 583.0
+margin_bottom = 202.0
 focus_mode = 0
 theme = ExtResource( 12 )
 enabled_focus_mode = 0
 text = "FULLSCREEN"
 
-[node name="holder" type="NinePatchRect" parent="settings/setting list"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -110.0
-margin_top = 191.0
-margin_right = -16.0
-margin_bottom = 211.0
+[node name="TextureRect2" type="TextureRect" parent="setting list/VBoxContainer"]
+margin_top = 272.0
+margin_right = 583.0
+margin_bottom = 272.0
 
-[node name="save" type="Button" parent="settings/setting list/holder"]
-anchor_bottom = 1.0
-margin_left = -416.0
-margin_top = -294.0
-margin_right = 42.0
-margin_bottom = -141.0
-focus_mode = 0
-theme = ExtResource( 4 )
-enabled_focus_mode = 0
-text = "Save"
-
-[node name="load" type="Button" parent="settings/setting list/holder"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_top = -294.0
-margin_right = 511.0
-margin_bottom = -141.0
-focus_mode = 0
-theme = ExtResource( 4 )
-enabled_focus_mode = 0
-text = "Load"
-
-[node name="quit2" type="Button" parent="settings/setting list"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 335.0
-margin_top = 548.0
-margin_right = -366.0
-margin_bottom = -67.0
+[node name="quit2" type="Button" parent="setting list/VBoxContainer"]
+visible = false
+margin_top = 676.0
+margin_right = 583.0
+margin_bottom = 808.0
 focus_mode = 0
 theme = ExtResource( 4 )
 enabled_focus_mode = 0
 text = "Quit"
 
-[connection signal="pressed" from="settings/title/close" to="settings" method="_on_close_pressed"]
-[connection signal="gui_input" from="settings/setting list/scale/HSlider" to="settings" method="_on_scale_slider_gui_input"]
-[connection signal="toggled" from="settings/setting list/CheckBox" to="settings" method="_on_CheckBox_toggled"]
-[connection signal="pressed" from="settings/setting list/holder/save" to="settings" method="_on_save_pressed"]
-[connection signal="pressed" from="settings/setting list/holder/load" to="settings" method="_on_load_pressed"]
-[connection signal="pressed" from="settings/setting list/quit2" to="settings" method="_on_quit_pressed"]
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 618.0
+margin_top = 61.0
+margin_right = -605.0
+margin_bottom = 192.0
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource( 12 )
+custom_fonts/font = SubResource( 20 )
+text = "settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="PanelContainer" parent="Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -17.3397
+margin_top = 0.012001
+margin_right = 17.204
+margin_bottom = 2.00018
+mouse_filter = 1
+custom_styles/panel = SubResource( 21 )
+
+[node name="save" type="Button" parent="."]
+modulate = Color( 0.54902, 1, 0.176471, 1 )
+margin_left = 993.0
+margin_top = 896.0
+margin_right = 1336.0
+margin_bottom = 1028.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "Save"
+
+[node name="cancel" type="Button" parent="."]
+modulate = Color( 0.94902, 0.223529, 0.223529, 1 )
+margin_left = 559.0
+margin_top = 896.0
+margin_right = 917.0
+margin_bottom = 1028.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "cancel"
+
+[connection signal="gui_input" from="setting list/VBoxContainer/scale/HSlider" to="settings" method="_on_scale_slider_gui_input"]
+[connection signal="toggled" from="setting list/VBoxContainer/fullscreen" to="settings" method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="setting list/VBoxContainer/quit2" to="settings" method="_on_quit_pressed"]
+[connection signal="pressed" from="save" to="settings" method="_on_save_pressed"]
+[connection signal="pressed" from="cancel" to="settings" method="_on_load_pressed"]

@@ -168,10 +168,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=34]
+[sub_resource type="StyleBoxFlat" id=38]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_right = 25
-border_color = Color( 0, 0, 0, 0.392157 )
+border_color = Color( 0, 0, 0, 0 )
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
@@ -212,4 +212,4 @@ TabContainer/styles/tab_fg = SubResource( 5 )
 VScrollBar/styles/grabber = SubResource( 33 )
 VScrollBar/styles/grabber_highlight = SubResource( 33 )
 VScrollBar/styles/grabber_pressed = SubResource( 33 )
-VScrollBar/styles/scroll = SubResource( 34 )
+VScrollBar/styles/scroll = SubResource( 38 )

@@ -35,10 +35,12 @@ func _on_data_changed():
 	scale_slider.value = settings_data.scale
 
 func _on_quit_pressed():
-	get_tree().quit()
+	var ro = get_node("/root")
+	Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
 
 func _on_save_pressed():
 	SaveManager.save_game()
 
 func _on_load_pressed():
 	SaveManager.load_game()
+	get_parent().hide()

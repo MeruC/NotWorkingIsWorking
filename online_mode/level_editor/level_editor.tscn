@@ -855,10 +855,10 @@ objects_menu = NodePath("../Item_Select_Menu")
 
 [node name="objects" type="Button" parent="UI/editor/place"]
 anchor_right = 1.0
-margin_left = 1385.0
-margin_top = 18.0
-margin_right = 1720.0
-margin_bottom = 150.0
+margin_left = -39.0
+margin_top = -38.0
+margin_right = 296.0
+margin_bottom = 94.0
 theme = ExtResource( 30 )
 text = "OBJECTS"
 
