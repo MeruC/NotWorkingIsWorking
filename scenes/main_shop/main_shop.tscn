@@ -442,11 +442,6 @@ script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
-scale_slider = NodePath("setting list/scale/HSlider")
-fullscreen_check = NodePath("setting list/fullscreen/CheckBox")
-lbl_min = NodePath("setting list/scale/min")
-lbl_max = NodePath("setting list/scale/max")
-lbl_current = NodePath("setting list/scale/current")
 settings_data = ExtResource( 14 )
 
 [node name="title" type="Control" parent="settings2"]

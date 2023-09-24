@@ -184,6 +184,7 @@ bus = "Music"
 layer = 5
 
 [node name="settings" parent="CanvasLayer" instance=ExtResource( 13 )]
+mouse_filter = 2
 
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="GridContainer/offline_button" to="." method="_on_offline_button_pressed"]
