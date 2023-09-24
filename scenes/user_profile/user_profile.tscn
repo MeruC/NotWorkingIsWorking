@@ -271,7 +271,9 @@ margin_left = 14.0
 margin_top = 15.0
 margin_right = 294.374
 margin_bottom = 129.068
+focus_mode = 0
 theme = ExtResource( 20 )
+enabled_focus_mode = 0
 text = "Home"
 icon_align = 1
 
