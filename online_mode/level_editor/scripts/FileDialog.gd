@@ -11,10 +11,17 @@ func refresh():
 func _draw():
 	set_current_dir("user://saved_levels/")
 
-onready var popup : FileDialog = get_node("/root/editor/UI/editor/FileDialog")
+onready var popup : FileDialog = self
+onready var file_dialog_top_bar = $"../../FileDialogTopBar"
+onready var file_dialog = $".."
+onready var file_dialog_title = $"../../FileDialogTopBar/FileDialogTitle"
+
 
 func _on_Save_pressed():
 
+	file_dialog_title.text = "SAVE LEVEL"
+	file_dialog.set_visible(true)
+	file_dialog_top_bar.set_visible(true)
 	play.set_visible(false)
 	ui.set_visible(false)
 	Global.can_place = false
@@ -23,7 +30,9 @@ func _on_Save_pressed():
 	pass # Replace with function body.
 
 func _on_Load_pressed():
-	play.set_visible(false)
+	file_dialog_title.text = "LOAD LEVEL"
+	file_dialog.set_visible(true)
+	file_dialog_top_bar.set_visible(true)
 	ui.set_visible(false)
 	Global.can_place = false
 	popup.mode = 0
@@ -35,6 +44,8 @@ func _on_FileDialog_popup_hide():
 	Global.can_place = true
 	play.set_visible(true)
 	ui.set_visible(true)
+	file_dialog.set_visible(false)
+	file_dialog_top_bar.set_visible(false)
 	pass # Replace with function body.
 	
 

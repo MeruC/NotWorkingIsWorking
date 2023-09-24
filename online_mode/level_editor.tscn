@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://online_mode/level_editor/rotate.gd" type="Script" id=23]
 [ext_resource path="res://online_mode/level_editor/place.gd" type="Script" id=24]
 [ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=25]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=26]
 
 [sub_resource type="CameraTexture" id=14]
 
@@ -46,6 +47,9 @@ mouse_filter = 2
 texture = ExtResource( 10 )
 stretch_mode = 1
 flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -87,16 +91,72 @@ anchor_bottom = 1.0
 margin_top = -20.0
 text = "Done"
 
-[node name="FileDialog" type="FileDialog" parent="UI/editor"]
+[node name="FileDialogTopBar" type="CanvasLayer" parent="UI/editor"]
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="UI/editor/FileDialogTopBar"]
+anchor_right = 1.0
+margin_left = -34.0
+margin_top = 16.0
+margin_right = 47.0
+margin_bottom = 221.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="UI/editor/FileDialogTopBar"]
+anchor_right = 1.0
+margin_left = -59.0
+margin_top = -10.0
+margin_right = 52.0
+margin_bottom = 199.0
+color = Color( 1, 0.941176, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="UI/editor/FileDialogTopBar"]
+anchor_right = 1.0
+margin_left = 32.0
+margin_top = 811.0
+margin_right = -1761.0
+margin_bottom = 1049.0
+rect_rotation = -0.5
+color = Color( 0.392157, 0.784314, 1, 1 )
+
+[node name="FileDialogTitle" type="Label" parent="UI/editor/FileDialogTopBar"]
+anchor_right = 1.0
+margin_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 960, 108 )
+theme = ExtResource( 26 )
+text = "SAVE LEVEL"
+align = 1
+valign = 1
+
+[node name="FileDialog" type="CanvasLayer" parent="UI/editor"]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/editor/FileDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 181.0
+theme = ExtResource( 26 )
+
+[node name="FileDialog" type="FileDialog" parent="UI/editor/FileDialog"]
 visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 71.0
+margin_top = 40.0
+margin_right = -71.0
+margin_bottom = -40.0
 rect_min_size = Vector2( 150, 52.5 )
 rect_pivot_offset = Vector2( 210, 150 )
 theme = ExtResource( 3 )
 access = 1
 filters = PoolStringArray( "*.tscn" )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="file" type="Control" parent="UI/editor"]
 anchor_left = 1.0
@@ -353,6 +413,9 @@ mouse_filter = 2
 texture = ExtResource( 10 )
 stretch_mode = 1
 flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="floor" type="CSGMesh" parent="level"]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
@@ -461,12 +524,12 @@ editor_camera = NodePath("../Editor_Camera")
 
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
 [connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
-[connection signal="confirmed" from="UI/editor/FileDialog" to="UI/editor/FileDialog" method="_on_FileDialog_confirmed"]
-[connection signal="popup_hide" from="UI/editor/FileDialog" to="UI/editor/FileDialog" method="_on_FileDialog_popup_hide"]
-[connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog" method="_on_New_pressed"]
-[connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog" method="_on_Load_pressed"]
-[connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog" method="_on_Save_pressed"]
-[connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog" method="_on_Orphan_pressed"]
+[connection signal="confirmed" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_confirmed"]
+[connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
+[connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
+[connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
+[connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
