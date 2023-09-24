@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Control
 
 export( NodePath ) onready var main = get_node(main) as Spatial
 export( NodePath ) onready var current = get_node(current) as Label
@@ -8,10 +8,12 @@ export( NodePath ) onready var ui = get_node(ui) as CanvasLayer
 var inventory
 var mobile_controls
 var joystick
+onready var joystick_editor = $"%joystickEditor"
 export( NodePath ) onready var previews = get_node(previews) as Spatial
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
 export( NodePath ) onready var item_select = get_node(item_select) as Control
 export( NodePath ) onready var other_ui = get_node(other_ui) as Control
+
 
 var playerSpawn = preload("res://global/Player/player.tscn")
 var last_mode = "place"
@@ -19,6 +21,7 @@ var last_mode = "place"
 func _ready():
 	Global.editor_mode = "place"
 	current.text = "Current Mode: Place"
+	main.get_node("level/mobile_controls/joystick").use_input_actions = false
 
 func _on_modes_mouse_entered():
 	Global.can_place = false
@@ -82,6 +85,7 @@ func _on_play_pressed():
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		joystick.use_input_actions = true
+		joystick_editor.use_input_actions = false
 		previews.set_visible(false)
 		no_sign.set_visible(false)
 	elif(Global.editor_mode == "play"):
@@ -100,6 +104,7 @@ func _on_play_pressed():
 		inventory.set_visible(false)
 		mobile_controls.set_visible(false)
 		joystick.use_input_actions = false
+		joystick_editor.use_input_actions = true
 		previews.set_visible(true)
 		no_sign.set_visible(true)
 

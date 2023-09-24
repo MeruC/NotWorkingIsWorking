@@ -7,31 +7,31 @@
 [node name="mobile_controls" type="CanvasLayer"]
 
 [node name="joystick" parent="." instance=ExtResource( 2 )]
-margin_left = 103.0
-margin_top = -217.0
-margin_right = 303.0
-margin_bottom = -17.0
+margin_left = 83.0
+margin_top = -281.0
+margin_right = 283.0
+margin_bottom = -81.0
 action_left = "left"
 action_right = "right"
 action_up = "up"
 action_down = "down"
 
 [node name="camLeft" type="TouchScreenButton" parent="."]
-position = Vector2( 876, 570 )
+position = Vector2( 1440, 882 )
 scale = Vector2( 3.34375, 3.28125 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 1 )
 action = "camera_rotate_left"
 
 [node name="camRight" type="TouchScreenButton" parent="."]
-position = Vector2( 1013, 570 )
+position = Vector2( 1577, 882 )
 scale = Vector2( 3.34375, 3.28125 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 1 )
 action = "camera_rotate_right"
 
 [node name="E" type="TouchScreenButton" parent="."]
-position = Vector2( 1151, 572 )
+position = Vector2( 1715, 884 )
 scale = Vector2( 3.34375, 3.28125 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 3 )
