@@ -6,14 +6,14 @@ onready var inventory = $"%inventory"
 
 var joystick
 export (Resource) var setting_data
-var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
+#var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
 func _ready():
 	if get_parent().name != "editor":
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		if setting_data.gender == "male":
-			player = preload("res://global/Player/Player.tscn")
+			player = preload("res://global/player/player.tscn")
 			add_child(player.instance())
 		elif setting_data.gender == "female":
 			player = preload("res://global/Player_girl/player-girl.tscn")

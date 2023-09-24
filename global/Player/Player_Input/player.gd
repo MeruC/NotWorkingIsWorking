@@ -3,9 +3,9 @@ extends KinematicBody
 #something
 
 #NodeReferences
-onready var camera = $Camera
+onready var camera = $"%Camera"
 onready var player: KinematicBody = $"."
-onready var pivot = $Pivot
+onready var pivot = $"%Pivot"
 
 export var max_speed = 10
 export var acceleration = 70
@@ -32,8 +32,6 @@ func _physics_process(delta: float) -> void:
 	apply_friction(direction, delta)
 	apply_movement(input_vector, direction, delta)
 	velocity = move_and_slide(velocity, Vector3.UP)
-	#if player_data:
-	#	player_data.global_position = player.global_translation
 	
 func _process(delta):
 	if velocity.x == 0 and velocity.z == 0:

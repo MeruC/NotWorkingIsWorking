@@ -17,7 +17,7 @@ onready var mode_menu = $modeMenu
 onready var menu_animations = $"%MenuAnimations"
 
 
-var playerSpawn = preload("res://global/Player/player.tscn")
+var playerSpawn = preload("res://global/player/player.tscn")
 var last_mode = "place"
 
 func _ready():

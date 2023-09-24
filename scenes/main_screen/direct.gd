@@ -31,3 +31,7 @@ func _on_shop_button_pressed():
 func _on_encyclopedia_button_pressed():
 	Load.load_scene(self,encyclopedia)
 
+
+
+func _on_objects_pressed():
+	Load.load_scene(self, "res://test.tscn")

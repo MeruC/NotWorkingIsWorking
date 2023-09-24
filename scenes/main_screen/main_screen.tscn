@@ -45,6 +45,7 @@ tracks/0/keys = {
 [node name="main_screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 2643, -278 )
 script = ExtResource( 3 )
 settings_data = ExtResource( 12 )
 
@@ -165,6 +166,15 @@ texture = ExtResource( 9 )
 [node name="mascot_animation" type="AnimationPlayer" parent="."]
 anims/mascot_animation = SubResource( 2 )
 
+[node name="objects" type="Button" parent="."]
+anchor_right = 1.0
+margin_left = 93.0
+margin_top = 912.0
+margin_right = -1405.0
+margin_bottom = 1044.0
+theme = ExtResource( 10 )
+text = "TEST"
+
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 6 )
 
@@ -173,3 +183,4 @@ stream = ExtResource( 6 )
 [connection signal="pressed" from="GridContainer/online_button" to="." method="_on_online_button_pressed"]
 [connection signal="pressed" from="GridContainer/shop_button" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="GridContainer/encyclopedia_button" to="." method="_on_encyclopedia_button_pressed"]
+[connection signal="pressed" from="objects" to="." method="_on_objects_pressed"]
