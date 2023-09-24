@@ -22,4 +22,6 @@ var e_mode_history = "place"
 
 func _input(event):
 	if(Input.is_action_just_pressed("main_menu")):
-		Load.load_scene(self,main_screen)
+		var ro = get_node("/root")
+		Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
+	
