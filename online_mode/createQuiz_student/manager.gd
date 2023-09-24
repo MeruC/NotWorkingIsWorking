@@ -111,7 +111,7 @@ func _on_no_pressed():
 func generate_unique_code(length: int = 8) -> String:
 	# To generate a unique level code
 	var isNotUnique = true
-	var charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	var charset = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789"
 	var code = ""
 	var file_name
 	

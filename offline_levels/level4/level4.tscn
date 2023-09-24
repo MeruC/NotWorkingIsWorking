@@ -138,6 +138,10 @@ text = "WAN"
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 7 )]
+visible = false
+
+[node name="pause_popup" parent="popup_layer/pause" index="1"]
+visible = false
 
 [node name="popup" parent="popup_layer" instance=ExtResource( 4 )]
 visible = false
@@ -160,7 +164,6 @@ anims/animation = SubResource( 4 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
-frame = 0
 
 [connection signal="pressed" from="button_container/lan_button" to="." method="_on_lan_button_pressed"]
 [connection signal="pressed" from="button_container/man_button" to="." method="_on_man_button_pressed"]
