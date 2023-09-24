@@ -504,6 +504,48 @@ flat = true
 clip_text = true
 icon_align = 1
 
+[node name="signup_success" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="warning_bg" type="TextureRect" parent="signup_success"]
+modulate = Color( 0, 0, 0, 0.415686 )
+margin_top = -21.0
+margin_right = 1200.0
+margin_bottom = 579.0
+rect_scale = Vector2( 1.63371, 1.86411 )
+texture = ExtResource( 11 )
+
+[node name="warning" type="Sprite" parent="signup_success"]
+modulate = Color( 1, 0.917647, 0.917647, 1 )
+position = Vector2( 953, 426 )
+scale = Vector2( 0.784561, 0.428507 )
+texture = ExtResource( 10 )
+
+[node name="warning" type="Label" parent="signup_success/warning"]
+margin_left = -347.0
+margin_top = -135.0
+margin_right = 303.0
+margin_bottom = 128.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "aaaaa"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ok_btn" type="Button" parent="signup_success"]
+margin_left = 786.0
+margin_top = 561.0
+margin_right = 1094.0
+margin_bottom = 661.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 4 )
+text = "OK"
+icon = ExtResource( 2 )
+flat = true
+clip_text = true
+icon_align = 1
+
 [node name="login_sucess" type="CanvasLayer" parent="."]
 visible = false
 
@@ -551,4 +593,5 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="login_screen/back_btn" to="login_screen/back_btn" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="signup_screen/back_btn" to="signup_screen/back_btn" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="warning/ok_btn" to="warning" method="_on_ok_btn_pressed"]
+[connection signal="pressed" from="signup_success/ok_btn" to="signup_success" method="_on_ok_btn_pressed"]
 [connection signal="animation_finished" from="login_sucess/AnimationPlayer" to="login_screen" method="_on_AnimationPlayer_animation_finished"]

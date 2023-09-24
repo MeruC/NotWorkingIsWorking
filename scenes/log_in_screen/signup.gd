@@ -2,25 +2,28 @@ extends CanvasLayer
 
 export (Resource) var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "http://localhost:80/authentication.php"
+const SERVER_URL = "http://192.168.100.247:8080/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
 var pusername = ""
 var password = ""
 var cpassword =""
+var result = ""
 
 func _ready():
 	# Connect our request handler:
 	add_child(http_request)
 	http_request.connect("request_completed", self, "_http_request_completed")
 	$sign_in_btn.connect("pressed", self, "_add_user")
+	$"../signup_success/ok_btn".connect("pressed", self, "_change_scene")
 
 func _process(_delta):
 	# Check if we have pending requests in the queue:
 	if !request_queue.empty() and !is_requesting:
 		var request = request_queue.pop_front()
 		_send_request(request)
+
 
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
@@ -91,11 +94,13 @@ func _add_user():
 		var command = "add_user"
 		var data = {"username": username, "password": user_password}
 		request_queue.push_back({"command": command, "data": data})
-		$"../login_sucess/panel/message".text = "Welcome "+username
-		$"..".queue_free()
-		Load.load_scene(self,"res://scenes/create_account/create_account.tscn")
-		
+		$"../signup_success".visible = true
+		$"../signup_success/warning/warning".text = "Welcome "+username
 	else:
 		$"../warning".visible = true
 		var warning = $"../warning/warning/warning"
 		warning.text = "Password didn't match."
+		
+func _change_scene():
+	$"..".queue_free()
+	Load.load_scene(self,"res://scenes/create_account/create_account.tscn")
