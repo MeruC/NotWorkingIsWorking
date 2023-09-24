@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [sub_resource type="DynamicFont" id=4]
 size = 64
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=36]
 
 [sub_resource type="StyleBoxFlat" id=35]
 content_margin_left = 40.0
@@ -169,9 +171,11 @@ border_color = Color( 0, 0, 0, 0.392157 )
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/fonts/font = SubResource( 4 )
+Button/styles/focus = SubResource( 36 )
 Button/styles/hover = SubResource( 35 )
 Button/styles/normal = SubResource( 35 )
 Button/styles/pressed = SubResource( 6 )
