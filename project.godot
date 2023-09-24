@@ -281,6 +281,7 @@ SaveManager="*res://inventory_system/managers/save_manager.gd"
 CooldownManager="*res://inventory_system/managers/cooldown_manager.gd"
 Global="*res://global/Global.gd"
 Load="*res://scenes/loading/load.gd"
+CameraTransition="*res://addon/camera_transitition/camera_transition.tscn"
 
 [debug]
 

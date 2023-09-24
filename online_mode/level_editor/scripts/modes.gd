@@ -76,9 +76,6 @@ func _on_play_pressed():
 	mobile_controls = main.get_node("level/mobile_controls")
 	joystick = main.get_node("level/mobile_controls/joystick")
 	if(Global.editor_mode != "play"):
-		#Editor Mode
-		last_mode = Global.editor_mode
-		Global.editor_mode = "play"
 		
 		#Spawning Player
 		var new_item = playerSpawn.instance() 
@@ -87,8 +84,11 @@ func _on_play_pressed():
 		player = main.get_node("Player")
 		
 		#Changing Camera
-		main.get_node("Editor_Camera/Camera").current=false
-		main.get_node("Player/Camera/Camera").current=true
+		CameraTransition.transition_camera3D(main.get_node("Editor_Camera/Camera"), main.get_node("Player/Camera/Camera"), 1.5)
+	
+		#Editor Mode
+		last_mode = Global.editor_mode
+		Global.editor_mode = "play"
 		
 		#Changing UI
 		other_ui.set_visible(true)
@@ -100,14 +100,15 @@ func _on_play_pressed():
 		previews.set_visible(false)
 		no_sign.set_visible(false)
 	elif(Global.editor_mode == "play"):
-		#Editor Mode
-		Global.editor_mode = last_mode
+		
+		#Changing Camera
+		CameraTransition.transition_camera3D(main.get_node("Player/Camera/Camera"), main.get_node("Editor_Camera/Camera"), 1.5)
 		#Deleting player
 		main.remove_child(player)
 		player.queue_free()
 		
-		#Changing Camera
-		main.get_node("Editor_Camera/Camera").current=true
+		#Editor Mode
+		Global.editor_mode = last_mode
 		
 		#Changing UI
 		other_ui.set_visible(false)
