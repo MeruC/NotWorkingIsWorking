@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://offline_levels/level2/letter.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=6]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=7]
 [ext_resource path="res://offline_levels/general_scenes/pause.tscn" type="PackedScene" id=8]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
@@ -65,6 +66,7 @@ autowrap = true
 script = ExtResource( 3 )
 letter_scene = ExtResource( 2 )
 blank_scene = ExtResource( 4 )
+settings_data = ExtResource( 9 )
 clue_label = NodePath("../clue")
 score_label = NodePath("../score")
 letter_container = NodePath("../letter_CenterContainer/letter_container")

@@ -2,6 +2,7 @@ extends Node2D
 
 export(PackedScene) var letter_scene
 export(PackedScene) var blank_scene
+export(Resource) var settings_data
 var json_file = "res://offline_levels/json/level2_questions.json"
 var json_data = ""
 var answer
@@ -25,7 +26,7 @@ export(NodePath) onready var instructions_popup = get_node(instructions_popup) a
 export(NodePath) onready var instructions_sprite = get_node(instructions_sprite) as Sprite
 ##
 
-var home_scene = "res://main_screen/main_screen.tscn"
+var home_scene = "res://scenes/main_screen/main_screen.tscn"
 var next_scene = "res://offline_levels/level3/level3_discussion.tscn"
 var level2_scene = "res://offline_levels/level2/level2.tscn"
 
@@ -126,6 +127,7 @@ func _on_submit_pressed():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		score_validation()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
@@ -139,10 +141,29 @@ func _on_tap_pressed():
 
 
 func _on_retry_pressed():
+	$"..".queue_free()
 	Load.load_scene(self,level2_scene)
 
 func _on_home_pressed():
+	$"..".queue_free()
 	Load.load_scene(self,home_scene)
 
 func _on_next_pressed():
+	$"..".queue_free()
 	Load.load_scene(self,next_scene)
+
+func score_validation():
+	if settings_data.level2 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level2 = "complete"
+	SaveManager.save_game()
+	

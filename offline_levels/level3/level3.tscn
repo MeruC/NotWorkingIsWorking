@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=4]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=5]
 [ext_resource path="res://offline_levels/general_scenes/pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -49,6 +50,7 @@ tracks/0/keys = {
 [node name="level3" type="Node2D"]
 script = ExtResource( 1 )
 choice_scene = ExtResource( 2 )
+settings_data = ExtResource( 7 )
 clue_label = NodePath("clue")
 score_label = NodePath("score")
 choice1 = NodePath("choices/choices_container/choice1/image_holder")
@@ -101,6 +103,7 @@ script = null
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="game_over" parent="popup_layer" instance=ExtResource( 5 )]
 visible = false
@@ -119,7 +122,6 @@ anims/animation = SubResource( 4 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
-frame = 0
 
 [connection signal="pressed" from="choices/choices_container/choice1" to="." method="_on_choice1_pressed"]
 [connection signal="pressed" from="choices/choices_container/choice2" to="." method="_on_choice2_pressed"]
