@@ -184,4 +184,4 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
-	get_tree().change_scene(main_screen)
+	Load.load_scene(self,main_screen)

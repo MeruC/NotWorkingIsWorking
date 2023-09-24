@@ -12,12 +12,12 @@ func _ready():
 
 
 func _on_join_pressed():
-	get_tree().change_scene(join_scene)
+	Load.load_scene(self,join_scene)
 
 
 func _on_create_pressed():
-	get_tree().change_scene(create_subMenu)
+	Load.load_scene(self,create_subMenu)
 
 
 func _on_back_pressed():
-	get_tree().change_scene(previous_scene)
+	Load.load_scene(self,previous_scene)

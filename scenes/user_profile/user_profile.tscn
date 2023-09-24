@@ -28,9 +28,10 @@
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=26]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=27]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=23]
 size = 30
-font_data = ExtResource( 1 )
+extra_spacing_bottom = 28
+font_data = ExtResource( 25 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 200
@@ -92,10 +93,10 @@ rect_scale = Vector2( 1.53063, 1.35513 )
 texture = ExtResource( 11 )
 
 [node name="name" type="Label" parent="user_profile/name_background"]
-margin_left = -4.0
-margin_top = -1.0
-margin_right = 576.0
-margin_bottom = 143.0
+margin_left = 60.106
+margin_top = 35.421
+margin_right = 515.106
+margin_bottom = 111.421
 theme = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 21 )
@@ -103,13 +104,16 @@ align = 1
 valign = 1
 
 [node name="rank" type="Label" parent="user_profile/name_background"]
-margin_left = 238.0
-margin_top = 102.0
-margin_right = 301.0
-margin_bottom = 127.0
+margin_left = 195.344
+margin_top = 98.8835
+margin_right = 370.344
+margin_bottom = 157.883
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 23 )
 text = "rank:"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="edit_avatar" type="Button" parent="user_profile/name_background"]
 modulate = Color( 0, 0, 0, 1 )

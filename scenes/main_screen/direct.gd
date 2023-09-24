@@ -7,28 +7,27 @@ var online_subMenu = "res://online_mode/level_create_Menu/level_create.tscn"
 var user_profile = "res://scenes/user_profile/user_profile.tscn"
 var main_shop = "res://scenes/main_shop/main_shop.tscn"
 var encyclopedia = "res://encyclopedia/encyclopedia.tscn"
+export (Resource) var settings_data
 
 func _ready():
 	$mascot_animation.play("mascot_animation")
-	pass # Replace with function body.
-
-
 
 func _on_offline_button_pressed():
-	get_tree().change_scene(level_selection)
+	Load.load_scene(self,level_selection)
 
 
 func _on_online_button_pressed():
-	get_tree().change_scene(online_subMenu)
+	Load.load_scene(self,online_subMenu)
 
 
 func _on_profile_button_pressed():
-	get_tree().change_scene(user_profile)
+	Load.load_scene(self,user_profile)
 
 
 func _on_shop_button_pressed():
-	get_tree().change_scene(main_shop)
+	Load.load_scene(self,main_shop)
 
 
 func _on_encyclopedia_button_pressed():
-	get_tree().change_scene(encyclopedia)
+	Load.load_scene(self,encyclopedia)
+

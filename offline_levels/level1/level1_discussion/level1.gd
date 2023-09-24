@@ -36,3 +36,7 @@ func _on_pc_closed():
 	#inventory.set_visible(true)
 	mobile_controls.set_visible(true)
 	joystick.use_input_actions = true
+
+
+func _on_level_selection_tree_exited():
+	queue_free()

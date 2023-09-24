@@ -98,11 +98,11 @@ func _on_submit_pressed():
 
 func _on_reload_pressed():
 	var current_scene_path = get_tree().current_scene
-	get_tree().change_scene(level5_scene)
+	Load.load_scene(self,level5_scene)
 
 
 func _on_retry_pressed():
-	get_tree().change_scene(level5_scene)
+	Load.load_scene(self,level5_scene)
 
 
 func _on_tap_pressed():
@@ -111,4 +111,4 @@ func _on_tap_pressed():
 
 
 func _on_restart_pressed():
-	get_tree().change_scene(level5_scene)
+	Load.load_scene(self,level5_scene)

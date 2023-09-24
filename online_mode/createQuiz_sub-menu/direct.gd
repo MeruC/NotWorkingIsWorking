@@ -12,4 +12,4 @@ func _ready():
 
 
 func _on_student_pressed():
-	get_tree().change_scene(student_quiz)
+	Load.load_scene(self,student_quiz)

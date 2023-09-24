@@ -122,7 +122,7 @@ func update_dialog():
 
 	else:
 		print("Dialog ended.")
-		get_tree().change_scene(game_scene)
+		Load.load_scene(self,game_scene)
 	# You can also return json_data here if needed
 
 func _on_play_btn_pressed():

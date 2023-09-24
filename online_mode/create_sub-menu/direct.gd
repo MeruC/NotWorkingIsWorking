@@ -11,8 +11,8 @@ func _ready():
 
 
 func _on_quiz_pressed():
-	get_tree().change_scene(quiz_subMenu)
+	Load.load_scene(self,quiz_subMenu)
 
 
 func _on_simulation_pressed():
-	get_tree().change_scene(simulation)
+	Load.load_scene(self,simulation)

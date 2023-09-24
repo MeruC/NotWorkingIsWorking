@@ -257,6 +257,7 @@ percent_visible = 0.108765
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 23 )]
 stream = ExtResource( 22 )
 
+[connection signal="tree_exited" from="ui/level_selection" to="." method="_on_level_selection_tree_exited"]
 [connection signal="animation_finished" from="ui/AnimationPlayer" to="object_monitor/interaction_area" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="environment"]

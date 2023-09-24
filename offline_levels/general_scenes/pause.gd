@@ -11,12 +11,12 @@ func _on_pause_button_pressed():
 
 
 func _on_home_pressed():
-	get_tree().change_scene(home_screen)
+	Load.load_scene(self,home_screen)
 
 
 func _on_restart_pressed():
 	var current_scene = get_tree().get_current_scene().get_filename()
-	get_tree().change_scene(current_scene)
+	Load.load_scene(self,current_scene)
 
 
 func _on_continue_pressed():

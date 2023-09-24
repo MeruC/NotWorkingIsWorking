@@ -33,7 +33,8 @@ func _on_CheckButton_toggled(button_pressed):
 	SaveManager.save_game()
 	
 func _on_confirm_pressed():
-	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+	$"../../../..".queue_free()
+	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
 
 func _on_data_changed():
 	settings_data.gender = gender

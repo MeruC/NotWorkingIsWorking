@@ -77,11 +77,11 @@ func _on_3dlevel_pressed():
 
 
 func _on_backtoMain_pressed():
-	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
 
 
 func _on_quiz_pressed():
-	get_tree().change_scene(quiz_subMenu)
+	Load.load_scene(self,quiz_subMenu)
 
 
 
@@ -95,5 +95,5 @@ func _on_back2menu_pressed():
 
 
 func _on_play_pressed():
-	get_tree().change_scene(join_scene)
+	Load.load_scene(self,join_scene)
 	pass # Replace with function body.

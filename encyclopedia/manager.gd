@@ -61,4 +61,4 @@ func _on_search_text_changed(new_text):
 
 
 func _on_back_pressed():
-	get_tree().change_scene(previous_scene)
+	Load.load_scene(self,previous_scene)

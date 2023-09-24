@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+export (Resource) var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "http://localhost:80/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
@@ -45,7 +46,7 @@ func _http_request_completed(result, response_code, headers, body):
 		var response_dict = response["response"]
 		if "authenticated" in response_dict and response_dict["authenticated"] == true:
 			# Authentication was successful, redirect to the main screen
-			get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+			Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
 		else:
 			# Authentication failed, you can show an error message
 			print("Authentication failed")
@@ -90,6 +91,9 @@ func _add_user():
 		var command = "add_user"
 		var data = {"username": username, "password": user_password}
 		request_queue.push_back({"command": command, "data": data})
+		$"../login_sucess/panel/message".text = "Welcome "+username
+		$"..".queue_free()
+		Load.load_scene(self,"res://scenes/create_account/create_account.tscn")
 		
 	else:
 		$"../warning".visible = true

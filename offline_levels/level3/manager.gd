@@ -192,13 +192,13 @@ func _on_tap_pressed():
 
 
 func _on_restart_pressed():
-	get_tree().change_scene(level3_scene)
+	Load.load_scene(self,level3_scene)
 
 func _on_home_pressed():
-	get_tree().change_scene(home_scene)
+	Load.load_scene(self,home_scene)
 
 func _on_next_pressed():
-	get_tree().change_scene(next_scene)
+	Load.load_scene(self,next_scene)
 
 func _on_retry_pressed():
-	get_tree().change_scene(level3_scene)
+	Load.load_scene(self,level3_scene)

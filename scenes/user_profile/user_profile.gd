@@ -23,4 +23,4 @@ func _on_edit_avatar_pressed():
 	$edit_avatar.visible = true
 
 func _on_back_btn_pressed():
-	get_tree().change_scene(main_menu)
+	Load.load_scene(self,main_menu)

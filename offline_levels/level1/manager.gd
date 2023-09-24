@@ -105,13 +105,16 @@ func spawn_new():
 
 
 func _on_retry_pressed():
-	get_tree().change_scene(level1_scene)
+	$"..".queue_free()
+	Load.load_scene(self,level1_scene)
 
 func _on_home_pressed():
-	get_tree().change_scene(home_scene)
+	$"..".queue_free()
+	Load.load_scene(self,home_scene)
 
 func _on_next_pressed():
-	get_tree().change_scene(next_scene)
+	$"..".queue_free()
+	Load.load_scene(self,next_scene)
 
 func _on_tap_pressed():
 	instructions_popup.visible = false
@@ -119,15 +122,19 @@ func _on_tap_pressed():
 	
 func _on_data_changed():
 	#update coins
-	var coins = setting_data.gold_coins
-	var current = coins+100
+	if setting_data.level1 == "complete":
+		pass
+	else:
+		var coins = setting_data.gold_coins
+		var current = coins+100
 	
-	#update skills
-	var skills = setting_data.net1_skills
-	var update_skills = skills+10
+		#update skills
+		var skills = setting_data.net1_skills
+		var update_skills = skills+10
 	
-	setting_data.net1_skills = update_skills
-	setting_data.gold_coins = current
+		setting_data.net1_skills = update_skills
+		setting_data.gold_coins = current
+		setting_data.level1 = "complete"
 	
 	#save the progress
 	SaveManager.save_game()

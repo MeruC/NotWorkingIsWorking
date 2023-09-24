@@ -22,4 +22,4 @@ var e_mode_history = "place"
 
 func _input(event):
 	if(Input.is_action_just_pressed("main_menu")):
-		get_tree().change_scene(main_screen)
+		Load.load_scene(self,main_screen)

@@ -19,7 +19,7 @@ func _ready():
 
 
 func _on_back_pressed():
-	get_tree().change_scene(previous_scene)
+	Load.load_scene(self,previous_scene)
 
 
 func _on_join_pressed():
@@ -29,7 +29,7 @@ func _on_join_pressed():
 	
 	if file.open(full_path, File.READ) == OK:
 		file.close()
-		get_tree().change_scene(full_path)
+		Load.load_scene(self,full_path)
 	else:
 		error_popup.visible = true
 		textfield.text = ""

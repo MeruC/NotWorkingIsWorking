@@ -73,4 +73,4 @@ func update_dialog():
 			$CanvasLayer/osi_layer.visible = false
 			$AnimationPlayer.play("ending")
 	else:
-		get_tree().change_scene(game_scene)
+		Load.load_scene(self,game_scene)

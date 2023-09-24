@@ -93,5 +93,6 @@ func _authenticate():
 
 
 func _on_AnimationPlayer_animation_finished(login_sucessful):
-	get_tree().change_scene("res://scenes/main_screen/main_screen.tscn")
+	$"..".queue_free()
+	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
 
