@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://offline_mode_Asset/level_4/incorrect.png" type="Texture" id=1]
+[ext_resource path="res://resources/offline_mode_Asset/level_4/incorrect.png" type="Texture" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]

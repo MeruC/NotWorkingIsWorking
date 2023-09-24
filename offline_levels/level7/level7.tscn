@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
+[ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://offline_levels/general_scenes/pause.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/hybrid_topology.png" type="Texture" id=4]
+[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://offline_levels/level7/manager.gd" type="Script" id=6]
+[ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends TextureRect
+
+export (String) var content
+"
+
+[sub_resource type="DynamicFont" id=3]
+size = 92
+font_data = ExtResource( 5 )
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+topology_image = NodePath("topology_image")
+number_label = NodePath("counter/current_number")
+star_button = NodePath("options_container/star")
+bus_button = NodePath("options_container/bus")
+ring_button = NodePath("options_container/ring")
+mesh_button = NodePath("options_container/mesh")
+hybrid_button = NodePath("options_container/hybrid")
+gameover_popup = NodePath("popup_layer/game_over")
+gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
+gameover_score = NodePath("popup_layer/game_over/main_popup/score")
+gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
+
+[node name="popup_layer" type="CanvasLayer" parent="."]
+
+[node name="pause" parent="popup_layer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="pause_popup" parent="popup_layer/pause" index="1"]
+visible = false
+
+[node name="game_over" parent="popup_layer" instance=ExtResource( 1 )]
+visible = false
+
+[node name="instructions" parent="popup_layer" instance=ExtResource( 2 )]
+
+[node name="content" parent="popup_layer/instructions/main_popup" index="1"]
+margin_bottom = 30.0
+rect_min_size = Vector2( 900, 230 )
+text = "You'll be presented with images representing different network setups. Your task is to identify the network topology shown in each picture. Choose the correct topology from the options provided. Take note that you only have a limited time to make your selection. Good luck! Let's see if you can identify these network topologies correctly!"
+
+[node name="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="2"]
+playback_speed = 0.25
+anims/RESET = SubResource( 1 )
+anims/animation = SubResource( 2 )
+
+[node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
+visible = false
+
+[node name="topology_image" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -835.0
+margin_top = -375.0
+margin_right = -85.0
+margin_bottom = 375.0
+rect_min_size = Vector2( 750, 750 )
+texture = ExtResource( 4 )
+expand = true
+script = SubResource( 4 )
+
+[node name="options_container" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -820.0
+margin_top = -350.0
+margin_right = -120.0
+margin_bottom = 350.0
+custom_constants/separation = 50
+
+[node name="star" type="Button" parent="options_container"]
+margin_right = 700.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+text = "Star Topology"
+
+[node name="bus" type="Button" parent="options_container"]
+margin_top = 150.0
+margin_right = 700.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+text = "Bus Topology"
+
+[node name="ring" type="Button" parent="options_container"]
+margin_top = 300.0
+margin_right = 700.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+text = "Ring Topology"
+
+[node name="mesh" type="Button" parent="options_container"]
+margin_top = 450.0
+margin_right = 700.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+text = "Mesh Topology"
+
+[node name="hybrid" type="Button" parent="options_container"]
+margin_top = 600.0
+margin_right = 700.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+text = "Hybrid Topology"
+
+[node name="counter" type="HBoxContainer" parent="."]
+margin_left = 125.0
+margin_top = 100.0
+margin_right = 289.0
+margin_bottom = 145.0
+
+[node name="Label" type="Label" parent="counter"]
+margin_right = 142.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 7 )
+text = "Number: "
+
+[node name="current_number" type="Label" parent="counter"]
+margin_left = 146.0
+margin_right = 164.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 7 )
+text = "1"
+
+[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="options_container/star" to="." method="_on_star_pressed"]
+[connection signal="pressed" from="options_container/bus" to="." method="_on_bus_pressed"]
+[connection signal="pressed" from="options_container/ring" to="." method="_on_ring_pressed"]
+[connection signal="pressed" from="options_container/mesh" to="." method="_on_mesh_pressed"]
+[connection signal="pressed" from="options_container/hybrid" to="." method="_on_hybrid_pressed"]
+
+[editable path="popup_layer/pause"]
+[editable path="popup_layer/pause/pause_popup"]
+[editable path="popup_layer/game_over"]
+[editable path="popup_layer/instructions"]

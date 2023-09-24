@@ -67,12 +67,12 @@ func _ready():
 func _on_lan_button_pressed():
 	if lan_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/correct.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
 		score += 1
 		score_label.text = str(score)
 	else:
 		explanation_label.text = json_data[i]["if_wrong"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/incorrect.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/incorrect.png")
 		
 	popup_control.visible = true
 	
@@ -92,12 +92,12 @@ func _on_lan_button_pressed():
 func _on_man_button_pressed():
 	if man_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/correct.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
 		score += 1
 		score_label.text = str(score)
 	else:
 		explanation_label.text = json_data[i]["if_wrong"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/incorrect.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/incorrect.png")
 		
 	popup_control.visible = true
 	
@@ -117,12 +117,12 @@ func _on_man_button_pressed():
 func _on_wan_button_pressed():
 	if wan_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/correct.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
 		score += 1
 		score_label.text = str(score)
 	else:
 		explanation_label.text = json_data[i]["if_wrong"]
-		logo_rect.texture = load("res://offline_mode_Asset/level_4/incorrect.png")
+		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/incorrect.png")
 		
 	popup_control.visible = true
 	
