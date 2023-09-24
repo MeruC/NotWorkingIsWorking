@@ -11,6 +11,9 @@ export (Resource) var settings_data
 
 func _ready():
 	$mascot_animation.play("mascot_animation")
+	var file = File.new()
+	if not file.file_exists("user://save_data/save.dat"):
+		SaveManager.save_game()
 
 func _on_offline_button_pressed():
 	Load.load_scene(self,level_selection)

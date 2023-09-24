@@ -2,7 +2,12 @@ class_name Settings_Data extends Resource
 
 export( bool ) var fullscreen = true
 export( float ) var scale = 1
+export( int ) var master_volume = 0
+export( int ) var music_volume = -10
+export( int ) var sound_volume = -10
+
 export( int ) var gold_coins = 1000
+
 export (String) var player_name
 export (String) var gender
 export (String) var rank
@@ -22,7 +27,12 @@ func set_data( data ):
 	fullscreen = data.fullscreen
 	scale = data.scale
 	gold_coins = data.gold_coins
+	master_volume = data.master_volume
+	music_volume = data.music_volume
+	sound_volume = data.sound_volume
+	
 	player_name = data.player_name
+	
 	gender = data.gender
 	rank = data.rank
 	account_status = data.account_status
@@ -57,6 +67,9 @@ func get_data():
 		"fullscreen": fullscreen,
 		"scale": scale,
 		"gold_coins": gold_coins,
+		"master_volume": master_volume,
+		"music_volume": music_volume,
+		"sound_volume": sound_volume,
 		"player_name": player_name,
 		"gender": gender,
 		"rank": rank,
