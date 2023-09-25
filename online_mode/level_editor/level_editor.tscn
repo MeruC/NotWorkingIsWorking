@@ -334,7 +334,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -716.289, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 216, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
@@ -354,7 +354,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( -514.289, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 282, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/4/type = "bezier"
@@ -374,7 +374,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"points": PoolRealArray( -333.289, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 225, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
@@ -394,7 +394,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( -190.289, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 214, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 
@@ -703,9 +703,9 @@ script = ExtResource( 26 )
 [node name="select" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -46.5583
-margin_top = 216.0
+margin_top = 225.0
 margin_right = 569.442
-margin_bottom = 389.0
+margin_bottom = 398.0
 rect_rotation = -1.47408
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -719,9 +719,9 @@ text = " Select "
 [node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -28.5583
-margin_top = 195.0
+margin_top = 214.0
 margin_right = 530.442
-margin_bottom = 368.0
+margin_bottom = 387.0
 rect_rotation = 5.48748
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -735,9 +735,9 @@ text = " Place "
 [node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -66.5583
-margin_top = 216.0
+margin_top = 282.0
 margin_right = 590.442
-margin_bottom = 389.0
+margin_bottom = 455.0
 rect_rotation = -5.19831
 rect_pivot_offset = Vector2( 34, 40 )
 theme = ExtResource( 30 )
@@ -751,9 +751,9 @@ text = " Rotate "
 [node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -80.5583
-margin_top = 221.0
+margin_top = 216.0
 margin_right = 527.442
-margin_bottom = 394.0
+margin_bottom = 389.0
 rect_rotation = -0.632662
 rect_pivot_offset = Vector2( 0, 40 )
 theme = ExtResource( 30 )
@@ -872,12 +872,13 @@ margin_bottom = 90.0
 text = "Currently Selected: Null"
 valign = 1
 
-[node name="Item_Select_Menu" parent="UI/editor" instance=ExtResource( 4 )]
+[node name="Item_Select_Menu" type="CanvasLayer" parent="UI/editor"]
+layer = 5
 visible = false
-margin_left = -13.0
-margin_top = -11.0
-margin_right = 13.0
-margin_bottom = 11.0
+
+[node name="Item_Select_Menu" parent="UI/editor/Item_Select_Menu" instance=ExtResource( 4 )]
+margin_right = 26.0
+margin_bottom = 22.0
 
 [node name="joystickEditor" parent="UI" instance=ExtResource( 20 )]
 unique_name_in_owner = true
