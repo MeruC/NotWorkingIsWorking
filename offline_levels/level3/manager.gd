@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 export (PackedScene) var choice_scene
 export (Resource) var settings_data

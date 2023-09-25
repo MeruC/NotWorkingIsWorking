@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var level5_scene = "res://offline_levels/level5/level5.tscn"
 

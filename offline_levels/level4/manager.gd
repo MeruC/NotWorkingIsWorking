@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var score = 0
 var json_file = "res://offline_levels/json/level4_questions.json"

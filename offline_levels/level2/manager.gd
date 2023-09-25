@@ -1,4 +1,5 @@
-extends Node2D
+extends Control
+
 
 export(PackedScene) var letter_scene
 export(PackedScene) var blank_scene
