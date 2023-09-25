@@ -12,7 +12,7 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=11]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=12]
-[ext_resource path="res://nodes/settings.tscn" type="PackedScene" id=13]
+[ext_resource path="res://nodes/pause.tscn" type="PackedScene" id=13]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends ParallaxBackground

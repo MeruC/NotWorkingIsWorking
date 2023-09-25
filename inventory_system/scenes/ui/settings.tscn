@@ -552,10 +552,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false, true ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("pausemenu:visible")
@@ -692,6 +692,7 @@ border_color = Color( 0, 0, 0, 1 )
 expand_margin_top = 10.0
 
 [node name="settings" type="ColorRect"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 4269, -605 )

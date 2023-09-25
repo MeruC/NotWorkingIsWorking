@@ -5,9 +5,10 @@
 [ext_resource path="res://inventory_system/scenes/inventory/hotbar_node.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inventory_system/scenes/ui/crafting_list.tscn" type="PackedScene" id=4]
 [ext_resource path="res://inventory_system/scenes/ui/inventory_container.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://inventory_system/scripts/ui/ui_container.gd" type="Script" id=10]
 [ext_resource path="res://inventory_system/scripts/ui/scale_control.gd" type="Script" id=12]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 33

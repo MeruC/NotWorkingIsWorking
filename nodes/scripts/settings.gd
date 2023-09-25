@@ -9,3 +9,5 @@ func _on_settingsBtn_pressed():
 	settings.visible = !settings.visible
 	settings.raise()
 	settings.animation_player.play("intro")
+	yield(settings.animation_player, "animation_finished")
+	get_tree().paused = true

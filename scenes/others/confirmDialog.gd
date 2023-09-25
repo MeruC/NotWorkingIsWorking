@@ -8,7 +8,7 @@ onready var label = $ColorRect/MarginContainer/VBoxContainer/Label
 func _on_confirm_pressed():
 	match(action):
 		"main_menu":
-			
+			get_tree().paused = false
 			action = ""
 			var ro = get_node("/root")
 			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")

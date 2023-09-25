@@ -38,6 +38,7 @@ func _on_music_pressed():
 
 func _on_resume_pressed():
 	animation_player.play_backwards("intro")
+	get_tree().paused = false
 	yield(animation_player, "animation_finished")
 	hide()
 	
