@@ -876,8 +876,8 @@ valign = 1
 visible = false
 margin_left = -13.0
 margin_top = -11.0
-margin_right = -13.0
-margin_bottom = -11.0
+margin_right = 13.0
+margin_bottom = 11.0
 
 [node name="joystickEditor" parent="UI" instance=ExtResource( 20 )]
 unique_name_in_owner = true
