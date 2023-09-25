@@ -8,3 +8,4 @@ func _on_settingsBtn_pressed():
 	Global.editor_mode = "menu"
 	settings.visible = !settings.visible
 	settings.raise()
+	settings.animation_player.play("intro")
