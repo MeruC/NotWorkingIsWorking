@@ -166,5 +166,5 @@ func score_validation():
 		settings_data.gold_coins = new_coins
 		settings_data.net1_skills = update_skills
 		settings_data.level2 = "complete"
-	SaveManager.save_game()
+		SaveManager.save_game()
 	

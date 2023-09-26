@@ -123,6 +123,7 @@ func update_dialog():
 	else:
 		print("Dialog ended.")
 		Load.load_scene(self,game_scene)
+		$"..".queue_free()
 	# You can also return json_data here if needed
 
 func _on_play_btn_pressed():

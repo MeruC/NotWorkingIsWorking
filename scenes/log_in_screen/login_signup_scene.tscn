@@ -255,10 +255,11 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=44]
 size = 60
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=13]
 resource_name = "login_sucessful"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("bg:visible")
 tracks/0/interp = 1
@@ -297,7 +298,9 @@ margin_left = 691.0
 margin_top = 223.0
 margin_right = 1258.37
 margin_bottom = 422.068
+focus_mode = 0
 theme = ExtResource( 17 )
+enabled_focus_mode = 0
 text = "LOGIN"
 
 [node name="or" type="Label" parent="login_signup_screen"]
@@ -314,7 +317,9 @@ margin_left = 563.0
 margin_top = 658.0
 margin_right = 1292.37
 margin_bottom = 857.068
+focus_mode = 0
 theme = ExtResource( 17 )
+enabled_focus_mode = 0
 text = "Sign In"
 
 [node name="login_screen" type="CanvasLayer" parent="."]
@@ -326,7 +331,9 @@ margin_left = 60.0
 margin_top = 33.0
 margin_right = 327.374
 margin_bottom = 147.068
+focus_mode = 0
 theme = ExtResource( 16 )
+enabled_focus_mode = 0
 text = "back"
 script = ExtResource( 14 )
 
@@ -378,7 +385,9 @@ margin_left = 833.0
 margin_top = 869.0
 margin_right = 1127.37
 margin_bottom = 983.068
+focus_mode = 0
 theme = ExtResource( 16 )
+enabled_focus_mode = 0
 text = "login"
 
 [node name="signup_screen" type="CanvasLayer" parent="."]
@@ -457,7 +466,9 @@ margin_left = 51.0
 margin_top = 31.0
 margin_right = 318.374
 margin_bottom = 145.068
+focus_mode = 0
 theme = ExtResource( 16 )
+enabled_focus_mode = 0
 text = "back"
 script = ExtResource( 15 )
 
@@ -497,7 +508,9 @@ margin_top = 561.0
 margin_right = 1094.0
 margin_bottom = 661.0
 rect_min_size = Vector2( 100, 100 )
+focus_mode = 0
 custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 0
 text = "OK"
 icon = ExtResource( 2 )
 flat = true
@@ -539,7 +552,9 @@ margin_top = 561.0
 margin_right = 1094.0
 margin_bottom = 661.0
 rect_min_size = Vector2( 100, 100 )
+focus_mode = 0
 custom_fonts/font = ExtResource( 4 )
+enabled_focus_mode = 0
 text = "OK"
 icon = ExtResource( 2 )
 flat = true
@@ -547,7 +562,6 @@ clip_text = true
 icon_align = 1
 
 [node name="login_sucess" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="bg" type="TextureRect" parent="login_sucess"]
 visible = false
@@ -564,13 +578,13 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 10 )
 
 [node name="message" type="Label" parent="login_sucess/panel"]
-margin_left = -377.0
-margin_top = -176.0
-margin_right = 344.0
-margin_bottom = 199.0
+margin_left = -422.0
+margin_top = -227.0
+margin_right = 406.0
+margin_bottom = 289.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 44 )
-text = "aaaaa"
+text = "haru"
 align = 1
 valign = 1
 autowrap = true
@@ -593,5 +607,5 @@ texture = ExtResource( 1 )
 [connection signal="pressed" from="login_screen/back_btn" to="login_screen/back_btn" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="signup_screen/back_btn" to="signup_screen/back_btn" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="warning/ok_btn" to="warning" method="_on_ok_btn_pressed"]
-[connection signal="pressed" from="signup_success/ok_btn" to="signup_success" method="_on_ok_btn_pressed"]
+[connection signal="pressed" from="signup_success/ok_btn" to="signup_screen" method="_on_ok_btn_pressed"]
 [connection signal="animation_finished" from="login_sucess/AnimationPlayer" to="login_screen" method="_on_AnimationPlayer_animation_finished"]

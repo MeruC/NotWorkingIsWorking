@@ -104,3 +104,6 @@ func _add_user():
 func _change_scene():
 	$"..".queue_free()
 	Load.load_scene(self,"res://scenes/create_account/create_account.tscn")
+
+func _on_ok_btn_pressed():
+	pass # Replace with function body.

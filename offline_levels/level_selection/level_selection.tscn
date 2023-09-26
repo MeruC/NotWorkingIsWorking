@@ -1,135 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://offline_levels/level_selection/direct.gd" type="Script" id=3]
-[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=4]
-[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=5]
 [ext_resource path="res://global/chapters/chapter1.tscn" type="PackedScene" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 2 )
 
 [node name="level_selection" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
-settings_data = ExtResource( 5 )
-
-[node name="level_container" type="GridContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -450.0
-margin_top = -125.0
-margin_right = 450.0
-margin_bottom = 125.0
-custom_constants/vseparation = 50
-custom_constants/hseparation = 100
-columns = 5
-
-[node name="level1" type="Button" parent="level_container"]
-margin_right = 105.374
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "1"
-
-[node name="level2" type="Button" parent="level_container"]
-margin_left = 205.0
-margin_right = 315.374
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "2"
-
-[node name="level3" type="Button" parent="level_container"]
-margin_left = 415.0
-margin_right = 525.374
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "3"
-
-[node name="level4" type="Button" parent="level_container"]
-margin_left = 625.0
-margin_right = 735.374
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "4"
-
-[node name="level5" type="Button" parent="level_container"]
-margin_left = 835.0
-margin_right = 945.374
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-text = "5"
-
-[node name="level6" type="Button" parent="level_container"]
-margin_top = 150.0
-margin_right = 105.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 1 )
-disabled = true
-text = "6"
-
-[node name="level7" type="Button" parent="level_container"]
-margin_left = 205.0
-margin_top = 150.0
-margin_right = 315.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 1 )
-disabled = true
-text = "7"
-
-[node name="level8" type="Button" parent="level_container"]
-margin_left = 415.0
-margin_top = 150.0
-margin_right = 525.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 1 )
-disabled = true
-text = "8"
-
-[node name="level9" type="Button" parent="level_container"]
-margin_left = 625.0
-margin_top = 150.0
-margin_right = 735.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 1 )
-disabled = true
-text = "9"
-
-[node name="level10" type="Button" parent="level_container"]
-margin_left = 835.0
-margin_top = 150.0
-margin_right = 945.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 1 )
-disabled = true
-text = "10"
-
-[node name="back_button" type="Button" parent="."]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 145.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 1 )
-text = "BACK"
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 margin_right = 40.0
@@ -141,10 +16,3 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="world1" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
-
-[connection signal="pressed" from="level_container/level1" to="." method="_on_level1_pressed"]
-[connection signal="pressed" from="level_container/level2" to="." method="_on_level2_pressed"]
-[connection signal="pressed" from="level_container/level3" to="." method="_on_level3_pressed"]
-[connection signal="pressed" from="level_container/level4" to="." method="_on_level4_pressed"]
-[connection signal="pressed" from="level_container/level5" to="." method="_on_level5_pressed"]
-[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
