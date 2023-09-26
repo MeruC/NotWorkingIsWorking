@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://offline_levels/level_selection/direct.gd" type="Script" id=3]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=4]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=5]
+[ext_resource path="res://global/chapters/chapter1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -129,6 +130,15 @@ margin_right = 145.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 1 )
 text = "BACK"
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1920, 1080 )
+
+[node name="world1" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="level_container/level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level_container/level2" to="." method="_on_level2_pressed"]

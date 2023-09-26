@@ -2,7 +2,7 @@ extends Control
 
 # This script for directing users into another scene
 
-var level_selection = "res://global/chapters/chapter1.tscn"
+var level_selection = "res://offline_levels/level_selection/level_selection.tscn"
 var online_subMenu = "res://online_mode/level_create_Menu/level_create.tscn"
 var user_profile = "res://scenes/user_profile/user_profile.tscn"
 var main_shop = "res://scenes/main_shop/main_shop.tscn"
