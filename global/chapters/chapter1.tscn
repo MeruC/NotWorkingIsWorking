@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "street2_opening"
-length = 1.4
+length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect3:rect_position")
 tracks/0/interp = 1
@@ -19,7 +19,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2556, 192 ), Vector2( -140, 601 ), Vector2( -121, 763 ), Vector2( -110, 672 ), Vector2( 2276, 1038 ) ]
@@ -31,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2877, 434 ), Vector2( -185, 710 ), Vector2( -42, 719 ), Vector2( -63, 623 ), Vector2( 2304, 959 ) ]
@@ -43,7 +43,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2898, 387 ), Vector2( 32, 425 ), Vector2( 41, 577 ), Vector2( -28, 369 ), Vector2( 2369, 669 ) ]
@@ -55,7 +55,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1779, -1625 ), Vector2( 29, -92.9995 ), Vector2( 29, -226 ), Vector2( 13, -103 ), Vector2( 2428, -85.0001 ) ]
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1831, -1284 ), Vector2( -42.0002, 85.9999 ), Vector2( -13, -47 ), Vector2( -8, 60 ), Vector2( 2455, 102 ) ]
@@ -79,7 +79,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.9, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1607, -1212 ), Vector2( 57, 34 ), Vector2( 77, -99 ), Vector2( 2, 51 ), Vector2( 2501, 135 ) ]
@@ -91,7 +91,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.4, 1 ),
+"times": PoolRealArray( 0, 0.4, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -241,16 +241,7 @@ color = Color( 0.894531, 0.577311, 0.128414, 1 )
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 50.0
-margin_top = 37.0
-margin_right = 327.0
-margin_bottom = 169.0
-theme = ExtResource( 4 )
-text = "back"
-
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]
 [connection signal="pressed" from="level3" to="." method="_on_level3_pressed"]
 [connection signal="pressed" from="level4" to="." method="_on_level4_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

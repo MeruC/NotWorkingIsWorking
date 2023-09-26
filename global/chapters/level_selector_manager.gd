@@ -13,8 +13,6 @@ func _ready():
 	elif settings_data.level3 == "complete":
 		$level4.disabled = false
 	
-
-
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
@@ -27,3 +25,8 @@ func _on_level3_pressed():
 
 func _on_level4_pressed():
 	Load.load_scene(self, "res://offline_levels/level4/level4_discussion/level4_discussion.tscn")
+
+
+func _on_back_btn_pressed():
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+	$"../../..".queue_free()
