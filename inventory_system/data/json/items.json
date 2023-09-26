@@ -11,8 +11,32 @@
 		"stack_size": 1,
 		"level": 1
 	},
+	"crimping": {
+		"name": "Crimping tool",
+		"type": "TOOL",
+		"stack_size": 1,
+		"level": 1
+	},
 	"rj45": {
 		"name": "RJ45 Cable",
+		"type": "MATERIAL",
+		"stack_size": 64,
+		"level": 1
+	},
+	"blue_cable": {
+		"name": "Blue Cable",
+		"type": "MATERIAL",
+		"stack_size": 64,
+		"level": 1
+	},
+	"red_cable": {
+		"name": "Red Cable",
+		"type": "MATERIAL",
+		"stack_size": 64,
+		"level": 1
+	},
+	"Console_Cable": {
+		"name": "Console Cable",
 		"type": "MATERIAL",
 		"stack_size": 64,
 		"level": 1

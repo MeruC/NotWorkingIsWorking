@@ -365,14 +365,14 @@ scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer"]
 margin_right = 591.0
-margin_bottom = 569.0
+margin_bottom = 701.0
 rect_min_size = Vector2( 591, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_right = 591.0
-margin_bottom = 282.0
+margin_bottom = 137.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable"
 price = 50
@@ -380,13 +380,43 @@ item_id = "rj45"
 quantity = 1
 
 [node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 286.0
+margin_top = 141.0
 margin_right = 591.0
-margin_bottom = 569.0
+margin_bottom = 278.0
 size_flags_vertical = 3
 panel_title = "HDMI"
 price = 120
 item_id = "hdmi"
+quantity = 1
+
+[node name="shop_option3" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 282.0
+margin_right = 591.0
+margin_bottom = 419.0
+size_flags_vertical = 3
+panel_title = "Blue Cable Wire"
+price = 88
+item_id = "blue_cable"
+quantity = 1
+
+[node name="shop_option4" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 423.0
+margin_right = 591.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+panel_title = "Red Cable Wire"
+price = 119
+item_id = "red_cable"
+quantity = 1
+
+[node name="shop_option5" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 564.0
+margin_right = 591.0
+margin_bottom = 701.0
+size_flags_vertical = 3
+panel_title = "Console Cable"
+price = 185
+item_id = "Console_Cable"
 quantity = 1
 
 [node name="Equipments" type="Tabs" parent="ui_container/windows/crafting_list/TabContainer"]
@@ -423,6 +453,15 @@ size_flags_vertical = 3
 panel_title = "Cable tester"
 price = 299
 item_id = "cable_tester"
+quantity = 1
+
+[node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list" instance=ExtResource( 15 )]
+margin_right = 591.0
+margin_bottom = 187.0
+size_flags_vertical = 3
+panel_title = "Crimping Tool"
+price = 98
+item_id = "crimping"
 quantity = 1
 
 [node name="ColorRect" type="ColorRect" parent="ui_container/windows/crafting_list"]

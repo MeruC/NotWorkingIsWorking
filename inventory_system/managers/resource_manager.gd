@@ -34,6 +34,9 @@ var sprites = {
 	"straight_through": preload( "res://inventory_system/resources/sprites/items/server.png" ),
 	"switch": preload( "res://inventory_system/resources/sprites/items/switch.png" ),
 	"system_unit": preload( "res://inventory_system/resources/sprites/items/system_unit.png" ),
+	"blue_cable": preload("res://inventory_system/resources/sprites/items/blue_cable.png"),
+	"red_cable": preload("res://inventory_system/resources/sprites/items/red_cable.png"),
+	"Console_Cable": preload("res://inventory_system/resources/sprites/items/Console_Cable.png")
 	
 }
 
