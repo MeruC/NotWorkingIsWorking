@@ -2,7 +2,7 @@ extends Camera
 
 var maxLimit = Vector3(20, 0, 34)
 var minLimit = Vector3(-4.42804, 0, 6.40031)
-var swipeThreshold = 50.0
+var swipeThreshold = 100.0
 export (float, 1.0, 1.5) var MAX_DIAGONAL_SLOPE = 1.3
 var level2_position = Vector3(17.258677, 0, 22.683001)
 var reachlevel2 = false

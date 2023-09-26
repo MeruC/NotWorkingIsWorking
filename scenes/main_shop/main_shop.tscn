@@ -372,11 +372,21 @@ size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_right = 591.0
-margin_bottom = 569.0
+margin_bottom = 282.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable"
 price = 50
 item_id = "rj45"
+quantity = 1
+
+[node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 286.0
+margin_right = 591.0
+margin_bottom = 569.0
+size_flags_vertical = 3
+panel_title = "HDMI"
+price = 120
+item_id = "hdmi"
 quantity = 1
 
 [node name="Equipments" type="Tabs" parent="ui_container/windows/crafting_list/TabContainer"]
@@ -387,6 +397,33 @@ margin_left = 20.0
 margin_top = 116.0
 margin_right = -20.0
 margin_bottom = -20.0
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.00006
+rect_min_size = Vector2( 0, 538 )
+size_flags_horizontal = 3
+theme = ExtResource( 12 )
+scroll_horizontal_enabled = false
+
+[node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2"]
+margin_right = 591.0
+margin_bottom = 569.0
+rect_min_size = Vector2( 591, 0 )
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list" instance=ExtResource( 15 )]
+margin_right = 591.0
+margin_bottom = 187.0
+size_flags_vertical = 3
+panel_title = "Cable tester"
+price = 299
+item_id = "cable_tester"
+quantity = 1
 
 [node name="ColorRect" type="ColorRect" parent="ui_container/windows/crafting_list"]
 show_behind_parent = true
