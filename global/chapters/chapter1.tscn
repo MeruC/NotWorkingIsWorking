@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -6,8 +6,99 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 [ext_resource path="res://global/chapters/level_selector_manager.gd" type="Script" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "street2_opening"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect3:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2556, 192 ), Vector2( -140, 601 ), Vector2( -121, 763 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2877, 434 ), Vector2( -185, 710 ), Vector2( -42, 719 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect4:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2898, 387 ), Vector2( 32, 425 ), Vector2( 41, 577 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect5:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1779, -1625 ), Vector2( 29, -92.9995 ), Vector2( 29, -226 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect6:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1831, -1284 ), Vector2( -42.0002, 85.9999 ), Vector2( -13, -47 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect7:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1607, -1212 ), Vector2( 57, 34 ), Vector2( 77, -99 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer/AnimationPlayer/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="world1" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40322, 0 )
 script = ExtResource( 5 )
 settings_data = ExtResource( 6 )
 
@@ -15,7 +106,7 @@ settings_data = ExtResource( 6 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 3.2, 3.2, 3.2 )
 data = {
-"cells": PoolIntArray( 131072, 0, 1441805, 131073, 0, 4, 131074, 0, 1441802, 131075, 0, 655370, 131076, 0, 655369, 131077, 0, 655372, 131078, 0, 655371, 131079, 0, 1048589, 196606, 0, 1048578, 196607, 0, 1048581, 131072, 1, 0, 131073, 1, 13, 131074, 1, 13, 131075, 1, 13, 131076, 1, 13, 131077, 1, 13, 131078, 1, 13, 131079, 1, 1441792, 131080, 1, 13, 131081, 1, 13, 196606, 1, 13, 196607, 1, 13, 131072, 2, 1441805, 131073, 2, 1048577, 131074, 2, 1048579, 131075, 2, 1048582, 131076, 2, 1048583, 131077, 2, 9, 131078, 2, 10, 131079, 2, 1048589, 196606, 2, 655372, 196607, 2, 655371, 131072, 3, 1441805, 131073, 3, 1048577, 131074, 3, 1048578, 131075, 3, 1, 131076, 3, 1048581, 131077, 3, 1, 131078, 3, 1048581, 131079, 3, 1048589, 196606, 3, 1441799, 196607, 3, 1441798, 131072, 4, 1048576, 131073, 4, 655373, 131074, 4, 655373, 131075, 4, 13, 131076, 4, 13, 131077, 4, 13, 131078, 4, 13, 131079, 4, 1048576, 131080, 4, 13, 131081, 4, 13, 196606, 4, 655373, 196607, 4, 655373, 131072, 5, 1441805, 131073, 5, 1441796, 131074, 5, 1, 131075, 5, 1048582, 131076, 5, 1048583, 131077, 5, 1048582, 131078, 5, 1048583, 131079, 5, 1048589, 196606, 5, 655372, 196607, 5, 655371, 131072, 6, 1441805, 131073, 6, 1441796, 131074, 6, 655363, 131075, 6, 4, 131076, 6, 1048581, 131077, 6, 4, 131078, 6, 1048581, 131079, 6, 1048589, 196606, 6, 655370, 196607, 6, 655369, 131072, 7, 655360, 131073, 7, 655373, 131074, 7, 655373, 131075, 7, 13, 131076, 7, 13, 131077, 7, 13, 131078, 7, 13, 131079, 7, 0, 131080, 7, 13, 131081, 7, 13, 196606, 7, 655373, 196607, 7, 655373, 131072, 8, 1441805, 131073, 8, 655372, 131074, 8, 655371, 131075, 8, 655370, 131076, 8, 10, 131077, 8, 655372, 131078, 8, 655371, 131079, 8, 1048589, 196606, 8, 1, 196607, 8, 655362, 131072, 9, 1048589, 131073, 9, 1048577, 131074, 9, 655363, 131075, 9, 9, 131076, 9, 655369, 131077, 9, 1048582, 131078, 9, 1048583, 131079, 9, 1048589, 196606, 9, 5, 196607, 9, 1048580, 131072, 10, 1441792, 131073, 10, 13, 131074, 10, 13, 131075, 10, 13, 131076, 10, 13, 131077, 10, 13, 131078, 10, 13, 131079, 10, 0, 131080, 10, 13, 131081, 10, 13, 196606, 10, 13, 196607, 10, 13, 131072, 65535, 1441805, 131073, 65535, 1441802, 131074, 65535, 1441802, 131075, 65535, 1048582, 131076, 65535, 1048583, 131077, 65535, 1441794, 131078, 65535, 1048580, 131079, 65535, 1048589, 196606, 65535, 1048577, 196607, 65535, 1048580 )
+"cells": PoolIntArray( 131072, 0, 1441805, 131073, 0, 4, 131074, 0, 1441802, 131075, 0, 655370, 131076, 0, 655369, 131077, 0, 655372, 131078, 0, 655371, 131079, 0, 1048589, 131080, 0, 5, 131081, 0, 4, 196606, 0, 1048578, 196607, 0, 1048581, 131072, 1, 0, 131073, 1, 13, 131074, 1, 13, 131075, 1, 13, 131076, 1, 13, 131077, 1, 13, 131078, 1, 13, 131079, 1, 1441792, 131080, 1, 13, 131081, 1, 13, 196606, 1, 13, 196607, 1, 13, 131072, 2, 1441805, 131073, 2, 1048577, 131074, 2, 1048579, 131075, 2, 1048582, 131076, 2, 1048583, 131077, 2, 9, 131078, 2, 10, 131079, 2, 1048589, 131080, 2, 4, 131081, 2, 1, 196606, 2, 655372, 196607, 2, 655371, 131072, 3, 1441805, 131073, 3, 1048577, 131074, 3, 1048578, 131075, 3, 1, 131076, 3, 1048581, 131077, 3, 1, 131078, 3, 1048581, 131079, 3, 1048589, 131080, 3, 5, 131081, 3, 3, 196606, 3, 1441799, 196607, 3, 1441798, 131072, 4, 1048576, 131073, 4, 655373, 131074, 4, 655373, 131075, 4, 13, 131076, 4, 13, 131077, 4, 13, 131078, 4, 13, 131079, 4, 1048576, 131080, 4, 13, 131081, 4, 13, 196606, 4, 655373, 196607, 4, 655373, 131072, 5, 1441805, 131073, 5, 1441796, 131074, 5, 1, 131075, 5, 1048582, 131076, 5, 1048583, 131077, 5, 1048582, 131078, 5, 1048583, 131079, 5, 1048589, 131080, 5, 8, 131081, 5, 8, 196606, 5, 655372, 196607, 5, 655371, 131072, 6, 1441805, 131073, 6, 1441796, 131074, 6, 655363, 131075, 6, 4, 131076, 6, 1048581, 131077, 6, 4, 131078, 6, 1048581, 131079, 6, 1048589, 131080, 6, 9, 131081, 6, 4, 196606, 6, 655370, 196607, 6, 655369, 131072, 7, 655360, 131073, 7, 655373, 131074, 7, 655373, 131075, 7, 13, 131076, 7, 13, 131077, 7, 13, 131078, 7, 13, 131079, 7, 0, 131080, 7, 13, 131081, 7, 13, 196606, 7, 655373, 196607, 7, 655373, 131072, 8, 1441805, 131073, 8, 655372, 131074, 8, 655371, 131075, 8, 655370, 131076, 8, 10, 131077, 8, 655372, 131078, 8, 655371, 131079, 8, 1048589, 131080, 8, 4, 131081, 8, 9, 196606, 8, 1, 196607, 8, 655362, 131072, 9, 1048589, 131073, 9, 1048577, 131074, 9, 655363, 131075, 9, 9, 131076, 9, 655369, 131077, 9, 1048582, 131078, 9, 1048583, 131079, 9, 1048589, 131080, 9, 5, 131081, 9, 9, 196606, 9, 5, 196607, 9, 1048580, 131072, 10, 1441792, 131073, 10, 13, 131074, 10, 13, 131075, 10, 13, 131076, 10, 13, 131077, 10, 13, 131078, 10, 13, 131079, 10, 0, 131080, 10, 13, 131081, 10, 13, 196606, 10, 13, 196607, 10, 13, 131072, 65535, 1441805, 131073, 65535, 1441802, 131074, 65535, 1441802, 131075, 65535, 1048582, 131076, 65535, 1048583, 131077, 65535, 1441794, 131078, 65535, 1048580, 131079, 65535, 1048589, 131080, 65535, 3, 131081, 65535, 9, 196606, 65535, 1048577, 196607, 65535, 1048580 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -41,6 +132,7 @@ transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -4.42804, 9
 script = ExtResource( 3 )
 
 [node name="level1" type="Button" parent="."]
+visible = false
 margin_left = 669.0
 margin_top = 315.0
 margin_right = 992.0
@@ -50,14 +142,107 @@ text = "Level1"
 
 [node name="level2" type="Button" parent="."]
 visible = false
-margin_left = 695.0
-margin_top = 137.0
-margin_right = 1031.0
-margin_bottom = 269.0
+margin_left = 725.0
+margin_top = 248.0
+margin_right = 1061.0
+margin_bottom = 380.0
 theme = ExtResource( 4 )
 text = "level2"
 __meta__ = {
 "_editor_description_": "_po"
 }
 
+[node name="level3" type="Button" parent="."]
+visible = false
+margin_left = 699.0
+margin_top = 365.0
+margin_right = 1071.0
+margin_bottom = 497.0
+theme = ExtResource( 4 )
+text = "level 3"
+
+[node name="level4" type="Button" parent="."]
+visible = false
+margin_left = 1056.0
+margin_top = 407.0
+margin_right = 1428.0
+margin_bottom = 539.0
+theme = ExtResource( 4 )
+text = "level 4"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+anims/street2_opening = SubResource( 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/AnimationPlayer"]
+visible = false
+margin_left = 47.0
+margin_top = 406.0
+margin_right = 1887.0
+margin_bottom = 557.0
+rect_rotation = 5.80689
+theme = ExtResource( 4 )
+text = "Welcome to Street 2"
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -2556.0
+margin_top = 192.0
+margin_right = -2516.0
+margin_bottom = 232.0
+rect_rotation = 4.73448
+rect_scale = Vector2( 52.5859, 7.76017 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -2877.0
+margin_top = 434.0
+margin_right = -2837.0
+margin_bottom = 474.0
+rect_rotation = 2.82978
+rect_scale = Vector2( 54.1978, 6.56981 )
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -2898.0
+margin_top = 387.0
+margin_right = -2853.0
+margin_bottom = 437.0
+rect_rotation = 6.46603
+rect_scale = Vector2( 48.2213, 8.23747 )
+color = Color( 0.894531, 0.577311, 0.128414, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -1779.0
+margin_top = -1625.0
+margin_right = -1739.0
+margin_bottom = -1585.0
+rect_rotation = 4.73448
+rect_scale = Vector2( 52.5859, 7.76017 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -1831.0
+margin_top = -1284.0
+margin_right = -1791.0
+margin_bottom = -1244.0
+rect_rotation = 2.82978
+rect_scale = Vector2( 54.1978, 6.56981 )
+
+[node name="ColorRect7" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+margin_left = -1607.0
+margin_top = -1212.0
+margin_right = -1562.0
+margin_bottom = -1162.0
+rect_rotation = 6.46603
+rect_scale = Vector2( 48.2213, 8.23747 )
+color = Color( 0.894531, 0.577311, 0.128414, 1 )
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]
+[connection signal="pressed" from="level3" to="." method="_on_level3_pressed"]
+[connection signal="pressed" from="level4" to="." method="_on_level4_pressed"]
