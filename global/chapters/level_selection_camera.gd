@@ -109,7 +109,3 @@ func is_within_bounds(position):
 	)
 	swipe_direction = Vector3.ZERO
 
-
-func _on_level1_pressed():
-	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
-	$"..".queue_free()
