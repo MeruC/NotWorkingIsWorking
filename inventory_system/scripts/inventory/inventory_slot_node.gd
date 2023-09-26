@@ -29,3 +29,4 @@ func _on_item_changed():
 	
 	if slot.item:
 		item_container.add_child( ResourceManager.get_item_node( slot.item ) )
+

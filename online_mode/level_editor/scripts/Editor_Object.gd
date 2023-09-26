@@ -41,12 +41,12 @@ func _input(event):
 	cursor_pos.z = stepify(cursor_pos.z, 2)
 	
 	object_point = WhatObject()
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and OS.get_name() == "Android":
 		match(Global.editor_mode):
 			"place":
-				placeObject()
+					placeObject()
 			"rotate":
-				rotateObject()
+					rotateObject()
 			"remove":
 				if !in_action:
 					removeObject()
@@ -131,6 +131,7 @@ func previewCursor():
 		no_sign.global_translation.y = 10.0
 				
 func placeObject():
+	in_action = true
 	cursor_pos.y = 0
 	if !("floor" in object_point.collider.name): cursor_pos.y = height
 	for i in placeOn:
@@ -141,6 +142,7 @@ func placeObject():
 					level.add_child(new_item)
 					new_item.owner = level
 					new_item.global_translation = cursor_pos
+	in_action = false
 	
 func rotateObject():
 	if ("object" in object_point.collider.name and !Global.is_usingJoystick):

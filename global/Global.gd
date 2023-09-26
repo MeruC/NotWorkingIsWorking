@@ -7,6 +7,7 @@ var can_place = true
 var is_usingJoystick = false
 var just_onMenu = false
 
+var player : KinematicBody
 var playerCamera : Camera
 var playerCanMove = true
 var playerInteractLbl : Control
