@@ -2,9 +2,8 @@
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
-[ext_resource path="res://online_mode/level_editor/scripts/Editor_Camera.gd" type="Script" id=3]
-
-[sub_resource type="BoxShape" id=1]
+[ext_resource path="res://global/chapters/level_selection_camera.gd" type="Script" id=3]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 
 [node name="world1" type="Spatial"]
 
@@ -33,15 +32,28 @@ shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.1
 
-[node name="Editor_Camera" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.092, 0, 22.683 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -4.42804, 9.84598, 6.40031 )
 script = ExtResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Editor_Camera"]
-transform = Transform( 23, 0, 0, 0, 1, 0, 0, 0, 13, -4.23593, 16.7646, -0.00646973 )
-shape = SubResource( 1 )
+[node name="level1" type="Button" parent="."]
+margin_left = 669.0
+margin_top = 315.0
+margin_right = 992.0
+margin_bottom = 447.0
+theme = ExtResource( 4 )
+text = "Level1"
 
-[node name="Camera" type="Camera" parent="Editor_Camera"]
-transform = Transform( 1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, -4.22798, 13.7628, 0 )
-current = true
-size = 25.0
+[node name="level2" type="Button" parent="."]
+visible = false
+margin_left = 695.0
+margin_top = 137.0
+margin_right = 1031.0
+margin_bottom = 269.0
+theme = ExtResource( 4 )
+text = "level2"
+__meta__ = {
+"_editor_description_": "_po"
+}
+
+[connection signal="pressed" from="level1" to="Camera" method="_on_level1_pressed"]
