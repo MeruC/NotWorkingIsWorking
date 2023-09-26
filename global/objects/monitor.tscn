@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://inventory_system/scenes/inventory/inventory_slot_node.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=11]
+[ext_resource path="res://resources/Models/Materials/computer/parts-0-Tower.obj" type="ArrayMesh" id=12]
 
 [sub_resource type="DynamicFont" id=7]
 
@@ -30,6 +31,9 @@ margin_top = 3.9945
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 4 )
@@ -55,68 +59,94 @@ script = ExtResource( 8 )
 
 [node name="mode" type="CanvasLayer" parent="ui"]
 
-[node name="ColorRect" type="ColorRect" parent="ui"]
+[node name="io" type="ColorRect" parent="ui"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
-[node name="holder" type="Control" parent="ui/ColorRect"]
+[node name="holder" type="Control" parent="ui/io"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 13.0
-margin_top = 20.0
-margin_right = -39.0
-margin_bottom = -22.0
-
-[node name="group" type="Control" parent="ui/ColorRect/holder"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -52.5
-margin_top = -40.0
-margin_right = 52.5
 theme = ExtResource( 10 )
 
-[node name="Exit" type="Button" parent="ui/ColorRect/holder/group"]
+[node name="to_pc" type="Button" parent="ui/io/holder"]
+margin_left = 1711.0
+margin_top = 442.0
+margin_right = 1837.0
+margin_bottom = 574.0
+text = ">"
+
+[node name="pc_screen" type="ColorRect" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="holder" type="Control" parent="ui/pc_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+
+[node name="Exit" type="Button" parent="ui/pc_screen/holder"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 387.5
-margin_top = -40.0
-margin_right = 644.5
-margin_bottom = -24.0
+margin_left = -526.0
+margin_top = 971.0
+margin_right = -260.952
+margin_bottom = -47.182
 custom_fonts/font = SubResource( 7 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 8 )
 text = "Turn On"
 
-[node name="TextureRect" type="Panel" parent="ui/ColorRect/holder"]
-margin_left = 261.0
-margin_top = 26.0
-margin_right = 1634.0
-margin_bottom = 920.0
+[node name="TextureRect" type="Panel" parent="ui/pc_screen/holder"]
+margin_left = 274.0
+margin_top = 38.0
+margin_right = 1652.0
+margin_bottom = 932.0
+rect_pivot_offset = Vector2( 766, 624 )
 custom_styles/panel = SubResource( 10 )
+
+[node name="to_io" type="Button" parent="ui/pc_screen/holder"]
+margin_left = 71.0
+margin_top = 442.0
+margin_right = 197.0
+margin_bottom = 574.0
+text = "<"
 
 [node name="CollisionShape2D" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
 [node name="CSGMesh" type="CSGMesh" parent="CollisionShape2D"]
-transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0, -1, 0.75 )
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 6.2499e-08, -1, 0.0350946 )
 mesh = ExtResource( 1 )
 material = SubResource( 5 )
 
+[node name="CSGBox" type="CSGBox" parent="CollisionShape2D/CSGMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14663, 0.9513, -1.19209e-07 )
+width = 0.533182
+height = 0.12047
+depth = 0.028609
+material = SubResource( 11 )
+
 [node name="CSGMesh2" type="CSGMesh" parent="CollisionShape2D"]
-transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.125, -1, -0.5 )
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.125, -1, -0.608576 )
 mesh = ExtResource( 3 )
 material = SubResource( 3 )
 
 [node name="CSGMesh3" type="CSGMesh" parent="CollisionShape2D"]
-transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -0.75, -1, -0.625 )
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -0.75, -1, -0.733576 )
 mesh = ExtResource( 5 )
+material = SubResource( 4 )
+
+[node name="CSGMesh4" type="CSGMesh" parent="CollisionShape2D"]
+transform = Transform( -2.73196e-08, 0, 0.625, 0, 0.625, 0, -0.625, 0, -2.73196e-08, -0.433958, -1, 0.317955 )
+mesh = ExtResource( 12 )
 material = SubResource( 4 )
 
 [node name="interaction_area" type="Area" parent="."]
@@ -132,9 +162,19 @@ transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
 shape = SubResource( 6 )
 
 [node name="Camera" type="Camera" parent="interaction_area"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 2.095, 0 )
+transform = Transform( -0.958506, 0, -1.44731e-07, 0, 0.958506, 0, 1.44731e-07, 0, -0.958506, 0.0550003, 2.095, -2.94594 )
+h_offset = 0.055
 v_offset = -1.0
 projection = 1
 size = 1.376
 
-[connection signal="pressed" from="ui/ColorRect/holder/group/Exit" to="ui" method="_on_Exit_pressed"]
+[node name="Camera2" type="Camera" parent="interaction_area"]
+transform = Transform( -2.70424e-07, 0, 0.958506, 0, 0.958506, 0, -0.958506, 0, -2.70424e-07, 2.883, 1.641, 1.209 )
+h_offset = 0.055
+v_offset = -1.0
+projection = 1
+size = 1.679
+
+[connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
+[connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
+[connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]

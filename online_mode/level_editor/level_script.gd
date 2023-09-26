@@ -18,11 +18,13 @@ func _ready():
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
+			Global.player = get_node("Player")
 		elif setting_data.gender == "female":
 			player = preload("res://global/Player_girl/player-girl.tscn")
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
+			Global.player = get_node("Player")
 		
 		
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )
@@ -40,6 +42,7 @@ func _on_pc_closed():
 	inventory.set_visible(true)
 	mobile_controls.set_visible(true)
 	if (onMenu):
-		CameraTransition.transition_camera3D(get_viewport().get_camera(), Global.playerCamera , 2)
+		yield(CameraTransition.transition_camera3D(get_viewport().get_camera(), Global.playerCamera , 1), "completed")
+		Global.player.get_child(0).set_visible(true)
 		onMenu = false
 		Global.playerCanMove = true
