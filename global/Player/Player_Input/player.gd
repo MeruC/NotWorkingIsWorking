@@ -27,11 +27,12 @@ export( NodePath ) onready var interact_labels = get_node( interact_labels ) as 
 var current_interactable
 
 func _physics_process(delta: float) -> void:
-	var input_vector = get_input_vector()
-	var direction = get_direction(input_vector)
-	apply_friction(direction, delta)
-	apply_movement(input_vector, direction, delta)
-	velocity = move_and_slide(velocity, Vector3.UP)
+	if (Global.playerCanMove):
+		var input_vector = get_input_vector()
+		var direction = get_direction(input_vector)
+		apply_friction(direction, delta)
+		apply_movement(input_vector, direction, delta)
+		velocity = move_and_slide(velocity, Vector3.UP)
 	
 func _process(delta):
 	if velocity.x == 0 and velocity.z == 0:

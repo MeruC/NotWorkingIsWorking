@@ -1,7 +1,7 @@
 extends Scale_Control
 
 onready var object_cursor = get_node("/root/editor/Editor_Object")
-onready var current_label = get_node("Label")
+onready var current_label = get_node("preview/previewLbl")
 
 func _on_Done_pressed():
 	get_parent().get_parent().visible = false

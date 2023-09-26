@@ -86,7 +86,6 @@ rect_pivot_offset = Vector2( 156, 100 )
 script = ExtResource( 2 )
 
 [node name="Furniture" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -156,6 +155,7 @@ this_scene = ExtResource( 8 )
 placeOn = [ "floor" ]
 
 [node name="Devices" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -208,7 +208,7 @@ margin_right = 742.0
 margin_bottom = 534.0
 text = "Computer"
 this_scene = ExtResource( 7 )
-placeOn = [ "object_table" ]
+placeOn = [ "object_table", "floor" ]
 height = 15.0
 
 [node name="generic_router" parent="TabContainer/Devices/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
