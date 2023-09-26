@@ -129,8 +129,6 @@ type = "data"
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="manager" method="_on_tap_pressed"]
 
-[editable path="popup_layer/pause"]
-[editable path="popup_layer/pause/settings"]
 [editable path="popup_layer/game_over"]
 [editable path="popup_layer/instructions"]
 [editable path="info_folder"]
