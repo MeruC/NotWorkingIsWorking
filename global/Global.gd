@@ -9,6 +9,7 @@ var just_onMenu = false
 
 var playerCamera : Camera
 var playerCanMove = true
+var playerInteractLbl : Control
 
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
 

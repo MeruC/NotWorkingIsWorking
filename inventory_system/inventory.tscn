@@ -68,3 +68,4 @@ __meta__ = {
 }
 
 [node name="pause" parent="." instance=ExtResource( 2 )]
+mouse_filter = 2

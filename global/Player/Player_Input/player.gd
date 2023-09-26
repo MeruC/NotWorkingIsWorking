@@ -26,6 +26,9 @@ export( NodePath ) onready var interact_labels = get_node( interact_labels ) as 
 
 var current_interactable
 
+func _ready():
+	Global.playerInteractLbl = get_node("interact")
+
 func _physics_process(delta: float) -> void:
 	if (Global.playerCanMove):
 		var input_vector = get_input_vector()

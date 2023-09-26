@@ -12,6 +12,7 @@ func _ready():
 	object_name = pc_name
 
 func interact():
+	Global.playerInteractLbl.set_visible(false)
 	SignalManager.emit_signal( "pc_opened")
 	yield(CameraTransition.transition_camera3D(Global.playerCamera, get_node("Camera"), 2), "completed")
 	ui.set_visible(true)
