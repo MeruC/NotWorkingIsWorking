@@ -153,7 +153,7 @@ size = 14
 outline_size = 2
 font_data = ExtResource( 4 )
 
-[node name="Player_girl" type="KinematicBody"]
+[node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.445, 0 )
 collision_layer = 9
 collision_mask = 9

@@ -17,17 +17,13 @@ func _ready():
 
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
-	$".".queue_free()
 
 
 func _on_level2_pressed():
 	Load.load_scene(self, "res://offline_levels/level2/level2_discussion/level2_discussion.tscn")
-	$".".queue_free()
 
 func _on_level3_pressed():
 	Load.load_scene(self, "res://offline_levels/level3/level3_discussion.tscn")
-	$".".queue_free()
 
 func _on_level4_pressed():
 	Load.load_scene(self, "res://offline_levels/level4/level4_discussion/level4_discussion.tscn")
-	$".".queue_free()
