@@ -4,7 +4,7 @@ export (Resource) var settings_data
 
 func _ready():
 	$"../login_screen".visible = false
-		
+			
 func _process(delta):
 	if settings_data:
 		account_validation()

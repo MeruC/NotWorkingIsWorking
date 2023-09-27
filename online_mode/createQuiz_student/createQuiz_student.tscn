@@ -108,7 +108,6 @@ custom_fonts/font = SubResource( 13 )
 tab_align = 0
 
 [node name="Level Settings" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -236,6 +235,7 @@ valign = 1
 autowrap = true
 
 [node name="Question List" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
