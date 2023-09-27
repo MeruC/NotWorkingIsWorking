@@ -9,6 +9,8 @@ export( NodePath ) onready var master_vol_slider = get_node( master_vol_slider )
 export( NodePath ) onready var music_vol_slider = get_node( music_vol_slider ) as HSlider
 export( NodePath ) onready var sound_vol_slider = get_node( sound_vol_slider ) as HSlider
 onready var confirm = $confirm
+onready var audio_loop_player = $AudioLoopPlayer
+
 
 export( Resource ) var settings_data
 
@@ -16,6 +18,8 @@ onready var animation_player = $AnimationPlayer
 var menu = 0
 
 func _ready():
+	audio_loop_player.play()
+	audio_loop_player.stream_paused = true
 	settings_data.connect( "changed", self, "_on_data_changed" )
 	_on_data_changed()
 
@@ -40,6 +44,7 @@ func _on_resume_pressed():
 	animation_player.play_backwards("intro")
 	get_tree().paused = false
 	yield(animation_player, "animation_finished")
+	audio_loop_player.stream_paused = true
 	hide()
 	
 func _on_main_menu_pressed():
@@ -99,3 +104,4 @@ func _on_quit_pressed():
 	confirm.confirm_animation.play("intro")
 	confirm.label.text = "Quit game?"
 	confirm.action = "quit"
+

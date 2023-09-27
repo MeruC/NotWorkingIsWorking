@@ -262,6 +262,5 @@ custom_fonts/font = SubResource( 42 )
 text = "II"
 
 [node name="settings" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [connection signal="pressed" from="pauseBtn" to="." method="_on_settingsBtn_pressed"]
