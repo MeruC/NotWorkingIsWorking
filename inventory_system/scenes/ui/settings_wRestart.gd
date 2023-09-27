@@ -15,7 +15,11 @@ export( Resource ) var settings_data
 onready var animation_player = $AnimationPlayer
 var menu = 0
 
+onready var audio_loop_player = $AudioLoopPlayer
+
 func _ready():
+	audio_loop_player.play()
+	audio_loop_player.stream_paused = true
 	settings_data.connect( "changed", self, "_on_data_changed" )
 	_on_data_changed()
 
@@ -40,6 +44,9 @@ func _on_resume_pressed():
 	animation_player.play_backwards("intro")
 	get_tree().paused = false
 	yield(animation_player, "animation_finished")
+	audio_loop_player.stream_paused = true
+	audio_loop_player.stop()
+	#audio_loop_player.playing = false
 	hide()
 	
 func _on_main_menu_pressed():
