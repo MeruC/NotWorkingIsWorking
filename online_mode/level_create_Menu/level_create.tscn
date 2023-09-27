@@ -2319,6 +2319,7 @@ text = "BACK"
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 4 )]
 stream = ExtResource( 6 )
+bus = "Music"
 
 [node name="floor" type="CSGMesh" parent="."]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
