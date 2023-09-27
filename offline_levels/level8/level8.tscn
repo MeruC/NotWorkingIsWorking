@@ -759,7 +759,6 @@ score_display = NodePath("score_labels/score")
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 1 )]
-visible = false
 
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="0"]
 margin_right = 12.0

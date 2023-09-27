@@ -676,13 +676,6 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 0.737255, 0.227451, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
 [sub_resource type="DynamicFont" id=4]
 size = 60
 font_data = ExtResource( 13 )
@@ -722,6 +715,13 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.737255, 0.227451, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="level5" type="Control"]
 script = ExtResource( 10 )
 layer1 = NodePath("layer1")
@@ -748,6 +748,7 @@ instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 14 )]
 
@@ -791,19 +792,14 @@ visible = false
 
 [node name="instructions" parent="popup_layer" instance=ExtResource( 12 )]
 
-[node name="main_popup" type="Panel" parent="popup_layer/instructions"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -550.0
-margin_top = -300.0
-margin_right = 550.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 666, 375 )
-custom_styles/panel = SubResource( 1 )
+[node name="Sprite" type="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="1"]
+visible = false
+position = Vector2( 954, 714 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+hframes = 10
 
-[node name="title" type="Label" parent="popup_layer/instructions/main_popup"]
+[node name="title" type="Label" parent="popup_layer/instructions/main_popup" index="3"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -350.0
@@ -816,7 +812,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="content" type="Label" parent="popup_layer/instructions/main_popup"]
+[node name="content" type="Label" parent="popup_layer/instructions/main_popup" index="4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -832,18 +828,23 @@ align = 3
 valign = 1
 autowrap = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="popup_layer/instructions/main_popup"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="5"]
 root_node = NodePath("Sprite")
 playback_speed = 0.25
 anims/RESET = SubResource( 2 )
 anims/animation = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer"]
-visible = false
-position = Vector2( 954, 714 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
-hframes = 10
+[node name="main_popup" type="Panel" parent="popup_layer/instructions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -550.0
+margin_top = -300.0
+margin_right = 550.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 666, 375 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="slot_container" type="GridContainer" parent="."]
 anchor_left = 0.5
