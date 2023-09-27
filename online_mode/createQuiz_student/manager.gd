@@ -170,11 +170,11 @@ func _on_create_button_pressed():
 			create_confirmation.visible = true
 		else:
 			dialog_box.find_node("message").text = "Please select atleast 10 questions"
-			dialog_box.findNode("info").text = "Error"
+			dialog_box.find_node("info").text = "Error"
 			dialog_box.visible = true
 	else:
 		dialog_box.find_node("message").text = "Please enter a valid time"
-		dialog_box.findNode("info").text = "Error"
+		dialog_box.find_node("info").text = "Error"
 		dialog_box.visible = true
 	##
 

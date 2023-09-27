@@ -31,7 +31,7 @@ func next_question():
 	questionNumber_label.text = str(question_number)
 	
 func set_timer():
-	timer.start(30)
+	timer.start(60)
 	
 
 # To generate questions and display it in a label
