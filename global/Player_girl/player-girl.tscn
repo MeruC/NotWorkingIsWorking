@@ -162,6 +162,7 @@ interact_zone = NodePath("InteractionArea")
 interact_labels = NodePath("interact")
 
 [node name="Pivot" type="Position3D" parent="."]
+unique_name_in_owner = true
 
 [node name="CSGSphere" type="CSGMesh" parent="Pivot"]
 transform = Transform( -0.62, 0, -9.36174e-08, 0, 0.62, 0, 9.36174e-08, 0, -0.62, 0, -1.45127, 0 )
@@ -200,6 +201,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0354198 )
 shape = SubResource( 19 )
 
 [node name="Camera" type="Spatial" parent="."]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 2.68221e-07, 0, -2.68221e-07, 1, 0, 0, 0 )
 script = ExtResource( 8 )
 

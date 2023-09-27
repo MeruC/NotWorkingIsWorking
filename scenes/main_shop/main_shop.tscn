@@ -267,7 +267,6 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-settings = NodePath("settings_node/settings")
 player_inventory = NodePath("inventory_player")
 
 [node name="inventory_player" type="PanelContainer" parent="ui_container"]

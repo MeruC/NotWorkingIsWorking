@@ -45,6 +45,8 @@ func _on_resume_pressed():
 	get_tree().paused = false
 	yield(animation_player, "animation_finished")
 	audio_loop_player.stream_paused = true
+	audio_loop_player.stop()
+	#audio_loop_player.playing = false
 	hide()
 	
 func _on_main_menu_pressed():
