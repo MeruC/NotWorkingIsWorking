@@ -1,18 +1,28 @@
 {
   "items": [
     {
-      "word": "Router",
-      "definition": "Router is a device that connects two or more packet-switched networks",
+      "word": "Cable Tester",
+      "definition": "A cable tester is an electronic device used to verify the electrical connections in a signal cable or other wired assembly. Basic cable testers are continuity testers that verify the existence of a conductive path between ends of the cable, and verify the correct wiring of connectors on the cable.",
       "image": ""
     },
     {
-      "word": "Switch",
-      "definition": "Swithces connect multiple devices, such as computers, wireless access points, printers, and servers. It enables connected devices to share information and talk to each other.",
+      "word": "Crimping Tool",
+      "definition": "A crimping tool is the tool used to deform the material and create the connection. Crimping is commonly used in electrical work, to attach wires together or wire to other connectors.",
       "image": ""
     },
     {
-      "word": "Modem",
-      "definition": "modem transforms digital information from your computer into analog signals that can transmit over wires (and vice versa) by modulating and demodulating electrical impulses sent through phone lines, coaxial cables, or other types of wiring.",
+      "word": "Cross-Over Cable",
+      "definition": "A crossover cable is a type of cable installation that is used for the interconnection of two similar devices. It is enabled by reversing the transmission and receiving pins at both ends, so that output from one computer becomes input to the other, and vice versa.",
+      "image": ""
+    },
+    {
+      "word": "HDMI Cable",
+      "definition": "HDMI means High-Definition Multimedia Interface, a standard for simultaneously transmitting digital video and audio from a source, such as a computer or TV cable box, to a computer monitor, TV or projector.",
+      "image": ""
+    },
+    {
+      "word": "Hub",
+      "definition": "A hub is a basic networking device that operates at the physical layer (Layer 1) of the OSI model. It simply connects multiple devices in a network and broadcasts data to all connected devices without any intelligence to filter or route traffic. Hubs are considered outdated and inefficient.",
       "image": ""
     },
     {
@@ -21,8 +31,23 @@
       "image": ""
     },
     {
-      "word": "Internet",
-      "definition": "The Internet, sometimes called simply 'the Net,' is a worldwide system of computer networks -- a network of networks in which users at any one computer can, if they have permission, get information from any other computer",
+      "word": "Modem",
+      "definition": "Modem transforms digital information from your computer into analog signals that can transmit over wires (and vice versa) by modulating and demodulating electrical impulses sent through phone lines, coaxial cables, or other types of wiring.",
+      "image": ""
+    },
+    {
+      "word": "Router",
+      "definition": "A router is a device that connects two or more packet-switched networks or subnetworks. It serves two primary functions: managing traffic between these networks by forwarding data packets to their intended IP addresses, and allowing multiple devices to use the same Internet connection.",
+      "image": ""
+    },
+    {
+      "word": "Straight Through Cable",
+      "definition": "A straight-through cable is a type of twisted pair cable that is used in local area networks to connect a computer to a network hub such as a router. This type of cable is also sometimes called a patch cable and is an alternative to wireless connections where one or more computers access a router through a wireless signal.",
+      "image": ""
+    },
+    {
+      "word": "Switch",
+      "definition": "A network switch connects devices within a network (often a local area network, or LAN*) and forwards data packets to and from those devices. Unlike a router, a switch only sends data to the single device it is intended for (which may be another switch, a router, or a user's computer), not to networks of multiple devices.",
       "image": ""
     }
   ]
