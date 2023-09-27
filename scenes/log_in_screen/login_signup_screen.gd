@@ -18,7 +18,7 @@ func _on_signup_btn_pressed():
 	$".".visible = false
 	
 func account_validation():
-	if settings_data.account_status == "old":
+	if settings_data.account_status == "w":
 		$"..".queue_free()
 		Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
 	else:

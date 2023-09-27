@@ -9,6 +9,7 @@ export var player_name: String
 export var gender: String
 export var rank: String
 export var account_status: String
+export var email: String
 export( int ) var net1_skills
 export( int ) var net2_skills
 
@@ -51,10 +52,7 @@ func set_data( data ):
 	coin = data.coins
 	player_name = data.player_name
 	gender = data.gender
-	#rank = data.rank
-	#account_status = data.account_status
-	#net1_skills = data.net1_skills
-	#net2_skills = data.net2_skills
+	email = data.email
 	emit_changed()
 	changed_data()
 
@@ -71,10 +69,7 @@ func get_data():
 		"coins": coins,
 		"player_name": player_name,
 		"gender": gender,
-		#"rank": rank,
-		#"account_status": account_status,
-		#"net1_skills": net1_skills,
-		#"net2_skills": net2_skills
+		"email": email
 	}
 
 func get_stat( stat ):

@@ -17,13 +17,16 @@ inventories = {
 },
 "inventory_right": {
 },
-"player_info":{
-"player_name": "Billy",
-"gender": "male",
-"rank" : "rookie",
+"player_info": {
 "account_status": "new",
+"email": "empty",
+"gender": "male",
 "net1_skills": 0,
-"net2_skills":0
+"net2_skills": 0,
+"player_name": "Billy",
+"rank": "rookie"
 }
+}
+player_info = {
 }
 coins = 0

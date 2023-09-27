@@ -7,8 +7,13 @@ script = ExtResource( 1 )
 global_position = Vector2( 368, 347 )
 inventories = {
 }
-coins = 100
 player_info = {
 }
+coins = 100
 player_name = ""
 gender = ""
+rank = ""
+account_status = ""
+email = ""
+net1_skills = 0
+net2_skills = 0

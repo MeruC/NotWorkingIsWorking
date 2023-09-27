@@ -17,6 +17,7 @@ export (String) var level2 = "incomplete"
 export (String) var level3 = "incomplete"
 export (String) var level4 = "incomplete"
 export (String) var level5 = "incomplete"
+export (String) var email
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0
@@ -44,23 +45,8 @@ func set_data( data ):
 	level3 = data.level3
 	level4 = data.level4
 	level5 = data.level5
+	email = data.email
 	emit_changed()
-
-func player_data(data):
-	player_name = data
-	gender = data
-	rank = data
-	account_status = data
-	net1_skills = data
-	net2_skills = data
-	crowns = data
-	level1 = data
-	level2 = data
-	level3 = data
-	level4 = data
-	level5 = data
-	emit_changed()
-
 # Pack the data in a Dictionary.
 func get_data():
 	return {
@@ -81,5 +67,6 @@ func get_data():
 		"level2": level2,
 		"level3": level3,
 		"level4": level4,
-		"level5": level5
+		"level5": level5,
+		"email": email
 	}
