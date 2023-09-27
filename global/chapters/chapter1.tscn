@@ -240,6 +240,7 @@ color = Color( 0.894531, 0.577311, 0.128414, 1 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
+bus = "Music"
 
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]

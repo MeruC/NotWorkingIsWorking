@@ -17,7 +17,7 @@ func _ready():
 func interact():
 	Global.playerInteractLbl.set_visible(false)
 	SignalManager.emit_signal( "pc_opened")
-	Global.player.get_child(0).set_visible(false)
+	Global.player.get_node("Pivot").set_visible(false)
 	yield(CameraTransition.transition_camera3D(Global.playerCamera, get_node("Camera"), 1), "completed")
 	ui.set_visible(true)
 	var mats = power.get_material()
