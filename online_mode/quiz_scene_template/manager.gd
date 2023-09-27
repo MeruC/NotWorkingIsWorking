@@ -197,7 +197,7 @@ func _send_request(request : Dictionary):
 		return
 
 func addScore():
-	var username = settings_data.player_name
+	var username = settings_data.email
 	var scores = score
 	var table_name = json_data["level_name"]
 	var data = {

@@ -51,8 +51,6 @@ func set_data( data ):
 	inventories = data.inventories
 	coin = data.coins
 	player_name = data.player_name
-	gender = data.gender
-	email = data.email
 	emit_changed()
 	changed_data()
 
@@ -67,9 +65,7 @@ func get_data():
 		"global_position": global_position,
 		"inventories": inventories,
 		"coins": coins,
-		"player_name": player_name,
-		"gender": gender,
-		"email": email
+		"player_name": player_name
 	}
 
 func get_stat( stat ):

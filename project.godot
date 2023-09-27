@@ -267,7 +267,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NotWorking"
-run/main_scene="res://open.tscn"
+run/main_scene="res://scenes/log_in_screen/login_signup_scene.tscn"
 config/icon="res://iconNW.png"
 
 [autoload]

@@ -327,7 +327,6 @@ text = "Sign In"
 [node name="login_screen" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource( 8 )
-settings_data = ExtResource( 13 )
 
 [node name="back_btn" type="Button" parent="login_screen"]
 margin_left = 60.0
