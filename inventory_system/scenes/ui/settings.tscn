@@ -123,7 +123,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("musicSubmenu:visible")
@@ -147,7 +147,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/12/type = "bezier"
 tracks/12/path = NodePath("Label:rect_scale:y")
@@ -789,6 +789,7 @@ enabled_focus_mode = 0
 text = "Resume"
 
 [node name="settingsubmenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 474.0
@@ -850,6 +851,7 @@ __meta__ = {
 }
 
 [node name="videoSubmenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 470.0
