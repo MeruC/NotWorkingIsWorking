@@ -37,4 +37,4 @@ func _on_encyclopedia_button_pressed():
 
 
 func _on_objects_pressed():
-	Load.load_scene(self, "res://test.tscn")
+	Load.load_scene(self, "res://scenes/computerTest.tscn")
