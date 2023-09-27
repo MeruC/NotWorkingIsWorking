@@ -21,12 +21,14 @@ onready var walk_animation = $AnimationPlayer
 onready var idle = $Pivot/CSGSphere
 onready var walk = $Pivot/walk
 
+
 export( NodePath ) onready var interact_zone = get_node( interact_zone ) as Area
 export( NodePath ) onready var interact_labels = get_node( interact_labels ) as Control
 
 var current_interactable
 
 func _ready():
+	
 	Global.playerInteractLbl = get_node("interact")
 
 func _physics_process(delta: float) -> void:
@@ -88,6 +90,7 @@ func _on_Player_visibility_changed():
 #Interactions
 func _input( event ):
 	if event.is_action_pressed("interact") and current_interactable:
+		pivot.set_visible(false)
 		current_interactable.interact()
 
 func _on_InteractionArea_area_exited(area):

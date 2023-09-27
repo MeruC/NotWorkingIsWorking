@@ -43,6 +43,6 @@ func _on_pc_closed():
 	mobile_controls.set_visible(true)
 	if (onMenu):
 		yield(CameraTransition.transition_camera3D(get_viewport().get_camera(), Global.playerCamera , 1), "completed")
-		Global.player.get_child(0).set_visible(true)
+		Global.player.get_node("Pivot").set_visible(true)
 		onMenu = false
 		Global.playerCanMove = true

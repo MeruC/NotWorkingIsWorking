@@ -82,6 +82,7 @@ func _on_play_pressed():
 		main.add_child(new_item)
 		new_item.owner = main
 		player = main.get_node("Player")
+		Global.player = player
 		Global.playerCamera = main.get_node("Player/Camera/Camera")
 		Global.playerCamera.current = true
 		print(Global.playerInteractLbl)
