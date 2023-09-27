@@ -83,10 +83,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -967.0
-margin_top = -360.0
-margin_right = 45.0
-margin_bottom = 1400.0
+margin_left = -1277.0
+margin_top = -420.0
+margin_right = -265.0
+margin_bottom = 1340.0
 rect_scale = Vector2( 0.715147, 0.578869 )
 custom_constants/vseparation = 50
 
@@ -157,12 +157,14 @@ clip_text = true
 icon_align = 1
 
 [node name="mascot" type="Sprite" parent="."]
+visible = false
 position = Vector2( 553, 545 )
 scale = Vector2( 2.11146, 2.04297 )
 texture = ExtResource( 7 )
 hframes = 5
 
 [node name="No-sign" type="Sprite" parent="."]
+visible = false
 position = Vector2( 549, 601 )
 scale = Vector2( 21.6388, 21.6332 )
 texture = ExtResource( 9 )
@@ -172,12 +174,12 @@ anims/mascot_animation = SubResource( 2 )
 
 [node name="objects" type="Button" parent="."]
 anchor_right = 1.0
-margin_left = 93.0
-margin_top = 912.0
-margin_right = -1405.0
-margin_bottom = 1044.0
+margin_left = -35.0
+margin_top = 982.0
+margin_right = -1220.0
+margin_bottom = 1114.0
 theme = ExtResource( 10 )
-text = "TEST"
+text = "COMPUTER TEST"
 
 [node name="intro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )

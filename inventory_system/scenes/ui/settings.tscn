@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/others/confirmDialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://inventory_system/scenes/ui/settings.gd" type="Script" id=6]
+[ext_resource path="res://resources/soundtrack/menu/Track 03.wav" type="AudioStream" id=7]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://inventory_system/scripts/ui/settings.gd" type="Script" id=9]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=12]
 
@@ -693,6 +695,7 @@ expand_margin_top = 10.0
 
 [node name="settings" type="ColorRect"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 4269, -605 )
@@ -1125,6 +1128,13 @@ custom_styles/panel = SubResource( 28 )
 [node name="confirm" parent="." instance=ExtResource( 1 )]
 visible = false
 
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 8 )]
+stream = ExtResource( 7 )
+volume_db = -5.0
+autoplay = false
+bus = "Music"
+
+[connection signal="visibility_changed" from="." to="." method="_on_settings_visibility_changed"]
 [connection signal="pressed" from="pausemenu/settings_btn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="pausemenu/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="pausemenu/main_menu" to="." method="_on_main_menu_pressed"]
