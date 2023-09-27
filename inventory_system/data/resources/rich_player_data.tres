@@ -19,6 +19,7 @@ inventories = {
 },
 "player_info": {
 "account_status": "new",
+"email": "empty",
 "gender": "male",
 "net1_skills": 0,
 "net2_skills": 0,
@@ -33,5 +34,6 @@ player_name = ""
 gender = ""
 rank = ""
 account_status = ""
+email = ""
 net1_skills = 0
 net2_skills = 0

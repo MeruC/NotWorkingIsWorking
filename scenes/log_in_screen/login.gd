@@ -8,6 +8,8 @@ var is_requesting : bool = false
 var pusername = ""
 var password = ""
 
+export (Resource) var settings_data 
+
 func _ready():
 	# Connect our request handler:
 	add_child(http_request)
@@ -47,6 +49,9 @@ func _http_request_completed(result, response_code, headers, body):
 				$"../login_sucess/AnimationPlayer".play("login_sucessful")
 				var nickname = response_dict["nickname"]
 				$"../login_sucess/panel/message".text = "Welcome, " + nickname
+				
+				settings_data.email = nickname
+				SaveManager.save_game()
 			else:
 				# Authentication failed, check if the response contains "account_exists" key
 				if "account_exists" in response_dict and response_dict["account_exists"] == false:

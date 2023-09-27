@@ -14,16 +14,16 @@ var result = ""
 func _ready():
 	# Connect our request handler:
 	add_child(http_request)
+	print(settings_data)
 	http_request.connect("request_completed", self, "_http_request_completed")
 	$sign_in_btn.connect("pressed", self, "_add_user")
 	$"../signup_success/ok_btn".connect("pressed", self, "_change_scene")
-
+		
 func _process(_delta):
 	# Check if we have pending requests in the queue:
 	if !request_queue.empty() and !is_requesting:
 		var request = request_queue.pop_front()
 		_send_request(request)
-
 
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
@@ -95,7 +95,10 @@ func _add_user():
 		var data = {"username": username, "password": user_password}
 		request_queue.push_back({"command": command, "data": data})
 		$"../signup_success".visible = true
+		settings_data.email = username
+		SaveManager.save_game()
 		$"../signup_success/warning/warning".text = "Welcome "+username
+		
 	else:
 		$"../warning".visible = true
 		var warning = $"../warning/warning/warning"
@@ -107,3 +110,5 @@ func _change_scene():
 
 func _on_ok_btn_pressed():
 	pass # Replace with function body.
+
+	

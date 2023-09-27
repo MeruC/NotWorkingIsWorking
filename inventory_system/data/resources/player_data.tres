@@ -14,5 +14,6 @@ player_name = ""
 gender = ""
 rank = ""
 account_status = ""
+email = ""
 net1_skills = 0
 net2_skills = 0
