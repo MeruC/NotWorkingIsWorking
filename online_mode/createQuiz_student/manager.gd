@@ -166,7 +166,7 @@ func _on_create_pressed():
 func _on_create_button_pressed():
 	# Form validation
 	if level_name.text != ""  && minute.text != "" && minute.text.is_valid_integer() && second.text != "" && second.text.is_valid_integer():
-		if selected_vbox.get_child_count() > 10:
+		if selected_vbox.get_child_count() > 9:
 			create_confirmation.visible = true
 		else:
 			dialog_box.find_node("message").text = "Please select atleast 10 questions"
