@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "show_details_preview": true
+  },
+  "categories": [
+    {
+      "title": "Task",
+      "color": "6495ed"
+    }
+  ],
+  "columns": [
+    {
+      "stages": [
+        0
+      ]
+    },
+    {
+      "stages": [
+        1
+      ]
+    },
+    {
+      "stages": [
+        2
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "title": "Todo",
+      "tasks": [
+        0
+      ]
+    },
+    {
+      "title": "Doing",
+      "tasks": [
+        1
+      ]
+    },
+    {
+      "title": "Done",
+      "tasks": [
+        2
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "category": 0,
+      "title": "Example",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Doing",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Done",
+      "details": ""
+    }
+  ]
+}
