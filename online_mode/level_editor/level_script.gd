@@ -46,3 +46,4 @@ func _on_pc_closed():
 		Global.player.get_node("Pivot").set_visible(true)
 		onMenu = false
 		Global.playerCanMove = true
+		Global.playerInteractLbl.set_visible(true)

@@ -127,12 +127,12 @@ outline_size = 4
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=21]
-size = 20
+size = 93
 outline_size = 2
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=22]
-size = 14
+size = 50
 outline_size = 2
 font_data = ExtResource( 5 )
 
@@ -231,10 +231,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 32.0
-margin_top = -49.0
-margin_right = 127.0
-margin_bottom = -20.0
+margin_left = 58.0
+margin_top = -109.0
+margin_right = 192.0
+margin_bottom = 3.0
 rect_pivot_offset = Vector2( 0, 14 )
 custom_constants/separation = 2
 script = ExtResource( 7 )
@@ -242,17 +242,17 @@ lbl_action = NodePath("action")
 lbl_name = NodePath("object_name")
 
 [node name="action" type="Label" parent="interact"]
-margin_right = 95.0
-margin_bottom = 16.0
+margin_right = 134.0
+margin_bottom = 71.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 21 )
 text = "E"
 
 [node name="object_name" type="Label" parent="interact"]
-margin_top = 18.0
-margin_right = 95.0
-margin_bottom = 29.0
+margin_top = 73.0
+margin_right = 134.0
+margin_bottom = 112.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 22 )
