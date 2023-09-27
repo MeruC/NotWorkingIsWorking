@@ -79,16 +79,16 @@ clip_text = true
 icon_align = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
-anchor_left = 1.0
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1277.0
-margin_top = -420.0
-margin_right = -265.0
-margin_bottom = 1340.0
+margin_left = -330.0
+margin_top = -464.0
+margin_right = 682.0
+margin_bottom = 1296.0
 rect_scale = Vector2( 0.715147, 0.578869 )
-custom_constants/vseparation = 50
+custom_constants/vseparation = 15
 
 [node name="offline_button" type="Button" parent="GridContainer"]
 margin_right = 1012.0
@@ -103,9 +103,9 @@ clip_text = true
 icon_align = 1
 
 [node name="online_button" type="Button" parent="GridContainer"]
-margin_top = 362.0
+margin_top = 327.0
 margin_right = 1012.0
-margin_bottom = 674.0
+margin_bottom = 639.0
 rect_min_size = Vector2( 450, 100 )
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 1 )
@@ -115,10 +115,23 @@ flat = true
 clip_text = true
 icon_align = 1
 
-[node name="shop_button" type="Button" parent="GridContainer"]
-margin_top = 724.0
+[node name="quick_game" type="Button" parent="GridContainer"]
+margin_top = 654.0
 margin_right = 1012.0
-margin_bottom = 1036.0
+margin_bottom = 966.0
+rect_min_size = Vector2( 450, 100 )
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 1 )
+text = "Quick Game"
+icon = ExtResource( 4 )
+flat = true
+clip_text = true
+icon_align = 1
+
+[node name="shop_button" type="Button" parent="GridContainer"]
+margin_top = 981.0
+margin_right = 1012.0
+margin_bottom = 1293.0
 rect_min_size = Vector2( 450, 100 )
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 1 )
@@ -129,9 +142,9 @@ clip_text = true
 icon_align = 1
 
 [node name="encyclopedia_button" type="Button" parent="GridContainer"]
-margin_top = 1086.0
+margin_top = 1308.0
 margin_right = 1012.0
-margin_bottom = 1398.0
+margin_bottom = 1620.0
 rect_min_size = Vector2( 450, 100 )
 theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 1 )
@@ -201,6 +214,7 @@ mouse_filter = 2
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="GridContainer/offline_button" to="." method="_on_offline_button_pressed"]
 [connection signal="pressed" from="GridContainer/online_button" to="." method="_on_online_button_pressed"]
+[connection signal="pressed" from="GridContainer/quick_game" to="." method="_on_quick_game_pressed"]
 [connection signal="pressed" from="GridContainer/shop_button" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="GridContainer/encyclopedia_button" to="." method="_on_encyclopedia_button_pressed"]
 [connection signal="pressed" from="objects" to="." method="_on_objects_pressed"]

@@ -729,6 +729,12 @@ gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 3 )]
 
+[node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
+visible = true
+
+[node name="videoSubmenu" parent="popup_layer/pause/settings" index="3"]
+visible = true
+
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="0"]
 margin_right = 12.0
 margin_bottom = 12.0

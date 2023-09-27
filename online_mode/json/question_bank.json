@@ -1,108 +1,743 @@
-  {
-    "lesson1": [
-      {
-        "id": "1",
-        "question": "A collection of interconnected devices (such as computers, printers, and servers) that can communicate and share resources with each other.",
-        "answer": "Network"
-      },
-      {
-        "id": "2",
-        "question": "A set of rules and conventions that govern how data is transmitted and received over a network. It defines how devices should communicate with each other.",
-        "answer": "Protocol"
-      },
-      {
-        "id": "3",
-        "question": "A unique numerical label assigned to each device on a network. It is used to identify and locate devices on the internet or a local network.",
-        "answer": "IP Address"
-      },
-      {
-        "id": "4",
-        "question": "A networking device that directs data traffic between different networks. It determines the most efficient path for data to travel and helps devices on a local network connect to the internet.",
-        "answer": "Router"
-      },
-      {
-        "id": "5",
-        "question": "A device that operates at the data link layer (Layer 2) of the OSI model. It connects devices within a local network and forwards data based on MAC addresses.",
-        "answer": "Switch"
-      },
-      {
-        "id": "6",
-        "question": "A basic networking device that connects multiple devices in a network. Unlike a switch, it does not intelligently forward data and instead broadcasts data to all connected devices.",
-        "answer": "Hub"
-      },
-      {
-        "id": "7",
-        "question": "A security device or software that monitors and controls incoming and outgoing network traffic based on predefined security rules. It helps protect a network from unauthorized access and threats.",
-        "answer": "Firewall"
-      },
-      {
-        "id": "8",
-        "question": "A system that translates human-readable domain names (e.g., www.example.com) into IP addresses that computers use to locate each other on the internet.",
-        "answer": "DNS (Domain Name System)"
-      }
-    ],
-    "lesson2": [
-      {
-        "id": "1",
-        "question": "A network that covers a small geographical area, such as a home, office, or campus.",
-        "answer": "LAN (Local Area Network)"
-      },
-      {
-        "id": "2",
-        "question": "A network that spans a larger geographical area, often connecting multiple LANs.",
-        "answer": "WAN (Wide Area Network)"
-      },
-      {
-        "id": "3",
-        "question": "A device or software that connects two different networks, allowing them to communicate with each other. It acts as a bridge between networks with different protocols.",
-        "answer": "Gateway"
-      },
-      {
-        "id": "4",
-        "question": "Refers to the capacity or speed at which data can be transmitted over a network. It is typically measured in bits per second (bps) or megabits per second (Mbps).",
-        "answer": "Bandwidth"
-      },
-      {
-        "id": "5",
-        "question": "A small unit of data that is transmitted over a network. Data is divided into packets for efficient transmission and reassembled at its destination.",
-        "answer": "Packet"
-      },
-      {
-        "id": "6",
-        "question": "A reliable and connection-oriented protocol used for data transmission on the internet. It ensures data integrity and delivery.",
-        "answer": "TCP (Transmission Control Protocol)"
-      },
-      {
-        "id": "7",
-        "question": "A connectionless and less reliable protocol used for faster data transmission when some loss of data is acceptable.",
-        "answer": "UDP (User Datagram Protocol)"
-      },
-      {
-        "id": "8",
-        "question": "A unique hardware address assigned to network interfaces, such as Ethernet or Wi-Fi adapters. It is used at the data link layer to identify devices on a local network.",
-        "answer": "MAC Address"
-      }
-    ],
-    "lesson3": [
-      {
-        "id": "1",
-        "question": "A nlogical subdivision of an IP network. It helps manage and organize IP addresses within a network.",
-        "answer": "Subnet"
-      },
-      {
-        "id": "2",
-        "question": "A data structure on a router that contains information about the routes to reach different network destinations.",
-        "answer": "Router Table"
-      },
-      {
-        "id": "3",
-        "question": "It is the IP address of the router or gateway that connects a local network to other networks, such as the internet.",
-        "answer": "Gateway IP Address"
-      },
-      {
-        "id": "4",
-        "question": "A technique used by routers to map multiple private IP addresses on a local network to a single public IP address for internet access.",
-        "answer": "NAT (Network Address Translation)"
-      }
-    ]
-  }
+{
+  "Introduction to Networking": [
+    {
+      "id": "1",
+      "question": "This is the basic building block of information, and it becomes meaningful when processed or interpreted.",
+      "answer": "Data",
+      "incorrect": ["Information", "Files", "Knowledge"]
+    },
+    {
+      "id": "2",
+      "question": "What is the primary characteristic of data?",
+      "answer": "It is raw and unprocessed",
+      "incorrect": [
+        "It is easily understood",
+        "It has meaning and context",
+        "It is processed and organized"
+      ]
+    },
+    {
+      "id": "3",
+      "question": "Which of the following statements is true about information?",
+      "answer": "Information is derived from processing and organizing data",
+      "incorrect": [
+        "Information is always in a raw and unprocessed state",
+        "It has meaning and context",
+        "It is processed and organized"
+      ]
+    },
+    {
+      "id": "4",
+      "question": "The exchange of information in binary form between two connected devices, whether directly or through a network?",
+      "answer": "Data communications",
+      "incorrect": [
+        "Data encryption",
+        "Computer programming",
+        "Graphical user interface"
+      ]
+    },
+    {
+      "id": "5",
+      "question": "It is one of the communication tasks which refers to the need to convert the input data (digital) into a suitable form (analog) for transmission and vice-versa during reception.",
+      "answer": "Interfacing",
+      "incorrect": ["Synchronization", "Signal Generation", "Recovery"]
+    },
+    {
+      "id": "6",
+      "question": "It allows the system to resume an activity previously interrupted by an unexpected fault in the system. What communication task is that?",
+      "answer": "Recovery",
+      "incorrect": [
+        "Signal Generation",
+        "Addressing and routing",
+        "Transmission system utilization"
+      ]
+    },
+    {
+      "id": "7",
+      "question": "It is the agreement between devices on various conventions, such as transmission method (simplex, half or full duplex), data block length, data format, error detection and correction, and how fast data must be sent. What communication task is that?",
+      "answer": "Exchange management",
+      "incorrect": ["Synchronization", "Addressing and routing", "Interfacing"]
+    },
+    {
+      "id": "8",
+      "question": "It is one of the communication tasks wherein it allows the receiver to determine when a signal begins, and when it ends, and how long each signal element is.",
+      "answer": "Synchronization",
+      "incorrect": [
+        "Signal Generation",
+        "Transmission system utilization",
+        "Interfacing"
+      ]
+    },
+    {
+      "id": "9",
+      "question": "It is one of the communication tasks wherein it is required for configuring and monitoring the system, allowing it to react rationally to failures and overloads, and to effectively plan for future expansion.",
+      "answer": "System management",
+      "incorrect": ["Protection", "Signal Generation", "Exchange management"]
+    },
+    {
+      "id": "10",
+      "question": "It ensures that in multi-user environment, the information is sent to the correct destination, and that the best possible route to this destination is chosen. What communication task is that?",
+      "answer": "Addressing and routing",
+      "incorrect": [
+        "Transmission system utilization",
+        "System management",
+        "Protection"
+      ]
+    },
+    {
+      "id": "11",
+      "question": "It is the need to efficiently use various transmission facilities that are commonly shared by other devices? What communication task is that?",
+      "answer": "Transmission system utilization ",
+      "incorrect": ["Interfacing", "System management", "Synchronization"]
+    }
+  ],
+
+  "Networking Basics": [
+    {
+      "id": "1",
+      "question": "All of these are advantages of Networking except?",
+      "answer": "Puts your system at risk from hackers and computer virus infection",
+      "incorrect": [
+        "Improved productivity",
+        "Lower total Hardware Cost",
+        "Improved communications"
+      ]
+    },
+    {
+      "id": "2",
+      "question": "What term best describes the practice of connecting multiple computers and other devices together to share resources, exchange data, and communicate with each other?",
+      "answer": "Computer networking",
+      "incorrect": [
+        "Network engineering",
+        "System administration",
+        "Computer programming"
+      ]
+    },
+    {
+      "id": "3",
+      "question": "It is usually a high-end computer that provides services to other computers on the network.",
+      "answer": "Server",
+      "incorrect": ["Client", "Media", "Protocol"]
+    },
+    {
+      "id": "4",
+      "question": "It is usually a high-end computer that provides services to other computers on the network.",
+      "answer": "Server",
+      "incorrect": ["Client", "Media", "Protocol"]
+    },
+    {
+      "id": "5",
+      "question": "It is a computer that is both a server and a client.",
+      "answer": "Peer",
+      "incorrect": ["User", "Media", "Server"]
+    },
+    {
+      "id": "6",
+      "question": "The language that the computers on the network use. It defines the rules of communication for the computers.",
+      "answer": "Protocol",
+      "incorrect": ["Resources", "Media", "Peer"]
+    },
+    {
+      "id": "7",
+      "question": "A computer that avails of the services provided by the server, usually less powerful than the server.",
+      "answer": "Client",
+      "incorrect": ["Resources", "User", "Peer"]
+    },
+    {
+      "id": "8",
+      "question": "A computer that avails of the services provided by the server, usually less powerful than the server.",
+      "answer": "Resources",
+      "incorrect": ["Media", "User", "Server"]
+    },
+    {
+      "id": "9",
+      "question": "The server in this model does everything-processing, retrieval and storage of data.",
+      "answer": "Centralized Computing",
+      "incorrect": [
+        "Distributed Computing",
+        "Hybrid Computing",
+        "Collaborative Computing"
+      ]
+    },
+    {
+      "id": "10",
+      "question": "It is very similar to distributed computing; in fact, it has basically the same strengths and weaknesses.",
+      "answer": "Collaborative Computing",
+      "incorrect": [
+        "Distributed Computing",
+        "Hybrid Computing",
+        "Centralized Computing"
+      ]
+    },
+    {
+      "id": "11",
+      "question": "Which of the following is the advantage of distributed computing?",
+      "answer": "Users may run different applications at the same time",
+      "incorrect": [
+        "Difficulty in file synchronization and back up",
+        "Susceptible to a virus attack",
+        "Provides slow data access and processing"
+      ]
+    },
+    {
+      "id": "12",
+      "question": "Computers in this network type are capable of being both a server and a client.",
+      "answer": "Peer to Peer Networking",
+      "incorrect": [
+        "Server-based Networking",
+        "Hybrid Networking",
+        "Centralized Networking"
+      ]
+    },
+    {
+      "id": "13",
+      "question": "All of the following are advantages of Peer-to-Peer Networking except:",
+      "answer": "Scattered data, each machine must be back up individually",
+      "incorrect": [
+        "Easy installation and configuration",
+        "Inexpensive to purchase and operate",
+        "No additional requirements for operating systems"
+      ]
+    },
+    {
+      "id": "14",
+      "question": "Which of the following is the disadvantage of Server-based Networking?",
+      "answer": "Requires specialized software, further adding to the cost",
+      "incorrect": [
+        "Much more secure with user-level security and Access Control Lists",
+        "Eliminates the need for powerful and expensive",
+        "Independent on the network administrator"
+      ]
+    },
+    {
+      "id": "15",
+      "question": "Which of the following is not a condition to choose a server-based network type?",
+      "answer": "The network components are concentrated within a small area",
+      "incorrect": [
+        "There are more than 10 clients",
+        "The network requires centralized control, good security, simplified resource management, or easy backup",
+        "Specialized servers must be installed to increase network efficiency"
+      ]
+    },
+    {
+      "id": "16",
+      "question": "All of the following are conditions to use peer-to-peer networking type except?",
+      "answer": "The organization is not on a strict budget.",
+      "incorrect": [
+        "There are no more than 10 clients, with 5 being the ideal number.",
+        "All network components can fit in one small area.",
+        "There is no requirement for specialized servers."
+      ]
+    },
+    {
+      "id": "17",
+      "question": "It is the smallest of the networks because the computers are confined in a small area, typically in a within a building.",
+      "answer": "LAN (Local Area Network)",
+      "incorrect": [
+        "MAN (Metropolitan Area Network)",
+        "WAN (Wide Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "18",
+      "question": "Connecting these LANs create this type of network, which is actually a network of interconnected LANs. Due the distance involved, these are the slowest network type, and more prone to errors.",
+      "answer": "WAN (Wide Area Network)",
+      "incorrect": [
+        "MAN (Metropolitan Area Network)",
+        "LAN (Local Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "19",
+      "question": "These are slower than LANs, and special equipment are required to connect the LANs. In most cases, these are operated by a local government or a communications carrier.",
+      "answer": "MAN (Metropolitan Area Network)",
+      "incorrect": [
+        "WAN (Wide Area Network)",
+        "LAN (Local Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "20",
+      "question": "A network connecting computers within a single office building, allowing employees to share files, printers, and access shared resources.",
+      "answer": "LAN (Local Area Network)",
+      "incorrect": [
+        "WAN (Wide Area Network)",
+        "MAN (Metropolitan Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "21",
+      "question": "A multinational corporation with offices in different continents needs to share confidential business data securely. What network type is most suitable?",
+      "answer": "WAN (Wide Area Network)",
+      "incorrect": [
+        "LAN (Local Area Network)",
+        "MAN (Metropolitan Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "22",
+      "question": "A small cafe wants to provide free Wi-Fi to its customers across several adjacent buildings. What type of network does the cafe need to set up?",
+      "answer": "MAN (Metropolitan Area Network)",
+      "incorrect": [
+        "LAN (Local Area Network)",
+        "WAN (Wide Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "23",
+      "question": "A factory needs to connect machinery and sensors within the facility for real-time monitoring and control. What network type would be suitable?",
+      "answer": "LAN (Local Area Network)",
+      "incorrect": [
+        "MAN (Metropolitan Area Network)",
+        "WAN (Wide Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "24",
+      "question": "An oil drilling company has multiple rigs in the ocean and needs to maintain communication between them. What network type can facilitate this?",
+      "answer": "WAN (Wide Area Network)",
+      "incorrect": [
+        "MAN (Metropolitan Area Network)",
+        "LAN (Local Area Network)",
+        "Network undefined"
+      ]
+    },
+    {
+      "id": "25",
+      "question": "A city's public transportation system wants to implement a network for tracking buses and providing real-time updates to passengers. What network type would they rely on?",
+      "answer": "MAN (Metropolitan Area Network)",
+      "incorrect": [
+        "WAN (Wide Area Network)",
+        "LAN (Local Area Network)",
+        "Network undefined"
+      ]
+    }
+  ],
+
+  "The Theoretical Framework": [
+    {
+      "id": "1",
+      "question": "This is the top layer of the OSI model which provides a set of interfaces for sending and receiving applications to gain access to and use network services.",
+      "answer": "Application layer",
+      "incorrect": ["Session layer", "Presentation layer", "Physical layer"]
+    },
+    {
+      "id": "2",
+      "question": "Manages data-format information for networked communications (the network’s translator).",
+      "answer": "Presentation layer",
+      "incorrect": ["Transport layer", "Session layer", "Data Link layer"]
+    },
+    {
+      "id": "3",
+      "question": "This layer enables two networked resources to hold ongoing communications (called a session) across a network.",
+      "answer": "Session layer",
+      "incorrect": ["Network layer", "Physical layer", "Application layer"]
+    },
+    {
+      "id": "4",
+      "question": "Manages the transmission of data across a network.",
+      "answer": "Transport layer",
+      "incorrect": ["Network layer", "Session layer", "Presentation layer"]
+    },
+    {
+      "id": "5",
+      "question": "Handles addressing messages for delivery, as well as translating logical network addresses and names into their physical counterparts.",
+      "answer": "Network layer",
+      "incorrect": [
+        "Application layer",
+        "Data Link layer",
+        "Presentation layer"
+      ]
+    },
+    {
+      "id": "6",
+      "question": "Handles special data frames (packets) between the Network layer and the Physical layer.",
+      "answer": "Data Link layer",
+      "incorrect": ["Application layer", "Network layer", "Physical layer"]
+    },
+    {
+      "id": "7",
+      "question": "An adapter card that plugs into the system bus of a computer and allows the computer to send and receive signals on a network.",
+      "answer": "Network Interface Cards",
+      "incorrect": ["Credit Cards", "Pokemon Cards", "Gift Cards"]
+    },
+    {
+      "id": "8",
+      "question": "It is known for their ability to carry high-frequency signals over long distances with minimal interference. They are widely used for connecting cable television, satellite dishes, and in some cases, broadband modems to homes and businesses.",
+      "answer": "Coaxial Cable",
+      "incorrect": [
+        "Shielded Twisted Pair (STP) Cable",
+        "Fiber Optic Cable",
+        "Unshielded Twisted Pair (UTP) Cable"
+      ]
+    },
+    {
+      "id": "9",
+      "question": "They are known for their high-speed data transmission capabilities and are commonly used in long-distance and high-bandwidth applications, such as telecommunications networks, data centers, and internet backbones.",
+      "answer": "Fiber Optic Cable",
+      "incorrect": [
+        "Shielded Twisted Pair (STP) Cable",
+        "Coaxial Cable",
+        "Unshielded Twisted Pair (UTP) Cable"
+      ]
+    },
+    {
+      "id": "10",
+      "question": "These are prevalent in Ethernet networking, connecting devices like computers, switches, and routers. They are cost-effective and suitable for short to medium-distance network connections.",
+      "answer": "Unshielded Twisted Pair (UTP) Cable",
+      "incorrect": [
+        "Shielded Twisted Pair (STP) Cable",
+        "Coaxial Cable",
+        "Fiber Optic Cable"
+      ]
+    },
+    {
+      "id": "11",
+      "question": "These cables are often used in industrial and commercial settings where there may be higher levels of electromagnetic interference.",
+      "answer": "Shielded Twisted Pair (STP) Cable",
+      "incorrect": [
+        "Unshielded Twisted Pair (UTP) Cable",
+        "Coaxial Cable",
+        "Fiber Optic Cable"
+      ]
+    }
+  ],
+
+  "Real World Networks": [
+    {
+      "id": "1",
+      "question": "The arrangement of computers, cables, and other components on a network.",
+      "answer": "Network topology",
+      "incorrect": ["Network cables", "Network design", "Network model"]
+    },
+    {
+      "id": "2",
+      "question": "Consists of numbers of computers in a row connected by a single cable segment called trunk, also known as backbone or segment.",
+      "answer": "Bus Topology",
+      "incorrect": ["Star Topology", "Ring Topology", "Mesh Topology"]
+    },
+    {
+      "id": "3",
+      "question": "This topology provides a reliable signal that can travel large network because the signal is regenerated by each workstation when passed on to its neighbor.",
+      "answer": "Ring Topology",
+      "incorrect": ["Star Topology", "Bus Topology", "Mesh Topology"]
+    },
+    {
+      "id": "4",
+      "question": "This topology is used to connect computers in a workgroup or departmental local area network (LAN) using a hub. It can also be used to connect workgroup or departmental hubs using a master hub or switch.",
+      "answer": "Star Topology",
+      "incorrect": ["Ring Topology", "Bus Topology", "Mesh Topology"]
+    },
+    {
+      "id": "5",
+      "question": "A network topology in which additional networking components are used to provide redundant data paths.",
+      "answer": "Mesh Topology",
+      "incorrect": ["Ring Topology", "Bus Topology", "Star Topology"]
+    },
+    {
+      "id": "6",
+      "question": "It provides a direct link between each pair of nodes on the backbone network.",
+      "answer": "Full Mesh Topology",
+      "incorrect": ["Partial Mesh Topology", "Bus Topology", "Star Topology"]
+    },
+    {
+      "id": "7",
+      "question": "This only includes some redundant data paths to provide some level of fault tolerance.",
+      "answer": "Partial Mesh Topology",
+      "incorrect": ["Full Mesh Topology", "Bus Topology", "Star Topology"]
+    },
+    {
+      "id": "8",
+      "question": "Which of the following is the disadvantage of Bus topology?",
+      "answer": "A segment cable fault affects all workstations",
+      "incorrect": [
+        "Bus Topology is easy to implement.",
+        "It is easy to extend",
+        "Low cost"
+      ]
+    },
+    {
+      "id": "9",
+      "question": "Which of the following is an advantage of Ring topology?",
+      "answer": "Equal access for all users",
+      "incorrect": [
+        "Expensive Adaptor Cards",
+        "Difficult Connections",
+        "Malfunctioning workstations and cables create problems for the entire network"
+      ]
+    },
+    {
+      "id": "10",
+      "question": "All of these are disadvantages of Star topology except?",
+      "answer": "Centralized network/hub monitoring",
+      "incorrect": [
+        "Hub can be a single point of failure",
+        "Hubs are slightly more expensive than thin-Ethernet",
+        "Requires more cable than most other topologies"
+      ]
+    }
+  ],
+
+  "IP Addressing": [
+    {
+      "id": "1",
+      "question": "In which IP address class does the range from 1.0.0.1 to 126.255.255.254 fall?",
+      "answer": "Class A",
+      "incorrect": ["Class B", "Class C", "Class D"]
+    },
+    {
+      "id": "2",
+      "question": "In which IP address class does the range from 128.1.0.1 to 191.255.255.254 fall?",
+      "answer": "Class B",
+      "incorrect": ["Class A", "Class C", "Class D"]
+    },
+    {
+      "id": "3",
+      "question": "In which IP address class does the range from 192.0.1.1 to 223.255.254.254 fall?",
+      "answer": "Class C",
+      "incorrect": ["Class A", "Class B", "Class E"]
+    },
+    {
+      "id": "4",
+      "question": "In which IP address class does the range from 224.0.0.0 to 239.255.255.255 fall?",
+      "answer": "Class D",
+      "incorrect": ["Class B", "Class C", "Class E"]
+    },
+    {
+      "id": "5",
+      "question": "In which IP address class does the range from 240.0.0.0 to 254.255.255.254 fall?",
+      "answer": "Class E",
+      "incorrect": ["Class A", "Class C", "Class D"]
+    },
+    {
+      "id": "6",
+      "question": "It tells us which network the device is part of",
+      "answer": "Network ID",
+      "incorrect": ["Node ID", "Class ID", "Address ID"]
+    },
+    {
+      "id": "7",
+      "question": "It identifies that unique device within the network",
+      "answer": "Node ID",
+      "incorrect": ["Network ID", "Class ID", "Address ID"]
+    },
+    {
+      "id": "8",
+      "question": "What is the default subnet mask for Class A IP address?",
+      "answer": "255.0.0.0",
+      "incorrect": ["255.255.0.0", "255.255.255.0", "255.255.255.255"]
+    },
+    {
+      "id": "9",
+      "question": "What is the default subnet mask for Class B IP address?",
+      "answer": "255.255.0.0",
+      "incorrect": ["255.255.255.0", "255.0.0.0", "255.255.255.255"]
+    },
+    {
+      "id": "10",
+      "question": "What is the default subnet mask for Class C IP address?",
+      "answer": "255.255.255.0",
+      "incorrect": ["255.255.0.0", "255.0.0.0", "255.255.255.255"]
+    },
+    {
+      "id": "11",
+      "question": "In which IP address class does the address 192.168.10.1 belong?",
+      "answer": "Class C",
+      "incorrect": ["Class A", "Class B", "Class D"]
+    },
+    {
+      "id": "12",
+      "question": "In which IP address class does the address 172.0.1.2 belong?",
+      "answer": "Class B",
+      "incorrect": ["Class A", "Class C", "Class D"]
+    },
+    {
+      "id": "13",
+      "question": "In which IP address class does the address 200.10.18.15 belong?",
+      "answer": "Class C",
+      "incorrect": ["Class A", "Class B", "Class D"]
+    },
+    {
+      "id": "14",
+      "question": "In which IP address class does the address 10.11.23.14 belong?",
+      "answer": "Class A",
+      "incorrect": ["Class C", "Class B", "Class D"]
+    },
+    {
+      "id": "15",
+      "question": "In which IP address class does the address 185.24.12.23 belong?",
+      "answer": "Class B",
+      "incorrect": ["Class C", "Class A", "Class D"]
+    },
+    {
+      "id": "16",
+      "question": "Which of the following is the dotted-decimal notation for the binary IP address: 11000000 10101000 00000010 00000101 ?",
+      "answer": "192.168.2.5",
+      "incorrect": ["200.168.0.2", "128.170.2.5", "192.168.0.255"]
+    },
+    {
+      "id": "17",
+      "question": "What is the dotted-decimal notation for the binary IP address: 10000001 00001011 00001011 11101111 ?",
+      "answer": "129.11.11.239",
+      "incorrect": ["192.168.0.1", "110.101.110.111", "255.0.0.1"]
+    },
+    {
+      "id": "18",
+      "question": "What is the dotted-decimal notation for the binary IP address: 11111001 10011011 11111011 00001111 ?",
+      "answer": "249.155.251.15",
+      "incorrect": ["128.64.32.16", "255.255.255.255", "249.155.250.1"]
+    },
+    {
+      "id": "19",
+      "question": "What is the binary representation of the IP address: 192.168.10.5 ?",
+      "answer": "11000000 10101000 00001010 00000101",
+      "incorrect": [
+        "10101010 10101010 10101010 10101010",
+        "11110000 00001111 11110000 00001111",
+        "11000100 11101000 01001010 00001011"
+      ]
+    },
+    {
+      "id": "20",
+      "question": "Determine the binary representation of the IP address: 10.20.30.40 ?",
+      "answer": "00001010 00010100 00011110 00101000",
+      "incorrect": [
+        "10101011 11001100 00101000 00101000",
+        "00001010 11110100 00011110 00101000",
+        "00111010 00010100 00011110 00101000"
+      ]
+    }
+  ],
+
+  "The Router": [
+    {
+      "id": "1",
+      "question": "The physical or virtual internetworking device that is designed to receive, analyze, and forward data packets between computer networks.",
+      "answer": "Router",
+      "incorrect": ["Switch", "Cable", "System Unit"]
+    },
+    {
+      "id": "2",
+      "question": "A router works on the what layer of the OSI model",
+      "answer": "Third layer",
+      "incorrect": ["First layer", "Fifth layer", "Second layer"]
+    },
+    {
+      "id": "3",
+      "question": "Which of the following is not true about routers?",
+      "answer": "A router analyzes a destination IP address of a given packet header and compares it with the routing table to decide the packet's next path, but routers do not use routing tables for this purpose.",
+      "incorrect": [
+        "Routers are network devices that operate at the Network Layer (Layer 3) of the OSI model.",
+        "Routers are used to connect different network segments and route data packets between them.",
+        "Routers can perform Network Address Translation (NAT) to allow multiple devices on a local network to share a single public IP address for internet access."
+      ]
+    },
+    {
+      "id": "4",
+      "question": "These routers are used to offer Wi-Fi connectivity to laptops, smartphones, and other devices with Wi-Fi network capabilities, and it can also provide standard ethernet routing for a small number of wired network systems.",
+      "answer": "Wireless router",
+      "incorrect": ["Edge router", "Brouter", "Core router"]
+    },
+    {
+      "id": "5",
+      "question": "A combination of the bridge and a router. It allows transferring the data between networks like a bridge.",
+      "answer": "Brouter",
+      "incorrect": ["Edge router", "Wireless router", "Broadband router"]
+    },
+    {
+      "id": "6",
+      "question": "A type of router that can route the data within a network, but it is not able to route the data between the networks.",
+      "answer": "Core router",
+      "incorrect": ["Edge router", "Brouter", "Broadband router"]
+    },
+    {
+      "id": "7",
+      "question": "This router is a lower-capacity device that is placed at the boundary of a network.",
+      "answer": "Edge router",
+      "incorrect": ["Core router", "Brouter", "Broadband router"]
+    },
+    {
+      "id": "8",
+      "question": "This belongs to an end-user organization, and it works in a situation where it acts on a border device.",
+      "answer": "Subscribe edge router",
+      "incorrect": ["Label edge router", "Wireless router", "Broadband router"]
+    },
+    {
+      "id": "9",
+      "question": "This is used in the boundary of Multiprotocol Label Switching (MPLS) networks. It acts as a gateway between the LAN, WAN, or the internet.",
+      "answer": "Label edge router",
+      "incorrect": [
+        "Subscribe edge router",
+        "Wireless router",
+        "Broadband router"
+      ]
+    },
+    {
+      "id": "10",
+      "question": "A routing protocol which is used to calculate the best route for the given packets to reach the destination, as they move via a set of connected networks.",
+      "answer": "Open Shortest Path First (OSPF)",
+      "incorrect": [
+        "Border Gateway Protocol (BGP)",
+        "Interior Gateway Routing Protocol (IGRP)",
+        "Enhanced Interior Gateway Routing Protocol (EIGRP)"
+      ]
+    },
+    {
+      "id": "11",
+      "question": "It helps manage how packets are routed on the internet via exchange of information between edge routers.",
+      "answer": "Border Gateway Protocol (BGP)",
+      "incorrect": [
+        "Exterior Gateway Protocol (EGP)",
+        "Interior Gateway Routing Protocol (IGRP)",
+        "Enhanced Interior Gateway Routing Protocol (EIGRP)"
+      ]
+    },
+    {
+      "id": "12",
+      "question": "It specifies how routing information will be exchanged between gateways within an independent network.",
+      "answer": "Interior Gateway Routing Protocol (IGRP)",
+      "incorrect": [
+        "Routing Information Protocol (RIP)",
+        "Open Shortest Path First (OSPF)",
+        "Enhanced Interior Gateway Routing Protocol (EIGRP)"
+      ]
+    },
+    {
+      "id": "13",
+      "question": "It determines how routers can share information while transferring traffic among connected group of local area networks.",
+      "answer": "Routing Information Protocol (RIP)",
+      "incorrect": [
+        "Exterior Gateway Protocol (EGP)",
+        "Open Shortest Path First (OSPF)",
+        "Enhanced Interior Gateway Routing Protocol (EIGRP)"
+      ]
+    },
+    {
+      "id": "14",
+      "question": "In this protocol, if a router is unable to find a path to a destination from the tables, it asks route to its neighbors, and they pass the query to their neighbors until a router has found the path.",
+      "answer": "Enhanced Interior Gateway Routing Protocol (EIGRP)",
+      "incorrect": [
+        "Border Gateway Protocol (BGP)",
+        "Open Shortest Path First (OSPF)",
+        "Routing Information Protocol (RIP)"
+      ]
+    },
+    {
+      "id": "15",
+      "question": "It decides how routing information can be exchanged between two neighbor gateway hosts, each of which has its own router.",
+      "answer": "Exterior Gateway Protocol (EGP)",
+      "incorrect": [
+        "Enhanced Interior Gateway Routing Protocol (EIGRP)",
+        "Open Shortest Path First (OSPF)",
+        "Routing Information Protocol (RIP)"
+      ]
+    }
+  ]
+}

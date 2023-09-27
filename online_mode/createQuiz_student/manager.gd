@@ -29,9 +29,12 @@ var json_file = "res://online_mode/json/question_bank.json"
 var json_data = ""
 var initial_text = ""
 
+func _ready():
+	show_questions()
+
 func show_questions():
 	initial_text = lesson_button.text
-	var lesson_number = lesson_button.text.replace(" ", "").to_lower()
+	var lesson_name = lesson_button.text
 	
 	#for getting data in a JSON file and putting it in the json_data variable as dictionary
 	var file = File.new()
@@ -47,23 +50,26 @@ func show_questions():
 		print("Failed to open JSON file.")
 	##
 	
+	var lesson_names = json_data.keys()
+	
 	# To display questions from the question bank
-	for entry in json_data[lesson_number]:
+	for entry in json_data[lesson_name]:
 		var new_question = question_container.instance()
 		question_vbox.add_child(new_question)
 		new_question.find_node("question_content").text = entry["question"]
 		new_question.find_node("answer_content").text = entry["answer"]
+		new_question.find_node("incorrect_content").text = join_array(entry["incorrect"])
 		new_question.delete_confirmation = delete_confirmation
 		new_question.selected_container = $"TabContainer/View Selected Questions/ScrollContainer/VBoxContainer"
 	##
 	
 	# To list all the lessons with available questions
-	var i = 1
+	var i = 0
 	for entry in json_data:
 		var new_lesson_button = lesson_instance.instance()
 		lessons_container.add_child(new_lesson_button)
-		new_lesson_button.text = "Lesson " + str(i)
-		new_lesson_button.lesson_number = $"TabContainer/Question List/lesson_number"
+		new_lesson_button.text = lesson_names[i]
+		new_lesson_button.lesson_name = $"TabContainer/Question List/lesson_name"
 		new_lesson_button.popup = $popup/level_selection
 		i += 1
 	##
@@ -75,9 +81,16 @@ func show_questions():
 				entry.find_node("CheckBox").pressed = true
 	##
 
-func _ready():
-	generate_unique_code()
-	show_questions()
+func join_array(array):
+	var separator = ", "
+	var joined_string = ""
+	
+	for i in range(array.size()):
+		joined_string += array[i]
+		if i < array.size() - 1:
+			joined_string += separator
+	
+	return joined_string
 	
 func _process(delta):
 	# To display other lesson's set of questions
@@ -147,6 +160,7 @@ func _on_create_pressed():
 		var question_dict = {}
 		question_dict["question"] = entry.find_node("question_content").text
 		question_dict["answer"] = entry.find_node("answer_content").text
+		question_dict["incorrect"] = entry.find_node("incorrect_content").text.split(", ")
 		question_list.append(question_dict)
 	new_json["questions"] = question_list
 	var json_string = to_json(new_json)

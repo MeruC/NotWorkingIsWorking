@@ -734,6 +734,12 @@ instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPla
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 7 )]
 
+[node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
+visible = true
+
+[node name="videoSubmenu" parent="popup_layer/pause/settings" index="3"]
+visible = true
+
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="0"]
 margin_right = 12.0
 margin_bottom = 12.0

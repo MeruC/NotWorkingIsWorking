@@ -69,7 +69,7 @@ lesson_instance = ExtResource( 7 )
 level_name = NodePath("TabContainer/Level Settings/VBoxContainer/level_name/level_name")
 question_vbox = NodePath("TabContainer/Question List/ScrollContainer/VBoxContainer")
 selected_vbox = NodePath("TabContainer/View Selected Questions/ScrollContainer/VBoxContainer")
-lesson_button = NodePath("TabContainer/Question List/lesson_number")
+lesson_button = NodePath("TabContainer/Question List/lesson_name")
 lessons_container = NodePath("popup/level_selection/ColorRect/ScrollContainer/lessons_container")
 level_selection = NodePath("popup/level_selection")
 delete_confirmation = NodePath("popup/delete_confirmation")
@@ -245,14 +245,15 @@ margin_right = -4.0
 margin_bottom = -4.0
 custom_fonts/font = SubResource( 7 )
 
-[node name="lesson_number" type="Button" parent="TabContainer/Question List"]
+[node name="lesson_name" type="Button" parent="TabContainer/Question List"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -100.0
-margin_right = 100.0
+margin_left = -250.0
+margin_right = 250.0
 margin_bottom = 75.0
+rect_min_size = Vector2( 500, 75 )
 custom_fonts/font = SubResource( 8 )
-text = "Lesson 1"
+text = "Introduction to Networking"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Question List"]
 anchor_left = 0.5
@@ -263,6 +264,7 @@ margin_left = -700.0
 margin_top = -246.5
 margin_right = 700.0
 margin_bottom = 303.5
+rect_min_size = Vector2( 1400, 550 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/ScrollContainer"]
 custom_constants/separation = 20
@@ -278,8 +280,15 @@ margin_bottom = -4.0
 custom_fonts/font = SubResource( 7 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/View Selected Questions"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -725.0
+margin_top = -300.0
+margin_right = 725.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1450, 600 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/View Selected Questions/ScrollContainer"]
 custom_constants/separation = 20
@@ -607,7 +616,7 @@ text = "HOME"
 [connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_exited"]
 [connection signal="gui_input" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_gui_input"]
 [connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second" to="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second" method="_on_second_focus_exited"]
-[connection signal="pressed" from="TabContainer/Question List/lesson_number" to="." method="_on_lesson_number_pressed"]
+[connection signal="pressed" from="TabContainer/Question List/lesson_name" to="." method="_on_lesson_number_pressed"]
 [connection signal="pressed" from="create_button" to="." method="_on_create_button_pressed"]
 [connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/no" to="." method="_on_no_pressed"]

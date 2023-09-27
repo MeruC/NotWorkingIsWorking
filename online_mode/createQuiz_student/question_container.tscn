@@ -22,6 +22,7 @@ script = ExtResource( 2 )
 selected_question = ExtResource( 3 )
 question_content = NodePath("VBoxContainer/question_container/question_content")
 answer_content = NodePath("VBoxContainer/answer_container/answer_content")
+incorrect_content = NodePath("VBoxContainer/incorrect_container/incorrect_content")
 
 [node name="CheckBox" type="CheckBox" parent="."]
 margin_right = 24.0
@@ -30,12 +31,12 @@ theme = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 28.0
-margin_right = 1259.0
+margin_right = 1381.0
 margin_bottom = 273.0
 custom_constants/separation = 10
 
 [node name="question_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1231.0
+margin_right = 1353.0
 margin_bottom = 189.0
 
 [node name="question_label" type="Label" parent="VBoxContainer/question_container"]
@@ -56,20 +57,43 @@ autowrap = true
 
 [node name="answer_container" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 199.0
-margin_right = 1231.0
+margin_right = 1353.0
 margin_bottom = 273.0
 
 [node name="answer_label" type="Label" parent="VBoxContainer/answer_container"]
-margin_right = 169.0
+margin_right = 324.0
 margin_bottom = 74.0
-rect_min_size = Vector2( 115, 0 )
+rect_min_size = Vector2( 202, 0 )
 custom_fonts/font = ExtResource( 1 )
-text = "Answer: "
+text = "Correct Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]
-margin_left = 173.0
+margin_left = 328.0
 margin_top = 6.0
-margin_right = 1198.0
+margin_right = 1353.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 1025, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "asdaasdlk"
+autowrap = true
+
+[node name="incorrect_container" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 283.0
+margin_right = 1384.0
+margin_bottom = 357.0
+
+[node name="incorrect_label" type="Label" parent="VBoxContainer/incorrect_container"]
+margin_right = 355.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 202, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Incorrect Answer: "
+
+[node name="incorrect_content" type="Label" parent="VBoxContainer/incorrect_container"]
+margin_left = 359.0
+margin_top = 6.0
+margin_right = 1384.0
 margin_bottom = 67.0
 rect_min_size = Vector2( 1025, 0 )
 custom_fonts/font = SubResource( 4 )

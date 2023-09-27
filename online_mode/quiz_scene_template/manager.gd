@@ -74,12 +74,7 @@ func display_question():
 	
 	var choices = []
 	choices.append(json_data["questions"][i]["answer"])
-	while choices.size() != 4:
-		var number = rand_range(0, json_data["questions"].size())
-		if json_data["questions"][number]["answer"] in choices:
-			pass
-		else:
-			choices.append(json_data["questions"][number]["answer"])
+	choices += json_data["questions"][i]["incorrect"]
 	choices.shuffle()
 	var counter = 0
 	for child in choices_container.get_children():
@@ -141,6 +136,7 @@ func _on_choice4_pressed():
 
 func _on_exit_pressed():
 	addScore()
+	Load.load_scene(self, main_screen)
 
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false

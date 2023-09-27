@@ -1082,43 +1082,43 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -537.5
-margin_top = -230.0
-margin_right = 537.5
-margin_bottom = -25.0
+margin_left = -812.5
+margin_top = -280.0
+margin_right = 812.5
+margin_bottom = -75.0
 custom_constants/vseparation = 25
 custom_constants/hseparation = 25
 columns = 2
 
 [node name="choice" type="Button" parent="choices"]
-margin_right = 525.0
+margin_right = 800.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 525, 90 )
+rect_min_size = Vector2( 800, 90 )
 custom_fonts/font = SubResource( 3 )
 text = "Option 1"
 
 [node name="choice2" type="Button" parent="choices"]
-margin_left = 550.0
-margin_right = 1075.0
+margin_left = 825.0
+margin_right = 1625.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 525, 90 )
+rect_min_size = Vector2( 800, 90 )
 custom_fonts/font = SubResource( 3 )
 text = "Option 2"
 
 [node name="choice3" type="Button" parent="choices"]
 margin_top = 115.0
-margin_right = 525.0
+margin_right = 800.0
 margin_bottom = 205.0
-rect_min_size = Vector2( 525, 90 )
+rect_min_size = Vector2( 800, 90 )
 custom_fonts/font = SubResource( 3 )
 text = "Option 3"
 
 [node name="choice4" type="Button" parent="choices"]
-margin_left = 550.0
+margin_left = 825.0
 margin_top = 115.0
-margin_right = 1075.0
+margin_right = 1625.0
 margin_bottom = 205.0
-rect_min_size = Vector2( 525, 90 )
+rect_min_size = Vector2( 800, 90 )
 custom_fonts/font = SubResource( 3 )
 text = "Option 4"
 

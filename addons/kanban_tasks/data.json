@@ -29,27 +29,29 @@
     {
       "title": "Todo",
       "tasks": [
+        12,
         0,
         3,
         4,
         5,
         6,
         7,
-        8,
-        9,
-        10
+        11
       ]
     },
     {
       "title": "Doing",
       "tasks": [
-        1
+        1,
+        10,
+        8
       ]
     },
     {
       "title": "Done",
       "tasks": [
-        2
+        2,
+        9
       ]
     }
   ],
@@ -71,12 +73,7 @@
     },
     {
       "category": 0,
-      "title": "QR Code",
-      "details": ""
-    },
-    {
-      "category": 0,
-      "title": "Report Generation",
+      "title": "Report Generation (Excel)",
       "details": ""
     },
     {
@@ -96,17 +93,32 @@
     },
     {
       "category": 0,
-      "title": "Scores (Leaderboards)",
-      "details": ""
-    },
-    {
-      "category": 0,
       "title": "Net 2 Offline levels",
       "details": ""
     },
     {
       "category": 0,
-      "title": "Quick Game",
+      "title": "Quick Game (Should only be enabled upon completing net1 levels)",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "QR Code Generation",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Scores",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "QR Code Reader",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Todo",
       "details": ""
     }
   ]
