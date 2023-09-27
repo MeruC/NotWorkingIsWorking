@@ -29,7 +29,15 @@
     {
       "title": "Todo",
       "tasks": [
-        0
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     {
@@ -48,7 +56,7 @@
   "tasks": [
     {
       "category": 0,
-      "title": "Example",
+      "title": "Offline Levels",
       "details": ""
     },
     {
@@ -59,6 +67,46 @@
     {
       "category": 0,
       "title": "Done",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "QR Code",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Report Generation",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Online-Quiz (prof)",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Online Simulation Levels",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Encyclopedia UI and Content",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Scores (Leaderboards)",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Net 2 Offline levels",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Quick Game",
       "details": ""
     }
   ]

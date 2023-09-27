@@ -16,6 +16,8 @@ export(NodePath) onready var dialog_box = get_node(dialog_box) as Control
 export(NodePath) onready var minute = get_node(minute) as LineEdit
 export(NodePath) onready var second = get_node(second) as LineEdit
 export(NodePath) onready var successful_popup = get_node(successful_popup) as Control
+export(NodePath) onready var qr_textureRect = get_node(qr_textureRect) as TextureRect
+
 
 onready var level = get_node(".")
 
@@ -138,6 +140,7 @@ func _on_create_pressed():
 	var game_code = generate_unique_code()
 	
 	# compile level data as json
+	new_json["game_code"] = game_code
 	new_json["level_name"] = level_name.text
 	new_json["time"] = (int(minute.text) * 60) + int(second.text)
 	for entry in selected_vbox.get_children():
@@ -159,9 +162,16 @@ func _on_create_pressed():
 	else:
 		print("Failed to open the file for writing")
 	
+	generate_qr(game_code)
 	create_confirmation.visible = false
 	
 	##
+	
+func generate_qr(game_code):
+	var QRcode: qr_code = qr_code.new()
+	QRcode.error_correct_level = QrCode.ERROR_CORRECT_LEVEL.MEDIUM
+	var texture: ImageTexture = QRcode.get_texture(game_code)
+	qr_textureRect.texture = texture
 
 func _on_create_button_pressed():
 	# Form validation

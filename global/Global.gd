@@ -12,6 +12,10 @@ var playerCamera : Camera
 var playerCanMove = true
 var playerInteractLbl : Control
 
+# For QR Code
+var qr_text: String = "text"
+var error_correction_level: int = 0
+
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
 
 var w = 10

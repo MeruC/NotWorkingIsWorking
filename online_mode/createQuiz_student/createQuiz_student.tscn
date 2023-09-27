@@ -79,6 +79,7 @@ dialog_box = NodePath("popup/dialog_box")
 minute = NodePath("TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer/minute")
 second = NodePath("TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second")
 successful_popup = NodePath("popup/successful_popup")
+qr_textureRect = NodePath("popup/successful_popup/ColorRect/VBoxContainer/qr_code")
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -549,11 +550,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -400.0
-margin_top = -125.0
-margin_right = 400.0
-margin_bottom = 125.0
-rect_min_size = Vector2( 800, 350 )
+margin_left = -468.0
+margin_top = -364.5
+margin_right = 468.0
+margin_bottom = 364.5
+rect_min_size = Vector2( 100, 750 )
 color = Color( 0.984314, 0.780392, 0.235294, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="popup/successful_popup/ColorRect"]
@@ -562,7 +563,7 @@ margin_bottom = 204.0
 rect_min_size = Vector2( 800, 0 )
 
 [node name="info" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
-margin_right = 800.0
+margin_right = 936.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 800, 100 )
 custom_fonts/font = SubResource( 12 )
@@ -573,7 +574,7 @@ autowrap = true
 
 [node name="message" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
 margin_top = 104.0
-margin_right = 800.0
+margin_right = 936.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
 custom_fonts/font = SubResource( 10 )
@@ -581,6 +582,13 @@ text = "game_code"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="qr_code" type="TextureRect" parent="popup/successful_popup/ColorRect/VBoxContainer"]
+margin_top = 208.0
+margin_right = 936.0
+margin_bottom = 558.0
+rect_min_size = Vector2( 350, 350 )
+stretch_mode = 6
 
 [node name="home" type="Button" parent="popup/successful_popup/ColorRect"]
 anchor_left = 0.5
