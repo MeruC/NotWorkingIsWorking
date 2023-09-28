@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "http://192.168.100.247:8080/authentication.php"
+const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -23,6 +23,7 @@ func _process(_delta):
 		_send_request(request)
 
 func _http_request_completed(result, response_code, headers, body):
+	var nickname
 	is_requesting = false
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr("Error with connection: " + str(result))
@@ -47,11 +48,10 @@ func _http_request_completed(result, response_code, headers, body):
 				 # Authentication was successful, show a success message with the nickname
 				$"../login_sucess".visible = true
 				$"../login_sucess/AnimationPlayer".play("login_sucessful")
-				var nickname = response_dict["nickname"]
-				$"../login_sucess/panel/message".text = "Welcome, " + nickname
-				
+				nickname = response_dict["nickname"]
 				settings_data.email = nickname
 				SaveManager.save_game()
+				$"../login_sucess/panel/message".text = "Welcome, " + nickname
 			else:
 				# Authentication failed, check if the response contains "account_exists" key
 				if "account_exists" in response_dict and response_dict["account_exists"] == false:
