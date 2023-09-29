@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Voxel Universe-38-Glasses.obj-4255f2c999f9de53d24e3c1020b32a00.mesh"
+
+[deps]
+
+files=[ "res://.import/Voxel Universe-38-Glasses.obj-4255f2c999f9de53d24e3c1020b32a00.mesh" ]
+
+source_file="res://resources/Models/3D/Voxel Universe-38-Glasses.obj"
+dest_files=[ "res://.import/Voxel Universe-38-Glasses.obj-4255f2c999f9de53d24e3c1020b32a00.mesh", "res://.import/Voxel Universe-38-Glasses.obj-4255f2c999f9de53d24e3c1020b32a00.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.313, 0.313, 0.313 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=191

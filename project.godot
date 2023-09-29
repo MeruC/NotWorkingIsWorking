@@ -302,6 +302,7 @@ Load="*res://scenes/loading/load.gd"
 CameraTransition="*res://addon/camera_transitition/camera_transition.tscn"
 QrCode="*res://qrcode-generator/classes/qr_code.gd"
 ConfirmDialog="*res://scenes/others/confirmDialog.tscn"
+CameraTransitionDefault="*res://addon/camera_transititionDefault/camera_transition_default.tscn"
 
 [debug]
 
@@ -342,6 +343,27 @@ wav={
 "force/max_rate": false,
 "force/max_rate_hz": 44100,
 "force/mono": false
+}
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 1,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
 }
 
 [input]

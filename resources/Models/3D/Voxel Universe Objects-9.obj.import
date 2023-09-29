@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Voxel Universe Objects-9.obj-8f99935fd3307bec94d383ac4874713e.mesh"
+
+[deps]
+
+files=[ "res://.import/Voxel Universe Objects-9.obj-8f99935fd3307bec94d383ac4874713e.mesh" ]
+
+source_file="res://resources/Models/3D/Voxel Universe Objects-9.obj"
+dest_files=[ "res://.import/Voxel Universe Objects-9.obj-8f99935fd3307bec94d383ac4874713e.mesh", "res://.import/Voxel Universe Objects-9.obj-8f99935fd3307bec94d383ac4874713e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.313, 0.313, 0.313 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=191
