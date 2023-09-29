@@ -30,10 +30,9 @@ var json_data = ""
 var question_bank = "res://scenes/user_profile/question_bank/json/question_bank.json"
 var fetched_questions = ""
 var initial_text = ""
-
+var game_code
 func _ready():
 	show_questions()
-
 func show_questions():
 	initial_text = lesson_button.text
 	var lesson_name = lesson_button.text
@@ -154,11 +153,16 @@ func save_level(game_code):
 	ResourceSaver.save(saved_levels_folder + game_code + ".tscn", toSave)
 	successful_popup.find_node("message").text = "Your Level Code is: " + str(game_code)
 	successful_popup.visible = true
-	##
+	var request = HTTPRequest.new()
+	request.connect("request_completed", self, "_request_callback")
+	add_child(request)
+	upload_file(request, game_code)
+	
+	##	
 	
 func _on_create_pressed():
 	
-	var game_code = generate_unique_code()
+	game_code = generate_unique_code()
 	
 	# compile level data as json
 	new_json["game_code"] = game_code
@@ -216,4 +220,36 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
-	Load.load_scene(self,main_screen)
+	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+
+func _request_callback(result, response_code, headers, body) -> void:
+	if response_code == HTTPClient.RESPONSE_OK:
+		var response = str2var(body.get_string_from_utf8())
+		print("response", response)
+	elif response_code == HTTPClient.STATUS_DISCONNECTED:
+		print("not connected to server")
+
+func upload_file(request: HTTPRequest, game_code: String) -> void:
+	var file_name = game_code+".tscn"
+	var file = File.new()
+	file.open("res://online_mode/saved_levels/" + file_name, File.READ)
+	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
+	file.close()
+
+	var body = PoolByteArray()
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % file_name).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(file_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+
+	var headers = [
+		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
+	]
+
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = "http://192.168.100.247:8080/upload_file.php"  # Replace with your server's URL
+
+	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")

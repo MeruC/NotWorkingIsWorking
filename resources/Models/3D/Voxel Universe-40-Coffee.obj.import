@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Voxel Universe-40-Coffee.obj-9c25c69bf97019147f57eafb65d69fc7.mesh"
+
+[deps]
+
+files=[ "res://.import/Voxel Universe-40-Coffee.obj-9c25c69bf97019147f57eafb65d69fc7.mesh" ]
+
+source_file="res://resources/Models/3D/Voxel Universe-40-Coffee.obj"
+dest_files=[ "res://.import/Voxel Universe-40-Coffee.obj-9c25c69bf97019147f57eafb65d69fc7.mesh", "res://.import/Voxel Universe-40-Coffee.obj-9c25c69bf97019147f57eafb65d69fc7.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.313, 0.313, 0.313 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=191

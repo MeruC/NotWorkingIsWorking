@@ -76,3 +76,33 @@ func transition_camera3D(from: Camera, to: Camera, duration: float = 1.0) -> voi
 	# Make the second camera current
 	to.current = true
 	transitioning = false
+	
+func transition_camera3D2(from: Camera, to: Camera, duration: float = 1.0) -> void:
+	if transitioning: return
+	# Copy the parameters of the first camera
+	camera3D.size = from.size
+	camera3D.cull_mask = from.cull_mask
+	
+	# Move our transition camera to the first camera position
+	camera3D.global_transform = from.global_transform
+	
+	# Make our transition camera current
+	camera3D.current = true
+	
+	transitioning = true
+	
+	# Move to the second camera, while also adjusting the parameters to
+	# match the second camera
+	tween.remove_all()
+	tween.interpolate_property(camera3D, "global_transform", camera3D.global_transform, 
+		to.global_transform, duration, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tween.interpolate_property(camera3D, "size", camera3D.size, 
+		to.size, duration, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tween.start()
+	
+	# Wait for the tween to complete
+	yield(tween, "tween_all_completed")
+	
+	# Make the second camera current
+	to.current = true
+	transitioning = false
