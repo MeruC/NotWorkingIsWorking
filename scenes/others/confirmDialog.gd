@@ -4,7 +4,27 @@ var action = ""
 onready var confirm_animation = $AnimationPlayer
 onready var label = $ColorRect/MarginContainer/VBoxContainer/Label
 
+onready var confirm = $ColorRect/MarginContainer/VBoxContainer/confirm
+onready var ok = $ColorRect/MarginContainer/VBoxContainer/ok
 
+
+export(String, "Confirm Dialog", "OK Dialog") var mode = "Confirm Dialog"
+
+func _ready():
+	match mode:
+		"Confirm Dialog":
+			ok.set_visible(false)
+			confirm.set_visible(true)
+		"OK Dialog":
+			confirm.set_visible(false)
+			ok.set_visible(true)
+
+#OK DIALOG
+func _on_okBtn_pressed():
+	pass # Replace with function body.
+
+
+#CONFIRM DIALOG
 func _on_confirm_pressed():
 	match(action):
 		"main_menu":
