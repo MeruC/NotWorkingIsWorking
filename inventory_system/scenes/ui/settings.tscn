@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://scenes/others/confirmDialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
@@ -1127,16 +1126,12 @@ margin_bottom = 2.00018
 mouse_filter = 1
 custom_styles/panel = SubResource( 28 )
 
-[node name="confirm" parent="." instance=ExtResource( 1 )]
-visible = false
-
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 8 )]
 stream = ExtResource( 7 )
 volume_db = -5.0
 autoplay = false
 bus = "Music"
 
-[connection signal="visibility_changed" from="." to="." method="_on_settings_visibility_changed"]
 [connection signal="pressed" from="pausemenu/settings_btn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="pausemenu/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="pausemenu/main_menu" to="." method="_on_main_menu_pressed"]

@@ -26,3 +26,8 @@ signal saving_game()
 
 signal pc_opened()
 signal pc_closed()
+
+# Confirm / OK Dialog
+signal confirm()
+signal cancel()
+signal ok()

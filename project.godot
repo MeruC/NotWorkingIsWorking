@@ -301,6 +301,7 @@ Global="*res://global/Global.gd"
 Load="*res://scenes/loading/load.gd"
 CameraTransition="*res://addon/camera_transitition/camera_transition.tscn"
 QrCode="*res://qrcode-generator/classes/qr_code.gd"
+ConfirmDialog="*res://scenes/others/confirmDialog.tscn"
 
 [debug]
 

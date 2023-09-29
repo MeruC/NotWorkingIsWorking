@@ -18,10 +18,38 @@ var menu = 0
 onready var audio_loop_player = $AudioLoopPlayer
 
 func _ready():
+	SignalManager.connect( "ok", self, "_on_ok_pressed" )
+	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
 	audio_loop_player.play()
 	audio_loop_player.stream_paused = true
 	settings_data.connect( "changed", self, "_on_data_changed" )
 	_on_data_changed()
+
+func _on_ok_pressed(action):
+	pass
+	
+func _on_confirm_pressed(action):
+	match(action):
+		"main_menu":
+			get_tree().paused = false
+			action = ""
+			var ro = get_node("/root")
+			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
+		"quit":
+			action = ""
+			get_tree().quit()
+			
+func _on_main_menu_pressed():
+	ConfirmDialog.set_visible(true)
+	ConfirmDialog.confirm_animation.play("intro")
+	ConfirmDialog.label.text = "Return to Main Menu?"
+	ConfirmDialog.action = "main_menu"
+	
+func _on_quit_pressed():
+	ConfirmDialog.set_visible(true)
+	ConfirmDialog.confirm_animation.play("intro")
+	ConfirmDialog.label.text = "Quit game?"
+	ConfirmDialog.action = "quit"
 
 # Update the inputs when the data changes. ( Ex. On game load. )
 func _on_data_changed():
@@ -48,13 +76,7 @@ func _on_resume_pressed():
 	audio_loop_player.stop()
 	#audio_loop_player.playing = false
 	hide()
-	
-func _on_main_menu_pressed():
-	confirm.set_visible(true)
-	confirm.confirm_animation.play("intro")
-	confirm.label.text = "Return to Main Menu?"
-	confirm.action = "main_menu"
-	
+
 #Video Submenu
 func _on_fullscreen_toggled(button_pressed):
 	SettingsManager.fullscreen = button_pressed
@@ -100,13 +122,6 @@ func _on_settings_btn_pressed():
 
 func _on_back_pressed():
 	animation_player.play_backwards("submenu")
-
-func _on_quit_pressed():
-	confirm.set_visible(true)
-	confirm.confirm_animation.play("intro")
-	confirm.label.text = "Quit game?"
-	confirm.action = "quit"
-
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()

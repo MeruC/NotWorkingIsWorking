@@ -1,11 +1,11 @@
-extends ColorRect
+extends CanvasLayer
 
 var action = ""
 onready var confirm_animation = $AnimationPlayer
-onready var label = $ColorRect/MarginContainer/VBoxContainer/Label
+onready var label = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/Label
 
-onready var confirm = $ColorRect/MarginContainer/VBoxContainer/confirm
-onready var ok = $ColorRect/MarginContainer/VBoxContainer/ok
+onready var confirm = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm
+onready var ok = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok
 
 
 export(String, "Confirm Dialog", "OK Dialog") var mode = "Confirm Dialog"
@@ -26,15 +26,11 @@ func _on_okBtn_pressed():
 
 #CONFIRM DIALOG
 func _on_confirm_pressed():
-	match(action):
-		"main_menu":
-			get_tree().paused = false
-			action = ""
-			var ro = get_node("/root")
-			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
-		"quit":
-			action = ""
-			get_tree().quit()
+	confirm_animation.play("outro")
+	yield(confirm_animation, "animation_finished")
+	hide()
+	SignalManager.emit_signal("confirm", action)
+	action = ""
 
 func _on_cancel_pressed():
 	confirm_animation.play("outro")
