@@ -483,3 +483,4 @@ quality/shading/force_vertex_shading.mobile=false
 gles2/compatibility/enable_high_float.Android=true
 environment/default_clear_color=Color( 0.0784314, 0.105882, 0.145098, 1 )
 quality/filters/msaa=3
+environment/default_environment="res://resources/Shaders/environment.tres"

@@ -28,8 +28,8 @@ func _on_online_button_pressed():
 
 
 func _on_profile_button_pressed():
-	Load.load_scene(self,user_profile)
-	#CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraUserProfile", 1)
+	#Load.load_scene(self,user_profile)
+	CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraUserProfile", 1)
 
 
 func _on_shop_button_pressed():
@@ -37,8 +37,8 @@ func _on_shop_button_pressed():
 
 
 func _on_encyclopedia_button_pressed():
-	Load.load_scene(self,encyclopedia)
-	#CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraDictionary", 1)
+	#Load.load_scene(self,encyclopedia)
+	CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraDictionary", 1)
 
 
 
