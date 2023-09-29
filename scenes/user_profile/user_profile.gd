@@ -2,6 +2,7 @@ extends Node2D
 
 var edit_avatar = "res://user_profile/change_avatar.tscn"
 var main_menu = "res://scenes/main_screen/main_screen.tscn"
+var questionBank_scene = "res://scenes/user_profile/question_bank/question_bank.tscn"
 export( Resource ) var settings_data
 
 func _ready():
@@ -24,3 +25,7 @@ func _on_edit_avatar_pressed():
 
 func _on_back_btn_pressed():
 	Load.load_scene(self,main_menu)
+
+
+func _on_questionBank_btn_pressed():
+	Load.load_scene(self, questionBank_scene)

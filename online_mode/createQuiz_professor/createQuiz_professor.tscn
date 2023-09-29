@@ -1,0 +1,683 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://online_mode/createQuiz_professor/manager.gd" type="Script" id=1]
+[ext_resource path="res://online_mode/createQuiz_professor/question_container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://online_mode/quiz_scene_template/quiz_scene_template.tscn" type="PackedScene" id=3]
+[ext_resource path="res://online_mode/createQuiz_professor/lesson_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://online_mode/createQuiz_student/confirm.gd" type="Script" id=5]
+[ext_resource path="res://online_mode/createQuiz_student/second_script.gd" type="Script" id=6]
+[ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=14]
+size = 62
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+extra_spacing_bottom = 16
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 9 )
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends Button
+
+export(NodePath) onready var lesson_name = get_node(lesson_name) as Button
+export(NodePath) onready var popup
+
+func _ready():
+	pass # Replace with function body.
+
+func _on_lesson_button_pressed():
+	lesson_name.text = text
+	popup.visible = false
+	
+"
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 38
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
+font_data = ExtResource( 9 )
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+quiz_template = ExtResource( 3 )
+question_container = ExtResource( 2 )
+lesson_instance = ExtResource( 4 )
+level_name = NodePath("TabContainer/Level Settings/VBoxContainer/level_name/level_name")
+question_vbox = NodePath("TabContainer/Question List/TabContainer/Ready Made Questions/ScrollContainer/VBoxContainer")
+myquestion_vbox = NodePath("TabContainer/Question List/TabContainer/My Questions/ScrollContainer/VBoxContainer")
+selected_vbox = NodePath("TabContainer/View Selected Questions/ScrollContainer/VBoxContainer")
+lesson_button = NodePath("TabContainer/Question List/TabContainer/Ready Made Questions/lesson_name")
+lessons_container = NodePath("popup/level_selection/ColorRect/ScrollContainer/lessons_container")
+level_selection = NodePath("popup/level_selection")
+delete_confirmation = NodePath("popup/delete_confirmation")
+confirmation_yes_button = NodePath("popup/delete_confirmation/ColorRect/HBoxContainer/yes")
+create_confirmation = NodePath("popup/create_confirmation")
+dialog_box = NodePath("popup/dialog_box")
+minute = NodePath("TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer/minute")
+second = NodePath("TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second")
+successful_popup = NodePath("popup/successful_popup")
+qr_textureRect = NodePath("popup/successful_popup/ColorRect/VBoxContainer/qr_code")
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_top = 25.0
+margin_right = 200.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 14 )
+text = "CREATE QUIZ"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -750.0
+margin_top = -381.5
+margin_right = 750.0
+margin_bottom = 381.5
+rect_min_size = Vector2( 1500, 700 )
+custom_fonts/font = ExtResource( 7 )
+tab_align = 0
+
+[node name="Level Settings" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 92.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Level Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -156.0
+margin_right = 350.0
+margin_bottom = 156.0
+custom_constants/separation = 50
+alignment = 1
+
+[node name="level_name" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 146.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/level_name"]
+margin_right = 700.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Level Name"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="level_name" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/level_name"]
+margin_top = 46.0
+margin_right = 700.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 700, 100 )
+custom_fonts/font = SubResource( 3 )
+placeholder_text = "Enter level name"
+
+[node name="timer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer"]
+margin_top = 196.0
+margin_right = 700.0
+margin_bottom = 329.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer"]
+margin_right = 700.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Timer"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer"]
+margin_top = 46.0
+margin_right = 700.0
+margin_bottom = 133.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
+margin_left = 229.0
+margin_right = 335.0
+margin_bottom = 87.0
+
+[node name="minute" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer"]
+margin_right = 106.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 20, 50 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+max_length = 2
+placeholder_text = "1"
+
+[node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 106.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 10, 10 )
+custom_fonts/font = SubResource( 4 )
+text = "minute"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
+margin_left = 345.0
+margin_top = 21.0
+margin_right = 355.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 10, 10 )
+custom_fonts/font = SubResource( 5 )
+text = ":"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
+margin_left = 365.0
+margin_right = 471.0
+margin_bottom = 87.0
+
+[node name="second" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2"]
+margin_right = 106.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 20, 50 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+max_length = 2
+placeholder_text = "00"
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2"]
+margin_top = 59.0
+margin_right = 106.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 10, 10 )
+custom_fonts/font = SubResource( 4 )
+text = "second"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Question List" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 92.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_fonts/font = SubResource( 7 )
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Question List"]
+margin_left = -4.0
+margin_top = 9.0
+margin_right = 1496.0
+margin_bottom = 672.0
+custom_fonts/font = SubResource( 13 )
+tab_align = 0
+
+[node name="Ready Made Questions" type="Tabs" parent="TabContainer/Question List/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 79.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="lesson_name" type="Button" parent="TabContainer/Question List/TabContainer/Ready Made Questions"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_right = 250.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 500, 75 )
+custom_fonts/font = SubResource( 8 )
+text = "Introduction to Networking"
+script = SubResource( 15 )
+lesson_name = NodePath(".")
+popup = NodePath("../../../../../popup/level_selection")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Question List/TabContainer/Ready Made Questions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -700.0
+margin_top = -197.5
+margin_right = 700.0
+margin_bottom = 277.5
+rect_min_size = Vector2( 1400, 475 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/TabContainer/Ready Made Questions/ScrollContainer"]
+custom_constants/separation = 20
+
+[node name="My Questions" type="Tabs" parent="TabContainer/Question List/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 79.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Question List/TabContainer/My Questions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -700.0
+margin_top = -279.5
+margin_right = 700.0
+margin_bottom = 279.5
+rect_min_size = Vector2( 1400, 475 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/TabContainer/My Questions/ScrollContainer"]
+custom_constants/separation = 20
+
+[node name="View Selected Questions" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 53.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_fonts/font = SubResource( 7 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/View Selected Questions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -725.0
+margin_top = -300.0
+margin_right = 725.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1450, 600 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/View Selected Questions/ScrollContainer"]
+custom_constants/separation = 20
+alignment = 1
+
+[node name="create_button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -110.0
+margin_right = 150.0
+margin_bottom = -35.0
+rect_min_size = Vector2( 300, 75 )
+custom_fonts/font = ExtResource( 8 )
+text = "Create"
+
+[node name="popup" type="CanvasLayer" parent="."]
+
+[node name="level_selection" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/level_selection"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/level_selection"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -250.0
+margin_right = 350.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 700, 500 )
+color = Color( 0.984314, 0.780392, 0.235294, 1 )
+
+[node name="Label" type="Label" parent="popup/level_selection/ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_top = 20.0
+margin_right = 200.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 10 )
+text = "Select Lesson"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="popup/level_selection/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -325.0
+margin_top = -415.0
+margin_right = 325.0
+margin_bottom = -15.0
+
+[node name="lessons_container" type="VBoxContainer" parent="popup/level_selection/ColorRect/ScrollContainer"]
+margin_right = 650.0
+rect_min_size = Vector2( 650, 0 )
+alignment = 1
+
+[node name="delete_confirmation" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/delete_confirmation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/delete_confirmation"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -125.0
+margin_right = 500.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 1000, 250 )
+color = Color( 0.984314, 0.780392, 0.235294, 1 )
+
+[node name="info" type="Label" parent="popup/delete_confirmation/ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -450.0
+margin_top = 25.0
+margin_right = 450.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 900, 100 )
+custom_fonts/font = SubResource( 10 )
+text = "Are you sure you want to remove this question?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popup/delete_confirmation/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -100.0
+margin_right = 250.0
+margin_bottom = -25.0
+custom_constants/separation = 100
+
+[node name="yes" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "YES"
+script = ExtResource( 5 )
+
+[node name="no" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
+margin_left = 300.0
+margin_right = 500.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "NO"
+
+[node name="create_confirmation" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/create_confirmation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/create_confirmation"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -125.0
+margin_right = 400.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 800, 250 )
+color = Color( 0.984314, 0.780392, 0.235294, 1 )
+
+[node name="info" type="Label" parent="popup/create_confirmation/ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -450.0
+margin_top = 25.0
+margin_right = 450.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 900, 100 )
+custom_fonts/font = SubResource( 10 )
+text = "Confirm Level Creation?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popup/create_confirmation/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -100.0
+margin_right = 250.0
+margin_bottom = -25.0
+custom_constants/separation = 100
+
+[node name="create" type="Button" parent="popup/create_confirmation/ColorRect/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "YES"
+
+[node name="no" type="Button" parent="popup/create_confirmation/ColorRect/HBoxContainer"]
+margin_left = 300.0
+margin_right = 500.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "NO"
+
+[node name="dialog_box" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/dialog_box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/dialog_box"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -125.0
+margin_right = 400.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 800, 350 )
+color = Color( 0.984314, 0.780392, 0.235294, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popup/dialog_box/ColorRect"]
+anchor_right = 1.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 800, 0 )
+
+[node name="info" type="Label" parent="popup/dialog_box/ColorRect/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 800, 100 )
+custom_fonts/font = SubResource( 12 )
+text = "Error"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="message" type="Label" parent="popup/dialog_box/ColorRect/VBoxContainer"]
+margin_top = 104.0
+margin_right = 800.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 800, 100 )
+custom_fonts/font = SubResource( 10 )
+text = "Make sure to fill-up all text fields."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="continue" type="Button" parent="popup/dialog_box/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = -25.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "Continue"
+
+[node name="successful_popup" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/successful_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/successful_popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -468.0
+margin_top = -364.5
+margin_right = 468.0
+margin_bottom = 364.5
+rect_min_size = Vector2( 100, 750 )
+color = Color( 0.984314, 0.780392, 0.235294, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popup/successful_popup/ColorRect"]
+anchor_right = 1.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 800, 0 )
+
+[node name="info" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
+margin_right = 936.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 800, 100 )
+custom_fonts/font = SubResource( 12 )
+text = "Level Created Successfully"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="message" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
+margin_top = 104.0
+margin_right = 936.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 800, 100 )
+custom_fonts/font = SubResource( 10 )
+text = "game_code"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="qr_code" type="TextureRect" parent="popup/successful_popup/ColorRect/VBoxContainer"]
+margin_top = 208.0
+margin_right = 936.0
+margin_bottom = 558.0
+rect_min_size = Vector2( 350, 350 )
+stretch_mode = 6
+
+[node name="home" type="Button" parent="popup/successful_popup/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = -25.0
+rect_min_size = Vector2( 200, 75 )
+custom_fonts/font = SubResource( 11 )
+text = "HOME"
+
+[connection signal="focus_entered" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_entered"]
+[connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_exited"]
+[connection signal="gui_input" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_gui_input"]
+[connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second" to="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2/second" method="_on_second_focus_exited"]
+[connection signal="pressed" from="TabContainer/Question List/TabContainer/Ready Made Questions/lesson_name" to="." method="_on_lesson_number_pressed"]
+[connection signal="pressed" from="create_button" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="popup/create_confirmation/ColorRect/HBoxContainer/create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="popup/create_confirmation/ColorRect/HBoxContainer/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="popup/dialog_box/ColorRect/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="popup/successful_popup/ColorRect/home" to="." method="_on_home_pressed"]

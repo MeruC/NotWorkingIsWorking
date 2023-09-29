@@ -48,7 +48,7 @@ func set_data( data ):
 	level3 = data.level3
 	level4 = data.level4
 	level5 = data.level5
-	email = data.email
+	#email = data.email
 	emit_changed()
 # Pack the data in a Dictionary.
 func get_data():

@@ -1,18 +1,244 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://online_mode/createQuiz_sub-menu/direct.gd" type="Script" id=3]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=6]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=7]
+[ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=89]
+bg_color = Color( 0, 0, 0, 0.901961 )
+
+[sub_resource type="DynamicFont" id=90]
+size = 42
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=73]
+
+[sub_resource type="StyleBoxFlat" id=74]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=75]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="ImageTexture" id=76]
+
+[sub_resource type="StyleBoxFlat" id=77]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=78]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=79]
+size = 60
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=80]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=81]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=82]
+size = 38
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=83]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=84]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=85]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=86]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=87]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=88]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=91]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 90 )
+Button/styles/focus = SubResource( 73 )
+Button/styles/hover = SubResource( 74 )
+Button/styles/normal = SubResource( 74 )
+Button/styles/pressed = SubResource( 75 )
+HSlider/icons/grabber = SubResource( 76 )
+HSlider/icons/grabber_disabled = SubResource( 76 )
+HSlider/icons/grabber_highlight = SubResource( 76 )
+HSlider/icons/tick = SubResource( 76 )
+HSlider/styles/grabber_area = SubResource( 77 )
+HSlider/styles/grabber_area_highlight = SubResource( 77 )
+HSlider/styles/slider = SubResource( 78 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 79 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 80 )
+LineEdit/styles/focus = SubResource( 81 )
+LineEdit/styles/normal = SubResource( 81 )
+Panel/styles/panel = ExtResource( 6 )
+PanelContainer/styles/panel = ExtResource( 6 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 82 )
+ProgressBar/styles/bg = SubResource( 83 )
+ProgressBar/styles/fg = SubResource( 84 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 85 )
+TabContainer/styles/panel = ExtResource( 6 )
+TabContainer/styles/tab_bg = SubResource( 75 )
+TabContainer/styles/tab_fg = SubResource( 86 )
+VScrollBar/styles/grabber = SubResource( 87 )
+VScrollBar/styles/grabber_highlight = SubResource( 87 )
+VScrollBar/styles/grabber_pressed = SubResource( 87 )
+VScrollBar/styles/scroll = SubResource( 88 )
 
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 278, 452 )
 script = ExtResource( 3 )
+popup = NodePath("popup/popup")
+keycode_lineEdit = NodePath("popup/popup/Panel/ColorRect/keycode_lineEdit")
 
 [node name="back" type="Button" parent="."]
 margin_left = 20.0
@@ -63,4 +289,74 @@ text = "Are you a student or a professor?"
 align = 1
 valign = 1
 
+[node name="popup" type="CanvasLayer" parent="."]
+
+[node name="popup" type="Control" parent="popup"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="popup/popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 89 )
+
+[node name="ColorRect" type="ColorRect" parent="popup/popup/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -250.0
+margin_right = 600.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 1200, 500 )
+color = Color( 0.317647, 0.317647, 0.317647, 1 )
+
+[node name="Label" type="Label" parent="popup/popup/Panel/ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.0
+margin_top = 50.0
+margin_right = 301.0
+margin_bottom = 118.0
+theme = ExtResource( 7 )
+text = "Enter Key Code"
+
+[node name="keycode_lineEdit" type="LineEdit" parent="popup/popup/Panel/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -50.0
+margin_right = 500.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+secret = true
+
+[node name="close_button" type="Button" parent="popup/popup/Panel/ColorRect"]
+margin_left = -48.0
+margin_top = -36.0
+margin_right = 71.0
+margin_bottom = 72.0
+theme = SubResource( 91 )
+text = "X"
+
+[node name="submit_button" type="Button" parent="popup/popup/Panel/ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -140.0
+margin_top = -50.0
+margin_right = 140.0
+margin_bottom = 58.0
+theme = SubResource( 91 )
+text = "SUBMIT"
+
 [connection signal="pressed" from="VBoxContainer/student" to="." method="_on_student_pressed"]
+[connection signal="pressed" from="VBoxContainer/professor" to="." method="_on_professor_pressed"]
+[connection signal="pressed" from="popup/popup/Panel/ColorRect/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="popup/popup/Panel/ColorRect/submit_button" to="." method="_on_submit_button_pressed"]
