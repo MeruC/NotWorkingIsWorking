@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Voxel Universe-34-Drink Energy.obj-768475c95c0603e1a0ae3da0cbb430ce.mesh"
+
+[deps]
+
+files=[ "res://.import/Voxel Universe-34-Drink Energy.obj-768475c95c0603e1a0ae3da0cbb430ce.mesh" ]
+
+source_file="res://resources/Models/3D/Voxel Universe-34-Drink Energy.obj"
+dest_files=[ "res://.import/Voxel Universe-34-Drink Energy.obj-768475c95c0603e1a0ae3da0cbb430ce.mesh", "res://.import/Voxel Universe-34-Drink Energy.obj-768475c95c0603e1a0ae3da0cbb430ce.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.313, 0.313, 0.313 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=191

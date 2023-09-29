@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -11,12 +11,42 @@
 [ext_resource path="res://resources/Sprites/no-sign.png" type="Texture" id=9]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=11]
-[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=12]
+[ext_resource path="res://resources/Models/main_screen.tres" type="MeshLibrary" id=12]
 [ext_resource path="res://nodes/pause.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/soundtrack/menu/title/intro.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/main_screen/introMusic.gd" type="Script" id=15]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-7.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-62.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-43.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-6.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-13.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-35.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://resources/Models/stone_bricks/glass.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://main_screen.gd" type="Script" id=23]
+[ext_resource path="res://wood.tres" type="Material" id=24]
+[ext_resource path="res://resources/Textures/walls_and_floors/Elements/TALLGRASS.png" type="Texture" id=25]
+[ext_resource path="res://resources/Textures/walls_and_floors/BuildingTextures/BRICKS.png" type="Texture" id=26]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=27]
+[ext_resource path="res://global/chapters/environment.tres" type="Environment" id=28]
+[ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=29]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 25 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_offset = Vector3( 0.5, 0, 0.5 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 26 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_offset = Vector3( 0.5, 0, 0.5 )
+uv1_triplanar = true
+
+[sub_resource type="GDScript" id=5]
 script/source = "extends ParallaxBackground
 
 export (float) var scrolling_speed = 250.0
@@ -25,7 +55,7 @@ func _process(delta):
 	scroll_offset.x -= scrolling_speed * delta
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=6]
 size = 150
 font_data = ExtResource( 2 )
 
@@ -52,8 +82,201 @@ rect_pivot_offset = Vector2( 2643, -278 )
 script = ExtResource( 3 )
 settings_data = ExtResource( 12 )
 
+[node name="main_screen" type="Spatial" parent="."]
+script = ExtResource( 23 )
+setting_data = ExtResource( 27 )
+
+[node name="CameraMain" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.684043, -0.0513936, 0.727629, -0.0835185, 0.996473, -0.00813315, -0.724645, -0.0663339, -0.685923, -2.725, 1.269, 13.408 )
+
+[node name="CameraTransition" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.73196, 0.135081, -0.667823, 0, 0.98015, 0.198256, 0.681347, 0.145116, -0.717431, -7.653, 1.506, 13.564 )
+visible = false
+
+[node name="CameraDictionary" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.759475, -0.384616, 0.524661, -0.0713148, 0.850867, 0.520518, -0.646616, 0.357904, -0.673641, -5.846, 1.37, 14.526 )
+
+[node name="CameraUserProfile" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.489108, 0.565904, -0.663721, -0.0208532, 0.753149, 0.65752, 0.871974, 0.335439, -0.35657, -7.59433, 1.57496, 16.0499 )
+
+[node name="floor" type="CSGMesh" parent="main_screen"]
+transform = Transform( 68.7115, 0, -6.30282, 0, 1, 0, 6.30282, 0, 68.7115, 3.96115, 0, -48.2268 )
+use_collision = true
+mesh = SubResource( 1 )
+material = ExtResource( 24 )
+
+[node name="floor2" type="CSGMesh" parent="main_screen"]
+transform = Transform( 68.7115, 0, -1.95578, 0, 1, 0, 6.30282, 0, 21.3213, -3.99733, -1.23273, 38.5342 )
+use_collision = true
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="floor3" type="CSGBox" parent="main_screen"]
+transform = Transform( 0.995819, 0, -0.0913452, 0, 1, -2.27374e-13, 0.0913452, 0, 0.995819, -9.1156, 0, -0.417205 )
+use_collision = true
+height = 39.599
+depth = 36.7899
+material = SubResource( 3 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="main_screen"]
+transform = Transform( 68.7115, 0.0913452, 2.75505e-07, 0, -4.37114e-08, 69, 6.30282, -0.995819, -3.00348e-06, -2.2361, 0, 19.3337 )
+
+[node name="floor2" type="CSGBox" parent="main_screen/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
+material = SubResource( 3 )
+
+[node name="floor3" type="CSGBox" parent="main_screen/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, -6.82121e-13, 0, 0, 1, 0, 0, 0.0434783 )
+operation = 2
+use_collision = true
+width = 0.175044
+height = 3.51374
+depth = 0.0404968
+material = SubResource( 3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="main_screen"]
+environment = ExtResource( 28 )
+
+[node name="object_table" parent="main_screen" instance=ExtResource( 29 )]
+transform = Transform( 0.871779, 0, -0.4899, 0, 1, 0, 0.4899, 0, 0.871779, -5.93628, -7.15256e-07, 15.819 )
+
+[node name="Spatial" type="Spatial" parent="main_screen"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 5.23547, 1, 18.8704 )
+
+[node name="glass" type="MeshInstance" parent="main_screen/Spatial"]
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass2" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass3" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass4" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass5" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass6" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass7" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass8" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass9" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass10" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass11" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass12" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass13" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="glass14" type="MeshInstance" parent="main_screen/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2, 3.2, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+
+[node name="Spatial3" type="Spatial" parent="main_screen"]
+
+[node name="Spatial4" type="Spatial" parent="main_screen/Spatial3"]
+transform = Transform( -0.191152, 0, -0.981561, 0, 1, 0, 0.981561, 0, -0.191152, -6.71677, 0.938821, 15.8792 )
+
+[node name="Voxel Universe Objects-13" type="MeshInstance" parent="main_screen/Spatial3/Spatial4"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.44931, 0, -0.70839 )
+mesh = ExtResource( 20 )
+
+[node name="Spatial3" type="Spatial" parent="main_screen/Spatial3"]
+transform = Transform( -0.844262, 0, 0.53593, 0, 1, 0, -0.53593, 0, -0.844262, -6.0799, 0.938821, 15.376 )
+
+[node name="Voxel Universe Objects-7" type="MeshInstance" parent="main_screen/Spatial3/Spatial3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53337, 0, 0.710238 )
+mesh = ExtResource( 16 )
+
+[node name="Spatial2" type="Spatial" parent="main_screen/Spatial3"]
+transform = Transform( -0.997865, 0, 0.065316, 0, 1, 0, -0.065316, 0, -0.997865, -5.24687, 0.902671, 15.751 )
+
+[node name="Voxel Universe Objects-43" type="MeshInstance" parent="main_screen/Spatial3/Spatial2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69514, 0.0246572, 2.0792 )
+mesh = ExtResource( 18 )
+
+[node name="Spatial" type="Spatial" parent="main_screen/Spatial3"]
+transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -5.61971, 1, 16.2605 )
+
+[node name="Voxel Universe Objects-35" type="MeshInstance" parent="main_screen/Spatial3/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6667, 0, 2.7936 )
+mesh = ExtResource( 21 )
+
+[node name="Spatial" type="Spatial" parent="main_screen/Spatial3/Spatial"]
+transform = Transform( 0.486335, 0, -0.873772, 0, 1, 0, 0.873772, 0, 0.486335, -0.0847244, 0, -0.575388 )
+
+[node name="Voxel Universe Objects-35" type="MeshInstance" parent="main_screen/Spatial3/Spatial/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6667, 0, 2.7936 )
+mesh = ExtResource( 21 )
+
+[node name="Spatial" type="Spatial" parent="main_screen/Spatial3/Spatial/Spatial"]
+transform = Transform( 0.735388, 0, 0.677647, 0, 1, 0, -0.677647, 0, 0.735388, 0.158245, 0, 1.00222 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Voxel Universe Objects-6" type="MeshInstance" parent="main_screen/Spatial3/Spatial/Spatial/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67477, 0, 5.17241 )
+mesh = ExtResource( 19 )
+
+[node name="Spatial5" type="Spatial" parent="main_screen/Spatial3"]
+transform = Transform( -0.993312, 0, 0.115457, 0, 1, 0, -0.115457, 0, -0.993312, -2.58766, -4.76837e-07, 17.6934 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Voxel Universe Objects-62" type="MeshInstance" parent="main_screen/Spatial3/Spatial5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
+mesh = ExtResource( 17 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = SubResource( 3 )
+visible = false
+script = SubResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 4284, 0 )
@@ -71,7 +294,7 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 135, 50 )
 rect_scale = Vector2( 0.23, 0.23 )
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "User Profile"
 icon = ExtResource( 4 )
 flat = true
@@ -83,9 +306,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -330.0
+margin_left = -7.0
 margin_top = -464.0
-margin_right = 682.0
+margin_right = 1005.0
 margin_bottom = 1296.0
 rect_scale = Vector2( 0.715147, 0.578869 )
 custom_constants/vseparation = 15

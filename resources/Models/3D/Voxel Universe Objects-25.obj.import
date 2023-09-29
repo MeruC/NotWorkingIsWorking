@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Voxel Universe Objects-25.obj-890be4523f97d5248e6c80802b8a0427.mesh"
+
+[deps]
+
+files=[ "res://.import/Voxel Universe Objects-25.obj-890be4523f97d5248e6c80802b8a0427.mesh" ]
+
+source_file="res://resources/Models/3D/Voxel Universe Objects-25.obj"
+dest_files=[ "res://.import/Voxel Universe Objects-25.obj-890be4523f97d5248e6c80802b8a0427.mesh", "res://.import/Voxel Universe Objects-25.obj-890be4523f97d5248e6c80802b8a0427.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.313, 0.313, 0.313 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=191

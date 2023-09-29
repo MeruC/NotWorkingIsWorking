@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stone_bricks-2.obj-c969b6d81acb7052b4616d552677b5c3.mesh"
+
+[deps]
+
+files=[ "res://.import/stone_bricks-2.obj-c969b6d81acb7052b4616d552677b5c3.mesh" ]
+
+source_file="res://resources/Models/stone_bricks/stone_bricks-2.obj"
+dest_files=[ "res://.import/stone_bricks-2.obj-c969b6d81acb7052b4616d552677b5c3.mesh", "res://.import/stone_bricks-2.obj-c969b6d81acb7052b4616d552677b5c3.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
