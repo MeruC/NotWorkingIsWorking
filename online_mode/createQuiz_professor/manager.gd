@@ -5,6 +5,7 @@ export(PackedScene) var question_container
 export(PackedScene) var lesson_instance
 export(NodePath) onready var level_name = get_node(level_name) as LineEdit
 export(NodePath) onready var question_vbox = get_node(question_vbox) as VBoxContainer
+export(NodePath) onready var myquestion_vbox = get_node(myquestion_vbox) as VBoxContainer
 export(NodePath) onready var selected_vbox = get_node(selected_vbox) as VBoxContainer
 export(NodePath) onready var lesson_button = get_node(lesson_button) as Button
 export(NodePath) onready var lessons_container = get_node(lessons_container) as VBoxContainer
@@ -26,13 +27,14 @@ var saved_levels_folder = "res://online_mode/saved_levels/"
 var new_json = {}
 var question_list = []
 var json_file = "res://online_mode/json/question_bank.json"
+var qBank_file = "res://scenes/user_profile/question_bank/json/question_bank.json"
 var json_data = ""
-var question_bank = "res://scenes/user_profile/question_bank/json/question_bank.json"
-var fetched_questions = ""
 var initial_text = ""
-var game_code
+var fetched_questions = ""
+
 func _ready():
 	show_questions()
+
 func show_questions():
 	initial_text = lesson_button.text
 	var lesson_name = lesson_button.text
@@ -53,7 +55,7 @@ func show_questions():
 	
 	var lesson_names = json_data.keys()
 	
-	# To display questions from the question bank
+	# To display ready-made questions
 	for entry in json_data[lesson_name]:
 		var new_question = question_container.instance()
 		question_vbox.add_child(new_question)
@@ -70,7 +72,7 @@ func show_questions():
 		var new_lesson_button = lesson_instance.instance()
 		lessons_container.add_child(new_lesson_button)
 		new_lesson_button.text = lesson_names[i]
-		new_lesson_button.lesson_name = $"TabContainer/Question List/lesson_name"
+		new_lesson_button.lesson_name = $"TabContainer/Question List/TabContainer/Ready Made Questions/lesson_name"
 		new_lesson_button.popup = $popup/level_selection
 		i += 1
 	##
@@ -80,12 +82,38 @@ func show_questions():
 		for selected in selected_vbox.get_children():
 			if entry.find_node("question_content").text == selected.find_node("question_content").text:
 				entry.find_node("CheckBox").pressed = true
+				
+	for entry in myquestion_vbox.get_children():
+		for selected in selected_vbox.get_children():
+			if entry.find_node("question_content").text == selected.find_node("question_content").text:
+				entry.find_node("CheckBox").pressed = true
 	##
 	
-	# For the self-generated questions
-	# fetch data from the database then put it in the fetched_questions variable
-	# To display the fetched_questions, use for loop 
-	#
+	# To display self-generated questions
+	var another_file = File.new()
+	if another_file.open(qBank_file, File.READ) == OK:
+		var json_content = another_file.get_as_text()
+		another_file.close()
+		var json_result = JSON.parse(json_content)
+		if json_result.error == OK:
+			fetched_questions = json_result.result
+		else:
+			print("JSON parsing error:", json_result.error_string)
+	else:
+		print("Failed to open JSON file.")
+	##
+	
+	print(fetched_questions)
+	
+	# To display all fetched questions
+	for child in fetched_questions:
+		var newQuestion_entry = question_container.instance()
+		newQuestion_entry.find_node("question_content").text = child["question"]
+		newQuestion_entry.find_node("answer_content").text = child["answer"]
+		newQuestion_entry.find_node("incorrect_content").text = join_array(child["incorrect"])
+		newQuestion_entry.delete_confirmation = delete_confirmation
+		newQuestion_entry.selected_container = $"TabContainer/View Selected Questions/ScrollContainer/VBoxContainer"
+		myquestion_vbox.add_child(newQuestion_entry)
 	##
 
 func join_array(array):
@@ -121,7 +149,9 @@ func _on_yes_pressed():
 			for question in question_vbox.get_children():
 				if question.find_node("question_content").text == confirmation_yes_button.question:
 					question.find_node("CheckBox").pressed = false
-				
+			for question in myquestion_vbox.get_children():
+				if question.find_node("question_content").text == confirmation_yes_button.question:
+					question.find_node("CheckBox").pressed = false
 	delete_confirmation.visible = false
 	
 	##
@@ -153,16 +183,11 @@ func save_level(game_code):
 	ResourceSaver.save(saved_levels_folder + game_code + ".tscn", toSave)
 	successful_popup.find_node("message").text = "Your Level Code is: " + str(game_code)
 	successful_popup.visible = true
-	var request = HTTPRequest.new()
-	request.connect("request_completed", self, "_request_callback")
-	add_child(request)
-	upload_file(request, game_code)
-	
-	##	
+	##
 	
 func _on_create_pressed():
 	
-	game_code = generate_unique_code()
+	var game_code = generate_unique_code()
 	
 	# compile level data as json
 	new_json["game_code"] = game_code
@@ -220,36 +245,4 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
-	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
-
-func _request_callback(result, response_code, headers, body) -> void:
-	if response_code == HTTPClient.RESPONSE_OK:
-		var response = str2var(body.get_string_from_utf8())
-		print("response", response)
-	elif response_code == HTTPClient.STATUS_DISCONNECTED:
-		print("not connected to server")
-
-func upload_file(request: HTTPRequest, game_code: String) -> void:
-	var file_name = game_code+".tscn"
-	var file = File.new()
-	file.open("res://online_mode/saved_levels/" + file_name, File.READ)
-	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
-	file.close()
-
-	var body = PoolByteArray()
-	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
-	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % file_name).to_utf8())
-	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
-	body.append_array(file_data)
-	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
-
-	var headers = [
-		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
-	]
-
-	# Replace the following URL with the actual URL of your PHP server script
-	var server_url = "http://192.168.100.247:8080/upload_file.php"  # Replace with your server's URL
-
-	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
-	if error != OK:
-		push_error("An error occurred in the HTTP request.")
+	Load.load_scene(self,main_screen)

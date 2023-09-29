@@ -38,8 +38,8 @@ size = 200
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=18]
-size = 30
+[sub_resource type="DynamicFont" id=24]
+size = 26
 font_data = ExtResource( 25 )
 
 [sub_resource type="DynamicFont" id=19]
@@ -81,6 +81,17 @@ font_data = ExtResource( 25 )
 [node name="user_profile" type="Node2D"]
 script = ExtResource( 5 )
 settings_data = ExtResource( 18 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 12 )
+scrolling_speed = 50.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 959, 539 )
+texture = ExtResource( 9 )
 
 [node name="user_profile" type="CanvasLayer" parent="."]
 
@@ -157,8 +168,8 @@ margin_bottom = 129.0
 rect_scale = Vector2( 1.26352, 1.68121 )
 theme = ExtResource( 26 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 18 )
-text = "Knowledge Obtain"
+custom_fonts/font = SubResource( 24 )
+text = "Knowledge Obtained"
 
 [node name="router_progress" type="ProgressBar" parent="user_profile"]
 margin_left = 1269.0
@@ -224,10 +235,27 @@ position = Vector2( 506, 48 )
 scale = Vector2( 0.120753, 0.142504 )
 texture = ExtResource( 10 )
 
-[node name="logout_bg" type="NinePatchRect" parent="user_profile"]
-margin_left = 1175.0
+[node name="questionBank_bg" type="NinePatchRect" parent="user_profile"]
+margin_left = 1075.0
 margin_top = 914.0
-margin_right = 1772.0
+margin_right = 1450.0
+margin_bottom = 1047.0
+theme = ExtResource( 16 )
+texture = ExtResource( 3 )
+
+[node name="questionBank_btn" type="Button" parent="user_profile/questionBank_bg"]
+self_modulate = Color( 0, 0, 0, 1 )
+light_mask = 514
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Question Bank"
+flat = true
+
+[node name="logout_bg" type="NinePatchRect" parent="user_profile"]
+margin_left = 1500.0
+margin_top = 914.0
+margin_right = 1875.0
 margin_bottom = 1047.0
 theme = ExtResource( 16 )
 texture = ExtResource( 3 )
@@ -235,10 +263,8 @@ texture = ExtResource( 3 )
 [node name="logout_btn" type="Button" parent="user_profile/logout_bg"]
 self_modulate = Color( 0, 0, 0, 1 )
 light_mask = 514
-margin_left = 1.0
-margin_top = 5.0
-margin_right = 600.0
-margin_bottom = 126.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_fonts/font = SubResource( 6 )
 text = "Log out"
 flat = true
@@ -439,21 +465,12 @@ margin_bottom = 162.0
 theme = ExtResource( 16 )
 text = "Back"
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource( 12 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1920, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 959, 539 )
-texture = ExtResource( 9 )
-
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 27 )]
 stream = ExtResource( 8 )
 bus = "Music"
 
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
+[connection signal="pressed" from="user_profile/questionBank_bg/questionBank_btn" to="." method="_on_questionBank_btn_pressed"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
 [connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
