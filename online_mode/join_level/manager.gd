@@ -27,6 +27,15 @@ func _on_back_pressed():
 func _on_join_pressed():
 	level_scene = textfield.text.to_upper() + ".tscn"
 	var full_path = levels_folder + level_scene
+	var file = File.new()
+	get_file()
+
+	if file.open(full_path, File.READ) == OK:
+		file.close()
+		Load.load_scene(self,full_path)
+	else:
+		error_popup.visible = true
+		textfield.text = ""
 	get_file()
 	
 	
