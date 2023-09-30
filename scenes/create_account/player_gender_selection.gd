@@ -1,7 +1,7 @@
 extends Spatial
 
 var click = 0
-var gender = ""
+var gender = "male"
 export( Resource ) var settings_data
 
 func _ready():
@@ -31,8 +31,8 @@ func _on_CheckButton_toggled(button_pressed):
 		$CSGMesh.mesh = girl
 		$CSGMesh.material_override = girl_skin
 		gender = "female"
-	settings_data.gender = gender
-	SaveManager.save_game()
+		settings_data.gender = gender
+		SaveManager.save_game()
 	
 func _on_confirm_pressed():
 	$"../../../..".queue_free()
