@@ -7,7 +7,7 @@ var i = 0
 
 #database_connection
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
+const SERVER_URL = "http://192.168.100.247:8080/authentication1.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 export (Resource) var settings_data
 var request_queue : Array = []
