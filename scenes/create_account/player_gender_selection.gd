@@ -18,6 +18,8 @@ func _on_CheckButton_toggled(button_pressed):
 		$CSGMesh.material_override = boy_skin
 		$"../../../../AnimationPlayer".play("male_anim")
 		gender = "male"
+		settings_data.gender = gender
+		SaveManager.save_game()
 
 	elif button_pressed == true:
 		$"../../../../choose_female".visible = true
