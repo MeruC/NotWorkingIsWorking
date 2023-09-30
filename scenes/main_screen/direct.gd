@@ -13,7 +13,17 @@ var net1_levels = ["res://offline_levels/level1/level_1.tscn", "res://offline_le
 					"res://offline_levels/level7/level7.tscn", "res://offline_levels/level8/level8.tscn"]
 export (Resource) var settings_data
 
+onready var tap = $tap
+onready var animation_player = $AnimationPlayer
+
+func _input(event):
+	if (event is InputEventScreenTouch or event is InputEventMouseButton) and tap.visible == true:
+		animation_player.play("start")
+		CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraOffline", 1)
+
 func _ready():
+	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
+	tap.set_visible(true)
 	$mascot_animation.play("mascot_animation")
 	var file = File.new()
 	if not file.file_exists("user://save_data/save.dat"):
@@ -28,8 +38,7 @@ func _on_online_button_pressed():
 
 
 func _on_profile_button_pressed():
-	#Load.load_scene(self,user_profile)
-	CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraUserProfile", 1)
+	Load.load_scene(self,user_profile)
 
 
 func _on_shop_button_pressed():
@@ -37,8 +46,7 @@ func _on_shop_button_pressed():
 
 
 func _on_encyclopedia_button_pressed():
-	#Load.load_scene(self,encyclopedia)
-	CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraDictionary", 1)
+	Load.load_scene(self,encyclopedia)
 
 
 
@@ -56,3 +64,50 @@ func pick_random_level():
 	var selected_level = net1_levels[number]
 	return selected_level
 ##
+
+
+func _on_offline_btn_pressed():
+	Load.load_scene(self,level_selection)
+
+
+func _on_online_btn_pressed():
+	Load.load_scene(self,online_subMenu)
+
+
+func _on_quick_btn_pressed():
+	var random_level = pick_random_level()
+	Load.load_scene(self, random_level)
+
+
+func _on_shop_btn_pressed():
+	Load.load_scene(self,main_shop)
+
+
+func _on_dict_btn_pressed():
+	Load.load_scene(self,encyclopedia)
+
+
+func _on_user_btn_pressed():
+	Load.load_scene(self,user_profile)
+
+
+func _on_settings_btn_pressed():
+	pass # Replace with function body.
+
+
+func _on_quit_btn2_pressed():
+	ConfirmDialog.set_visible(true)
+	ConfirmDialog.confirm_animation.play("intro")
+	ConfirmDialog.label.text = "Quit game?"
+	ConfirmDialog.action = "quit"
+	
+func _on_confirm_pressed(action):
+	match(action):
+		"main_menu":
+			get_tree().paused = false
+			action = ""
+			var ro = get_node("/root")
+			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
+		"quit":
+			action = ""
+			get_tree().quit()

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=6]
+size = 80
+font_data = ExtResource( 1 )
+
+[sub_resource type="TextMesh" id=2]
+text = "EXIT"
+font = SubResource( 6 )
+depth = 0.2
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[node name="exit" type="Spatial"]
+
+[node name="Label3D" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34662, 0.00920507 )
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 0.623118, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.14588, 0 )
+width = 0.317682
+height = 1.16251
+depth = 0.194104
+material = SubResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 0.623118, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.14588, 0 )
+width = 0.317682
+height = 1.16251
+depth = 0.194104
+material = SubResource( 4 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.623118, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+width = 4.03114
+height = 1.16251
+depth = 0.315628
+material = SubResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.623118, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.104158 )
+operation = 2
+width = 3.70059
+height = 0.956402
+depth = 0.315628
+material = SubResource( 5 )

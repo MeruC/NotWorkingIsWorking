@@ -76,3 +76,4 @@ func transition_camera3D(from: Camera, to: Camera, duration: float = 1.0) -> voi
 	# Make the second camera current
 	to.current = true
 	transitioning = false
+	

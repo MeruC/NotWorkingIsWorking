@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=10]
 script/source = "extends Control
 
 onready var quit_btn = $\"%quit_btn\"
@@ -15,6 +15,15 @@ onready var user_btn = $\"%user_btn\"
 onready var settings_btn = $\"%settings_btn\"
 onready var quit_btn_2 = $\"%quit_btn2\"
 onready var offline_btn_2 = $\"%offline_btn2\"
+onready var camera_offline = $\"%CameraOffline\"
+onready var camera_transition = $\"%CameraTransition\"
+onready var camera_dictionary = $\"%CameraDictionary\"
+onready var camera_user_profile = $\"%CameraUserProfile\"
+onready var camera_online = $\"%CameraOnline\"
+onready var camera_quick = $\"%CameraQuick\"
+onready var camera_shop = $\"%CameraShop\"
+onready var camera_settings = $\"%CameraSettings\"
+onready var camera_quit = $\"%CameraQuit\"
 
 var current = 0
 
@@ -30,42 +39,49 @@ func _on_btn_down_pressed():
 			online_btn.disabled = false
 			quick_btn.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
 		1:
 			offline_btn.set_visible(false)
 			online_btn.disabled = true
 			quick_btn.disabled = false
 			shop_btn.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
 		2:
 			online_btn.set_visible(false)
 			quick_btn.disabled = true
 			shop_btn.disabled = false
 			dict_btn.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
 		3:
 			quick_btn.set_visible(false)
 			shop_btn.disabled = true
 			dict_btn.disabled = false
 			user_btn.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
 		4:
 			shop_btn.set_visible(false)
 			dict_btn.disabled = true
 			user_btn.disabled = false
 			settings_btn.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
 		5:
 			dict_btn.set_visible(false)
 			user_btn.disabled = true
 			settings_btn.disabled = false
 			quit_btn_2.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
 		6:
 			user_btn.set_visible(false)
 			settings_btn.disabled = true
 			quit_btn_2.disabled = false
 			offline_btn_2.set_visible(true)
 			current += 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
 		7:
 			settings_btn.set_visible(false)
 			quit_btn_2.set_visible(false)
@@ -76,6 +92,7 @@ func _on_btn_down_pressed():
 			offline_btn.disabled = false
 			online_btn.set_visible(true)
 			current = 0
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
 			
 func _on_btn_up_pressed():
 	match(current):
@@ -89,48 +106,56 @@ func _on_btn_up_pressed():
 			quit_btn_2.disabled = false
 			settings_btn.set_visible(true)
 			current = 7
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
 		1:
 			quick_btn.set_visible(false)
 			online_btn.disabled = true
 			offline_btn.disabled = false
 			quit_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
 		2:
 			shop_btn.set_visible(false)
 			quick_btn.disabled = true
 			online_btn.disabled = false
 			offline_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
 		3:
 			dict_btn.set_visible(false)
 			shop_btn.disabled = true
 			quick_btn.disabled = false
 			online_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
 		4:
 			user_btn.set_visible(false)
 			dict_btn.disabled = true
 			shop_btn.disabled = false
 			quick_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
 		5:
 			settings_btn.set_visible(false)
 			user_btn.disabled = true
 			dict_btn.disabled = false
 			shop_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
 		6:
 			quit_btn_2.set_visible(false)
 			settings_btn.disabled = true
 			user_btn.disabled = false
 			dict_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
 		7:
 			offline_btn_2.set_visible(false)
 			quit_btn_2.disabled = true
 			settings_btn.disabled = false
 			user_btn.set_visible(true)
 			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
 "
 
 [node name="Control" type="Control"]
@@ -143,7 +168,7 @@ margin_top = -265.0
 margin_right = 394.5
 margin_bottom = 265.0
 theme = ExtResource( 1 )
-script = SubResource( 1 )
+script = SubResource( 10 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_left = -16.0

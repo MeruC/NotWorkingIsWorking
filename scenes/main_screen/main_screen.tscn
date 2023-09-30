@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -31,11 +31,21 @@
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=29]
 [ext_resource path="res://resources/Models/3D/Voxel Universe-42-Computer Laptop.obj" type="ArrayMesh" id=30]
 [ext_resource path="res://resources/Models/3D/Voxel Universe-40-Coffee.obj" type="ArrayMesh" id=31]
-[ext_resource path="res://nodes/menu.tscn" type="PackedScene" id=32]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-50.obj" type="ArrayMesh" id=32]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-53.obj" type="ArrayMesh" id=33]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-27.obj" type="ArrayMesh" id=34]
 [ext_resource path="res://resources/Models/3D/Voxel Universe-43-Cactus.obj" type="ArrayMesh" id=35]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-17.obj" type="ArrayMesh" id=36]
+[ext_resource path="res://nodes/exit_sign.tscn" type="PackedScene" id=37]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=38]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-57.obj" type="ArrayMesh" id=39]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-48.obj" type="ArrayMesh" id=40]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-68.obj" type="ArrayMesh" id=41]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-34.obj" type="ArrayMesh" id=42]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-3.obj" type="ArrayMesh" id=43]
+[ext_resource path="res://resources/Models/3D/Voxel Universe Objects-36.obj" type="ArrayMesh" id=44]
+[ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=45]
+[ext_resource path="res://icon.png" type="Texture" id=46]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -74,6 +84,216 @@ func _process(delta):
 size = 150
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=11]
+size = 60
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 38 )
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Control
+
+onready var quit_btn = $\"%quit_btn\"
+onready var offline_btn = $\"%offline_btn\"
+onready var online_btn = $\"%online_btn\"
+onready var quick_btn = $\"%quick_btn\"
+onready var shop_btn = $\"%shop_btn\"
+onready var dict_btn = $\"%dict_btn\"
+onready var user_btn = $\"%user_btn\"
+onready var settings_btn = $\"%settings_btn\"
+onready var quit_btn_2 = $\"%quit_btn2\"
+onready var offline_btn_2 = $\"%offline_btn2\"
+onready var camera_offline = $\"%CameraOffline\"
+onready var camera_transition = $\"%CameraTransition\"
+onready var camera_dictionary = $\"%CameraDictionary\"
+onready var camera_user_profile = $\"%CameraUserProfile\"
+onready var camera_online = $\"%CameraOnline\"
+onready var camera_quick = $\"%CameraQuick\"
+onready var camera_shop = $\"%CameraShop\"
+onready var camera_settings = $\"%CameraSettings\"
+onready var camera_quit = $\"%CameraQuit\"
+onready var btn_up = $\"%btn_up\"
+onready var btn_down = $\"%btn_down\"
+
+
+var current = 0
+
+func _ready():
+	pass
+
+
+func _on_btn_down_pressed():
+	match(current):
+		0:
+			btn_down.disabled = true
+			quit_btn.set_visible(false)
+			offline_btn.disabled = true
+			quick_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
+			online_btn.disabled = false
+			current += 1
+			btn_down.disabled = false
+		1:
+			btn_down.disabled = true
+			offline_btn.set_visible(false)
+			online_btn.disabled = true
+			shop_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
+			quick_btn.disabled = false
+			current += 1
+			btn_down.disabled = false
+		2:
+			btn_down.disabled = true
+			online_btn.set_visible(false)
+			quick_btn.disabled = true
+			dict_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
+			shop_btn.disabled = false
+			
+			current += 1
+			btn_down.disabled = false
+		3:
+			btn_down.disabled = true
+			quick_btn.set_visible(false)
+			shop_btn.disabled = true
+			user_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
+			dict_btn.disabled = false
+			
+			current += 1
+			btn_down.disabled = false
+		4:
+			btn_down.disabled = true
+			shop_btn.set_visible(false)
+			dict_btn.disabled = true
+			settings_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
+			user_btn.disabled = false
+			
+			current += 1
+			btn_down.disabled = false
+		5:
+			btn_down.disabled = true
+			dict_btn.set_visible(false)
+			user_btn.disabled = true
+			quit_btn_2.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
+			settings_btn.disabled = false
+			
+			current += 1
+			btn_down.disabled = false
+		6:
+			btn_down.disabled = true
+			user_btn.set_visible(false)
+			settings_btn.disabled = true
+			offline_btn_2.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
+			quit_btn_2.disabled = false
+			
+			current += 1
+			btn_down.disabled = false
+		7:
+			btn_down.disabled = true
+			settings_btn.set_visible(false)
+			quit_btn_2.set_visible(false)
+			offline_btn_2.set_visible(false)
+			quit_btn_2.disabled = true
+			quit_btn.set_visible(true)
+			online_btn.set_visible(true)
+			offline_btn.set_visible(true)
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
+			
+			offline_btn.disabled = false
+			
+			current = 0
+			btn_down.disabled = false
+			
+func _on_btn_up_pressed():
+	match(current):
+		0:
+			btn_up.disabled = true
+			quit_btn.set_visible(false)
+			offline_btn.set_visible(false)
+			online_btn.set_visible(false)
+			offline_btn.disabled = true
+			offline_btn_2.set_visible(true)
+			quit_btn_2.set_visible(true)
+			
+			settings_btn.set_visible(true)
+			current = 7
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
+			btn_up.disabled = false
+			quit_btn_2.disabled = false
+		1:
+			btn_up.disabled = true
+			quick_btn.set_visible(false)
+			online_btn.disabled = true
+			
+			quit_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
+			btn_up.disabled = false
+			offline_btn.disabled = false
+		2:
+			btn_up.disabled = true
+			shop_btn.set_visible(false)
+			quick_btn.disabled = true
+			offline_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
+			online_btn.disabled = false
+			btn_up.disabled = false
+		3:
+			btn_up.disabled = true
+			dict_btn.set_visible(false)
+			shop_btn.disabled = true
+			
+			online_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
+			btn_up.disabled = false
+			quick_btn.disabled = false
+		4:
+			btn_up.disabled = true
+			user_btn.set_visible(false)
+			dict_btn.disabled = true
+			
+			quick_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
+			shop_btn.disabled = false
+			btn_up.disabled = false
+		5:
+			btn_up.disabled = true
+			settings_btn.set_visible(false)
+			user_btn.disabled = true
+			shop_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
+			btn_up.disabled = false
+			dict_btn.disabled = false
+		6:
+			btn_up.disabled = true
+			quit_btn_2.set_visible(false)
+			settings_btn.disabled = true
+			
+			dict_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
+			btn_up.disabled = false
+			user_btn.disabled = false
+		7:
+			btn_up.disabled = true
+			offline_btn_2.set_visible(false)
+			quit_btn_2.disabled = true
+			
+			user_btn.set_visible(true)
+			current -= 1
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
+			btn_up.disabled = false
+			settings_btn.disabled = false
+"
+
 [sub_resource type="Animation" id=2]
 resource_name = "mascot_animation"
 loop = true
@@ -90,12 +310,305 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tap/Label:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tap/Label:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tap/Label:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tap/Label:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ui:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "tap"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tap/Label:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tap/Label:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tap/Label:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tap/Label:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.8 )
+}
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends AnimationPlayer
+
+
+func _on_tap_screen_animation_finished(anim_name):
+	play(\"tap\")
+"
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tap:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tap:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tap:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tap:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tap:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ui:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("ui:rect_scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("ui:rect_scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "start"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tap:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tap:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tap:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tap:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tap:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ui:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("ui:rect_scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("ui:rect_scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+
 [node name="main_screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 2643, -278 )
 script = ExtResource( 3 )
 settings_data = ExtResource( 12 )
+
+[node name="pixelizer" type="TextureRect" parent="."]
+material = ExtResource( 45 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 46 )
+stretch_mode = 1
+flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="main_screen" type="Spatial" parent="."]
 script = ExtResource( 23 )
@@ -105,25 +618,48 @@ setting_data = ExtResource( 27 )
 unique_name_in_owner = true
 transform = Transform( -0.684043, -0.0513936, 0.727629, -0.0835185, 0.996473, -0.00813312, -0.724645, -0.0663339, -0.685923, -2.725, 1.269, 13.408 )
 
+[node name="CameraOffline" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.011074, -0.548179, 0.836288, 0.0634903, 0.834266, 0.547695, -0.997921, 0.0591613, 0.0255654, -4.55, 1.361, 15.269 )
+
 [node name="CameraTransition" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
 transform = Transform( -0.73196, 0.135081, -0.667823, 0, 0.98015, 0.198256, 0.681347, 0.145116, -0.717431, -7.653, 1.506, 13.564 )
-visible = false
 
 [node name="CameraDictionary" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
-transform = Transform( -0.759475, -0.384616, 0.524661, -0.0713148, 0.850867, 0.520518, -0.646616, 0.357904, -0.673641, -5.846, 1.37, 14.526 )
+transform = Transform( -0.759475, -0.384616, 0.524661, -0.0713148, 0.850867, 0.520518, -0.646616, 0.357904, -0.673641, -5.793, 1.409, 14.46 )
 
 [node name="CameraUserProfile" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
-transform = Transform( -0.489108, 0.565904, -0.663721, -0.0208532, 0.753149, 0.65752, 0.871974, 0.335439, -0.35657, -7.59433, 1.57496, 16.0499 )
+transform = Transform( -0.489108, 0.565904, -0.663721, -0.0208532, 0.753149, 0.65752, 0.871974, 0.335439, -0.35657, -7.537, 1.452, 15.951 )
+
+[node name="CameraOnline" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( 0.61589, -0.225366, 0.754911, 0.0648848, 0.969467, 0.236482, -0.785156, -0.0966646, 0.611708, -7.581, 1.425, 12.878 )
+
+[node name="CameraQuick" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( 0.908735, 0.172619, 0.380005, -0.107037, 0.976402, -0.18757, -0.403416, 0.129777, 0.905767, -8.198, 0.118, 9.094 )
+
+[node name="CameraShop" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( 0.108131, 0.333648, -0.936476, 0.0837464, 0.935593, 0.343004, 0.990603, -0.115516, 0.0732252, -4.296, 1.944, 8.818 )
+
+[node name="CameraSettings" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( 0.896271, 0.0475743, -0.440947, 0.0648848, 0.969467, 0.236482, 0.438734, -0.240563, 0.865819, -9.282, 1.425, 14.466 )
+
+[node name="CameraQuit" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -0.739177, 0.0594249, -0.670885, 0.170995, 0.98002, -0.101595, 0.651443, -0.189815, -0.734569, -3.676, 2.38473, 12.9446 )
 
 [node name="light" type="Spatial" parent="main_screen"]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4.76837e-07, 4.25503, 10.7006 )
 
 [node name="light" type="DirectionalLight" parent="main_screen/light"]
 transform = Transform( -0.57654, -0.41182, -0.705695, -0.593642, -0.382327, 0.708107, -0.561419, 0.827182, -0.0240469, 0, 0, 0 )
-light_energy = 0.3
+light_energy = 0.5
 light_indirect_energy = 0.0
 shadow_enabled = true
 directional_shadow_mode = 1
@@ -192,7 +728,7 @@ depth = 40.0446
 material = SubResource( 3 )
 
 [node name="floor5" type="CSGBox" parent="main_screen/CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, -6.82121e-13, 0, -2.77556e-16, 1, 0.101666, 4.56178, 0.0276569 )
+transform = Transform( 1, 0, 0, 0, 1, -9.09495e-13, 0, -2.22045e-16, 1, 0.101666, 4.56178, 0.0276569 )
 operation = 2
 use_collision = true
 width = 1.03847
@@ -217,8 +753,12 @@ mesh = ExtResource( 20 )
 transform = Transform( -0.844262, 0, 0.53593, 0, 1, 0, -0.53593, 0, -0.844262, -6.0799, 0.938821, 15.376 )
 
 [node name="Voxel Universe Objects-7" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53337, 0, 0.710238 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53337, 0, 0.710239 )
 mesh = ExtResource( 16 )
+
+[node name="Voxel Universe Objects-3" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial3/Voxel Universe Objects-7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07791, -0.00644177, -2.66112 )
+mesh = ExtResource( 43 )
 
 [node name="Spatial2" type="Spatial" parent="main_screen/object_table/Spatial3"]
 transform = Transform( -0.997865, 0, 0.065316, 0, 1, 0, -0.065316, 0, -0.997865, -5.24687, 0.902671, 15.751 )
@@ -340,8 +880,42 @@ transform = Transform( 0.898012, 0, -0.43997, 0, 1, 0, 0.43997, 0, 0.898012, -0.
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25896, 0, -3.76916 )
 mesh = ExtResource( 31 )
 
+[node name="Spatial2" type="Spatial" parent="main_screen/object_table2"]
+transform = Transform( 0.983366, 0, -0.181635, 0, 1, 0, 0.181635, 0, 0.983366, -0.747099, 0.929444, 0.517164 )
+
+[node name="Voxel Universe Objects-48" type="MeshInstance" parent="main_screen/object_table2/Spatial2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21138, 0, 4.01412 )
+mesh = ExtResource( 40 )
+
 [node name="object_table3" parent="main_screen" instance=ExtResource( 29 )]
-transform = Transform( 0.825941, 0, 0.563757, 0, 1, 0, -0.563757, 0, 0.825941, -4.80611, 0, 7.6867 )
+transform = Transform( 0.825941, 0, 0.563757, 0, 1, 0, -0.563757, 0, 0.825941, -2.29395, 0, 7.6867 )
+
+[node name="Spatial" type="Spatial" parent="main_screen/object_table3"]
+transform = Transform( 0.19468, 0, -0.980867, 0, 1, 0, 0.980867, 0, 0.19468, -0.0277452, 0.929413, 0.152472 )
+
+[node name="Voxel Universe Objects-57" type="MeshInstance" parent="main_screen/object_table3/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.43352, 0, 6.67628 )
+mesh = ExtResource( 39 )
+
+[node name="Spatial6" type="Spatial" parent="main_screen/object_table3"]
+transform = Transform( 0.825941, 0, -0.563757, 0, 1, 0, 0.563757, 0, 0.825941, -3.1657, 0.967687, -3.55228 )
+
+[node name="Voxel Universe Objects-17" type="MeshInstance" parent="main_screen/object_table3/Spatial6"]
+transform = Transform( 0.0593065, 0, -0.99824, 0, 1, 0, 0.99824, 0, 0.0593065, 4.584, -0.0420368, 3.81036 )
+mesh = ExtResource( 36 )
+skeleton = NodePath("../../../Spatial2/Voxel Universe Objects-54")
+
+[node name="Voxel Universe Objects-50" type="MeshInstance" parent="main_screen/object_table3/Spatial6/Voxel Universe Objects-17"]
+transform = Transform( 0.981816, 0, 0.189832, 0, 1, 0, -0.189832, 0, 0.981816, -2.5237, 0.00290477, 4.48475 )
+mesh = ExtResource( 32 )
+
+[node name="Voxel Universe Objects-34" type="MeshInstance" parent="main_screen/object_table3/Spatial6/Voxel Universe Objects-17/Voxel Universe Objects-50"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7513, 0.00951159, -4.38994 )
+mesh = ExtResource( 42 )
+
+[node name="Voxel Universe Objects-36" type="MeshInstance" parent="main_screen/object_table3"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.5275, 0.923403, 1.67613 )
+mesh = ExtResource( 44 )
 
 [node name="Spatial5" type="Spatial" parent="main_screen"]
 transform = Transform( -0.993312, 0, 0.115457, 0, 1, 0, -0.115457, 0, -0.993312, -2.58766, -4.76837e-07, 17.6934 )
@@ -352,6 +926,24 @@ __meta__ = {
 [node name="Voxel Universe Objects-62" type="MeshInstance" parent="main_screen/Spatial5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
 mesh = ExtResource( 17 )
+
+[node name="Spatial6" type="Spatial" parent="main_screen"]
+transform = Transform( -0.974811, 0, -0.223029, 0, 1, 0, 0.223029, 0, -0.974811, -0.747411, -4.76837e-07, 17.576 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Voxel Universe Objects-62" type="MeshInstance" parent="main_screen/Spatial6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
+mesh = ExtResource( 17 )
+
+[node name="Voxel Universe Objects-68" type="MeshInstance" parent="main_screen/Spatial6"]
+transform = Transform( 1, 0, 4.47035e-08, 0, 1, 0, -4.47035e-08, 0, 1, 4.38045, 4.76837e-07, 0.652359 )
+mesh = ExtResource( 41 )
+
+[node name="Voxel Universe Objects-69" type="MeshInstance" parent="main_screen/Spatial6"]
+transform = Transform( 0.981003, 0, -0.193995, 0, 1, 0, 0.193995, 0, 0.981003, 4.60605, 0.0325937, 1.3677 )
+mesh = ExtResource( 41 )
 
 [node name="Sprite3D" type="Sprite3D" parent="main_screen"]
 transform = Transform( 20, 0.0199027, 0.00679194, -0.0199021, 20, -0.00411921, -0.00453069, 0.00274163, 30, 0, 14.6738, 35.5058 )
@@ -450,6 +1042,11 @@ material = SubResource( 8 )
 [node name="Spatial2" type="Spatial" parent="main_screen"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.28183, -4.76837e-07, 6.65566 )
 
+[node name="Voxel Universe Objects-54" type="MeshInstance" parent="main_screen/Spatial2"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.39618, 0.967686, 3.73654 )
+mesh = ExtResource( 33 )
+skeleton = NodePath("../../object_table3/Spatial6")
+
 [node name="Voxel Universe Objects-53" type="MeshInstance" parent="main_screen/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
 mesh = ExtResource( 33 )
@@ -468,17 +1065,6 @@ transform = Transform( 0.968869, 0, 0.247574, 0, 1, 0, -0.247574, 0, 0.968869, 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
 mesh = ExtResource( 33 )
 
-[node name="Spatial6" type="Spatial" parent="main_screen/Spatial2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141584, 0.967687, -0.118251 )
-
-[node name="Voxel Universe Objects-53" type="MeshInstance" parent="main_screen/Spatial2/Spatial6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
-mesh = ExtResource( 33 )
-
-[node name="Voxel Universe Objects-17" type="MeshInstance" parent="main_screen/Spatial2/Spatial6/Voxel Universe Objects-53"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.424992, -0.0420358, -3.68466 )
-mesh = ExtResource( 36 )
-
 [node name="Spatial" type="Spatial" parent="main_screen/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434189, -0.0239317, 1.70014 )
 
@@ -493,6 +1079,9 @@ transform = Transform( 0.626307, -0.217837, 0.748523, 0.0562649, 0.970293, 0.235
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8759, 0, 1.41404 )
 mesh = ExtResource( 34 )
 
+[node name="exit" parent="main_screen" instance=ExtResource( 37 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.26982, 14.7358 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
 script = SubResource( 5 )
@@ -506,6 +1095,7 @@ scale = Vector2( 4.444, 4.444 )
 texture = ExtResource( 8 )
 
 [node name="profile_button" type="Button" parent="."]
+visible = false
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 155.0
@@ -520,12 +1110,180 @@ flat = true
 clip_text = true
 icon_align = 1
 
-[node name="Control" parent="." instance=ExtResource( 32 )]
+[node name="tap" type="Control" parent="."]
 visible = false
-margin_left = -45.0
-margin_right = 744.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="tap"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -560.5
+margin_top = 356.0
+margin_right = 560.5
+margin_bottom = 424.0
+custom_fonts/font = SubResource( 11 )
+text = "TAP THE SCREEN TO CONTINUE"
+align = 1
+valign = 1
+
+[node name="ui" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 80.0
+margin_top = -265.0
+margin_right = 869.0
+margin_bottom = 265.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 394, 0 )
+theme = ExtResource( 10 )
+script = SubResource( 10 )
+
+[node name="CenterContainer" type="CenterContainer" parent="ui"]
+margin_left = -16.0
+margin_top = -18.0
+margin_right = 780.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/CenterContainer"]
+margin_left = 73.0
+margin_top = 30.0
+margin_right = 723.0
+margin_bottom = 528.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/CenterContainer/MarginContainer"]
+margin_right = 650.0
+margin_bottom = 498.0
+custom_constants/separation = 51
+
+[node name="quit_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color( 0.890196, 0, 0, 1 )
+margin_right = 650.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "QUIT"
+
+[node name="offline_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 183.0
+margin_right = 650.0
+margin_bottom = 315.0
+rect_pivot_offset = Vector2( 325, 0 )
+text = "OFFLINE MODE"
+
+[node name="online_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 366.0
+margin_right = 650.0
+margin_bottom = 498.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "ONLINE MODE"
+
+[node name="quick_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "QUICK GAME"
+
+[node name="shop_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "SHOP"
+
+[node name="dict_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "ENCYCLOPEDIA"
+
+[node name="user_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "USER PROFILE"
+
+[node name="settings_btn" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "SETTINGS"
+
+[node name="quit_btn2" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color( 0.890196, 0, 0, 1 )
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "QUIT"
+
+[node name="offline_btn2" type="Button" parent="ui/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 549.0
+margin_right = 650.0
+margin_bottom = 681.0
+rect_pivot_offset = Vector2( 325, 0 )
+disabled = true
+text = "OFFLINE MODE"
+
+[node name="btn_up" type="Button" parent="ui"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.0
+margin_top = -434.0
+margin_right = 71.0
+margin_bottom = -302.0
+
+[node name="btn_down" type="Button" parent="ui"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.5
+margin_top = 292.0
+margin_right = 66.5
+margin_bottom = 424.0
 
 [node name="GridContainer" type="GridContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -633,6 +1391,7 @@ texture = ExtResource( 9 )
 anims/mascot_animation = SubResource( 2 )
 
 [node name="objects" type="Button" parent="."]
+visible = false
 anchor_right = 1.0
 margin_left = -35.0
 margin_top = 982.0
@@ -654,11 +1413,33 @@ bus = "Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="settings" parent="CanvasLayer" instance=ExtResource( 13 )]
 mouse_filter = 2
 
+[node name="tap_screen" type="AnimationPlayer" parent="."]
+autoplay = "tap"
+playback_speed = 0.5
+anims/RESET = SubResource( 12 )
+anims/tap = SubResource( 13 )
+script = SubResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 16 )
+anims/start = SubResource( 15 )
+
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/offline_btn" to="." method="_on_offline_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/online_btn" to="." method="_on_online_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/quick_btn" to="." method="_on_quick_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/shop_btn" to="." method="_on_shop_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/dict_btn" to="." method="_on_dict_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/user_btn" to="." method="_on_user_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/settings_btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/quit_btn2" to="." method="_on_quit_btn2_pressed"]
+[connection signal="pressed" from="ui/btn_up" to="ui" method="_on_btn_up_pressed"]
+[connection signal="pressed" from="ui/btn_down" to="ui" method="_on_btn_down_pressed"]
 [connection signal="pressed" from="GridContainer/offline_button" to="." method="_on_offline_button_pressed"]
 [connection signal="pressed" from="GridContainer/online_button" to="." method="_on_online_button_pressed"]
 [connection signal="pressed" from="GridContainer/quick_game" to="." method="_on_quick_game_pressed"]
@@ -666,3 +1447,4 @@ mouse_filter = 2
 [connection signal="pressed" from="GridContainer/encyclopedia_button" to="." method="_on_encyclopedia_button_pressed"]
 [connection signal="pressed" from="objects" to="." method="_on_objects_pressed"]
 [connection signal="finished" from="intro" to="intro" method="_on_intro_finished"]
+[connection signal="animation_finished" from="tap_screen" to="tap_screen" method="_on_tap_screen_animation_finished"]
