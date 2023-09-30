@@ -19,10 +19,15 @@ onready var idle = $idle
 onready var choosetype = $choosetype
 onready var level3d = $"3dlevel"
 
+onready var animation_player = $AnimationPlayer
+
 
 
 
 func _ready():
+	TransitionNode.animation_player.play("in")
+	yield(get_tree().create_timer(0.5), "timeout")
+	animation_player.play("intro")
 	player.get_animation("ui").set_loop(true)
 
 

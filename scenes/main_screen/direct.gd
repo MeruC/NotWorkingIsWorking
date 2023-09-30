@@ -66,27 +66,45 @@ func pick_random_level():
 
 
 func _on_offline_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	Load.load_scene(self,level_selection)
 
 
 func _on_online_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	Load.load_scene(self,online_subMenu)
 
 
 func _on_quick_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	var random_level = pick_random_level()
 	Load.load_scene(self, random_level)
 
 
 func _on_shop_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	Load.load_scene(self,main_shop)
 
 
 func _on_dict_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	Load.load_scene(self,encyclopedia)
 
 
 func _on_user_btn_pressed():
+	
+	TransitionNode.animation_player.play("out")
+	yield(TransitionNode.animation_player, "animation_finished")
 	Load.load_scene(self,user_profile)
 
 

@@ -1,9 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
 [sub_resource type="GDScript" id=5]
-script/source = "extends Control
+script/source = "extends CanvasLayer
 
 onready var animation_player = $AnimationPlayer
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	animation_player.play(\"RESET\")
+	return
 "
 
 [sub_resource type="Animation" id=2]
@@ -351,10 +355,8 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.2, 1 )
 }
 
-[node name="transition" type="Control"]
+[node name="transition" type="CanvasLayer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
 script = SubResource( 5 )
 
 [node name="ColorRect3" type="ColorRect" parent="."]
@@ -382,3 +384,5 @@ color = Color( 0.392157, 0.784314, 1, 1 )
 anims/RESET = SubResource( 2 )
 anims/in = SubResource( 3 )
 anims/out = SubResource( 4 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

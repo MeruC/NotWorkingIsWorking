@@ -29,6 +29,7 @@ func _ready():
 	Global.player.translation = Vector3(-3.793, 1.445, 16.505)
 	Global.player.rotation = Vector3(0, 0, 0)
 	camera.current = true
+	
 	TransitionNode.animation_player.play("in")
 	yield(CameraTransitionDefault.transition_camera3D(camera, camera_main, 4), "completed")
 	tap.set_visible(true)

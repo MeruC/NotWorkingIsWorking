@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Voxel Universe Objects-0.png-3f7c0b2c8067f1cc313b515e14b45c95.stex"
+path="res://.import/Voxel Universe Objects-0.png-bd8d98c4a69ca2ea5177c4ea6b54f6e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Models/3D/Voxel Universe Objects-0.png"
-dest_files=[ "res://.import/Voxel Universe Objects-0.png-3f7c0b2c8067f1cc313b515e14b45c95.stex" ]
+source_file="res://resources/Models/Voxel Universe Objects-0.png"
+dest_files=[ "res://.import/Voxel Universe Objects-0.png-bd8d98c4a69ca2ea5177c4ea6b54f6e9.stex" ]
 
 [params]
 

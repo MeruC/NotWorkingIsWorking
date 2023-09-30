@@ -2346,7 +2346,6 @@ depth = 20.0
 material = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "intro"
 reset_on_save = false
 playback_speed = 2.0
 anims/RESET = SubResource( 21 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -47,6 +47,7 @@
 [ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=45]
 [ext_resource path="res://icon.png" type="Texture" id=46]
 [ext_resource path="res://iconNW.png" type="Texture" id=47]
+[ext_resource path="res://resources/Models/Voxel Universe Objects-0.png" type="Texture" id=48]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -66,6 +67,9 @@ uv1_triplanar = true
 
 [sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 48 )
 
 [sub_resource type="PlaneMesh" id=7]
 
@@ -863,6 +867,7 @@ transform = Transform( -0.191152, 0, -0.981561, 0, 1, 0, 0.981561, 0, -0.191152,
 [node name="Voxel Universe Objects-13" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial4"]
 transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.44931, 0, -0.70839 )
 mesh = ExtResource( 20 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial3" type="Spatial" parent="main_screen/object_table/Spatial3"]
 transform = Transform( -0.844262, 0, 0.53593, 0, 1, 0, -0.53593, 0, -0.844262, -6.0799, 0.938821, 15.376 )
@@ -870,10 +875,12 @@ transform = Transform( -0.844262, 0, 0.53593, 0, 1, 0, -0.53593, 0, -0.844262, -
 [node name="Voxel Universe Objects-7" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53337, 0, 0.710239 )
 mesh = ExtResource( 16 )
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-3" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial3/Voxel Universe Objects-7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07791, -0.00644177, -2.66112 )
 mesh = ExtResource( 43 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial2" type="Spatial" parent="main_screen/object_table/Spatial3"]
 transform = Transform( -0.997865, 0, 0.065316, 0, 1, 0, -0.065316, 0, -0.997865, -5.24687, 0.902671, 15.751 )
@@ -881,6 +888,7 @@ transform = Transform( -0.997865, 0, 0.065316, 0, 1, 0, -0.065316, 0, -0.997865,
 [node name="Voxel Universe Objects-43" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69514, 0.0246572, 2.0792 )
 mesh = ExtResource( 18 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen/object_table/Spatial3"]
 transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -5.61971, 1, 16.2605 )
@@ -888,6 +896,7 @@ transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -5.61971, 1, 16.26
 [node name="Voxel Universe Objects-35" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6667, 0, 2.7936 )
 mesh = ExtResource( 21 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen/object_table/Spatial3/Spatial"]
 transform = Transform( 0.486335, 0, -0.873772, 0, 1, 0, 0.873772, 0, 0.486335, -0.0847244, 0, -0.575388 )
@@ -895,6 +904,7 @@ transform = Transform( 0.486335, 0, -0.873772, 0, 1, 0, 0.873772, 0, 0.486335, -
 [node name="Voxel Universe Objects-35" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6667, 0, 2.7936 )
 mesh = ExtResource( 21 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen/object_table/Spatial3/Spatial/Spatial"]
 transform = Transform( 0.735388, 0, 0.677647, 0, 1, 0, -0.677647, 0, 0.735388, 0.158245, 0, 1.00222 )
@@ -905,6 +915,7 @@ __meta__ = {
 [node name="Voxel Universe Objects-6" type="MeshInstance" parent="main_screen/object_table/Spatial3/Spatial/Spatial/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67477, 0, 5.17241 )
 mesh = ExtResource( 19 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen"]
 transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 2.79903, 1, 19.3563 )
@@ -987,6 +998,7 @@ transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926,
 [node name="Voxel Universe-42-Computer Laptop" type="MeshInstance" parent="main_screen/object_table2/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456303, -1.19209e-07, -0.322488 )
 mesh = ExtResource( 30 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen/object_table2/Spatial"]
 transform = Transform( 0.898012, 0, -0.43997, 0, 1, 0, 0.43997, 0, 0.898012, -0.222732, 0, 0.732781 )
@@ -994,6 +1006,7 @@ transform = Transform( 0.898012, 0, -0.43997, 0, 1, 0, 0.43997, 0, 0.898012, -0.
 [node name="Voxel Universe-40-Coffee" type="MeshInstance" parent="main_screen/object_table2/Spatial/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25896, 0, -3.76916 )
 mesh = ExtResource( 31 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial2" type="Spatial" parent="main_screen/object_table2"]
 transform = Transform( 0.983366, 0, -0.181635, 0, 1, 0, 0.181635, 0, 0.983366, -0.747099, 0.929444, 0.517164 )
@@ -1001,6 +1014,7 @@ transform = Transform( 0.983366, 0, -0.181635, 0, 1, 0, 0.181635, 0, 0.983366, -
 [node name="Voxel Universe Objects-48" type="MeshInstance" parent="main_screen/object_table2/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21138, 0, 4.01412 )
 mesh = ExtResource( 40 )
+material/0 = SubResource( 18 )
 
 [node name="object_table3" parent="main_screen" instance=ExtResource( 29 )]
 transform = Transform( 0.825941, 0, 0.563757, 0, 1, 0, -0.563757, 0, 0.825941, -2.29395, 0, 7.6867 )
@@ -1011,6 +1025,7 @@ transform = Transform( 0.19468, 0, -0.980867, 0, 1, 0, 0.980867, 0, 0.19468, -0.
 [node name="Voxel Universe Objects-57" type="MeshInstance" parent="main_screen/object_table3/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.43352, 0, 6.67628 )
 mesh = ExtResource( 39 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial6" type="Spatial" parent="main_screen/object_table3"]
 transform = Transform( 0.825941, 0, -0.563757, 0, 1, 0, 0.563757, 0, 0.825941, -3.1657, 0.967687, -3.55228 )
@@ -1019,18 +1034,22 @@ transform = Transform( 0.825941, 0, -0.563757, 0, 1, 0, 0.563757, 0, 0.825941, -
 transform = Transform( 0.0593065, 0, -0.99824, 0, 1, 0, 0.99824, 0, 0.0593065, 4.584, -0.0420368, 3.81036 )
 mesh = ExtResource( 36 )
 skeleton = NodePath("../../../Spatial2/Voxel Universe Objects-54")
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-50" type="MeshInstance" parent="main_screen/object_table3/Spatial6/Voxel Universe Objects-17"]
 transform = Transform( 0.981816, 0, 0.189832, 0, 1, 0, -0.189832, 0, 0.981816, -2.5237, 0.00290477, 4.48475 )
 mesh = ExtResource( 32 )
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-34" type="MeshInstance" parent="main_screen/object_table3/Spatial6/Voxel Universe Objects-17/Voxel Universe Objects-50"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7513, 0.00951159, -4.38994 )
 mesh = ExtResource( 42 )
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-36" type="MeshInstance" parent="main_screen/object_table3"]
 transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.5275, 0.923403, 1.67613 )
 mesh = ExtResource( 44 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial5" type="Spatial" parent="main_screen"]
 transform = Transform( -0.993312, 0, 0.115457, 0, 1, 0, -0.115457, 0, -0.993312, -2.58766, -4.76837e-07, 17.6934 )
@@ -1041,6 +1060,7 @@ __meta__ = {
 [node name="Voxel Universe Objects-62" type="MeshInstance" parent="main_screen/Spatial5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
 mesh = ExtResource( 17 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial6" type="Spatial" parent="main_screen"]
 transform = Transform( -0.974811, 0, -0.223029, 0, 1, 0, 0.223029, 0, -0.974811, -0.747411, -4.76837e-07, 17.576 )
@@ -1051,14 +1071,17 @@ __meta__ = {
 [node name="Voxel Universe Objects-62" type="MeshInstance" parent="main_screen/Spatial6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
 mesh = ExtResource( 17 )
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-68" type="MeshInstance" parent="main_screen/Spatial6"]
 transform = Transform( 1, 0, 4.47035e-08, 0, 1, 0, -4.47035e-08, 0, 1, 4.38045, 4.76837e-07, 0.652359 )
 mesh = ExtResource( 41 )
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-69" type="MeshInstance" parent="main_screen/Spatial6"]
 transform = Transform( 0.981003, 0, -0.193995, 0, 1, 0, 0.193995, 0, 0.981003, 4.60605, 0.0325937, 1.3677 )
 mesh = ExtResource( 41 )
+material/0 = SubResource( 18 )
 
 [node name="Sprite3D" type="Sprite3D" parent="main_screen"]
 transform = Transform( 20, 0.0199027, 0.00679194, -0.0199021, 20, -0.00411921, -0.00453069, 0.00274163, 30, 0, 14.6738, 35.5058 )
@@ -1161,10 +1184,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.28183, -4.76837e-07, 6.6556
 transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.39618, 0.967686, 3.73654 )
 mesh = ExtResource( 33 )
 skeleton = NodePath("../../object_table3/Spatial6")
+material/0 = SubResource( 18 )
 
 [node name="Voxel Universe Objects-53" type="MeshInstance" parent="main_screen/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
 mesh = ExtResource( 33 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial3" type="Spatial" parent="main_screen/Spatial2"]
 transform = Transform( 0.574491, 0, -0.818511, 0, 1, 0, 0.818511, 0, 0.574491, 0.031496, 0, 1.10476 )
@@ -1172,6 +1197,7 @@ transform = Transform( 0.574491, 0, -0.818511, 0, 1, 0, 0.818511, 0, 0.574491, 0
 [node name="Voxel Universe Objects-53" type="MeshInstance" parent="main_screen/Spatial2/Spatial3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
 mesh = ExtResource( 33 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial4" type="Spatial" parent="main_screen/Spatial2"]
 transform = Transform( 0.968869, 0, 0.247574, 0, 1, 0, -0.247574, 0, 0.968869, 0.932184, 0, -0.145269 )
@@ -1179,6 +1205,7 @@ transform = Transform( 0.968869, 0, 0.247574, 0, 1, 0, -0.247574, 0, 0.968869, 0
 [node name="Voxel Universe Objects-53" type="MeshInstance" parent="main_screen/Spatial2/Spatial4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53776, -9.53674e-07, 3.85479 )
 mesh = ExtResource( 33 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial" type="Spatial" parent="main_screen/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434189, -0.0239317, 1.70014 )
@@ -1186,6 +1213,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434189, -0.0239317, 1.7001
 [node name="Voxel Universe-43-Cactus" type="MeshInstance" parent="main_screen/Spatial2/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55926, 0, -4.06833 )
 mesh = ExtResource( 35 )
+material/0 = SubResource( 18 )
 
 [node name="Spatial3" type="Spatial" parent="main_screen"]
 transform = Transform( 0.626307, -0.217837, 0.748523, 0.0562649, 0.970293, 0.235298, -0.777544, -0.105253, 0.619958, -9.11215, -0.0583185, 8.20841 )
@@ -1193,6 +1221,7 @@ transform = Transform( 0.626307, -0.217837, 0.748523, 0.0562649, 0.970293, 0.235
 [node name="Voxel Universe Objects-27" type="MeshInstance" parent="main_screen/Spatial3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8759, 0, 1.41404 )
 mesh = ExtResource( 34 )
+material/0 = SubResource( 18 )
 
 [node name="exit" parent="main_screen" instance=ExtResource( 37 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.26982, 14.7358 )
