@@ -85,8 +85,8 @@ func _on_play_pressed():
 		Global.player = player
 		Global.playerCamera = main.get_node("Player/Camera/Camera")
 		Global.playerCamera.current = true
+		Global.playerCanMove = true
 		print(Global.playerInteractLbl)
-		
 		#Changing Camera
 		CameraTransition.transition_camera3D(main.get_node("Editor_Camera/Camera"), main.get_node("Player/Camera/Camera"), 1.5)
 		#Editor Mode

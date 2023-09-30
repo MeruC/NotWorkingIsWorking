@@ -22,6 +22,3 @@ func _on_confirm_pressed():
 		$"../select_gender".visible = true
 		SaveManager.save_game()
 		$"../AnimationPlayer".play("male_anim")
-
-
-		

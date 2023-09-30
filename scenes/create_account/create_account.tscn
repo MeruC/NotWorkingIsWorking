@@ -569,6 +569,7 @@ texture = ExtResource( 1 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 12 )]
 stream = ExtResource( 3 )
+bus = "Music"
 
 [connection signal="pressed" from="create_account_scene/confirm" to="create_account_scene" method="_on_confirm_pressed"]
 [connection signal="toggled" from="select_gender/CheckButton" to="select_gender/ViewportContainer/Viewport/Spatial" method="_on_CheckButton_toggled"]
