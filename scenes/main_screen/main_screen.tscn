@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-36.obj" type="ArrayMesh" id=44]
 [ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=45]
 [ext_resource path="res://icon.png" type="Texture" id=46]
+[ext_resource path="res://iconNW.png" type="Texture" id=47]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -126,6 +127,7 @@ func _on_btn_down_pressed():
 	match(current):
 		0:
 			btn_down.disabled = true
+			btn_up.disabled = true
 			quit_btn.set_visible(false)
 			offline_btn.disabled = true
 			quick_btn.set_visible(true)
@@ -133,7 +135,9 @@ func _on_btn_down_pressed():
 			online_btn.disabled = false
 			current += 1
 			btn_down.disabled = false
+			btn_up.disabled = false
 		1:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			offline_btn.set_visible(false)
 			online_btn.disabled = true
@@ -142,57 +146,64 @@ func _on_btn_down_pressed():
 			quick_btn.disabled = false
 			current += 1
 			btn_down.disabled = false
+			btn_up.disabled = false
 		2:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			online_btn.set_visible(false)
 			quick_btn.disabled = true
 			dict_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
 			shop_btn.disabled = false
-			
+			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
 		3:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			quick_btn.set_visible(false)
 			shop_btn.disabled = true
 			user_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
 			dict_btn.disabled = false
-			
+			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
 		4:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			shop_btn.set_visible(false)
 			dict_btn.disabled = true
 			settings_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
 			user_btn.disabled = false
-			
+			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
 		5:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			dict_btn.set_visible(false)
 			user_btn.disabled = true
 			quit_btn_2.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
 			settings_btn.disabled = false
-			
+			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
 		6:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			user_btn.set_visible(false)
 			settings_btn.disabled = true
 			offline_btn_2.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
 			quit_btn_2.disabled = false
-			
+			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
 		7:
+			btn_up.disabled = true
 			btn_down.disabled = true
 			settings_btn.set_visible(false)
 			quit_btn_2.set_visible(false)
@@ -202,15 +213,15 @@ func _on_btn_down_pressed():
 			online_btn.set_visible(true)
 			offline_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
-			
+			btn_up.disabled = false
 			offline_btn.disabled = false
-			
 			current = 0
 			btn_down.disabled = false
 			
 func _on_btn_up_pressed():
 	match(current):
 		0:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			quit_btn.set_visible(false)
 			offline_btn.set_visible(false)
@@ -224,7 +235,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
 			btn_up.disabled = false
 			quit_btn_2.disabled = false
+			btn_down.disabled = false
 		1:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			quick_btn.set_visible(false)
 			online_btn.disabled = true
@@ -234,7 +247,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
 			btn_up.disabled = false
 			offline_btn.disabled = false
+			btn_down.disabled = false
 		2:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			shop_btn.set_visible(false)
 			quick_btn.disabled = true
@@ -243,7 +258,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
 			online_btn.disabled = false
 			btn_up.disabled = false
+			btn_down.disabled = false
 		3:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			dict_btn.set_visible(false)
 			shop_btn.disabled = true
@@ -253,7 +270,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
 			btn_up.disabled = false
 			quick_btn.disabled = false
+			btn_down.disabled = false
 		4:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			user_btn.set_visible(false)
 			dict_btn.disabled = true
@@ -263,7 +282,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
 			shop_btn.disabled = false
 			btn_up.disabled = false
+			btn_down.disabled = false
 		5:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			settings_btn.set_visible(false)
 			user_btn.disabled = true
@@ -272,7 +293,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
 			btn_up.disabled = false
 			dict_btn.disabled = false
+			btn_down.disabled = false
 		6:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			quit_btn_2.set_visible(false)
 			settings_btn.disabled = true
@@ -282,7 +305,9 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
 			btn_up.disabled = false
 			user_btn.disabled = false
+			btn_down.disabled = false
 		7:
+			btn_down.disabled = true
 			btn_up.disabled = true
 			offline_btn_2.set_visible(false)
 			quit_btn_2.disabled = true
@@ -292,6 +317,7 @@ func _on_btn_up_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
 			btn_up.disabled = false
 			settings_btn.disabled = false
+			btn_down.disabled = false
 "
 
 [sub_resource type="Animation" id=2]
@@ -363,6 +389,90 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("tap:modulate:r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("tap:modulate:g")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("tap:modulate:b")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("tap:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "intro"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tap:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tap:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tap:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tap:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=13]
@@ -614,9 +724,13 @@ __meta__ = {
 script = ExtResource( 23 )
 setting_data = ExtResource( 27 )
 
+[node name="Camera" type="Camera" parent="main_screen"]
+unique_name_in_owner = true
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.216, 3.486, 15.616 )
+
 [node name="CameraMain" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
-transform = Transform( -0.684043, -0.0513936, 0.727629, -0.0835185, 0.996473, -0.00813312, -0.724645, -0.0663339, -0.685923, -2.725, 1.269, 13.408 )
+transform = Transform( -0.625924, -0.0274202, 0.779402, -0.110683, 0.992389, -0.0539743, -0.77199, -0.12005, -0.624195, -2.722, 1.317, 13.408 )
 
 [node name="CameraOffline" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
@@ -678,11 +792,11 @@ mesh = SubResource( 1 )
 material = SubResource( 4 )
 
 [node name="floor3" type="CSGBox" parent="main_screen"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.93, 0.331577, -0.0431137 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.93, 0.331577, 12.9569 )
 cast_shadow = 0
 use_collision = true
 height = 39.599
-depth = 40.0446
+depth = 14.0
 material = SubResource( 3 )
 
 [node name="floor5" type="CSGBox" parent="main_screen"]
@@ -690,7 +804,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.9300
 cast_shadow = 0
 use_collision = true
 height = 39.599
-depth = 40.0446
+depth = 18.0
 material = SubResource( 3 )
 
 [node name="floor6" type="CSGBox" parent="main_screen"]
@@ -707,6 +821,7 @@ transform = Transform( 69, 0, 0, 0, -4.37114e-08, 69, 0, -1, -3.01609e-06, -2.23
 
 [node name="floor2" type="CSGBox" parent="main_screen/CSGCombiner"]
 use_collision = true
+depth = 0.582352
 material = SubResource( 3 )
 
 [node name="floor3" type="CSGBox" parent="main_screen/CSGCombiner"]
@@ -719,12 +834,12 @@ depth = 0.0404968
 material = SubResource( 3 )
 
 [node name="floor4" type="CSGBox" parent="main_screen/CSGCombiner"]
-transform = Transform( 0.0144928, 0, 0, 0, -4.37114e-08, -1, 0, 0.0144928, -6.33498e-10, 0.275232, 19.3768, 0.00480548 )
+transform = Transform( 0.0144928, 0, 0, 0, -4.37114e-08, -1, 0, 0.0144928, -6.33498e-10, 0.275232, 6.3768, 0.00480547 )
 cast_shadow = 0
 use_collision = true
 width = 33.9064
 height = 39.599
-depth = 40.0446
+depth = 14.0
 material = SubResource( 3 )
 
 [node name="floor5" type="CSGBox" parent="main_screen/CSGCombiner"]
@@ -1082,6 +1197,10 @@ mesh = ExtResource( 34 )
 [node name="exit" parent="main_screen" instance=ExtResource( 37 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.26982, 14.7358 )
 
+[node name="Sprite3D2" type="Sprite3D" parent="main_screen"]
+transform = Transform( -6.70672e-09, 0, 0.153432, 0, 0.153432, 0, -0.153432, 0, -6.70672e-09, -9.90851, 3.4659, 15.5596 )
+texture = ExtResource( 47 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
 script = SubResource( 5 )
@@ -1422,6 +1541,7 @@ mouse_filter = 2
 autoplay = "tap"
 playback_speed = 0.5
 anims/RESET = SubResource( 12 )
+anims/intro = SubResource( 17 )
 anims/tap = SubResource( 13 )
 script = SubResource( 14 )
 

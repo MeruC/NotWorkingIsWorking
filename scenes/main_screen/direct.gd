@@ -23,7 +23,6 @@ func _input(event):
 
 func _ready():
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
-	tap.set_visible(true)
 	$mascot_animation.play("mascot_animation")
 	var file = File.new()
 	if not file.file_exists("user://save_data/save.dat"):

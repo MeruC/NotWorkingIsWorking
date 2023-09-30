@@ -285,7 +285,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NotWorking"
-run/main_scene="res://scenes/log_in_screen/login_signup_scene.tscn"
+run/main_scene="res://open.tscn"
 config/icon="res://iconNW.png"
 
 [autoload]
@@ -303,6 +303,7 @@ CameraTransition="*res://addon/camera_transitition/camera_transition.tscn"
 QrCode="*res://qrcode-generator/classes/qr_code.gd"
 ConfirmDialog="*res://scenes/others/confirmDialog.tscn"
 CameraTransitionDefault="*res://addon/camera_transititionDefault/camera_transition_default.tscn"
+TransitionNode="*res://nodes/transition.tscn"
 
 [debug]
 
