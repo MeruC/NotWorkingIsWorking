@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=45]
+size = 60
+font_data = ExtResource( 1 )
+
+[resource]
+Button/colors/font_color = Color( 0.929412, 0.176471, 0.176471, 1 )
+Button/colors/font_color_hover = Color( 0.921569, 0.572549, 0.254902, 1 )
+Button/colors/font_color_pressed = Color( 0.929412, 0.890196, 0.196078, 1 )
+Button/fonts/font = SubResource( 45 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=8]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=9]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=10]
-[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=11]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -22,20 +23,253 @@ size = 80
 extra_spacing_bottom = 28
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0.337255, 0.317647, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxEmpty" id=36]
+
+[sub_resource type="StyleBoxFlat" id=35]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="ImageTexture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 60
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=41]
+size = 38
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=42]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 4 )
+Button/styles/disabled = SubResource( 39 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 6 )
+HSlider/icons/grabber = SubResource( 9 )
+HSlider/icons/grabber_disabled = SubResource( 9 )
+HSlider/icons/grabber_highlight = SubResource( 9 )
+HSlider/icons/tick = SubResource( 9 )
+HSlider/styles/grabber_area = SubResource( 40 )
+HSlider/styles/grabber_area_highlight = SubResource( 40 )
+HSlider/styles/slider = SubResource( 8 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 10 )
+LineEdit/styles/normal = SubResource( 10 )
+Panel/styles/panel = ExtResource( 13 )
+PanelContainer/styles/panel = ExtResource( 13 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 41 )
+ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/styles/fg = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 12 )
+TabContainer/styles/panel = ExtResource( 13 )
+TabContainer/styles/tab_bg = SubResource( 6 )
+TabContainer/styles/tab_fg = SubResource( 5 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 38 )
+
+[sub_resource type="DynamicFont" id=43]
 size = 80
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=44]
 size = 300
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=45]
 size = 200
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "female_anim"
+[sub_resource type="Animation" id=46]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:rect_position")
@@ -86,8 +320,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1740.25, 1258.04 ), Vector2( 1386.35, -2.6015 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "male_anim"
+[sub_resource type="Animation" id=47]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("../choose_male/ColorRect2:rect_position")
@@ -143,6 +376,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="create_account_scene" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource( 5 )
 settings_data = ExtResource( 10 )
 
@@ -155,47 +389,50 @@ custom_fonts/font = SubResource( 1 )
 text = "Create Character"
 
 [node name="Username" type="Label" parent="create_account_scene"]
-margin_left = 337.0
+margin_left = 369.0
 margin_top = 505.0
-margin_right = 644.0
+margin_right = 676.0
 margin_bottom = 615.0
 custom_fonts/font = SubResource( 7 )
 text = "Name:"
 
 [node name="LineEdit" type="LineEdit" parent="create_account_scene/Username"]
-margin_left = 287.0
-margin_top = -18.0
-margin_right = 1087.0
-margin_bottom = 82.0
-theme = ExtResource( 11 )
-custom_fonts/font = ExtResource( 8 )
-align = 1
+margin_left = 352.0
+margin_top = -14.0
+margin_right = 942.0
+margin_bottom = 138.0
+rect_scale = Vector2( 1.15929, 0.651798 )
+theme = SubResource( 42 )
 
 [node name="confirm" type="Button" parent="create_account_scene"]
-margin_left = 811.0
-margin_top = 734.0
-margin_right = 1212.37
-margin_bottom = 848.068
+margin_left = 909.0
+margin_top = 680.0
+margin_right = 1310.37
+margin_bottom = 794.068
+focus_mode = 0
 theme = ExtResource( 9 )
+enabled_focus_mode = 0
 text = "confirm"
 
 [node name="Label" type="Label" parent="create_account_scene"]
-margin_left = 803.0
-margin_top = 591.0
-margin_right = 843.0
-margin_bottom = 649.0
+margin_left = 847.0
+margin_top = 608.0
+margin_right = 887.0
+margin_bottom = 682.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1
+autowrap = true
 
 [node name="select_gender" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="gender" type="Label" parent="select_gender"]
 margin_left = 811.0
 margin_top = 41.0
 margin_right = 1097.0
 margin_bottom = 123.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 43 )
 text = "Gender"
 
 [node name="CheckButton" type="CheckButton" parent="select_gender"]
@@ -216,7 +453,7 @@ margin_bottom = 878.0
 size = Vector2( 600, 600 )
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 0
+render_target_update_mode = 3
 
 [node name="Spatial" parent="select_gender/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
@@ -263,7 +500,7 @@ margin_right = 3100.86
 margin_bottom = 2089.8
 rect_rotation = 86.8519
 custom_colors/font_color = Color( 0, 0, 0, 0.580392 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 44 )
 text = "M
 A
 L
@@ -306,7 +543,7 @@ margin_right = 2011.25
 margin_bottom = 2697.04
 rect_rotation = -15.4706
 custom_colors/font_color = Color( 0, 0, 0, 0.611765 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 45 )
 text = "F
 E
 M
@@ -317,8 +554,8 @@ E
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../choose_female")
-anims/female_anim = SubResource( 6 )
-anims/male_anim = SubResource( 5 )
+anims/female_anim = SubResource( 46 )
+anims/male_anim = SubResource( 47 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 2 )
@@ -327,7 +564,7 @@ script = ExtResource( 2 )
 motion_mirroring = Vector2( 1920, 0 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 967, 532 )
+position = Vector2( 967, 539 )
 texture = ExtResource( 1 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 12 )]

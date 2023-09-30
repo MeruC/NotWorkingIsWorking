@@ -87,7 +87,7 @@ func _send_request(request : Dictionary):
 
 func _authenticate():
 	var username_input = $username/username
-	var password_input = $password/password
+	var password_input = $password2
 
 	var username = username_input.text
 	var user_password = password_input.text
