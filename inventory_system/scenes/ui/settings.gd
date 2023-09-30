@@ -5,6 +5,7 @@ onready var submenu = $settingsubmenu
 onready var video_submenu = $videoSubmenu
 onready var music_submenu = $musicSubmenu
 export( NodePath ) onready var fullscreen_check = get_node( fullscreen_check ) as CheckBox
+export( NodePath ) onready var pixelize_check = get_node( pixelize_check ) as CheckBox
 export( NodePath ) onready var master_vol_slider = get_node( master_vol_slider ) as HSlider
 export( NodePath ) onready var music_vol_slider = get_node( music_vol_slider ) as HSlider
 export( NodePath ) onready var sound_vol_slider = get_node( sound_vol_slider ) as HSlider
@@ -52,6 +53,7 @@ func _on_quit_pressed():
 
 # Update the inputs when the data changes. ( Ex. On game load. )
 func _on_data_changed():
+	pixelize_check.pressed = settings_data.pixelize
 	fullscreen_check.pressed = settings_data.fullscreen
 	master_vol_slider.value = settings_data.master_volume
 	music_vol_slider.value = settings_data.music_volume
@@ -79,6 +81,9 @@ func _on_resume_pressed():
 #Video Submenu
 func _on_fullscreen_toggled(button_pressed):
 	SettingsManager.fullscreen = button_pressed
+	
+func _on_pixelize_toggled(button_pressed):
+	SettingsManager.pixelize = button_pressed
 
 func _on_cancel_pressed():
 	SaveManager.load_game()
@@ -121,4 +126,3 @@ func _on_settings_btn_pressed():
 
 func _on_back_pressed():
 	animation_player.play_backwards("submenu")
-

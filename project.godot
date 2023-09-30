@@ -304,6 +304,7 @@ QrCode="*res://qrcode-generator/classes/qr_code.gd"
 ConfirmDialog="*res://scenes/others/confirmDialog.tscn"
 CameraTransitionDefault="*res://addon/camera_transititionDefault/camera_transition_default.tscn"
 TransitionNode="*res://nodes/transition.tscn"
+Pixelizer="*res://nodes/pixelizer.tscn"
 
 [debug]
 

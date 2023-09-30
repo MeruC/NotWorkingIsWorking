@@ -5,6 +5,8 @@ export( float ) var scale = 1
 export( int ) var master_volume = 0
 export( int ) var music_volume = -10
 export( int ) var sound_volume = -10
+export( bool ) var pixelize = true
+export( int ) var pixel_size = 4
 
 export( int ) var gold_coins = 1000
 
@@ -34,6 +36,8 @@ func set_data( data ):
 	master_volume = data.master_volume
 	music_volume = data.music_volume
 	sound_volume = data.sound_volume
+	pixelize = data.pixelize
+	pixel_size = data.pixel_size
 	
 	player_name = data.player_name
 	
@@ -53,6 +57,8 @@ func set_data( data ):
 # Pack the data in a Dictionary.
 func get_data():
 	return {
+		"pixelize": pixelize,
+		"pixel_size": pixelize,
 		"fullscreen": fullscreen,
 		"scale": scale,
 		"gold_coins": gold_coins,
