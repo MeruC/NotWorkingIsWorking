@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -9,10 +9,8 @@
 [ext_resource path="res://online_mode/level_editor/scripts/Editor_Object.gd" type="Script" id=7]
 [ext_resource path="res://online_mode/level_editor/scripts/FileDialog.gd" type="Script" id=8]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://global/objects/rotate.tscn" type="PackedScene" id=11]
 [ext_resource path="res://online_mode/level_editor/scripts/level_editor.gd" type="Script" id=12]
-[ext_resource path="res://resources/Shaders/pixel.tres" type="Material" id=13]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=14]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=15]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=16]
@@ -482,18 +480,6 @@ tracks/7/keys = {
 [node name="editor" type="Spatial"]
 script = ExtResource( 12 )
 
-[node name="pixelizer" type="TextureRect" parent="."]
-material = ExtResource( 13 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-texture = ExtResource( 10 )
-stretch_mode = 1
-flip_v = true
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="editor" type="Control" parent="UI"]
@@ -897,19 +883,6 @@ playback_process_mode = 0
 unique_name_in_owner = true
 script = ExtResource( 25 )
 setting_data = ExtResource( 3 )
-
-[node name="pixelizer" type="TextureRect" parent="level"]
-unique_name_in_owner = true
-material = ExtResource( 13 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-texture = ExtResource( 10 )
-stretch_mode = 1
-flip_v = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="floor" type="CSGMesh" parent="level"]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )

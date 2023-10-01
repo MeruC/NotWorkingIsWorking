@@ -58,7 +58,7 @@ func set_data( data ):
 func get_data():
 	return {
 		"pixelize": pixelize,
-		"pixel_size": pixelize,
+		"pixel_size": pixel_size,
 		"fullscreen": fullscreen,
 		"scale": scale,
 		"gold_coins": gold_coins,

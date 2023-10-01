@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
@@ -12,6 +12,10 @@
 
 [sub_resource type="DynamicFont" id=30]
 size = 103
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 50
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=22]
@@ -700,6 +704,7 @@ rect_pivot_offset = Vector2( 4269, -605 )
 color = Color( 0, 0, 0, 0.686275 )
 script = ExtResource( 6 )
 fullscreen_check = NodePath("videoSubmenu/videoPanel/VBoxContainer/fullscreen")
+pixel_size_slider = NodePath("videoSubmenu/videoPanel/VBoxContainer/pixel_size/pixel_size")
 pixelize_check = NodePath("videoSubmenu/videoPanel/VBoxContainer/pixelize")
 master_vol_slider = NodePath("musicSubmenu/musicPanel/MarginContainer/VBoxContainer/master/master")
 music_vol_slider = NodePath("musicSubmenu/musicPanel/MarginContainer/VBoxContainer/music/music")
@@ -872,11 +877,13 @@ rect_min_size = Vector2( 0, 538 )
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
+scroll_vertical = 89
 
 [node name="VBoxContainer" type="VBoxContainer" parent="videoSubmenu/videoPanel"]
 margin_left = 235.0
+margin_top = -89.0
 margin_right = 818.0
-margin_bottom = 774.0
+margin_bottom = 652.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -909,36 +916,37 @@ text = "PIXELIZE"
 align = 1
 
 [node name="pixel_size" type="Label" parent="videoSubmenu/videoPanel/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 474.0
 margin_right = 583.0
-margin_bottom = 564.0
-custom_fonts/font = SubResource( 22 )
-text = "Pixel SIZE"
+margin_bottom = 531.0
+custom_fonts/font = SubResource( 31 )
+text = "PIXEL SIZE: 0"
 align = 1
 
 [node name="pixel_size" type="HSlider" parent="videoSubmenu/videoPanel/VBoxContainer/pixel_size"]
-margin_left = -35.0
-margin_top = 139.0
-margin_right = 642.0
-margin_bottom = 195.0
+margin_left = -45.0
+margin_top = 77.0
+margin_right = 632.0
+margin_bottom = 133.0
 min_value = 2.0
 max_value = 16.0
 value = 2.0
 
 [node name="TextureRect3" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
-margin_top = 634.0
+margin_top = 601.0
 margin_right = 583.0
-margin_bottom = 634.0
+margin_bottom = 601.0
 
 [node name="TextureRect4" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
-margin_top = 704.0
+margin_top = 671.0
 margin_right = 583.0
-margin_bottom = 704.0
+margin_bottom = 671.0
 
 [node name="TextureRect2" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
-margin_top = 774.0
+margin_top = 741.0
 margin_right = 583.0
-margin_bottom = 774.0
+margin_bottom = 741.0
 
 [node name="save" type="Button" parent="videoSubmenu"]
 modulate = Color( 0.54902, 1, 0.176471, 1 )
@@ -1178,7 +1186,7 @@ bus = "Music"
 [connection signal="pressed" from="settingsubmenu/back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="videoSubmenu/videoPanel/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="videoSubmenu/videoPanel/VBoxContainer/pixelize" to="." method="_on_pixelize_toggled"]
-[connection signal="value_changed" from="videoSubmenu/videoPanel/VBoxContainer/pixel_size/pixel_size" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="videoSubmenu/videoPanel/VBoxContainer/pixel_size/pixel_size" to="." method="_on_pixel_size_value_changed"]
 [connection signal="pressed" from="videoSubmenu/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="videoSubmenu/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="value_changed" from="musicSubmenu/musicPanel/MarginContainer/VBoxContainer/master/master" to="." method="_on_master_value_changed"]

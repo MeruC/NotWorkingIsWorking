@@ -2,6 +2,7 @@ extends Node
 
 var fullscreen setget set_fullscreen
 var pixelize setget set_pixelize
+var pixel_size setget set_pixel_size
 var scale setget set_scale
 var master_volume setget set_master_volume
 var sound_volume setget set_sound_volume
@@ -22,6 +23,12 @@ func set_pixelize( value ):
 	Pixelizer.set_visible(value)
 	settings_data.pixelize = value
 
+func set_pixel_size( value ):
+	pixel_size = value
+	Pixelizer.material.set_shader_param("pixelSize", value)
+	settings_data.pixel_size = value
+	
+
 func set_fullscreen( value ):
 	fullscreen = value
 	OS.window_fullscreen = value
@@ -33,6 +40,7 @@ func set_scale( value ):
 	settings_data.scale = value
 
 func _on_data_changed():
+	set_pixel_size( settings_data.pixel_size )
 	set_pixelize(settings_data.pixelize)
 	set_fullscreen( settings_data.fullscreen )
 	set_scale( settings_data.scale )
