@@ -28,6 +28,17 @@ func _input(event):
 		idle.play("idle")
 
 func _ready():
+	var resoltionArr = settings_data.resolution.split(" x ")
+	OS.window_fullscreen = settings_data.fullscreen
+	if !OS.window_fullscreen:
+		match(OS.get_name()):
+			"Windows":
+				OS.set_window_size(Vector2(int(resoltionArr[0]), int(resoltionArr[1])))
+				OS.center_window()
+	else:
+		var viewport = get_viewport()
+		viewport.size.x = int(resoltionArr[0])
+		viewport.size.y = int(resoltionArr[1])
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
 	$mascot_animation.play("mascot_animation")
 	var file = File.new()

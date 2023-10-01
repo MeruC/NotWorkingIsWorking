@@ -43,4 +43,4 @@ func load_scene(current_scene, next_scene):
 			print('error occurred while loading chunks of data')
 			return
 			
-		yield(get_tree().create_timer(0.01), "timeout")
+		yield(get_tree().create_timer(0.0000000000001), "timeout")
