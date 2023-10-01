@@ -29,12 +29,12 @@ func list_items():
 	
 	# To display all items in list
 	var i = 0
-	for item in json_data["items"]:
+	for item in json_data:
 		var new_entry = entry_scene.instance()
-		new_entry.find_node("word").text = json_data["items"][i]["word"]
+		new_entry.find_node("word").text = json_data[i]["term"]
 		new_entry.content_holder = content_holder
-		new_entry.definition = json_data["items"][i]["definition"]
-		new_entry.image = json_data["items"][i]["image"]
+		new_entry.definition = json_data[i]["definition"]
+		#new_entry.image = json_data[i]["image"]
 		i += 1
 		item_container.add_child(new_entry)
 	##

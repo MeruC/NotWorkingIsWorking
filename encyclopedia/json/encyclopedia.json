@@ -1,54 +1,206 @@
-{
-  "items": [
-    {
-      "word": "Cable Tester",
-      "definition": "A cable tester is an electronic device used to verify the electrical connections in a signal cable or other wired assembly. Basic cable testers are continuity testers that verify the existence of a conductive path between ends of the cable, and verify the correct wiring of connectors on the cable.",
-      "image": ""
-    },
-    {
-      "word": "Crimping Tool",
-      "definition": "A crimping tool is the tool used to deform the material and create the connection. Crimping is commonly used in electrical work, to attach wires together or wire to other connectors.",
-      "image": ""
-    },
-    {
-      "word": "Cross-Over Cable",
-      "definition": "A crossover cable is a type of cable installation that is used for the interconnection of two similar devices. It is enabled by reversing the transmission and receiving pins at both ends, so that output from one computer becomes input to the other, and vice versa.",
-      "image": ""
-    },
-    {
-      "word": "HDMI Cable",
-      "definition": "HDMI means High-Definition Multimedia Interface, a standard for simultaneously transmitting digital video and audio from a source, such as a computer or TV cable box, to a computer monitor, TV or projector.",
-      "image": ""
-    },
-    {
-      "word": "Hub",
-      "definition": "A hub is a basic networking device that operates at the physical layer (Layer 1) of the OSI model. It simply connects multiple devices in a network and broadcasts data to all connected devices without any intelligence to filter or route traffic. Hubs are considered outdated and inefficient.",
-      "image": ""
-    },
-    {
-      "word": "IP Address",
-      "definition": "An IP address is a 32-bit number. It uniquely identifies a host (computer or other device, such as a printer or router) on a TCP/IP network.",
-      "image": ""
-    },
-    {
-      "word": "Modem",
-      "definition": "Modem transforms digital information from your computer into analog signals that can transmit over wires (and vice versa) by modulating and demodulating electrical impulses sent through phone lines, coaxial cables, or other types of wiring.",
-      "image": ""
-    },
-    {
-      "word": "Router",
-      "definition": "A router is a device that connects two or more packet-switched networks or subnetworks. It serves two primary functions: managing traffic between these networks by forwarding data packets to their intended IP addresses, and allowing multiple devices to use the same Internet connection.",
-      "image": ""
-    },
-    {
-      "word": "Straight Through Cable",
-      "definition": "A straight-through cable is a type of twisted pair cable that is used in local area networks to connect a computer to a network hub such as a router. This type of cable is also sometimes called a patch cable and is an alternative to wireless connections where one or more computers access a router through a wireless signal.",
-      "image": ""
-    },
-    {
-      "word": "Switch",
-      "definition": "A network switch connects devices within a network (often a local area network, or LAN*) and forwards data packets to and from those devices. Unlike a router, a switch only sends data to the single device it is intended for (which may be another switch, a router, or a user's computer), not to networks of multiple devices.",
-      "image": ""
-    }
-  ]
-}
+[
+  {
+    "term": "Access Point (AP)",
+    "definition": "An access point is a networking hardware device that allows wireless devices to connect to a wired network. It bridges the gap between wireless clients and a wired LAN."
+  },
+  {
+    "term": "Bandwidth",
+    "definition": "Bandwidth refers to the capacity of a network connection to transmit data. It is typically measured in bits per second (bps) and determines how much data can be transmitted in a given time."
+  },
+  {
+    "term": "Cable Tester",
+    "definition": "A cable tester is an electronic device used to verify the electrical connections in a signal cable or other wired assembly. Basic cable testers are continuity testers that verify the existence of a conductive path between ends of the cable, and verify the correct wiring of connectors on the cable."
+  },
+  {
+    "term": "Content Delivery Network (CDN)",
+    "definition": "A CDN is a distributed network of servers that delivers web content, such as images, videos, and web pages, to users from the server closest to their location, reducing latency and improving load times."
+  },
+  {
+    "term": "Crimping Tool",
+    "definition": "A crimping tool is the tool used to deform the material and create the connection. Crimping is commonly used in electrical work, to attach wires together or wire to other connectors."
+  },
+  {
+    "term": "Cross-Over Cable",
+    "definition": "A crossover cable is a type of cable installation that is used for the interconnection of two similar devices. It is enabled by reversing the transmission and receiving pins at both ends, so that output from one computer becomes input to the other, and vice versa."
+  },
+  {
+    "term": "DHCP (Dynamic Host Configuration Protocol)",
+    "definition": "DHCP is a network protocol that automatically assigns IP addresses to devices on a network, simplifying the process of configuring devices."
+  },
+  {
+    "term": "DNS (Domain Name System)",
+    "definition": "DNS is a system that translates human-readable domain names (e.g., www.example.com) into IP addresses, allowing devices to locate resources on the internet."
+  },
+  {
+    "term": "DNS Server",
+    "definition": "A DNS server is a computer or server that stores DNS records and responds to DNS queries from clients by translating domain names into IP addresses."
+  },
+  {
+    "term": "Firewall",
+    "definition": "A firewall is a network security device or software that monitors and controls incoming and outgoing network traffic. It can be used to block or allow specific types of traffic based on predefined rules."
+  },
+  {
+    "term": "Gateway",
+    "definition": "A gateway is a device or software that connects two different networks and acts as a translator between them, enabling data to flow between them."
+  },
+  {
+    "term": "Gateway",
+    "definition": "A gateway is a device or software that connects two different networks and acts as a translator between them, enabling data to flow between them."
+  },
+  {
+    "term": "HDMI Cable",
+    "definition": "HDMI means High-definition Multimedia Interface, a standard for simultaneously transmitting digital video and audio from a source, such as a computer or TV cable box, to a computer monitor, TV or projector."
+  },
+  {
+    "term": "Hub",
+    "definition": "A hub is a basic networking device that connects multiple devices in a network, but it doesn't have the intelligence of a switch. It broadcasts data to all connected devices."
+  },
+  {
+    "term": "Hub",
+    "definition": "A hub is a basic networking device that operates at the physical layer (Layer 1) of the OSI model. It simply connects multiple devices in a network and broadcasts data to all connected devices without any intelligence to filter or route traffic. Hubs are considered outdated and inefficient."
+  },
+  {
+    "term": "IP Address",
+    "definition": "An IP address is a unique numerical label assigned to each device in a network. It is used to identify and locate devices on an IP network."
+  },
+  {
+    "term": "ISP (Internet Service Provider)",
+    "definition": "An ISP is a company that provides access to the internet for individuals and organizations. ISPs typically offer various types of internet connections, such as DSL, cable, and fiber optic."
+  },
+  {
+    "term": "LAN (Local Area Network)",
+    "definition": "A LAN is a network that covers a relatively small geographical area, such as a home, office, or campus. Devices in a LAN are typically connected to the same switch or hub."
+  },
+  {
+    "term": "Latency",
+    "definition": "Latency is the delay in the transmission of data over a network. It is typically measured in milliseconds (ms) and can affect the responsiveness of network applications."
+  },
+  {
+    "term": "MAC Address",
+    "definition": "A Media Access Control (MAC) address is a unique identifier assigned to a network interface card (NIC) or network adapter. It is used at the data link layer to identify devices on a local network."
+  },
+  {
+    "term": "MAC Filtering",
+    "definition": "MAC filtering is a security measure where only devices with specific MAC addresses are allowed to connect to a network, blocking all others."
+  },
+  {
+    "term": "MAN (Metropolitan Area Network)",
+    "definition": "A Metropolitan Area Network (MAN) is a type of computer network that spans a geographic area larger than a local area network (LAN) but is smaller than a wide area network (WAN)."
+  },
+  {
+    "term": "Modem",
+    "definition": "A modem (short for modulator-demodulator) is a device that converts digital data from a computer into analog signals for transmission over analog communication lines, such as phone lines, and vice versa."
+  },
+  {
+    "term": "Multicast",
+    "definition": "Multicast is a communication method where a single packet is sent to multiple recipients simultaneously, allowing efficient content distribution over a network."
+  },
+  {
+    "term": "Network",
+    "definition": "A network is a collection of interconnected devices, such as computers, printers, and servers, that can communicate and share resources with each other."
+  },
+  {
+    "term": "Network Topology",
+    "definition": "Network topology refers to the physical or logical layout of devices and connections within a network, including bus, star, ring, mesh, and hybrid topologies."
+  },
+  {
+    "term": "Node",
+    "definition": "A node is a device or point in a network where data can be sent or received. Examples include computers, smartphones, and routers."
+  },
+  {
+    "term": "Packet",
+    "definition": "A packet is a unit of data that is transmitted over a network. It contains both the actual data being transmitted and metadata, such as source and destination IP addresses."
+  },
+  {
+    "term": "Packet Filtering",
+    "definition": "Packet filtering is a firewall technique that examines incoming and outgoing packets and makes decisions to allow or block them based on predefined criteria, such as source and destination IP addresses and port numbers."
+  },
+  {
+    "term": "Packet Loss",
+    "definition": "Packet loss occurs when data packets traveling across a network fail to reach their destination. It can be caused by network congestion, errors, or other issues."
+  },
+  {
+    "term": "Ping",
+    "definition": "Ping is a network utility tool used to test the reachability of a host on an IP network and measure the round-trip time for data packets to travel to the host and back."
+  },
+  {
+    "term": "Port Forwarding",
+    "definition": "Port forwarding is a technique that allows traffic to be directed from one network port to another, often used to enable remote access to specific services on a local network."
+  },
+  {
+    "term": "Protocol",
+    "definition": "A protocol is a set of rules and conventions that govern how data is transmitted and received in a network. Examples include TCP/IP, HTTP, and SMTP."
+  },
+  {
+    "term": "Proxy Server",
+    "definition": "A proxy server is an intermediary server that acts as a gateway between a client and a destination server. It can be used for security, caching, or content filtering purposes."
+  },
+  {
+    "term": "Router",
+    "definition": "A router is a network device that connects different networks together and directs data traffic between them. It also assigns IP addresses to devices on the local network."
+  },
+  {
+    "term": "Routing Protocol",
+    "definition": "A routing protocol is a set of rules used by routers to determine the best path for forwarding data packets between networks. Examples include RIP, OSPF, and BGP."
+  },
+  {
+    "term": "SSID (Service Set Identifier)",
+    "definition": "An SSID is a unique name that identifies a wireless network. When you connect to a Wi-Fi network, you select the SSID of the network you want to join."
+  },
+  {
+    "term": "SSID Broadcast",
+    "definition": "SSID broadcast is the practice of making the SSID of a wireless network visible to all nearby devices. It simplifies the process of connecting to the network but can be a security risk."
+  },
+  {
+    "term": "SSL/TLS (Secure Sockets Layer/Transport Layer Security)",
+    "definition": "SSL and TLS are cryptographic protocols used to secure data transmission over a network, typically used for secure web browsing (HTTPS)."
+  },
+  {
+    "term": "Straight Through Cable",
+    "definition": "A straight-through cable is a type of twisted pair cable that is used in local area networks to connect a computer to a network hub such as a router. This type of cable is also sometimes called a patch cable and is an alternative to wireless connections where one or more computers access a router through a wireless signal."
+  },
+  {
+    "term": "Subnet",
+    "definition": "A subnet is a logical subdivision of an IP network. It allows for better organization and management of IP addresses within a network."
+  },
+  {
+    "term": "Subnet Mask",
+    "definition": "A subnet mask is a 32-bit number that separates the network and host portions of an IP address. It is used to identify the network and host parts of an IP address."
+  },
+  {
+    "term": "Subnetting",
+    "definition": "Subnetting is the process of dividing a large IP network into smaller, more manageable subnetworks for better network management and address allocation."
+  },
+  {
+    "term": "Switch",
+    "definition": "A switch is a networking device that operates at the data link layer of the OSI model and is used to connect devices within the same local network. It makes forwarding decisions based on MAC addresses."
+  },
+  {
+    "term": "TCP/IP (Transmission Control Protocol/Internet Protocol)",
+    "definition": "TCP/IP is a set of protocols that form the backbone of the internet and many local networks. It provides a reliable and standardized method for data communication."
+  },
+  {
+    "term": "Traceroute",
+    "definition": "Traceroute is a network diagnostic tool that traces the route that data packets take from one host to another, showing the intermediate hops and their response times."
+  },
+  {
+    "term": "Unicast",
+    "definition": "Unicast is a one-to-one communication method where a single packet is sent from one sender to one receiver."
+  },
+  {
+    "term": "VLAN (Virtual Local Area Network)",
+    "definition": "A VLAN is a logically segmented network within a physical LAN, allowing network administrators to create separate broadcast domains for improved network management and security."
+  },
+  {
+    "term": "VPN (Virtual Private Network)",
+    "definition": "A VPN is a technology that creates a secure and encrypted connection over a public network, such as the internet, to protect data privacy and security."
+  },
+  {
+    "term": "WAN (Wide Area Network)",
+    "definition": "A WAN is a network that spans a larger geographical area, often connecting multiple LANs or other networks. The internet is a global WAN."
+  },
+  {
+    "term": "WEP (Wired Equivalent Privacy)",
+    "definition": "WEP is an outdated wireless network security protocol that was designed to provide data encryption and security for wireless networks. However, it has significant vulnerabilities and is no longer considered secure."
+  }
+]

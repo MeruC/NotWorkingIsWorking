@@ -22,7 +22,7 @@ export(NodePath) onready var qr_textureRect = get_node(qr_textureRect) as Textur
 onready var level = get_node(".")
 
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
-var saved_levels_folder = "res://online_mode/saved_levels/"
+var saved_levels_folder = "user://saved_levels/"
 var new_json = {}
 var question_list = []
 var json_file = "res://online_mode/json/question_bank.json"

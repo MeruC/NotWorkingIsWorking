@@ -31,15 +31,15 @@ export (int) var crowns = 0
 
 # Set the data from a Dictionary.
 func set_data( data ):
-	resolution = data.resolution
+	#resolution = data.resolution
 	fullscreen = data.fullscreen
 	scale = data.scale
 	gold_coins = data.gold_coins
 	master_volume = data.master_volume
 	music_volume = data.music_volume
 	sound_volume = data.sound_volume
-	pixelize = data.pixelize
-	pixel_size = data.pixel_size
+	#pixelize = data.pixelize
+	#pixel_size = data.pixel_size
 	
 	player_name = data.player_name
 	
