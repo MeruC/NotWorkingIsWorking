@@ -15,11 +15,17 @@ export (Resource) var settings_data
 
 onready var tap = $tap
 onready var animation_player = $AnimationPlayer
+onready var settings = $settings
+onready var idle = $idle
+
+
 
 func _input(event):
 	if (event is InputEventScreenTouch or event is InputEventMouseButton) and tap.visible == true:
 		animation_player.play("start")
 		CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraOffline", 1)
+		yield(animation_player, "animation_finished")
+		idle.play("idle")
 
 func _ready():
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
@@ -109,7 +115,8 @@ func _on_user_btn_pressed():
 
 
 func _on_settings_btn_pressed():
-	pass # Replace with function body.
+	settings.set_visible(true)
+	settings.animation_player.play("intro")
 
 
 func _on_quit_btn2_pressed():

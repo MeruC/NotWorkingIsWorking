@@ -491,7 +491,7 @@ margin_top = -252.535
 margin_right = 1603.57
 margin_bottom = 247.465
 rect_rotation = -3.62755
-color = Color( 0.980392, 0.478431, 0, 1 )
+color = Color( 0, 0.686275, 1, 1 )
 
 [node name="Label" type="Label" parent="choose_male"]
 margin_left = 2829.86
@@ -534,7 +534,7 @@ margin_top = -1925.72
 margin_right = 3005.09
 margin_bottom = -1505.72
 rect_rotation = 74.6206
-color = Color( 0.866667, 0.356863, 0.596078, 1 )
+color = Color( 1, 0.392157, 0.588235, 1 )
 
 [node name="Label" type="Label" parent="choose_female"]
 margin_left = 1740.25

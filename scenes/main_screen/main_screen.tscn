@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-34.obj" type="ArrayMesh" id=42]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-3.obj" type="ArrayMesh" id=43]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-36.obj" type="ArrayMesh" id=44]
+[ext_resource path="res://inventory_system/scenes/ui/settingsMainMenu.tscn" type="PackedScene" id=45]
 [ext_resource path="res://iconNW.png" type="Texture" id=47]
 [ext_resource path="res://resources/Models/Voxel Universe Objects-0.png" type="Texture" id=48]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=49]
@@ -876,6 +877,246 @@ tracks/7/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Control2/colorbottom:rect_size:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 1863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Control2/colorbottom:rect_size:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 196, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Control2/colorbottom:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -137.284, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("Control2/colorbottom:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -145.231, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("Control2/ColorRect2:rect_position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -94, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("Control2/ColorRect2:rect_position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -129, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("Control2/ColorRect2:rect_size:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("Control2/ColorRect2:rect_size:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 175, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("Control2/ColorRect3:rect_position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( -99, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("Control2/ColorRect3:rect_position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( -95, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("Control2/ColorRect3:rect_size:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("Control2/ColorRect3:rect_size:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( 150, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/20/type = "bezier"
+tracks/20/path = NodePath("Control/colortop:rect_position:x")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"points": PoolRealArray( -233, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/21/type = "bezier"
+tracks/21/path = NodePath("Control/colortop:rect_position:y")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"points": PoolRealArray( -91, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/22/type = "bezier"
+tracks/22/path = NodePath("Control/colortop:rect_size:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"points": PoolRealArray( 1863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("Control/colortop:rect_size:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( 173, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/24/type = "bezier"
+tracks/24/path = NodePath("Control/ColorRect2:rect_size:x")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("Control/ColorRect2:rect_size:y")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 141, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("Control/ColorRect3:rect_position:x")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( -127, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/27/type = "bezier"
+tracks/27/path = NodePath("Control/ColorRect3:rect_position:y")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"points": PoolRealArray( -42, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("Control/ColorRect3:rect_size:x")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("Control/ColorRect3:rect_size:y")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"points": PoolRealArray( 111, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("Control/ColorRect2:rect_position:x")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( -183, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("Control/ColorRect2:rect_position:y")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"points": PoolRealArray( -72, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "start"
@@ -962,6 +1203,505 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0.5, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Control2/colorbottom:rect_size:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 1863, -0.25, 0, 0.25, 0, 1863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Control2/colorbottom:rect_size:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 209, -0.25, 0, 0.25, 0, 421, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Control2/colorbottom:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -137, -0.25, 0, 0.25, 0, -137.284, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("Control2/colorbottom:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -145, -0.25, 0, 0.25, 0, -145.231, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("Control2/ColorRect2:rect_position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -94, -0.25, 0, 0.25, 0, -94.2844, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("Control2/ColorRect2:rect_position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -129, -0.25, 0, 0.25, 0, -129.231, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("Control2/ColorRect2:rect_size:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0, 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("Control2/ColorRect2:rect_size:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 189, -0.25, 0, 0.25, 0, 421, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("Control2/ColorRect3:rect_position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( -99, -0.25, 0, 0.25, 0, -99.2842, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("Control2/ColorRect3:rect_position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( -95, -0.25, 0, 0.25, 0, -95.231, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("Control2/ColorRect3:rect_size:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0, 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("Control2/ColorRect3:rect_size:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( 155, -0.25, 0, 0.25, 0, 421, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/20/type = "bezier"
+tracks/20/path = NodePath("Control/colortop:rect_position:x")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"points": PoolRealArray( -233, -0.25, 0, 0.25, 0, -233, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/21/type = "bezier"
+tracks/21/path = NodePath("Control/colortop:rect_position:y")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"points": PoolRealArray( -91, -0.25, 0, 0.25, 0, -91.3187, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/22/type = "bezier"
+tracks/22/path = NodePath("Control/colortop:rect_size:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"points": PoolRealArray( 1863, -0.25, 0, 0.25, 0, 1863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("Control/colortop:rect_size:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( 185, -0.25, 0, 0.25, 0, 421, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/24/type = "bezier"
+tracks/24/path = NodePath("Control/ColorRect2:rect_size:x")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0, 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("Control/ColorRect2:rect_size:y")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 154, -0.25, 0, 0.25, 0, 421, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("Control/ColorRect3:rect_position:x")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( -127, -0.25, 0, 0.25, 0, -127, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/27/type = "bezier"
+tracks/27/path = NodePath("Control/ColorRect3:rect_position:y")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"points": PoolRealArray( -42, -0.25, 0, 0.25, 0, -42, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("Control/ColorRect3:rect_size:x")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( 2294, -0.25, 0, 0.25, 0, 2294, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("Control/ColorRect3:rect_size:y")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"points": PoolRealArray( 120, -0.25, 0, 0.25, 0, 422, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 0.8 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("Control/ColorRect2:rect_position:x")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( -183, -0.25, 0, 0.25, 0, -183, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("Control/ColorRect2:rect_position:y")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"points": PoolRealArray( -72, -0.25, 0, 0.25, 0, -72.3187, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 0.9 )
+}
+
+[sub_resource type="Animation" id=57]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control2/colorbottom:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -137.284, -145.231 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control2/ColorRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -94.2844, -129.231 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Control2/ColorRect2:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.1177 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Control2/ColorRect2:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2294, 153 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Control2/ColorRect3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -99.2842, -95.231 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Control/colortop:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.9 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Control/colortop:rect_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1863, 147 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Control/colortop:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -233, -91 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Control/ColorRect2:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -183, -72.3187 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../Control/ColorRect3:rect_rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -11.0243 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../Control/ColorRect3:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -127, -42 ) ]
+}
+
+[sub_resource type="Animation" id=58]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Control2/colorbottom:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -137.284, -145.231 ), Vector2( -173, -157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control2/ColorRect2:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -94.2844, -129.231 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Control2/ColorRect2:rect_rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.1177, -9.3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Control2/ColorRect2:rect_size")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2294, 421 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Control2/ColorRect3:rect_position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -99.2842, -95.231 ), Vector2( -87, -74 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Control/colortop:rect_rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.9, -9.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Control/colortop:rect_position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -233, -91.3187 ), Vector2( -238, -139.989 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Control/ColorRect2:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -183, -72.3187 ), Vector2( -228, -89.9894 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Control/ColorRect3:rect_rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -11.0243, -11.6 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../Control/ColorRect3:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -127, -42 ), Vector2( -215, -26.9895 ) ]
 }
 
 [sub_resource type="Animation" id=53]
@@ -1268,8 +2008,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 944, -0.25, 0, 0.25, 0, 944, -0.25, 0, 0.25, 0, 1350, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.2, 0.6 )
+"points": PoolRealArray( 944, -0.25, 0, 0.25, 0, 1350, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
 }
 tracks/11/type = "bezier"
 tracks/11/path = NodePath("ColorRect/btn_quicknavback:rect_position:y")
@@ -1278,8 +2018,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 470, -0.25, 0, 0.25, 0, 470, -0.25, 0, 0.25, 0, 473, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.2, 0.6 )
+"points": PoolRealArray( 411, -0.25, 0, 0.25, 0, 473, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("ColorRect/btn_quicknavback:visible")
@@ -1907,6 +2647,71 @@ flat = true
 clip_text = true
 icon_align = 1
 
+[node name="Control" type="Control" parent="."]
+margin_left = -311.0
+margin_top = -100.011
+margin_right = -271.0
+margin_bottom = -60.0106
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+margin_left = -127.0
+margin_top = -42.0
+margin_right = 2167.0
+margin_bottom = 69.0
+rect_rotation = -11.0243
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+margin_left = -183.0
+margin_top = -72.3187
+margin_right = 2111.0
+margin_bottom = 68.6813
+rect_rotation = -10.1177
+color = Color( 0, 0, 0, 1 )
+
+[node name="colortop" type="ColorRect" parent="Control"]
+margin_left = -233.0
+margin_top = -91.0
+margin_right = 1630.0
+margin_bottom = 56.0
+rect_rotation = -10.9
+color = Color( 0.980392, 0.478431, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Control2" type="Control" parent="."]
+margin_left = 2188.0
+margin_top = 1159.0
+margin_right = 2228.0
+margin_bottom = 1199.0
+rect_rotation = -180.0
+
+[node name="ColorRect3" type="ColorRect" parent="Control2"]
+margin_left = -99.2842
+margin_top = -95.231
+margin_right = 2194.72
+margin_bottom = 54.769
+rect_rotation = -11.0243
+
+[node name="ColorRect2" type="ColorRect" parent="Control2"]
+margin_left = -94.2844
+margin_top = -129.231
+margin_right = 2199.72
+margin_bottom = 23.769
+rect_rotation = -10.1177
+color = Color( 0, 0, 0, 1 )
+
+[node name="colorbottom" type="ColorRect" parent="Control2"]
+margin_left = -137.284
+margin_top = -145.231
+margin_right = 1725.72
+margin_bottom = 50.769
+rect_rotation = -11.5601
+color = Color( 0.980392, 0.478431, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="tap" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -1933,9 +2738,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 130.0
-margin_top = -265.0
+margin_top = -324.0
 margin_right = 919.0
-margin_bottom = 265.0
+margin_bottom = 206.0
 rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 394, 0 )
 theme = ExtResource( 10 )
@@ -2243,22 +3048,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -22.0
 margin_top = 443.0
-margin_right = 1942.0
-margin_bottom = 637.0
+margin_right = 22.0
+margin_bottom = -443.0
 rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 3884.0
+margin_right = 1964.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ui_quick/CenterContainer"]
-margin_left = 1617.0
-margin_right = 2267.0
+margin_left = 657.0
+margin_right = 1307.0
 margin_bottom = 1473.0
 mouse_filter = 2
 custom_constants/margin_top = 30
@@ -2331,10 +3136,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1350.0
-margin_top = 473.0
-margin_right = 1489.0
-margin_bottom = 605.0
+margin_left = 390.0
+margin_top = -67.0
+margin_right = 529.0
+margin_bottom = 65.0
 theme = ExtResource( 10 )
 text = "Q"
 
@@ -2352,9 +3157,17 @@ script = SubResource( 14 )
 anims/RESET = SubResource( 16 )
 anims/start = SubResource( 15 )
 
+[node name="idle" type="AnimationPlayer" parent="."]
+root_node = NodePath("../QuickAnimation")
+playback_speed = 0.75
+anims/RESET = SubResource( 57 )
+anims/idle = SubResource( 58 )
+
 [node name="QuickAnimation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 53 )
 anims/quick = SubResource( 54 )
+
+[node name="settings" parent="." instance=ExtResource( 45 )]
 
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/offline_btn" to="." method="_on_offline_btn_pressed"]

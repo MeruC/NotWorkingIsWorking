@@ -1,5 +1,6 @@
 class_name Settings_Data extends Resource
 
+export ( String ) var resolution = "1920 x 1080"
 export( bool ) var fullscreen = true
 export( float ) var scale = 1
 export( int ) var master_volume = 0
@@ -30,6 +31,7 @@ export (int) var crowns = 0
 
 # Set the data from a Dictionary.
 func set_data( data ):
+	resolution = data.resolution
 	fullscreen = data.fullscreen
 	scale = data.scale
 	gold_coins = data.gold_coins
@@ -57,6 +59,7 @@ func set_data( data ):
 # Pack the data in a Dictionary.
 func get_data():
 	return {
+		"resolution": resolution,
 		"pixelize": pixelize,
 		"pixel_size": pixel_size,
 		"fullscreen": fullscreen,
