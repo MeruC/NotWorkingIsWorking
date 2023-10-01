@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Network Interface Cards and Common Connector Types",
+        "png": "",
+        "content": "Welcome to this level where we are delving into Network Interface Cards (NICs) and common connector types."
+    },
+    {
+        "title": "Network Interface Cards and Common Connector Types",
+        "png": "",
+        "content": " NICs are like the gatekeepers of communication, and connectors are the bridges connecting devices. Let's explore these essential components."
+    },
+    {
+        "title": "Network Interface Cards (NICs)",
+        "png": "",
+        "content": "NICs are hardware components that enable devices to connect to a network. They translate digital data from your device into signals that can travel over network cables."
+    },
+    {
+        "title": "Types of network interface cards:",
+        "png": "Wirelesss",
+        "content": "These are NICs that use an antenna to provide wireless reception through radio frequency waves. Wireless NICs are designed for Wi-Fi connections."
+    },
+    {
+        "title": "Types of network interface cards:",
+        "png": "Wired",
+        "content": "These are NICs that have input jacks made for cables. The most popular wired LAN technology is Ethernet."
+    },
+    {
+        "title": "Types of network interface cards:",
+        "png": "USB",
+        "content": "These are NICs that provide network connections through a device plugged into the USB port."
+    },
+    {
+        "title": "Types of network interface cards:",
+        "png": "Fiber Optics",
+        "content": "These are expensive and more complex NICs that are used as a high-speed support system for network traffic handling on server computers. This support could also be accomplished by combining multiple NICs."
+    },
+    {
+        "title": "Common Connector Types",
+        "png": "",
+        "content": "Great! Now you’ve learned about Network Interface Cards, but wait there’s more! In the world of networking, a fundamental aspect of establishing connections between devices is the use of connectors. These connectors play a pivotal role in ensuring data can flow seamlessly between different components of a network. Let's delve into some common connector types :"
+    },
+    {
+        "title": "1. Coaxial Cable",
+        "png": "",
+        "content": "Coaxial cable, often referred to as coax cable, is a type of electrical cable with a central conductor, an insulating layer, metallic shielding, and an outer insulating layer. It's cylindrical in shape and is commonly used for transmitting cable television signals, broadband internet, and other data signals."
+    },
+    {
+        "title": "2. UTP Cable (Unshielded Twisted Pair",
+        "png": "",
+        "content": " UTP cables are a type of twisted pair cable that lacks additional shielding around the twisted pairs. They are the most common type of Ethernet cable and are used for many networking applications, including home and office networks."
+    },
+    {
+        "title": "3. STP Cable (Shielded Twisted Pair",
+        "png": "",
+        "content": "STP cables are similar to UTP cables but have additional shielding around the twisted pairs. This shielding helps reduce electromagnetic interference and can enhance signal quality in noisy environments."
+    },
+    {
+        "title": "Fiber Optic Cable",
+        "png": "",
+        "content": "Fiber optic cables consist of thin strands of glass or plastic (fibers) that transmit data using light signals. They have a core, cladding, and protective outer layers."
+    }
+]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pleasant Creek.mp3-d1482e14887675103b977f4dd17cc326.mp3str"
+
+[deps]
+
+source_file="res://resources/soundtrack/menu/title/Pleasant Creek.mp3"
+dest_files=[ "res://.import/Pleasant Creek.mp3-d1482e14887675103b977f4dd17cc326.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

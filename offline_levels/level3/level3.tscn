@@ -748,6 +748,10 @@ margin_bottom = 12.0
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="3"]
 margin_right = 25.0
 
+[node name="VBoxContainer" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="4"]
+margin_left = 247.0
+margin_right = 830.0
+
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="0"]
 margin_right = 12.0
 margin_bottom = 12.0
@@ -761,6 +765,9 @@ margin_bottom = 12.0
 
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="3"]
 margin_right = 25.0
+
+[node name="MarginContainer" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="4"]
+margin_right = 1078.0
 
 [node name="AnimationPlayer" parent="popup_layer/pause/settings" index="5"]
 anims/RESET = SubResource( 5 )

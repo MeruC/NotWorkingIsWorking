@@ -1,0 +1,261 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://resources/offline_mode_Asset/level_6/cards.png" type="Texture" id=1]
+[ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=2]
+[ext_resource path="res://level6_manager.gd" type="Script" id=3]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/offline_mode_Asset/level_6/wireless.png" type="Texture" id=6]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/soundtrack/menu/Pleasant Creek.mp3" type="AudioStream" id=9]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 388, 105 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 399, 236 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dialog:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1153, 333 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "card_flip"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("card_wireless:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("card_wireless:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 940, 369 ), Vector2( 940, 369 ), Vector2( 613, 360 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("card_wireless/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("dialog:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 399, 236 ), Vector2( 901, 188 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("dialog:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1153, 333 ), Vector2( 623, 333 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("dialog:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("card_content:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 809, 400 ), Vector2( 809, 400 ), Vector2( 483, 394 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("card_title:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 828, 185 ), Vector2( 828, 185 ), Vector2( 503, 184 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("card_title:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("card_content:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+extra_spacing_bottom = 28
+font_data = ExtResource( 7 )
+
+[node name="level6_manager" type="Node2D"]
+script = ExtResource( 3 )
+dialog = NodePath("dialog")
+
+[node name="bg" type="TextureRect" parent="."]
+margin_left = 5.0
+margin_top = -8.0
+margin_right = 605.0
+margin_bottom = 292.0
+rect_scale = Vector2( 3.19217, 3.62275 )
+texture = ExtResource( 2 )
+
+[node name="title" type="Label" parent="."]
+margin_left = 388.0
+margin_top = 105.0
+margin_right = 1529.0
+margin_bottom = 181.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Title here"
+align = 1
+valign = 3
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/card_flip = SubResource( 2 )
+
+[node name="dialog" type="Label" parent="."]
+margin_left = 399.0
+margin_top = 236.0
+margin_right = 1552.0
+margin_bottom = 569.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "dialog here"
+autowrap = true
+
+[node name="card_wireless" type="Sprite" parent="."]
+visible = false
+position = Vector2( 940, 369 )
+scale = Vector2( 1.73359, 1.57645 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="TextureRect" type="TextureRect" parent="card_wireless"]
+visible = false
+margin_left = -75.0613
+margin_top = -99.4164
+margin_right = 550.939
+margin_bottom = 526.584
+rect_scale = Vector2( 0.242416, 0.167812 )
+texture = ExtResource( 6 )
+
+[node name="card_title" type="Label" parent="."]
+visible = false
+margin_left = 828.0
+margin_top = 185.0
+margin_right = 1054.0
+margin_bottom = 234.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+autowrap = true
+
+[node name="card_content" type="Label" parent="."]
+visible = false
+margin_left = 809.0
+margin_top = 400.0
+margin_right = 1074.0
+margin_bottom = 414.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 8 )]
+stream = ExtResource( 9 )
+bus = "Music"

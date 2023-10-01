@@ -164,7 +164,6 @@ tracks/0/keys = {
 
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource( 2 )
-VoiceGen = NodePath("../VoiceGeneratorAudioStreamPlayer")
 dialog = NodePath("../CanvasLayer/dialog")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
