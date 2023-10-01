@@ -41,8 +41,18 @@
     },
     {
         "title": "1. Coaxial Cable",
-        "png": "",
+        "png": "coaxial_cable",
+        "content": ""
+    },
+    {
+        "title": "1. Coaxial Cable",
+        "png": "coaxial_cable",
         "content": "Coaxial cable, often referred to as coax cable, is a type of electrical cable with a central conductor, an insulating layer, metallic shielding, and an outer insulating layer. It's cylindrical in shape and is commonly used for transmitting cable television signals, broadband internet, and other data signals."
+    },
+    {
+        "title": "2. UTP Cable (Unshielded Twisted Pair",
+        "png": "utp_cable",
+        "content": ""
     },
     {
         "title": "2. UTP Cable (Unshielded Twisted Pair",
@@ -51,11 +61,21 @@
     },
     {
         "title": "3. STP Cable (Shielded Twisted Pair",
+        "png": "stp_cable",
+        "content": ""
+    },
+    {
+        "title": "3. STP Cable (Shielded Twisted Pair",
         "png": "",
         "content": "STP cables are similar to UTP cables but have additional shielding around the twisted pairs. This shielding helps reduce electromagnetic interference and can enhance signal quality in noisy environments."
     },
     {
-        "title": "Fiber Optic Cable",
+        "title": "4. Fiber Optic Cable",
+        "png": "fiber_optics",
+        "content": ""
+    },
+    {
+        "title": "4. Fiber Optic Cable",
         "png": "",
         "content": "Fiber optic cables consist of thin strands of glass or plastic (fibers) that transmit data using light signals. They have a core, cladding, and protective outer layers."
     }

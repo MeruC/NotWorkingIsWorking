@@ -9,10 +9,11 @@ var textSpeed = 1
 var total_character = 0
 var click = 0
 var size = 0
-var game_scene = "res://offline_levels/level1/level_1.tscn"
+var game_scene = "res://offline_levels/level6/level6.tscn"
 var touch = true
 
 func _ready():
+	Pixelizer.set_visible(false)
 	#VoiceGen.pitch_scale = 1.5
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
@@ -85,4 +86,25 @@ func update_dialog():
 			$card_wireless.visible = false
 			$card_title.visible = false
 			$card_content.visible = false
-			
+		if size == 8:
+			$AnimationPlayer.play("discussion_anim")
+		if size == 9:
+			$image_holder.visible = false
+		if size == 10:
+			$AnimationPlayer.play("discussion_anim")
+			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
+		if size == 11:
+			$image_holder.visible = false
+		if size == 12:
+			$AnimationPlayer.play("discussion_anim")
+			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
+		if size == 13:
+			$image_holder.visible = false
+		if size == 14:
+			$AnimationPlayer.play("discussion_anim")
+			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
+		if size == 15:
+			$image_holder.visible = false
+	else:
+		Load.load_scene(self,game_scene)
+		print("Dialog ended.")
