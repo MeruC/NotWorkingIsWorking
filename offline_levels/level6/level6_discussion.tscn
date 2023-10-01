@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/offline_mode_Asset/level_6/cards.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://resources/soundtrack/menu/Pleasant Creek.mp3" type="AudioStream" id=9]
+[ext_resource path="res://resources/offline_mode_Asset/level_6/coaxial_cable.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 399, 236 ) ]
+"values": [ Vector2( 397, 226 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("dialog:rect_size")
@@ -173,6 +174,33 @@ tracks/9/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "discussion_anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("image_holder:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 818, 510 ), Vector2( 805, 228 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("image_holder:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 4 )
@@ -197,27 +225,27 @@ texture = ExtResource( 2 )
 [node name="title" type="Label" parent="."]
 margin_left = 388.0
 margin_top = 105.0
-margin_right = 1529.0
+margin_right = 1569.0
 margin_bottom = 181.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "Title here"
 align = 1
-valign = 3
+valign = 1
 autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/card_flip = SubResource( 2 )
+anims/discussion_anim = SubResource( 5 )
 
 [node name="dialog" type="Label" parent="."]
-margin_left = 399.0
-margin_top = 236.0
-margin_right = 1552.0
-margin_bottom = 569.0
+margin_left = 397.0
+margin_top = 226.0
+margin_right = 1550.0
+margin_bottom = 559.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "dialog here"
 autowrap = true
 
 [node name="card_wireless" type="Sprite" parent="."]
@@ -259,3 +287,12 @@ autowrap = true
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 8 )]
 stream = ExtResource( 9 )
 bus = "Music"
+
+[node name="image_holder" type="TextureRect" parent="."]
+visible = false
+margin_left = 818.0
+margin_top = 510.0
+margin_right = 1444.0
+margin_bottom = 1136.0
+rect_scale = Vector2( 0.513002, 0.494657 )
+texture = ExtResource( 10 )

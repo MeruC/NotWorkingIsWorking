@@ -11,7 +11,6 @@ func _on_CheckButton_toggled(button_pressed):
 	if button_pressed == false:
 		var boy = preload("res://resources/Models/Player/Idle/1.obj")
 		var boy_skin = preload("res://resources/Models/Player/1.png")
-		
 		$"../../../../choose_male".visible = true
 		$"../../../../choose_female".visible = false
 		$CSGMesh.mesh = boy
