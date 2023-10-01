@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/offline_mode_Asset/level_6/cards.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=2]
-[ext_resource path="res://level6_manager.gd" type="Script" id=3]
+[ext_resource path="res://offline_levels/level6/level6_manager.gd" type="Script" id=3]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/wireless.png" type="Texture" id=6]

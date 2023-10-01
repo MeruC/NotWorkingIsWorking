@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=25]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=26]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/user_profile/white_bg.jpg" type="Texture" id=28]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=29]
 
 [sub_resource type="DynamicFont" id=23]
 size = 30
@@ -77,6 +79,101 @@ font_data = ExtResource( 1 )
 size = 170
 extra_spacing_bottom = 28
 font_data = ExtResource( 25 )
+
+[sub_resource type="GDScript" id=25]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_enter_btn_pressed():
+	pass # Replace with function body.
+
+
+func _on_close_pressed():
+	$\".\".visible = false
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 29 )
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_right = 70.0
+bg_color = Color( 1, 0, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+content_margin_left = 50.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.054902, 1, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_right = 28.0
+expand_margin_bottom = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="ImageTexture" id=28]
+
+[sub_resource type="DynamicFont" id=29]
+size = 40
+font_data = ExtResource( 25 )
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 1, 0.847059, 0, 1 )
+skew = Vector2( 0.311, 0.016 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Theme" id=31]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 4 )
+Button/styles/focus = SubResource( 26 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 27 )
+CheckBox/icons/checked = SubResource( 28 )
+CheckBox/icons/unchecked = SubResource( 28 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 29 )
+PanelContainer/styles/panel = SubResource( 30 )
 
 [node name="user_profile" type="Node2D"]
 script = ExtResource( 5 )
@@ -465,14 +562,108 @@ margin_bottom = 162.0
 theme = ExtResource( 16 )
 text = "Back"
 
+[node name="login" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 25 )
+
+[node name="bg" type="TextureRect" parent="login"]
+modulate = Color( 0, 0, 0, 0.635294 )
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.59454, 1.79499 )
+texture = ExtResource( 28 )
+
+[node name="panel" type="TextureRect" parent="login"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -748.5
+margin_top = -448.0
+margin_right = 38.5
+margin_bottom = 322.0
+rect_scale = Vector2( 1.87832, 1.17148 )
+texture = ExtResource( 11 )
+
+[node name="title" type="Label" parent="login"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -225.5
+margin_top = 151.0
+margin_right = 217.5
+margin_bottom = 219.0
+theme = ExtResource( 16 )
+text = "Login Form"
+
+[node name="email" type="Label" parent="login"]
+margin_left = 477.0
+margin_top = 334.0
+margin_right = 711.0
+margin_bottom = 402.0
+theme = ExtResource( 16 )
+text = "Email:"
+
+[node name="pass" type="Label" parent="login"]
+margin_left = 298.0
+margin_top = 578.0
+margin_right = 729.0
+margin_bottom = 646.0
+theme = ExtResource( 16 )
+text = "Password:"
+
+[node name="LineEdit" type="LineEdit" parent="login"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -220.0
+margin_right = 465.0
+margin_bottom = -68.0
+theme = ExtResource( 16 )
+
+[node name="LineEdit2" type="LineEdit" parent="login"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = 3.0
+margin_right = 487.0
+margin_bottom = 155.0
+theme = ExtResource( 16 )
+
+[node name="enter_btn" type="Button" parent="login"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -304.0
+margin_right = 150.0
+margin_bottom = -172.0
+theme = ExtResource( 16 )
+text = "enter"
+
+[node name="close" type="Button" parent="login"]
+margin_left = 74.0
+margin_top = 43.0
+margin_right = 386.0
+margin_bottom = 175.0
+theme = SubResource( 31 )
+text = "x"
+
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 27 )]
 stream = ExtResource( 8 )
 bus = "Music"
 
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/questionBank_bg/questionBank_btn" to="." method="_on_questionBank_btn_pressed"]
+[connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
 [connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
 [connection signal="pressed" from="edit_avatar/select_btn" to="edit_avatar" method="_on_select_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/back_btn" to="edit_avatar" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="login/enter_btn" to="login" method="_on_enter_btn_pressed"]
+[connection signal="pressed" from="login/close" to="login" method="_on_close_pressed"]
