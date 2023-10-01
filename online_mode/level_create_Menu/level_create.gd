@@ -48,6 +48,7 @@ func _on_w_value_changed(value):
 	playarea.set_width(cur_w * 2)
 	if cur_w >= cur_d:
 		camera.fov = cur_w
+		camera.fov = cur_w
 	else:
 		camera.fov = cur_d
 			

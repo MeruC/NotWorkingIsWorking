@@ -4,6 +4,7 @@ onready var pausemenu = $pausemenu
 onready var submenu = $settingsubmenu
 onready var video_submenu = $videoSubmenu
 onready var music_submenu = $musicSubmenu
+export( NodePath ) onready var resolutionOption = get_node( resolutionOption ) as OptionButton
 export( NodePath ) onready var fullscreen_check = get_node( fullscreen_check ) as CheckBox
 export( NodePath ) onready var pixel_size_slider = get_node( pixel_size_slider ) as HSlider
 export( NodePath ) onready var pixelize_check = get_node( pixelize_check ) as CheckBox
@@ -12,6 +13,8 @@ export( NodePath ) onready var music_vol_slider = get_node( music_vol_slider ) a
 export( NodePath ) onready var sound_vol_slider = get_node( sound_vol_slider ) as HSlider
 onready var audio_loop_player = $AudioLoopPlayer
 onready var pixel_size = $"%pixel_size"
+onready var tween = $Tween
+
 
 export( Resource ) var settings_data
 
@@ -19,6 +22,10 @@ onready var animation_player = $AnimationPlayer
 var menu = 0
 
 func _ready():
+	match(OS.get_name()):
+		"Android", "iOS", "HTML5":
+			fullscreen_check.set_visible(false)
+	
 	SignalManager.connect( "ok", self, "_on_ok_pressed" )
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
 	audio_loop_player.play()
@@ -54,6 +61,7 @@ func _on_quit_pressed():
 
 # Update the inputs when the data changes. ( Ex. On game load. )
 func _on_data_changed():
+	resolutionOption.text = settings_data.resolution
 	pixel_size.text = "PIXEL SIZE: " + str(settings_data.pixel_size)
 	pixel_size_slider.value = settings_data.pixel_size
 	pixelize_check.pressed = settings_data.pixelize
@@ -82,6 +90,9 @@ func _on_resume_pressed():
 	hide()
 	
 #Video Submenu
+func _on_resolution_item_selected(index):
+	SettingsManager.resolution = resolutionOption.get_item_text(index)
+
 func _on_fullscreen_toggled(button_pressed):
 	SettingsManager.fullscreen = button_pressed
 	
@@ -96,9 +107,13 @@ func _on_cancel_pressed():
 	SaveManager.load_game()
 	match(menu):
 		1:
+			tween.interpolate_property($videoSubmenu/videoPanel, "scroll_vertical", $videoSubmenu/videoPanel.scroll_vertical, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
 			animation_player.play_backwards("video")
 			menu = 0
 		2:
+			tween.interpolate_property($musicSubmenu/musicPanel, "scroll_vertical", $musicSubmenu/musicPanel.scroll_vertical, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
 			animation_player.play_backwards("music")
 			menu = 0 
 	
@@ -106,9 +121,13 @@ func _on_save_pressed():
 	SaveManager.save_game()
 	match(menu):
 		1:
+			tween.interpolate_property($videoSubmenu/videoPanel, "scroll_vertical", $videoSubmenu/videoPanel.scroll_vertical, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
 			animation_player.play_backwards("video")
 			menu = 0
 		2:
+			tween.interpolate_property($musicSubmenu/musicPanel, "scroll_vertical", $musicSubmenu/musicPanel.scroll_vertical, 0, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
 			animation_player.play_backwards("music")
 			menu = 0 
 	
