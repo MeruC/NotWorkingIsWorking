@@ -20,7 +20,7 @@ func _ready():
 			Global.playerCamera.current = true
 			Global.player = get_node("Player")
 		elif setting_data.gender == "female":
-			player = preload("res://global/Player_girl/player-girl.tscn")
+			player = preload("res://global/player_girl/player-girl.tscn")
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
