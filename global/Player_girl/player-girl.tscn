@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://resources/Models/Player/player.tres" type="Material" id=1]
-[ext_resource path="res://global/player/interact.gd" type="Script" id=3]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://resources/Models/Player -girl/walk/2- Girl.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://resources/Models/Player -girl/walk/1- Girl.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://resources/Models/Player -girl/idle/idle- Girl.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://global/player/Player_Input/Camera.gd" type="Script" id=8]
-[ext_resource path="res://global/player/Player_Input/player.gd" type="Script" id=9]
+[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Models/Player -girl/idle/idle- Girl.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://resources/Models/Player -girl/walk/2- Girl.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://resources/Models/Player -girl/walk/1- Girl.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://global/player/Player_Input/player.gd" type="Script" id=5]
+[ext_resource path="res://global/player/Player_Input/Camera.gd" type="Script" id=6]
+[ext_resource path="res://global/player/interact.gd" type="Script" id=7]
+[ext_resource path="res://resources/Models/Player/player.tres" type="Material" id=8]
 
 [sub_resource type="CylinderShape" id=19]
 height = 2.8
@@ -124,23 +124,23 @@ tracks/3/keys = {
 [sub_resource type="DynamicFont" id=20]
 size = 110
 outline_size = 4
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 20
 outline_size = 2
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=22]
 size = 14
 outline_size = 2
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.445, 0 )
 collision_layer = 9
 collision_mask = 9
-script = ExtResource( 9 )
+script = ExtResource( 5 )
 interact_zone = NodePath("InteractionArea")
 interact_labels = NodePath("interact")
 
@@ -149,8 +149,8 @@ unique_name_in_owner = true
 
 [node name="CSGSphere" type="CSGMesh" parent="Pivot"]
 transform = Transform( -0.62, 0, -9.36174e-08, 0, 0.62, 0, 9.36174e-08, 0, -0.62, 0, -1.45127, 0 )
-mesh = ExtResource( 7 )
-material = ExtResource( 1 )
+mesh = ExtResource( 2 )
+material = ExtResource( 8 )
 
 [node name="walk" type="Spatial" parent="Pivot"]
 transform = Transform( 0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, -0.451477, 0 )
@@ -158,26 +158,26 @@ visible = false
 
 [node name="1" type="CSGMesh" parent="Pivot/walk"]
 transform = Transform( -1, 1.57834e-08, 1.50169e-07, 0, 0.994522, -0.104529, -1.50996e-07, -0.104529, -0.994522, 0, -1.4, 0 )
-mesh = ExtResource( 6 )
-material = ExtResource( 1 )
+mesh = ExtResource( 4 )
+material = ExtResource( 8 )
 
 [node name="2" type="CSGMesh" parent="Pivot/walk"]
 transform = Transform( -1, 1.57834e-08, 1.50169e-07, 0, 0.994522, -0.104529, -1.50996e-07, -0.104529, -0.994522, 0, -1.4, 0 )
 visible = false
-mesh = ExtResource( 7 )
-material = ExtResource( 1 )
+mesh = ExtResource( 2 )
+material = ExtResource( 8 )
 
 [node name="3" type="CSGMesh" parent="Pivot/walk"]
 transform = Transform( -1, 1.57834e-08, 1.50169e-07, 0, 0.994522, -0.104529, -1.50996e-07, -0.104529, -0.994522, 0, -1.4, 0 )
 visible = false
-mesh = ExtResource( 5 )
-material = ExtResource( 1 )
+mesh = ExtResource( 3 )
+material = ExtResource( 8 )
 
 [node name="4" type="CSGMesh" parent="Pivot/walk"]
 transform = Transform( -1, 1.57834e-08, 1.50169e-07, 0, 0.994522, -0.104529, -1.50996e-07, -0.104529, -0.994522, 0, -1.4, 0 )
 visible = false
-mesh = ExtResource( 7 )
-material = ExtResource( 1 )
+mesh = ExtResource( 2 )
+material = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0354198 )
@@ -186,7 +186,7 @@ shape = SubResource( 19 )
 [node name="Camera" type="Spatial" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 2.68221e-07, 0, -2.68221e-07, 1, 0, 0, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 6 )
 
 [node name="Camera" type="Camera" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 15, 25 )
@@ -237,7 +237,7 @@ margin_right = 127.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 14 )
 custom_constants/separation = 2
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 lbl_action = NodePath("action")
 lbl_name = NodePath("object_name")
 
