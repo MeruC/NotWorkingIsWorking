@@ -27,7 +27,7 @@ func _on_scale_slider_gui_input( event ):
 	pass
 # Change the fullscreen toggle.
 func _on_CheckBox_toggled( button_pressed ):
-	SettingsManager.fullscreen = button_pressed
+	pass
 
 # Update the inputs when the data changes. ( Ex. On game load. )
 func _on_data_changed():

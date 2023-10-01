@@ -4,11 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-fullscreen = false
+fullscreen = true
 scale = 1.0
 master_volume = 0
 music_volume = -10
 sound_volume = -10
+pixelize = true
+pixel_size = 4
 gold_coins = 1000
 player_name = "Player"
 gender = "male"

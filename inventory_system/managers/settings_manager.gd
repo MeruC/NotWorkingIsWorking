@@ -1,6 +1,7 @@
 extends Node
 
 var fullscreen setget set_fullscreen
+var pixelize setget set_pixelize
 var scale setget set_scale
 var master_volume setget set_master_volume
 var sound_volume setget set_sound_volume
@@ -15,6 +16,11 @@ func _ready():
 	music_volume = settings_data.music_volume
 	sound_volume = settings_data.sound_volume
 	settings_data.connect( "changed", self, "_on_data_changed" )
+	
+func set_pixelize( value ):
+	pixelize = value
+	Pixelizer.set_visible(value)
+	settings_data.pixelize = value
 
 func set_fullscreen( value ):
 	fullscreen = value
@@ -27,6 +33,7 @@ func set_scale( value ):
 	settings_data.scale = value
 
 func _on_data_changed():
+	set_pixelize(settings_data.pixelize)
 	set_fullscreen( settings_data.fullscreen )
 	set_scale( settings_data.scale )
 	set_master_volume(settings_data.master_volume)

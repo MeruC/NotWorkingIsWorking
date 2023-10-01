@@ -694,13 +694,13 @@ expand_margin_top = 10.0
 
 [node name="settings" type="ColorRect"]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 4269, -605 )
 color = Color( 0, 0, 0, 0.686275 )
 script = ExtResource( 6 )
 fullscreen_check = NodePath("videoSubmenu/videoPanel/VBoxContainer/fullscreen")
+pixelize_check = NodePath("videoSubmenu/videoPanel/VBoxContainer/pixelize")
 master_vol_slider = NodePath("musicSubmenu/musicPanel/MarginContainer/VBoxContainer/master/master")
 music_vol_slider = NodePath("musicSubmenu/musicPanel/MarginContainer/VBoxContainer/music/music")
 sound_vol_slider = NodePath("musicSubmenu/musicPanel/MarginContainer/VBoxContainer/sound/sound")
@@ -874,8 +874,9 @@ theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="videoSubmenu/videoPanel"]
-margin_right = 583.0
-margin_bottom = 272.0
+margin_left = 235.0
+margin_right = 818.0
+margin_bottom = 774.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -897,10 +898,47 @@ theme = ExtResource( 12 )
 enabled_focus_mode = 0
 text = "FULLSCREEN"
 
-[node name="TextureRect2" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
+[node name="pixelize" type="CheckBox" parent="videoSubmenu/videoPanel/VBoxContainer"]
 margin_top = 272.0
 margin_right = 583.0
-margin_bottom = 272.0
+margin_bottom = 404.0
+focus_mode = 0
+theme = ExtResource( 12 )
+enabled_focus_mode = 0
+text = "PIXELIZE"
+align = 1
+
+[node name="pixel_size" type="Label" parent="videoSubmenu/videoPanel/VBoxContainer"]
+margin_top = 474.0
+margin_right = 583.0
+margin_bottom = 564.0
+custom_fonts/font = SubResource( 22 )
+text = "Pixel SIZE"
+align = 1
+
+[node name="pixel_size" type="HSlider" parent="videoSubmenu/videoPanel/VBoxContainer/pixel_size"]
+margin_left = -35.0
+margin_top = 139.0
+margin_right = 642.0
+margin_bottom = 195.0
+min_value = 2.0
+max_value = 16.0
+value = 2.0
+
+[node name="TextureRect3" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
+margin_top = 634.0
+margin_right = 583.0
+margin_bottom = 634.0
+
+[node name="TextureRect4" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
+margin_top = 704.0
+margin_right = 583.0
+margin_bottom = 704.0
+
+[node name="TextureRect2" type="TextureRect" parent="videoSubmenu/videoPanel/VBoxContainer"]
+margin_top = 774.0
+margin_right = 583.0
+margin_bottom = 774.0
 
 [node name="save" type="Button" parent="videoSubmenu"]
 modulate = Color( 0.54902, 1, 0.176471, 1 )
@@ -949,7 +987,7 @@ theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="musicSubmenu/musicPanel"]
-margin_right = 862.0
+margin_right = 1078.0
 margin_bottom = 992.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -1138,7 +1176,9 @@ bus = "Music"
 [connection signal="pressed" from="settingsubmenu/video" to="." method="_on_video_pressed"]
 [connection signal="pressed" from="settingsubmenu/music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="settingsubmenu/back" to="." method="_on_back_pressed"]
-[connection signal="toggled" from="videoSubmenu/videoPanel/VBoxContainer/fullscreen" to="settings" method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="videoSubmenu/videoPanel/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="videoSubmenu/videoPanel/VBoxContainer/pixelize" to="." method="_on_pixelize_toggled"]
+[connection signal="value_changed" from="videoSubmenu/videoPanel/VBoxContainer/pixel_size/pixel_size" to="." method="_on_master_value_changed"]
 [connection signal="pressed" from="videoSubmenu/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="videoSubmenu/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="value_changed" from="musicSubmenu/musicPanel/MarginContainer/VBoxContainer/master/master" to="." method="_on_master_value_changed"]
