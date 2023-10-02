@@ -19,9 +19,15 @@
 	},
 	"rj45": {
 		"name": "RJ45 Cable",
-		"type": "MATERIAL",
+		"type": "CABLE",
 		"stack_size": 64,
-		"level": 1
+		"level": 1,
+		"usable": {
+			"type": "cable",
+			"data": {
+				"cable_type": "crossover"
+			}
+		}
 	},
 	"blue_cable": {
 		"name": "Blue Cable",

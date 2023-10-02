@@ -28,6 +28,7 @@ var type_names = {
 var usable = {
 	"healing": preload( "res://inventory_system/scripts/resources/usable_items/item_healing.gd" ),
 	"upgrade": preload( "res://inventory_system/scripts/resources/usable_items/item_upgrade.gd" ),
+	"cable": preload("res://inventory_system/scripts/resources/usable_items/item_cable.gd")
 }
 
 # Get a random seed for the random functions.

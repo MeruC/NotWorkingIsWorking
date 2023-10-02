@@ -1,6 +1,7 @@
 extends KinematicBody
 
 #something
+export( NodePath ) onready var label = get_node( label ) as VBoxContainer
 
 #NodeReferences
 onready var camera = $"%Camera"
@@ -20,7 +21,7 @@ onready var walk_animation = $AnimationPlayer
 
 onready var idle = $Pivot/CSGSphere
 onready var walk = $Pivot/walk
-
+var cam = 0
 
 export( NodePath ) onready var interact_zone = get_node( interact_zone ) as Area
 export( NodePath ) onready var interact_labels = get_node( interact_labels ) as Control
@@ -89,6 +90,14 @@ func _on_Player_visibility_changed():
 
 #Interactions
 func _input( event ):
+	if Input.is_action_just_pressed("cam_test"):
+		match cam:
+			0:
+				CameraTransition.transition_camera3D(Global.playerCamera, Global.playerCameraTop, 1)
+				cam = 1
+			1:
+				CameraTransition.transition_camera3D(Global.playerCameraTop, Global.playerCamera, 1)
+				cam = 0
 	if event.is_action_pressed("interact") and current_interactable:
 		pivot.set_visible(false)
 		current_interactable.interact()

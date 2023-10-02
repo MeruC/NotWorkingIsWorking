@@ -53,11 +53,11 @@ func get_use_text():
 
 # Add lines in the item info.
 func set_info( item_info ):
-	item_info.add_splitter()
-	item_info.add_line( Item_Info_Line.new( "On use:", Game_Enums.RARITY.NORMAL ) )
+	#item_info.add_splitter()
+	#item_info.add_line( Item_Info_Line.new( "On use:", Game_Enums.RARITY.NORMAL ) )
 	item_info.add_line( Item_Info_Line.new( get_use_text(), item.rarity ) )
-	item_info.add_line( Item_Info_Line.new( "Condition:", Game_Enums.RARITY.NORMAL ) )
-	item_info.add_line( Item_Info_Line.new( condition, item.rarity ) )
+	#item_info.add_line( Item_Info_Line.new( "Condition:", Game_Enums.RARITY.NORMAL ) )
+	#item_info.add_line( Item_Info_Line.new( condition, item.rarity ) )
 
 # Return the use function. ( To be added in the item action )
 func get_action():

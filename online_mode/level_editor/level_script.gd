@@ -4,6 +4,7 @@ var player
 onready var mobile_controls = $"%mobile_controls"
 onready var inventory = $"%inventory"
 
+
 var joystick
 export (Resource) var setting_data
 var onMenu = false
@@ -18,12 +19,14 @@ func _ready():
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
+			Global.playerCameraTop = get_node("Player/Camera/Camera2")
 			Global.player = get_node("Player")
 		elif setting_data.gender == "female":
 			player = preload("res://global/player_girl/player-girl.tscn")
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
+			Global.playerCameraTop = get_node("Player/Camera/Camera2")
 			Global.player = get_node("Player")
 		
 		

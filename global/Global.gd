@@ -9,6 +9,7 @@ var just_onMenu = false
 
 var player : KinematicBody
 var playerCamera : Camera
+var playerCameraTop : Camera
 var playerCanMove = true
 var playerInteractLbl : Control
 
