@@ -147,7 +147,8 @@ collision_mask = 9
 script = ExtResource( 2 )
 label = NodePath("interact")
 preview_parent = NodePath("previews")
-no_sign = NodePath("no-sign")
+no_sign = NodePath("previews/no-sign")
+place = NodePath("previews/place")
 interact_zone = NodePath("InteractionArea")
 interact_labels = NodePath("interact")
 camera_normal = NodePath("Camera/Camera")
@@ -276,8 +277,10 @@ custom_fonts/font = SubResource( 22 )
 text = "action"
 
 [node name="previews" type="Spatial" parent="."]
+visible = false
 
 [node name="place" parent="previews" instance=ExtResource( 10 )]
+visible = false
 
 [node name="rotate" parent="previews" instance=ExtResource( 8 )]
 visible = false
@@ -285,7 +288,7 @@ visible = false
 [node name="remove" parent="previews" instance=ExtResource( 9 )]
 visible = false
 
-[node name="no-sign" parent="." instance=ExtResource( 12 )]
+[node name="no-sign" parent="previews" instance=ExtResource( 12 )]
 
 [connection signal="visibility_changed" from="." to="." method="_on_Player_visibility_changed"]
 [connection signal="tween_completed" from="Tween" to="Camera" method="_on_Tween_tween_completed"]
