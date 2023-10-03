@@ -19,19 +19,24 @@ func _ready():
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
-			Global.playerCameraTop = get_node("Player/Camera/Camera2")
+			Global.playerCameraTop = get_node("Player/Camera/CameraTop")
 			Global.player = get_node("Player")
+			Global.player.current_level = self
 		elif setting_data.gender == "female":
 			player = preload("res://global/player_girl/player-girl.tscn")
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
-			Global.playerCameraTop = get_node("Player/Camera/Camera2")
+			Global.playerCameraTop = get_node("Player/Camera/CameraTop")
 			Global.player = get_node("Player")
+			Global.player.current_level = self
+			print(self)
 		
 		
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
+	SignalManager.connect( "cable_used", self, "_on_cable_used" )
+	SignalManager.connect( "cable_done", self, "_on_cable_done" )
 
 func _on_pc_opened():
 	#player = main.get_node("Player")
@@ -50,3 +55,9 @@ func _on_pc_closed():
 		onMenu = false
 		Global.playerCanMove = true
 		Global.playerInteractLbl.set_visible(true)
+		
+func _on_cable_used():
+	inventory.ui_container.set_visible(false)
+
+func _on_cable_done():
+	inventory.ui_container.set_visible(true)

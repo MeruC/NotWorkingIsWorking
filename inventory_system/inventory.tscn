@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/pause.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main_shop/coins.tscn" type="PackedScene" id=3]
@@ -8,7 +8,15 @@
 [ext_resource path="res://inventory_system/scenes/inventory/hotbar_node.tscn" type="PackedScene" id=11]
 [ext_resource path="res://inventory_system/scenes/ui/inventory_container.tscn" type="PackedScene" id=13]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+export( NodePath ) onready var ui_container = get_node(ui_container) as Control
+"
+
 [node name="inventory" type="CanvasLayer"]
+script = SubResource( 1 )
+ui_container = NodePath("ui_container")
 
 [node name="ui_container" type="Control" parent="."]
 anchor_right = 1.0
@@ -26,7 +34,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -53,6 +60,7 @@ margin_bottom = -245.0
 [node name="hotbar" parent="ui_container" instance=ExtResource( 11 )]
 
 [node name="coins" parent="." instance=ExtResource( 3 )]
+visible = false
 margin_left = -885.0
 margin_top = -17.0
 margin_right = -466.0

@@ -2,6 +2,11 @@ extends KinematicBody
 
 #something
 export( NodePath ) onready var label = get_node( label ) as VBoxContainer
+export( NodePath ) onready var preview_parent = get_node(preview_parent) as Spatial
+export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
+
+var current_level : Spatial
+var object_point
 
 #NodeReferences
 onready var camera = $"%Camera"
@@ -16,6 +21,7 @@ var velocity := Vector3.ZERO
 var start_pos = Vector3(0, .5, 0)
 
 var is_moving = false
+var mode = "normal"
 
 onready var walk_animation = $AnimationPlayer
 
@@ -26,7 +32,13 @@ var cam = 0
 export( NodePath ) onready var interact_zone = get_node( interact_zone ) as Area
 export( NodePath ) onready var interact_labels = get_node( interact_labels ) as Control
 
+export( NodePath ) onready var camera_normal = get_node( camera_normal ) as Camera
+export( NodePath ) onready var camera_top = get_node( camera_top ) as Camera
+
 var current_interactable
+
+var object_point2
+var cursor_pos := Vector3.ZERO
 
 func _ready():
 	
@@ -41,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		velocity = move_and_slide(velocity, Vector3.UP)
 	
 func _process(delta):
+	object_point2 = WhatObject()
+	previewCursor()
 	if velocity.x == 0 and velocity.z == 0:
 		idle.set_visible(true)
 		walk.set_visible(false)
@@ -90,6 +104,13 @@ func _on_Player_visibility_changed():
 
 #Interactions
 func _input( event ):
+	cursor_pos = Vector3(ScrenPointToRay())
+	cursor_pos.y = 0
+	
+	#This Snaps the Objects Position to a grid
+	cursor_pos.x = stepify(cursor_pos.x, 2)
+	cursor_pos.z = stepify(cursor_pos.z, 2)
+	object_point = WhatObject()
 	if Input.is_action_just_pressed("cam_test"):
 		match cam:
 			0:
@@ -101,6 +122,12 @@ func _input( event ):
 	if event.is_action_pressed("interact") and current_interactable:
 		pivot.set_visible(false)
 		current_interactable.interact()
+	if mode == "cable":
+		if event is InputEventScreenTouch and OS.get_name() == "Android":
+			pass
+		if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
+			if ("object_monitor" in object_point.collider.name):
+				print(current_level.get_node(object_point.collider.name).device_name)
 
 func _on_InteractionArea_area_exited(area):
 	if current_interactable == area:
@@ -109,3 +136,39 @@ func _on_InteractionArea_area_exited(area):
 		
 		interact_labels.hide()
 		current_interactable = null
+
+func _on_cable_used( type ):
+	label.modulate = Color8(255,255,255,0)
+	yield(CameraTransition.transition_camera3D(camera_normal, camera_top, 1), "completed")
+	mode = "cable"
+	preview_parent.set_visible(true)
+	SignalManager.emit_signal("cable_used")
+
+func previewCursor():
+	if(object_point2.has("position")):
+		preview_parent.global_translation = cursor_pos
+		preview_parent.global_translation.y = 10.0
+		no_sign.global_translation = cursor_pos
+		no_sign.global_translation.y = 10.0
+		
+#Fires a ray to check for cursor 3D location
+func ScrenPointToRay():
+	var spaceState = get_world().direct_space_state
+	var mousePos = get_viewport().get_mouse_position()
+	var camera = get_tree().root.get_camera()
+	var rayOrigin = camera.project_ray_origin(mousePos)
+	var rayEnd = rayOrigin + camera.project_ray_normal(mousePos) * 2000
+	var rayArray = spaceState.intersect_ray(rayOrigin, rayEnd)
+	if rayArray.has("position"):
+		return rayArray["position"]
+	return Vector3()
+		
+func WhatObject():
+	var spaceState = get_world().direct_space_state
+	
+	var mousePos = get_viewport().get_mouse_position()
+	var camera = get_tree().root.get_camera()
+	var rayOrigin = camera.project_ray_origin(mousePos)
+	var rayEnd = rayOrigin + camera.project_ray_normal(mousePos) * 2000
+	var rayArray = spaceState.intersect_ray(rayOrigin, rayEnd)
+	return rayArray

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -12,6 +12,23 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=11]
 [ext_resource path="res://resources/Models/Materials/computer/parts-0-Tower.obj" type="ArrayMesh" id=12]
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends StaticBody
+
+export var device_name : String
+
+onready var name_line_edit = $ui/pc_screen/holder/name_lineEdit
+
+func _ready():
+	if device_name.empty():
+		device_name = self.name
+	name_line_edit.text = device_name
+
+
+func _on_name_lineEdit_text_changed(new_text):
+	device_name = new_text
+"
 
 [sub_resource type="DynamicFont" id=7]
 
@@ -45,6 +62,7 @@ albedo_texture = ExtResource( 6 )
 
 [node name="object_monitor" type="StaticBody"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = SubResource( 12 )
 
 [node name="ui@ColorRect@holder@inv@inventory@MarginContainer@slot_container@inventory_slot" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -110,6 +128,13 @@ margin_right = 1652.0
 margin_bottom = 932.0
 rect_pivot_offset = Vector2( 766, 624 )
 custom_styles/panel = SubResource( 10 )
+
+[node name="name_lineEdit" type="LineEdit" parent="ui/pc_screen/holder"]
+margin_left = 376.0
+margin_top = 101.0
+margin_right = 2630.0
+margin_bottom = 253.0
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="to_io" type="Button" parent="ui/pc_screen/holder"]
 margin_left = 71.0
@@ -177,4 +202,5 @@ size = 1.679
 
 [connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
 [connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
+[connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]

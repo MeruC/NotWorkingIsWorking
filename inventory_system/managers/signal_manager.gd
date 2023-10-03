@@ -18,6 +18,8 @@ signal ui_scale_changed( value )
 
 # Player
 signal player_life_changed( life, max_life )
+signal cable_used()
+signal cable_done()
 # listen to
 signal heal_player( health_points )
 

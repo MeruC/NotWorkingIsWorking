@@ -582,6 +582,7 @@ rect_pivot_offset = Vector2( 210, 150 )
 theme = ExtResource( 15 )
 access = 1
 filters = PoolStringArray( "*.tscn" )
+show_hidden_files = true
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true

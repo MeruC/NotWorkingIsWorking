@@ -22,8 +22,7 @@ func get_use_text():
 
 # Apply the healing.
 func execute():
-	CameraTransition.transition_camera3D(Global.playerCamera, Global.playerCameraTop, 1)
-	Global.player.label.modulate = Color8(255,255,255,0)
+	Global.player._on_cable_used( cable_type )
 	print("Place")
 
 
