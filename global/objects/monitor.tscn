@@ -17,6 +17,11 @@
 script/source = "extends StaticBody
 
 export var device_name : String
+var fa01 : StaticBody
+var fa02 : StaticBody
+
+onready var label = $ui/pc_screen/holder/Label
+
 
 onready var name_line_edit = $ui/pc_screen/holder/name_lineEdit
 
@@ -28,6 +33,13 @@ func _ready():
 
 func _on_name_lineEdit_text_changed(new_text):
 	device_name = new_text
+	
+func _set_connector( connection ):
+	if fa01 == null:
+		fa01 = connection
+		label.text = \"Connected to %s\" % fa01.device_name
+	elif fa02 == null:
+		fa02 = connection
 "
 
 [sub_resource type="DynamicFont" id=7]
@@ -135,6 +147,12 @@ margin_top = 101.0
 margin_right = 2630.0
 margin_bottom = 253.0
 rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="ui/pc_screen/holder"]
+margin_left = 376.0
+margin_top = 325.0
+margin_right = 416.0
+margin_bottom = 393.0
 
 [node name="to_io" type="Button" parent="ui/pc_screen/holder"]
 margin_left = 71.0

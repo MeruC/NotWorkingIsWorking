@@ -311,6 +311,7 @@ ConfirmDialog="*res://scenes/others/confirmDialog.tscn"
 CameraTransitionDefault="*res://addon/camera_transititionDefault/camera_transition_default.tscn"
 TransitionNode="*res://nodes/transition.tscn"
 Pixelizer="*res://nodes/pixelizer.tscn"
+LevelGlobal="*res://global/level_global.gd"
 
 [debug]
 
@@ -473,7 +474,7 @@ main_menu={
 }
 cam_test={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777359,"unicode":0,"echo":false,"script":null)
  ]
 }
 

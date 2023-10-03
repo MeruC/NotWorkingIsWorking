@@ -30,7 +30,8 @@ onready var animation_player = $AnimationPlayer
 var menu = 0
 
 func _process(delta):
-	object_point2 = WhatObject()
+	#object_point2 = WhatObject()
+	pass
 
 func _ready():
 	match(OS.get_name()):

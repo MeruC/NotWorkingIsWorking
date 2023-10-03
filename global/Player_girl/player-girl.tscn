@@ -147,7 +147,8 @@ collision_mask = 9
 script = ExtResource( 5 )
 label = NodePath("interact")
 preview_parent = NodePath("previews")
-no_sign = NodePath("no-sign")
+no_sign = NodePath("previews/no-sign")
+place = NodePath("previews/place")
 interact_zone = NodePath("InteractionArea")
 interact_labels = NodePath("interact")
 camera_normal = NodePath("Camera/Camera")
@@ -279,14 +280,14 @@ text = "action"
 visible = false
 
 [node name="place" parent="previews" instance=ExtResource( 12 )]
+visible = false
 
 [node name="rotate" parent="previews" instance=ExtResource( 9 )]
 visible = false
 
-[node name="remove" parent="previews" instance=ExtResource( 10 )]
-visible = false
+[node name="no-sign" parent="previews" instance=ExtResource( 11 )]
 
-[node name="no-sign" parent="." instance=ExtResource( 11 )]
+[node name="remove" parent="previews" instance=ExtResource( 10 )]
 visible = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_Player_visibility_changed"]

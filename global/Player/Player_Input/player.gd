@@ -4,6 +4,7 @@ extends KinematicBody
 export( NodePath ) onready var label = get_node( label ) as VBoxContainer
 export( NodePath ) onready var preview_parent = get_node(preview_parent) as Spatial
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
+export( NodePath ) onready var place = get_node(place) as StaticBody
 
 var current_level : Spatial
 var object_point
@@ -22,6 +23,8 @@ var start_pos = Vector3(0, .5, 0)
 
 var is_moving = false
 var mode = "normal"
+
+var object_number = 0
 
 onready var walk_animation = $AnimationPlayer
 
@@ -54,7 +57,15 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta):
 	object_point2 = WhatObject()
-	previewCursor()
+	if ("object_monitor" in object_point2.collider.name):
+		previewCursor()
+		place.set_visible(true)
+		no_sign.set_visible(false)
+	else:
+		previewCursor()
+		place.set_visible(false)
+		no_sign.set_visible(true)
+	
 	if velocity.x == 0 and velocity.z == 0:
 		idle.set_visible(true)
 		walk.set_visible(false)
@@ -122,12 +133,25 @@ func _input( event ):
 	if event.is_action_pressed("interact") and current_interactable:
 		pivot.set_visible(false)
 		current_interactable.interact()
+		
 	if mode == "cable":
 		if event is InputEventScreenTouch and OS.get_name() == "Android":
 			pass
 		if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
 			if ("object_monitor" in object_point.collider.name):
-				print(current_level.get_node(object_point.collider.name).device_name)
+				match object_number:
+					0:
+						print(current_level.get_node(object_point.collider.name).device_name)
+						LevelGlobal.object_hold = current_level.get_node(object_point.collider.name)
+						object_number = 1
+						print("Select a different device")
+					1:
+						if (LevelGlobal.object_hold == current_level.get_node(object_point.collider.name)):
+							print("Select a different device")
+						else:
+							current_level.get_node(object_point.collider.name)._set_connector(LevelGlobal.object_hold)
+							LevelGlobal.object_hold._set_connector(current_level.get_node(object_point.collider.name))
+							object_number = 0
 
 func _on_InteractionArea_area_exited(area):
 	if current_interactable == area:
