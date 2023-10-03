@@ -22,7 +22,7 @@ export(NodePath) onready var qr_textureRect = get_node(qr_textureRect) as Textur
 onready var level = get_node(".")
 
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
-var saved_levels_folder = "user://saved_levels/"
+var saved_levels_folder = "res://online_mode/saved_levels/"
 var new_json = {}
 var question_list = []
 var json_file = "res://online_mode/json/question_bank.json"
@@ -248,7 +248,7 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	]
 
 	# Replace the following URL with the actual URL of your PHP server script
-	var server_url = "http://192.168.100.247:8080/upload_file.php"  # Replace with your server's URL
+	var server_url = "https://projectinfl.000webhostapp.com/upload.php"  # Replace with your server's URL
 
 	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	if error != OK:

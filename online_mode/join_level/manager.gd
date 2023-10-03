@@ -1,13 +1,14 @@
 extends Control
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "http://192.168.100.247:8080/authentication1.php"
+const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
+var levelname = ""
 # This script for directing users into another scene
 
 var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
-var levels_folder = "user://saved_levels/"
+var levels_folder = "res://online_mode/online_levels/"
 onready var level_scene = $HBoxContainer/code
 
 export(NodePath) onready var textfield = get_node(textfield) as LineEdit
@@ -35,7 +36,6 @@ func _on_join_pressed():
 		Load.load_scene(self,full_path)
 	else:
 		error_popup.visible = true
-		textfield.text = ""
 	get_file()
 	
 	
@@ -49,7 +49,6 @@ func _process(_delta):
 		_send_request(request)
 	
 func _http_request_completed(result, response_code, headers, body):
-	var download_link
 	is_requesting = false
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr("Error with connection: " + str(result))
@@ -64,14 +63,17 @@ func _http_request_completed(result, response_code, headers, body):
 	var response = parse_json(response_body)
 
 	if result == HTTPRequest.RESULT_SUCCESS:
-		var _response_data = body.get_string_from_utf8()
-		print("Response Data:", _response_data)
-
-	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
-		var response_dict = response["response"]
-		if "file_uploaded" in response_dict:
-			download_link = response_dict["file_uploaded"]
-			download(download_link, "res://online_mode/saved_levels/"+level_scene)
+		print("Response Data:", response_body)  # Print the response data
+		
+		# Save the response as a new file
+		var newFilePath = "res://online_mode/online_levels/"+textfield.text.to_upper() + ".tscn"  # Replace with your desired path and filename
+		var file = File.new()
+		if file.open(newFilePath, File.WRITE) == OK:
+			file.store_string(response_body)
+			file.close()
+			print("File saved as:", newFilePath)
+		else:
+			printerr("Failed to save the file")
 
 func _send_request(request : Dictionary):
 	var client = HTTPClient.new()
@@ -89,20 +91,6 @@ func _send_request(request : Dictionary):
 func get_file():
 	var command = "get_specific_file"
 	var filename = textfield.text.to_upper() + ".tscn"
-	var data = {"filename" : filename}
+	var data = {"filename" : filename, "local_filepath": level_scene}
 	request_queue.push_back({"command" : command, "data" : data})
-	
-	
-func download(link, path):
-	var http = HTTPRequest.new()
-	add_child(http)
-	http.connect("request_completed", self, "_http_request_completed")
-	http.set_download_file(path)
-	var request = http.request(link)
-	if request != OK:
-		push_error("Http request error")
-
-	var file = File.new()
-	if file.open(path, File.WRITE) == OK:
-		print("File downloaded to:", path)
 	

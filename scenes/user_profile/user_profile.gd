@@ -19,10 +19,6 @@ func _ready():
 		var girl_skin = preload("res://resources/Models/Player -girl/idle/idle- Girl.png")
 		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.mesh = girl
 		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.material = girl_skin
-	if settings_data.email == "":
-		$user_profile/logout_bg/logout_btn.text = "Login"
-	else:
-		$user_profile/logout_bg/logout_btn.text = "Logout"
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
 	$edit_avatar.visible = true
@@ -36,5 +32,4 @@ func _on_questionBank_btn_pressed():
 
 
 func _on_logout_btn_pressed():
-	if settings_data.email == "":
 		$login.visible = true
