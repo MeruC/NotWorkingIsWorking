@@ -8,7 +8,7 @@ var levelname = ""
 # This script for directing users into another scene
 
 var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
-var levels_folder = "res://online_mode/online_levels/"
+var levels_folder = "res://online_mode/saved_levels/"
 onready var level_scene = $HBoxContainer/code
 
 export(NodePath) onready var textfield = get_node(textfield) as LineEdit
@@ -66,7 +66,7 @@ func _http_request_completed(result, response_code, headers, body):
 		print("Response Data:", response_body)  # Print the response data
 		
 		# Save the response as a new file
-		var newFilePath = "res://online_mode/online_levels/"+textfield.text.to_upper() + ".tscn"  # Replace with your desired path and filename
+		var newFilePath = "res://online_mode/saved_levels/"+textfield.text.to_upper() + ".tscn"  # Replace with your desired path and filename
 		var file = File.new()
 		if file.open(newFilePath, File.WRITE) == OK:
 			file.store_string(response_body)
