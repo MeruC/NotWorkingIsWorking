@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -92,10 +92,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _on_enter_btn_pressed():
-	pass # Replace with function body.
-
-
 func _on_close_pressed():
 	$\".\".visible = false
 
@@ -116,7 +112,7 @@ CheckButton/icons/on = ExtResource( 30 )
 script/source = "extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = \"http://192.168.100.247:8080/authentication1.php\"
+const SERVER_URL = \"https://projectinfl.000webhostapp.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -129,7 +125,6 @@ func _ready():
 	# Connect our request handler:
 	add_child(http_request)
 	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
-	$login_enter_btn.connect(\"pressed\", self, \"_authenticate\")
 
 func _process(_delta):
 	# Check if we have pending requests in the queue:
@@ -161,18 +156,17 @@ func _http_request_completed(result, response_code, headers, body):
 		if \"authenticated\" in response_dict:
 			if response_dict[\"authenticated\"] == true:
 				 # Authentication was successful, show a success message with the nickname
-				$\"../login_sucess\".visible = true
-				$\"../login_sucess/AnimationPlayer\".play(\"login_sucessful\")
+				
 				nickname = response_dict[\"nickname\"]
 				settings_data.email = nickname
 				SaveManager.save_game()
-				$\"../login_sucess/panel/message\".text = \"Welcome, \" + nickname
+				$\"..\".visible = false
+				$\"../../cloud_storage\".visible = true
 			else:
 				# Authentication failed, check if the response contains \"account_exists\" key
 				if \"account_exists\" in response_dict and response_dict[\"account_exists\"] == false:
 					print(\"Account doesn't exist\")
 				else:
-					$\"../warning\".visible = true
 					$\"../warning/warning/warning\".text = \"email/password incorrect\"
 					
 	if !request_queue.empty():
@@ -201,8 +195,8 @@ func _send_request(request : Dictionary):
 		return
 
 func _authenticate():
-	var username_input = $username/username
-	var password_input = $password2
+	var username_input = $username
+	var password_input = $password
 
 	var username = username_input.text
 	var user_password = password_input.text
@@ -212,10 +206,10 @@ func _authenticate():
 	request_queue.push_back({\"command\": command, \"data\": data})
 
 
-func _on_AnimationPlayer_animation_finished(login_sucessful):
-	$\"..\".queue_free()
-	Load.load_scene(self,\"res://scenes/main_screen/main_screen.tscn\")
 
+
+func _on_enter_btn_pressed():
+	_authenticate()
 "
 
 [sub_resource type="DynamicFont" id=4]
@@ -691,6 +685,101 @@ Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = SubResource( 29 )
 PanelContainer/styles/panel = SubResource( 30 )
 
+[sub_resource type="GDScript" id=58]
+script/source = "extends CanvasLayer
+
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://projectinfl.000webhostapp.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+export (Resource) var settings_data
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	add_child(http_request)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+	
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	if result != HTTPRequest.RESULT_SUCCESS:
+		printerr(\"Error with connection: \" + str(result))
+		return
+
+	# Save the response as a new file
+	var newFilePath = \"user://save_data/save.dat\"  # Replace with your desired path and filename
+	var file = File.new()
+	if file.open(newFilePath, File.WRITE) == OK:
+		file.store_buffer(body)  # Save the binary data
+		file.close()
+		print(\"Binary file saved as:\", newFilePath)
+	else:
+		printerr(\"Failed to save the binary file\")
+
+func _send_request(request : Dictionary):
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+		
+func get_saveData():
+	var command = \"retrieve_saveData\"
+	var filename = \"billy.dat\"
+	var localpath = \"user://save_data/save.dat\"
+	var data = {\"filename\" : filename, \"local_filepath\": localpath}
+	request_queue.push_back({\"command\" : command, \"data\" : data})
+	
+func upload_file(request: HTTPRequest) -> void:
+	var file_name = settings_data.email+\".dat\"
+	var file = File.new()
+	file.open(\"user://save_data/save.dat\", File.READ)
+	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
+	print(file_data)
+	file.close()
+	
+	var body = PoolByteArray()
+	body.append_array(\"\\r\\n--BodyBoundaryHere\\r\\n\".to_utf8())
+	body.append_array((\"Content-Disposition: form-data; name=\\\"file\\\"; filename=\\\"%s\\\"\\r\\n\" % file_name).to_utf8())
+	body.append_array(\"Content-Type: application/octet-stream\\r\\n\\r\\n\".to_utf8())
+	body.append_array(file_data)
+	body.append_array(\"\\r\\n--BodyBoundaryHere--\\r\\n\".to_utf8())
+
+	var headers = [
+		\"Content-Type: multipart/form-data; boundary=BodyBoundaryHere\"
+	]
+
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = \"https://projectinfl.000webhostapp.com/upload_saveData.php\"  # Replace with your server's URL
+
+	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
+	if error != OK:
+		push_error(\"An error occurred in the HTTP request.\")
+		
+func _on_retrieve_data_pressed():
+	get_saveData()
+
+
+func _on_upload_data_pressed():
+	var request = HTTPRequest.new()
+	request.connect(\"request_completed\", self, \"_request_callback\")
+	add_child(request)
+	upload_file(request)
+"
+
 [node name="user_profile" type="Node2D"]
 script = ExtResource( 5 )
 settings_data = ExtResource( 18 )
@@ -1079,13 +1168,12 @@ theme = ExtResource( 16 )
 text = "Back"
 
 [node name="login" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource( 25 )
 
 [node name="bg" type="TextureRect" parent="login"]
 modulate = Color( 0, 0, 0, 0.635294 )
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1200.0
+margin_bottom = 600.0
 rect_scale = Vector2( 1.59454, 1.79499 )
 texture = ExtResource( 28 )
 
@@ -1131,7 +1219,7 @@ margin_bottom = 667.0
 theme = ExtResource( 16 )
 text = "Password:"
 
-[node name="LineEdit" type="LineEdit" parent="login/login"]
+[node name="username" type="LineEdit" parent="login/login"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1143,7 +1231,7 @@ margin_bottom = 473.0
 rect_scale = Vector2( 1.03143, 0.718774 )
 theme = SubResource( 53 )
 
-[node name="LineEdit2" type="LineEdit" parent="login/login"]
+[node name="password" type="LineEdit" parent="login/login"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1236,6 +1324,60 @@ margin_bottom = 175.0
 theme = SubResource( 31 )
 text = "x"
 
+[node name="cloud_storage" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 58 )
+settings_data = ExtResource( 18 )
+
+[node name="bg" type="ColorRect" parent="cloud_storage"]
+modulate = Color( 0, 0, 0, 0.329412 )
+margin_right = 1917.0
+margin_bottom = 1079.0
+
+[node name="TextureRect" type="TextureRect" parent="cloud_storage"]
+margin_left = 282.0
+margin_top = 102.0
+margin_right = 1069.0
+margin_bottom = 872.0
+rect_scale = Vector2( 1.7636, 1.14875 )
+texture = ExtResource( 11 )
+
+[node name="retrieve_data" type="Button" parent="cloud_storage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -460.5
+margin_top = -240.0
+margin_right = 460.5
+margin_bottom = -108.0
+theme = ExtResource( 16 )
+text = "retrieve save data"
+
+[node name="upload_data" type="Button" parent="cloud_storage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -441.0
+margin_top = 81.0
+margin_right = 441.0
+margin_bottom = 213.0
+theme = ExtResource( 16 )
+text = "upload save data"
+
+[node name="Label" type="Label" parent="cloud_storage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.5
+margin_top = -34.0
+margin_right = 46.5
+margin_bottom = 34.0
+theme = ExtResource( 16 )
+text = "or"
+
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 27 )]
 stream = ExtResource( 8 )
 bus = "Music"
@@ -1249,5 +1391,7 @@ bus = "Music"
 [connection signal="pressed" from="edit_avatar/select_btn" to="edit_avatar" method="_on_select_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/back_btn" to="edit_avatar" method="_on_back_btn_pressed"]
 [connection signal="toggled" from="login/selection" to="login" method="_on_selection_toggled"]
-[connection signal="pressed" from="login/login/enter_btn" to="login" method="_on_enter_btn_pressed"]
+[connection signal="pressed" from="login/login/enter_btn" to="login/login" method="_on_enter_btn_pressed"]
 [connection signal="pressed" from="login/close" to="login" method="_on_close_pressed"]
+[connection signal="pressed" from="cloud_storage/retrieve_data" to="cloud_storage" method="_on_retrieve_data_pressed"]
+[connection signal="pressed" from="cloud_storage/upload_data" to="cloud_storage" method="_on_upload_data_pressed"]

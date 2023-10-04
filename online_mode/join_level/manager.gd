@@ -72,6 +72,7 @@ func _http_request_completed(result, response_code, headers, body):
 			file.store_string(response_body)
 			file.close()
 			print("File saved as:", newFilePath)
+			$CanvasLayer/dialog_box.visible = true
 		else:
 			printerr("Failed to save the file")
 
