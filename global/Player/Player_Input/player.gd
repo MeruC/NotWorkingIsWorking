@@ -6,6 +6,9 @@ export( NodePath ) onready var preview_parent = get_node(preview_parent) as Spat
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
 export( NodePath ) onready var place = get_node(place) as StaticBody
 
+onready var tween = $"%Tween"
+
+
 var current_level : Spatial
 var object_point
 
@@ -25,6 +28,7 @@ var is_moving = false
 var mode = "normal"
 
 var object_number = 0
+var previous_object = ""
 
 onready var walk_animation = $AnimationPlayer
 
@@ -57,14 +61,28 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta):
 	object_point2 = WhatObject()
-	if ("object_monitor" in object_point2.collider.name):
-		previewCursor()
-		place.set_visible(true)
-		no_sign.set_visible(false)
-	else:
-		previewCursor()
-		place.set_visible(false)
-		no_sign.set_visible(true)
+	if LevelGlobal.on_cable_mode:
+		match(object_number):
+			0:
+				if("object_monitor" in object_point2.collider.name):
+					previewCursor()
+					place.set_visible(true)
+					no_sign.set_visible(false)
+				else:
+					previewCursor()
+					place.set_visible(false)
+					no_sign.set_visible(true)
+			1:
+				match(object_point2.collider.name):
+					previous_object:
+						previewCursor()
+						place.set_visible(false)
+						no_sign.set_visible(true)
+					_:
+						previewCursor()
+						place.set_visible(true)
+						no_sign.set_visible(false)
+					
 	
 	if velocity.x == 0 and velocity.z == 0:
 		idle.set_visible(true)
@@ -142,6 +160,7 @@ func _input( event ):
 				match object_number:
 					0:
 						print(current_level.get_node(object_point.collider.name).device_name)
+						previous_object = object_point.collider.name
 						LevelGlobal.object_hold = current_level.get_node(object_point.collider.name)
 						object_number = 1
 						print("Select a different device")
@@ -164,9 +183,12 @@ func _on_InteractionArea_area_exited(area):
 func _on_cable_used( type ):
 	label.modulate = Color8(255,255,255,0)
 	yield(CameraTransition.transition_camera3D(camera_normal, camera_top, 1), "completed")
+	camera.c_rot = Vector3(0,0,0)
+	camera.rotation_degrees.y = 0
 	mode = "cable"
 	preview_parent.set_visible(true)
 	SignalManager.emit_signal("cable_used")
+	LevelGlobal.on_cable_mode = true
 
 func previewCursor():
 	if(object_point2.has("position")):

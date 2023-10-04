@@ -11,6 +11,7 @@ var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
 func _ready():
+	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
@@ -19,7 +20,7 @@ func _ready():
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
-			Global.playerCameraTop = get_node("Player/Camera/CameraTop")
+			Global.playerCameraTop = get_node("Player/CameraTop")
 			Global.player = get_node("Player")
 			Global.player.current_level = self
 		elif setting_data.gender == "female":
@@ -27,7 +28,7 @@ func _ready():
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")
 			Global.playerCamera.current = true
-			Global.playerCameraTop = get_node("Player/Camera/CameraTop")
+			Global.playerCameraTop = get_node("Player/CameraTop")
 			Global.player = get_node("Player")
 			Global.player.current_level = self
 			print(self)
