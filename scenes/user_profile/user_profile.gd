@@ -32,4 +32,8 @@ func _on_questionBank_btn_pressed():
 
 
 func _on_logout_btn_pressed():
+	if settings_data.email != "":
+		$cloud_storage.visible = true
+	else:
 		$login.visible = true
+		
