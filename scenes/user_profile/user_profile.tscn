@@ -738,7 +738,7 @@ func _send_request(request : Dictionary):
 		
 func get_saveData():
 	var command = \"retrieve_saveData\"
-	var filename = \"billy.dat\"
+	var filename = settings_data.email+\".dat\"
 	var localpath = \"user://save_data/save.dat\"
 	var data = {\"filename\" : filename, \"local_filepath\": localpath}
 	request_queue.push_back({\"command\" : command, \"data\" : data})
@@ -1168,6 +1168,7 @@ theme = ExtResource( 16 )
 text = "Back"
 
 [node name="login" type="CanvasLayer" parent="."]
+visible = false
 script = SubResource( 25 )
 
 [node name="bg" type="TextureRect" parent="login"]
