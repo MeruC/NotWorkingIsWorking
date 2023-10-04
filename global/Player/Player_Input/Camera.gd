@@ -15,17 +15,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if t == false:
-		if(Input.is_action_just_pressed("camera_rotate_left")):
-			t = true
-			c_rot += Vector3(0,PI/-4,0)
-			tween.interpolate_property(camera, "rotation", camera.rotation, c_rot, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.start()
-		if(Input.is_action_just_pressed("camera_rotate_right")):
-			t = true
-			c_rot += Vector3(0,PI/4,0)
-			tween.interpolate_property(camera, "rotation", camera.rotation, c_rot, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.start()
+	if !LevelGlobal.on_cable_mode:
+		if t == false:
+			if(Input.is_action_just_pressed("camera_rotate_left")):
+				t = true
+				c_rot += Vector3(0,PI/-4,0)
+				tween.interpolate_property(camera, "rotation", camera.rotation, c_rot, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				tween.start()
+			if(Input.is_action_just_pressed("camera_rotate_right")):
+				t = true
+				c_rot += Vector3(0,PI/4,0)
+				tween.interpolate_property(camera, "rotation", camera.rotation, c_rot, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				tween.start()
 			
 			
 
