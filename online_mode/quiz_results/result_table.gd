@@ -54,16 +54,18 @@ func _http_request_completed(result, response_code, headers, body):
 		if response.size() > 0:
 			var data = response  # The response is an array of dictionaries
 			headers = data[0].keys()
+			$GridContainer.visible = true
 			display_table(data)
 		else:
-			print("JSON data is empty")
+			$GridContainer.visible = false
+			$Label.text = "no one answered yet."
 	else:
-		print("Invalid JSON response")
+		$GridContainer.visible = false
+		$Label.text = "no one answered yet."
 
 func display_table(data):
 	# Define your headers manually
 	headers = ["id", "username", "scores", "timestamp"]
-
 	# Clear the existing grid contents
 	clear_grid()
 
