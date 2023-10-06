@@ -364,7 +364,9 @@ margin_bottom = 1044.0
 theme = ExtResource( 7 )
 text = "levels score"
 
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/student" to="." method="_on_student_pressed"]
 [connection signal="pressed" from="VBoxContainer/professor" to="." method="_on_professor_pressed"]
 [connection signal="pressed" from="popup/popup/Panel/ColorRect/close_button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="popup/popup/Panel/ColorRect/submit_button" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="create_levels" to="." method="_on_create_levels_pressed"]

@@ -34,3 +34,12 @@ func _on_submit_button_pressed():
 
 func _on_close_button_pressed():
 	popup.visible = false
+
+
+func _on_create_levels_pressed():
+	Load.load_scene(self, "res://online_mode/quiz_results/view_createdlevels.tscn")
+
+
+func _on_back_pressed():
+	queue_free()
+	Load.load_scene(self, "res://online_mode/level_create_Menu/level_create.tscn")

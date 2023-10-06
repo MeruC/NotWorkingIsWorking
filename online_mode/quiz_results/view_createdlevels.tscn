@@ -1,0 +1,187 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=2]
+[ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=3]
+[ext_resource path="res://online_mode/quiz_results/result_table.gd" type="Script" id=4]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+onready var grid_container = $GridContainer
+var headers = []  # Initialize headers as an empty array
+export (Resource) var settings_data
+onready var result_table = $result_table
+
+func _ready():
+	add_child(http_request)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+	get_createlevels()
+	
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+		
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+		
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		printerr(\"Error with connection: \" + str(result))
+		return
+	
+	var response_body = body.get_string_from_utf8()
+	var response = parse_json(response_body)
+	print(response)
+	
+	if response is Array:
+		if response.size() > 0:
+			var data = response  # The response is an array of dictionaries
+			headers = data[0].keys()
+			display_table(data)
+		else:
+			print(\"JSON data is empty\")
+	else:
+		print(\"Invalid JSON response\")
+
+func display_table(data):
+	# Define your headers manually
+	headers = [\"file_id\", \"file_name\", \"creator\"]
+
+	# Clear the existing grid contents
+	clear_grid()
+
+	var font_resource = preload(\"res://resources/font/login_signup_font.tres\")
+	for j in range(headers.size()):
+		var header_label = Label.new()
+		header_label.text = headers[j]
+		header_label.rect_min_size = Vector2(100, 30)  # Set the size here
+		header_label.add_font_override(\"font\", font_resource)
+		grid_container.add_child(header_label)
+		header_label.align = Label.ALIGN_CENTER  # Center-align text
+
+	# Create and add data cells to subsequent rows
+	for i in range(data.size()):
+		var row = data[i]
+		for j in range(headers.size()):
+			if headers[j] == \"file_name\":  # Check if the header is \"email\"
+				var cell_button = Button.new()  # Create a button for email addresses
+				cell_button.text = str(row[headers[j]])  # Set the button text to the email address
+				cell_button.rect_min_size = Vector2(200, 90)  # Set the size here
+				cell_button.connect(\"pressed\", result_table, \"get_levelresult\", [row[headers[j]]])  # Connect the button press signal with email as an argument
+				grid_container.add_child(cell_button)
+			else:
+				var cell_label = Label.new()  # Create a label for other data
+				cell_label.text = str(row[headers[j]])
+				cell_label.add_font_override(\"font\", font_resource)
+				cell_label.rect_min_size = Vector2(200, 90)  # Set the size here
+				grid_container.add_child(cell_label)
+				cell_label.align = Label.ALIGN_CENTER  # Center-align text
+
+
+func clear_grid():
+	# Remove all child nodes from the grid_container
+	while grid_container.get_child_count() > 0:
+		var child = grid_container.get_child(0)
+		grid_container.remove_child(child)
+		child.queue_free()
+	
+func get_createlevels():
+	var creator = settings_data.email
+	var command = \"get_createdlevels\"
+	var data = {\"creator\": creator}
+	request_queue.push_back({\"command\": command, \"data\": data})
+
+func _on_exit_pressed():
+	Load.load_scene(self, \"res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn\")
+"
+
+[node name="levels_table" type="Node2D"]
+script = SubResource( 1 )
+settings_data = ExtResource( 1 )
+
+[node name="exit" type="Button" parent="."]
+margin_left = 74.0
+margin_top = 40.0
+margin_right = 371.0
+margin_bottom = 172.0
+theme = ExtResource( 5 )
+text = "back"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 357.0
+margin_top = 212.0
+margin_right = 1558.0
+margin_bottom = 915.0
+columns = 3
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+
+[node name="result_table" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="result_table"]
+margin_left = 78.0
+margin_top = 86.0
+margin_right = 290.0
+margin_bottom = 298.0
+rect_scale = Vector2( 8.15828, 4.31344 )
+texture = ExtResource( 3 )
+
+[node name="GridContainer" type="GridContainer" parent="result_table"]
+margin_left = 239.0
+margin_top = 201.0
+margin_right = 1712.0
+margin_bottom = 887.0
+rect_scale = Vector2( 0.949932, 1 )
+columns = 4
+
+[node name="back" type="Button" parent="result_table"]
+margin_left = 53.0
+margin_top = 43.0
+margin_right = 205.0
+margin_bottom = 175.0
+focus_mode = 0
+theme = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "x"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="result_table/back" to="result_table" method="_on_back_pressed"]
