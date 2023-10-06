@@ -19,6 +19,7 @@ func _ready():
 		var girl_skin = preload("res://resources/Models/Player -girl/idle/idle- Girl.png")
 		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.mesh = girl
 		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.material = girl_skin
+
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
 	$edit_avatar.visible = true

@@ -291,7 +291,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NotWorking"
-run/main_scene="res://online_mode/join_level/join_level.tscn"
+run/main_scene="res://open.tscn"
 config/icon="res://iconNW.png"
 
 [autoload]

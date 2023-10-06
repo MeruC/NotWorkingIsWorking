@@ -248,7 +248,7 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	]
 
 	# Replace the following URL with the actual URL of your PHP server script
-	var server_url = "https://projectinfl.000webhostapp.com/upload.php"  # Replace with your server's URL
+	var server_url = "https://nwork.slarenasitsolutions.com/upload.php"  # Replace with your server's URL
 
 	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	if error != OK:

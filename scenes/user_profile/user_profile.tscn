@@ -118,7 +118,7 @@ CheckButton/icons/on = ExtResource( 30 )
 script/source = "extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = \"https://projectinfl.000webhostapp.com/authentication.php\"
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -172,7 +172,8 @@ func _http_request_completed(result, response_code, headers, body):
 				if \"account_exists\" in response_dict and response_dict[\"account_exists\"] == false:
 					print(\"Account doesn't exist\")
 				else:
-					$\"../warning/warning/warning\".text = \"email/password incorrect\"
+					$\"../../notification\".visible = true
+					$\"../../notification/message\".text = \"email/password incorrect\"
 					
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
@@ -627,7 +628,7 @@ script/source = "extends Control
 
 export (Resource) var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = \"https://projectinfl.000webhostapp.com/authentication.php\"
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -799,7 +800,7 @@ PanelContainer/styles/panel = SubResource( 30 )
 script/source = "extends CanvasLayer
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = \"https://projectinfl.000webhostapp.com/authentication.php\"
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -836,8 +837,8 @@ func _http_request_completed(result, response_code, headers, body):
 	if file.open(newFilePath, File.WRITE) == OK:
 		file.store_buffer(body)  # Save the binary data
 		file.close()
-		$\"../notification\".visible = true
-		$\"../notification/message\".text = \"Data successfully retrieved please reload the game.\"
+		$\"../reload_notif\".visible = true
+		$\"../reload_notif/message2\".text = \"Data successfully retrieved please reload the game.\"
 	else:
 		printerr(\"Failed to save the binary file\")
 
@@ -862,14 +863,17 @@ func get_saveData():
 	request_queue.push_back({\"command\" : command, \"data\" : data})
 	
 func upload_file(request: HTTPRequest) -> void:
-	var file_name = settings_data.email+\".dat\"
+	var file_name = settings_data.email + \".dat\"
+	var email = settings_data.email
 	var file = File.new()
 	file.open(\"user://save_data/save.dat\", File.READ)
 	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
-	print(file_data)
 	file.close()
 	
 	var body = PoolByteArray()
+	body.append_array(\"\\r\\n--BodyBoundaryHere\\r\\n\".to_utf8())
+	body.append_array((\"Content-Disposition: form-data; name=\\\"email\\\"\\r\\n\\r\\n%s\\r\\n\" % email).to_utf8())
+
 	body.append_array(\"\\r\\n--BodyBoundaryHere\\r\\n\".to_utf8())
 	body.append_array((\"Content-Disposition: form-data; name=\\\"file\\\"; filename=\\\"%s\\\"\\r\\n\" % file_name).to_utf8())
 	body.append_array(\"Content-Type: application/octet-stream\\r\\n\\r\\n\".to_utf8())
@@ -879,18 +883,18 @@ func upload_file(request: HTTPRequest) -> void:
 	var headers = [
 		\"Content-Type: multipart/form-data; boundary=BodyBoundaryHere\"
 	]
-
 	# Replace the following URL with the actual URL of your PHP server script
-	var server_url = \"https://projectinfl.000webhostapp.com/upload_saveData.php\"  # Replace with your server's URL
+	var server_url = \"https://nwork.slarenasitsolutions.com/upload_saveData.php\"  # Replace with your server's URL
 
 	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	if error != OK:
 		push_error(\"An error occurred in the HTTP request.\")
 		$\"../notification\".visible = true
-		$\"../notification/message\".text = \"failed to upload the data.\"
+		$\"../notification/message\".text = \"Failed to upload the data.\"
 	else:
 		$\"../notification\".visible = true
 		$\"../notification/message\".text = \"Your data successfully uploaded in the database.\"
+	
 func _on_retrieve_data_pressed():
 	get_saveData()
 
@@ -904,6 +908,10 @@ func _on_upload_data_pressed():
 
 func _on_Button_pressed():
 	$\".\".visible = false
+
+
+func _on_confirm2_pressed():
+	get_tree().quit()
 "
 
 [node name="user_profile" type="Node2D"]
@@ -1554,6 +1562,41 @@ margin_bottom = 911.0
 theme = ExtResource( 34 )
 text = "ok"
 
+[node name="reload_notif" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="reload_notif"]
+modulate = Color( 0, 0, 0, 0.552941 )
+margin_right = 1916.0
+margin_bottom = 1080.0
+
+[node name="panel2" type="TextureRect" parent="reload_notif"]
+margin_left = 359.0
+margin_top = 202.0
+margin_right = 571.0
+margin_bottom = 414.0
+rect_scale = Vector2( 5.80268, 3.21409 )
+texture = ExtResource( 33 )
+
+[node name="message2" type="Label" parent="reload_notif"]
+margin_left = 495.0
+margin_top = 305.0
+margin_right = 1473.0
+margin_bottom = 697.0
+theme = ExtResource( 16 )
+text = "a"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="confirm2" type="Button" parent="reload_notif"]
+margin_left = 895.0
+margin_top = 779.0
+margin_right = 1072.0
+margin_bottom = 911.0
+theme = ExtResource( 34 )
+text = "ok"
+
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/questionBank_bg/questionBank_btn" to="." method="_on_questionBank_btn_pressed"]
 [connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
@@ -1570,3 +1613,4 @@ text = "ok"
 [connection signal="pressed" from="cloud_storage/upload_data" to="cloud_storage" method="_on_upload_data_pressed"]
 [connection signal="pressed" from="cloud_storage/Button" to="cloud_storage" method="_on_Button_pressed"]
 [connection signal="pressed" from="notification/confirm" to="login" method="_on_confirm_pressed"]
+[connection signal="pressed" from="reload_notif/confirm2" to="cloud_storage" method="_on_confirm2_pressed"]

@@ -1,10 +1,11 @@
 extends Control
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
+const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
 var levelname = ""
+var result = ""
 # This script for directing users into another scene
 
 var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
@@ -26,16 +27,15 @@ func _on_back_pressed():
 
 
 func _on_join_pressed():
+	$loading_scrreen.visible = true
+	$loading_scrreen/AnimationPlayer.play("loading")
 	level_scene = textfield.text.to_upper() + ".tscn"
 	var full_path = levels_folder + level_scene
 	var file = File.new()
 	get_file()
-
 	if file.open(full_path, File.READ) == OK:
 		file.close()
 		Load.load_scene(self,full_path)
-	else:
-		error_popup.visible = true
 	get_file()
 	
 	
@@ -61,10 +61,13 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 
 	var response = parse_json(response_body)
-
+	
 	if result == HTTPRequest.RESULT_SUCCESS:
 		print("Response Data:", response_body)  # Print the response data
 		
+		if response_body == "Failed to download file from FTP server":
+			result = "failed"
+			return
 		# Save the response as a new file
 		var newFilePath = "res://online_mode/saved_levels/"+textfield.text.to_upper() + ".tscn"  # Replace with your desired path and filename
 		var file = File.new()
@@ -72,10 +75,15 @@ func _http_request_completed(result, response_code, headers, body):
 			file.store_string(response_body)
 			file.close()
 			print("File saved as:", newFilePath)
+			$loading_scrreen/AnimationPlayer.stop()
+			$loading_scrreen.visible = false
 			$CanvasLayer/dialog_box.visible = true
+			$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "The level has been successfully downloaded."
 		else:
 			printerr("Failed to save the file")
+			
 
+	
 func _send_request(request : Dictionary):
 	var client = HTTPClient.new()
 	var data = client.query_string_from_dict({"data" : JSON.print(request['data'])})
@@ -95,3 +103,10 @@ func get_file():
 	var data = {"filename" : filename, "local_filepath": level_scene}
 	request_queue.push_back({"command" : command, "data" : data})
 	
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$loading_scrreen.visible = false
+	$CanvasLayer/dialog_box.visible = true
+	$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "Invalid level code"
+
