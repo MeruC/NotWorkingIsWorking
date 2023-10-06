@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
+const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
@@ -46,12 +46,11 @@ func _http_request_completed(result, response_code, headers, body):
 		if "authenticated" in response_dict:
 			if response_dict["authenticated"] == true:
 				 # Authentication was successful, show a success message with the nickname
-				$"../login_sucess".visible = true
-				$"../login_sucess/AnimationPlayer".play("login_sucessful")
 				nickname = response_dict["nickname"]
 				settings_data.email = nickname
 				SaveManager.save_game()
-				$"../login_sucess/panel/message".text = "Welcome, " + nickname
+				$".".visible = false
+				$"../retrieve_savedata".visible = true
 			else:
 				# Authentication failed, check if the response contains "account_exists" key
 				if "account_exists" in response_dict and response_dict["account_exists"] == false:
@@ -97,7 +96,6 @@ func _authenticate():
 	request_queue.push_back({"command": command, "data": data})
 
 
-func _on_AnimationPlayer_animation_finished(login_sucessful):
-	$"..".queue_free()
-	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+
+
 

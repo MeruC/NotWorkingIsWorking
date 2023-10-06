@@ -2,7 +2,7 @@ extends CanvasLayer
 
 export (Resource) var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
+const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
