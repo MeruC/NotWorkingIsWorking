@@ -7,7 +7,7 @@ var i = 0
 
 #database_connection
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://projectinfl.000webhostapp.com/authentication.php"
+const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 export (Resource) var settings_data
 var request_queue : Array = []
@@ -192,9 +192,9 @@ func _send_request(request : Dictionary):
 		return
 
 func addScore():
-	var username = settings_data.email
+	var username = settings_data.player_name
 	var scores = score
-	var table_name = json_data["level_name"]
+	var table_name = json_code
 	var data = {
 		"command": "upload_score",
 		"username": username,

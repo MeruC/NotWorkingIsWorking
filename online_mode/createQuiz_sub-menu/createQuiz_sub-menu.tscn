@@ -356,6 +356,14 @@ margin_bottom = 58.0
 theme = SubResource( 91 )
 text = "SUBMIT"
 
+[node name="create_levels" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 912.0
+margin_right = 804.0
+margin_bottom = 1044.0
+theme = ExtResource( 7 )
+text = "levels score"
+
 [connection signal="pressed" from="VBoxContainer/student" to="." method="_on_student_pressed"]
 [connection signal="pressed" from="VBoxContainer/professor" to="." method="_on_professor_pressed"]
 [connection signal="pressed" from="popup/popup/Panel/ColorRect/close_button" to="." method="_on_close_button_pressed"]

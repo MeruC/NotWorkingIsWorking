@@ -17,7 +17,7 @@ export(NodePath) onready var minute = get_node(minute) as LineEdit
 export(NodePath) onready var second = get_node(second) as LineEdit
 export(NodePath) onready var successful_popup = get_node(successful_popup) as Control
 export(NodePath) onready var qr_textureRect = get_node(qr_textureRect) as TextureRect
-
+export(Resource) var settings_data
 
 onready var level = get_node(".")
 
@@ -33,6 +33,7 @@ var initial_text = ""
 var game_code
 func _ready():
 	show_questions()
+	
 func show_questions():
 	initial_text = lesson_button.text
 	var lesson_name = lesson_button.text
@@ -231,12 +232,16 @@ func _request_callback(result, response_code, headers, body) -> void:
 
 func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var file_name = game_code+".tscn"
+	var creator_name = settings_data.email
 	var file = File.new()
 	file.open("res://online_mode/saved_levels/" + file_name, File.READ)
 	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
 	file.close()
 
 	var body = PoolByteArray()
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
+	
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % file_name).to_utf8())
 	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
