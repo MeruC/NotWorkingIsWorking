@@ -1,0 +1,193 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/lvl_7_8_discuss_bg.png" type="Texture" id=2]
+[ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/level7_discussion/bus_topology.png" type="Texture" id=5]
+[ext_resource path="res://offline_levels/video_player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://offline_levels/level7/level7.ogv" type="VideoStream" id=7]
+[ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=8]
+[ext_resource path="res://offline_levels/level7/level7_cover.png" type="Texture" id=9]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+export( NodePath ) onready var VoiceGen = get_node( VoiceGen ) as AudioStreamPlayer
+export( NodePath ) onready var dialog = get_node( dialog ) as Label
+
+var json_file = \"res://offline_levels/json/level7_script.json\"
+var json_data = []
+var textSpeed = 1
+var total_character = 0
+var click = 0
+var size = 0
+var game_scene = \"res://offline_levels/level7/level7.tscn\"
+var touch = true
+
+func _ready():
+	Pixelizer.set_visible(false)
+	VoiceGen.pitch_scale = 1.5
+	var file = File.new()
+	if file.open(json_file, File.READ) == OK:
+		var json_content = file.get_as_text()
+		file.close()
+		var json_result = JSON.parse(json_content)
+		if json_result.error == OK:
+			json_data = json_result.result
+		else:
+			print(\"JSON parsing error:\", json_result.error_string)
+	else:
+		print(\"Failed to open JSON file.\")
+	update_dialog()
+	
+func _process(_delta):
+	if $dialog.visible_characters < total_character:
+		 $dialog.visible_characters += textSpeed
+		
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		click +=1 
+		$dialog.visible_characters = total_character
+		if click == 2:
+			click = 0
+			size += 1
+			update_dialog()
+
+			
+func _input(event):
+	if touch and event is InputEventScreenTouch and event.pressed:
+		click += 1
+		$dialog.visible_characters = total_character
+		if click == 2:
+			click = 0
+			size += 1
+			update_dialog()
+
+func update_dialog():
+	if size < json_data.size():
+		var title = json_data[size][\"title\"]
+		var content = json_data[size][\"content\"]
+		var image_title = json_data[size][\"png\"]
+		$dialog.text = content
+		total_character = content.length()
+		
+		$dialog.visible_characters = 0
+		$title.text = title
+		
+		VoiceGen.read(dialog.text)
+		
+		if size == 3:
+			$image_holder.visible = true
+			$image_holder.texture = load(\"res://resources/offline_mode_Asset/level_7/level7_discussion/\"+image_title+\".png\")
+		elif size == 5:
+			$image_holder.visible = true
+			$image_holder.texture = load(\"res://resources/offline_mode_Asset/level_7/level7_discussion/\"+image_title+\".png\")
+		elif size == 7:
+			$image_holder.visible = true
+			$image_holder.texture = load(\"res://resources/offline_mode_Asset/level_7/level7_discussion/\"+image_title+\".png\")
+		elif size == 9:
+			$image_holder.visible = true
+			$image_holder.texture = load(\"res://resources/offline_mode_Asset/level_7/level7_discussion/\"+image_title+\".png\")
+		elif size == 11:
+			$image_holder.visible = true
+			$image_holder.texture = load(\"res://resources/offline_mode_Asset/level_7/level7_discussion/\"+image_title+\".png\")
+		elif size == 12:
+			$image_holder.visible = false
+			$videoplayer.visible = true
+		else:
+			$videoplayer.visible = false
+			$image_holder.visible = false
+	else:
+		Load.load_scene(self,game_scene)
+		print(\"Dialog ended.\")
+
+func _on_video_player_cancel():
+	$videoplayer/video_cover.visible = true
+	$videoplayer/video_player.visible = false
+	touch = true
+	click = 0
+
+func _on_video_player_finish():
+	$videoplayer/video_cover.visible = true
+	$videoplayer/video_player.visible = false
+	touch = true
+	click = 0
+
+
+func _on_play_pressed():
+	touch = false
+	$videoplayer/video_cover.visible = false
+	$videoplayer/video_player.visible = true
+"
+
+[node name="level7" type="Node2D"]
+script = SubResource( 1 )
+VoiceGen = NodePath("VoiceGeneratorAudioStreamPlayer")
+dialog = NodePath("dialog")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 47.9256, 26.9915 )
+texture = ExtResource( 2 )
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 403.0
+margin_top = 201.0
+margin_right = 1506.0
+margin_bottom = 269.0
+theme = ExtResource( 1 )
+text = "title"
+align = 1
+valign = 1
+
+[node name="dialog" type="Label" parent="."]
+margin_left = 420.0
+margin_top = 306.0
+margin_right = 1503.0
+margin_bottom = 761.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "dialog"
+autowrap = true
+
+[node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="image_holder" type="TextureRect" parent="."]
+visible = false
+margin_left = 673.0
+margin_top = 286.0
+margin_right = 1637.0
+margin_bottom = 1064.0
+rect_scale = Vector2( 0.581307, 0.6035 )
+texture = ExtResource( 5 )
+
+[node name="videoplayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="video_player" parent="videoplayer" instance=ExtResource( 6 )]
+visible = false
+stream = ExtResource( 7 )
+
+[node name="video_cover" type="TextureRect" parent="videoplayer"]
+margin_left = 649.0
+margin_top = 385.0
+margin_right = 1296.0
+margin_bottom = 747.0
+texture = ExtResource( 9 )
+
+[node name="play" type="Button" parent="videoplayer/video_cover"]
+margin_right = 4507.0
+margin_bottom = 2564.0
+rect_scale = Vector2( 0.143341, 0.141177 )
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 8 )
+flat = true
+icon_align = 1
+
+[connection signal="cancel" from="videoplayer/video_player" to="." method="_on_video_player_cancel"]
+[connection signal="finish" from="videoplayer/video_player" to="." method="_on_video_player_finish"]
+[connection signal="pressed" from="videoplayer/video_cover/play" to="." method="_on_play_pressed"]

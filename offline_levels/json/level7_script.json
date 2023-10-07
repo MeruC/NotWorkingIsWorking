@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Network Topology",
+    "png": "",
+    "content": "Welcome to Network Topology level. It's time to discover how different devices connect and communicate in various network topologies. Are you ready? Let’s go!"
+  },
+  {
+    "title": "Network Topology",
+    "png": "",
+    "content": "A Network Topology is the arrangement with which computer systems or network devices are connected to each other. Let's explore some common topologies you'll encounter."
+  },
+  {
+    "title": "Star Topology",
+    "png": "",
+    "content": "In a star topology, devices connect directly to a central hub. It's easy to set up and troubleshoot. If the hub fails, the network does too."
+  },
+  {
+    "title": "Star Topology",
+    "png": "star_topology",
+    "content": ""
+  },
+  {
+    "title": "Bus Topology",
+    "png": "",
+    "content": "A bus topology is like a straight highway with stops along the way. All devices connect to a single central cable. Data travels along the cable, and each device decides whether to receive it or not."
+  },
+  {
+    "title": "Bus Topology",
+    "png": "bus_topology",
+    "content": ""
+  },
+  {
+    "title": "Ring Topology",
+    "png": "",
+    "content": "Picture a circular chain, like a relay race. In a ring topology, each device connects to exactly two others, forming a loop. Data moves in one direction. If a device fails, it can disrupt the entire ring."
+  },
+  {
+    "title": "Ring Topology",
+    "png": "ring_topology",
+    "content": ""
+  },
+  {
+    "title": "Mesh Topology",
+    "png": "mesh_topology",
+    "content": "Visualize a web where everything is interconnected. In a mesh topology, every device connects to every other device. It's robust and can withstand device or cable failures without affecting the network."
+  },
+  {
+    "title": "Mesh Topology",
+    "png": "mesh_topology",
+    "content": ""
+  },
+  {
+    "title": "Hybrid Topology",
+    "png": "",
+    "content": "Consider a mix of the above. Hybrid topologies combine different types to meet specific needs. You can have star-connected hubs within a larger mesh, for example."
+  },
+  {
+    "title": "Hybrid Topology",
+    "png": "hybrid_topology",
+    "content": ""
+  },
+  {
+    "title": "Varied Insights",
+    "png": "",
+    "content": "Tap the video to play."
+  },
+  {
+    "title": "Congratulations!",
+    "png": "",
+    "content": "Now, let's see if you can identify these topologies in action!"
+  }
+]
