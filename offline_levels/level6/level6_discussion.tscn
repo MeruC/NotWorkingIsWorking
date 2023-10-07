@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/offline_mode_Asset/level_6/cards.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=2]
@@ -7,9 +7,12 @@
 [ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/wireless.png" type="Texture" id=6]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=7]
-[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://resources/soundtrack/menu/Pleasant Creek.mp3" type="AudioStream" id=9]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/coaxial_cable.png" type="Texture" id=10]
+[ext_resource path="res://offline_levels/video_player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://offline_levels/level6/level6.ogv" type="VideoStream" id=12]
+[ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=14]
+[ext_resource path="res://offline_levels/level6/video6_cover.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -201,6 +204,72 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/path = NodePath("title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 388, 105 ), Vector2( 384, 294 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 397, 226 ), Vector2( 1156, 404 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dialog:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1153, 333 ), Vector2( 534, 164 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "new_intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 397, 226 ), Vector2( 397, 177 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1153, 333 ) ]
+}
+
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 4 )
@@ -212,6 +281,7 @@ font_data = ExtResource( 7 )
 
 [node name="level6_manager" type="Node2D"]
 script = ExtResource( 3 )
+VoiceGen = NodePath("VoiceGeneratorAudioStreamPlayer")
 dialog = NodePath("dialog")
 
 [node name="bg" type="TextureRect" parent="."]
@@ -238,6 +308,8 @@ autowrap = true
 anims/RESET = SubResource( 3 )
 anims/card_flip = SubResource( 2 )
 anims/discussion_anim = SubResource( 5 )
+anims/end = SubResource( 7 )
+anims/new_intro = SubResource( 6 )
 
 [node name="dialog" type="Label" parent="."]
 margin_left = 397.0
@@ -284,10 +356,6 @@ margin_bottom = 414.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 autowrap = true
 
-[node name="AudioLoopPlayer" parent="." instance=ExtResource( 8 )]
-stream = ExtResource( 9 )
-bus = "Music"
-
 [node name="image_holder" type="TextureRect" parent="."]
 visible = false
 margin_left = 818.0
@@ -296,3 +364,34 @@ margin_right = 1444.0
 margin_bottom = 1136.0
 rect_scale = Vector2( 0.513002, 0.494657 )
 texture = ExtResource( 10 )
+
+[node name="videoplayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="video_player" parent="videoplayer" instance=ExtResource( 11 )]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1088.0
+stream = ExtResource( 12 )
+
+[node name="video_cover" type="TextureRect" parent="videoplayer"]
+margin_left = 688.0
+margin_top = 254.0
+margin_right = 1335.0
+margin_bottom = 617.0
+rect_scale = Vector2( 0.841454, 0.812287 )
+texture = ExtResource( 15 )
+
+[node name="play_btn" type="Button" parent="videoplayer/video_cover"]
+margin_right = 5796.0
+margin_bottom = 3245.0
+rect_scale = Vector2( 0.110936, 0.110388 )
+icon = ExtResource( 14 )
+flat = true
+icon_align = 1
+
+[node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 13 )]
+
+[connection signal="cancel" from="videoplayer/video_player" to="." method="_on_video_player_cancel"]
+[connection signal="finish" from="videoplayer/video_player" to="." method="_on_video_player_finish"]
+[connection signal="pressed" from="videoplayer/video_cover/play_btn" to="." method="_on_play_btn_pressed"]

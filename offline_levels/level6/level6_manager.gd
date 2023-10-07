@@ -1,6 +1,6 @@
 extends Node2D
 
-#export( NodePath ) onready var VoiceGen = get_node( VoiceGen ) as AudioStreamPlayer
+export( NodePath ) onready var VoiceGen = get_node( VoiceGen ) as AudioStreamPlayer
 export( NodePath ) onready var dialog = get_node( dialog ) as Label
 
 var json_file = "res://offline_levels/json/level6_script.json"
@@ -14,7 +14,7 @@ var touch = true
 
 func _ready():
 	Pixelizer.set_visible(false)
-	#VoiceGen.pitch_scale = 1.5
+	VoiceGen.pitch_scale = 1.5
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
 		var json_content = file.get_as_text()
@@ -62,7 +62,7 @@ func update_dialog():
 		$dialog.visible_characters = 0
 		$title.text = title
 		
-		#VoiceGen.read(dialog.text)
+		VoiceGen.read(dialog.text)
 		
 		if size == 3:
 			$card_wireless.visible = true
@@ -82,7 +82,7 @@ func update_dialog():
 			$AnimationPlayer.play("card_flip")
 			$card_content.text = content
 		if size == 7:
-			$AnimationPlayer.play("RESET")
+			$AnimationPlayer.play("new_intro")
 			$card_wireless.visible = false
 			$card_title.visible = false
 			$card_content.visible = false
@@ -105,6 +105,30 @@ func update_dialog():
 			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
 		if size == 15:
 			$image_holder.visible = false
+		if size == 16:
+			$videoplayer.visible = true
+		if size == 17:
+			$videoplayer.visible = false
+			$AnimationPlayer.play("end")
+			
 	else:
 		Load.load_scene(self,game_scene)
 		print("Dialog ended.")
+
+
+func _on_play_btn_pressed():
+	touch = false
+	$videoplayer/video_cover.visible = false
+	$videoplayer/video_player.visible = true
+
+func _on_video_player_cancel():
+	$videoplayer/video_cover.visible = true
+	$videoplayer/video_player.visible = false
+	touch = true
+	click = 0
+
+func _on_video_player_finish():
+	$videoplayer/video_cover.visible = true
+	$videoplayer/video_player.visible = false
+	touch = true
+	click = 0

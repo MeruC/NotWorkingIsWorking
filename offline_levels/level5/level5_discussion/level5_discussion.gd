@@ -10,6 +10,7 @@ var total_character = 0
 var click = 0
 var size = 0
 var game_scene = "res://offline_levels/level5/level5.tscn"
+var touch = true
 
 func _ready():
 	VoiceGen.pitch_scale = 1.5
@@ -32,7 +33,7 @@ func _process(_delta):
 		$CanvasLayer/NinePatchRect/dialog.visible_characters += textSpeed
 		
 func _input(event):
-	if event is InputEventScreenTouch and event.pressed:
+	if touch and event is InputEventScreenTouch and event.pressed:
 		click += 1
 		$CanvasLayer/NinePatchRect/dialog.visible_characters = total_character
 		if click == 2:
@@ -71,6 +72,33 @@ func update_dialog():
 			$AnimationPlayer.play("osi_laayer")
 		if size == 11:
 			$CanvasLayer/osi_layer.visible = false
+			$CanvasLayer/videoplayer.visible = true
+			$AnimationPlayer.play("video_player")
+			
+		if size == 12:
+			$CanvasLayer/videoplayer.visible = false
 			$AnimationPlayer.play("ending")
 	else:
 		Load.load_scene(self,game_scene)
+
+
+func _on_play_btn_pressed():
+	touch = false
+	$CanvasLayer/videoplayer/TextureRect.visible = false
+	$CanvasLayer/videoplayer/video_player.visible = true
+
+
+func _on_video_player_cancel():
+	$CanvasLayer/videoplayer.visible = true
+	$CanvasLayer/videoplayer/TextureRect.visible = true
+	$CanvasLayer/videoplayer/video_player.visible = false
+	click = 0
+	touch = true
+
+
+func _on_video_player_finish():
+	$CanvasLayer/videoplayer.visible = true
+	$CanvasLayer/videoplayer/TextureRect.visible = true
+	$CanvasLayer/videoplayer/video_player.visible = false
+	click = 0
+	touch = true

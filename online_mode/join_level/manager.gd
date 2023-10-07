@@ -19,8 +19,6 @@ export(NodePath) onready var error_popup = get_node(error_popup) as Control
 func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", self, "_http_request_completed")
-	
-
 
 func _on_back_pressed():
 	Load.load_scene(self,previous_scene)

@@ -44,6 +44,10 @@
         "dialog": ""
     },
     {
+        "title": "Varied Insights:",
+        "dialog": "tap the video to play."
+    },
+    {
         "title": "Now challenge yourself!",
         "dialog": ""
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://offline_levels/level5/level5_discussion/level5_discussion.gd" type="Script" id=1]
 [ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,37 @@
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/osi_layer.png" type="Texture" id=4]
 [ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=6]
+[ext_resource path="res://offline_levels/video_player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://offline_levels/level5/level5_discussion/level5.ogv" type="VideoStream" id=8]
+[ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/level5_covervideo.png" type="Texture" id=9]
+[ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/NinePatchRect/title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 247, 134 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 386, 222 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "application_layer"
@@ -109,7 +140,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=17]
 resource_name = "osi_laayer"
 length = 1.6
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/osi_layer:frame")
 tracks/0/interp = 1
@@ -133,6 +163,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/osi_layer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1359, 382.5 ), Vector2( 964, 387 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -160,6 +202,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.0247057, 0.134613 ), Vector2( 0.503529, 0.421589 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1148, 342 ), Vector2( 692, 342 ) ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -207,6 +261,33 @@ tracks/0/keys = {
 "values": [ 2, 4 ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "video_player"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/NinePatchRect/dialog:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 244, 170 ), Vector2( 447, 195 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/NinePatchRect/dialog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="level5_discussion" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -223,10 +304,10 @@ margin_bottom = 1073.0
 texture = ExtResource( 3 )
 
 [node name="title" type="Label" parent="CanvasLayer/NinePatchRect"]
-margin_left = 412.0
-margin_top = 323.0
-margin_right = 1589.0
-margin_bottom = 400.0
+margin_left = 247.0
+margin_top = 134.0
+margin_right = 1424.0
+margin_bottom = 211.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
@@ -235,15 +316,42 @@ align = 1
 autowrap = true
 
 [node name="dialog" type="Label" parent="CanvasLayer/NinePatchRect"]
-visible = false
-margin_left = 394.0
-margin_top = 220.0
-margin_right = 1172.0
-margin_bottom = 546.0
+margin_left = 386.0
+margin_top = 222.0
+margin_right = 1534.0
+margin_bottom = 564.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "aaaaaa"
 autowrap = true
+
+[node name="videoplayer" type="CanvasLayer" parent="CanvasLayer"]
+visible = false
+
+[node name="video_player" parent="CanvasLayer/videoplayer" instance=ExtResource( 7 )]
+visible = false
+margin_left = -2.0
+margin_top = -14.0
+margin_right = 1918.0
+margin_bottom = 1074.0
+stream = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/videoplayer"]
+margin_left = 663.0
+margin_top = 256.0
+margin_right = 1316.0
+margin_bottom = 622.0
+rect_scale = Vector2( 0.834982, 0.829017 )
+texture = ExtResource( 9 )
+
+[node name="play_btn" type="Button" parent="CanvasLayer/videoplayer/TextureRect"]
+margin_top = 5.0
+margin_right = 7076.0
+margin_bottom = 3843.0
+rect_scale = Vector2( 0.0920796, 0.0939638 )
+icon = ExtResource( 10 )
+flat = true
+icon_align = 1
 
 [node name="osi_layer" type="Sprite" parent="CanvasLayer"]
 visible = false
@@ -251,9 +359,9 @@ position = Vector2( 1359, 382.5 )
 scale = Vector2( 0.0247057, 0.134613 )
 texture = ExtResource( 4 )
 hframes = 8
-frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 20 )
 anims/application_layer = SubResource( 15 )
 anims/datalink_layer = SubResource( 11 )
 anims/ending = SubResource( 18 )
@@ -264,5 +372,10 @@ anims/physical_layer = SubResource( 10 )
 anims/presentation_layer = SubResource( 16 )
 anims/session_layer = SubResource( 14 )
 anims/transport_layer = SubResource( 13 )
+anims/video_player = SubResource( 19 )
 
 [node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 5 )]
+
+[connection signal="cancel" from="CanvasLayer/videoplayer/video_player" to="." method="_on_video_player_cancel"]
+[connection signal="finish" from="CanvasLayer/videoplayer/video_player" to="." method="_on_video_player_finish"]
+[connection signal="pressed" from="CanvasLayer/videoplayer/TextureRect/play_btn" to="." method="_on_play_btn_pressed"]

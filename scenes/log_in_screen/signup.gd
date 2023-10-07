@@ -87,6 +87,7 @@ func _add_user():
 	var cpassword_input = $_confirmpassword/cpassword
 
 	var username = username_input.text
+	print(username)
 	var user_password = password_input.text
 	var cpassword = cpassword_input.text
 	

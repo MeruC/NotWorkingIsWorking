@@ -121,6 +121,7 @@ func get_createlevels():
 	var creator = settings_data.email
 	var command = \"get_createdlevels\"
 	var data = {\"creator\": creator}
+	print(data)
 	request_queue.push_back({\"command\": command, \"data\": data})
 
 func _on_exit_pressed():
@@ -196,6 +197,8 @@ theme = ExtResource( 2 )
 align = 1
 valign = 1
 autowrap = true
+
+[node name="result" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="result_table/back" to="result_table" method="_on_back_pressed"]
