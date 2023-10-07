@@ -8,9 +8,9 @@ func _ready():
 	$level4.disabled = true
 	if settings_data.level1 == "complete":
 		$level2.disabled = false
-	elif settings_data.level2 == "complete":
+	if settings_data.level2 == "complete":
 		$level3.disabled = false
-	elif settings_data.level3 == "complete":
+	if settings_data.level3 == "complete":
 		$level4.disabled = false
 	
 func _on_level1_pressed():

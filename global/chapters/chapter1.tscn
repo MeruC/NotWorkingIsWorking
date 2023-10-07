@@ -243,6 +243,7 @@ stream = ExtResource( 8 )
 bus = "Music"
 
 [node name="direction" type="Label" parent="."]
+visible = false
 margin_left = 1408.0
 margin_top = 506.0
 margin_right = 1886.0

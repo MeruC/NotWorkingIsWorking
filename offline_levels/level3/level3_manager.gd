@@ -13,6 +13,7 @@ var touch = true
 var game_scene = "res://offline_levels/level3/level3.tscn"
 
 func _ready():
+	Pixelizer.set_visible(false)
 	VoiceGen.pitch_scale = 1.5
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:

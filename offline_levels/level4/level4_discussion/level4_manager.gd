@@ -13,6 +13,7 @@ var touch = true
 var game_scene = "res://offline_levels/level4/level4.tscn"
 
 func _ready():
+	Pixelizer.set_visible(false)
 	VoiceGen.pitch_scale = 1.5
 	$CanvasLayer/well_done.visible == false
 	var file = File.new()
