@@ -13,12 +13,6 @@ func _ready():
 	$user_profile/term_progress.min_value = 0  # Set the minimum value
 	$user_profile/router_progress.value = settings_data.net1_skills  # Set the current progress
 	$user_profile/term_progress.value = settings_data.net2_skills  # Set the current progress
-	var gender = settings_data.gender
-	if gender == "female":
-		var girl = preload("res://resources/Models/Player -girl/idle/idle- Girl.obj")
-		var girl_skin = preload("res://resources/Models/Player -girl/idle/idle- Girl.png")
-		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.mesh = girl
-		$user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh.material = girl_skin
 
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false

@@ -1127,6 +1127,7 @@ environment = ExtResource( 23 )
 mesh = ExtResource( 19 )
 material = SubResource( 21 )
 script = ExtResource( 24 )
+settings_data = ExtResource( 18 )
 
 [node name="back_btn" type="Button" parent="user_profile"]
 margin_left = 14.0

@@ -22,22 +22,14 @@ func _on_level4_pressed():
 func _on_level5_pressed():
 	Load.load_scene(self,"res://offline_levels/level5/level5_discussion/level5_discussion.tscn")
 
-
-
 func _on_level6_pressed():
 	Load.load_scene(self,"res://offline_levels/level6/level6_discussion.tscn")
 	
-
-
 func _on_level7_pressed():
 	Load.load_scene(self,"res://offline_levels/level7/level7_discussion.tscn")
 
-
-
 func _on_level8_pressed():
 	Load.load_scene(self,"res://offline_levels/level8/level8_discussion.tscn")
-
-
 
 func _on_level9_pressed():
 	pass # Replace with function body.
