@@ -2,6 +2,8 @@ extends Control
 
 export (PackedScene) var choice_scene
 export (Resource) var settings_data
+
+
 var score = 0
 var json_file = "res://offline_levels/json/level3_questions.json"
 var json_data = ""

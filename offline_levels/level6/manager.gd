@@ -21,6 +21,7 @@ export (NodePath) onready var type_label =  get_node(type_label) as Label
 export (NodePath) onready var game_over =  get_node(game_over) as Control
 export (NodePath) onready var gameover_indicator =  get_node(gameover_indicator) as Label
 export (NodePath) onready var gameover_score =  get_node(gameover_score) as Label
+export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
 var textures_holder = []
@@ -70,6 +71,7 @@ func _on_crimp_pressed():
 			if slot_textures == arrangement_A:
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
+				score_validation()
 			else:
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
@@ -77,7 +79,23 @@ func _on_crimp_pressed():
 			if slot_textures == arrangement_B:
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
+				score_validation()
 			else:
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
 		game_over.visible = true
+
+func score_validation():
+	if settings_data.level6 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level6 = "complete"
+		SaveManager.save_game()

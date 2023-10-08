@@ -31,6 +31,10 @@ export(NodePath) onready var instructions_popup = get_node(instructions_popup) a
 export(NodePath) onready var instructions_sprite = get_node(instructions_sprite) as Sprite
 ##
 
+# players data
+export(Resource) var settings_data
+
+
 var specific_positions = [
 	Vector2(50, 50), 
 	Vector2(450, 50), 
@@ -84,6 +88,7 @@ func _on_submit_pressed():
 		score = 7
 		popup_score_label.text = "Your Score: " + str(score) + " / 7"
 		popup_next_button.disabled = false
+		score_validation()
 	else:
 		popup_indicator_label.text = "Level Failed!"
 		for child in slot_container.get_children():
@@ -112,3 +117,18 @@ func _on_tap_pressed():
 
 func _on_restart_pressed():
 	Load.load_scene(self,level5_scene)
+
+func score_validation():
+	if settings_data.level5 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level5 = "complete"
+		SaveManager.save_game()

@@ -23,6 +23,7 @@ export (String) var level5 = "incomplete"
 export (String) var level6 = "incomplete"
 export (String) var level7 = "incomplete"
 export (String) var level8 = "incomplete"
+export (String) var level9 = "incomplete"
 export (String) var email
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
@@ -54,6 +55,10 @@ func set_data( data ):
 	level3 = data.level3
 	level4 = data.level4
 	level5 = data.level5
+	level6 = data.level6
+	level7 = data.level7
+	level8 = data.level8
+	level9 = data.level9
 	email = data.email
 	emit_changed()
 # Pack the data in a Dictionary.
@@ -80,5 +85,9 @@ func get_data():
 		"level3": level3,
 		"level4": level4,
 		"level5": level5,
+		"level6": level6,
+		"level7": level7,
+		"level8": level8,
+		"level9": level9,
 		"email": email
 	}

@@ -14,6 +14,7 @@ export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) a
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
 export(NodePath) onready var score_display = get_node(score_display) as Label
+export(Resource) var settings_data
 
 var score = 0
 var question_number = 0
@@ -147,6 +148,8 @@ func calculate_score():
 		gameover_indicator.text = "Level Complete!"
 		gameover_score.text = "Your Score: " + score
 		gameover_next.disabled = false
+		score_validation()
+	
 	else:
 		gameover_indicator.text = "Level Failed"
 		gameover_score.text = "Your Score: " + str(score)
@@ -154,3 +157,18 @@ func calculate_score():
 		
 	gameover_popup.visible = true
 ##
+
+func score_validation():
+	if settings_data.level8 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level8 = "complete"
+		SaveManager.save_game()

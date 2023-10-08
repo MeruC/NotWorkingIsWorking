@@ -32,6 +32,11 @@ export(NodePath) onready var instructions_popup = get_node(instructions_popup) a
 export(NodePath) onready var instructions_sprite = get_node(instructions_sprite) as Sprite
 ##
 
+#players data
+export(Resource) var settings_data
+##
+
+
 var home_scene = "res://main_screen/main_screen.tscn"
 var next_scene = "res://offline_levels/level5/level5_discussion/level5_discussion.tscn"
 var level4_scene = "res://offline_levels/level4/level4.tscn"
@@ -160,6 +165,7 @@ func _on_continue_pressed():
 		if int(score_label.text) >= 4:
 			popup_indicator_label.text = "Level Complete!"
 			popup_next_button.disabled = false
+			score_validation()
 		else:
 			popup_indicator_label.text = "Level Failed!"
 			popup_next_button.disabled = true
@@ -170,3 +176,18 @@ func _on_continue_pressed():
 
 func _on_restart_pressed():
 	Load.load_scene(self,level4_scene)
+
+func score_validation():
+	if settings_data.level4 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level4 = "complete"
+		SaveManager.save_game()

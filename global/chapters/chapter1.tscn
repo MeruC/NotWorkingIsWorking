@@ -127,7 +127,7 @@ shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.1
 
-[node name="Camera" type="Camera" parent="."]
+[node name="main_camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -4.42804, 9.84598, 6.40031 )
 script = ExtResource( 3 )
 
@@ -250,6 +250,32 @@ margin_right = 1886.0
 margin_bottom = 574.0
 theme = ExtResource( 4 )
 text = "swipe right"
+
+[node name="level_camera" type="Spatial" parent="."]
+
+[node name="level2" type="Camera" parent="level_camera"]
+transform = Transform( 1, 0, 0, 0, 0.965695, 0.259679, 0, -0.259679, 0.965695, 4.78659, 9.51911, 5.49836 )
+
+[node name="level3" type="Camera" parent="level_camera"]
+transform = Transform( 0.0338306, -0.4899, 0.871122, 0.0190113, 0.871779, 0.489531, -0.999247, 1.86124e-09, 0.0388064, 24.0794, 10.3645, -1.29445 )
+
+[node name="level4" type="Camera" parent="level_camera"]
+transform = Transform( 0.0195395, -0.318215, 0.947817, 0.00655868, 0.948019, 0.318147, -0.999788, -4.6576e-10, 0.0206109, 24.9928, 10.4291, 11.3052 )
+
+[node name="level5" type="Camera" parent="level_camera"]
+transform = Transform( 1, 0, 0, 0, 0.968661, 0.248386, 0, -0.248386, 0.968661, 17.6004, 9.65346, 15.124 )
+
+[node name="level6" type="Camera" parent="level_camera"]
+transform = Transform( 1, 0, 0, 0, 0.987414, 0.158158, 0, -0.158158, 0.987414, 8.12242, 9.84052, 15.4251 )
+
+[node name="level7" type="Camera" parent="level_camera"]
+transform = Transform( -0.999995, 0, 0.00315895, 0.000394554, 0.992169, 0.1249, -0.00313422, 0.1249, -0.992164, -2.83509, 9.1156, 13.7744 )
+
+[node name="level8" type="Camera" parent="level_camera"]
+transform = Transform( 0.0909013, 0.438167, -0.894285, -0.04431, 0.898893, 0.435921, 0.994874, -4.57988e-27, 0.101126, 3.83663, 9.88674, 17.2078 )
+
+[node name="level9" type="Camera" parent="level_camera"]
+transform = Transform( -0.999341, 1.86142e-09, -0.0363124, -0.0108909, 0.953963, 0.299726, 0.0346407, 0.299923, -0.953334, -4.84705, 9.85433, 23.4946 )
 
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]

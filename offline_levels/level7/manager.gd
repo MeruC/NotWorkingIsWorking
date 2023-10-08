@@ -11,6 +11,7 @@ export(NodePath) onready var gameover_popup = get_node(gameover_popup) as Contro
 export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) as Label
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
+export(Resource) var settings_data
 
 var topologies = [preload("res://resources/offline_mode_Asset/level_7/bus_topology.png"),
 					preload("res://resources/offline_mode_Asset/level_7/hybrid_topology.png"),
@@ -51,6 +52,8 @@ func display_gameover():
 		score_text = "Your Score: " + str(score) + " / 5"
 		gameover_score.text = score_text
 		gameover_next.disabled = false
+		score_validation()
+		
 	else:
 		gameover_indicator.text = "Level Failed"
 		score_text = "Your Score: " + str(score) + " / 5"
@@ -81,3 +84,18 @@ func _on_hybrid_pressed():
 
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
+
+func score_validation():
+	if settings_data.level7 == "complete":
+		pass
+	else:
+		var current_coins = settings_data.gold_coins
+		var new_coins = current_coins+100
+		
+		var skills = settings_data.net1_skills
+		var update_skills = skills+10
+		
+		settings_data.gold_coins = new_coins
+		settings_data.net1_skills = update_skills
+		settings_data.level7 = "complete"
+		SaveManager.save_game()
