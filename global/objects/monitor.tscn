@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=11]
 [ext_resource path="res://resources/Models/Materials/computer/parts-0-Tower.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=14]
+[ext_resource path="res://resources/font/net2_app_labels.tres" type="DynamicFont" id=15]
 
 [sub_resource type="GDScript" id=12]
 script/source = "extends StaticBody
@@ -19,16 +22,45 @@ script/source = "extends StaticBody
 export var device_name : String
 var fa01 : StaticBody
 var fa02 : StaticBody
+var isSaved = false
+
+export(String) var ip_allocation = \"static\"
+export(Array) var ipv4_address = [0, 0, 0, 0]
+export(Array) var subnet_mask = [0, 0, 0, 0]
+export(Array) var default_gateway = [0, 0, 0, 0]
+export(Array) var dns_server = [0, 0, 0, 0]
+
+#export(String) var ipv6_allocation = \"static\"
+#export(Array) var link_local_address = [0, 0, 0, 0]
+#export(Array) var subnet_mask = [0, 0, 0, 0]
+#export(Array) var default_gateway = [0, 0, 0, 0]
+#export(Array) var dns_server = [0, 0, 0, 0]
 
 onready var label = $ui/pc_screen/holder/Label
-
-
 onready var name_line_edit = $ui/pc_screen/holder/name_lineEdit
+onready var ip_config_app = $ui/ip_config_app
+onready var dhcp_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio
+onready var static_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/static_radio
+onready var ipv4Add_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox/ipAdd_lineEdit
+onready var ipv4Subnet_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/subnet_hbox/subnet_lineEdit
+onready var ipv4Gateway_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/gateway_hbox/gateway_lineEdit
+onready var ipv4Dns_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/dns_hbox2/dns_lineEdit
+onready var ipv4_vbox = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox
+onready var indicator_label = $ui/ip_config_app/ip_config_screen/main_panel/indicator_label
+onready var exit_confirmation = $ui/ip_config_app/ip_config_screen/exit_confirmation
 
 func _ready():
 	if device_name.empty():
 		device_name = self.name
 	name_line_edit.text = device_name
+	ipv4Add_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Add_lineEdit])
+	ipv4Subnet_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Subnet_lineEdit])
+	ipv4Gateway_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Gateway_lineEdit])
+	ipv4Dns_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Dns_lineEdit])
+	
+func _on_line_edit_text_changed(line_edit, new_text):
+	isSaved = false
+	indicator_label.visible = false
 
 
 func _on_name_lineEdit_text_changed(new_text):
@@ -40,6 +72,67 @@ func _set_connector( connection ):
 		label.text = \"Connected to %s\" % fa01.device_name
 	elif fa02 == null:
 		fa02 = connection
+
+
+func _on_ipConfig_button_pressed():
+	ip_config_app.visible = true
+
+
+func _on_save_button_pressed():
+	ipv4_address = ipv4Add_lineEdit.text.split(\".\")
+	subnet_mask = ipv4Subnet_lineEdit.text.split(\".\")
+	default_gateway = ipv4Gateway_lineEdit.text.split(\".\")
+	dns_server = ipv4Dns_lineEdit.text.split(\".\")
+	indicator_label.visible = true
+	isSaved = true
+	
+func validInt_checker(iterable):
+	for item in iterable:
+		if !item.is_valid_int():
+			return false
+	return true
+
+
+func _on_dhcp_radio_pressed():
+	uncheck_other(static_radio)
+	toggle_lineEdits()
+
+func _on_static_radio_pressed():
+	uncheck_other(dhcp_radio)
+	toggle_lineEdits()
+		
+func toggle_lineEdits():
+	if ipv4Add_lineEdit.editable == true:
+		ipv4Add_lineEdit.editable = false
+		ipv4Add_lineEdit.max_length = 0
+		ipv4Add_lineEdit.text = \"Retrieving IP Address...\"
+		ipv4Subnet_lineEdit.editable = false
+		ipv4Subnet_lineEdit.max_length = 0
+		ipv4Subnet_lineEdit.text = \"Retrieving Subnet Mask...\"
+	else:
+		ipv4Add_lineEdit.editable = true
+		ipv4Add_lineEdit.max_length = 15
+		ipv4Add_lineEdit.text = \"\"
+		ipv4Subnet_lineEdit.editable = true
+		ipv4Subnet_lineEdit.max_length = 15
+		ipv4Subnet_lineEdit.text = \"\"
+
+func uncheck_other(radio):
+	radio.pressed = false
+
+
+func _on_close_button_pressed():
+	if isSaved == false:
+		exit_confirmation.visible = true
+	else:
+		ip_config_app.visible = false
+		indicator_label.visible = false
+
+
+func _on_exit_confirmation_confirmed():
+	ip_config_app.visible = false
+	indicator_label.visible = false
+
 "
 
 [sub_resource type="DynamicFont" id=7]
@@ -55,6 +148,58 @@ texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 6000, 3375 )
 margin_right = 271.626
 margin_top = 3.9945
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 42
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.917647, 0.168627, 0.188235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.788235, 0.333333, 0.333333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.596078, 0, 0.0156863, 1 )
+
+[sub_resource type="Theme" id=16]
+Button/fonts/font = SubResource( 14 )
+Button/styles/hover = SubResource( 20 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 21 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 0.0784314 )
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0.0784314 )
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.831373, 0.831373, 0.831373, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Theme" id=26]
+default_font = ExtResource( 15 )
 
 [sub_resource type="BoxShape" id=1]
 
@@ -84,13 +229,11 @@ margin_right = 551.0
 margin_bottom = 272.0
 
 [node name="ui" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource( 8 )
 
 [node name="mode" type="CanvasLayer" parent="ui"]
 
 [node name="io" type="ColorRect" parent="ui"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -161,6 +304,442 @@ margin_right = 197.0
 margin_bottom = 574.0
 text = "<"
 
+[node name="apps" type="GridContainer" parent="ui/pc_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -667.0
+margin_top = -481.0
+margin_right = 676.0
+margin_bottom = 312.0
+custom_constants/vseparation = 25
+custom_constants/hseparation = 25
+columns = 3
+
+[node name="ipConfig_button" type="Button" parent="ui/pc_screen/apps"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 15 )
+text = "IP Config"
+
+[node name="ip_config_app" type="Panel" parent="ui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 13 )
+
+[node name="ip_config_screen" type="ColorRect" parent="ui/ip_config_app"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -864.0
+margin_top = -486.0
+margin_right = 864.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 1728, 972 )
+color = Color( 0.0352941, 0.486275, 0.85098, 1 )
+
+[node name="close_button" type="Button" parent="ui/ip_config_app/ip_config_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -169.0
+margin_bottom = 65.0
+theme = SubResource( 16 )
+text = "×"
+
+[node name="app_title" type="Label" parent="ui/ip_config_app/ip_config_screen"]
+margin_left = 30.0
+margin_right = 346.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 14 )
+text = "IP Configuration"
+
+[node name="main_panel" type="ColorRect" parent="ui/ip_config_app/ip_config_screen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -864.0
+margin_top = -907.0
+margin_right = 864.0
+rect_min_size = Vector2( 1728, 0 )
+color = Color( 0.980392, 0.980392, 0.980392, 1 )
+
+[node name="indicator_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 25.0
+margin_right = 20.0
+margin_bottom = 70.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Configuration has been saved."
+align = 1
+valign = 1
+
+[node name="content_panel" type="VBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -768.0
+margin_top = -405.0
+margin_right = 768.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 1536, 810 )
+custom_constants/separation = 50
+
+[node name="ipv4_config_hbox" type="VBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel"]
+margin_right = 1536.0
+margin_bottom = 353.0
+custom_constants/separation = 15
+
+[node name="ipv4_config_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_right = 1536.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "IPv4 Configuration"
+
+[node name="radio_buttons" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_top = 60.0
+margin_right = 1536.0
+margin_bottom = 113.0
+custom_constants/separation = 200
+
+[node name="dhcp_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons"]
+margin_right = 114.0
+margin_bottom = 53.0
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "DHCP"
+
+[node name="static_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons"]
+margin_left = 314.0
+margin_right = 423.0
+margin_bottom = 53.0
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+pressed = true
+text = "Static"
+
+[node name="ip_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_top = 128.0
+margin_right = 1536.0
+margin_bottom = 173.0
+custom_constants/separation = 100
+
+[node name="ipAdd_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "IP Address"
+
+[node name="ipAdd_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_uneditable = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 22 )
+custom_styles/normal = SubResource( 17 )
+max_length = 15
+clear_button_enabled = true
+placeholder_text = "0.0.0.0"
+placeholder_alpha = 0.25
+
+[node name="subnet_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_top = 188.0
+margin_right = 1536.0
+margin_bottom = 233.0
+custom_constants/separation = 100
+
+[node name="subnet_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/subnet_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Subnet Mask"
+
+[node name="subnet_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/subnet_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_uneditable = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 23 )
+custom_styles/normal = SubResource( 17 )
+clear_button_enabled = true
+placeholder_text = "0.0.0.0"
+placeholder_alpha = 0.25
+
+[node name="gateway_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_top = 248.0
+margin_right = 1536.0
+margin_bottom = 293.0
+custom_constants/separation = 100
+
+[node name="gateway_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/gateway_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Default Gateway"
+
+[node name="gateway_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/gateway_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+clear_button_enabled = true
+placeholder_text = "0.0.0.0"
+placeholder_alpha = 0.25
+
+[node name="dns_hbox2" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox"]
+margin_top = 308.0
+margin_right = 1536.0
+margin_bottom = 353.0
+custom_constants/separation = 100
+
+[node name="dns_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/dns_hbox2"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "DNS Gateway"
+
+[node name="dns_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/dns_hbox2"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+clear_button_enabled = true
+placeholder_text = "0.0.0.0"
+placeholder_alpha = 0.25
+
+[node name="ipv6_config_hbox" type="VBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel"]
+margin_top = 403.0
+margin_right = 1536.0
+margin_bottom = 756.0
+custom_constants/separation = 15
+
+[node name="ipv4_config_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_right = 1536.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "IPv6 Configuration"
+
+[node name="radio_buttons" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_top = 60.0
+margin_right = 1536.0
+margin_bottom = 113.0
+custom_constants/separation = 200
+
+[node name="dhcp_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
+margin_right = 114.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "DHCP"
+
+[node name="auto_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
+margin_left = 314.0
+margin_right = 516.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Auto Config"
+
+[node name="static_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
+margin_left = 716.0
+margin_right = 825.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+pressed = true
+text = "Static"
+
+[node name="ip_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_top = 128.0
+margin_right = 1536.0
+margin_bottom = 173.0
+custom_constants/separation = 100
+
+[node name="ipv6Add_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "IPv6 Address"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+custom_constants/separation = 10
+
+[node name="ipv6Add_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox/HBoxContainer"]
+margin_right = 568.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 568, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+placeholder_alpha = 0.25
+
+[node name="label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox/HBoxContainer"]
+margin_left = 578.0
+margin_right = 590.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "/"
+
+[node name="ipv6Add_lineEdit2" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox/HBoxContainer"]
+margin_left = 600.0
+margin_right = 750.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 150, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 18 )
+placeholder_alpha = 0.25
+
+[node name="subnet_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_top = 188.0
+margin_right = 1536.0
+margin_bottom = 233.0
+custom_constants/separation = 100
+
+[node name="subnet_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/subnet_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Subnet Mask"
+
+[node name="subnet_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/subnet_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+placeholder_text = "FE80::260:5CFF:FE14:4CEE"
+placeholder_alpha = 0.25
+
+[node name="gateway_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_top = 248.0
+margin_right = 1536.0
+margin_bottom = 293.0
+custom_constants/separation = 100
+
+[node name="gateway_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/gateway_hbox"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Default Gateway"
+
+[node name="gateway_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/gateway_hbox"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+placeholder_alpha = 0.25
+
+[node name="dns_hbox2" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
+margin_top = 308.0
+margin_right = 1536.0
+margin_bottom = 353.0
+custom_constants/separation = 100
+
+[node name="dns_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/dns_hbox2"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "DNS Gateway"
+
+[node name="dns_lineEdit" type="LineEdit" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/dns_hbox2"]
+margin_left = 600.0
+margin_right = 1350.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 750, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/normal = SubResource( 17 )
+placeholder_alpha = 0.25
+
+[node name="save_button" type="Button" parent="ui/ip_config_app/ip_config_screen/main_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -72.0
+margin_right = 100.0
+margin_bottom = -21.0
+rect_min_size = Vector2( 200, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/normal = SubResource( 19 )
+text = "Save"
+
+[node name="exit_confirmation" type="ConfirmationDialog" parent="ui/ip_config_app/ip_config_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -347.5
+margin_top = -60.0
+margin_right = 347.5
+margin_bottom = 60.0
+theme = SubResource( 26 )
+dialog_text = "Any changes won't be saved. Exit Application?"
+
 [node name="CollisionShape2D" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
@@ -222,3 +801,9 @@ size = 1.679
 [connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
 [connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]
+[connection signal="pressed" from="ui/pc_screen/apps/ipConfig_button" to="." method="_on_ipConfig_button_pressed"]
+[connection signal="pressed" from="ui/ip_config_app/ip_config_screen/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio" to="." method="_on_dhcp_radio_pressed"]
+[connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/static_radio" to="." method="_on_static_radio_pressed"]
+[connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/save_button" to="." method="_on_save_button_pressed"]
+[connection signal="confirmed" from="ui/ip_config_app/ip_config_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
