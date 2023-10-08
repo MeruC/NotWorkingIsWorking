@@ -107,6 +107,7 @@ func _on_selection_toggled(button_pressed):
 
 
 func _on_confirm_pressed():
+	$\"../cloud_storage\".visible = false
 	$\"../notification\".visible = false
 "
 
@@ -894,24 +895,49 @@ func upload_file(request: HTTPRequest) -> void:
 	else:
 		$\"../notification\".visible = true
 		$\"../notification/message\".text = \"Your data successfully uploaded in the database.\"
+		$\"../prompt_upload\".visible = false
 	
 func _on_retrieve_data_pressed():
-	get_saveData()
+	$\"../prompt_retrieve\".visible = true
+	$\"../prompt_retrieve/message\".text = \"Warning: Overwriting existing data! This action will replace your current progress. Are you sure you want to proceed?\"
 
 
 func _on_upload_data_pressed():
-	var request = HTTPRequest.new()
-	request.connect(\"request_completed\", self, \"_request_callback\")
-	add_child(request)
-	upload_file(request)
-
+	$\"../prompt_upload\".visible = true
+	$\"../prompt_upload/message\".text = \"Warning: You are about to overwrite existing data. This action cannot be undone. Are you sure you want to proceed?\"
 
 func _on_Button_pressed():
 	$\".\".visible = false
+	
 
 
 func _on_confirm2_pressed():
 	get_tree().quit()
+
+
+
+func _on_confirm_pressed():
+	var request = HTTPRequest.new()
+	request.connect(\"request_completed\", self, \"_request_callback\")
+	add_child(request)
+	upload_file(request)
+	
+
+
+func _on_cancel_pressed():
+	$\"../prompt_upload\".visible = false
+	
+
+
+
+func _on_yes_pressed():
+	get_saveData()
+	$\"../prompt_retrieve\".visible = false
+	
+
+
+func _on_no_pressed():
+	$\"../prompt_retrieve\".visible = false
 "
 
 [node name="user_profile" type="Node2D"]
@@ -1598,6 +1624,102 @@ margin_bottom = 911.0
 theme = ExtResource( 34 )
 text = "ok"
 
+[node name="prompt_upload" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="prompt_upload"]
+margin_left = -15.0
+margin_top = -18.0
+margin_right = 25.0
+margin_bottom = 22.0
+rect_scale = Vector2( 48.711, 27.8661 )
+color = Color( 0, 0, 0, 0.505882 )
+
+[node name="panel" type="TextureRect" parent="prompt_upload"]
+margin_left = 260.0
+margin_top = 217.0
+margin_right = 472.0
+margin_bottom = 429.0
+rect_scale = Vector2( 6.71603, 3.18795 )
+texture = ExtResource( 33 )
+
+[node name="message" type="Label" parent="prompt_upload"]
+margin_left = 367.0
+margin_top = 274.0
+margin_right = 1575.0
+margin_bottom = 613.0
+theme = ExtResource( 16 )
+text = "try"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="confirm" type="Button" parent="prompt_upload"]
+margin_left = 442.0
+margin_top = 649.0
+margin_right = 850.0
+margin_bottom = 781.0
+focus_mode = 0
+theme = ExtResource( 16 )
+enabled_focus_mode = 0
+text = "Yes"
+
+[node name="cancel" type="Button" parent="prompt_upload"]
+margin_left = 1121.0
+margin_top = 651.0
+margin_right = 1496.0
+margin_bottom = 783.0
+focus_mode = 0
+theme = ExtResource( 26 )
+enabled_focus_mode = 0
+text = "no"
+
+[node name="prompt_retrieve" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="prompt_retrieve"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 48.3785, 27.3532 )
+color = Color( 0, 0, 0, 0.305882 )
+
+[node name="panel" type="TextureRect" parent="prompt_retrieve"]
+margin_left = 266.0
+margin_top = 125.0
+margin_right = 478.0
+margin_bottom = 337.0
+rect_scale = Vector2( 6.5875, 3.63432 )
+texture = ExtResource( 33 )
+
+[node name="message" type="Label" parent="prompt_retrieve"]
+margin_left = 377.0
+margin_top = 186.0
+margin_right = 1555.0
+margin_bottom = 639.0
+theme = ExtResource( 16 )
+text = "text"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="yes" type="Button" parent="prompt_retrieve"]
+margin_left = 668.0
+margin_top = 661.0
+margin_right = 895.0
+margin_bottom = 793.0
+focus_mode = 0
+theme = ExtResource( 16 )
+enabled_focus_mode = 0
+text = "yes"
+
+[node name="no" type="Button" parent="prompt_retrieve"]
+margin_left = 1033.0
+margin_top = 663.0
+margin_right = 1235.0
+margin_bottom = 795.0
+theme = ExtResource( 26 )
+text = "no"
+
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/questionBank_bg/questionBank_btn" to="." method="_on_questionBank_btn_pressed"]
 [connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
@@ -1615,3 +1737,7 @@ text = "ok"
 [connection signal="pressed" from="cloud_storage/Button" to="cloud_storage" method="_on_Button_pressed"]
 [connection signal="pressed" from="notification/confirm" to="login" method="_on_confirm_pressed"]
 [connection signal="pressed" from="reload_notif/confirm2" to="cloud_storage" method="_on_confirm2_pressed"]
+[connection signal="pressed" from="prompt_upload/confirm" to="cloud_storage" method="_on_confirm_pressed"]
+[connection signal="pressed" from="prompt_upload/cancel" to="cloud_storage" method="_on_cancel_pressed"]
+[connection signal="pressed" from="prompt_retrieve/yes" to="cloud_storage" method="_on_yes_pressed"]
+[connection signal="pressed" from="prompt_retrieve/no" to="cloud_storage" method="_on_no_pressed"]
