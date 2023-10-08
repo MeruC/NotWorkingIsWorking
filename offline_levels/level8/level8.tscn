@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=6]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -755,6 +756,7 @@ gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
 gameover_score = NodePath("popup_layer/game_over/main_popup/score")
 gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 score_display = NodePath("score_labels/score")
+settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
 

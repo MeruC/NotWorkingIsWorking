@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=5]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -729,6 +730,7 @@ popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
 animation_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
+settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
 

@@ -142,6 +142,7 @@ func _on_choice2_pressed():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		score_validation()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"

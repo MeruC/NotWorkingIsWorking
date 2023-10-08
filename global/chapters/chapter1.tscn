@@ -1,101 +1,203 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
-[ext_resource path="res://global/chapters/level_selection_camera.gd" type="Script" id=3]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 [ext_resource path="res://global/chapters/level_selector_manager.gd" type="Script" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "street2_opening"
-length = 1.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect3:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -2556, 192 ), Vector2( -140, 601 ), Vector2( -121, 763 ), Vector2( -110, 672 ), Vector2( 2276, 1038 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect2:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -2877, 434 ), Vector2( -185, 710 ), Vector2( -42, 719 ), Vector2( -63, 623 ), Vector2( 2304, 959 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect4:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -2898, 387 ), Vector2( 32, 425 ), Vector2( 41, 577 ), Vector2( -28, 369 ), Vector2( 2369, 669 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect5:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -1779, -1625 ), Vector2( 29, -92.9995 ), Vector2( 29, -226 ), Vector2( 13, -103 ), Vector2( 2428, -85.0001 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect6:rect_position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -1831, -1284 ), Vector2( -42.0002, 85.9999 ), Vector2( -13, -47 ), Vector2( -8, 60 ), Vector2( 2455, 102 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/AnimationPlayer/ColorRect7:rect_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 1.1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -1607, -1212 ), Vector2( 57, 34 ), Vector2( 77, -99 ), Vector2( 2, 51 ), Vector2( 2501, 135 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/AnimationPlayer/Label:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.4, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
+[sub_resource type="GDScript" id=2]
+script/source = "extends Spatial
+
+#cameras
+onready var main_camera = $\"%main_camera\"
+onready var level1_camera = $\"%level1\"
+onready var level2_camera = $\"%level2\"
+onready var level3_camera = $\"%level3\"
+onready var level4_camera = $\"%level4\"
+onready var level5_camera = $\"%level5\"
+onready var level6_camera = $\"%level6\"
+onready var level7_camera = $\"%level7\"
+onready var level8_camera = $\"%level8\"
+onready var level9_camera = $\"%level9\"
+var current = 0
+export (Resource) var settings_data
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Pixelizer.set_visible(false)
+	$\"../right\".disabled = true
+	$\"../left\".disabled = true
+	TransitionNode.animation_player.play(\"in\")
+	yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
+	$\"../level1\".visible = true
+	$\"../right\".disabled = false
+	$\"../left\".disabled = false
+
+
+func _on_left_pressed():
+	match (current):
+		0:
+			current=0
+		1: 
+			$\"../left\".disabled = true
+			$\"../level2\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 2), \"completed\")
+			$\"../level1\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		2:
+			$\"../left\".disabled = true
+			$\"../level3\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level3_camera, level2_camera, 2), \"completed\")
+			$\"../level2\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		3:
+			$\"../left\".disabled = true
+			$\"../level4\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level4_camera, level3_camera, 2), \"completed\")
+			$\"../level3\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		4:
+			$\"../left\".disabled = true
+			$\"../level5\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 2), \"completed\")
+			$\"../level4\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		5:
+			$\"../left\".disabled = true
+			$\"../level6\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 2), \"completed\")
+			$\"../level5\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		6:
+			$\"../left\".disabled = true
+			$\"../level7\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level7_camera, level6_camera, 2), \"completed\")
+			$\"../level6\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		7:
+			$\"../left\".disabled = true
+			$\"../level8\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level8_camera, level7_camera, 2), \"completed\")
+			$\"../level7\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+		8:
+			$\"../left\".disabled = true
+			$\"../level9\".visible = false
+			$\"../notif\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 2), \"completed\")
+			$\"../level8\".visible = true
+			$\"../left\".disabled = false
+			current-=1
+
+func _on_right_pressed():
+	match (current):
+		0:
+			if settings_data.level1 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../level1\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level1_camera, level2_camera, 2), \"completed\")
+				$\"../right\".disabled = false
+				$\"../level2\".visible = true
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		1:
+			if settings_data.level2 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level2\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level2_camera, level3_camera, 2), \"completed\")
+				$\"../level3\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		2:
+			if settings_data.level3 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level3\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level3_camera, level4_camera, 2), \"completed\")
+				$\"../level4\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		3:
+			if settings_data.level4 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level4\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 2), \"completed\")
+				$\"../level5\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		4:
+			if settings_data.level5 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level5\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level5_camera, level6_camera, 2), \"completed\")
+				$\"../level6\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+				
+		5:
+			if settings_data.level6 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level6\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level6_camera, level7_camera, 2), \"completed\")
+				$\"../level7\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		6:
+			if settings_data.level7 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level7\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level7_camera, level8_camera, 2), \"completed\")
+				$\"../level8\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+		7:
+			if settings_data.level8 == \"complete\":
+				$\"../right\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level8\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 2), \"completed\")
+				$\"../level9\".visible = true
+				$\"../right\".disabled = false
+				current+=1
+			else:
+				$\"../notif\".text = \"level is not completed\"
+			
+			
+"
 
 [node name="world1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40322, 0 )
@@ -128,24 +230,28 @@ directional_shadow_mode = 0
 directional_shadow_normal_bias = 0.1
 
 [node name="main_camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -4.42804, 9.84598, 6.40031 )
-script = ExtResource( 3 )
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, -0.0426606, 0.99909, 0, -0.99909, -0.0426606, 11.9227, 19.502, 15.3499 )
 
 [node name="level1" type="Button" parent="."]
 visible = false
-margin_left = 669.0
-margin_top = 315.0
-margin_right = 992.0
-margin_bottom = 447.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -161.5
+margin_top = -280.0
+margin_right = 161.5
+margin_bottom = -148.0
 theme = ExtResource( 4 )
 text = "Level1"
 
 [node name="level2" type="Button" parent="."]
 visible = false
-margin_left = 725.0
-margin_top = 248.0
-margin_right = 1061.0
-margin_bottom = 380.0
+margin_left = 781.0
+margin_top = 806.0
+margin_right = 1117.0
+margin_bottom = 938.0
 theme = ExtResource( 4 )
 text = "level2"
 __meta__ = {
@@ -154,89 +260,74 @@ __meta__ = {
 
 [node name="level3" type="Button" parent="."]
 visible = false
-margin_left = 703.0
-margin_top = 369.0
-margin_right = 1075.0
-margin_bottom = 501.0
+margin_left = 747.0
+margin_top = 807.0
+margin_right = 1119.0
+margin_bottom = 939.0
 theme = ExtResource( 4 )
 text = "level 3"
 
 [node name="level4" type="Button" parent="."]
 visible = false
-margin_left = 705.0
-margin_top = 494.0
-margin_right = 1077.0
-margin_bottom = 626.0
+margin_left = 762.0
+margin_top = 807.0
+margin_right = 1134.0
+margin_bottom = 939.0
 theme = ExtResource( 4 )
 text = "level 4"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
-anims/street2_opening = SubResource( 1 )
-
-[node name="Label" type="Label" parent="CanvasLayer/AnimationPlayer"]
+[node name="level5" type="Button" parent="."]
 visible = false
-margin_left = 47.0
-margin_top = 406.0
-margin_right = 1887.0
-margin_bottom = 557.0
-rect_rotation = 5.80689
+margin_left = 759.0
+margin_top = 808.0
+margin_right = 1131.0
+margin_bottom = 940.0
+focus_mode = 0
 theme = ExtResource( 4 )
-text = "Welcome to Street 2"
+enabled_focus_mode = 0
+text = "level 5"
 
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2276.0
-margin_top = 1038.0
-margin_right = 2316.0
-margin_bottom = 1078.0
-rect_rotation = 4.73448
-rect_scale = Vector2( 52.5859, 7.76017 )
-color = Color( 0, 0, 0, 1 )
+[node name="level6" type="Button" parent="."]
+visible = false
+margin_left = 759.0
+margin_top = 806.0
+margin_right = 1130.0
+margin_bottom = 938.0
+theme = ExtResource( 4 )
+text = "level 6"
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2304.0
-margin_top = 959.0
-margin_right = 2344.0
-margin_bottom = 999.0
-rect_rotation = 2.82978
-rect_scale = Vector2( 54.1978, 6.56981 )
+[node name="level7" type="Button" parent="."]
+visible = false
+margin_left = 778.0
+margin_top = 803.0
+margin_right = 1149.0
+margin_bottom = 935.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "level 7"
 
-[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2369.0
-margin_top = 669.0
-margin_right = 2414.0
-margin_bottom = 719.0
-rect_rotation = 6.46603
-rect_scale = Vector2( 48.2213, 8.23747 )
-color = Color( 0.894531, 0.577311, 0.128414, 1 )
+[node name="level8" type="Button" parent="."]
+visible = false
+margin_left = 765.0
+margin_top = 805.0
+margin_right = 1136.0
+margin_bottom = 937.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "level 8"
 
-[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2428.0
-margin_top = -85.0001
-margin_right = 2468.0
-margin_bottom = -45.0001
-rect_rotation = 4.73448
-rect_scale = Vector2( 52.5859, 7.76017 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect6" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2455.0
-margin_top = 102.0
-margin_right = 2495.0
-margin_bottom = 142.0
-rect_rotation = 2.82978
-rect_scale = Vector2( 54.1978, 6.56981 )
-
-[node name="ColorRect7" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-margin_left = 2501.0
-margin_top = 135.0
-margin_right = 2546.0
-margin_bottom = 185.0
-rect_rotation = 6.46603
-rect_scale = Vector2( 48.2213, 8.23747 )
-color = Color( 0.894531, 0.577311, 0.128414, 1 )
+[node name="level9" type="Button" parent="."]
+visible = false
+margin_left = 760.0
+margin_top = 805.0
+margin_right = 1129.0
+margin_bottom = 937.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "level 9"
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
@@ -252,32 +343,97 @@ theme = ExtResource( 4 )
 text = "swipe right"
 
 [node name="level_camera" type="Spatial" parent="."]
+script = SubResource( 2 )
+settings_data = ExtResource( 6 )
+
+[node name="level1" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 0.905857, 0.423583, 0, -0.423583, 0.905857, -4.72671, 9.78103, 5.19856 )
 
 [node name="level2" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 0.965695, 0.259679, 0, -0.259679, 0.965695, 4.78659, 9.51911, 5.49836 )
 
 [node name="level3" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 0.0338306, -0.4899, 0.871122, 0.0190113, 0.871779, 0.489531, -0.999247, 1.86124e-09, 0.0388064, 24.0794, 10.3645, -1.29445 )
 
 [node name="level4" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 0.0195395, -0.318215, 0.947817, 0.00655868, 0.948019, 0.318147, -0.999788, -4.6576e-10, 0.0206109, 24.9928, 10.4291, 11.3052 )
 
 [node name="level5" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 0.968661, 0.248386, 0, -0.248386, 0.968661, 17.6004, 9.65346, 15.124 )
 
 [node name="level6" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 0.987414, 0.158158, 0, -0.158158, 0.987414, 8.12242, 9.84052, 15.4251 )
 
 [node name="level7" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( -0.999995, 0, 0.00315895, 0.000394554, 0.992169, 0.1249, -0.00313422, 0.1249, -0.992164, -2.83509, 9.1156, 13.7744 )
 
 [node name="level8" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( 0.0909013, 0.438167, -0.894285, -0.04431, 0.898893, 0.435921, 0.994874, -4.57988e-27, 0.101126, 3.83663, 9.88674, 17.2078 )
 
 [node name="level9" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
 transform = Transform( -0.999341, 1.86142e-09, -0.0363124, -0.0108909, 0.953963, 0.299726, 0.0346407, 0.299923, -0.953334, -4.84705, 9.85433, 23.4946 )
+
+[node name="left" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 54.0
+margin_top = -66.0
+margin_right = 165.0
+margin_bottom = 66.0
+focus_mode = 0
+theme = ExtResource( 4 )
+enabled_focus_mode = 0
+text = "<"
+
+[node name="right" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -177.0
+margin_top = -66.0
+margin_right = -66.0
+margin_bottom = 66.0
+theme = ExtResource( 4 )
+text = ">"
+
+[node name="notif" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -530.0
+margin_top = -89.0
+margin_right = 530.0
+margin_bottom = -21.0
+theme = ExtResource( 4 )
+
+[node name="back" type="Button" parent="."]
+margin_left = 55.0
+margin_top = 25.0
+margin_right = 334.0
+margin_bottom = 157.0
+theme = ExtResource( 4 )
+text = "Back"
 
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]
 [connection signal="pressed" from="level3" to="." method="_on_level3_pressed"]
 [connection signal="pressed" from="level4" to="." method="_on_level4_pressed"]
+[connection signal="pressed" from="level5" to="." method="_on_level5_pressed"]
+[connection signal="pressed" from="level6" to="." method="_on_level6_pressed"]
+[connection signal="pressed" from="level7" to="." method="_on_level7_pressed"]
+[connection signal="pressed" from="level8" to="." method="_on_level8_pressed"]
+[connection signal="pressed" from="level9" to="." method="_on_level9_pressed"]
+[connection signal="pressed" from="left" to="level_camera" method="_on_left_pressed"]
+[connection signal="pressed" from="right" to="level_camera" method="_on_right_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

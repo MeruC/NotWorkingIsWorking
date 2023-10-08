@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://offline_levels/level6/wire.gd" type="Script" id=15]
 [ext_resource path="res://offline_levels/level6/manager.gd" type="Script" id=16]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=17]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -729,6 +730,7 @@ type_label = NodePath("cable_type")
 game_over = NodePath("popup_layer/game_over")
 gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
 gameover_score = NodePath("popup_layer/game_over/main_popup/score")
+settings_data = ExtResource( 18 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
