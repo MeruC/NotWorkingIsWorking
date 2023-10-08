@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=2]
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=3]
 [ext_resource path="res://online_mode/quiz_results/result_table.gd" type="Script" id=4]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=5]
+[ext_resource path="res://resources/Game buttons/export_excel.png" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -83,11 +84,13 @@ func display_table(data):
 	clear_grid()
 
 	var font_resource = preload(\"res://resources/font/login_signup_font.tres\")
+	var font_color = Color(0, 0, 0, 1)
 	for j in range(headers.size()):
 		var header_label = Label.new()
 		header_label.text = headers[j]
 		header_label.rect_min_size = Vector2(100, 30)  # Set the size here
 		header_label.add_font_override(\"font\", font_resource)
+		header_label.add_color_override(\"font_color\", font_color)
 		grid_container.add_child(header_label)
 		header_label.align = Label.ALIGN_CENTER  # Center-align text
 
@@ -107,6 +110,7 @@ func display_table(data):
 				var cell_label = Label.new()  # Create a label for other data
 				cell_label.text = str(row[headers[j]])
 				cell_label.add_font_override(\"font\", font_resource)
+				cell_label.add_color_override(\"font_color\", font_color)
 				grid_container.add_child(cell_label)
 				cell_label.align = Label.ALIGN_CENTER  # Center-align text
 
@@ -187,6 +191,8 @@ margin_top = 201.0
 margin_right = 1712.0
 margin_bottom = 887.0
 rect_scale = Vector2( 0.949932, 1 )
+custom_constants/vseparation = 0
+custom_constants/hseparation = 100
 columns = 4
 
 [node name="back" type="Button" parent="result_table"]
@@ -209,7 +215,19 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="export" type="Button" parent="result_table"]
+margin_left = 1490.0
+margin_top = 751.0
+margin_right = 2142.0
+margin_bottom = 1388.0
+rect_scale = Vector2( 0.248574, 0.251832 )
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 6 )
+flat = true
+
 [node name="result" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="result_table/back" to="result_table" method="_on_back_pressed"]
+[connection signal="pressed" from="result_table/export" to="result_table" method="_on_export_pressed"]

@@ -7,6 +7,7 @@ var is_requesting : bool = false
 onready var grid_container = $GridContainer
 var headers = []  # Initialize headers as an empty array
 export (Resource) var settings_data
+var response
 
 func _ready():
 	add_child(http_request)
@@ -47,7 +48,7 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 	
 	var response_body = body.get_string_from_utf8()
-	var response = parse_json(response_body)
+	response = parse_json(response_body)
 	print(response)
 	
 	if response is Array:
@@ -56,12 +57,14 @@ func _http_request_completed(result, response_code, headers, body):
 			headers = data[0].keys()
 			$GridContainer.visible = true
 			display_table(data)
+			export_csv_data(data)
 		else:
 			$GridContainer.visible = false
 			$Label.text = "no one answered yet."
 	else:
 		$GridContainer.visible = false
 		$Label.text = "no one answered yet."
+
 
 func display_table(data):
 	# Define your headers manually
@@ -70,11 +73,13 @@ func display_table(data):
 	clear_grid()
 
 	var font_resource = preload("res://resources/font/login_signup_font.tres")
+	var font_color = Color(0, 0, 0, 1)
 	for j in range(headers.size()):
 		var header_label = Label.new()
 		header_label.text = headers[j]
 		header_label.rect_min_size = Vector2(100, 30)  # Set the size here
 		header_label.add_font_override("font", font_resource)
+		header_label.add_color_override("font_color", font_color)
 		grid_container.add_child(header_label)
 		header_label.align = Label.ALIGN_CENTER  # Center-align text
 
@@ -85,13 +90,11 @@ func display_table(data):
 			if headers[j] == "file_name":  # Check if the header is "email"
 				var cell_button = Button.new()  # Create a button for email addresses
 				cell_button.text = str(row[headers[j]])  # Set the button text to the email address
-				cell_button.rect_min_size = Vector2(200, 90)  # Set the size here
-				cell_button.connect("pressed", self, "get_levelresult", [row[headers[j]]])  # Connect the button press signal with email as an argument
-				grid_container.add_child(cell_button)
 			else:
 				var cell_label = Label.new()  # Create a label for other data
 				cell_label.text = str(row[headers[j]])
 				cell_label.add_font_override("font", font_resource)
+				cell_label.add_color_override("font_color", font_color)
 				cell_label.rect_min_size = Vector2(200, 90)  # Set the size here
 				grid_container.add_child(cell_label)
 				cell_label.align = Label.ALIGN_CENTER  # Center-align text
@@ -115,3 +118,23 @@ func get_levelresult(value):
 
 func _on_back_pressed():
 	$".".visible = false
+
+
+func _on_export_pressed(csv_data: String):
+	var file = File.new()
+	if file.open("user://data.csv", File.WRITE) == OK:
+		file.store_string(csv_data)
+		file.close()
+		print("CSV data saved as data.csv")
+	else:
+		print("Error saving CSV data")
+	
+func export_csv_data(data):
+	var csv_data = "Name,Scores\n"  # CSV header row
+	for item in data:
+		if item is Dictionary:
+			var name = item.get("username", "")
+			var scores = item.get("scores", 0)
+			csv_data += '"' + name + '",' + str(scores) + '\n'  # Add data row
+	_on_export_pressed(csv_data)
+
