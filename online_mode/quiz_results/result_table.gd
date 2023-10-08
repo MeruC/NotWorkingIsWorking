@@ -130,11 +130,12 @@ func _on_export_pressed(csv_data: String):
 		print("Error saving CSV data")
 	
 func export_csv_data(data):
-	var csv_data = "Name,Scores\n"  # CSV header row
+	var csv_data = "Name,Scores, Time\n"  # CSV header row
 	for item in data:
 		if item is Dictionary:
 			var name = item.get("username", "")
 			var scores = item.get("scores", 0)
-			csv_data += '"' + name + '",' + str(scores) + '\n'  # Add data row
+			var time = item.get("timestamp", 0)
+			csv_data += '"' + name + '",' + str(scores)+ '' + ', '+ str(time)+'\n'  # Add data row
 	_on_export_pressed(csv_data)
 
