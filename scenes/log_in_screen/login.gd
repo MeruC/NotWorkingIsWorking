@@ -57,7 +57,7 @@ func _http_request_completed(result, response_code, headers, body):
 					print("Account doesn't exist")
 				else:
 					$"../warning".visible = true
-					$"../warning/warning/warning".text = "email/password incorrect"
+					$"../warning/warning2".text = "email/password incorrect"
 					
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()

@@ -564,7 +564,8 @@ script = ExtResource( 2 )
 motion_mirroring = Vector2( 1920, 0 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 967, 539 )
+position = Vector2( 967, 543 )
+scale = Vector2( 1, 1.00741 )
 texture = ExtResource( 1 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 12 )]
