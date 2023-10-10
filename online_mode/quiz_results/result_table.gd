@@ -60,9 +60,11 @@ func _http_request_completed(result, response_code, headers, body):
 			responseData = response 
 			headers = data[0].keys()
 			$GridContainer.visible = true
+			$Label.text = ""
 			display_table(data)
 		else:
 			$GridContainer.visible = false
+			clear_grid()
 			$Label.text = "no one answered yet."
 	else:
 		$GridContainer.visible = false

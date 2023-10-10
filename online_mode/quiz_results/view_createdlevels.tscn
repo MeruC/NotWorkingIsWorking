@@ -5,7 +5,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=3]
 [ext_resource path="res://online_mode/quiz_results/result_table.gd" type="Script" id=4]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=5]
-[ext_resource path="res://resources/Game buttons/export_excel.png" type="Texture" id=6]
+[ext_resource path="res://resources/Themes/export_excel.tres" type="Theme" id=6]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=8]
 
@@ -330,9 +330,8 @@ margin_right = 2142.0
 margin_bottom = 1388.0
 rect_scale = Vector2( 0.248574, 0.251832 )
 focus_mode = 0
+theme = ExtResource( 6 )
 enabled_focus_mode = 0
-icon = ExtResource( 6 )
-flat = true
 
 [node name="result" type="CanvasLayer" parent="."]
 
@@ -367,7 +366,7 @@ visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="file_dialog"]
 margin_left = 4.0
-margin_top = 237.0
+margin_top = 182.0
 margin_right = 1918.0
 margin_bottom = 1077.0
 theme = ExtResource( 2 )
@@ -375,7 +374,7 @@ theme = ExtResource( 2 )
 [node name="FileDialog" type="FileDialog" parent="file_dialog"]
 visible = true
 margin_left = 24.0
-margin_top = 280.0
+margin_top = 246.0
 margin_right = 1883.0
 margin_bottom = 1039.0
 rect_min_size = Vector2( 150, 52.5 )
