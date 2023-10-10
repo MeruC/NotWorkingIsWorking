@@ -126,14 +126,14 @@ func _on_back_pressed():
 
 
 func _on_export_pressed():
-	$"../file_top_bar".visible = true
+	$"../file_dialog_title".visible = true
 	$"../file_dialog".visible = true
 	$"../file_dialog/FileDialog".popup()
 	$"../file_dialog/FileDialog".mode = FileDialog.MODE_SAVE_FILE  # Corrected line
 	$"../file_dialog/FileDialog".filters = ["*.csv"]
 	# Connect the "file_selected" signal of the FileDialog to this function
 	$"../file_dialog/FileDialog".connect("file_selected", self, "_on_SaveFileDialog_file_selected")
-
+	$"../file_dialog/FileDialog".connect("popup_hide", self, "_on_SaveFileDialog_popup_hide")
 # Connect the "file_selected" signal of the FileDialog to this function
 func _on_SaveFileDialog_file_selected(path):
 	if path.empty():
@@ -160,9 +160,15 @@ func export_csv_data(data, path):
 	if file.open(path, File.WRITE) == OK:
 		file.store_string(csv_data)
 		file.close()
-		$"../prompt".visible = true
-		$"../prompt/message".text = "CSV data saved as " + path
-		$"../file_top_bar".visible = false
+		$"../message_prompt".visible = true
+		$"../message_prompt/message".text = "CSV data saved as " + path
+		$"../file_dialog_title".visible = false
 		$"../file_dialog".visible = false
 	else:
 		print("Error saving CSV data")
+
+
+func _on_FileDialog_popup_hide():
+	$"../message_prompt".visible = false
+	$"../file_dialog_title".visible = false
+	$"../file_dialog".visible = false
