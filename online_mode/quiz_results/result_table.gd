@@ -10,7 +10,7 @@ export (Resource) var settings_data
 var response
 var currentLevelName: String = ""
 var responseData = []
-
+var itsave = false
 
 func _ready():
 	add_child(http_request)
@@ -49,11 +49,15 @@ func _http_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr("Error with connection: " + str(result))
 		return
-	
 	var response_body = body.get_string_from_utf8()
+		
+	if response_body.empty():
+		$export.disabled = true
+		$GridContainer.visible = false
+		$Label.text = "no one answered yet."
+		return
+		
 	response = parse_json(response_body)
-	print(response)
-	
 	if response is Array:
 		if response.size() > 0:
 			var data = response  # The response is an array of dictionaries
@@ -62,14 +66,7 @@ func _http_request_completed(result, response_code, headers, body):
 			$GridContainer.visible = true
 			$Label.text = ""
 			display_table(data)
-		else:
-			$GridContainer.visible = false
-			clear_grid()
-			$Label.text = "no one answered yet."
-	else:
-		$GridContainer.visible = false
-		$Label.text = "no one answered yet."
-
+			$export.disabled = false
 
 func display_table(data):
 	# Define your headers manually
@@ -104,7 +101,6 @@ func display_table(data):
 				grid_container.add_child(cell_label)
 				cell_label.align = Label.ALIGN_CENTER  # Center-align text
 
-
 func clear_grid():
 	# Remove all child nodes from the grid_container
 	while grid_container.get_child_count() > 0:
@@ -135,7 +131,6 @@ func _on_export_pressed():
 	$"../file_dialog/FileDialog".filters = ["*.csv"]
 	# Connect the "file_selected" signal of the FileDialog to this function
 	$"../file_dialog/FileDialog".connect("file_selected", self, "_on_SaveFileDialog_file_selected")
-	$"../file_dialog/FileDialog".connect("popup_hide", self, "_on_SaveFileDialog_popup_hide")
 # Connect the "file_selected" signal of the FileDialog to this function
 func _on_SaveFileDialog_file_selected(path):
 	if path.empty():
@@ -162,15 +157,20 @@ func export_csv_data(data, path):
 	if file.open(path, File.WRITE) == OK:
 		file.store_string(csv_data)
 		file.close()
-		$"../message_prompt".visible = true
-		$"../message_prompt/message".text = "CSV data saved as " + path
-		$"../file_dialog_title".visible = false
-		$"../file_dialog".visible = false
+		itsave = true
 	else:
 		print("Error saving CSV data")
 
 
 func _on_FileDialog_popup_hide():
-	$"../message_prompt".visible = false
-	$"../file_dialog_title".visible = false
-	$"../file_dialog".visible = false
+	if itsave == true:
+		$"../message_prompt".visible = true
+		$"../message_prompt/message".text = "The file was successfully saved"
+		$"../file_dialog_title".visible = false
+		$"../file_dialog".visible = false
+		itsave = false
+	else:
+		$"../message_prompt".visible = true
+		$"../message_prompt/message".text = "The operation was cancelled"
+		$"../file_dialog_title".visible = false
+		$"../file_dialog".visible = false

@@ -18,6 +18,7 @@ func _on_CheckButton_toggled(button_pressed):
 		$"../../../../AnimationPlayer".play("male_anim")
 		gender = "male"
 		settings_data.gender = gender
+		settings_data.costume = gender
 		SaveManager.save_game()
 
 	elif button_pressed == true:
@@ -31,6 +32,7 @@ func _on_CheckButton_toggled(button_pressed):
 		$CSGMesh.material_override = girl_skin
 		gender = "female"
 		settings_data.gender = gender
+		settings_data.costume = gender
 		SaveManager.save_game()
 	
 func _on_confirm_pressed():

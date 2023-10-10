@@ -1,6 +1,11 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://resources/Game buttons/export_excel.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 640, 631 )
+modulate_color = Color( 1, 1, 1, 0.172549 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 1 )
@@ -17,6 +22,7 @@ region_rect = Rect2( 0, 0, 640, 631 )
 modulate_color = Color( 1, 1, 1, 0.52549 )
 
 [resource]
+Button/styles/disabled = SubResource( 4 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = SubResource( 2 )
