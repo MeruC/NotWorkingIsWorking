@@ -19,7 +19,7 @@ func _ready():
 		change_avatar = $avatar_selection
 		current_avatar = $current_avatar
 		change_avatar.texture = default_character
-		current_avatar.texture = default_character
+		#current_avatar.texture = default_character
 
 func _on_right_pressed():
 		click += 1

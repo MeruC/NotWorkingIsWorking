@@ -28,6 +28,7 @@ export (String) var email
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0
+export (String) var costume = "male"
 
 
 # Set the data from a Dictionary.
@@ -49,6 +50,7 @@ func set_data( data ):
 	account_status = data.account_status
 	net1_skills = data.net1_skills
 	net2_skills = data.net2_skills
+	costume = data.costume
 	crowns = data.crowns
 	level1 = data.level1
 	level2 = data.level2
@@ -79,6 +81,7 @@ func get_data():
 		"account_status": account_status,
 		"net1_skills": net1_skills,
 		"net2_skills": net2_skills,
+		"costume": costume,
 		"crowns": crowns,
 		"level1": level1,
 		"level2": level2,

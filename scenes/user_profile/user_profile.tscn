@@ -1,20 +1,17 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
 [ext_resource path="res://scenes/user_profile/buttons and panels/button2..png" type="Texture" id=3]
 [ext_resource path="res://scenes/user_profile/edit_icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/user_profile/user_profile.gd" type="Script" id=5]
-[ext_resource path="res://scenes/user_profile/avatar_boy_picture/default_character.png" type="Texture" id=6]
 [ext_resource path="res://scenes/user_profile/BSU_bg.png" type="Texture" id=7]
 [ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=8]
 [ext_resource path="res://scenes/user_profile/main_menu2_bg.png" type="Texture" id=9]
 [ext_resource path="res://scenes/user_profile/buttons and panels/crown.png" type="Texture" id=10]
 [ext_resource path="res://scenes/user_profile/buttons and panels/panel.png" type="Texture" id=11]
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=12]
-[ext_resource path="res://scenes/user_profile/buttons and panels/arrow.png" type="Texture" id=13]
 [ext_resource path="res://scenes/user_profile/podium.png" type="Texture" id=14]
-[ext_resource path="res://scenes/user_profile/change_avatar.gd" type="Script" id=15]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
@@ -68,6 +65,181 @@ font_data = ExtResource( 1 )
 [sub_resource type="SpatialMaterial" id=21]
 albedo_texture = ExtResource( 22 )
 
+[sub_resource type="GDScript" id=64]
+script/source = "extends CanvasLayer
+
+export (Resource) var settings_data
+var click = 0
+# Called when the node enters the scene tree for the first time.
+var costume = \"\"
+var costumename = \"\"
+func _ready():
+	pass # Replace with function body.
+
+
+func _on_right_pressed():
+	if settings_data.gender == \"female\":
+		match (click):
+			0:
+				var girl = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.obj\")
+				var girl_skin = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_skin
+				costume = \"female\"
+				$avatar_name.text = \"Default\"
+				costumename = \"Default\"
+				click = 1
+			1:
+				var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
+				var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
+				costume = \"girl_pants\"
+				$avatar_name.text = \"Pants Uniform\"
+				costumename = \"Pants Uniform\"
+				click = 2
+			2:
+				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
+				var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
+				costume = \"girl_casual\"
+				$avatar_name.text = \"Wash day Attire\"
+				costumename = \"Wash day Attire\"
+				click = 0
+	if settings_data.gender == \"male\":
+		match (click):
+			0:
+				var boy = preload(\"res://resources/Models/Player/Idle/1.obj\")
+				var boy_skin = preload(\"res://resources/Models/Player/1.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_skin
+				costume = \"male\"
+				$avatar_name.text = \"default\"
+				costumename = \"default\"
+				click = 1
+			1:
+				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
+				var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
+				costume = \"blue_shirt\"
+				$avatar_name.text = \"I love BSU!\"
+				costumename = \"I love BSU!\"
+				click = 2
+			2:
+				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
+				var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
+				costume = \"cict_shirt\"
+				$avatar_name.text = \"CICT Shirt\"
+				costumename = \"CICT Shirt\"
+				click = 3
+			3:
+				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
+				var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
+				costume = \"formal_attire\"
+				$avatar_name.text = \"Formal Attire\"
+				costumename = \"Formal Attire\"
+				click = 4
+			4:
+				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
+				var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
+				costume = \"orange_shirt\"
+				$avatar_name.text = \"Orange Stripe Shirt\"
+				costumename = \"Orange Stripe Shirt\"
+				click = 0
+				
+func _on_left_pressed():
+	if settings_data.gender == \"female\":
+		match (click):
+			0:
+				var girl = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.obj\")
+				var girl_skin = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_skin
+				costume = \"female\"
+				$avatar_name.text = \"Default\"
+				
+				click = 2  # Reset to the last costume
+			1:
+				var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
+				var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
+				costume = \"girl_pants\"
+				costumename = \"Pants Uniform\"
+				click -= 1
+			2:
+				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
+				var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
+				costume = \"girl_casual\"
+				costumename = \"Wash day Attire\"
+				click -= 1
+				
+	if settings_data.gender == \"male\":
+		match (click):
+			0:
+				var boy = preload(\"res://resources/Models/Player/Idle/1.obj\")
+				var boy_skin = preload(\"res://resources/Models/Player/1.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_skin
+				costume = \"male\"
+				costumename = \"default\"
+				$avatar_name.text = \"Default\"
+				click = 4
+			1:
+				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
+				var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
+				costume = \"blue_shirt\"
+				costumename = \"I love BSU!\"
+				click -=1
+			2:
+				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
+				var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
+				costume = \"cict_shirt\"
+				$avatar_name.text = \"CICT Shirt\"
+				click -=1
+			3:
+				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
+				var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
+				costume = \"formal_attire\"
+				costumename = \"Formal Attire\"
+				click -=1
+			4:
+				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
+				var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
+				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
+				costume = \"orange_shirt\"
+				costumename = \"Orange Stripe Shirt\"
+				click -=1
+
+func _on_select_btn_pressed():
+	settings_data.costume = costume
+	SaveManager.save_game()
+	$current_character/Viewport/CSGMesh._change_costume()
+	$\"../user_profile/ViewportContainer/Viewport/Spatial2/CSGMesh\"._change_costume()
+	$c_avatar_name.text= costumename
+	
+func _on_back_btn_pressed():
+	$\".\".visible = false
+	$\"../user_profile\".visible = true
+"
+
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
@@ -84,6 +256,115 @@ font_data = ExtResource( 1 )
 size = 170
 extra_spacing_bottom = 28
 font_data = ExtResource( 25 )
+
+[sub_resource type="SpatialMaterial" id=60]
+albedo_texture = ExtResource( 22 )
+
+[sub_resource type="GDScript" id=63]
+script/source = "extends CSGMesh
+
+export (Resource) var settings_data
+var rotation_speed = 0.1
+
+func _ready():
+	var costume = settings_data.costume
+	var gender = settings_data.gender
+	if settings_data.gender == \"female\":
+		if costume == \"female\":
+			var girl = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.obj\")
+			var girl_skin = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.png\")
+			$\".\".mesh = girl
+			$\".\".material_override = girl_skin
+		if costume == \"girl_pants\":
+			var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
+			var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
+			$\".\".mesh = girl_pants
+			$\".\".material_override = girl_pants_skin
+		if costume == \"girl_casual\":
+			var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
+			var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
+			$\".\".mesh = girl_casual
+			$\".\".material_override = girl_casual_skin
+	if settings_data.gender == \"male\":
+		if costume == \"male\":
+			var boy = preload(\"res://resources/Models/Player/Idle/1.obj\")
+			var boy_skin = preload(\"res://resources/Models/Player/1.png\")
+			$\".\".mesh = boy
+			$\".\".material_override = boy_skin
+		if costume == \"blue_shirt\":
+			var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
+			var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
+			$\".\".mesh = boy_blue_shirt
+			$\".\".material_override = boy_blue_shirt_skin
+		if costume == \"cict_shirt\":
+			var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
+			var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
+			$\".\".mesh = boy_cict_shirt
+			$\".\".material_override = boy_cict_shirt_skin
+		if costume == \"formal_attire\":
+			var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
+			var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
+			$\".\".mesh = boy_formal_attire
+			$\".\".material_override = boy_formal_attire_skin
+		if costume == \"orange_shirt\":
+			var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
+			var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
+			$\".\".mesh = boy_orange_shirt
+			$\".\".material_override = boy_orange_shirt_skin
+			
+func _process(delta):
+	$\".\".rotate_y(rotation_speed * delta)
+	
+func _change_costume():
+	var costume = settings_data.costume
+	var gender = settings_data.gender
+	if settings_data.gender == \"female\":
+		if costume == \"female\":
+			var girl = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.obj\")
+			var girl_skin = preload(\"res://resources/Models/Player -girl/idle/idle- Girl.png\")
+			$\".\".mesh = girl
+			$\".\".material_override = girl_skin
+		if costume == \"girl_pants\":
+			var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
+			var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
+			$\".\".mesh = girl_pants
+			$\".\".material_override = girl_pants_skin
+		if costume == \"girl_casual\":
+			var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
+			var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
+			$\".\".mesh = girl_casual
+			$\".\".material_override = girl_casual_skin
+	if settings_data.gender == \"male\":
+		if costume == \"male\":
+			var boy = preload(\"res://resources/Models/Player/Idle/1.obj\")
+			var boy_skin = preload(\"res://resources/Models/Player/1.png\")
+			$\".\".mesh = boy
+			$\".\".material_override = boy_skin
+		if costume == \"blue_shirt\":
+			var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
+			var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
+			$\".\".mesh = boy_blue_shirt
+			$\".\".material_override = boy_blue_shirt_skin
+		if costume == \"cict_shirt\":
+			var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
+			var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
+			$\".\".mesh = boy_cict_shirt
+			$\".\".material_override = boy_cict_shirt_skin
+		if costume == \"formal_attire\":
+			var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
+			var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
+			$\".\".mesh = boy_formal_attire
+			$\".\".material_override = boy_formal_attire_skin
+		if costume == \"orange_shirt\":
+			var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
+			var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
+			$\".\".mesh = boy_orange_shirt
+			$\".\".material_override = boy_orange_shirt_skin
+		
+"
+
+[sub_resource type="SpatialMaterial" id=62]
+albedo_texture = ExtResource( 22 )
 
 [sub_resource type="GDScript" id=25]
 script/source = "extends CanvasLayer
@@ -1168,7 +1449,8 @@ icon_align = 1
 
 [node name="edit_avatar" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource( 15 )
+script = SubResource( 64 )
+settings_data = ExtResource( 18 )
 
 [node name="current_avatar_bg" type="TextureRect" parent="edit_avatar"]
 margin_left = 80.0
@@ -1240,25 +1522,6 @@ margin_bottom = 481.0
 rect_scale = Vector2( 0.901038, 1.0162 )
 texture = ExtResource( 2 )
 
-[node name="right" type="Button" parent="edit_avatar"]
-margin_left = 1772.0
-margin_top = 483.0
-margin_right = 2522.0
-margin_bottom = 1001.0
-rect_scale = Vector2( -0.182147, 0.183535 )
-icon = ExtResource( 13 )
-flat = true
-
-[node name="left" type="Button" parent="edit_avatar"]
-margin_left = 1084.0
-margin_top = 576.0
-margin_right = 1834.0
-margin_bottom = 1094.0
-rect_rotation = 179.743
-rect_scale = Vector2( -0.190029, 0.18044 )
-icon = ExtResource( 13 )
-flat = true
-
 [node name="border_bg" type="Sprite" parent="edit_avatar"]
 position = Vector2( 1438, 108 )
 scale = Vector2( 0.410586, 0.150125 )
@@ -1310,15 +1573,29 @@ margin_bottom = 990.0
 rect_scale = Vector2( 0.476923, 0.599623 )
 texture = ExtResource( 14 )
 
-[node name="current_avatar" type="Sprite" parent="edit_avatar"]
-position = Vector2( 517, 590 )
-scale = Vector2( 1.09529, 1.09278 )
-texture = ExtResource( 6 )
+[node name="current_character" type="ViewportContainer" parent="edit_avatar"]
+margin_left = 286.0
+margin_top = 332.0
+margin_right = 736.0
+margin_bottom = 782.0
 
-[node name="avatar_selection" type="Sprite" parent="edit_avatar"]
-position = Vector2( 1433, 570 )
-scale = Vector2( 1.18297, 1.06684 )
-texture = ExtResource( 6 )
+[node name="Viewport" type="Viewport" parent="edit_avatar/current_character"]
+size = Vector2( 450, 450 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Spatial" type="Spatial" parent="edit_avatar/current_character/Viewport"]
+
+[node name="Camera" type="Camera" parent="edit_avatar/current_character/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4888, 2.54809, 4.0694 )
+
+[node name="CSGMesh" type="CSGMesh" parent="edit_avatar/current_character/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7517, 0, 0 )
+mesh = ExtResource( 19 )
+material = SubResource( 60 )
+script = SubResource( 63 )
+settings_data = ExtResource( 18 )
 
 [node name="back_btn" type="Button" parent="edit_avatar"]
 margin_left = 72.0
@@ -1327,6 +1604,46 @@ margin_right = 351.0
 margin_bottom = 162.0
 theme = ExtResource( 16 )
 text = "Back"
+
+[node name="select_character" type="ViewportContainer" parent="edit_avatar"]
+margin_left = 1204.0
+margin_top = 320.0
+margin_right = 1654.0
+margin_bottom = 770.0
+
+[node name="Viewport" type="Viewport" parent="edit_avatar/select_character"]
+size = Vector2( 450, 450 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Spatial" type="Spatial" parent="edit_avatar/select_character/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9393, 0, 0 )
+
+[node name="Camera" type="Camera" parent="edit_avatar/select_character/Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59687, 4.07747 )
+
+[node name="CSGMesh" type="CSGMesh" parent="edit_avatar/select_character/Viewport/Spatial"]
+mesh = ExtResource( 19 )
+material = SubResource( 62 )
+script = SubResource( 63 )
+settings_data = ExtResource( 18 )
+
+[node name="right" type="Button" parent="edit_avatar"]
+margin_left = 1633.0
+margin_top = 497.0
+margin_right = 1744.0
+margin_bottom = 629.0
+theme = ExtResource( 16 )
+text = ">"
+
+[node name="left" type="Button" parent="edit_avatar"]
+margin_left = 1110.0
+margin_top = 496.0
+margin_right = 1221.0
+margin_bottom = 628.0
+theme = ExtResource( 16 )
+text = "<"
 
 [node name="login" type="CanvasLayer" parent="."]
 visible = false
@@ -1724,10 +2041,10 @@ text = "no"
 [connection signal="pressed" from="user_profile/questionBank_bg/questionBank_btn" to="." method="_on_questionBank_btn_pressed"]
 [connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
-[connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
 [connection signal="pressed" from="edit_avatar/select_btn" to="edit_avatar" method="_on_select_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/back_btn" to="edit_avatar" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="edit_avatar/right" to="edit_avatar" method="_on_right_pressed"]
+[connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
 [connection signal="toggled" from="login/selection" to="login" method="_on_selection_toggled"]
 [connection signal="pressed" from="login/login/enter_btn" to="login/login" method="_on_enter_btn_pressed"]
 [connection signal="pressed" from="login/signin/Button" to="login/signin" method="_on_Button_pressed"]

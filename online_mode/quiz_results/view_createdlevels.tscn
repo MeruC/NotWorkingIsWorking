@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=2]
 [ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=3]
 [ext_resource path="res://online_mode/quiz_results/result_table.gd" type="Script" id=4]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=5]
-[ext_resource path="res://resources/Game buttons/export_excel.png" type="Texture" id=6]
+[ext_resource path="res://resources/Themes/export_excel.tres" type="Theme" id=6]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=8]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -133,6 +135,112 @@ func _on_exit_pressed():
 	Load.load_scene(self, \"res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn\")
 "
 
+[sub_resource type="DynamicFont" id=12]
+size = 40
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 33.0
+content_margin_right = 33.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( -20, 20 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 35.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=13]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 12 )
+Button/styles/focus = SubResource( 8 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
+Label/fonts/font = SubResource( 12 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 5 )
+LineEdit/styles/read_only = SubResource( 5 )
+TextEdit/fonts/font = SubResource( 12 )
+Tree/colors/font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+Tree/colors/font_color_selected = Color( 0, 0, 0, 1 )
+Tree/fonts/font = SubResource( 9 )
+Tree/fonts/title_button_font = SubResource( 9 )
+Tree/styles/bg = SubResource( 10 )
+WindowDialog/styles/panel = SubResource( 11 )
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button_pressed():
+	$\".\".visible = false
+"
+
 [node name="levels_table" type="Node2D"]
 script = SubResource( 1 )
 settings_data = ExtResource( 1 )
@@ -222,12 +330,96 @@ margin_right = 2142.0
 margin_bottom = 1388.0
 rect_scale = Vector2( 0.248574, 0.251832 )
 focus_mode = 0
+theme = ExtResource( 6 )
 enabled_focus_mode = 0
-icon = ExtResource( 6 )
-flat = true
 
 [node name="result" type="CanvasLayer" parent="."]
+
+[node name="file_dialog_title" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="file_dialog_title"]
+margin_left = -1.0
+margin_right = 1922.0
+margin_bottom = 175.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="file_dialog_title"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 1917.0
+margin_bottom = 155.0
+color = Color( 0, 0.576471, 1, 1 )
+
+[node name="Label" type="Label" parent="file_dialog_title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -219.0
+margin_top = 44.0
+margin_right = 219.0
+margin_bottom = 112.0
+theme = ExtResource( 2 )
+text = "Save Excel"
+
+[node name="file_dialog" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="file_dialog"]
+margin_left = 4.0
+margin_top = 182.0
+margin_right = 1918.0
+margin_bottom = 1077.0
+theme = ExtResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="file_dialog"]
+visible = true
+margin_left = 24.0
+margin_top = 246.0
+margin_right = 1883.0
+margin_bottom = 1039.0
+rect_min_size = Vector2( 150, 52.5 )
+theme = SubResource( 13 )
+
+[node name="message_prompt" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="message_prompt"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -563.0
+margin_top = -201.0
+margin_right = -351.0
+margin_bottom = 11.0
+rect_scale = Vector2( 5.4461, 2.03904 )
+texture = ExtResource( 3 )
+
+[node name="message" type="Label" parent="message_prompt"]
+margin_left = 484.0
+margin_top = 382.0
+margin_right = 1469.0
+margin_bottom = 733.0
+theme = ExtResource( 2 )
+text = "The file was success save in "
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="message_prompt"]
+margin_left = 837.0
+margin_top = 803.0
+margin_right = 1093.0
+margin_bottom = 878.0
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
+text = "confirm"
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="result_table/back" to="result_table" method="_on_back_pressed"]
 [connection signal="pressed" from="result_table/export" to="result_table" method="_on_export_pressed"]
+[connection signal="custom_action" from="file_dialog/FileDialog" to="result_table" method="_on_FileDialog_custom_action"]
+[connection signal="popup_hide" from="file_dialog/FileDialog" to="result_table" method="_on_FileDialog_popup_hide"]
+[connection signal="pressed" from="message_prompt/Button" to="message_prompt" method="_on_Button_pressed"]

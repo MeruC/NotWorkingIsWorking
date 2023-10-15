@@ -8,6 +8,9 @@ onready var grid_container = $GridContainer
 var headers = []  # Initialize headers as an empty array
 export (Resource) var settings_data
 var response
+var currentLevelName: String = ""
+var responseData = []
+var itsave = false
 
 func _ready():
 	add_child(http_request)
@@ -46,25 +49,24 @@ func _http_request_completed(result, response_code, headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr("Error with connection: " + str(result))
 		return
-	
 	var response_body = body.get_string_from_utf8()
+		
+	if response_body.empty():
+		$export.disabled = true
+		$GridContainer.visible = false
+		$Label.text = "no one answered yet."
+		return
+		
 	response = parse_json(response_body)
-	print(response)
-	
 	if response is Array:
 		if response.size() > 0:
 			var data = response  # The response is an array of dictionaries
+			responseData = response 
 			headers = data[0].keys()
 			$GridContainer.visible = true
+			$Label.text = ""
 			display_table(data)
-			export_csv_data(data)
-		else:
-			$GridContainer.visible = false
-			$Label.text = "no one answered yet."
-	else:
-		$GridContainer.visible = false
-		$Label.text = "no one answered yet."
-
+			$export.disabled = false
 
 func display_table(data):
 	# Define your headers manually
@@ -99,7 +101,6 @@ func display_table(data):
 				grid_container.add_child(cell_label)
 				cell_label.align = Label.ALIGN_CENTER  # Center-align text
 
-
 func clear_grid():
 	# Remove all child nodes from the grid_container
 	while grid_container.get_child_count() > 0:
@@ -114,28 +115,62 @@ func get_levelresult(value):
 	request_queue.push_back({"command": command, "data": data})
 	$".".visible = true
 	
+	currentLevelName = levelname
+	
 
 
 func _on_back_pressed():
 	$".".visible = false
 
 
-func _on_export_pressed(csv_data: String):
-	var file = File.new()
-	if file.open("user://data.csv", File.WRITE) == OK:
-		file.store_string(csv_data)
-		file.close()
-		print("CSV data saved as data.csv")
-	else:
-		print("Error saving CSV data")
+func _on_export_pressed():
+	$"../file_dialog_title".visible = true
+	$"../file_dialog".visible = true
+	$"../file_dialog/FileDialog".popup()
+	$"../file_dialog/FileDialog".mode = FileDialog.MODE_SAVE_FILE  # Corrected line
+	$"../file_dialog/FileDialog".filters = ["*.csv"]
+	# Connect the "file_selected" signal of the FileDialog to this function
+	$"../file_dialog/FileDialog".connect("file_selected", self, "_on_SaveFileDialog_file_selected")
+# Connect the "file_selected" signal of the FileDialog to this function
+func _on_SaveFileDialog_file_selected(path):
+	if path.empty():
+		return  # User canceled the dialog
+	if not path.ends_with(".csv"):
+	   path += ".csv"
 	
-func export_csv_data(data):
-	var csv_data = "Name,Scores, Time\n"  # CSV header row
+	# Perform the save operation here using the provided data
+	export_csv_data(responseData, path)
+
+# Modify your export_csv_data function to accept the path as an argument
+func export_csv_data(data, path):
+	var csv_data = "Name, student score, Time\n"  # CSV header row
 	for item in data:
 		if item is Dictionary:
 			var name = item.get("username", "")
 			var scores = item.get("scores", 0)
 			var time = item.get("timestamp", 0)
-			csv_data += '"' + name + '",' + str(scores)+ '' + ', '+ str(time)+'\n'  # Add data row
-	_on_export_pressed(csv_data)
+			csv_data += '"' + name + '",' + str(scores) + ',"' + str(time).replace('"', '""') + '"\n'
 
+
+	# You can use responseData here to access the response data
+	var file = File.new()
+	if file.open(path, File.WRITE) == OK:
+		file.store_string(csv_data)
+		file.close()
+		itsave = true
+	else:
+		print("Error saving CSV data")
+
+
+func _on_FileDialog_popup_hide():
+	if itsave == true:
+		$"../message_prompt".visible = true
+		$"../message_prompt/message".text = "The file was successfully saved"
+		$"../file_dialog_title".visible = false
+		$"../file_dialog".visible = false
+		itsave = false
+	else:
+		$"../message_prompt".visible = true
+		$"../message_prompt/message".text = "The operation was cancelled"
+		$"../file_dialog_title".visible = false
+		$"../file_dialog".visible = false
