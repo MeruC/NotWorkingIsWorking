@@ -124,7 +124,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -6 )
 device_name = "PC1"
 
-[node name="@object_monitor@153" parent="." instance=ExtResource( 4 )]
+[node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
 
@@ -229,9 +229,9 @@ text = "- Go to the PC1 then open the command prompt.
 autowrap = true
 
 [connection signal="pressed" from="object_monitor/ui/ip_config_app/ip_config_screen/main_panel/save_button" to="tasks_ui/task_manager" method="_on_save_button_pressed"]
-[connection signal="pressed" from="@object_monitor@153/ui/ip_config_app/ip_config_screen/main_panel/save_button" to="tasks_ui/task_manager" method="_on_save_button_pressed"]
+[connection signal="pressed" from="object_monitor153/ui/ip_config_app/ip_config_screen/main_panel/save_button" to="tasks_ui/task_manager" method="_on_save_button_pressed"]
 
 [editable path="environment"]
 [editable path="inventory"]
 [editable path="object_monitor"]
-[editable path="@object_monitor@153"]
+[editable path="object_monitor153"]
