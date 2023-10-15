@@ -45,10 +45,10 @@ margin_right = 392.0
 margin_bottom = -12.0
 
 [node name="inventory_player" parent="ui_container/windows" instance=ExtResource( 10 )]
-margin_left = -915.0
-margin_top = -468.0
-margin_right = -379.0
-margin_bottom = -346.0
+margin_left = -890.0
+margin_top = 384.0
+margin_right = -354.0
+margin_bottom = 506.0
 
 [node name="crafting_list" parent="ui_container/windows" instance=ExtResource( 9 )]
 visible = false

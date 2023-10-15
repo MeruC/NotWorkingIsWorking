@@ -55,10 +55,10 @@ func set_data( data ):
 	level3 = data.level3
 	level4 = data.level4
 	level5 = data.level5
-	level6 = data.level6
-	level7 = data.level7
-	level8 = data.level8
-	level9 = data.level9
+#	level6 = data.level6
+#	level7 = data.level7
+#	level8 = data.level8
+#	level9 = data.level9
 	email = data.email
 	emit_changed()
 # Pack the data in a Dictionary.

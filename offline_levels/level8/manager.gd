@@ -19,6 +19,9 @@ export(Resource) var settings_data
 var score = 0
 var question_number = 0
 
+func _ready():
+	pass
+
 func _process(delta):
 	display_time()
 

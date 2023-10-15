@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 
@@ -17,14 +17,23 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+
+
+func _on_home_pressed():
+	$\"../../..\".visible = false
+	Load.load_scene(self, \"res://scenes/main_screen/main_screen.tscn\")
+"
+
 [sub_resource type="GDScript" id=4]
 script/source = "extends Button
 
 
 
 func _on_retry_pressed():
-	get_tree().reload_current_scene()
-"
+	get_tree().reload_current_scene()"
 
 [node name="game_over" type="Control"]
 anchor_right = 1.0
@@ -95,6 +104,7 @@ margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 text = "HOME"
+script = SubResource( 5 )
 
 [node name="retry" type="Button" parent="main_popup/GridContainer"]
 margin_left = 125.0
@@ -111,4 +121,5 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 text = "NEXT LEVEL"
 
+[connection signal="pressed" from="main_popup/GridContainer/home" to="main_popup/GridContainer/home" method="_on_home_pressed"]
 [connection signal="pressed" from="main_popup/GridContainer/retry" to="main_popup/GridContainer/retry" method="_on_retry_pressed"]
