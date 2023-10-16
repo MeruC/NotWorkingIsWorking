@@ -3054,15 +3054,15 @@ rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 1964.0
+margin_right = 3884.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ui_quick/CenterContainer"]
-margin_left = 657.0
-margin_right = 1307.0
+margin_left = 1617.0
+margin_right = 2267.0
 margin_bottom = 1473.0
 mouse_filter = 2
 custom_constants/margin_top = 30
