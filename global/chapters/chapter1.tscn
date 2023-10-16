@@ -2,11 +2,11 @@
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
+[ext_resource path="res://resources/soundtrack/menu/Pleasant Creek.mp3" type="AudioStream" id=3]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=4]
 [ext_resource path="res://global/chapters/level_selector_manager.gd" type="Script" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
@@ -160,6 +160,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		3:
 			if settings_data.level4 == \"complete\":
@@ -173,6 +174,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		4:
 			if settings_data.level5 == \"complete\":
@@ -186,6 +188,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 				
 		5:
@@ -200,6 +203,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		6:
 			if settings_data.level7 == \"complete\":
@@ -213,6 +217,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		7:
 			if settings_data.level8 == \"complete\":
@@ -226,6 +231,7 @@ func _on_right_pressed():
 				$\"../right\".disabled = false
 				current+=1
 			else:
+				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 			
 			
@@ -362,7 +368,7 @@ enabled_focus_mode = 0
 text = "level 9"
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
-stream = ExtResource( 8 )
+stream = ExtResource( 3 )
 bus = "Music"
 
 [node name="direction" type="Label" parent="."]
@@ -388,7 +394,7 @@ transform = Transform( 1, 0, 0, 0, 0.965695, 0.259679, 0, -0.259679, 0.965695, 4
 
 [node name="level3" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
-transform = Transform( 0.0338306, -0.4899, 0.871122, 0.0190113, 0.871779, 0.489531, -0.999247, 1.86124e-09, 0.0388064, 24.0794, 10.3645, -1.29445 )
+transform = Transform( 0.998723, -0.039477, 0.0315162, 0.0190113, 0.871779, 0.489531, -0.0468004, -0.488307, 0.871416, 16.7267, 9.42295, 4.20346 )
 
 [node name="level4" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
@@ -412,7 +418,7 @@ transform = Transform( 0.0909013, 0.438167, -0.894285, -0.04431, 0.898893, 0.435
 
 [node name="level9" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
-transform = Transform( -0.999341, 1.86142e-09, -0.0363124, -0.0108909, 0.953963, 0.299726, 0.0346407, 0.299923, -0.953334, -4.84705, 9.85433, 23.4946 )
+transform = Transform( -0.0176734, 0.299513, -0.953929, -0.0108909, 0.953963, 0.299725, 0.999785, 0.0156863, -0.0135978, 2.22029, 9.47539, 30.6388 )
 
 [node name="left" type="Button" parent="."]
 anchor_top = 0.5

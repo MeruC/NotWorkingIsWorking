@@ -3,7 +3,7 @@ export (Resource) var settings_data
 
 
 func _ready():
-	pass
+	Pixelizer.set_visible(false)
 	
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")

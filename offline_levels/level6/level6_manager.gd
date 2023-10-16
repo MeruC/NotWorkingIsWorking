@@ -112,6 +112,7 @@ func update_dialog():
 			$AnimationPlayer.play("end")
 			
 	else:
+		$".".queue_free()
 		Load.load_scene(self,game_scene)
 		print("Dialog ended.")
 

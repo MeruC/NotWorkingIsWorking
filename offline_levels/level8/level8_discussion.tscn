@@ -86,6 +86,7 @@ func update_dialog():
 			$NinePatchRect/watch2.visible = true
 		
 	else:
+		$\".\".queue_free()
 		Load.load_scene(self,game_scene)
 		print(\"Dialog ended.\")
 

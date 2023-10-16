@@ -33,7 +33,8 @@ script/source = "extends Button
 
 
 func _on_retry_pressed():
-	get_tree().reload_current_scene()"
+	get_tree().reload_current_scene()
+"
 
 [node name="game_over" type="Control"]
 anchor_right = 1.0
