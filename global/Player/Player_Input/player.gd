@@ -5,7 +5,7 @@ export( NodePath ) onready var label = get_node( label ) as VBoxContainer
 export( NodePath ) onready var preview_parent = get_node(preview_parent) as Spatial
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
 export( NodePath ) onready var place = get_node(place) as StaticBody
-
+export( Resource ) var settings_data
 onready var tween = $"%Tween"
 
 
@@ -49,6 +49,117 @@ var cursor_pos := Vector3.ZERO
 
 func _ready():
 	
+	if settings_data.gender == "female":
+		
+		if settings_data.costume == "girl_pants":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin girl/default_pants/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin girl/default_pants/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin girl/default_pants/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin girl/default_pants/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin girl/default_pants/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin girl/default_pants/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin girl/default_pants/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin boy/cict_shirt/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin girl/default_pants/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin girl/default_pants/idle/idle.png")
+			
+		if settings_data.costume == "girl_casual":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin girl/casual_attire/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin girl/casual_attire/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin girl/casual_attire/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin girl/casual_attire/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin girl/casual_attire/idle/idle.png")
+			
+		if settings_data.costume == "female":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Player -girl/idle/idle- Girl.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Player -girl/idle/idle- Girl.png")
+		
+		else:
+			
+			pass
+	if settings_data.gender == "male":
+		
+		if settings_data.costume == "male":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Player/Idle/1.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Player/1.png")
+			
+		if settings_data.costume == "blue_shirt":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin boy/blue_shirt/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin boy/blue_shirt/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin boy/blue_shirt/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin boy/blue_shirt/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/blue_shirt/idle/idle.png")
+			
+		if settings_data.costume == "cict_shirt":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin boy/cict_shirt/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin boy/cict_shirt/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin boy/cict_shirt/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin boy/cict_shirt/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/cict_shirt/idle/idle.png")
+			
+		if settings_data.costume == "formal_attire":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin boy/formal_attire/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin boy/formal_attire/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin boy/formal_attire/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin boy/formal_attire/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/formal_attire/idle/idle.png")
+			
+		if settings_data.costume == "orange_shirt":
+			$Pivot/CSGSphere.mesh = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj")
+			$Pivot/CSGSphere.material_override =  preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.png")
+			#1
+			$"Pivot/walk/1".mesh = preload("res://resources/Models/Character skin boy/orange_shirt/walk/1.obj")
+			$"Pivot/walk/1".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/walk/1.png")
+			#2
+			$"Pivot/walk/2".mesh = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj")
+			$"Pivot/walk/2".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.png")
+			#3
+			$"Pivot/walk/3".mesh = preload("res://resources/Models/Character skin boy/orange_shirt/walk/2.obj")
+			$"Pivot/walk/3".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/walk/2.png")
+			#4
+			$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj")
+			$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.png")
+			
 	Global.playerInteractLbl = get_node("interact")
 
 func _physics_process(delta: float) -> void:

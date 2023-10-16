@@ -2122,7 +2122,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.216,
 
 [node name="CameraMain" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
-transform = Transform( -0.625924, -0.0274202, 0.779402, -0.110683, 0.992389, -0.0539743, -0.77199, -0.12005, -0.624195, -2.722, 1.317, 13.408 )
+transform = Transform( -0.625924, -0.0274204, 0.779402, -0.110683, 0.992389, -0.0539741, -0.77199, -0.12005, -0.624195, -2.722, 1.317, 13.408 )
 
 [node name="CameraOffline" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
@@ -3054,7 +3054,7 @@ rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 650.0
+margin_right = 1964.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3

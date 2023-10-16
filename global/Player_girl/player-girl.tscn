@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/Models/Player -girl/idle/idle- Girl.obj" type="ArrayMesh" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://global/objects/remove.tscn" type="PackedScene" id=10]
 [ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=11]
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=12]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
 
 [sub_resource type="CylinderShape" id=19]
 height = 2.8
@@ -149,6 +150,7 @@ label = NodePath("interact")
 preview_parent = NodePath("previews")
 no_sign = NodePath("previews/no-sign")
 place = NodePath("previews/place")
+settings_data = ExtResource( 13 )
 interact_zone = NodePath("InteractionArea")
 interact_labels = NodePath("interact")
 camera_normal = NodePath("Camera/Camera")
