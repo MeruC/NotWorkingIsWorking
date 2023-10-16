@@ -32,8 +32,7 @@ func _on_level8_pressed():
 	Load.load_scene(self,"res://offline_levels/level8/level8_discussion.tscn")
 
 func _on_level9_pressed():
-	pass # Replace with function body.
-
+	Load.load_scene(self,"res://offline_levels/level9/level9.tscn")
 
 func _on_back_pressed():
 	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")

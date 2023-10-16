@@ -149,7 +149,7 @@ func _on_tap_pressed():
 func calculate_score():
 	if score >= 50:
 		gameover_indicator.text = "Level Complete!"
-		gameover_score.text = "Your Score: " + score
+		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = false
 		score_validation()
 	
