@@ -22,7 +22,6 @@ onready var level6_camera = $\"%level6\"
 onready var level7_camera = $\"%level7\"
 onready var level8_camera = $\"%level8\"
 onready var level9_camera = $\"%level9\"
-var position
 var current = 0
 export (Resource) var settings_data
 # Called when the node enters the scene tree for the first time.
@@ -45,7 +44,7 @@ func _ready():
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
 		$\"../level8\".visible = true
 		current = 7
-	elif settings_data.level6 == \"incomplete\":
+	elif settings_data.level6 == \"complete\":
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
 		$\"../level7\".visible = true
@@ -60,7 +59,7 @@ func _ready():
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
 		$\"../level5\".visible = true
 		current = 4
-	elif settings_data.level3 == \"incomplete\":
+	elif settings_data.level3 == \"complete\":
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
 		$\"../level4\".visible = true
