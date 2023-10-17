@@ -22,6 +22,7 @@ onready var level6_camera = $\"%level6\"
 onready var level7_camera = $\"%level7\"
 onready var level8_camera = $\"%level8\"
 onready var level9_camera = $\"%level9\"
+var position
 var current = 0
 export (Resource) var settings_data
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +30,54 @@ func _ready():
 	Pixelizer.set_visible(false)
 	$\"../right\".disabled = true
 	$\"../left\".disabled = true
-	TransitionNode.animation_player.play(\"in\")
-	yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
-	$\"../level1\".visible = true
+	if settings_data.level1 == \"incomplete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
+		$\"../level1\".visible = true
+		current = 0
+	elif settings_data.level8 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		$\"../level9\".visible = true
+		current = 8
+	elif settings_data.level7 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
+		$\"../level8\".visible = true
+		current = 7
+	elif settings_data.level6 == \"incomplete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
+		$\"../level7\".visible = true
+		current = 6
+	elif settings_data.level5 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 4), \"completed\")
+		$\"../level6\".visible = true
+		current = 5
+	elif settings_data.level4 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
+		$\"../level5\".visible = true
+		current = 4
+	elif settings_data.level3 == \"incomplete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
+		$\"../level4\".visible = true
+		current = 3
+	elif settings_data.level2 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 4), \"completed\")
+		$\"../level3\".visible = true
+		current = 2
+	elif settings_data.level1 == \"complete\":
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 4), \"completed\")
+		$\"../level2\".visible = true
+		current = 1
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
+	
 
 
 func _on_left_pressed():
@@ -410,7 +454,7 @@ transform = Transform( 1, 0, 0, 0, 0.987414, 0.158158, 0, -0.158158, 0.987414, 8
 
 [node name="level7" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
-transform = Transform( -0.999995, 0, 0.00315895, 0.000394554, 0.992169, 0.1249, -0.00313422, 0.1249, -0.992164, -2.83509, 9.1156, 13.7744 )
+transform = Transform( 0.999981, -0.00115752, 0.00603615, -0.000391308, 0.968122, 0.250478, -0.00613366, -0.250476, 0.968103, 5.00832, 10.1016, 14.4552 )
 
 [node name="level8" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
