@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=1]
 [ext_resource path="res://offline_levels/level2/letter_click.gd" type="Script" id=2]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 5 )
 
 [node name="letter" type="Button"]
 margin_left = 413.0
@@ -9,7 +14,13 @@ margin_top = 441.0
 margin_right = 493.0
 margin_bottom = 521.0
 rect_pivot_offset = Vector2( -185, -102 )
-custom_fonts/font = ExtResource( 1 )
+theme = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "A"
 script = ExtResource( 2 )
 blank_container = NodePath("GridContainer")

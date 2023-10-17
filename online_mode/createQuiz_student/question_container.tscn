@@ -1,11 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.gd" type="Script" id=2]
 [ext_resource path="res://online_mode/createQuiz_professor/selected_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=5]
+[ext_resource path="res://resources/Game buttons/check.png" type="Texture" id=6]
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=10]
+CheckBox/icons/checked = ExtResource( 6 )
+CheckBox/icons/unchecked = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 32
@@ -30,13 +34,14 @@ answer_content = NodePath("VBoxContainer/answer_container/answer_content")
 incorrect_content = NodePath("VBoxContainer/incorrect_container/incorrect_content")
 
 [node name="CheckBox" type="CheckBox" parent="."]
-margin_right = 24.0
+margin_right = 108.0
 margin_bottom = 178.0
-theme = SubResource( 2 )
+focus_mode = 0
+theme = SubResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 28.0
-margin_right = 1357.0
+margin_left = 112.0
+margin_right = 1441.0
 margin_bottom = 178.0
 custom_constants/separation = 10
 
