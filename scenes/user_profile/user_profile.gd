@@ -8,12 +8,13 @@ export( Resource ) var settings_data
 func _ready():
 	Pixelizer.set_visible(false)
 	$user_profile/name_background/name.text = settings_data.player_name
-	$user_profile/name_background/rank.text = settings_data.rank
 	$user_profile/router_progress.min_value = 0  # Set the minimum value
 	$user_profile/term_progress.min_value = 0  # Set the minimum value
 	$user_profile/router_progress.value = settings_data.net1_skills  # Set the current progress
 	$user_profile/term_progress.value = settings_data.net2_skills  # Set the current progress
-
+	if settings_data.crowns <= 5:
+		$user_profile/name_background/rank.text = "Network technician"
+		$user_profile/crowns/collected.text = "x"+str(settings_data.crowns)
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
 	$edit_avatar.visible = true

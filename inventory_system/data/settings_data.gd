@@ -13,7 +13,6 @@ export( int ) var gold_coins = 1000
 
 export (String) var player_name
 export (String) var gender
-export (String) var rank
 export (String) var account_status
 export (String) var level1 = "incomplete"
 export (String) var level2 = "incomplete"
@@ -28,7 +27,16 @@ export (String) var email
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0
-export (String) var costume = "male"
+export (String) var costume = "male"\
+
+#costume for boy
+export (String) var cict_shirt = "lock"
+export (String) var blue_shirt = "lock"
+export (String) var formal_attire = "lock"
+export (String) var orange_shirt = "lock"
+#costume for girl
+export (String) var girl_pants = "lock"
+export (String) var girl_casual = "lock"
 
 
 # Set the data from a Dictionary.
@@ -46,7 +54,6 @@ func set_data( data ):
 	player_name = data.player_name
 	
 	gender = data.gender
-	rank = data.rank
 	account_status = data.account_status
 	net1_skills = data.net1_skills
 	net2_skills = data.net2_skills
@@ -62,6 +69,15 @@ func set_data( data ):
 	level8 = data.level8
 	level9 = data.level9
 	email = data.email
+	#male
+	cict_shirt = data.cict_shirt
+	blue_shirt = data.blue_shirt
+	formal_attire = data.formal_attire
+	orange_shirt = data.orange_shirt
+	#female
+	girl_pants = data.girl_pants
+	girl_casual = data.girl_casual
+	
 	emit_changed()
 # Pack the data in a Dictionary.
 func get_data():
@@ -77,7 +93,6 @@ func get_data():
 		"sound_volume": sound_volume,
 		"player_name": player_name,
 		"gender": gender,
-		"rank": rank,
 		"account_status": account_status,
 		"net1_skills": net1_skills,
 		"net2_skills": net2_skills,
@@ -92,5 +107,11 @@ func get_data():
 		"level7": level7,
 		"level8": level8,
 		"level9": level9,
-		"email": email
+		"email": email,
+		"cict_shirt": cict_shirt,
+		"blue_shirt": blue_shirt,
+		"formal_attire": formal_attire,
+		"orange_shirt": orange_shirt,
+		"girl_pants": girl_pants,
+		"girl_casual": girl_casual
 	}

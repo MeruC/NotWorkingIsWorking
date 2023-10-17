@@ -125,6 +125,11 @@ func _on_data_changed():
 	if setting_data.level1 == "complete":
 		pass
 	else:
+		if score == 7 and score <= 9:
+			setting_data.crowns = 2
+		elif score == 10:
+			setting_data.crowns = 3
+			
 		var coins = setting_data.gold_coins
 		var current = coins+100
 	

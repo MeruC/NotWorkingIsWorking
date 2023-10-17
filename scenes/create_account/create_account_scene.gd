@@ -88,7 +88,6 @@ func _on_confirm_pressed():
 		# Update the player_name property of settings_data
 		var player_name = $Username/LineEdit.text
 		settings_data.player_name = $Username/LineEdit.text
-		settings_data.rank = "rookie"
 		settings_data.account_status = "old"
 		settings_data.net1_skills = 0
 		settings_data.net2_skills = 0

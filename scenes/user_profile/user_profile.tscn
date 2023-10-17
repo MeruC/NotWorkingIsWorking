@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -38,6 +38,33 @@ size = 30
 extra_spacing_bottom = 28
 font_data = ExtResource( 25 )
 
+[sub_resource type="StyleBoxTexture" id=68]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="StyleBoxTexture" id=69]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="StyleBoxTexture" id=66]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 512 )
+margin_left = 38.2665
+margin_right = 40.6582
+margin_top = 27.2227
+margin_bottom = 33.4832
+
+[sub_resource type="StyleBoxTexture" id=70]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 512 )
+modulate_color = Color( 0.00392157, 0.00392157, 0.00392157, 0.658824 )
+
+[sub_resource type="Theme" id=67]
+Button/styles/focus = SubResource( 68 )
+Button/styles/hover = SubResource( 69 )
+Button/styles/normal = SubResource( 66 )
+Button/styles/pressed = SubResource( 70 )
+
 [sub_resource type="DynamicFont" id=7]
 size = 200
 outline_color = Color( 0, 0, 0, 1 )
@@ -70,10 +97,11 @@ albedo_texture = ExtResource( 22 )
 script/source = "extends CanvasLayer
 
 export (Resource) var settings_data
-var click = 0
+var click = 1
 # Called when the node enters the scene tree for the first time.
 var costume = \"\"
 var costumename = \"\"
+var lock_skin = preload(\"res://resources/Models/lock_characters.tres\")
 func _ready():
 	pass # Replace with function body.
 
@@ -87,26 +115,38 @@ func _on_right_pressed():
 				$select_character/Viewport/Spatial/CSGMesh.mesh = girl
 				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_skin
 				costume = \"female\"
-				$avatar_name.text = \"Default\"
+				$avatar_name.text = \"BSU Uniform\"
 				costumename = \"Default\"
+				$select_btn.disabled = false
 				click = 1
 			1:
 				var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
 				var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
-				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
-				costume = \"girl_pants\"
 				$avatar_name.text = \"Pants Uniform\"
-				costumename = \"Pants Uniform\"
+				if settings_data.girl_pants == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
+					costume = \"girl_pants\"
+					costumename = \"Pants Uniform\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
 				click = 2
 			2:
 				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
 				var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
-				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
-				costume = \"girl_casual\"
 				$avatar_name.text = \"Wash day Attire\"
-				costumename = \"Wash day Attire\"
+				if settings_data.girl_casual == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
+					costume = \"girl_casual\"
+					costumename = \"Wash day Attire\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click = 0
 	if settings_data.gender == \"male\":
 		match (click):
@@ -116,44 +156,70 @@ func _on_right_pressed():
 				$select_character/Viewport/Spatial/CSGMesh.mesh = boy
 				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_skin
 				costume = \"male\"
-				$avatar_name.text = \"default\"
+				$avatar_name.text = \"BSU Uniform\"
 				costumename = \"default\"
+				$select_btn.disabled = false
+				$warning.text = \"\"
 				click = 1
 			1:
 				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
 				var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
-				costume = \"blue_shirt\"
 				$avatar_name.text = \"I love BSU!\"
-				costumename = \"I love BSU!\"
+				if settings_data.blue_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
+					costume = \"blue_shirt\"
+					costumename = \"I love BSU!\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click = 2
 			2:
 				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
 				var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
-				costume = \"cict_shirt\"
 				$avatar_name.text = \"CICT Shirt\"
-				costumename = \"CICT Shirt\"
+				if settings_data.cict_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
+					costume = \"cict_shirt\"
+					costumename = \"CICT Shirt\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click = 3
 			3:
 				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
 				var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
-				costume = \"formal_attire\"
 				$avatar_name.text = \"Formal Attire\"
-				costumename = \"Formal Attire\"
+				if settings_data.formal_attire == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
+					costume = \"formal_attire\"
+					costumename = \"Formal Attire\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click = 4
 			4:
 				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
 				var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
-				costume = \"orange_shirt\"
 				$avatar_name.text = \"Orange Stripe Shirt\"
-				costumename = \"Orange Stripe Shirt\"
+				if settings_data.orange_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
+					costume = \"orange_shirt\"
+					costumename = \"Orange Stripe Shirt\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click = 0
 				
 func _on_left_pressed():
@@ -165,24 +231,36 @@ func _on_left_pressed():
 				$select_character/Viewport/Spatial/CSGMesh.mesh = girl
 				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_skin
 				costume = \"female\"
-				$avatar_name.text = \"Default\"
-				
+				$avatar_name.text = \"BSU Uniform\"
+				$warning.text = \"\"
 				click = 2  # Reset to the last costume
 			1:
 				var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
 				var girl_pants_skin = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
-				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
-				costume = \"girl_pants\"
-				costumename = \"Pants Uniform\"
+				if settings_data.girl_pants == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
+					costume = \"girl_pants\"
+					costumename = \"Pants Uniform\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -= 1
 			2:
 				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
 				var girl_casual_skin = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
-				$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
-				costume = \"girl_casual\"
-				costumename = \"Wash day Attire\"
+				if settings_data.girl_casual == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
+					costume = \"girl_casual\"
+					costumename = \"Wash day Attire\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -= 1
 				
 	if settings_data.gender == \"male\":
@@ -194,39 +272,68 @@ func _on_left_pressed():
 				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_skin
 				costume = \"male\"
 				costumename = \"default\"
-				$avatar_name.text = \"Default\"
+				$avatar_name.text = \"BSU Uniform\"
+				$warning.text = \"\"
 				click = 4
 			1:
 				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
 				var boy_blue_shirt_skin = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
-				costume = \"blue_shirt\"
-				costumename = \"I love BSU!\"
+				$avatar_name.text = \"I love BSU!\"
+				if settings_data.blue_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
+					costume = \"blue_shirt\"
+					costumename = \"I love BSU!\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -=1
 			2:
 				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
 				var boy_cict_shirt_skin = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
-				costume = \"cict_shirt\"
 				$avatar_name.text = \"CICT Shirt\"
+				if settings_data.cict_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
+					costume = \"cict_shirt\"
+					costumename = \"CICT Shirt\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -=1
 			3:
 				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
 				var boy_formal_attire_skin = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
-				costume = \"formal_attire\"
-				costumename = \"Formal Attire\"
+				$avatar_name.text = \"Formal Attire\"
+				if settings_data.formal_attire == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
+					costume = \"formal_attire\"
+					costumename = \"Formal Attire\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -=1
 			4:
 				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
 				var boy_orange_shirt_skin = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.png\")
-				$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
-				$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
-				costume = \"orange_shirt\"
-				costumename = \"Orange Stripe Shirt\"
+				$avatar_name.text = \"Orange Stripe Shirt\"
+				if settings_data.orange_shirt == \"unlock\":
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
+					costume = \"orange_shirt\"
+					costumename = \"Orange Stripe Shirt\"
+				else:
+					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
+					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
+					$select_btn.disabled = true
+					$warning.text = \"LOCK\"
 				click -=1
 
 func _on_select_btn_pressed():
@@ -364,7 +471,7 @@ func _change_costume():
 		
 "
 
-[sub_resource type="SpatialMaterial" id=62]
+[sub_resource type="SpatialMaterial" id=71]
 albedo_texture = ExtResource( 22 )
 
 [sub_resource type="GDScript" id=25]
@@ -866,32 +973,31 @@ margin_bottom = 111.421
 theme = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 21 )
+text = "aaaaaaa"
 align = 1
 valign = 1
 
 [node name="rank" type="Label" parent="user_profile/name_background"]
-margin_left = 195.344
-margin_top = 98.8835
-margin_right = 370.344
-margin_bottom = 157.883
+margin_left = 135.0
+margin_top = 98.4484
+margin_right = 455.0
+margin_bottom = 157.448
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 23 )
-text = "rank:"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="edit_avatar" type="Button" parent="user_profile/name_background"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 348.0
-margin_top = 586.0
-margin_right = 2053.0
-margin_bottom = 1104.0
+margin_left = 453.408
+margin_top = 549.025
+margin_right = 1247.41
+margin_bottom = 1200.02
 rect_scale = Vector2( 0.133652, 0.130285 )
+theme = SubResource( 67 )
 custom_fonts/font = SubResource( 7 )
-text = "Change avatar"
-icon = ExtResource( 4 )
-flat = true
+align = 0
 icon_align = 2
 
 [node name="character_bg" type="TextureRect" parent="user_profile/name_background"]
@@ -967,9 +1073,9 @@ custom_fonts/font = SubResource( 20 )
 text = "Networking 2"
 
 [node name="crowns" type="NinePatchRect" parent="user_profile"]
-margin_left = 1138.0
+margin_left = 1087.0
 margin_top = 712.0
-margin_right = 1740.0
+margin_right = 1773.0
 margin_bottom = 811.0
 rect_scale = Vector2( 1.09176, 1.65724 )
 texture = ExtResource( 11 )
@@ -986,9 +1092,17 @@ align = 1
 valign = 1
 
 [node name="crowns2" type="Sprite" parent="user_profile/crowns"]
-position = Vector2( 506, 48 )
-scale = Vector2( 0.120753, 0.142504 )
+position = Vector2( 461.64, 45.8594 )
+scale = Vector2( 0.143731, 0.110275 )
 texture = ExtResource( 10 )
+
+[node name="collected" type="Label" parent="user_profile/crowns"]
+margin_left = 522.093
+margin_top = 21.7228
+margin_right = 645.093
+margin_bottom = 89.7228
+theme = ExtResource( 16 )
+text = "x99"
 
 [node name="questionBank_bg" type="NinePatchRect" parent="user_profile"]
 margin_left = 1075.0
@@ -1094,15 +1208,15 @@ text = "Current Avatar"
 align = 1
 
 [node name="c_avatar_name" type="Label" parent="edit_avatar"]
-margin_left = 295.0
+margin_left = 326.0
 margin_top = 905.0
-margin_right = 779.0
+margin_right = 810.0
 margin_bottom = 951.0
 rect_scale = Vector2( 0.801568, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 15 )
-text = "Default Character"
+text = "BSU Uniform"
 align = 1
 valign = 1
 autowrap = true
@@ -1237,7 +1351,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59687, 4.07747 )
 
 [node name="CSGMesh" type="CSGMesh" parent="edit_avatar/select_character/Viewport/Spatial"]
 mesh = ExtResource( 19 )
-material = SubResource( 62 )
+material = SubResource( 71 )
 script = SubResource( 63 )
 settings_data = ExtResource( 18 )
 
@@ -1256,6 +1370,13 @@ margin_right = 1221.0
 margin_bottom = 628.0
 theme = ExtResource( 16 )
 text = "<"
+
+[node name="warning" type="Label" parent="edit_avatar"]
+margin_left = 1347.0
+margin_top = 553.0
+margin_right = 1524.0
+margin_bottom = 621.0
+theme = ExtResource( 16 )
 
 [node name="login" type="CanvasLayer" parent="."]
 visible = false
