@@ -116,14 +116,6 @@ func spawn_new():
 	##
 
 
-func _on_retry_pressed():
-	$"..".queue_free()
-	Load.load_scene(self,level1_scene)
-
-func _on_home_pressed():
-	$"..".queue_free()
-	Load.load_scene(self,home_scene)
-
 func _on_next_pressed():
 	$"..".queue_free()
 	Load.load_scene(self,"res://global/chapters/chapter1.tscn")

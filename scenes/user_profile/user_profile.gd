@@ -13,14 +13,15 @@ func _ready():
 	$user_profile/router_progress.value = settings_data.net1_skills  # Set the current progress
 	$user_profile/term_progress.value = settings_data.net2_skills  # Set the current progress
 	$user_profile/crowns/collected.text = "x"+str(settings_data.crowns)
-	if settings_data.crowns <= 5:
+	if settings_data.crowns <= 4:
 		$user_profile/name_background/rank.text = "Student Intern"
 		$user_profile/crowns/collected.text = "x"+str(settings_data.crowns)
-	if settings_data.crowns <= 10:
+	if settings_data.crowns == 5 or settings_data.crowns <= 10:
 		$user_profile/name_background/rank.text = "Network technician"
 		settings_data.cict_shirt = "unlock"
 		settings_data.girl_casual = "unlock"
 		SaveManager.save_game()
+		
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
 	$edit_avatar.visible = true

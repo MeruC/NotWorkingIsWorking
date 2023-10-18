@@ -146,16 +146,8 @@ func _on_tap_pressed():
 	instructions_popup.visible = false
 	instructions_sprite.visible = false
 
-
-
-func _on_home_pressed():
-	Load.load_scene(self,home_scene)
-
 func _on_next_pressed():
 	Load.load_scene(self,"res://global/chapters/chapter1.tscn")
-
-func _on_retry_pressed():
-	Load.load_scene(self,level4_scene)
 
 
 

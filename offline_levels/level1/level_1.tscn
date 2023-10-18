@@ -126,8 +126,6 @@ autowrap = true
 position = Vector2( 510, 726 )
 type = "data"
 
-[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/home" to="manager" method="_on_home_pressed"]
-[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="manager" method="_on_retry_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="manager" method="_on_tap_pressed"]
 

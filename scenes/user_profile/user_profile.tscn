@@ -510,7 +510,7 @@ func _on_selection_toggled(button_pressed):
 
 func _on_confirm_pressed():
 	$\".\".visible = false
-	$\"../cloud_storage\".visible = true
+	$\"../cloud_storage\".visible = false
 	$\"../notification\".visible = false
 "
 
@@ -573,15 +573,18 @@ func _http_request_completed(result, response_code, headers, body):
 				$\".\".visible = false
 				$\"..\".visible = false
 				$\"../../cloud_storage\".visible = true
+				
 			else:
 				# Authentication failed, check if the response contains \"account_exists\" key
 				if \"account_exists\" in response_dict and response_dict[\"account_exists\"] == false:
 					print(\"Account doesn't exist\")
+					$enter_btn.disabled = false
 				else:
 					$\"../../notification\".visible = true
 					$\"../../notification/message\".text = \"email/password incorrect\"
 					$username.text = \"\"
 					$password.text = \"\"
+					$enter_btn.disabled = false
 					
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
@@ -622,6 +625,7 @@ func _authenticate():
 
 func _on_enter_btn_pressed():
 	_authenticate()
+	$enter_btn.disabled = true
 "
 
 [sub_resource type="GDScript" id=59]

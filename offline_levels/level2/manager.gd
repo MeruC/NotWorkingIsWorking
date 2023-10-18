@@ -149,14 +149,6 @@ func _on_tap_pressed():
 	instructions_sprite.visible = false
 
 
-func _on_retry_pressed():
-	$"..".queue_free()
-	Load.load_scene(self,level2_scene)
-
-func _on_home_pressed():
-	$"..".queue_free()
-	Load.load_scene(self,home_scene)
-
 func _on_next_pressed():
 	$"..".queue_free()
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
@@ -164,16 +156,20 @@ func _on_next_pressed():
 func score_validation():
 	if settings_data.level2 == "complete":
 		if score == 4:
-			settings_data.crowns += 2
+			settings_data.crowns += 0.2
+			SaveManager.save_game()
 		elif score == 5:
-			settings_data.crowns += 3
+			settings_data.crowns += 0.3
+			SaveManager.save_game()
 	else:
 		if score == 4:
 			settings_data.crowns += 2
+			SaveManager.save_game()
 		elif score == 5:
 			settings_data.crowns += 3
 			settings_data.blue_shirt = "unlock"
 			settings_data.girl_pants = "unlock"
+			SaveManager.save_game()
 			
 		var current_coins = settings_data.gold_coins
 		var new_coins = current_coins+100
