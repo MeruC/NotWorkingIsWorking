@@ -1,21 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=1]
+[ext_resource path="res://resources/Game buttons/game_menu.png" type="Texture" id=2]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=3]
+[ext_resource path="res://resources/Game buttons/retry2.png" type="Texture" id=4]
+[ext_resource path="res://resources/Game buttons/retry1.png" type="Texture" id=5]
+[ext_resource path="res://resources/Game buttons/home1.png" type="Texture" id=6]
+[ext_resource path="res://resources/Game buttons/next1.png" type="Texture" id=7]
+[ext_resource path="res://resources/Game buttons/next2.png" type="Texture" id=8]
+[ext_resource path="res://resources/Game buttons/home2.png" type="Texture" id=9]
+[ext_resource path="res://resources/Game buttons/0_crowns.png" type="Texture" id=10]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 0.737255, 0.227451, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 734, 432 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 60
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 734, 432 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 1 )
+[sub_resource type="Theme" id=6]
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = SubResource( 11 )
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Button
@@ -24,8 +30,21 @@ script/source = "extends Button
 
 func _on_home_pressed():
 	$\"../../..\".visible = false
-	Load.load_scene(self, \"res://scenes/main_screen/main_screen.tscn\")
+	var ro = get_node(\"/root\")
+	Load.load_scene(ro.get_child(ro.get_child_count()-1), \"res://scenes/main_screen/main_screen.tscn\")
 "
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 1054, 410 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1054, 410 )
+
+[sub_resource type="Theme" id=9]
+Button/styles/normal = SubResource( 7 )
+Button/styles/pressed = SubResource( 8 )
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Button
@@ -35,6 +54,24 @@ script/source = "extends Button
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
 "
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 734, 432 )
+modulate_color = Color( 0.329412, 0.313726, 0.313726, 1 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 734, 432 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 734, 432 )
+
+[sub_resource type="Theme" id=14]
+Button/styles/disabled = SubResource( 15 )
+Button/styles/normal = SubResource( 12 )
+Button/styles/pressed = SubResource( 13 )
 
 [node name="game_over" type="Control"]
 anchor_right = 1.0
@@ -46,26 +83,35 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 666, 375 )
 color = Color( 0, 0, 0, 0.588235 )
 
-[node name="main_popup" type="Panel" parent="."]
+[node name="main_popup" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -333.0
-margin_top = -187.5
-margin_right = 333.0
-margin_bottom = 187.5
+margin_left = -526.5
+margin_top = -345.0
+margin_right = 526.5
+margin_bottom = 345.0
 rect_min_size = Vector2( 666, 375 )
-custom_styles/panel = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="crowns" type="TextureRect" parent="main_popup"]
+margin_left = 236.5
+margin_top = -103.0
+margin_right = 533.5
+margin_bottom = -10.0
+rect_scale = Vector2( 1.97903, 2.24065 )
+texture = ExtResource( 10 )
 
 [node name="indicator" type="Label" parent="main_popup"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -350.0
-margin_right = 350.0
-margin_bottom = 60.0
+margin_left = -352.0
+margin_top = 219.0
+margin_right = 348.0
+margin_bottom = 299.0
 rect_min_size = Vector2( 700, 80 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 1 )
 text = "LEVEL COMPLETE!"
 align = 1
 valign = 1
@@ -77,11 +123,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -250.0
-margin_top = -62.5
+margin_top = -18.0
 margin_right = 250.0
-margin_bottom = -2.5
+margin_bottom = 121.0
 rect_min_size = Vector2( 500, 60 )
-custom_fonts/font = SubResource( 2 )
+theme = ExtResource( 3 )
 text = "Your Score:     / 5"
 align = 1
 valign = 1
@@ -92,11 +138,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -175.0
-margin_top = -125.0
-margin_right = 175.0
-margin_bottom = -25.0
+margin_left = -258.0
+margin_top = -198.0
+margin_right = 92.0
+margin_bottom = -98.0
 rect_min_size = Vector2( 350, 100 )
+rect_scale = Vector2( 1.5, 1.5 )
 custom_constants/hseparation = 25
 columns = 3
 
@@ -104,7 +151,8 @@ columns = 3
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-text = "HOME"
+focus_mode = 0
+theme = SubResource( 6 )
 script = SubResource( 5 )
 
 [node name="retry" type="Button" parent="main_popup/GridContainer"]
@@ -112,7 +160,8 @@ margin_left = 125.0
 margin_right = 225.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-text = "RETRY"
+focus_mode = 0
+theme = SubResource( 9 )
 script = SubResource( 4 )
 
 [node name="next" type="Button" parent="main_popup/GridContainer"]
@@ -120,7 +169,12 @@ margin_left = 250.0
 margin_right = 350.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-text = "NEXT LEVEL"
+focus_mode = 0
+theme = SubResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1053.0
+margin_bottom = 690.0
 
 [connection signal="pressed" from="main_popup/GridContainer/home" to="main_popup/GridContainer/home" method="_on_home_pressed"]
 [connection signal="pressed" from="main_popup/GridContainer/retry" to="main_popup/GridContainer/retry" method="_on_retry_pressed"]

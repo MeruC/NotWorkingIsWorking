@@ -23,6 +23,7 @@ export(NodePath) onready var popup_score_label = get_node(popup_score_label) as 
 export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Control
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 ##
 
 # Instructions popup paths
@@ -86,6 +87,8 @@ func _on_submit_pressed():
 	if slot1.texture == textures[0] and slot2.texture == textures[1] and slot3.texture == textures[2] and slot4.texture == textures[3] and slot5.texture == textures[4] and slot6.texture == textures[5] and slot7.texture == textures[6]:
 		popup_indicator_label.text = "Level Complete!"
 		score = 7
+		if score == 7:
+			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		popup_score_label.text = "Your Score: " + str(score) + " / 7"
 		popup_next_button.disabled = false
 		score_validation()
@@ -95,6 +98,13 @@ func _on_submit_pressed():
 			if child.texture == textures[i]:
 				score += 1
 			i -= 1
+		if score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		elif score == 4 and score <= 6:
+			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		elif score <= 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			
 		popup_score_label.text = "Your Score: " + str(score) + " / 7"
 		popup_next_button.disabled = true
 	
@@ -119,9 +129,31 @@ func _on_restart_pressed():
 	Load.load_scene(self,level5_scene)
 
 func score_validation():
+	
 	if settings_data.level5 == "complete":
-		pass
+		if score == 0:
+			pass
+		elif score <= 4:
+			settings_data.crowns += 0.1
+			SaveManager.save_game()
+		elif score == 5 and score <= 6:
+			settings_data.crowns += 0.2
+			SaveManager.save_game()
+		elif score == 7:
+			settings_data.crowns += 0.3
+			SaveManager.save_game()
 	else:
+		if score == 0:
+			pass
+		elif score <= 4:
+			settings_data.crowns += 1
+			SaveManager.save_game()
+		elif score == 5 and score <= 6:
+			settings_data.crowns += 2
+			SaveManager.save_game()
+		elif score == 7:
+			settings_data.crowns += 3
+			SaveManager.save_game()
 		var current_coins = settings_data.gold_coins
 		var new_coins = current_coins+100
 		
@@ -132,3 +164,7 @@ func score_validation():
 		settings_data.net1_skills = update_skills
 		settings_data.level5 = "complete"
 		SaveManager.save_game()
+
+
+func _on_next_pressed():
+	Load.load_scene(self, "res://global/chapters/chapter1.tscn")

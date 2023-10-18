@@ -730,6 +730,7 @@ type_label = NodePath("cable_type")
 game_over = NodePath("popup_layer/game_over")
 gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
 gameover_score = NodePath("popup_layer/game_over/main_popup/score")
+crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 settings_data = ExtResource( 18 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
@@ -756,10 +757,6 @@ margin_bottom = 12.0
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="3"]
 margin_right = 25.0
 
-[node name="VBoxContainer" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="4"]
-margin_left = 247.0
-margin_right = 830.0
-
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="0"]
 margin_right = 12.0
 margin_bottom = 12.0
@@ -774,9 +771,6 @@ margin_bottom = 12.0
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="3"]
 margin_right = 25.0
 
-[node name="MarginContainer" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="4"]
-margin_right = 1078.0
-
 [node name="AnimationPlayer" parent="popup_layer/pause/settings" index="5"]
 anims/RESET = SubResource( 5 )
 anims/intro = SubResource( 6 )
@@ -788,7 +782,6 @@ anims/video = SubResource( 9 )
 visible = false
 
 [node name="instructions" parent="popup_layer" instance=ExtResource( 2 )]
-visible = false
 
 [node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0
@@ -996,6 +989,7 @@ text = "Wiring Standard: "
 align = 1
 valign = 1
 
+[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="button_container/crimp" to="." method="_on_crimp_pressed"]
 

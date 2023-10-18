@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://online_mode/createQuiz_student/question_container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=4]
@@ -10,30 +9,45 @@
 [ext_resource path="res://online_mode/createQuiz_student/confirm.gd" type="Script" id=8]
 [ext_resource path="res://online_mode/createQuiz_student/second_script.gd" type="Script" id=9]
 [ext_resource path="res://online_mode/quiz_scene_template/quiz_scene_template.tscn" type="PackedScene" id=10]
+[ext_resource path="res://inventory_system/resources/sprites/main panel.png" type="Texture" id=11]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://resources/Themes/user_profile_line_edit.tres" type="Theme" id=13]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=14]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 2 )
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="DynamicFont" id=26]
+size = 34
+font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 46
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 11 )
+region_rect = Rect2( -2.39874, 2.34326, 215.554, 209.491 )
+margin_left = 17.5262
+margin_right = 16.7144
+margin_top = 18.2589
+margin_bottom = 35.1363
+
+[sub_resource type="Theme" id=6]
+TabContainer/fonts/font = SubResource( 26 )
+TabContainer/styles/panel = SubResource( 14 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 50
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 26
-font_data = ExtResource( 2 )
+size = 35
+font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=20]
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=21]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -41,18 +55,18 @@ font_data = ExtResource( 2 )
 size = 64
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=22]
 size = 24
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0, 0, 0, 0.392157 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=24]
 size = 38
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=25]
 size = 40
 font_data = ExtResource( 2 )
 
@@ -107,16 +121,15 @@ margin_right = 750.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 1500, 700 )
 theme = SubResource( 6 )
-custom_fonts/font = SubResource( 13 )
 tab_align = 0
 
 [node name="Level Settings" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 53.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 17.5262
+margin_top = 67.2589
+margin_right = -16.7144
+margin_bottom = -35.1363
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Level Settings"]
 anchor_left = 0.5
@@ -124,43 +137,46 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -350.0
-margin_top = -156.0
+margin_top = -211.0
 margin_right = 350.0
-margin_bottom = 156.0
+margin_bottom = 211.0
 custom_constants/separation = 50
 alignment = 1
 
 [node name="level_name" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer"]
 margin_right = 700.0
-margin_bottom = 146.0
+margin_bottom = 167.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/level_name"]
 margin_right = 700.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 15 )
 text = "Level Name"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="level_name" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/level_name"]
-margin_top = 46.0
+margin_top = 67.0
 margin_right = 700.0
-margin_bottom = 146.0
+margin_bottom = 167.0
 rect_min_size = Vector2( 700, 100 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 13 )
+align = 1
 placeholder_text = "Enter level name"
 
 [node name="timer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer"]
-margin_top = 196.0
+margin_top = 217.0
 margin_right = 700.0
-margin_bottom = 329.0
+margin_bottom = 422.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer"]
 margin_right = 700.0
-margin_bottom = 36.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Timer"
 align = 1
@@ -168,32 +184,33 @@ valign = 1
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer"]
-margin_top = 46.0
+margin_top = 50.0
 margin_right = 700.0
-margin_bottom = 133.0
+margin_bottom = 205.0
 custom_constants/separation = 10
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
-margin_left = 229.0
+margin_left = 88.0
 margin_right = 335.0
-margin_bottom = 87.0
+margin_bottom = 155.0
 
 [node name="minute" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer"]
-margin_right = 106.0
-margin_bottom = 55.0
+margin_right = 247.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 20, 50 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 14 )
 align = 1
 max_length = 2
 placeholder_text = "1"
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer"]
-margin_top = 59.0
-margin_right = 106.0
-margin_bottom = 87.0
+margin_top = 127.0
+margin_right = 247.0
+margin_bottom = 155.0
 rect_min_size = Vector2( 10, 10 )
-custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "minute"
 align = 1
 valign = 1
@@ -201,11 +218,11 @@ autowrap = true
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
 margin_left = 345.0
-margin_top = 21.0
+margin_top = 55.0
 margin_right = 355.0
-margin_bottom = 66.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 10, 10 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 21 )
 text = ":"
 align = 1
 valign = 1
@@ -213,32 +230,32 @@ autowrap = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
 margin_left = 365.0
-margin_right = 471.0
-margin_bottom = 87.0
+margin_right = 612.0
+margin_bottom = 155.0
 
 [node name="second" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2"]
-margin_right = 106.0
-margin_bottom = 55.0
+margin_right = 247.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 20, 50 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 14 )
 align = 1
 max_length = 2
 placeholder_text = "00"
 script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2"]
-margin_top = 59.0
-margin_right = 106.0
-margin_bottom = 87.0
+margin_top = 127.0
+margin_right = 247.0
+margin_bottom = 155.0
 rect_min_size = Vector2( 10, 10 )
-custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 20 )
 text = "second"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="Question List" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -254,19 +271,19 @@ margin_left = -250.0
 margin_right = 250.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 500, 75 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 22 )
 text = "Introduction to Networking"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Question List"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.588
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.653
 margin_left = -700.0
-margin_top = -246.5
+margin_top = -275.084
 margin_right = 700.0
-margin_bottom = 303.5
-rect_min_size = Vector2( 1400, 550 )
+margin_bottom = 233.121
+rect_min_size = Vector2( 1400, 540 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/ScrollContainer"]
 custom_constants/separation = 20
@@ -305,6 +322,7 @@ margin_left = -114.0
 margin_top = -130.0
 margin_right = 114.0
 margin_bottom = -67.0
+theme = ExtResource( 15 )
 custom_fonts/font = ExtResource( 5 )
 text = "Create"
 
@@ -318,7 +336,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="popup/level_selection"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="popup/level_selection"]
 anchor_left = 0.5
@@ -339,7 +357,7 @@ margin_left = -200.0
 margin_top = 20.0
 margin_right = 200.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 24 )
 text = "Select Lesson"
 align = 1
 valign = 1
@@ -368,7 +386,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="popup/delete_confirmation"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="popup/delete_confirmation"]
 anchor_left = 0.5
@@ -390,7 +408,7 @@ margin_top = 25.0
 margin_right = 450.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 900, 100 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 24 )
 text = "Are you sure you want to remove this question?"
 align = 1
 valign = 1
@@ -411,7 +429,7 @@ custom_constants/separation = 100
 margin_right = 200.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "YES"
 script = ExtResource( 8 )
 
@@ -420,7 +438,7 @@ margin_left = 300.0
 margin_right = 500.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "NO"
 
 [node name="create_confirmation" type="Control" parent="popup"]
@@ -431,7 +449,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="popup/create_confirmation"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="popup/create_confirmation"]
 anchor_left = 0.5
@@ -453,7 +471,7 @@ margin_top = 25.0
 margin_right = 450.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 900, 100 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 24 )
 text = "Confirm Level Creation?"
 align = 1
 valign = 1
@@ -474,7 +492,7 @@ custom_constants/separation = 100
 margin_right = 200.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "YES"
 
 [node name="no" type="Button" parent="popup/create_confirmation/ColorRect/HBoxContainer"]
@@ -482,7 +500,7 @@ margin_left = 300.0
 margin_right = 500.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "NO"
 
 [node name="dialog_box" type="Control" parent="popup"]
@@ -493,7 +511,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="popup/dialog_box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="popup/dialog_box"]
 anchor_left = 0.5
@@ -527,7 +545,7 @@ margin_top = 104.0
 margin_right = 800.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 24 )
 text = "Make sure to fill-up all text fields."
 align = 1
 valign = 1
@@ -543,7 +561,7 @@ margin_top = -100.0
 margin_right = 100.0
 margin_bottom = -25.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "Continue"
 
 [node name="successful_popup" type="Control" parent="popup"]
@@ -554,7 +572,7 @@ anchor_bottom = 1.0
 [node name="Panel" type="Panel" parent="popup/successful_popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="popup/successful_popup"]
 anchor_left = 0.5
@@ -588,7 +606,7 @@ margin_top = 104.0
 margin_right = 936.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 24 )
 text = "game_code"
 align = 1
 valign = 1
@@ -611,7 +629,7 @@ margin_top = -100.0
 margin_right = 100.0
 margin_bottom = -25.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 25 )
 text = "HOME"
 
 [connection signal="focus_entered" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_entered"]

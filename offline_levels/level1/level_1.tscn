@@ -4,13 +4,14 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=2]
 [ext_resource path="res://offline_levels/level1/file.tscn" type="PackedScene" id=3]
 [ext_resource path="res://offline_levels/level1/manager.gd" type="Script" id=4]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=8]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/notepad.png" type="Texture" id=10]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/data_folder.png" type="Texture" id=11]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=12]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -26,10 +27,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 5 )
 
 [node name="main" type="Node2D"]
 
@@ -52,19 +49,19 @@ playback_speed = 0.25
 anims/RESET = SubResource( 2 )
 
 [node name="DesktopBg" type="Sprite" parent="."]
-position = Vector2( 961.116, 541.196 )
-scale = Vector2( 0.321039, 0.318699 )
+position = Vector2( 961.116, 537.5 )
+scale = Vector2( 0.321039, 0.320889 )
 texture = ExtResource( 2 )
 
 [node name="data_folder" parent="." instance=ExtResource( 1 )]
-position = Vector2( 226, 456 )
+position = Vector2( 334, 613 )
 folder_type = "data"
 
 [node name="data_folder" parent="data_folder" index="0"]
 texture = ExtResource( 11 )
 
 [node name="info_folder" parent="." instance=ExtResource( 1 )]
-position = Vector2( 619, 458 )
+position = Vector2( 853, 619 )
 folder_type = "info"
 
 [node name="manager" type="Node2D" parent="."]
@@ -79,53 +76,54 @@ popup_score_label = NodePath("../popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("../popup_layer/game_over")
 popup_next_button = NodePath("../popup_layer/game_over/main_popup/GridContainer/next")
 popup_indicator_label = NodePath("../popup_layer/game_over/main_popup/indicator")
+crowns = NodePath("../popup_layer/game_over/main_popup/crowns")
 animation_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 setting_data = ExtResource( 6 )
 
 [node name="notepad" type="Sprite" parent="."]
-position = Vector2( 960, 355 )
-scale = Vector2( 0.307903, 0.307903 )
+position = Vector2( 1343.23, 518.597 )
+scale = Vector2( 0.469383, 0.391763 )
 texture = ExtResource( 10 )
 
 [node name="notepad_content" type="Label" parent="."]
-margin_left = 781.0
-margin_top = 163.0
-margin_right = 1131.0
-margin_bottom = 563.0
+margin_left = 1045.46
+margin_top = 249.194
+margin_right = 1630.46
+margin_bottom = 796.194
 rect_min_size = Vector2( 350, 400 )
+theme = ExtResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
 text = "KAHIT ANO"
 autowrap = true
 
 [node name="score_board" type="Label" parent="."]
 margin_left = 51.0
 margin_top = 31.0
-margin_right = 351.0
-margin_bottom = 94.0
+margin_right = 764.0
+margin_bottom = 99.0
 rect_min_size = Vector2( 300, 50 )
+theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Score:        / 10"
+text = "Score:   /10"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
-margin_left = 195.0
-margin_top = 25.0
-margin_right = 255.0
-margin_bottom = 75.0
+margin_left = 344.0
+margin_top = 31.0
+margin_right = 404.0
+margin_bottom = 99.0
 rect_min_size = Vector2( 60, 50 )
+theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="object" parent="." instance=ExtResource( 3 )]
-position = Vector2( 355, 492 )
+position = Vector2( 510, 726 )
 type = "data"
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/home" to="manager" method="_on_home_pressed"]

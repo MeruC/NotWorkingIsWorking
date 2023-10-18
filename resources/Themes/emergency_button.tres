@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=9 format=2]
+
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Game buttons/emergency_2.png" type="Texture" id=2]
+[ext_resource path="res://resources/Game buttons/emergency_1.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=11]
+size = 50
+extra_spacing_top = 5
+extra_spacing_bottom = 82
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 881, 650 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 881, 650 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 881, 650 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 881, 650 )
+
+[resource]
+Button/fonts/font = SubResource( 11 )
+Button/styles/disabled = SubResource( 12 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 14 )
+Button/styles/pressed = SubResource( 15 )

@@ -17,6 +17,7 @@ export(NodePath) onready var popup_score_label = get_node(popup_score_label) as 
 export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Control
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 ##
 
 # Instructions popup paths
@@ -29,7 +30,6 @@ export(NodePath) onready var instructions_sprite = get_node(instructions_sprite)
 export (Resource) var setting_data
 
 var home_scene = "res://scenes/main_screen/main_screen.tscn"
-var next_scene = "res://offline_levels/level2/level2_discussion/level2_discussion.tscn"
 var level1_scene = "res://offline_levels/level1/level_1.tscn"
 
 func _ready():
@@ -81,7 +81,7 @@ func spawn_new():
 		if (new_item != null):
 			main_scene.add_child(new_item)
 			new_item.owner = main_scene
-			new_item.position = Vector2(355, 492)
+			new_item.position = Vector2(510, 726)
 			new_item.type = type
 			new_item.content = content
 			notepad_content.text = new_item.content
@@ -96,10 +96,22 @@ func spawn_new():
 	if int(score_label.text) >= 7:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		if score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		elif score <= 6:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		elif score == 7 and score <= 9:
+			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		elif score == 10:
+			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		_on_data_changed()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
+		if score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		elif score <= 6:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 	game_over_popup.visible = true
 	##
 
@@ -114,7 +126,7 @@ func _on_home_pressed():
 
 func _on_next_pressed():
 	$"..".queue_free()
-	Load.load_scene(self,next_scene)
+	Load.load_scene(self,"res://global/chapters/chapter1.tscn")
 
 func _on_tap_pressed():
 	instructions_popup.visible = false
@@ -123,7 +135,12 @@ func _on_tap_pressed():
 func _on_data_changed():
 	#update coins
 	if setting_data.level1 == "complete":
-		pass
+		if score == 4 and score <= 6:
+			setting_data.crowns = 0.1
+		elif score == 7 and score <= 9:
+			setting_data.crowns = 0.2
+		elif score == 10:
+			setting_data.crowns = 0.3
 	else:
 		if score == 7 and score <= 9:
 			setting_data.crowns = 2

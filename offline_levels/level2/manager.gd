@@ -20,6 +20,7 @@ export(NodePath) onready var popup_score_label = get_node(popup_score_label) as 
 export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Control
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 ##
 
 # Instructions popup paths
@@ -28,7 +29,6 @@ export(NodePath) onready var instructions_sprite = get_node(instructions_sprite)
 ##
 
 var home_scene = "res://scenes/main_screen/main_screen.tscn"
-var next_scene = "res://offline_levels/level3/level3_discussion.tscn"
 var level2_scene = "res://offline_levels/level2/level2.tscn"
 
 func _ready():
@@ -128,8 +128,16 @@ func _on_submit_pressed():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		if score == 4:
+			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		elif score == 5:
+			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		score_validation()
 	else:
+		if score <= 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		elif score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
 	game_over_popup.visible = true
@@ -151,12 +159,22 @@ func _on_home_pressed():
 
 func _on_next_pressed():
 	$"..".queue_free()
-	Load.load_scene(self,next_scene)
+	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 
 func score_validation():
 	if settings_data.level2 == "complete":
-		pass
+		if score == 4:
+			settings_data.crowns += 2
+		elif score == 5:
+			settings_data.crowns += 3
 	else:
+		if score == 4:
+			settings_data.crowns += 2
+		elif score == 5:
+			settings_data.crowns += 3
+			settings_data.blue_shirt = "unlock"
+			settings_data.girl_pants = "unlock"
+			
 		var current_coins = settings_data.gold_coins
 		var new_coins = current_coins+100
 		

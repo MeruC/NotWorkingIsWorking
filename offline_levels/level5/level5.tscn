@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://offline_levels/level5/layer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/offline_mode_Asset/level_5/application_layer.png" type="Texture" id=2]
@@ -12,9 +12,7 @@
 [ext_resource path="res://offline_levels/level5/manager.gd" type="Script" id=10]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=11]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=12]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=14]
-[ext_resource path="res://resources/offline_mode_Asset/level_1/tutorial.png" type="Texture" id=15]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=16]
 
 [sub_resource type="Animation" id=5]
@@ -677,15 +675,7 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="DynamicFont" id=4]
-size = 60
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 38
-font_data = ExtResource( 13 )
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -700,7 +690,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=11]
 resource_name = "animation"
 loop = true
 tracks/0/type = "value"
@@ -715,13 +705,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 0.737255, 0.227451, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
 
 [node name="level5" type="Control"]
 script = ExtResource( 10 )
@@ -744,6 +727,7 @@ popup_score_label = NodePath("popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("popup_layer/game_over")
 popup_next_button = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
+crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 animation_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
@@ -773,10 +757,6 @@ margin_bottom = 12.0
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="3"]
 margin_right = 25.0
 
-[node name="VBoxContainer" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="4"]
-margin_left = 247.0
-margin_right = 830.0
-
 [node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="0"]
 margin_right = 12.0
 margin_bottom = 12.0
@@ -791,9 +771,6 @@ margin_bottom = 12.0
 [node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="3"]
 margin_right = 25.0
 
-[node name="MarginContainer" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="4"]
-margin_right = 1078.0
-
 [node name="AnimationPlayer" parent="popup_layer/pause/settings" index="5"]
 anims/RESET = SubResource( 5 )
 anims/intro = SubResource( 6 )
@@ -806,59 +783,18 @@ visible = false
 
 [node name="instructions" parent="popup_layer" instance=ExtResource( 12 )]
 
-[node name="Sprite" type="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="1"]
-visible = false
-position = Vector2( 954, 714 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
-hframes = 10
-
-[node name="title" type="Label" parent="popup_layer/instructions/main_popup" index="3"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -350.0
-margin_right = 350.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 700, 80 )
-custom_fonts/font = SubResource( 4 )
-text = "INSTRUCTIONS"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="content" type="Label" parent="popup_layer/instructions/main_popup" index="4"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -450.0
-margin_top = -200.0
-margin_right = 450.0
+[node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0
 rect_min_size = Vector2( 900, 230 )
-custom_fonts/font = SubResource( 10 )
 text = "You'll be challenged to arrange the layers of the OSI model in the correct order. To do this, simply tap and hold on a layer, then drag it to the corresponding slot. Start from the bottom layer as the 1st layer and work your way up to the top layer, placing each layer in its correct position. Use your knowledge of the OSI model to solve this puzzle and proceed further in the game. Good luck!"
-align = 3
-valign = 1
-autowrap = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="5"]
-root_node = NodePath("Sprite")
+[node name="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="2"]
 playback_speed = 0.25
-anims/RESET = SubResource( 2 )
-anims/animation = SubResource( 3 )
+anims/RESET = SubResource( 10 )
+anims/animation = SubResource( 11 )
 
-[node name="main_popup" type="Panel" parent="popup_layer/instructions"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -550.0
-margin_top = -300.0
-margin_right = 550.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 666, 375 )
-custom_styles/panel = SubResource( 1 )
+[node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
+visible = false
 
 [node name="slot_container" type="GridContainer" parent="."]
 anchor_left = 0.5
@@ -977,7 +913,7 @@ texture = ExtResource( 2 )
 id = "6"
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
+[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reload" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="button_container/submit" to="." method="_on_submit_pressed"]
 

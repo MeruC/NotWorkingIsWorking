@@ -21,11 +21,12 @@ export (NodePath) onready var type_label =  get_node(type_label) as Label
 export (NodePath) onready var game_over =  get_node(game_over) as Control
 export (NodePath) onready var gameover_indicator =  get_node(gameover_indicator) as Label
 export (NodePath) onready var gameover_score =  get_node(gameover_score) as Label
+export (NodePath) onready var crowns = get_node(crowns) as TextureRect
 export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
 var textures_holder = []
-
+var score
 func _ready():
 	# To set the texture of wires in a random order
 	textures_holder = wire_textures.duplicate()
@@ -71,24 +72,41 @@ func _on_crimp_pressed():
 			if slot_textures == arrangement_A:
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
+				score = 5
+				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
+				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+				score = 0
 		elif type_label.text.to_upper() == "WIRING STANDARD: T-568B":
 			if slot_textures == arrangement_B:
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
+				score = 5
+				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
+				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+				score = 0
 		game_over.visible = true
 
 func score_validation():
 	if settings_data.level6 == "complete":
-		pass
+		if score == 5:
+			settings_data.crowns += 0.3
+			SaveManager.save_game()
+		elif score == 0:
+			pass
 	else:
+		if score == 5:
+			settings_data.crowns += 3
+			SaveManager.save_game()
+		elif score == 0:
+			pass
 		var current_coins = settings_data.gold_coins
 		var new_coins = current_coins+100
 		
@@ -99,3 +117,7 @@ func score_validation():
 		settings_data.net1_skills = update_skills
 		settings_data.level6 = "complete"
 		SaveManager.save_game()
+
+
+func _on_next_pressed():
+	Load.load_scene(self, "res://global/chapters/chapter1.tscn")

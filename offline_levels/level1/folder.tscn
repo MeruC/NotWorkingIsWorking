@@ -7,8 +7,8 @@
 extents = Vector2( 79.8666, 61.0629 )
 
 [node name="folder" type="Node2D"]
-position = Vector2( 228.25, 366.25 )
-scale = Vector2( 1.13314, 1.23643 )
+position = Vector2( 287, 500 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 
 [node name="data_folder" type="Sprite" parent="."]

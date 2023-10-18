@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/offline_mode_Asset/level_4/incorrect.png" type="Texture" id=1]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=2]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.737255, 0.227451, 1 )
@@ -9,14 +10,6 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-
-[sub_resource type="DynamicFont" id=3]
-size = 36
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 3 )
 
 [node name="popup" type="Control"]
 anchor_right = 1.0
@@ -33,22 +26,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -333.0
-margin_top = -187.5
-margin_right = 333.0
-margin_bottom = 187.5
+margin_left = -511.5
+margin_top = -329.5
+margin_right = 511.5
+margin_bottom = 329.5
 rect_min_size = Vector2( 666, 375 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="logo" type="TextureRect" parent="main_popup"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -37.5
-margin_top = -167.5
-margin_right = 37.5
-margin_bottom = -92.5
+margin_left = -101.5
+margin_top = 17.0
+margin_right = 101.5
+margin_bottom = 180.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 1 )
 expand = true
@@ -58,27 +49,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -62.5
-margin_right = 300.0
-margin_bottom = 162.5
+margin_left = -404.5
+margin_top = -130.0
+margin_right = 404.5
+margin_bottom = 218.0
 rect_min_size = Vector2( 600, 225 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "SAMPLE TEXT"
 valign = 1
 autowrap = true
 
 [node name="command" type="Label" parent="main_popup"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = 192.5
-margin_right = 200.0
-margin_bottom = 210.5
+anchor_bottom = 1.0
+margin_left = -323.5
+margin_top = -42.0
+margin_right = 323.5
 rect_min_size = Vector2( 400, 16 )
-custom_fonts/font = SubResource( 2 )
+theme = ExtResource( 3 )
 text = "(Tap anywhere to continue)"
 align = 1
 valign = 1
@@ -90,3 +81,7 @@ show_behind_parent = true
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 12.0
+margin_right = 18.0
+margin_bottom = 12.0

@@ -3,13 +3,11 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_1/file.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level1/info.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59, 75.1644 )
 
 [node name="object" type="Node2D"]
-position = Vector2( 62.5, 56.3983 )
-scale = Vector2( 0.618644, 0.618644 )
+position = Vector2( 80, 106 )
 script = ExtResource( 2 )
 
 [node name="file_area" type="Area2D" parent="."]

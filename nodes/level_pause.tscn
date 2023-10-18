@@ -265,6 +265,13 @@ text = "II"
 [node name="settings" parent="." instance=ExtResource( 1 )]
 visible = false
 
+[node name="VBoxContainer" parent="settings/videoSubmenu/videoPanel" index="0"]
+margin_left = 247.0
+margin_right = 830.0
+
+[node name="MarginContainer" parent="settings/musicSubmenu/musicPanel" index="0"]
+margin_right = 1078.0
+
 [connection signal="pressed" from="pauseBtn" to="." method="_on_settingsBtn_pressed"]
 
 [editable path="settings"]

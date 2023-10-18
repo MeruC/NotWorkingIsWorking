@@ -22,6 +22,7 @@ export(NodePath) onready var popup_score_label = get_node(popup_score_label) as 
 export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Control
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 ##
 
 # Instructions popup paths
@@ -31,7 +32,6 @@ export(NodePath) onready var instructions_sprite = get_node(instructions_sprite)
 ##
 
 var home_scene = "res://scenes/main_screen/main_screen.tscn"
-var next_scene = "res://offline_levels/level4/level4_discussion/level4_discussion.tscn"
 var level3_scene = "res://offline_levels/level3/level3.tscn"
 	
 
@@ -101,10 +101,18 @@ func _on_choice1_pressed():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		if score == 4:
+			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		elif score == 5:
+			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		score_validation()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
+		if score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		elif score <= 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 	game_over_popup.visible = true
 	
 	clue_label.queue_free()
@@ -142,10 +150,18 @@ func _on_choice2_pressed():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
+		if score == 5:
+			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+		elif score == 4:
+			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		score_validation()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
+		if score <= 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		elif score == 0:
+			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 	game_over_popup.visible = true
 	
 	clue_label.queue_free()
@@ -159,8 +175,30 @@ func _on_tap_pressed():
 
 func score_validation():
 	if settings_data.level3 == "complete":
-		pass
+		if score == 5:
+			settings_data.crowns += 0.3
+			SaveManager.save_game()
+		elif score == 4:
+			settings_data.crowns += 0.2
+			SaveManager.save_game()
+		elif score <= 3:
+			settings_data.crowns += 0.1
+			SaveManager.save_game()
+		elif score == 0:
+			pass
 	else:
+		if score == 5:
+			settings_data.crowns += 3
+			SaveManager.save_game()
+		elif score == 4:
+			settings_data.crowns += 2
+			SaveManager.save_game()
+		elif score <= 3:
+			settings_data.crowns += 1
+			SaveManager.save_game()
+		elif score == 0:
+			pass
+			
 		var current_coins = settings_data.gold_coins
 		var new_coins = current_coins+100
 		
@@ -218,7 +256,7 @@ func _on_home_pressed():
 
 func _on_next_pressed():
 	$".".queue_free()
-	Load.load_scene(self,next_scene)
+	Load.load_scene(self,"res://global/chapters/chapter1.tscn")
 
 func _on_retry_pressed():
 	Load.load_scene(self,level3_scene)
