@@ -100,7 +100,7 @@ func spawn_new():
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		elif score <= 6:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-		elif score == 7 and score <= 9:
+		elif score >= 7 and score <= 9:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		elif score == 10:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
@@ -127,17 +127,22 @@ func _on_tap_pressed():
 func _on_data_changed():
 	#update coins
 	if setting_data.level1 == "complete":
-		if score == 4 and score <= 6:
+		if score >= 4 and score <= 6:
 			setting_data.crowns = 0.1
-		elif score == 7 and score <= 9:
+			SaveManager.save_game()
+		elif score >= 7 and score <= 9:
 			setting_data.crowns = 0.2
+			SaveManager.save_game()
 		elif score == 10:
 			setting_data.crowns = 0.3
+			SaveManager.save_game()
 	else:
-		if score == 7 and score <= 9:
+		if score >= 7 and score <= 9:
 			setting_data.crowns = 2
+			SaveManager.save_game()
 		elif score == 10:
 			setting_data.crowns = 3
+			SaveManager.save_game()
 			
 		var coins = setting_data.gold_coins
 		var current = coins+100

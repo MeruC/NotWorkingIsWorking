@@ -16,7 +16,7 @@ func _ready():
 	if settings_data.crowns <= 4:
 		$user_profile/name_background/rank.text = "Student Intern"
 		$user_profile/crowns/collected.text = "x"+str(settings_data.crowns)
-	if settings_data.crowns == 5 or settings_data.crowns <= 10:
+	if settings_data.crowns >= 5 or settings_data.crowns <= 10:
 		$user_profile/name_background/rank.text = "Network technician"
 		settings_data.cict_shirt = "unlock"
 		settings_data.girl_casual = "unlock"

@@ -829,8 +829,6 @@ margin_top = -3.0
 margin_right = 253.0
 margin_bottom = 252.0
 
-[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/home" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
 [connection signal="pressed" from="choices/choices_container/choice1" to="." method="_on_choice1_pressed"]

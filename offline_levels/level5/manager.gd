@@ -100,7 +100,7 @@ func _on_submit_pressed():
 			i -= 1
 		if score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-		elif score == 4 and score <= 6:
+		elif score >= 4 and score <= 6:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		elif score <= 3:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
@@ -136,7 +136,7 @@ func score_validation():
 		elif score <= 4:
 			settings_data.crowns += 0.1
 			SaveManager.save_game()
-		elif score == 5 and score <= 6:
+		elif score >= 5 and score <= 6:
 			settings_data.crowns += 0.2
 			SaveManager.save_game()
 		elif score == 7:
@@ -148,7 +148,7 @@ func score_validation():
 		elif score <= 4:
 			settings_data.crowns += 1
 			SaveManager.save_game()
-		elif score == 5 and score <= 6:
+		elif score >= 5 and score <= 6:
 			settings_data.crowns += 2
 			SaveManager.save_game()
 		elif score == 7:

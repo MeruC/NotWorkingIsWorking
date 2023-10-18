@@ -161,10 +161,14 @@ func score_validation():
 		elif score == 5:
 			settings_data.crowns += 0.3
 			SaveManager.save_game()
+		elif score >= 3 and score <= 1:
+			settings_data.crowns += 0.1
 	else:
 		if score == 4:
 			settings_data.crowns += 2
 			SaveManager.save_game()
+		elif score >= 3 and score <= 1:
+			settings_data.crowns += 0.1
 		elif score == 5:
 			settings_data.crowns += 3
 			settings_data.blue_shirt = "unlock"
