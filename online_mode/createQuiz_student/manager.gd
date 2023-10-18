@@ -181,7 +181,6 @@ func _on_create_pressed():
 	var file = File.new()
 	
 	if file.open(file_path, File.WRITE) == OK:
-		save_level(game_code)
 		file.store_string(json_string)
 		file.close()
 		print("JSON file saved to: " + file_path)
@@ -191,7 +190,7 @@ func _on_create_pressed():
 	
 	generate_qr(game_code)
 	create_confirmation.visible = false
-	
+	save_level(game_code)
 	##
 	
 func generate_qr(game_code):
@@ -231,13 +230,23 @@ func _request_callback(result, response_code, headers, body) -> void:
 		print("not connected to server")
 
 func upload_file(request: HTTPRequest, game_code: String) -> void:
-	var file_name = game_code+".tscn"
+	var file_name = game_code + ".tscn"
+	var json_filename = game_code + ".json"
 	var creator_name = settings_data.email
+	
+	var file_path = "res://online_mode/saved_levels/" + file_name
+	var json_file_path = "res://online_mode/json/" + json_filename
+	
 	var file = File.new()
-	file.open("res://online_mode/saved_levels/" + file_name, File.READ)
-	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
+	file.open(file_path, File.READ)
+	var file_data = file.get_buffer(file.get_len())
 	file.close()
-
+	
+	var json_file = File.new()
+	json_file.open(json_file_path, File.READ)
+	var json_data = json_file.get_buffer(json_file.get_len())
+	json_file.close()
+	
 	var body = PoolByteArray()
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
@@ -247,14 +256,20 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
 	body.append_array(file_data)
 	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
-
+	
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"json_file\"; filename=\"%s\"\r\n" % json_filename).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(json_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+	
 	var headers = [
 		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
 	]
-
+	
 	# Replace the following URL with the actual URL of your PHP server script
 	var server_url = "https://nwork.slarenasitsolutions.com/upload.php"  # Replace with your server's URL
-
+	
 	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")

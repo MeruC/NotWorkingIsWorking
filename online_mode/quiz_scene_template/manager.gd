@@ -204,6 +204,8 @@ func addScore():
 	print(data)
 	var command = "upload_score"
 	request_queue.push_back({"command": command, "data": data})
-	
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
 	# Handle the submission process (e.g., show a success message)
 	print("Score submitted successfully.")
+	

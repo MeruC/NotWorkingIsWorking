@@ -130,6 +130,7 @@ func _on_right_pressed():
 					costume = \"girl_pants\"
 					costumename = \"Pants Uniform\"
 					$warning.text = \"\"
+					$select_btn.disabled = false
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
@@ -144,6 +145,7 @@ func _on_right_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
 					costume = \"girl_casual\"
 					costumename = \"Wash day Attire\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
@@ -173,6 +175,7 @@ func _on_right_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
 					costume = \"blue_shirt\"
 					costumename = \"I love BSU!\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
@@ -189,6 +192,7 @@ func _on_right_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
 					costume = \"cict_shirt\"
 					costumename = \"CICT Shirt\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
@@ -205,6 +209,7 @@ func _on_right_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
 					costume = \"formal_attire\"
 					costumename = \"Formal Attire\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
@@ -221,6 +226,7 @@ func _on_right_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
 					costume = \"orange_shirt\"
 					costumename = \"Orange Stripe Shirt\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
@@ -249,6 +255,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_pants_skin
 					costume = \"girl_pants\"
 					costumename = \"Pants Uniform\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
@@ -264,6 +271,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = girl_casual_skin
 					costume = \"girl_casual\"
 					costumename = \"Wash day Attire\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
@@ -282,6 +290,7 @@ func _on_left_pressed():
 				costume = \"male\"
 				costumename = \"default\"
 				$avatar_name.text = \"BSU Uniform\"
+				$select_btn.disabled = false
 				$warning.text = \"\"
 				click = 4
 			1:
@@ -293,6 +302,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_blue_shirt_skin
 					costume = \"blue_shirt\"
 					$warning.text = \"\"
+					$select_btn.disabled = false
 					costumename = \"I love BSU!\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
@@ -309,6 +319,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_cict_shirt_skin
 					costume = \"cict_shirt\"
 					costumename = \"CICT Shirt\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
@@ -325,6 +336,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_formal_attire_skin
 					costume = \"formal_attire\"
 					costumename = \"Formal Attire\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
@@ -341,6 +353,7 @@ func _on_left_pressed():
 					$select_character/Viewport/Spatial/CSGMesh.material_override = boy_orange_shirt_skin
 					costume = \"orange_shirt\"
 					costumename = \"Orange Stripe Shirt\"
+					$select_btn.disabled = false
 					$warning.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
@@ -1090,10 +1103,10 @@ custom_fonts/font = SubResource( 20 )
 text = "Networking 2"
 
 [node name="crowns" type="NinePatchRect" parent="user_profile"]
-margin_left = 1087.0
-margin_top = 712.0
-margin_right = 1773.0
-margin_bottom = 811.0
+margin_left = 1067.0
+margin_top = 714.0
+margin_right = 1792.0
+margin_bottom = 813.0
 rect_scale = Vector2( 1.09176, 1.65724 )
 texture = ExtResource( 11 )
 

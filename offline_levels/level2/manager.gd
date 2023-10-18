@@ -171,8 +171,6 @@ func score_validation():
 			settings_data.crowns += 0.1
 		elif score == 5:
 			settings_data.crowns += 3
-			settings_data.blue_shirt = "unlock"
-			settings_data.girl_pants = "unlock"
 			SaveManager.save_game()
 			
 		var current_coins = settings_data.gold_coins
@@ -180,7 +178,8 @@ func score_validation():
 		
 		var skills = settings_data.net1_skills
 		var update_skills = skills+10
-		
+		settings_data.blue_shirt = "unlock"
+		settings_data.girl_pants = "unlock"
 		settings_data.gold_coins = new_coins
 		settings_data.net1_skills = update_skills
 		settings_data.level2 = "complete"
