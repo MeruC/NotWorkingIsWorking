@@ -84,6 +84,12 @@ func update_dialog():
 			$NinePatchRect/title2.text = title2
 			$NinePatchRect/watch1.visible = true
 			$NinePatchRect/watch2.visible = true
+		if size == 3:
+			$NinePatchRect/dialog.visible = true
+			$NinePatchRect/title1.visible = false
+			$NinePatchRect/title2.visible = false
+			$NinePatchRect/watch1.visible = false
+			$NinePatchRect/watch2.visible = false
 		
 	else:
 		$\".\".queue_free()

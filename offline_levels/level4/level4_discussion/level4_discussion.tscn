@@ -205,6 +205,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/dialog:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1607, 306 ), Vector2( 1165, 306 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "lan_animation"
@@ -353,7 +365,6 @@ margin_bottom = 1076.0
 texture = ExtResource( 2 )
 
 [node name="well_done" type="Label" parent="CanvasLayer"]
-visible = false
 margin_left = 1092.0
 margin_top = 808.0
 margin_right = 1467.0
@@ -378,6 +389,7 @@ valign = 1
 autowrap = true
 
 [node name="dialog" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 148.0
 margin_top = 241.0
 margin_right = 1755.0

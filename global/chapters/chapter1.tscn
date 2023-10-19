@@ -31,48 +31,66 @@ func _ready():
 	$\"../left\".disabled = true
 	if settings_data.level1 == \"incomplete\":
 		TransitionNode.animation_player.play(\"in\")
+		$\"../back\".disabled = true
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
 		$\"../level1\".visible = true
+		$\"../back\".disabled = false
 		current = 0
 	elif settings_data.level8 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
 		$\"../level9\".visible = true
+		$\"../back\".disabled = false
 		current = 8
 	elif settings_data.level7 == \"complete\":
 		TransitionNode.animation_player.play(\"in\")
+		$\"../back\".disabled = true
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
 		$\"../level8\".visible = true
+		$\"../back\".disabled = false
 		current = 7
 	elif settings_data.level6 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
 		$\"../level7\".visible = true
+		$\"../back\".disabled = false
 		current = 6
 	elif settings_data.level5 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 4), \"completed\")
 		$\"../level6\".visible = true
+		$\"../back\".disabled = false
 		current = 5
 	elif settings_data.level4 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
 		$\"../level5\".visible = true
+		$\"../back\".disabled = false
 		current = 4
 	elif settings_data.level3 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
 		$\"../level4\".visible = true
+		$\"../back\".disabled = false
 		current = 3
 	elif settings_data.level2 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 4), \"completed\")
 		$\"../level3\".visible = true
+		$\"../back\".disabled = false
 		current = 2
 	elif settings_data.level1 == \"complete\":
+		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 4), \"completed\")
 		$\"../level2\".visible = true
+		$\"../back\".disabled = false
 		current = 1
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
@@ -86,82 +104,98 @@ func _on_left_pressed():
 		1: 
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level2\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 2), \"completed\")
 			$\"../level1\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		2:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level3\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level3_camera, level2_camera, 2), \"completed\")
 			$\"../level2\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		3:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level4\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level4_camera, level3_camera, 2), \"completed\")
 			$\"../level3\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		4:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level5\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 2), \"completed\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../left\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		5:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level6\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 2), \"completed\")
 			$\"../level5\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		6:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level7\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level7_camera, level6_camera, 2), \"completed\")
 			$\"../level6\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		7:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level8\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level8_camera, level7_camera, 2), \"completed\")
 			$\"../level7\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 		8:
 			$\"../left\".disabled = true
 			$\"../right\".disabled = true
+			$\"../back\".disabled = true
 			$\"../level9\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 2), \"completed\")
 			$\"../level8\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
+			$\"../back\".disabled = false
 			current-=1
 
 func _on_right_pressed():
@@ -170,11 +204,13 @@ func _on_right_pressed():
 			if settings_data.level1 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../level1\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level1_camera, level2_camera, 2), \"completed\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../level2\".visible = true
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".text = \"level is not completed\"
@@ -182,12 +218,14 @@ func _on_right_pressed():
 			if settings_data.level2 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level2\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level2_camera, level3_camera, 2), \"completed\")
 				$\"../level3\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".text = \"level is not completed\"
@@ -195,12 +233,14 @@ func _on_right_pressed():
 			if settings_data.level3 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level3\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level3_camera, level4_camera, 2), \"completed\")
 				$\"../level4\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -209,12 +249,14 @@ func _on_right_pressed():
 			if settings_data.level4 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level4\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 2), \"completed\")
 				$\"../level5\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -223,12 +265,14 @@ func _on_right_pressed():
 			if settings_data.level5 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level5\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level5_camera, level6_camera, 2), \"completed\")
 				$\"../level6\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -238,12 +282,14 @@ func _on_right_pressed():
 			if settings_data.level6 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level6\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level6_camera, level7_camera, 2), \"completed\")
 				$\"../level7\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -252,12 +298,14 @@ func _on_right_pressed():
 			if settings_data.level7 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level7\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level7_camera, level8_camera, 2), \"completed\")
 				$\"../level8\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -266,12 +314,14 @@ func _on_right_pressed():
 			if settings_data.level8 == \"complete\":
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
+				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level8\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 2), \"completed\")
 				$\"../level9\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
+				$\"../back\".disabled = false
 				current+=1
 			else:
 				$\"../notif\".visible = true
