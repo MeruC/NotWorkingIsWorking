@@ -853,6 +853,8 @@ func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
 	if result != HTTPRequest.RESULT_SUCCESS:
 		printerr(\"Error with connection: \" + str(result))
+		$\"../notification\".visible = true
+		$\"../notification/message\".text = \"No Internet Connection.\"
 		return
 
 	# Check if the response body is empty
@@ -917,15 +919,21 @@ func upload_file(request: HTTPRequest) -> void:
 	# Replace the following URL with the actual URL of your PHP server script
 	var server_url = \"https://nwork.slarenasitsolutions.com/upload_saveData.php\"  # Replace with your server's URL
 
-	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
-	if error != OK:
+	request.connect(\"request_completed\", self, \"http_request_completed\")
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
+
+
+func http_request_completed(result, response_code, headers, body):
+	if result != OK:
 		push_error(\"An error occurred in the HTTP request.\")
 		$\"../notification\".visible = true
-		$\"../notification/message\".text = \"Failed to upload the data.\"
+		$\"../notification/message\".text = \"No Internet Connection\"
+		$\"../prompt_upload\".visible = false
 	else:
 		$\"../notification\".visible = true
 		$\"../notification/message\".text = \"Your data successfully uploaded in the database.\"
 		$\"../prompt_upload\".visible = false
+
 	
 func _on_retrieve_data_pressed():
 	$\"../prompt_retrieve\".visible = true
