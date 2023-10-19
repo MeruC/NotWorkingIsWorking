@@ -16,11 +16,13 @@ func _ready():
 	if settings_data.crowns <= 4:
 		$user_profile/name_background/rank.text = "Student Intern"
 		$user_profile/crowns/collected.text = "x"+str(settings_data.crowns)
-	if settings_data.crowns >= 5 or settings_data.crowns <= 10:
+	if settings_data.crowns >= 5 and settings_data.crowns <= 10:
 		$user_profile/name_background/rank.text = "Network technician"
 		settings_data.cict_shirt = "unlock"
 		settings_data.girl_casual = "unlock"
 		SaveManager.save_game()
+	if settings_data.crowns >= 11:
+		$user_profile/name_background/rank.text = "Network Enginner"
 		
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false
