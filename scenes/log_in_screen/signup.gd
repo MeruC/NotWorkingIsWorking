@@ -30,7 +30,8 @@ func _http_request_completed(result, response_code, headers, body):
 	# Re-enable UI elements here (e.g., $signup_btn)
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
-		printerr("Error with connection: " + str(result))
+		$"../warning".visible = true
+		$"../warning/warning2".text = "No Internet Connection"
 		return
 
 	var response_body = body.get_string_from_utf8()
@@ -43,17 +44,9 @@ func _http_request_completed(result, response_code, headers, body):
 
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
+		_change_scene()
 		print("Response Data:", _response_data)
-
-	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
-		var response_dict = response["response"]
-		if "authenticated" in response_dict and response_dict["authenticated"] == true:
-			# Authentication was successful, redirect to the main screen
-			Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
-		else:
-			# Authentication failed, you can show an error message
-			print("Authentication failed")
-	
+		
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
 		_send_request(next_request)
@@ -96,10 +89,7 @@ func _add_user():
 			var command = "add_user"
 			var data = {"username": username, "password": user_password}
 			request_queue.push_back({"command": command, "data": data})
-			$"../signup_success".visible = true
 			settings_data.email = username
-			SaveManager.save_game()
-			$"../signup_success/warning/warning".text = "Welcome " + username
 		else:
 			$"../warning".visible = true
 			$"../warning/warning2".text = "Invalid email format."

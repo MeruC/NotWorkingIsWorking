@@ -525,7 +525,8 @@ func _process(_delta):
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
 	if result != HTTPRequest.RESULT_SUCCESS:
-		printerr(\"Error with connection: \" + str(result))
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"No Internet Connection\"
 		return
 
 	# Check if the response body is empty
@@ -571,7 +572,6 @@ func _on_Yes_pressed():
 	yield(get_tree().create_timer(1), \"timeout\")
 	$\"..\".queue_free()
 	get_tree().quit()
-
 
 func _on_no_pressed():
 	$\"..\".queue_free()
@@ -954,9 +954,9 @@ theme = ExtResource( 25 )
 text = "no"
 
 [node name="login_sucess" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="bg" type="TextureRect" parent="login_sucess"]
+visible = false
 modulate = Color( 1, 1, 1, 0.360784 )
 self_modulate = Color( 0, 0, 0, 1 )
 margin_right = 40.0
@@ -966,10 +966,11 @@ texture = ExtResource( 11 )
 
 [node name="panel" type="Sprite" parent="login_sucess"]
 position = Vector2( 969, 508 )
-scale = Vector2( 6.05858, -2.79481 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 26 )
 
 [node name="message" type="Label" parent="login_sucess"]
+visible = false
 margin_left = 400.0
 margin_top = 239.0
 margin_right = 1228.0

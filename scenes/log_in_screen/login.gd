@@ -26,7 +26,10 @@ func _http_request_completed(result, response_code, headers, body):
 	var nickname
 	is_requesting = false
 	if result != HTTPRequest.RESULT_SUCCESS:
-		printerr("Error with connection: " + str(result))
+		$"../warning".visible = true
+		$"../warning/warning2".text = "No Internet Connection"
+		$username/username.text = ""
+		$password2.text = ""
 		return
 
 	var response_body = body.get_string_from_utf8()

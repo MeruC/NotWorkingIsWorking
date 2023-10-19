@@ -266,7 +266,10 @@ func _on_btn_up_pressed():
 			offline_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
-			online_btn.disabled = false
+			if settings_data.email == \"\":
+				online_btn.disabled = true
+			else:
+				online_btn.disabled = false
 			btn_up.disabled = false
 			btn_down.disabled = false
 		3:
@@ -274,7 +277,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			dict_btn.set_visible(false)
 			shop_btn.disabled = true
-			
 			online_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
