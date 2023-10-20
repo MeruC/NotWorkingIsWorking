@@ -282,6 +282,8 @@ func _input( event ):
 							current_level.get_node(object_point.collider.name)._set_connector(LevelGlobal.object_hold)
 							LevelGlobal.object_hold._set_connector(current_level.get_node(object_point.collider.name))
 							object_number = 0
+							_on_cable_connected()
+							
 
 func _on_InteractionArea_area_exited(area):
 	if current_interactable == area:
@@ -300,6 +302,14 @@ func _on_cable_used( type ):
 	preview_parent.set_visible(true)
 	SignalManager.emit_signal("cable_used")
 	LevelGlobal.on_cable_mode = true
+	
+func _on_cable_connected():
+	label.modulate = Color8(255,255,255,255)
+	mode = "normal"
+	preview_parent.set_visible(false)
+	LevelGlobal.on_cable_mode = false
+	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
+	SignalManager.emit_signal("cable_done")
 
 func previewCursor():
 	if(object_point2.has("position")):
