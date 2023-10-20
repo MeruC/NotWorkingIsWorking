@@ -29,63 +29,63 @@ func _ready():
 	Pixelizer.set_visible(false)
 	$\"../right\".disabled = true
 	$\"../left\".disabled = true
-	if settings_data.level1 == \"incomplete\":
+	if settings_data.level1 == 0:
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
 		$\"../level1\".visible = true
 		$\"../back\".disabled = false
 		current = 0
-	elif settings_data.level8 == \"complete\":
+	elif settings_data.level8 >= 30:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
 		$\"../level9\".visible = true
 		$\"../back\".disabled = false
 		current = 8
-	elif settings_data.level7 == \"complete\":
+	elif settings_data.level7 >= 3:
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
 		$\"../level8\".visible = true
 		$\"../back\".disabled = false
 		current = 7
-	elif settings_data.level6 == \"complete\":
+	elif settings_data.level6 == 5:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
 		$\"../level7\".visible = true
 		$\"../back\".disabled = false
 		current = 6
-	elif settings_data.level5 == \"complete\":
+	elif settings_data.level5 >= 4:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 4), \"completed\")
 		$\"../level6\".visible = true
 		$\"../back\".disabled = false
 		current = 5
-	elif settings_data.level4 == \"complete\":
+	elif settings_data.level4 >= 5:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
 		$\"../level5\".visible = true
 		$\"../back\".disabled = false
 		current = 4
-	elif settings_data.level3 == \"complete\":
+	elif settings_data.level3 >= 4:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
 		$\"../level4\".visible = true
 		$\"../back\".disabled = false
 		current = 3
-	elif settings_data.level2 == \"complete\":
+	elif settings_data.level2 >= 4:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 4), \"completed\")
 		$\"../level3\".visible = true
 		$\"../back\".disabled = false
 		current = 2
-	elif settings_data.level1 == \"complete\":
+	elif settings_data.level1 >= 7:
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 4), \"completed\")
@@ -144,6 +144,7 @@ func _on_left_pressed():
 			$\"../level5\".visible = false
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 2), \"completed\")
+			$\"../level4\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../left\".disabled = false

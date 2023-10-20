@@ -154,34 +154,32 @@ func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 
 func score_validation():
-	if settings_data.level2 == "complete":
-		if score == 4:
-			settings_data.crowns += 0.2
-			SaveManager.save_game()
-		elif score == 5:
-			settings_data.crowns += 0.3
-			SaveManager.save_game()
-		elif score >= 3 and score <= 1:
-			settings_data.crowns += 0.1
+	if settings_data.level2 == 5:
+		settings_data.level2 = score
 	else:
 		if score == 4:
 			settings_data.crowns += 2
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+90
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.blue_shirt = "unlock"
+			settings_data.girl_pants = "unlock"
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level2 = score
 			SaveManager.save_game()
 		elif score >= 3 and score <= 1:
-			settings_data.crowns += 0.1
+			pass
 		elif score == 5:
-			settings_data.crowns += 3
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.blue_shirt = "unlock"
+			settings_data.girl_pants = "unlock"
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level2 = score
 			SaveManager.save_game()
-			
-		var current_coins = settings_data.gold_coins
-		var new_coins = current_coins+100
-		
-		var skills = settings_data.net1_skills
-		var update_skills = skills+10
-		settings_data.blue_shirt = "unlock"
-		settings_data.girl_pants = "unlock"
-		settings_data.gold_coins = new_coins
-		settings_data.net1_skills = update_skills
-		settings_data.level2 = "complete"
-		SaveManager.save_game()
 	

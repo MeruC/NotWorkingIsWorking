@@ -14,20 +14,20 @@ export( int ) var gold_coins = 1000
 export (String) var player_name
 export (String) var gender
 export (String) var account_status
-export (String) var level1 = "incomplete"
-export (String) var level2 = "incomplete"
-export (String) var level3 = "incomplete"
-export (String) var level4 = "incomplete"
-export (String) var level5 = "incomplete"
-export (String) var level6 = "incomplete"
-export (String) var level7 = "incomplete"
-export (String) var level8 = "incomplete"
-export (String) var level9 = "incomplete"
-export (String) var email
+export (int) var level1 = 0
+export (int) var level2 = 0
+export (int) var level3 = 0
+export (int) var level4 = 0
+export (int) var level5 = 0
+export (int) var level6 = 0
+export (int) var level7 = 0
+export (int) var level8 = 0
+export (int) var level9 = 0
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0
-export (String) var costume = "male"\
+export (String) var costume = "male"
+export (String) var email
 
 #costume for boy
 export (String) var cict_shirt = "lock"

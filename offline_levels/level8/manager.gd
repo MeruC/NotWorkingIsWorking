@@ -14,6 +14,7 @@ export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) a
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
 export(NodePath) onready var score_display = get_node(score_display) as Label
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(Resource) var settings_data
 
 var score = 0
@@ -147,31 +148,58 @@ func _on_tap_pressed():
 
 # To calculate score then display the gameover popup
 func calculate_score():
-	if score >= 50:
-		gameover_indicator.text = "Level Complete!"
-		gameover_score.text = "Your Score: " + str(score)
-		gameover_next.disabled = false
-		score_validation()
-	
-	else:
+	if score == 0:
 		gameover_indicator.text = "Level Failed"
 		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = true
+		
+	if score<=20:
+		gameover_indicator.text = "Level Failed"
+		gameover_score.text = "Your Score: " + str(score)
+		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		gameover_next.disabled = false
+		score_validation()
+		
+	elif score >= 30:
+		gameover_indicator.text = "Level Complete!"
+		gameover_score.text = "Your Score: " + str(score)
+		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		gameover_next.disabled = false
+		score_validation()
+	elif score >= 200:
+		gameover_indicator.text = "Level Complete!"
+		gameover_score.text = "Your Score: " + str(score)
+		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+		gameover_next.disabled = false
+		score_validation()
 		
 	gameover_popup.visible = true
 ##
 
 func score_validation():
-	if settings_data.level8 == "complete":
-		pass
-	else:
-		var current_coins = settings_data.gold_coins
-		var new_coins = current_coins+100
-		
-		var skills = settings_data.net1_skills
-		var update_skills = skills+10
-		
-		settings_data.gold_coins = new_coins
-		settings_data.net1_skills = update_skills
-		settings_data.level8 = "complete"
+	if settings_data.level8 == 400:
+		settings_data.formal_attire = "unlock"
+		settings_data.girl_casual = "unlock"
+		settings_data.level8 = score
 		SaveManager.save_game()
+	else:
+		if score >= 30:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level8 = score
+			SaveManager.save_game()
+		elif score >= 400:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+200
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.formal_attire = "unlock"
+			settings_data.girl_casual = "unlock"
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level8 = score
+			SaveManager.save_game()

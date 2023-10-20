@@ -178,38 +178,38 @@ func _on_restart_pressed():
 	Load.load_scene(self,level4_scene)
 
 func score_validation():
-	if settings_data.level4 == "complete":
-		if score == 0:
-			pass
-		elif score == 5:
-			settings_data.crowns+= 0.3
-			SaveManager.save_game()
-		elif score == 4:
-			settings_data.crowns+=0.2
-			SaveManager.save_game()
-		elif score <= 3:
-			settings_data.crowns += 0.1
-			SaveManager.save_game()
+	if settings_data.level4 == 5:
+		settings_data.level4 = score
 	else:
 		if score == 0:
 			pass
 		elif score == 5:
 			settings_data.crowns+= 3
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level4 = score
 			SaveManager.save_game()
 		elif score == 4:
 			settings_data.crowns+= 2
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+90
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level4 = score
 			SaveManager.save_game()
-		elif score <= 3:
+		elif score >= 3:
 			settings_data.crowns += 1
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+80
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level4 = score
 			SaveManager.save_game()
-			
-		var current_coins = settings_data.gold_coins
-		var new_coins = current_coins+100
-		
-		var skills = settings_data.net1_skills
-		var update_skills = skills+10
-		
-		settings_data.gold_coins = new_coins
-		settings_data.net1_skills = update_skills
-		settings_data.level4 = "complete"
-		SaveManager.save_game()

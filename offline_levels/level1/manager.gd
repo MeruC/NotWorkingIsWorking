@@ -126,34 +126,28 @@ func _on_tap_pressed():
 	
 func _on_data_changed():
 	#update coins
-	if setting_data.level1 == "complete":
-		if score >= 4 and score <= 6:
-			setting_data.crowns = 0.1
-			SaveManager.save_game()
-		elif score >= 7 and score <= 9:
-			setting_data.crowns = 0.2
-			SaveManager.save_game()
-		elif score == 10:
-			setting_data.crowns = 0.3
-			SaveManager.save_game()
+	if setting_data.level1 == 10:
+		setting_data.crowns = 3
+		SaveManager.save_game()
 	else:
 		if score >= 7 and score <= 9:
 			setting_data.crowns = 2
+			setting_data.level1 = score
+			var coins = setting_data.gold_coins
+			var current = coins+100
+			var skills = setting_data.net1_skills
+			var update_skills = skills+10
+			setting_data.net1_skills = update_skills
+			setting_data.gold_coins = current
 			SaveManager.save_game()
 		elif score == 10:
 			setting_data.crowns = 3
+			var coins = setting_data.gold_coins
+			var current = coins+100
+			var skills = setting_data.net1_skills
+			var update_skills = skills+10
+			setting_data.net1_skills = update_skills
+			setting_data.gold_coins = current
+			setting_data.level1 = score
 			SaveManager.save_game()
 			
-		var coins = setting_data.gold_coins
-		var current = coins+100
-	
-		#update skills
-		var skills = setting_data.net1_skills
-		var update_skills = skills+10
-	
-		setting_data.net1_skills = update_skills
-		setting_data.gold_coins = current
-		setting_data.level1 = "complete"
-	
-	#save the progress
-	SaveManager.save_game()

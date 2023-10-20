@@ -95,28 +95,21 @@ func _on_crimp_pressed():
 		game_over.visible = true
 
 func score_validation():
-	if settings_data.level6 == "complete":
-		if score == 5:
-			settings_data.crowns += 0.3
-			SaveManager.save_game()
-		elif score == 0:
-			pass
+	if settings_data.level6 == 5:
+		pass
 	else:
 		if score == 5:
 			settings_data.crowns += 3
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
+			settings_data.level6 = 5
 			SaveManager.save_game()
 		elif score == 0:
 			pass
-		var current_coins = settings_data.gold_coins
-		var new_coins = current_coins+100
-		
-		var skills = settings_data.net1_skills
-		var update_skills = skills+10
-		
-		settings_data.gold_coins = new_coins
-		settings_data.net1_skills = update_skills
-		settings_data.level6 = "complete"
-		SaveManager.save_game()
 
 
 func _on_next_pressed():
