@@ -756,6 +756,7 @@ gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
 gameover_score = NodePath("popup_layer/game_over/main_popup/score")
 gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 score_display = NodePath("score_labels/score")
+crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
