@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=7]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=8]
+[ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/soundtrack/level/button_click.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -714,6 +716,12 @@ game_over_popup = NodePath("popup_layer/game_over")
 popup_next_button = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
+celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
+gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
+audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
+mascot = NodePath("animation_player/AnimationPlayer/correct")
+bg = NodePath("animation_player/ColorRect")
+animationplayer = NodePath("animation_player/AnimationPlayer")
 animation_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
@@ -829,6 +837,11 @@ margin_top = -3.0
 margin_right = 253.0
 margin_bottom = 252.0
 
+[node name="animation_player" parent="." instance=ExtResource( 9 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
 [connection signal="pressed" from="choices/choices_container/choice1" to="." method="_on_choice1_pressed"]
@@ -839,3 +852,4 @@ margin_bottom = 252.0
 [editable path="popup_layer/game_over"]
 [editable path="popup_layer/instructions"]
 [editable path="choices"]
+[editable path="animation_player"]

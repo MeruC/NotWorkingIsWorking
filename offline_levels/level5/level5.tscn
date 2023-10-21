@@ -707,6 +707,10 @@ tracks/0/keys = {
 }
 
 [node name="level5" type="Control"]
+margin_left = 239.0
+margin_top = 165.0
+margin_right = 239.0
+margin_bottom = 165.0
 script = ExtResource( 10 )
 layer1 = NodePath("layer1")
 layer2 = NodePath("layer2")
@@ -728,6 +732,9 @@ game_over_popup = NodePath("popup_layer/game_over")
 popup_next_button = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
+gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
+celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
+audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
 animation_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")

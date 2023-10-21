@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 [ext_resource path="res://resources/Themes/emergency_button.tres" type="Theme" id=9]
+[ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -725,6 +726,9 @@ game_over_popup = NodePath("popup_layer/game_over")
 popup_next_button = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
+gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
+celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
+audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
 animation_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
@@ -866,6 +870,9 @@ rect_min_size = Vector2( 200, 200 )
 focus_mode = 0
 theme = ExtResource( 9 )
 text = "WAN"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="pressed" from="popup_layer/popup/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]

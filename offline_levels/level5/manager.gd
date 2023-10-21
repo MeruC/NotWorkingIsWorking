@@ -24,6 +24,9 @@ export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Cont
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
+export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 ##
 
 # Instructions popup paths
@@ -86,6 +89,9 @@ func _on_submit_pressed():
 	var i = 6
 	if slot1.texture == textures[0] and slot2.texture == textures[1] and slot3.texture == textures[2] and slot4.texture == textures[3] and slot5.texture == textures[4] and slot6.texture == textures[5] and slot7.texture == textures[6]:
 		popup_indicator_label.text = "Level Complete!"
+		gameover_anim.play("win")
+		celebration.visible = true
+		audioplayer.play()
 		score = 7
 		if score == 7:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
@@ -93,6 +99,7 @@ func _on_submit_pressed():
 		popup_next_button.disabled = false
 		score_validation()
 	else:
+		gameover_anim.play("lose")
 		popup_indicator_label.text = "Level Failed!"
 		for child in slot_container.get_children():
 			if child.texture == textures[i]:

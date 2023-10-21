@@ -23,6 +23,15 @@ export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Cont
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var gameover_anim =  get_node(gameover_anim) as AnimationPlayer
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+##
+
+# result path
+export(NodePath) onready var mascot = get_node(mascot) as Sprite
+export(NodePath) onready var bg = get_node(bg) as ColorRect
+export(NodePath) onready var animationplayer =  get_node(animationplayer) as AnimationPlayer
 ##
 
 # Instructions popup paths
@@ -71,12 +80,28 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_choice1_pressed():
+	$AudioStreamPlayer.play()
 	i += 1
 	var choice = choice1.content
 	if choice == answer:
 		score += 1
 		score_label.text = str(score)
-	
+		mascot.texture = preload("res://resources/Game buttons/cat_win.png")
+		mascot.visible = true
+		bg.visible = true
+		animationplayer.play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
+	else:
+		mascot.texture = preload("res://resources/Game buttons/cat_incorrect.png")
+		mascot.visible = true
+		bg.visible = true
+		animationplayer.play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
+		
 	while i < 5:
 		var clue = json_data[i]["question"]
 		var incorrect = json_data[i]["incorrect"]
@@ -102,16 +127,24 @@ func _on_choice1_pressed():
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
 		if score == 4:
+			gameover_anim.play("win")
+			audioplayer.play()
+			celebration.visible = true
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		elif score == 5:
+			gameover_anim.play("win")
+			audioplayer.play()
+			celebration.visible = true
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		score_validation()
 	else:
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
 		if score == 0:
+			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		elif score <= 3:
+			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 	game_over_popup.visible = true
 	
@@ -121,10 +154,27 @@ func _on_choice1_pressed():
 
 func _on_choice2_pressed():
 	i += 1
+	$AudioStreamPlayer.play()
 	var choice = choice2.content
 	if choice == answer:
 		score += 1
 		score_label.text = str(score)
+		mascot.texture = preload("res://resources/Game buttons/cat_win.png")
+		mascot.visible = true
+		bg.visible = true
+		animationplayer.play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
+		
+	else:
+		mascot.texture = preload("res://resources/Game buttons/cat_incorrect.png")
+		mascot.visible = true
+		bg.visible = true
+		animationplayer.play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
 	
 	while i < 5:
 		var clue = json_data[i]["question"]

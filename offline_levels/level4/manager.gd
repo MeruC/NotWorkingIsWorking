@@ -25,6 +25,9 @@ export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Cont
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
+export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 ##
 
 # Instructions popup paths
@@ -70,6 +73,7 @@ func _ready():
 
 
 func _on_lan_button_pressed():
+	$AudioStreamPlayer.play()
 	if lan_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
 		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
@@ -95,6 +99,7 @@ func _on_lan_button_pressed():
 
 
 func _on_man_button_pressed():
+	$AudioStreamPlayer.play()
 	if man_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
 		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
@@ -120,6 +125,7 @@ func _on_man_button_pressed():
 
 
 func _on_wan_button_pressed():
+	$AudioStreamPlayer.play()
 	if wan_button.text == answer:
 		explanation_label.text = json_data[i]["if_correct"]
 		logo_rect.texture = load("res://resources/offline_mode_Asset/level_4/correct.png")
@@ -157,6 +163,9 @@ func _on_continue_pressed():
 		if int(score_label.text) >= 4:
 			popup_indicator_label.text = "Level Complete!"
 			popup_next_button.disabled = false
+			gameover_anim.play("win")
+			audioplayer.play()
+			celebration.visible = true
 			if score == 4:
 				crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			elif score == 5:
@@ -165,6 +174,7 @@ func _on_continue_pressed():
 		else:
 			popup_indicator_label.text = "Level Failed!"
 			popup_next_button.disabled = true
+			gameover_anim.play("lose")
 			if score == 0:
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 			elif score <= 3:

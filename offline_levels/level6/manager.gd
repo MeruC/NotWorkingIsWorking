@@ -22,6 +22,9 @@ export (NodePath) onready var game_over =  get_node(game_over) as Control
 export (NodePath) onready var gameover_indicator =  get_node(gameover_indicator) as Label
 export (NodePath) onready var gameover_score =  get_node(gameover_score) as Label
 export (NodePath) onready var crowns = get_node(crowns) as TextureRect
+export (NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
+export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export (NodePath) onready var celebration = get_node(celebration) as Sprite
 export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
@@ -45,6 +48,8 @@ func _ready():
 
 
 func _on_reset_pressed():
+	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
+	$AudioStreamPlayer.play()
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -58,6 +63,8 @@ func _on_reset_pressed():
 
 
 func _on_crimp_pressed():
+	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/crimp.wav")
+	$AudioStreamPlayer.play()
 	# Pagkapress ng crimp pwedeng magkaron ng animated vid na pagccrimp ng cable -
 	# bago ilabas yung result
 	
@@ -70,24 +77,32 @@ func _on_crimp_pressed():
 			
 		if type_label.text.to_upper() == "WIRING STANDARD: T-568A":
 			if slot_textures == arrangement_A:
+				gameover_anim.play("win")
+				celebration.visible = true
+				audioplayer.play()
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
 				score = 5
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
+				gameover_anim.play("lose")
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 				score = 0
 		elif type_label.text.to_upper() == "WIRING STANDARD: T-568B":
 			if slot_textures == arrangement_B:
+				gameover_anim.play("win")
+				celebration.visible = true
+				audioplayer.play()
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Your Score: 5 / 5"
 				score = 5
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
+				gameover_anim.play("lose")
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")

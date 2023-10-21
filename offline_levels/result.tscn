@@ -35,4 +35,3 @@ position = Vector2( 868, 572 )
 scale = Vector2( 1.89578, 1.76684 )
 texture = ExtResource( 1 )
 hframes = 3
-frame = 2

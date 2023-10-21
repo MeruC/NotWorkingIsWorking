@@ -29,6 +29,7 @@ func can_drop_data(position, data):
 		return true
 	
 func drop_data(position, data):
+	$AudioStreamPlayer.play()
 	var origin_slot = data["origin_slot"]
 	if origin_slot != null:
 		if origin_slot.type == "slot":

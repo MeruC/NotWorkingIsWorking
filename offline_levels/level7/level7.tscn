@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=9]
+[ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -727,6 +729,12 @@ gameover_indicator = NodePath("popup_layer/game_over/main_popup/indicator")
 gameover_score = NodePath("popup_layer/game_over/main_popup/score")
 gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
+gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
+celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
+audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
+result_anim = NodePath("animation_player/AnimationPlayer")
+mascot = NodePath("animation_player/AnimationPlayer/correct")
+bg = NodePath("animation_player/ColorRect")
 settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
@@ -885,6 +893,11 @@ margin_bottom = 45.0
 custom_fonts/font = ExtResource( 7 )
 text = "1"
 
+[node name="animation_player" parent="." instance=ExtResource( 10 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="options_container/star" to="." method="_on_star_pressed"]
@@ -897,3 +910,4 @@ text = "1"
 [editable path="popup_layer/pause/settings"]
 [editable path="popup_layer/game_over"]
 [editable path="popup_layer/instructions"]
+[editable path="animation_player"]

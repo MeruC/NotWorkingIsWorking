@@ -12,6 +12,14 @@ export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) a
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
+export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+## result
+export(NodePath) onready var result_anim = get_node(result_anim) as AnimationPlayer
+export(NodePath) onready var mascot = get_node(mascot) as Sprite
+export(NodePath) onready var bg = get_node(bg) as ColorRect
+
 export(Resource) var settings_data
 
 var topologies = [preload("res://resources/offline_mode_Asset/level_7/bus_topology.png"),
@@ -40,7 +48,21 @@ func display_image():
 func check_answer(answer):
 	if answer == topology_image.content:
 		score += 1
-
+		result_anim.play("win")
+		mascot.texture = preload("res://resources/Game buttons/cat_win.png")
+		mascot.visible = true
+		bg.visible = true
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
+	else:
+		mascot.texture = preload("res://resources/Game buttons/cat_incorrect.png")
+		mascot.visible = true
+		bg.visible = true
+		result_anim.play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		mascot.visible = false
+		bg.visible = false
 	if current_number != 6:
 		display_image()
 	else:
@@ -49,6 +71,9 @@ func check_answer(answer):
 func display_gameover():
 	var score_text = ""
 	if score > 3:
+		gameover_anim.play("win")
+		celebration.visible = true
+		audioplayer.play()
 		gameover_indicator.text = "Level Complete!"
 		score_text = "Your Score: " + str(score) + " / 5"
 		gameover_score.text = score_text
@@ -60,6 +85,7 @@ func display_gameover():
 		score_validation()
 		
 	else:
+		gameover_anim.play("lose")
 		gameover_indicator.text = "Level Failed"
 		score_text = "Your Score: " + str(score) + " / 5"
 		gameover_score.text = score_text
@@ -72,26 +98,32 @@ func display_gameover():
 
 
 func _on_star_pressed():
+	$AudioStreamPlayer.play()
 	check_answer(star_button.text.to_upper())
 
 
 func _on_bus_pressed():
+	$AudioStreamPlayer.play()
 	check_answer(bus_button.text.to_upper())
 
 
 func _on_ring_pressed():
+	$AudioStreamPlayer.play()
 	check_answer(ring_button.text.to_upper())
 
 
 func _on_mesh_pressed():
+	$AudioStreamPlayer.play()
 	check_answer(mesh_button.text.to_upper())
 
 
 func _on_hybrid_pressed():
+	$AudioStreamPlayer.play()
 	check_answer(hybrid_button.text.to_upper())
 
 
 func _on_retry_pressed():
+	$AudioStreamPlayer.play()
 	get_tree().reload_current_scene()
 
 func score_validation():
