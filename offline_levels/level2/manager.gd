@@ -21,6 +21,9 @@ export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Cont
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var animation_player = get_node(animation_player) as AnimationPlayer
+export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 ##
 
 # Instructions popup paths
@@ -75,6 +78,8 @@ func _process(delta):
 
 func _on_clear_pressed():
 	# To clear every blank when Clear Button is Clicked
+	$"../submit2".stream = preload("res://resources/soundtrack/level/clear_btn.wav")
+	$"../submit2".play()
 	for child in blank_container.get_children():
 		child.text = "_"
 	for child in letter_container.get_children():
@@ -85,14 +90,28 @@ func _on_clear_pressed():
 func _on_submit_pressed():
 	# To check the user's answer
 	i += 1
+	$"../submit2".play()
 	var user_answer = ""
 	for child in blank_container.get_children():
 		user_answer = user_answer + child.text
 	if user_answer == answer:
 		score += 1
 		score_label.text = str(score)
+		$"../animation_player/AnimationPlayer/correct".visible = true
+		$"../animation_player/ColorRect".visible = true
+		$"../animation_player/AnimationPlayer".play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		$"../animation_player/AnimationPlayer/correct".visible = false
+		$"../animation_player/ColorRect".visible = false
 	##
-		
+	else:
+		$"../animation_player/ColorRect".visible = true
+		$"../animation_player/AnimationPlayer/correct".texture = preload("res://resources/Game buttons/cat_incorrect.png")
+		$"../animation_player/AnimationPlayer/correct".visible = true
+		$"../animation_player/AnimationPlayer".play("win")
+		yield(get_tree().create_timer(1.0), "timeout")
+		$"../animation_player/AnimationPlayer/correct".visible = false
+		$"../animation_player/ColorRect".visible = false
 	
 	for child in blank_container.get_children():
 		child.queue_free()
@@ -130,16 +149,24 @@ func _on_submit_pressed():
 		popup_indicator_label.text = "Level Complete!"
 		if score == 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+			animation_player.play("win")
+			audioplayer.play()
+			celebrate.visible = true
 		elif score == 5:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+			animation_player.play("win")
+			celebrate.visible = true
+			audioplayer.play()
 		score_validation()
 	else:
 		if score <= 3:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			animation_player.play("lose")
 		elif score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
+		animation_player.play("lose")
 	game_over_popup.visible = true
 	##
 

@@ -18,8 +18,9 @@ export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Cont
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
-##
-
+export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
+export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 # Instructions popup paths
 export(NodePath) onready var animation_player = get_node(animation_player) as AnimationPlayer
 export(NodePath) onready var instructions_popup = get_node(instructions_popup) as Control
@@ -102,11 +103,18 @@ func spawn_new():
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		elif score >= 7 and score <= 9:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+			audioplayer.play()
+			animationplayer.play("win")
+			celebrate.visible = true
 		elif score == 10:
+			audioplayer.play()
+			animationplayer.play("win")
+			celebrate.visible = true
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		_on_data_changed()
 	else:
 		popup_next_button.disabled = true
+		animationplayer.play("lose")
 		popup_indicator_label.text = "Level Failed!"
 		if score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")

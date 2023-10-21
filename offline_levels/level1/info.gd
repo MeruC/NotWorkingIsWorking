@@ -28,9 +28,18 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 				get_parent().get_node("manager").score += 1
 				print(get_parent().get_node("manager").score)
 				$"../score".text = str(get_parent().get_node("manager").score)
+				$AnimationPlayer.play("correct")
+				$AnimationPlayer/ColorRect.visible = true
+				$AnimationPlayer/Sprite.visible = true
+				yield(get_tree().create_timer(1.0), "timeout")
 				get_parent().get_node("manager").spawn_new()
 				queue_free()
 			elif (onFolder):
+				$AnimationPlayer.play("correct")
+				$AnimationPlayer/ColorRect.visible = true
+				$AnimationPlayer/Sprite.texture = preload("res://resources/Game buttons/cat_incorrect.png")
+				$AnimationPlayer/Sprite.visible = true
+				yield(get_tree().create_timer(1.0), "timeout")
 				queue_free()
 				print(get_parent().get_node("manager").score)
 				$"../score".text = str(get_parent().get_node("manager").score)

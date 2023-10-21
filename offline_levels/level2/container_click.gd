@@ -20,6 +20,7 @@ func _ready():
 
 func _on_blank1_pressed():
 	letter = self.text
+	$AudioStreamPlayer.play()
 	self.text = "_"
 	for child in letter_container.get_children():
 		if child.text == letter:

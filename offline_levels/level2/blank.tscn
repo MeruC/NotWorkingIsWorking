@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://offline_levels/level2/container_click.gd" type="Script" id=2]
 [ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=3]
+[ext_resource path="res://resources/soundtrack/level/undo_click.wav" type="AudioStream" id=4]
 
 [node name="blank" type="Button"]
 margin_left = 390.0
@@ -24,5 +25,8 @@ letter_container = NodePath("GridContainer")
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="pressed" from="." to="." method="_on_blank1_pressed"]

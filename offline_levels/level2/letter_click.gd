@@ -20,6 +20,7 @@ func _ready():
 
 func _on_Button_pressed():
 	self.disabled = true
+	$AudioStreamPlayer.play()
 	var x = 0
 	for child in blank_container.get_children():
 		if child.text == "_":

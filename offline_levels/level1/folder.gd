@@ -13,6 +13,7 @@ func _on_Area2D_area_entered(area):
 	file.onFolder = true
 	print(file.onFolder)
 	file.folderType = folder_type
+	$AudioStreamPlayer.play()
 	pass # Replace with function body.
 	
 
