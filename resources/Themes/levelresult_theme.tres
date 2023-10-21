@@ -20,11 +20,9 @@ region_rect = Rect2( 0, 0, 96, 32 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
-[sub_resource type="StyleBoxTexture" id=74]
+[sub_resource type="StyleBoxTexture" id=77]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 96, 32 )
-margin_left = 10.0
-margin_right = 10.0
 
 [sub_resource type="StyleBoxTexture" id=75]
 texture = ExtResource( 4 )
@@ -37,5 +35,5 @@ Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
 Button/fonts/font = SubResource( 76 )
 Button/styles/disabled = SubResource( 72 )
 Button/styles/hover = SubResource( 73 )
-Button/styles/normal = SubResource( 74 )
+Button/styles/normal = SubResource( 77 )
 Button/styles/pressed = SubResource( 75 )

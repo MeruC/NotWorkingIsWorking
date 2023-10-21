@@ -97,13 +97,21 @@ successful_popup = NodePath("popup/successful_popup")
 qr_textureRect = NodePath("popup/successful_popup/ColorRect/VBoxContainer/qr_code")
 settings_data = ExtResource( 4 )
 
+[node name="back_btn" type="Button" parent="."]
+margin_left = 57.0
+margin_top = 21.0
+margin_right = 336.0
+margin_bottom = 153.0
+theme = ExtResource( 15 )
+text = "Back"
+
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -200.0
-margin_top = 50.0
+margin_top = 74.0
 margin_right = 200.0
-margin_bottom = 119.0
+margin_bottom = 143.0
 custom_fonts/font = SubResource( 1 )
 text = "CREATE QUIZ"
 align = 1
@@ -319,10 +327,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -114.0
-margin_top = -130.0
-margin_right = 114.0
-margin_bottom = -67.0
+margin_left = -159.5
+margin_top = -153.0
+margin_right = 159.5
+margin_bottom = -31.0
 theme = ExtResource( 15 )
 custom_fonts/font = ExtResource( 5 )
 text = "Create"
@@ -633,6 +641,7 @@ rect_min_size = Vector2( 200, 75 )
 custom_fonts/font = SubResource( 25 )
 text = "HOME"
 
+[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="focus_entered" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_entered"]
 [connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_exited"]
 [connection signal="gui_input" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_gui_input"]

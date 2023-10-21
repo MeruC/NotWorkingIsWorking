@@ -273,3 +273,9 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
+
+
+func _on_back_btn_pressed():
+	var ro = get_node("/root")
+	Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
+
