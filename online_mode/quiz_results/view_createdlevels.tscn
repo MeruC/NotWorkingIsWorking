@@ -17,7 +17,7 @@ const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
-onready var grid_container = $GridContainer
+onready var grid_container = $ScrollContainer/GridContainer
 var headers = []  # Initialize headers as an empty array
 export (Resource) var settings_data
 onready var result_table = $result_table
@@ -103,8 +103,8 @@ func display_table(data):
 			if headers[j] == \"file_name\":  # Check if the header is \"email\"
 				var cell_button = Button.new()  # Create a button for email addresses
 				cell_button.text = str(row[headers[j]])  # Set the button text to the email address
-				cell_button.rect_min_size = Vector2(200, 90)  # Set the size here
-				var custom_load_theme = load(\"res://resources/Themes/user_profile_buttons.tres\")
+				cell_button.rect_min_size = Vector2(500, 90)  # Set the size here
+				var custom_load_theme = load(\"res://resources/Themes/levelresult_theme.tres\")
 				cell_button.theme = custom_load_theme
 				cell_button.connect(\"pressed\", result_table, \"get_levelresult\", [row[headers[j]]])  # Connect the button press signal with email as an argument
 				grid_container.add_child(cell_button)
@@ -261,15 +261,14 @@ margin_bottom = 172.0
 theme = ExtResource( 5 )
 text = "back"
 
-[node name="GridContainer" type="GridContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 363.0
-margin_top = 231.0
-margin_right = 1564.0
-margin_bottom = 934.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 302.0
+margin_top = 204.0
+margin_right = 1624.0
+margin_bottom = 968.0
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 custom_constants/vseparation = 10
 custom_constants/hseparation = 100
 columns = 3
@@ -293,12 +292,11 @@ margin_bottom = 298.0
 rect_scale = Vector2( 8.15828, 4.31344 )
 texture = ExtResource( 3 )
 
-[node name="GridContainer" type="GridContainer" parent="result_table"]
-margin_left = 239.0
-margin_top = 201.0
-margin_right = 1712.0
-margin_bottom = 887.0
-rect_scale = Vector2( 0.949932, 1 )
+[node name="ScrollContainer" type="ScrollContainer" parent="result_table"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="result_table/ScrollContainer"]
 custom_constants/vseparation = 0
 custom_constants/hseparation = 100
 columns = 4

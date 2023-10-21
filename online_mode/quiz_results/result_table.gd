@@ -53,7 +53,7 @@ func _http_request_completed(result, response_code, headers, body):
 		
 	if response_body.empty():
 		$export.disabled = true
-		$GridContainer.visible = false
+		$ScrollContainer/GridContainer.visible = false
 		$Label.text = "no one answered yet."
 		return
 		
@@ -63,7 +63,7 @@ func _http_request_completed(result, response_code, headers, body):
 			var data = response  # The response is an array of dictionaries
 			responseData = response 
 			headers = data[0].keys()
-			$GridContainer.visible = true
+			$ScrollContainer/GridContainer.visible = true
 			$Label.text = ""
 			display_table(data)
 			$export.disabled = false

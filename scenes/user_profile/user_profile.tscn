@@ -1,8 +1,7 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
-[ext_resource path="res://scenes/user_profile/buttons and panels/button2..png" type="Texture" id=3]
 [ext_resource path="res://scenes/user_profile/edit_icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/user_profile/user_profile.gd" type="Script" id=5]
 [ext_resource path="res://resources/Themes/user_profile_line_edit.tres" type="Theme" id=6]
@@ -14,6 +13,7 @@
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=12]
 [ext_resource path="res://resources/font/user_profile_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://scenes/user_profile/podium.png" type="Texture" id=14]
+[ext_resource path="res://resources/Themes/levelresult_theme.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
@@ -84,10 +84,6 @@ font_data = ExtResource( 25 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 40
 font_data = ExtResource( 1 )
 
 [sub_resource type="SpatialMaterial" id=21]
@@ -1147,34 +1143,28 @@ margin_left = 1075.0
 margin_top = 914.0
 margin_right = 1450.0
 margin_bottom = 1047.0
-theme = ExtResource( 16 )
-texture = ExtResource( 3 )
 
 [node name="questionBank_btn" type="Button" parent="user_profile/questionBank_bg"]
-self_modulate = Color( 0, 0, 0, 1 )
-light_mask = 514
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
+margin_left = -23.0
+margin_top = -18.0
+margin_right = 400.0
+margin_bottom = 129.0
+theme = ExtResource( 15 )
 text = "Question Bank"
-flat = true
 
 [node name="logout_bg" type="NinePatchRect" parent="user_profile"]
 margin_left = 1500.0
 margin_top = 914.0
 margin_right = 1875.0
 margin_bottom = 1047.0
-theme = ExtResource( 16 )
-texture = ExtResource( 3 )
 
 [node name="logout_btn" type="Button" parent="user_profile/logout_bg"]
-self_modulate = Color( 0, 0, 0, 1 )
-light_mask = 514
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
+margin_left = -8.0
+margin_top = -19.0
+margin_right = 400.0
+margin_bottom = 130.0
+theme = ExtResource( 15 )
 text = "Cloud Storage"
-flat = true
 
 [node name="ViewportContainer" type="ViewportContainer" parent="user_profile"]
 margin_left = 250.0
