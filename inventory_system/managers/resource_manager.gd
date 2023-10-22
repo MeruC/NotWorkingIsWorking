@@ -23,7 +23,7 @@ var sprites = {
 	"rj45": preload( "res://inventory_system/resources/sprites/items/rj45.png" ),
 	"cable_tester": preload( "res://inventory_system/resources/sprites/items/cable_tester.png" ),
 	"crimping": preload( "res://inventory_system/resources/sprites/items/crimping.png" ),
-	"cross_over": preload( "res://inventory_system/resources/sprites/items/cross_over.png" ),
+	#"cross_over": preload( "res://inventory_system/resources/sprites/items/cross_over.png" ),
 	"hdmi": preload( "res://inventory_system/resources/sprites/items/hdmi.png" ),
 	"hub": preload( "res://inventory_system/resources/sprites/items/hub.png" ),
 	"laptop": preload( "res://inventory_system/resources/sprites/items/laptop.png" ),
@@ -31,13 +31,14 @@ var sprites = {
 	"router": preload( "res://inventory_system/resources/sprites/items/router.png" ),
 	"router2": preload( "res://inventory_system/resources/sprites/items/router2.png" ),
 	"server": preload( "res://inventory_system/resources/sprites/items/server.png" ),
-	"straight_through": preload( "res://inventory_system/resources/sprites/items/server.png" ),
+	#"straight_through": preload( "res://inventory_system/resources/sprites/items/server.png" ),
 	"switch": preload( "res://inventory_system/resources/sprites/items/switch.png" ),
 	"system_unit": preload( "res://inventory_system/resources/sprites/items/system_unit.png" ),
 	"blue_cable": preload("res://inventory_system/resources/sprites/items/blue_cable.png"),
 	"red_cable": preload("res://inventory_system/resources/sprites/items/red_cable.png"),
-	"Console_Cable": preload("res://inventory_system/resources/sprites/items/Console_Cable.png")
-	
+	"Console_Cable": preload("res://inventory_system/resources/sprites/items/Console_Cable.png"),
+	"straight_through": preload("res://inventory_system/resources/sprites/items/straight_through.png"),
+	"cross_over": preload("res://inventory_system/resources/sprites/items/cross_over.png"),
 }
 
 var fonts = {

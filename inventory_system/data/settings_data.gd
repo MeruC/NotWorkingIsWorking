@@ -9,7 +9,7 @@ export( int ) var sound_volume = -10
 export( bool ) var pixelize = true
 export( int ) var pixel_size = 4
 
-export( int ) var gold_coins = 1000
+export( int ) var gold_coins = 10000
 
 export (String) var player_name
 export (String) var gender
