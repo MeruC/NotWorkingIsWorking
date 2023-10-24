@@ -1474,6 +1474,8 @@ margin_right = 1475.0
 margin_bottom = 544.0
 rect_scale = Vector2( 1.03143, 0.718774 )
 theme = ExtResource( 6 )
+align = 1
+placeholder_text = "Enter email"
 
 [node name="password" type="LineEdit" parent="login/login"]
 anchor_left = 0.5
@@ -1486,6 +1488,8 @@ margin_right = 1491.0
 margin_bottom = 690.0
 rect_scale = Vector2( 1.0104, 0.706317 )
 theme = ExtResource( 6 )
+align = 1
+placeholder_text = "Enter password"
 
 [node name="enter_btn" type="Button" parent="login/login"]
 anchor_left = 0.5
@@ -1537,6 +1541,7 @@ margin_right = 1577.0
 margin_bottom = 473.0
 theme = ExtResource( 6 )
 align = 1
+placeholder_text = "Enter email"
 
 [node name="s_password" type="LineEdit" parent="login/signin"]
 margin_left = 770.0
@@ -1547,6 +1552,7 @@ theme = ExtResource( 6 )
 align = 1
 secret = true
 secret_character = "#"
+placeholder_text = "Enter password"
 
 [node name="c_password" type="LineEdit" parent="login/signin"]
 margin_left = 1099.0
@@ -1557,6 +1563,7 @@ theme = ExtResource( 6 )
 align = 1
 secret = true
 secret_character = "#"
+placeholder_text = "Re-type password"
 
 [node name="Button" type="Button" parent="login/signin"]
 anchor_top = 0.5
