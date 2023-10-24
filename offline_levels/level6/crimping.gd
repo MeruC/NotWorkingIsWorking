@@ -1,18 +1,20 @@
 extends Control
 
-var wire_textures = [preload("res://resources/offline_mode_Asset/level_6/blue.png"),
-						preload("res://resources/offline_mode_Asset/level_6/brown.png"),
-						preload("res://resources/offline_mode_Asset/level_6/green.png"),
-						preload("res://resources/offline_mode_Asset/level_6/orange.png"),
-						preload("res://resources/offline_mode_Asset/level_6/whiteBlue.png"),
-						preload("res://resources/offline_mode_Asset/level_6/whiteBrown.png"),
-						preload("res://resources/offline_mode_Asset/level_6/whiteGreen.png"),
-						preload("res://resources/offline_mode_Asset/level_6/whiteOrange.png")]
+var wire_textures = [preload("res://resources/offline_mode_Asset/level_6/blue.png"),#0
+						preload("res://resources/offline_mode_Asset/level_6/brown.png"),#1
+						preload("res://resources/offline_mode_Asset/level_6/green.png"),#2
+						preload("res://resources/offline_mode_Asset/level_6/orange.png"),#3
+						preload("res://resources/offline_mode_Asset/level_6/whiteBlue.png"),#4
+						preload("res://resources/offline_mode_Asset/level_6/whiteBrown.png"),#5
+						preload("res://resources/offline_mode_Asset/level_6/whiteGreen.png"),#6
+						preload("res://resources/offline_mode_Asset/level_6/whiteOrange.png")]#7
 
 var cable_types = ["T-568A", "T-568B"]
 
 var arrangement_A = [wire_textures[6], wire_textures[2], wire_textures[7], wire_textures[0], wire_textures[4], wire_textures[3], wire_textures[5], wire_textures[1]]
 var arrangement_B = [wire_textures[7], wire_textures[3], wire_textures[6], wire_textures[0], wire_textures[4], wire_textures[2], wire_textures[5], wire_textures[1]]
+var arrangement_Ac = [wire_textures[7], wire_textures[3], wire_textures[6], wire_textures[5], wire_textures[1], wire_textures[2], wire_textures[0], wire_textures[4]]
+var arrangement_Bc = [wire_textures[6], wire_textures[2], wire_textures[7], wire_textures[5], wire_textures[1], wire_textures[3], wire_textures[0], wire_textures[4]]
 
 export (NodePath) onready var wire_container =  get_node(wire_container) as HBoxContainer
 export (NodePath) onready var slot_container =  get_node(slot_container) as Control
@@ -49,10 +51,7 @@ func _ready():
 	cable_types.remove(number)
 	##
 
-
-func _on_reset_pressed():
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
-	$AudioStreamPlayer.play()
+func _on_start():
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -63,11 +62,30 @@ func _on_reset_pressed():
 	for child in slot_container.get_children():
 		child.texture = null
 		child.type = "slot"
+	
 
+func _on_reset_pressed():
+	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
+	$AudioStreamPlayer.play()
+	yield($AudioStreamPlayer, "finished")
+	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
+	textures_holder = wire_textures.duplicate()
+	for child in wire_container.get_children():
+		var number = rand_range(0, textures_holder.size())
+		child.texture = textures_holder[number]
+		child.type = "wire"
+		textures_holder.remove(number)
+	
+	for child in slot_container.get_children():
+		child.texture = null
+		child.type = "slot"
+	type_label.text = "START CRIMPING"
 
 func _on_crimp_pressed():
 	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/crimp.wav")
 	$AudioStreamPlayer.play()
+	yield($AudioStreamPlayer, "finished")
+	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
 	# Pagkapress ng crimp pwedeng magkaron ng animated vid na pagccrimp ng cable -
 	# bago ilabas yung result
 	
@@ -86,7 +104,7 @@ func _on_crimp_pressed():
 						type_label.text = type
 						on_second = false
 						_on_craft_complete("straight_through")
-					elif false:
+					elif slot_textures == arrangement_Ac:
 						type = "Cross-Over"
 						type_label.text = type
 						on_second = false
@@ -101,7 +119,7 @@ func _on_crimp_pressed():
 						type_label.text = type
 						on_second = false
 						_on_craft_complete("straight_through")
-					elif false:
+					elif slot_textures == arrangement_Bc:
 						type = "Cross-Over"
 						type_label.text = type
 						on_second = false
