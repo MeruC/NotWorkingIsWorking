@@ -159,3 +159,7 @@ func _on_data_changed():
 			setting_data.level1 = score
 			SaveManager.save_game()
 			
+
+
+func _on_retry_pressed():
+	get_tree().change_scene("res://offline_levels/level1/level_1.tscn")

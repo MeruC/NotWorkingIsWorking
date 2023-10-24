@@ -54,14 +54,14 @@ scale = Vector2( 0.321039, 0.320889 )
 texture = ExtResource( 2 )
 
 [node name="data_folder" parent="." instance=ExtResource( 1 )]
-position = Vector2( 334, 613 )
+position = Vector2( 294, 605 )
 folder_type = "data"
 
 [node name="data_folder" parent="data_folder" index="0"]
 texture = ExtResource( 11 )
 
 [node name="info_folder" parent="." instance=ExtResource( 1 )]
-position = Vector2( 853, 619 )
+position = Vector2( 813, 611 )
 folder_type = "info"
 
 [node name="manager" type="Node2D" parent="."]

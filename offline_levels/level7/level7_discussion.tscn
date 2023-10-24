@@ -129,7 +129,7 @@ dialog = NodePath("dialog")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-rect_scale = Vector2( 47.9256, 26.9915 )
+rect_scale = Vector2( 47.9926, 26.9989 )
 texture = ExtResource( 2 )
 
 [node name="title" type="Label" parent="."]
