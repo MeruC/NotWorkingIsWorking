@@ -29,8 +29,15 @@ export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStream
 export (NodePath) onready var celebration = get_node(celebration) as Sprite
 export (Resource) var settings_data
 
+onready var price = [{
+	"id": "rj45", 
+	"quantity": 2
+},{
+	"id": "blue_cable", 
+	"quantity": 1
+}]
 
-var on_second = false
+var end = 1
 var type = "n"
 var level6 = "res://offline_levels/level6/level6.tscn"
 var textures_holder = []
@@ -46,12 +53,24 @@ func _ready():
 	##
 	
 	# To display which type of cable to be configured
-	var number = rand_range(0,2)
-	type_label.text = type_label.text + cable_types[number]
-	cable_types.remove(number)
+	#var number = rand_range(0,2)
+	#type_label.text = type_label.text + cable_types[number]
+	#cable_types.remove(number)
 	##
 
 func _on_start():
+	textures_holder = wire_textures.duplicate()
+	for child in wire_container.get_children():
+		var number = rand_range(0, textures_holder.size())
+		child.texture = textures_holder[number]
+		child.type = "wire"
+		textures_holder.remove(number)
+	
+	for child in slot_container.get_children():
+		child.texture = null
+		child.type = "slot"
+		
+func _next():
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -67,8 +86,6 @@ func _on_start():
 func _on_reset_pressed():
 	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
 	$AudioStreamPlayer.play()
-	yield($AudioStreamPlayer, "finished")
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -84,8 +101,8 @@ func _on_reset_pressed():
 func _on_crimp_pressed():
 	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/crimp.wav")
 	$AudioStreamPlayer.play()
-	yield($AudioStreamPlayer, "finished")
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
+	#yield($AudioStreamPlayer, "finished")
+	#$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
 	# Pagkapress ng crimp pwedeng magkaron ng animated vid na pagccrimp ng cable -
 	# bago ilabas yung result
 	
@@ -96,57 +113,57 @@ func _on_crimp_pressed():
 			slot_textures.append(child.texture)
 		##
 		
-		if on_second:
+		if end == 2:
 			match type:
 				"T-568A":
 					if slot_textures == arrangement_A:
 						type = "Straight-Through"
 						type_label.text = type
-						on_second = false
+						end = 1
 						_on_craft_complete("straight_through")
 					elif slot_textures == arrangement_Ac:
 						type = "Cross-Over"
 						type_label.text = type
-						on_second = false
+						end = 1
 						_on_craft_complete("cross_over")
 					else:
 						type = "Invalid"
-						on_second = false
+						end = 1
 						_on_craft_complete("invalid")
 				"T-568B":
 					if slot_textures == arrangement_B:
 						type = "Straight-Through"
 						type_label.text = type
-						on_second = false
+						end = 1
 						_on_craft_complete("straight_through")
 					elif slot_textures == arrangement_Bc:
 						type = "Cross-Over"
 						type_label.text = type
-						on_second = false
+						end = 1
 						_on_craft_complete("cross_over")
 					else:
 						type = "Invalid"
-						on_second = false
+						end = 1
 						_on_craft_complete("invalid")
 				"Invalid":
 					pass
-		else:
+		elif end == 1:
 			if slot_textures == arrangement_A:
 				type = "T-568A"
 				type_label.text = type
-				on_second = true
-				_on_reset_pressed()
+				end = 2
+				_next()
 
 			elif slot_textures == arrangement_B:
 				type = "T-568B"
 				type_label.text = type
-				on_second = true
-				_on_reset_pressed()
+				end = 1
+				_next()
 			else:
 				type = "Invalid"
 				type_label.text = type
-				on_second = true
-				_on_reset_pressed()
+				end = 1
+				_next()
 			
 		#game_over.visible = true
 
@@ -171,6 +188,12 @@ func score_validation():
 func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 	
-	
 func _on_craft_complete(type):
-	pass
+	InventoryManager.remove_items( ItemManager.get_items( price ), "crafting" )
+	var produce = [{
+		"id": type, 
+		"quantity": 1
+	}]
+	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
+	_on_start()
+	hide()

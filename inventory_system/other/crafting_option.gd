@@ -59,10 +59,10 @@ func set_craft_button():
 
 # When crafting, remove the price tiems, adds the produces.
 func _on_craft_pressed():
-	print(price)
-	print(produce)
-	InventoryManager.remove_items( ItemManager.get_items( price ), "crafting" )
-	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
+	$"%level6".set_visible(true)
+	$"%level6"._on_start()
+	$"%level6".raise()
+	pass
 
 # Check to see if it's possible to craft after a change in the player/crafting inventories.
 func _on_inventory_group_changed( groups ):

@@ -113,6 +113,7 @@ Button/styles/normal = SubResource( 15 )
 Button/styles/pressed = SubResource( 17 )
 
 [node name="crafting_menu" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -271,6 +272,7 @@ mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="level6" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 visible = false
 
 [connection signal="pressed" from="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer/commands/craft" to="crafting_list/TabContainer/Craft/crafting_option" method="_on_craft_pressed"]
