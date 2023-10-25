@@ -536,8 +536,6 @@ const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
-var pusername = \"\"
-var password = \"\"
 
 export (Resource) var settings_data 
 
@@ -646,10 +644,6 @@ const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
-var pusername = \"\"
-var password = \"\"
-var cpassword =\"\"
-var result = \"\"
 
 func _ready():
 	# Connect our request handler:
@@ -863,7 +857,6 @@ func _http_request_completed(result, response_code, headers, body):
 	# Save the response as a new file
 	var response_body = body.get_string_from_utf8()
 	var response = parse_json(response_body)
-		
 	if response == null:
 		var newFilePath = \"user://save_data/save.dat\"  # Replace with your desired path and filename
 		var file = File.new()

@@ -86,6 +86,7 @@ func position_texture_rect(node: TextureRect, position: Vector2):
 
 # To check user's answer then display the gameover popup
 func _on_submit_pressed():
+	$AudioStreamPlayer.play()
 	var i = 6
 	if slot1.texture == textures[0] and slot2.texture == textures[1] and slot3.texture == textures[2] and slot4.texture == textures[3] and slot5.texture == textures[4] and slot6.texture == textures[5] and slot7.texture == textures[6]:
 		popup_indicator_label.text = "Level Complete!"
