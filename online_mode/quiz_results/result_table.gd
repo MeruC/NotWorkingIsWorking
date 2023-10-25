@@ -109,6 +109,7 @@ func clear_grid():
 		child.queue_free()
 
 func get_levelresult(value):
+	$"../exit".disabled = true
 	var command = "get_levelresult"
 	var levelname = value.replace(".tscn", "")
 	var data = {"level_name": levelname}
@@ -121,6 +122,7 @@ func get_levelresult(value):
 
 func _on_back_pressed():
 	$".".visible = false
+	$"../exit".disabled = false
 
 
 func _on_export_pressed():
