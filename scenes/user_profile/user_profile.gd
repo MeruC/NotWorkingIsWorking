@@ -23,6 +23,10 @@ func _ready():
 		SaveManager.save_game()
 	if settings_data.crowns >= 11:
 		$user_profile/name_background/rank.text = "Network Enginner"
+	if settings_data.email == "":
+		$user_profile/questionBank_bg/questionBank_btn.disabled= true
+	else:
+		$user_profile/questionBank_bg/questionBank_btn.disabled= false
 		
 func _on_edit_avatar_pressed():
 	$user_profile.visible = false

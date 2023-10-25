@@ -863,7 +863,7 @@ func _http_request_completed(result, response_code, headers, body):
 	# Save the response as a new file
 	var response_body = body.get_string_from_utf8()
 	var response = parse_json(response_body)
-	
+		
 	if response == null:
 		var newFilePath = \"user://save_data/save.dat\"  # Replace with your desired path and filename
 		var file = File.new()
@@ -1509,6 +1509,8 @@ margin_bottom = 690.0
 rect_scale = Vector2( 1.0104, 0.706317 )
 theme = ExtResource( 6 )
 align = 1
+secret = true
+secret_character = "#"
 placeholder_text = "Enter password"
 
 [node name="enter_btn" type="Button" parent="login/login"]
