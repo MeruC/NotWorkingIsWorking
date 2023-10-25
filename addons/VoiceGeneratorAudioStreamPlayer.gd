@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 						_original_pitch_scale = pitch_scale
 					pitch_scale += 0.15 / float(question_distance)
 				play()
-			_phrase_pos += 1
+			_phrase_pos += 4
 		else:
 			emit_signal("finished_phrase")
 			_phrase = ""
