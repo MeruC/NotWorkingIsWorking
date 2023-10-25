@@ -115,6 +115,8 @@ func spawn_new():
 	else:
 		popup_next_button.disabled = true
 		animationplayer.play("lose")
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		popup_indicator_label.text = "Level Failed!"
 		if score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
@@ -159,3 +161,7 @@ func _on_data_changed():
 			setting_data.level1 = score
 			SaveManager.save_game()
 			
+
+
+func _on_retry_pressed():
+	get_tree().change_scene("res://offline_levels/level1/level_1.tscn")

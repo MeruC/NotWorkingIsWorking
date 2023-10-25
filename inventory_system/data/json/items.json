@@ -17,8 +17,8 @@
 		"stack_size": 1,
 		"level": 1
 	},
-	"rj45": {
-		"name": "RJ45 Cable",
+	"cross_over": {
+		"name": "Crossover RJ45 Cable",
 		"type": "CABLE",
 		"stack_size": 64,
 		"level": 1,
@@ -29,14 +29,26 @@
 			}
 		}
 	},
+	"straight_through": {
+		"name": "Straight Through RJ45 Cable",
+		"type": "CABLE",
+		"stack_size": 64,
+		"level": 1,
+		"usable": {
+			"type": "cable",
+			"data": {
+				"cable_type": "straight_through"
+			}
+		}
+	},
 	"blue_cable": {
-		"name": "Blue Cable",
+		"name": "RJ45 Wire",
 		"type": "MATERIAL",
 		"stack_size": 64,
 		"level": 1
 	},
-	"red_cable": {
-		"name": "Red Cable",
+	"rj45": {
+		"name": "RJ45 Head",
 		"type": "MATERIAL",
 		"stack_size": 64,
 		"level": 1

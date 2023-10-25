@@ -86,7 +86,7 @@ func update_dialog():
 			$"../example1/AnimationPlayer".play_backwards("file_animation")
 	else:
 		$"..".queue_free()
-		Load.load_scene(self,game_scene)
+		get_tree().change_scene(game_scene)
 		print("Dialog ended.")
 
 	# You can also return json_data here if needed

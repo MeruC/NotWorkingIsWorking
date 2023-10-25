@@ -85,6 +85,8 @@ func display_gameover():
 		score_validation()
 		
 	else:
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		gameover_anim.play("lose")
 		gameover_indicator.text = "Level Failed"
 		score_text = "Your Score: " + str(score) + " / 5"

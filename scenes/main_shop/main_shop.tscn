@@ -49,7 +49,7 @@ func _on_data_changed():
 "
 
 [sub_resource type="DynamicFont" id=16]
-size = 80
+size = 60
 extra_spacing_bottom = 5
 font_data = ExtResource( 7 )
 
@@ -193,10 +193,10 @@ lbl_coin = NodePath("container/player_coins")
 settings_data = ExtResource( 14 )
 
 [node name="container" type="Control" parent="coins"]
-margin_left = 616.743
-margin_top = 170.332
-margin_right = 949.743
-margin_bottom = 307.332
+margin_left = 609.512
+margin_top = 169.492
+margin_right = 942.512
+margin_bottom = 306.492
 rect_rotation = -9.04409
 
 [node name="TextureRect" type="TextureRect" parent="coins/container"]
@@ -249,10 +249,10 @@ custom_fonts/font = SubResource( 20 )
 text = "SHOP"
 
 [node name="Label4" type="Label" parent="coins"]
-margin_left = 674.817
-margin_top = 85.8067
-margin_right = 894.817
-margin_bottom = 165.807
+margin_left = 675.789
+margin_top = 91.7274
+margin_right = 895.789
+margin_bottom = 171.728
 rect_rotation = -9.506
 custom_colors/font_color = Color( 0, 0, 0, 0.647059 )
 custom_fonts/font = SubResource( 21 )
@@ -395,15 +395,36 @@ size_flags_vertical = 3
 margin_right = 591.0
 margin_bottom = 137.0
 size_flags_vertical = 3
-panel_title = "RJ45 Cable"
+panel_title = "RJ45 Cable (Crossover)"
 price = 50
+item_id = "cross_over"
+quantity = 1
+
+[node name="shop_option6" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 141.0
+margin_right = 591.0
+margin_bottom = 278.0
+size_flags_vertical = 3
+panel_title = "RJ45 Cable (Straight Through)"
+price = 50
+item_id = "straight_through"
+quantity = 1
+
+[node name="shop_option7" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+margin_top = 282.0
+margin_right = 591.0
+margin_bottom = 419.0
+size_flags_vertical = 3
+panel_title = "RJ45 Head"
+price = 185
 item_id = "rj45"
 quantity = 1
 
 [node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 141.0
+visible = false
+margin_top = 282.0
 margin_right = 591.0
-margin_bottom = 278.0
+margin_bottom = 419.0
 size_flags_vertical = 3
 panel_title = "HDMI"
 price = 120
@@ -411,23 +432,13 @@ item_id = "hdmi"
 quantity = 1
 
 [node name="shop_option3" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 282.0
-margin_right = 591.0
-margin_bottom = 419.0
-size_flags_vertical = 3
-panel_title = "Blue Cable Wire"
-price = 88
-item_id = "blue_cable"
-quantity = 1
-
-[node name="shop_option4" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
 margin_top = 423.0
 margin_right = 591.0
 margin_bottom = 560.0
 size_flags_vertical = 3
-panel_title = "Red Cable Wire"
-price = 119
-item_id = "red_cable"
+panel_title = "RJ45 Wire"
+price = 88
+item_id = "blue_cable"
 quantity = 1
 
 [node name="shop_option5" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]

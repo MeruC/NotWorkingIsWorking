@@ -4,7 +4,7 @@ const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
-onready var grid_container = $GridContainer
+onready var grid_container = $ScrollContainer/GridContainer
 var headers = []  # Initialize headers as an empty array
 export (Resource) var settings_data
 var response
@@ -109,6 +109,7 @@ func clear_grid():
 		child.queue_free()
 
 func get_levelresult(value):
+	$"../exit".disabled = true
 	var command = "get_levelresult"
 	var levelname = value.replace(".tscn", "")
 	var data = {"level_name": levelname}
@@ -121,6 +122,7 @@ func get_levelresult(value):
 
 func _on_back_pressed():
 	$".".visible = false
+	$"../exit".disabled = false
 
 
 func _on_export_pressed():

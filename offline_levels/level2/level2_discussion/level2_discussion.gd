@@ -13,6 +13,7 @@ var game_scene = "res://offline_levels/level2/level2.tscn"
 var touch = true
 
 func _ready():
+	Pixelizer.set_visible(false)
 	VoiceGen.pitch_scale = 1.5
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
@@ -100,7 +101,7 @@ func update_dialog():
 	else:
 		print("Dialog ended.")
 		$"..".queue_free()
-		Load.load_scene(self,game_scene)
+		get_tree().change_scene(game_scene)	
 	# You can also return json_data here if needed
 
 func _on_play_pressed():

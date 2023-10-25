@@ -291,16 +291,19 @@ visible = false
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="result_table"]
+anchor_right = 0.182
 margin_left = 78.0
 margin_top = 86.0
-margin_right = 290.0
+margin_right = -59.44
 margin_bottom = 298.0
 rect_scale = Vector2( 8.15828, 4.31344 )
 texture = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="result_table"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 209.0
+margin_top = 168.0
+margin_right = 1670.0
+margin_bottom = 934.0
 
 [node name="GridContainer" type="GridContainer" parent="result_table/ScrollContainer"]
 custom_constants/vseparation = 0

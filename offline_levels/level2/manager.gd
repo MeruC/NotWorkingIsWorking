@@ -162,11 +162,15 @@ func _on_submit_pressed():
 		if score <= 3:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 			animation_player.play("lose")
+			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+			audioplayer.play()
 		elif score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
 		animation_player.play("lose")
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 	game_over_popup.visible = true
 	##
 

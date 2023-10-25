@@ -280,16 +280,16 @@ extra_spacing_bottom = 28
 font_data = ExtResource( 7 )
 
 [node name="level6_manager" type="Node2D"]
+position = Vector2( 0, 8 )
 script = ExtResource( 3 )
 VoiceGen = NodePath("VoiceGeneratorAudioStreamPlayer")
 dialog = NodePath("dialog")
 
 [node name="bg" type="TextureRect" parent="."]
-margin_left = 5.0
-margin_top = -8.0
-margin_right = 605.0
-margin_bottom = 292.0
-rect_scale = Vector2( 3.19217, 3.62275 )
+margin_top = -9.0
+margin_right = 600.0
+margin_bottom = 291.0
+rect_scale = Vector2( 3.20046, 3.60578 )
 texture = ExtResource( 2 )
 
 [node name="title" type="Label" parent="."]

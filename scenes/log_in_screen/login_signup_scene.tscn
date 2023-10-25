@@ -1,11 +1,11 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=3]
 [ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=5]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://resources/Game buttons/login_panel.png" type="Texture" id=6]
 [ext_resource path="res://scenes/log_in_screen/login_signup_screen.gd" type="Script" id=7]
 [ext_resource path="res://scenes/log_in_screen/login.gd" type="Script" id=8]
 [ext_resource path="res://scenes/log_in_screen/signup.gd" type="Script" id=9]
@@ -15,11 +15,9 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
 [ext_resource path="res://scenes/log_in_screen/back_btn.gd" type="Script" id=14]
 [ext_resource path="res://scenes/log_in_screen/back_btn2.gd" type="Script" id=15]
-[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=16]
+[ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=16]
 [ext_resource path="res://resources/Themes/login_buttons.tres" type="Theme" id=17]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=18]
-[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=20]
 [ext_resource path="res://resources/soundtrack/menu/8bit Bossa.mp3" type="AudioStream" id=21]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=22]
 [ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=23]
@@ -40,214 +38,10 @@ size = 60
 extra_spacing_bottom = 28
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 64
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxFlat" id=35]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color( 1, 0.941176, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 15.0
-expand_margin_right = 4.0
-expand_margin_top = 15.0
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 40.0
-content_margin_bottom = 20.0
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-corner_detail = 20
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-
-[sub_resource type="ImageTexture" id=9]
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = 17.0
-expand_margin_bottom = 17.0
-shadow_offset = Vector2( 5, 5 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-expand_margin_top = 25.0
-expand_margin_bottom = 25.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 10, 10 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-content_margin_left = 85.0
-content_margin_right = 85.0
-content_margin_top = 40.0
-content_margin_bottom = 40.0
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-skew = Vector2( -0.5, 0 )
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_right = 130
-corner_radius_bottom_left = 130
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="DynamicFont" id=36]
-size = 38
-font_data = ExtResource( 5 )
-
-[sub_resource type="StyleBoxFlat" id=37]
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 10, 10 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="DynamicFont" id=12]
-size = 32
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color( 1, 0.941176, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 15.0
-expand_margin_right = 4.0
-expand_margin_top = 15.0
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=33]
-bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id=34]
-bg_color = Color( 0, 0, 0, 1 )
-border_width_right = 25
-border_color = Color( 0, 0, 0, 0.392157 )
-
-[sub_resource type="Theme" id=38]
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-Button/fonts/font = SubResource( 4 )
-Button/styles/hover = SubResource( 35 )
-Button/styles/normal = SubResource( 35 )
-Button/styles/pressed = SubResource( 6 )
-HSlider/icons/grabber = SubResource( 9 )
-HSlider/icons/grabber_disabled = SubResource( 9 )
-HSlider/icons/grabber_highlight = SubResource( 9 )
-HSlider/icons/tick = SubResource( 9 )
-HSlider/styles/grabber_area = SubResource( 7 )
-HSlider/styles/grabber_area_highlight = SubResource( 7 )
-HSlider/styles/slider = SubResource( 8 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
-LineEdit/fonts/font = SubResource( 4 )
-LineEdit/styles/focus = SubResource( 10 )
-LineEdit/styles/normal = SubResource( 10 )
-PanelContainer/styles/panel = ExtResource( 20 )
-ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
-ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = SubResource( 36 )
-ProgressBar/styles/bg = SubResource( 37 )
-ProgressBar/styles/fg = SubResource( 3 )
-TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
-TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
-TabContainer/fonts/font = SubResource( 12 )
-TabContainer/styles/panel = ExtResource( 20 )
-TabContainer/styles/tab_bg = SubResource( 6 )
-TabContainer/styles/tab_fg = SubResource( 5 )
-VScrollBar/styles/grabber = SubResource( 33 )
-VScrollBar/styles/grabber_highlight = SubResource( 33 )
-VScrollBar/styles/grabber_pressed = SubResource( 33 )
-VScrollBar/styles/scroll = SubResource( 34 )
-
 [sub_resource type="DynamicFont" id=65]
 size = 60
 extra_spacing_bottom = 28
 font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=39]
-size = 50
-font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=40]
 size = 100
@@ -257,240 +51,6 @@ font_data = ExtResource( 5 )
 size = 60
 extra_spacing_bottom = 28
 font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=46]
-size = 64
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxFlat" id=47]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color( 0.337255, 0.317647, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 15.0
-expand_margin_right = 4.0
-expand_margin_top = 15.0
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxEmpty" id=48]
-
-[sub_resource type="StyleBoxFlat" id=49]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color( 1, 0.941176, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 15.0
-expand_margin_right = 4.0
-expand_margin_top = 15.0
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxFlat" id=50]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 40.0
-content_margin_bottom = 20.0
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-corner_detail = 20
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-
-[sub_resource type="ImageTexture" id=51]
-
-[sub_resource type="StyleBoxFlat" id=52]
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_right = 8.0
-expand_margin_top = 17.0
-expand_margin_bottom = 17.0
-shadow_offset = Vector2( 5, 5 )
-
-[sub_resource type="StyleBoxFlat" id=53]
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 8.0
-expand_margin_right = 16.0
-expand_margin_top = 25.0
-expand_margin_bottom = 25.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 10, 10 )
-
-[sub_resource type="DynamicFont" id=54]
-size = 60
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxFlat" id=55]
-content_margin_left = 85.0
-content_margin_right = 85.0
-content_margin_top = 40.0
-content_margin_bottom = 40.0
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-skew = Vector2( -0.5, 0 )
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_right = 130
-corner_radius_bottom_left = 130
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="DynamicFont" id=41]
-size = 38
-font_data = ExtResource( 5 )
-
-[sub_resource type="StyleBoxFlat" id=56]
-bg_color = Color( 0.27451, 0.258824, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 10, 10 )
-
-[sub_resource type="StyleBoxFlat" id=57]
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="DynamicFont" id=58]
-size = 32
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxFlat" id=59]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 30.0
-content_margin_bottom = 30.0
-bg_color = Color( 1, 0.941176, 0, 1 )
-skew = Vector2( 0.5, 0 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 15.0
-expand_margin_right = 4.0
-expand_margin_top = 15.0
-expand_margin_bottom = 2.0
-shadow_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=60]
-bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id=61]
-bg_color = Color( 0, 0, 0, 1 )
-border_width_right = 25
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="Theme" id=62]
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-Button/fonts/font = SubResource( 46 )
-Button/styles/disabled = SubResource( 47 )
-Button/styles/focus = SubResource( 48 )
-Button/styles/hover = SubResource( 49 )
-Button/styles/normal = SubResource( 49 )
-Button/styles/pressed = SubResource( 50 )
-HSlider/icons/grabber = SubResource( 51 )
-HSlider/icons/grabber_disabled = SubResource( 51 )
-HSlider/icons/grabber_highlight = SubResource( 51 )
-HSlider/icons/tick = SubResource( 51 )
-HSlider/styles/grabber_area = SubResource( 52 )
-HSlider/styles/grabber_area_highlight = SubResource( 52 )
-HSlider/styles/slider = SubResource( 53 )
-Label/colors/font_color = Color( 0, 0, 0, 1 )
-Label/fonts/font = SubResource( 54 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
-LineEdit/fonts/font = SubResource( 46 )
-LineEdit/styles/focus = SubResource( 55 )
-LineEdit/styles/normal = SubResource( 55 )
-Panel/styles/panel = ExtResource( 20 )
-PanelContainer/styles/panel = ExtResource( 20 )
-ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
-ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = SubResource( 41 )
-ProgressBar/styles/bg = SubResource( 56 )
-ProgressBar/styles/fg = SubResource( 57 )
-TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
-TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
-TabContainer/fonts/font = SubResource( 58 )
-TabContainer/styles/panel = ExtResource( 20 )
-TabContainer/styles/tab_bg = SubResource( 50 )
-TabContainer/styles/tab_fg = SubResource( 59 )
-VScrollBar/styles/grabber = SubResource( 60 )
-VScrollBar/styles/grabber_highlight = SubResource( 60 )
-VScrollBar/styles/grabber_pressed = SubResource( 60 )
-VScrollBar/styles/scroll = SubResource( 61 )
 
 [sub_resource type="DynamicFont" id=42]
 size = 60
@@ -653,7 +213,7 @@ margin_bottom = 857.068
 focus_mode = 0
 theme = ExtResource( 17 )
 enabled_focus_mode = 0
-text = "Sign In"
+text = "Sign UP"
 
 [node name="skip" type="Button" parent="login_signup_screen"]
 margin_left = 1553.0
@@ -676,62 +236,78 @@ margin_left = 60.0
 margin_top = 33.0
 margin_right = 327.374
 margin_bottom = 147.068
+rect_scale = Vector2( 0.5, 0.5 )
 focus_mode = 0
-theme = ExtResource( 16 )
+theme = ExtResource( 17 )
 enabled_focus_mode = 0
 text = "back"
 script = ExtResource( 14 )
 
 [node name="Login_title" type="Label" parent="login_screen"]
-margin_left = 836.0
-margin_top = 249.0
-margin_right = 1126.0
-margin_bottom = 351.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -343.0
+margin_right = 145.0
+margin_bottom = -198.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Login"
 align = 1
 
 [node name="username" type="Label" parent="login_screen"]
-margin_left = 414.0
-margin_top = 450.0
-margin_right = 595.0
-margin_bottom = 539.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 500.0
+margin_top = -140.0
+margin_right = 681.0
+margin_bottom = -51.0
 custom_fonts/font = SubResource( 64 )
 text = "Email:"
 
 [node name="username" type="LineEdit" parent="login_screen/username"]
-margin_left = 290.0
-margin_top = -51.0
-margin_right = 880.0
-margin_bottom = 101.0
-rect_scale = Vector2( 1.27218, 1 )
-theme = SubResource( 38 )
+margin_left = 420.0
+margin_top = -35.0
+margin_right = 1140.0
+margin_bottom = 115.0
+theme = ExtResource( 17 )
+align = 1
+placeholder_text = "Enter email"
 
 [node name="password" type="Label" parent="login_screen"]
-margin_left = 295.0
-margin_top = 659.0
-margin_right = 612.0
-margin_bottom = 748.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 450.0
+margin_top = 60.0
+margin_right = 767.0
+margin_bottom = 149.0
 custom_fonts/font = SubResource( 65 )
 text = "Password:"
 
 [node name="password2" type="LineEdit" parent="login_screen"]
-margin_left = 758.0
-margin_top = 645.0
-margin_right = 1558.0
-margin_bottom = 794.0
-theme = ExtResource( 18 )
-custom_fonts/font = SubResource( 39 )
+margin_left = 900.0
+margin_top = 570.0
+margin_right = 1620.0
+margin_bottom = 720.0
+theme = ExtResource( 17 )
+align = 1
 secret = true
+placeholder_text = "Enter password"
 
 [node name="login_enter_btn" type="Button" parent="login_screen"]
-margin_left = 833.0
-margin_top = 869.0
-margin_right = 1127.37
-margin_bottom = 983.068
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -279.187
+margin_top = 278.466
+margin_right = 279.187
+margin_bottom = 477.534
+rect_scale = Vector2( 0.7, 0.7 )
 focus_mode = 0
-theme = ExtResource( 16 )
+theme = ExtResource( 17 )
 enabled_focus_mode = 0
 text = "login"
 
@@ -741,10 +317,12 @@ script = ExtResource( 9 )
 settings_data = ExtResource( 13 )
 
 [node name="title" type="Label" parent="signup_screen"]
-margin_left = 809.0
-margin_top = 163.0
-margin_right = 1187.0
-margin_bottom = 265.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -189.0
+margin_top = 150.0
+margin_right = 189.0
+margin_bottom = 252.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 40 )
 text = "Sign Up"
@@ -755,15 +333,16 @@ margin_top = 336.0
 margin_right = 682.0
 margin_bottom = 425.0
 custom_fonts/font = SubResource( 45 )
-text = "Google Account:"
+text = "Email address:"
 
 [node name="s_username" type="LineEdit" parent="signup_screen/s_username"]
-margin_left = 666.0
-margin_top = -13.0
-margin_right = 1256.0
-margin_bottom = 139.0
-rect_scale = Vector2( 1.17904, 0.722357 )
-theme = SubResource( 62 )
+margin_left = 699.0
+margin_top = -32.0
+margin_right = 1419.0
+margin_bottom = 118.0
+theme = ExtResource( 17 )
+align = 1
+placeholder_text = "Enter email"
 
 [node name="s_password" type="Label" parent="signup_screen"]
 margin_left = 363.0
@@ -774,13 +353,14 @@ custom_fonts/font = SubResource( 42 )
 text = "password:"
 
 [node name="s_password" type="LineEdit" parent="signup_screen/s_password"]
-margin_left = 487.0
-margin_top = -22.0
-margin_right = 1287.0
-margin_bottom = 130.0
-rect_scale = Vector2( 0.9525, 0.726516 )
-theme = ExtResource( 18 )
+margin_left = 527.0
+margin_top = -24.0
+margin_right = 1247.0
+margin_bottom = 126.0
+theme = ExtResource( 17 )
+align = 1
 secret = true
+placeholder_text = "Enter password"
 
 [node name="_confirmpassword" type="Label" parent="signup_screen"]
 margin_left = 109.0
@@ -793,30 +373,32 @@ text = "Confirm Password:"
 [node name="cpassword" type="LineEdit" parent="signup_screen/_confirmpassword"]
 margin_left = 785.0
 margin_top = -8.0
-margin_right = 1585.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 800, 100 )
-rect_scale = Vector2( 0.943782, 0.71684 )
-theme = ExtResource( 18 )
+margin_right = 1505.0
+margin_bottom = 142.0
+theme = ExtResource( 17 )
+align = 1
 secret = true
+placeholder_text = "Re-type Password"
 
 [node name="sign_in_btn" type="Button" parent="signup_screen"]
-margin_left = 1088.0
-margin_top = 861.0
-margin_right = 1465.37
-margin_bottom = 975.068
+margin_left = 720.0
+margin_top = 888.0
+margin_right = 1511.37
+margin_bottom = 1087.07
+rect_scale = Vector2( 0.7, 0.7 )
 focus_mode = 0
-theme = ExtResource( 16 )
+theme = ExtResource( 17 )
 enabled_focus_mode = 0
-text = "Sign in"
+text = "Sign up"
 
 [node name="back_btn" type="Button" parent="signup_screen"]
 margin_left = 51.0
 margin_top = 31.0
 margin_right = 318.374
 margin_bottom = 145.068
+rect_scale = Vector2( 0.5, 0.5 )
 focus_mode = 0
-theme = ExtResource( 16 )
+theme = ExtResource( 17 )
 enabled_focus_mode = 0
 text = "back"
 script = ExtResource( 15 )
@@ -835,9 +417,9 @@ texture = ExtResource( 11 )
 
 [node name="warning" type="Sprite" parent="warning"]
 modulate = Color( 1, 0.917647, 0.917647, 1 )
-position = Vector2( 953, 426 )
-scale = Vector2( 4.95859, 1.95775 )
-texture = ExtResource( 26 )
+position = Vector2( 931, 534.5 )
+scale = Vector2( 0.691548, 0.688973 )
+texture = ExtResource( 6 )
 
 [node name="warning2" type="Label" parent="warning"]
 margin_left = 510.0
@@ -846,17 +428,17 @@ margin_right = 1157.0
 margin_bottom = 501.0
 rect_scale = Vector2( 1.36017, 1.31583 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 16 )
 text = "aaaaa"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="ok_btn" type="Button" parent="warning"]
-margin_left = 858.0
-margin_top = 565.0
-margin_right = 1035.0
-margin_bottom = 697.0
+margin_left = 814.0
+margin_top = 692.0
+margin_right = 991.0
+margin_bottom = 824.0
 theme = ExtResource( 18 )
 text = "ok"
 
@@ -954,6 +536,7 @@ theme = ExtResource( 25 )
 text = "no"
 
 [node name="login_sucess" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="bg" type="TextureRect" parent="login_sucess"]
 visible = false
@@ -993,7 +576,7 @@ script = ExtResource( 3 )
 motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 960, 538 )
+position = Vector2( 958, 532 )
 scale = Vector2( 1, 1.07217 )
 texture = ExtResource( 1 )
 

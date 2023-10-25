@@ -362,9 +362,11 @@ dialog = NodePath("CanvasLayer/dialog")
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
 margin_right = 1917.0
 margin_bottom = 1076.0
+rect_scale = Vector2( 1.00173, 1.00346 )
 texture = ExtResource( 2 )
 
 [node name="well_done" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 1092.0
 margin_top = 808.0
 margin_right = 1467.0

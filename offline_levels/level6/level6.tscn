@@ -995,6 +995,7 @@ valign = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+bus = "SFX"
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reset" to="." method="_on_reset_pressed"]

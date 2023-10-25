@@ -70,6 +70,7 @@ func show_questions():
 	var i = 0
 	for entry in json_data:
 		var new_lesson_button = lesson_instance.instance()
+		new_lesson_button.theme = preload("res://resources/Themes/levelresult_theme.tres")
 		lessons_container.add_child(new_lesson_button)
 		new_lesson_button.text = lesson_names[i]
 		new_lesson_button.lesson_name = $"TabContainer/Question List/TabContainer/Ready Made Questions/lesson_name"
@@ -245,4 +246,8 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
+	Load.load_scene(self,main_screen)
+
+
+func _on_back_btn_pressed():
 	Load.load_scene(self,main_screen)

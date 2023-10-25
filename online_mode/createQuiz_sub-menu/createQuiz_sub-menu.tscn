@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=6]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=7]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://resources/Themes/levelresult_theme.tres" type="Theme" id=10]
+[ext_resource path="res://resources/Game buttons/result_button2.png" type="Texture" id=11]
+[ext_resource path="res://resources/Game buttons/result_button3.png" type="Texture" id=12]
+[ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -232,6 +237,40 @@ VScrollBar/styles/grabber_highlight = SubResource( 87 )
 VScrollBar/styles/grabber_pressed = SubResource( 87 )
 VScrollBar/styles/scroll = SubResource( 88 )
 
+[sub_resource type="DynamicFont" id=92]
+size = 40
+extra_spacing_top = 5
+extra_spacing_bottom = 9
+extra_spacing_space = 7
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxTexture" id=72]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=93]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=94]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=95]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="Theme" id=96]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.286275 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
+Button/fonts/font = SubResource( 92 )
+Button/styles/disabled = SubResource( 72 )
+Button/styles/hover = SubResource( 93 )
+Button/styles/normal = SubResource( 94 )
+Button/styles/pressed = SubResource( 95 )
+
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -264,6 +303,7 @@ custom_constants/separation = 100
 margin_right = 500.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 500, 100 )
+theme = ExtResource( 10 )
 custom_fonts/font = ExtResource( 1 )
 text = "Student"
 
@@ -272,6 +312,7 @@ margin_left = 600.0
 margin_right = 1100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 500, 100 )
+theme = ExtResource( 10 )
 custom_fonts/font = ExtResource( 1 )
 text = "Professor"
 
@@ -357,12 +398,14 @@ theme = SubResource( 91 )
 text = "SUBMIT"
 
 [node name="create_levels" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 912.0
-margin_right = 804.0
-margin_bottom = 1044.0
-theme = ExtResource( 7 )
-text = "levels score"
+margin_left = 31.0
+margin_top = 927.0
+margin_right = 450.0
+margin_bottom = 1057.0
+theme = SubResource( 96 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Summary"
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/student" to="." method="_on_student_pressed"]

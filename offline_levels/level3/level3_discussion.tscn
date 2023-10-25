@@ -644,9 +644,11 @@ anchor_bottom = 1.0
 layer = -10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-margin_left = 3.0
-margin_right = 1918.0
-margin_bottom = 1076.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1914.0
+margin_bottom = 1075.0
+rect_scale = Vector2( 1.00313, 1.00403 )
 texture = ExtResource( 6 )
 
 [node name="title" type="Label" parent="CanvasLayer"]

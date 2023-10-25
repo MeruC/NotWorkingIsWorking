@@ -15,6 +15,9 @@ export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
 export(NodePath) onready var score_display = get_node(score_display) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
+export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(Resource) var settings_data
 
 var score = 0
@@ -149,11 +152,19 @@ func _on_tap_pressed():
 # To calculate score then display the gameover popup
 func calculate_score():
 	if score == 0:
+		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		gameover_anim.play("lose")
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		gameover_indicator.text = "Level Failed"
 		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = true
 		
 	if score<=20:
+		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		gameover_anim.play("lose")
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		gameover_indicator.text = "Level Failed"
 		gameover_score.text = "Your Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
@@ -161,12 +172,19 @@ func calculate_score():
 		score_validation()
 		
 	elif score >= 30:
+		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		audioplayer.play()
+		celebration.visible = true
 		gameover_indicator.text = "Level Complete!"
 		gameover_score.text = "Your Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		gameover_next.disabled = false
 		score_validation()
 	elif score >= 200:
+		gameover_anim.play("win")
+		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+		audioplayer.play()
+		celebration.visible = true
 		gameover_indicator.text = "Level Complete!"
 		gameover_score.text = "Your Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")

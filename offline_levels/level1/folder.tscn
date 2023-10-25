@@ -13,7 +13,8 @@ scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 
 [node name="data_folder" type="Sprite" parent="."]
-position = Vector2( -63.7609, -198.353 )
+position = Vector2( -30, -198.667 )
+scale = Vector2( 1.58415, 1.56882 )
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="data_folder"]
@@ -24,6 +25,7 @@ shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [connection signal="area_entered" from="data_folder/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="data_folder/Area2D" to="." method="_on_Area2D_area_exited"]

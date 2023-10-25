@@ -873,6 +873,7 @@ text = "WAN"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+bus = "SFX"
 
 [connection signal="pressed" from="popup_layer/popup/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]

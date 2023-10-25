@@ -1,0 +1,278 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://offline_levels/level6/crimping.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory_system/other/crafting_option.gd" type="Script" id=2]
+[ext_resource path="res://inventory_system/resources/font/font_8.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=6]
+[ext_resource path="res://inventory_system/resources/sprites/arrow.png" type="Texture" id=9]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=11]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Control
+
+export ( NodePath ) onready var recipe_list = get_node( recipe_list ) as VBoxContainer
+
+func _ready():
+	SignalManager.connect( \"crafting_opened\", self, \"_on_crafting_opened\" )
+	SignalManager.connect( \"crafting_out_of_range\", self, \"_on_crafting_out_of_range\" )
+
+# Display the list of recipes.
+func display( recipes ):
+	for c in recipe_list.get_children():
+		recipe_list.remove_child( c )
+		c.queue_free()
+	
+	for recipe_id in recipes:
+		var recipe_node = ResourceManager.get_instance( \"crafting_option\" )
+		recipe_list.add_child( recipe_node )
+		recipe_node.set_info( recipe_id, recipes[ recipe_id ].price, recipes[ recipe_id ].produce )
+	
+	show()
+	rect_size = Vector2( 440, 0 )
+
+# When closed, set the shop opened to false.
+func close():
+	.close()
+	InventoryManager.is_shop_open = false
+
+# When opened, display the ui, and if it's a shop, allow selling.
+func _on_crafting_opened( list_id ):
+	display( ResourceManager.get_recipes( list_id ) )
+	if list_id == \"shop\":
+		InventoryManager.is_shop_open = true
+
+# When out of range, close the window.
+func _on_crafting_out_of_range():
+	close()
+"
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 0.294118 )
+expand_margin_right = 7.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.243137, 0, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 1, 0.392157, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0.27451, 0.133333, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="Theme" id=16]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 14 )
+Button/styles/disabled = SubResource( 18 )
+Button/styles/hover = SubResource( 15 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 17 )
+
+[node name="crafting_menu" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="crafting_list" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -348.0
+margin_top = -309.0
+margin_right = 348.0
+margin_bottom = 307.0
+rect_scale = Vector2( 1.5, 1.5 )
+theme = ExtResource( 6 )
+script = SubResource( 6 )
+recipe_list = NodePath("TabContainer/Craft/ScrollContainer/recipe_list")
+
+[node name="title" type="Control" parent="crafting_list"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 676.0
+margin_bottom = 599.0
+mouse_filter = 1
+
+[node name="TabContainer" type="TabContainer" parent="crafting_list"]
+margin_left = -94.0
+margin_top = -136.0
+margin_right = 576.0
+margin_bottom = 168.0
+theme = ExtResource( 6 )
+
+[node name="Craft" type="Tabs" parent="crafting_list/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 116.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="crafting_option" type="PanelContainer" parent="crafting_list/TabContainer/Craft"]
+margin_top = 1.0
+margin_right = 624.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+lbl_panel_title = NodePath("title/TextureRect/Label")
+price_list = NodePath("MarginContainer/HBoxContainer/price")
+produce_list = NodePath("MarginContainer/HBoxContainer/produce")
+craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
+item_id = "cross_over"
+quantity = 1
+item_idPrice1 = "rj45"
+quantityPrice1 = 2
+item_idPrice2 = "blue_cable"
+quantityPrice2 = 1
+
+[node name="title" type="Control" parent="crafting_list/TabContainer/Craft/crafting_option"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 616.0
+margin_bottom = 158.0
+
+[node name="TextureRect" type="TextureRect" parent="crafting_list/TabContainer/Craft/crafting_option/title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 17.0
+margin_right = 18.0
+margin_bottom = 19.0
+
+[node name="Label" type="Label" parent="crafting_list/TabContainer/Craft/crafting_option/title/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -118.5
+margin_top = -21.0
+margin_right = 118.5
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "- panel name -"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="crafting_list/TabContainer/Craft/crafting_option"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 616.0
+margin_bottom = 158.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 31
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer"]
+margin_left = 10.0
+margin_top = 31.0
+margin_right = 598.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+custom_constants/separation = 26
+
+[node name="price" type="VBoxContainer" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer"]
+margin_right = 165.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+custom_constants/separation = 59
+alignment = 1
+
+[node name="arrow" type="TextureRect" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer"]
+margin_left = 191.0
+margin_right = 204.0
+margin_bottom = 109.0
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="produce" type="VBoxContainer" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer"]
+margin_left = 230.0
+margin_right = 396.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="commands" type="VBoxContainer" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer"]
+margin_left = 422.0
+margin_right = 588.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="craft" type="Button" parent="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer/commands"]
+margin_top = 29.0
+margin_right = 166.0
+margin_bottom = 80.0
+theme = SubResource( 16 )
+custom_fonts/font = ExtResource( 3 )
+text = "Craft"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="crafting_list/TabContainer/Craft"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.00006
+rect_min_size = Vector2( 0, 538 )
+size_flags_horizontal = 3
+theme = ExtResource( 6 )
+scroll_horizontal_enabled = false
+
+[node name="recipe_list" type="VBoxContainer" parent="crafting_list/TabContainer/Craft/ScrollContainer"]
+margin_right = 591.0
+margin_bottom = 538.0
+rect_min_size = Vector2( 591, 0 )
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="level6" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="pressed" from="crafting_list/TabContainer/Craft/crafting_option/MarginContainer/HBoxContainer/commands/craft" to="crafting_list/TabContainer/Craft/crafting_option" method="_on_craft_pressed"]

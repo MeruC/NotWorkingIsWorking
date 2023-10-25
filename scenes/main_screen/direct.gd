@@ -71,15 +71,41 @@ func _on_objects_pressed():
 
 
 func _on_quick_game_pressed():
-	var random_level = pick_random_level()
-	Load.load_scene(self, random_level)
-
+	var completed_levels = levels_completed()
+	if completed_levels.empty():
+		# Handle the case when no levels are completed (e.g., show a message).
+		$"%quick_btn".disabled = true
+	else:
+		var random_level = pick_random_level(completed_levels)
+		Load.load_scene(self, random_level)
 # To play a random Networking 1 Level
-func pick_random_level():
-	var number = int(rand_range(0, net1_levels.size()))
-	var selected_level = net1_levels[number]
-	return selected_level
+func pick_random_level(completed_levels):
+	var number = int(rand_range(0, completed_levels.size()))
+	return completed_levels[number]
 ##
+
+func levels_completed():
+	var completed = []
+	if settings_data.level1 >= 7:
+		completed.append("res://offline_levels/level1/level_1.tscn")
+	if settings_data.level2 >= 4:
+		completed.append("res://offline_levels/level2/level2.tscn")
+	if settings_data.level3 >= 4:
+		completed.append("res://offline_levels/level3/level3.tscn")
+	if settings_data.level4 >= 5:
+		completed.append("res://offline_levels/level4/level4.tscn")
+	if settings_data.level5 >= 4:
+		completed.append("res://offline_levels/level5/level5.tscn")
+	if settings_data.level6 >= 5:
+		completed.append("res://offline_levels/level6/level6.tscn")
+	if settings_data.level7 >= 3:
+		completed.append("res://offline_levels/level7/level7.tscn")
+	if settings_data.level8 >= 30:
+		completed.append("res://offline_levels/level8/level8.tscn")
+	else:
+		completed.append("res://scenes/quick_game/quickgame.tscn")
+	return completed
+
 
 
 func _on_offline_btn_pressed():
@@ -100,7 +126,8 @@ func _on_quick_btn_pressed():
 	
 	TransitionNode.animation_player.play("out")
 	yield(TransitionNode.animation_player, "animation_finished")
-	var random_level = pick_random_level()
+	var completed_levels = levels_completed()
+	var random_level = pick_random_level(completed_levels)
 	Load.load_scene(self, random_level)
 
 
