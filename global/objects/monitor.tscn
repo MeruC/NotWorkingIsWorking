@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -17,145 +17,17 @@
 [ext_resource path="res://resources/font/net2_app_labels.tres" type="DynamicFont" id=15]
 [ext_resource path="res://global/objects/cmd_scenes/command_line_container.tscn" type="PackedScene" id=16]
 [ext_resource path="res://global/objects/cli_manager.gd" type="Script" id=17]
-
-[sub_resource type="GDScript" id=12]
-script/source = "extends StaticBody
-
-export var device_name : String
-var fa01 : StaticBody
-var fa02 : StaticBody
-var isSaved = false
-
-signal cable_connected()
-
-export(String) var connected_to = []
-export(String) var ip_allocation = \"static\"
-export(String) var ipv4_address = \"0.0.0.0\"
-export(String) var subnet_mask = \"0.0.0.0\"
-export(String) var default_gateway = \"0.0.0.0\"
-export(String) var dns_server = \"0.0.0.0\"
-
-#export(String) var ipv6_allocation = \"static\"
-#export(Array) var link_local_address = [0, 0, 0, 0]
-#export(Array) var subnet_mask = [0, 0, 0, 0]
-#export(Array) var default_gateway = [0, 0, 0, 0]
-#export(Array) var dns_server = [0, 0, 0, 0]
-
-onready var label = $ui/pc_screen/holder/Label
-onready var name_line_edit = $ui/pc_screen/holder/name_lineEdit
-onready var ip_config_app = $ui/ip_config_app
-onready var dhcp_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio
-onready var static_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/static_radio
-onready var ipv4Add_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox/ipAdd_lineEdit
-onready var ipv4Subnet_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/subnet_hbox/subnet_lineEdit
-onready var ipv4Gateway_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/gateway_hbox/gateway_lineEdit
-onready var ipv4Dns_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/dns_hbox2/dns_lineEdit
-onready var ipv4_vbox = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox
-onready var indicator_label = $ui/ip_config_app/ip_config_screen/main_panel/indicator_label
-onready var exit_confirmation = $ui/ip_config_app/ip_config_screen/exit_confirmation
-
-onready var cmd_app = $ui/cmd_app
-onready var cli_manager = $ui/cmd_app/cmd_screen/cli_manager
-onready var commands_container = $ui/cmd_app/cmd_screen/main_panel/ScrollContainer/commands_container
-
-func _ready():
-	if device_name.empty():
-		device_name = self.name
-	name_line_edit.text = device_name
-	ipv4Add_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Add_lineEdit])
-	ipv4Subnet_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Subnet_lineEdit])
-	ipv4Gateway_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Gateway_lineEdit])
-	ipv4Dns_lineEdit.connect(\"text_changed\", self, \"_on_line_edit_text_changed\", [ipv4Dns_lineEdit])
-	
-func _on_line_edit_text_changed(line_edit, new_text):
-	isSaved = false
-	indicator_label.visible = false
-
-
-func _on_name_lineEdit_text_changed(new_text):
-	device_name = new_text
-	
-func _set_connector( connection ):
-	if fa01 == null:
-		fa01 = connection
-		label.text = \"Connected to %s\" % fa01.device_name
-		connected_to.append(fa01.device_name)
-		emit_signal(\"cable_connected\")
-	elif fa02 == null:
-		fa02 = connection
-
-
-func _on_ipConfig_button_pressed():
-	ip_config_app.visible = true
-
-
-func _on_save_button_pressed():
-	ipv4_address = ipv4Add_lineEdit.text
-	subnet_mask = ipv4Subnet_lineEdit.text
-	default_gateway = ipv4Gateway_lineEdit.text
-	dns_server = ipv4Dns_lineEdit.text
-	indicator_label.visible = true
-	isSaved = true
-	
-func validInt_checker(iterable):
-	for item in iterable:
-		if !item.is_valid_int():
-			return false
-	return true
-
-
-func _on_dhcp_radio_pressed():
-	uncheck_other(static_radio)
-	toggle_lineEdits()
-
-func _on_static_radio_pressed():
-	uncheck_other(dhcp_radio)
-	toggle_lineEdits()
-		
-func toggle_lineEdits():
-	if ipv4Add_lineEdit.editable == true:
-		ipv4Add_lineEdit.editable = false
-		ipv4Add_lineEdit.max_length = 0
-		ipv4Add_lineEdit.text = \"Retrieving IP Address...\"
-		ipv4Subnet_lineEdit.editable = false
-		ipv4Subnet_lineEdit.max_length = 0
-		ipv4Subnet_lineEdit.text = \"Retrieving Subnet Mask...\"
-	else:
-		ipv4Add_lineEdit.editable = true
-		ipv4Add_lineEdit.max_length = 15
-		ipv4Add_lineEdit.text = \"\"
-		ipv4Subnet_lineEdit.editable = true
-		ipv4Subnet_lineEdit.max_length = 15
-		ipv4Subnet_lineEdit.text = \"\"
-
-func uncheck_other(radio):
-	radio.pressed = false
-
-
-func _on_exit_confirmation_confirmed():
-	ip_config_app.visible = false
-	indicator_label.visible = false
-
-
-
-func _on_cmd_button_pressed():
-	cmd_app.visible = true
-	cli_manager.add_cmd_line()
-
-
-func _on_ipConfig_close_button_pressed():
-	if isSaved == false:
-		exit_confirmation.visible = true
-	else:
-		ip_config_app.visible = false
-		indicator_label.visible = false
-
-
-func _on_cmd_close_button_pressed():
-	cmd_app.visible = false
-	for i in range(1, commands_container.get_child_count()):
-		commands_container.get_child(i).queue_free()
-"
+[ext_resource path="res://global/objects/terminal_manager.gd" type="Script" id=18]
+[ext_resource path="res://global/objects/terminal_scenes/global_config_command.tscn" type="PackedScene" id=19]
+[ext_resource path="res://global/objects/terminal_scenes/user_exec_command.tscn" type="PackedScene" id=20]
+[ext_resource path="res://resources/font/cli_font.tres" type="DynamicFont" id=21]
+[ext_resource path="res://global/objects/terminal_scenes/interface_command.tscn" type="PackedScene" id=22]
+[ext_resource path="res://global/objects/terminal_scenes/line_command.tscn" type="PackedScene" id=23]
+[ext_resource path="res://global/objects/terminal_scenes/routing_engine_command.tscn" type="PackedScene" id=24]
+[ext_resource path="res://global/objects/terminal_scenes/priveleged_exec_command.tscn" type="PackedScene" id=25]
+[ext_resource path="res://global/objects/terminal_scenes/terminal_default.tscn" type="PackedScene" id=26]
+[ext_resource path="res://global/objects/monitor_script.gd" type="Script" id=27]
+[ext_resource path="res://global/objects/terminal_scenes/password_line.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=7]
 
@@ -227,10 +99,6 @@ border_color = Color( 0, 0, 0, 1 )
 [sub_resource type="Theme" id=26]
 default_font = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=29]
-size = 26
-font_data = ExtResource( 13 )
-
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="SpatialMaterial" id=5]
@@ -249,7 +117,7 @@ albedo_texture = ExtResource( 6 )
 
 [node name="object_monitor" type="StaticBody"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = SubResource( 12 )
+script = ExtResource( 27 )
 
 [node name="ui@ColorRect@holder@inv@inventory@MarginContainer@slot_container@inventory_slot" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -358,9 +226,17 @@ rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 15 )
 text = "IP Config"
 
-[node name="cmd_button" type="Button" parent="ui/pc_screen/apps"]
+[node name="terminal_button" type="Button" parent="ui/pc_screen/apps"]
 margin_left = 175.0
 margin_right = 325.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 15 )
+text = "Terminal"
+
+[node name="cmd_button" type="Button" parent="ui/pc_screen/apps"]
+margin_left = 350.0
+margin_right = 500.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = SubResource( 27 )
@@ -836,6 +712,8 @@ margin_left = -849.0
 margin_top = -892.0
 margin_right = 849.0
 rect_min_size = Vector2( 1698, 892 )
+follow_focus = true
+scroll_horizontal_enabled = false
 
 [node name="commands_container" type="VBoxContainer" parent="ui/cmd_app/cmd_screen/main_panel/ScrollContainer"]
 margin_right = 1698.0
@@ -847,7 +725,7 @@ alignment = 1
 [node name="Label" type="Label" parent="ui/cmd_app/cmd_screen/main_panel/ScrollContainer/commands_container"]
 margin_right = 1698.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = ExtResource( 21 )
 text = "( c ) NotWorking Game. All rights reserved."
 
 [node name="exit_confirmation" type="ConfirmationDialog" parent="ui/cmd_app/cmd_screen"]
@@ -867,6 +745,99 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 17 )
 command_line = ExtResource( 16 )
+
+[node name="terminal_app" type="Panel" parent="ui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 13 )
+
+[node name="cmd_screen" type="ColorRect" parent="ui/terminal_app"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -864.0
+margin_top = -486.0
+margin_right = 864.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 1728, 972 )
+color = Color( 0.0352941, 0.486275, 0.85098, 1 )
+
+[node name="terminal_close_button" type="Button" parent="ui/terminal_app/cmd_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -169.0
+margin_bottom = 65.0
+theme = SubResource( 16 )
+text = "×"
+
+[node name="app_title" type="Label" parent="ui/terminal_app/cmd_screen"]
+margin_left = 30.0
+margin_right = 346.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 14 )
+text = "Terminal"
+
+[node name="main_panel" type="ColorRect" parent="ui/terminal_app/cmd_screen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -864.0
+margin_top = -907.0
+margin_right = 864.0
+rect_min_size = Vector2( 1728, 0 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ui/terminal_app/cmd_screen/main_panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -849.0
+margin_top = -892.0
+margin_right = 849.0
+rect_min_size = Vector2( 1698, 892 )
+follow_focus = true
+
+[node name="commands_container" type="VBoxContainer" parent="ui/terminal_app/cmd_screen/main_panel/ScrollContainer"]
+margin_right = 1698.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 1698, 0 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="ui/terminal_app/cmd_screen/main_panel/ScrollContainer/commands_container"]
+margin_right = 1698.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 21 )
+text = "( c ) NotWorking Game. All rights reserved."
+
+[node name="exit_confirmation" type="ConfirmationDialog" parent="ui/terminal_app/cmd_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -347.5
+margin_top = -60.0
+margin_right = 347.5
+margin_bottom = 60.0
+theme = SubResource( 26 )
+dialog_text = "Any changes won't be saved. Exit Application?"
+
+[node name="terminal_manager" type="Control" parent="ui/terminal_app/cmd_screen"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 18 )
+global_cli = ExtResource( 19 )
+interface_cli = ExtResource( 22 )
+line_cli = ExtResource( 23 )
+priveleged_cli = ExtResource( 25 )
+routing_cli = ExtResource( 24 )
+default_cli = ExtResource( 26 )
+user_cli = ExtResource( 20 )
+password_line = ExtResource( 28 )
 
 [node name="CollisionShape2D" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -930,6 +901,7 @@ size = 1.679
 [connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]
 [connection signal="pressed" from="ui/pc_screen/apps/ipConfig_button" to="." method="_on_ipConfig_button_pressed"]
+[connection signal="pressed" from="ui/pc_screen/apps/terminal_button" to="." method="_on_terminal_button_pressed"]
 [connection signal="pressed" from="ui/pc_screen/apps/cmd_button" to="." method="_on_cmd_button_pressed"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/ipConfig_close_button" to="." method="_on_ipConfig_close_button_pressed"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio" to="." method="_on_dhcp_radio_pressed"]
@@ -938,3 +910,6 @@ size = 1.679
 [connection signal="confirmed" from="ui/ip_config_app/ip_config_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
 [connection signal="pressed" from="ui/cmd_app/cmd_screen/cmd_close_button" to="." method="_on_cmd_close_button_pressed"]
 [connection signal="confirmed" from="ui/cmd_app/cmd_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
+[connection signal="visibility_changed" from="ui/terminal_app" to="ui/terminal_app/cmd_screen/terminal_manager" method="_on_terminal_app_visibility_changed"]
+[connection signal="pressed" from="ui/terminal_app/cmd_screen/terminal_close_button" to="." method="_on_terminal_close_button_pressed"]
+[connection signal="confirmed" from="ui/terminal_app/cmd_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]

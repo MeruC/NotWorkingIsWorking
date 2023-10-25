@@ -32,7 +32,6 @@ func _ready():
 			Global.playerCameraTop = get_node("Player/CameraTop")
 			Global.player = get_node("Player")
 			Global.player.current_level = self
-			print(self)
 		
 		
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )

@@ -50,7 +50,7 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=53]
 content_margin_left = 40.0
 content_margin_right = 40.0
 content_margin_top = 40.0
@@ -69,7 +69,7 @@ shadow_size = 1
 
 [sub_resource type="ImageTexture" id=9]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=54]
 bg_color = Color( 1, 0.941176, 0, 1 )
 border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 10
@@ -193,11 +193,11 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=55]
 size = 38
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=56]
 bg_color = Color( 0.27451, 0.258824, 0, 1 )
 border_width_left = 8
 border_width_top = 8
@@ -228,12 +228,12 @@ expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=57]
 size = 32
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=58]
 content_margin_left = 40.0
 content_margin_right = 40.0
 content_margin_top = 30.0
@@ -274,13 +274,13 @@ Button/styles/disabled = SubResource( 39 )
 Button/styles/focus = SubResource( 36 )
 Button/styles/hover = SubResource( 35 )
 Button/styles/normal = SubResource( 35 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/pressed = SubResource( 53 )
 HSlider/icons/grabber = SubResource( 9 )
 HSlider/icons/grabber_disabled = SubResource( 9 )
 HSlider/icons/grabber_highlight = SubResource( 9 )
 HSlider/icons/tick = SubResource( 9 )
-HSlider/styles/grabber_area = SubResource( 7 )
-HSlider/styles/grabber_area_highlight = SubResource( 7 )
+HSlider/styles/grabber_area = SubResource( 54 )
+HSlider/styles/grabber_area_highlight = SubResource( 54 )
 HSlider/styles/slider = SubResource( 8 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = SubResource( 37 )
@@ -322,15 +322,15 @@ PopupMenu/styles/panel = SubResource( 46 )
 PopupMenu/styles/panel_disabled = SubResource( 45 )
 ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = SubResource( 1 )
-ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/fonts/font = SubResource( 55 )
+ProgressBar/styles/bg = SubResource( 56 )
 ProgressBar/styles/fg = SubResource( 3 )
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
-TabContainer/fonts/font = SubResource( 12 )
+TabContainer/fonts/font = SubResource( 57 )
 TabContainer/styles/panel = ExtResource( 3 )
-TabContainer/styles/tab_bg = SubResource( 6 )
-TabContainer/styles/tab_fg = SubResource( 5 )
+TabContainer/styles/tab_bg = SubResource( 53 )
+TabContainer/styles/tab_fg = SubResource( 58 )
 VScrollBar/styles/grabber = SubResource( 33 )
 VScrollBar/styles/grabber_highlight = SubResource( 33 )
 VScrollBar/styles/grabber_pressed = SubResource( 33 )

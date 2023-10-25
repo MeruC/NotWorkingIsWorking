@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/font/command_line_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/Themes/cli_lineEdit.tres" type="StyleBox" id=2]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends LineEdit
+onready var result_line = get_parent().find_node(\"result\")
+signal enter_pressed(text, result_line)
+onready var command_line = $\".\"
+var command_entered
+var size
+
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_ENTER and event.pressed and command_line.has_focus():
+		emit_signal(\"enter_pressed\", text.strip_edges().to_lower(), result_line)
+		self.editable = false
+"
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends TextEdit
+
+func _ready():
+	connect(\"text_changed\", self, \"_on_text_changed\")
+
+func _on_text_changed():
+	rect_min_size.y = get_line_count() * get_line_height()
+
+
+func _on_result_text_changed():
+	rect_min_size.y = get_line_count() * get_line_height()
+"
+
+[node name="terminal_default" type="VBoxContainer"]
+margin_right = 84.0
+margin_bottom = 50.0
+
+[node name="command_line" type="LineEdit" parent="."]
+margin_right = 1686.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 1686, 50 )
+rect_pivot_offset = Vector2( -693, -184 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/read_only = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+caret_blink = true
+script = SubResource( 5 )
+
+[node name="result" type="TextEdit" parent="."]
+margin_top = 54.0
+margin_right = 1686.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+rect_clip_content = true
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+readonly = true
+wrap_enabled = true
+caret_blink = true
+script = SubResource( 4 )
+
+[connection signal="text_changed" from="result" to="result" method="_on_result_text_changed"]
