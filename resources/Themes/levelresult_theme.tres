@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=3]
 [ext_resource path="res://resources/Game buttons/result_button2.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=76]
+[sub_resource type="DynamicFont" id=92]
 size = 40
 extra_spacing_top = 5
 extra_spacing_bottom = 9
@@ -16,25 +16,26 @@ font_data = ExtResource( 1 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
-[sub_resource type="StyleBoxTexture" id=73]
+[sub_resource type="StyleBoxTexture" id=93]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
-[sub_resource type="StyleBoxTexture" id=77]
+[sub_resource type="StyleBoxTexture" id=94]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
-[sub_resource type="StyleBoxTexture" id=75]
+[sub_resource type="StyleBoxTexture" id=95]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 0.286275 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.427451 )
 Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 0.890196 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
-Button/fonts/font = SubResource( 76 )
+Button/fonts/font = SubResource( 92 )
 Button/styles/disabled = SubResource( 72 )
-Button/styles/hover = SubResource( 73 )
-Button/styles/normal = SubResource( 77 )
-Button/styles/pressed = SubResource( 75 )
+Button/styles/hover = SubResource( 93 )
+Button/styles/normal = SubResource( 94 )
+Button/styles/pressed = SubResource( 95 )

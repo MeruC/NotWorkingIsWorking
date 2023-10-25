@@ -19,10 +19,10 @@ func _ready():
 	if settings_data.crowns >= 5 and settings_data.crowns <= 10:
 		$user_profile/name_background/rank.text = "Network technician"
 		settings_data.cict_shirt = "unlock"
-		settings_data.girl_casual = "unlock"
 		SaveManager.save_game()
 	if settings_data.crowns >= 11:
 		$user_profile/name_background/rank.text = "Network Enginner"
+		settings_data.girl_casual = "unlock"
 	if settings_data.email == "":
 		$user_profile/questionBank_bg/questionBank_btn.disabled= true
 	else:

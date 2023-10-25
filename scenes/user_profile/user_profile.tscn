@@ -1,7 +1,8 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/user_profile/edit_icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/user_profile/user_profile.gd" type="Script" id=5]
 [ext_resource path="res://resources/Themes/user_profile_line_edit.tres" type="Theme" id=6]
@@ -114,6 +115,7 @@ func _on_right_pressed():
 				$avatar_name.text = \"BSU Uniform\"
 				costumename = \"Default\"
 				$warning.text = \"\"
+				$Label.text = \"\"
 				$select_btn.disabled = false
 				click = 1
 			1:
@@ -126,11 +128,14 @@ func _on_right_pressed():
 					costume = \"girl_pants\"
 					costumename = \"Pants Uniform\"
 					$warning.text = \"\"
+					$Label.text = \"\"
 					$select_btn.disabled = false
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 1\"
 				click = 2
 			2:
 				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
@@ -143,11 +148,13 @@ func _on_right_pressed():
 					costumename = \"Wash day Attire\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Reach Network Engineer\"
 				click = 0
 	if settings_data.gender == \"male\":
 		match (click):
@@ -161,6 +168,7 @@ func _on_right_pressed():
 				costumename = \"default\"
 				$select_btn.disabled = false
 				$warning.text = \"\"
+				$Label.text = \"\"
 				click = 1
 			1:
 				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
@@ -173,11 +181,13 @@ func _on_right_pressed():
 					costumename = \"I love BSU!\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 2\"
 				click = 2
 			2:
 				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
@@ -190,11 +200,13 @@ func _on_right_pressed():
 					costumename = \"CICT Shirt\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Reach network technician\"
 				click = 3
 			3:
 				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
@@ -207,11 +219,13 @@ func _on_right_pressed():
 					costumename = \"Formal Attire\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 8 above 400 score\"
 				click = 4
 			4:
 				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
@@ -224,11 +238,13 @@ func _on_right_pressed():
 					costumename = \"Orange Stripe Shirt\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 5\"
 				click = 0
 				
 func _on_left_pressed():
@@ -242,6 +258,7 @@ func _on_left_pressed():
 				costume = \"female\"
 				$avatar_name.text = \"BSU Uniform\"
 				$warning.text = \"\"
+				$Label.text = \"\"
 				click = 2  # Reset to the last costume
 			1:
 				var girl_pants = preload(\"res://resources/Models/Character skin girl/default_pants/idle/idle.obj\")
@@ -253,11 +270,13 @@ func _on_left_pressed():
 					costumename = \"Pants Uniform\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_pants
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 1\"
 				click -= 1
 			2:
 				var girl_casual = preload(\"res://resources/Models/Character skin girl/casual_attire/idle/idle.obj\")
@@ -269,11 +288,13 @@ func _on_left_pressed():
 					costumename = \"Wash day Attire\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = girl_casual
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Reach Network Engineer\"
 				click -= 1
 				
 	if settings_data.gender == \"male\":
@@ -288,6 +309,7 @@ func _on_left_pressed():
 				$avatar_name.text = \"BSU Uniform\"
 				$select_btn.disabled = false
 				$warning.text = \"\"
+				$Label.text = \"\"
 				click = 4
 			1:
 				var boy_blue_shirt = preload(\"res://resources/Models/Character skin boy/blue_shirt/idle/idle.obj\")
@@ -300,11 +322,13 @@ func _on_left_pressed():
 					$warning.text = \"\"
 					$select_btn.disabled = false
 					costumename = \"I love BSU!\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_blue_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 2\"
 				click -=1
 			2:
 				var boy_cict_shirt = preload(\"res://resources/Models/Character skin boy/cict_shirt/idle/idle.obj\")
@@ -317,11 +341,13 @@ func _on_left_pressed():
 					costumename = \"CICT Shirt\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_cict_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Reach network technician\"
 				click -=1
 			3:
 				var boy_formal_attire = preload(\"res://resources/Models/Character skin boy/formal_attire/idle/idle.obj\")
@@ -334,11 +360,13 @@ func _on_left_pressed():
 					costumename = \"Formal Attire\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_formal_attire
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 8 above 400 score\"
 				click -=1
 			4:
 				var boy_orange_shirt = preload(\"res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj\")
@@ -351,11 +379,13 @@ func _on_left_pressed():
 					costumename = \"Orange Stripe Shirt\"
 					$select_btn.disabled = false
 					$warning.text = \"\"
+					$Label.text = \"\"
 				else:
 					$select_character/Viewport/Spatial/CSGMesh.mesh = boy_orange_shirt
 					$select_character/Viewport/Spatial/CSGMesh.material_override = lock_skin
 					$select_btn.disabled = true
-					$warning.text = \"LOCK\"
+					$warning.text = \"LOCKED\"
+					$Label.text = \"Complete level 5\"
 				click -=1
 
 func _on_select_btn_pressed():
@@ -1286,7 +1316,7 @@ margin_left = 950.0
 margin_top = -26.0
 margin_right = 1130.0
 margin_bottom = 481.0
-rect_scale = Vector2( 0.901038, 1.0162 )
+rect_scale = Vector2( 0.907466, 1.0436 )
 texture = ExtResource( 2 )
 
 [node name="border_bg" type="Sprite" parent="edit_avatar"]
@@ -1413,11 +1443,20 @@ theme = ExtResource( 16 )
 text = "<"
 
 [node name="warning" type="Label" parent="edit_avatar"]
-margin_left = 1347.0
-margin_top = 553.0
-margin_right = 1524.0
-margin_bottom = 621.0
+margin_left = 1293.0
+margin_top = 893.0
+margin_right = 1572.0
+margin_bottom = 961.0
 theme = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="edit_avatar"]
+margin_left = 1283.0
+margin_top = 555.0
+margin_right = 1576.0
+margin_bottom = 684.0
+theme = ExtResource( 3 )
+align = 1
+autowrap = true
 
 [node name="login" type="CanvasLayer" parent="."]
 visible = false

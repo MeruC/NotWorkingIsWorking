@@ -202,7 +202,7 @@ func _on_left_pressed():
 func _on_right_pressed():
 	match (current):
 		0:
-			if settings_data.level1 == \"complete\":
+			if settings_data.level1 >= 7:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -216,7 +216,7 @@ func _on_right_pressed():
 			else:
 				$\"../notif\".text = \"level is not completed\"
 		1:
-			if settings_data.level2 == \"complete\":
+			if settings_data.level2 >= 4:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -231,7 +231,7 @@ func _on_right_pressed():
 			else:
 				$\"../notif\".text = \"level is not completed\"
 		2:
-			if settings_data.level3 == \"complete\":
+			if settings_data.level3 >= 4:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -247,7 +247,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		3:
-			if settings_data.level4 == \"complete\":
+			if settings_data.level4 >= 5:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -263,7 +263,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		4:
-			if settings_data.level5 == \"complete\":
+			if settings_data.level5 >= 4:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -280,7 +280,7 @@ func _on_right_pressed():
 				$\"../notif\".text = \"level is not completed\"
 				
 		5:
-			if settings_data.level6 == \"complete\":
+			if settings_data.level6 == 5:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -296,7 +296,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		6:
-			if settings_data.level7 == \"complete\":
+			if settings_data.level7 >= 3:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
@@ -312,7 +312,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = true
 				$\"../notif\".text = \"level is not completed\"
 		7:
-			if settings_data.level8 == \"complete\":
+			if settings_data.level8 >= 30:
 				$\"../left\".disabled = true
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
