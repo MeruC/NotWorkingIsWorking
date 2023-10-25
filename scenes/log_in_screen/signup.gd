@@ -41,6 +41,15 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 
 	var response = parse_json(response_body)
+		
+	if "error" in response and response["error"] == "email_already_exists":
+		# Display a message to the user indicating that the email already exists
+		$"../warning".visible = true
+		$"../warning/warning2".text = "Email already exists. Please use a different email."
+		$s_username/s_username.text = ""
+		$s_password/s_password.text = ""
+		$_confirmpassword/cpassword.text = ""
+		return
 
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
