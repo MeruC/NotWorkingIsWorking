@@ -16,6 +16,7 @@ export(NodePath) onready var incorrect2_lineEdit = get_node(incorrect2_lineEdit)
 export(NodePath) onready var incorrect3_lineEdit = get_node(incorrect3_lineEdit) as LineEdit
 export(NodePath) onready var error_popup = get_node(error_popup) as Control
 export(NodePath) onready var add_popup = get_node(add_popup) as Control
+export(Resource) var settings_data
 
 func _ready():
 	show_questions()
@@ -92,6 +93,11 @@ func _on_add_button_pressed():
 
 func _on_back_button_pressed():
 	save_questions()
+	var request = HTTPRequest.new()
+	request.connect("request_completed", self, "_request_callback")
+	add_child(request)
+	upload_file(request)
+	yield(get_tree().create_timer(1), "timeout")
 	Load.load_scene(self, previous_scene)
 	
 # To save changes in the question_bank.json upon clicking back button
@@ -138,3 +144,37 @@ func clear_text():
 
 func _on_close_button_pressed():
 	add_popup.visible = false
+
+func upload_file(request: HTTPRequest) -> void:
+	var file_name = settings_data.email + ".json"
+	var email = settings_data.email
+	var file = File.new()
+	file.open(json_file, File.READ)
+	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
+	file.close()
+	
+	var body = PoolByteArray()
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"email\"\r\n\r\n%s\r\n" % email).to_utf8())
+
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % file_name).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(file_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+
+	var headers = [
+		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
+	]
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = "https://nwork.slarenasitsolutions.com/upload_question_bank.php"  # Replace with your server's URL
+
+	request.connect("request_completed", self, "http_request_completed")
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
+
+
+func http_request_completed(result, response_code, headers, body):
+	if result != OK:
+		pass
+	else:
+		pass
