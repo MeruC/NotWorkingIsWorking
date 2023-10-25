@@ -100,6 +100,8 @@ func _on_submit_pressed():
 		popup_next_button.disabled = false
 		score_validation()
 	else:
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		gameover_anim.play("lose")
 		popup_indicator_label.text = "Level Failed!"
 		for child in slot_container.get_children():

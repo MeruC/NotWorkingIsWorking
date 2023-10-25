@@ -399,9 +399,9 @@ text = "SUBMIT"
 
 [node name="create_levels" type="Button" parent="."]
 margin_left = 31.0
-margin_top = 930.0
+margin_top = 927.0
 margin_right = 450.0
-margin_bottom = 1060.0
+margin_bottom = 1057.0
 theme = SubResource( 96 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )

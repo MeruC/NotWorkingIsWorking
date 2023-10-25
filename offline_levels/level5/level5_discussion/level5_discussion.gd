@@ -80,6 +80,7 @@ func update_dialog():
 			$CanvasLayer/videoplayer.visible = false
 			$AnimationPlayer.play("ending")
 	else:
+		$".".queue_free()
 		get_tree().change_scene(game_scene)
 
 

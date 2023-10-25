@@ -757,6 +757,9 @@ gameover_score = NodePath("popup_layer/game_over/main_popup/score")
 gameover_next = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
 score_display = NodePath("score_labels/score")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
+audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
+gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
+celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]

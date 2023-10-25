@@ -48,6 +48,9 @@ text = "Simply tap and hold on the file icon. While holding, drag it towards the
 playback_speed = 0.25
 anims/RESET = SubResource( 2 )
 
+[node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
+visible = false
+
 [node name="DesktopBg" type="Sprite" parent="."]
 position = Vector2( 961.116, 537.5 )
 scale = Vector2( 0.321039, 0.320889 )

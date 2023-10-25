@@ -93,6 +93,7 @@ func update_dialog():
 			$CanvasLayer/play_btn.visible = false
 			$AnimationPlayer.play("ending_animation")
 	else:
+		$".".queue_free()
 		get_tree().change_scene(game_scene)
 	
 	# You can also return json_data here if needed

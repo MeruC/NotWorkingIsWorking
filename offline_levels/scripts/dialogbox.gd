@@ -85,6 +85,7 @@ func update_dialog():
 			$"../video".visible = false
 			$"../example1/AnimationPlayer".play_backwards("file_animation")
 	else:
+		$"..".queue_free()
 		get_tree().change_scene(game_scene)
 		print("Dialog ended.")
 

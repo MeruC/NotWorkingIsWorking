@@ -86,6 +86,8 @@ func _on_crimp_pressed():
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
+				audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+				audioplayer.play()
 				gameover_anim.play("lose")
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"
@@ -102,6 +104,8 @@ func _on_crimp_pressed():
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
 			else:
+				audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+				audioplayer.play()
 				gameover_anim.play("lose")
 				gameover_indicator.text = "Level Failed"
 				gameover_score.text = "Your Score: 0 / 5"

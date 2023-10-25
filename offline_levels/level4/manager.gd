@@ -172,6 +172,8 @@ func _on_continue_pressed():
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			score_validation()
 		else:
+			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+			audioplayer.play()
 			popup_indicator_label.text = "Level Failed!"
 			popup_next_button.disabled = true
 			gameover_anim.play("lose")

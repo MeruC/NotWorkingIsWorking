@@ -115,6 +115,8 @@ func spawn_new():
 	else:
 		popup_next_button.disabled = true
 		animationplayer.play("lose")
+		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		audioplayer.play()
 		popup_indicator_label.text = "Level Failed!"
 		if score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
