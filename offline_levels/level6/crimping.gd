@@ -195,5 +195,6 @@ func _on_craft_complete(type):
 		"quantity": 1
 	}]
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
+	SaveManager.save_game()
 	_on_start()
 	hide()

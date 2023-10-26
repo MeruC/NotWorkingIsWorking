@@ -318,8 +318,8 @@ script/source = "extends Panel
 onready var task1_cb = $ScrollContainer/tasks_vbox/task1/task_cb
 onready var task2_cb = $ScrollContainer/tasks_vbox/task2/task_cb
 onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
-onready var pc1_object = $\"../../object_monitor\"
-onready var pc2_object = $\"../../@object_monitor@153\"
+#onready var pc1_object = $\"../../object_monitor\"
+#onready var pc2_object = $\"../../@object_monitor@153\"
 onready var root_scene = get_tree().get_current_scene()
 
 func _ready():
@@ -338,15 +338,15 @@ func _on_command_line_enter_pressed(text):
 	pass
 
 # To check if the player entered correct ip for each pc
-func _on_save_button_pressed():
-	if task2_cb.pressed == false:
-		if pc1_object.ipv4_address == \"192.168.1.101\" and pc2_object.ipv4_address == \"192.168.1.102\":
-			task2_cb.pressed = true
+#func _on_save_button_pressed():
+#	if task2_cb.pressed == false:
+#		if pc1_object.ipv4_address == \"192.168.1.101\" and pc2_object.ipv4_address == \"192.168.1.102\":
+#			task2_cb.pressed = true
 ##
 
-func on_cable_connected():
-	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-		task1_cb.pressed = true
+#func on_cable_connected():
+#	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
+#		task1_cb.pressed = true
 
 func on_device_pinged_succefully():
 	task3_cb.pressed = true

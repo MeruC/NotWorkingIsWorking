@@ -61,9 +61,9 @@ func _on_save_button_pressed():
 			task2_cb.pressed = true
 ##
 
-#func on_cable_connected():
-	#if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-		#task1_cb.pressed = true
+func on_cable_connected():
+	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
+		task1_cb.pressed = true
 
 func on_device_pinged_succefully():
 	task3_cb.pressed = true

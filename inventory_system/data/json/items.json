@@ -57,7 +57,13 @@
 		"name": "Console Cable",
 		"type": "MATERIAL",
 		"stack_size": 64,
-		"level": 1
+		"level": 1,
+		"usable": {
+			"type": "cable",
+			"data": {
+				"cable_type": "console"
+			}
+		}
 	},
 	"hdmi": {
 		"name": "HDMI Cable",

@@ -49,6 +49,9 @@ var cursor_pos := Vector3.ZERO
 
 func _ready():
 	
+	current_level = get_parent()
+	print("Current Level: " + str(current_level))
+	
 	if settings_data.gender == "female":
 		
 		if settings_data.costume == "girl_pants":
