@@ -2,6 +2,7 @@ extends StaticBody
 
 export var device_name : String
 var fe0 : StaticBody
+var fe0_type
 #var other_end : StaticBody
 var isSaved = false
 
@@ -59,12 +60,14 @@ func _on_line_edit_text_changed(line_edit, new_text):
 func _on_name_lineEdit_text_changed(new_text):
 	device_name = new_text
 	
-func _set_connector( connection ):
+func _set_connector( connection, type ):
 	if fe0 == null:
 		fe0 = connection
-		label.text = "Connected to %s" % fe0.device_name
+		fe0_type = type
+		label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
 		emit_signal("cable_connected")
+		
 	else:
 		pass
 #	elif other_end == null:

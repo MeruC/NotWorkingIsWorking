@@ -11,6 +11,7 @@ onready var tween = $"%Tween"
 
 var current_level : Spatial
 var object_point
+var cabletype
 
 #NodeReferences
 onready var camera = $"%Camera"
@@ -282,8 +283,8 @@ func _input( event ):
 						if (LevelGlobal.object_hold == current_level.get_node(object_point.collider.name)):
 							print("Select a different device")
 						else:
-							current_level.get_node(object_point.collider.name)._set_connector(LevelGlobal.object_hold)
-							LevelGlobal.object_hold._set_connector(current_level.get_node(object_point.collider.name))
+							current_level.get_node(object_point.collider.name)._set_connector(LevelGlobal.object_hold, cabletype)
+							LevelGlobal.object_hold._set_connector(current_level.get_node(object_point.collider.name), cabletype)
 							object_number = 0
 							_on_cable_connected()
 							
@@ -297,6 +298,7 @@ func _on_InteractionArea_area_exited(area):
 		current_interactable = null
 
 func _on_cable_used( type ):
+	cabletype = type
 	label.modulate = Color8(255,255,255,0)
 	yield(CameraTransition.transition_camera3D(camera_normal, camera_top, 1), "completed")
 	camera.c_rot = Vector3(0,0,0)
