@@ -12,7 +12,6 @@ onready var playarea = $"%playarea"
 onready var inventory = $"%inventory"
 onready var other_ui = $"%other_ui"
 onready var mobile_controls = $"%mobile_controls"
-
 var timer = null
 var x = 1
 

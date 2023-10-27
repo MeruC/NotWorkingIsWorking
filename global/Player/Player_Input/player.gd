@@ -48,9 +48,13 @@ var current_interactable
 var object_point2
 var cursor_pos := Vector3.ZERO
 
+var inventory
+
 func _ready():
 	
 	current_level = get_parent()
+	print(inventory)
+	
 	print("Current Level: " + str(current_level))
 	
 	if settings_data.gender == "female":
@@ -176,13 +180,19 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta):
 	object_point2 = WhatObject()
+	var selected = current_level.get_node(object_point2.collider.name)
 	if LevelGlobal.on_cable_mode:
 		match(object_number):
 			0:
 				if("object_monitor" in object_point2.collider.name):
-					previewCursor()
-					place.set_visible(true)
-					no_sign.set_visible(false)
+					if selected.fe0 == null:
+						previewCursor()
+						place.set_visible(true)
+						no_sign.set_visible(false)
+					else:
+						previewCursor()
+						place.set_visible(false)
+						no_sign.set_visible(true)
 				else:
 					previewCursor()
 					place.set_visible(false)
@@ -194,9 +204,19 @@ func _process(delta):
 						place.set_visible(false)
 						no_sign.set_visible(true)
 					_:
-						previewCursor()
-						place.set_visible(true)
-						no_sign.set_visible(false)
+						if("object_monitor" in object_point2.collider.name):
+							if selected.fe0 == null:
+								previewCursor()
+								place.set_visible(true)
+								no_sign.set_visible(false)
+							else:
+								previewCursor()
+								place.set_visible(false)
+								no_sign.set_visible(true)
+						else:
+							previewCursor()
+							place.set_visible(false)
+							no_sign.set_visible(true)
 					
 	
 	if velocity.x == 0 and velocity.z == 0:
@@ -248,6 +268,7 @@ func _on_Player_visibility_changed():
 
 #Interactions
 func _input( event ):
+		
 	cursor_pos = Vector3(ScrenPointToRay())
 	cursor_pos.y = 0
 	
@@ -268,25 +289,32 @@ func _input( event ):
 		current_interactable.interact()
 		
 	if mode == "cable":
-		if event is InputEventScreenTouch and OS.get_name() == "Android":
+		if cabletype == "Console_Cable":
 			pass
-		if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
-			if ("object_monitor" in object_point.collider.name):
-				match object_number:
-					0:
-						print(current_level.get_node(object_point.collider.name).device_name)
-						previous_object = object_point.collider.name
-						LevelGlobal.object_hold = current_level.get_node(object_point.collider.name)
-						object_number = 1
-						print("Select a different device")
-					1:
-						if (LevelGlobal.object_hold == current_level.get_node(object_point.collider.name)):
-							print("Select a different device")
-						else:
-							current_level.get_node(object_point.collider.name)._set_connector(LevelGlobal.object_hold, cabletype)
-							LevelGlobal.object_hold._set_connector(current_level.get_node(object_point.collider.name), cabletype)
-							object_number = 0
-							_on_cable_connected()
+		elif cabletype == "cross_over" or cabletype == "straight_through":
+			if event is InputEventScreenTouch and OS.get_name() == "Android":
+				pass
+			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
+				if ("object_monitor" in object_point.collider.name):
+					var selected = current_level.get_node(object_point.collider.name)
+					match object_number:
+						0:
+							if selected.fe0 == null:
+								print(selected.device_name)
+								previous_object = object_point.collider.name
+								LevelGlobal.object_hold = selected
+								object_number = 1
+								print("Select a different device")
+						1:
+							if (LevelGlobal.object_hold == selected):
+								print("Select a different device")
+							else:
+								if selected.fe0 == null:
+									selected._set_connector(LevelGlobal.object_hold, cabletype)
+									LevelGlobal.object_hold._set_connector(selected, cabletype)
+									object_number = 0
+									_on_cable_connected()
+		
 							
 
 func _on_InteractionArea_area_exited(area):
