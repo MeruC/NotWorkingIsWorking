@@ -247,7 +247,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level3 = score
-			settings_data.crowsn+=1
+			settings_data.crowns+=1
 			SaveManager.save_game()
 		elif score == 4:
 			settings_data.crowns += 2
