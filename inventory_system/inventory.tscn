@@ -13,6 +13,7 @@
 script/source = "extends CanvasLayer
 
 export( NodePath ) onready var ui_container = get_node(ui_container) as Control
+onready var crafting_menu = $\"%crafting_menu\"
 "
 
 [node name="inventory" type="CanvasLayer"]
@@ -71,3 +72,4 @@ margin_bottom = 164.0
 mouse_filter = 2
 
 [node name="crafting_menu" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true

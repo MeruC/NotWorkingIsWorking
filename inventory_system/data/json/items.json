@@ -15,7 +15,10 @@
 		"name": "Crimping tool",
 		"type": "TOOL",
 		"stack_size": 1,
-		"level": 1
+		"level": 1,
+		"usable": {
+			"type": "equipment"
+		}
 	},
 	"cross_over": {
 		"name": "Crossover RJ45 Cable",

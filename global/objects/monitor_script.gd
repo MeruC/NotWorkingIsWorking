@@ -3,6 +3,7 @@ extends StaticBody
 export var device_name : String
 var fe0 : StaticBody
 var fe0_type
+var console_port0 : StaticBody
 #var other_end : StaticBody
 var isSaved = false
 
