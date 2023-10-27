@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=9]
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=12]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -899,6 +900,13 @@ text = "1"
 stream = ExtResource( 11 )
 bus = "SFX"
 
+[node name="instruction" type="Button" parent="."]
+margin_left = 1805.0
+margin_top = 967.0
+margin_right = 1905.0
+margin_bottom = 1067.0
+theme = ExtResource( 12 )
+
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="options_container/star" to="." method="_on_star_pressed"]
@@ -906,6 +914,7 @@ bus = "SFX"
 [connection signal="pressed" from="options_container/ring" to="." method="_on_ring_pressed"]
 [connection signal="pressed" from="options_container/mesh" to="." method="_on_mesh_pressed"]
 [connection signal="pressed" from="options_container/hybrid" to="." method="_on_hybrid_pressed"]
+[connection signal="pressed" from="instruction" to="." method="_on_instruction_pressed"]
 
 [editable path="popup_layer/pause"]
 [editable path="popup_layer/pause/settings"]

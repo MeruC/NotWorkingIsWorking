@@ -40,10 +40,10 @@ func _on_choice2_pressed():
 script = SubResource( 1 )
 
 [node name="choices_container" type="GridContainer" parent="."]
-margin_left = 220.0
-margin_top = 477.0
-margin_right = 1020.0
-margin_bottom = 727.0
+margin_left = 182.0
+margin_top = 447.0
+margin_right = 982.0
+margin_bottom = 697.0
 rect_min_size = Vector2( 700, 250 )
 rect_scale = Vector2( 2, 2 )
 rect_clip_content = true

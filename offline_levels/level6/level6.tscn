@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
 [ext_resource path="res://resources/soundtrack/level/wire.wav" type="AudioStream" id=19]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=20]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -997,9 +998,18 @@ valign = 1
 stream = ExtResource( 19 )
 bus = "SFX"
 
+[node name="instruction" type="Button" parent="."]
+margin_left = 1810.0
+margin_top = 971.0
+margin_right = 1910.0
+margin_bottom = 1071.0
+rect_min_size = Vector2( 100, 100 )
+theme = ExtResource( 20 )
+
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="button_container/crimp" to="." method="_on_crimp_pressed"]
+[connection signal="pressed" from="instruction" to="." method="_on_Button_pressed"]
 
 [editable path="popup_layer/pause"]
 [editable path="popup_layer/pause/settings"]

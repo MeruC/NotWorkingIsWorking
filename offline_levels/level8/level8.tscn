@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=6]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -1044,10 +1045,18 @@ margin_bottom = 99.0
 custom_fonts/font = SubResource( 10 )
 text = "20"
 
+[node name="instruction" type="Button" parent="."]
+margin_left = 1802.0
+margin_top = 964.0
+margin_right = 1902.0
+margin_bottom = 1064.0
+theme = ExtResource( 9 )
+
 [connection signal="hide" from="popup_layer/instructions" to="." method="_on_instructions_hide"]
 [connection signal="pressed" from="popup_layer/perQuestion_popup/tap" to="." method="_on_tap_pressed"]
 [connection signal="pressed" from="HBoxContainer/submit" to="." method="_on_submit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="instruction" to="." method="_on_instruction_pressed"]
 
 [editable path="popup_layer/pause"]
 [editable path="popup_layer/pause/settings"]

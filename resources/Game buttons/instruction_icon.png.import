@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/instruction_icon.png-abee69bdf4a1c3587b1b7c35cf7e1f57.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://resources/Game buttons/instruction_icon.png"
+dest_files=[ "res://.import/instruction_icon.png-abee69bdf4a1c3587b1b7c35cf7e1f57.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=1
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -165,3 +165,8 @@ func _on_data_changed():
 
 func _on_retry_pressed():
 	get_tree().change_scene("res://offline_levels/level1/level_1.tscn")
+
+
+func _on_instruction_pressed():
+	$"../popup_layer/instructions".visible = true
+	instructions_sprite.visible = true

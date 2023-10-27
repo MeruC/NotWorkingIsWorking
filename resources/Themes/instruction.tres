@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://resources/Game buttons/instruction_icon1.png" type="Texture" id=1]
+[ext_resource path="res://resources/Game buttons/instruction_icon2.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 825, 826 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 825, 826 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 815, 815 )
+
+[resource]
+Button/styles/focus = SubResource( 3 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 2 )

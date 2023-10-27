@@ -10,6 +10,7 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 [ext_resource path="res://resources/Themes/emergency_button.tres" type="Theme" id=9]
 [ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -671,10 +672,6 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="DynamicFont" id=5]
-size = 38
-font_data = ExtResource( 1 )
-
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
@@ -790,7 +787,6 @@ visible = false
 [node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0
 rect_min_size = Vector2( 900, 230 )
-custom_fonts/font = SubResource( 5 )
 text = "You'll be presented with various scenarios, and your challenge is to choose the most appropriate area network type that fits each situation. If you're confident in your choice, simply tap the button corresponding to the selected area network type. Make strategic decisions to match the scenarios and network types correctly, and aim for a perfect score as you progress through the game. Best of luck!"
 
 [node name="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="2"]
@@ -875,12 +871,20 @@ text = "WAN"
 stream = ExtResource( 10 )
 bus = "SFX"
 
+[node name="instruction" type="Button" parent="."]
+margin_left = 1811.0
+margin_top = 969.0
+margin_right = 1911.0
+margin_bottom = 1069.0
+theme = ExtResource( 11 )
+
 [connection signal="pressed" from="popup_layer/popup/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
 [connection signal="pressed" from="button_container/lan_button" to="." method="_on_lan_button_pressed"]
 [connection signal="pressed" from="button_container/man_button" to="." method="_on_man_button_pressed"]
 [connection signal="pressed" from="button_container/wan_button" to="." method="_on_wan_button_pressed"]
+[connection signal="pressed" from="instruction" to="." method="_on_instruction_pressed"]
 
 [editable path="popup_layer/pause"]
 [editable path="popup_layer/pause/settings"]

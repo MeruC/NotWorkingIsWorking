@@ -182,3 +182,7 @@ func score_validation():
 
 func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
+
+
+func _on_instruction_pressed():
+	$popup_layer/instructions.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=8]
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/soundtrack/level/button_click.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -843,10 +844,18 @@ margin_bottom = 252.0
 stream = ExtResource( 10 )
 bus = "SFX"
 
+[node name="instruction" type="Button" parent="."]
+margin_left = 1812.0
+margin_top = 971.0
+margin_right = 1912.0
+margin_bottom = 1071.0
+theme = ExtResource( 11 )
+
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
 [connection signal="pressed" from="choices/choices_container/choice1" to="." method="_on_choice1_pressed"]
 [connection signal="pressed" from="choices/choices_container/choice2" to="." method="_on_choice2_pressed"]
+[connection signal="pressed" from="instruction" to="." method="_on_Button_pressed"]
 
 [editable path="popup_layer/pause"]
 [editable path="popup_layer/pause/settings"]

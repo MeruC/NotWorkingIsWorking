@@ -969,10 +969,39 @@ func http_request_completed(result, response_code, headers, body):
 		$\"../notification/message\".text = \"No Internet Connection\"
 		$\"../prompt_upload\".visible = false
 	else:
+		yield(get_tree().create_timer(1), \"timeout\")
+		var request = HTTPRequest.new()
+		request.connect(\"request_completed\", self, \"_request_callback\")
+		upload_questionbank(request)
 		$\"../notification\".visible = true
 		$\"../notification/message\".text = \"Your data successfully uploaded in the database.\"
 		$\"../prompt_upload\".visible = false
 
+func upload_questionbank(request: HTTPRequest) -> void:
+	var file_name = settings_data.email + \".json\"
+	var email = settings_data.email
+	var file = File.new()
+	file.open(\"json_fileres://scenes/user_profile/question_bank/json/question_bank.json\", File.READ)
+	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data
+	file.close()
+	
+	var body = PoolByteArray()
+	body.append_array(\"\\r\\n--BodyBoundaryHere\\r\\n\".to_utf8())
+	body.append_array((\"Content-Disposition: form-data; name=\\\"email\\\"\\r\\n\\r\\n%s\\r\\n\" % email).to_utf8())
+
+	body.append_array(\"\\r\\n--BodyBoundaryHere\\r\\n\".to_utf8())
+	body.append_array((\"Content-Disposition: form-data; name=\\\"file\\\"; filename=\\\"%s\\\"\\r\\n\" % file_name).to_utf8())
+	body.append_array(\"Content-Type: application/octet-stream\\r\\n\\r\\n\".to_utf8())
+	body.append_array(file_data)
+	body.append_array(\"\\r\\n--BodyBoundaryHere--\\r\\n\".to_utf8())
+
+	var headers = [
+		\"Content-Type: multipart/form-data; boundary=BodyBoundaryHere\"
+	]
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = \"https://nwork.slarenasitsolutions.com/upload_question_bank.php\"  # Replace with your server's URL
+
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	
 func _on_retrieve_data_pressed():
 	$\"../prompt_retrieve\".visible = true

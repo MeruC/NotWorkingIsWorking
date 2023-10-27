@@ -225,3 +225,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level4 = score
 			SaveManager.save_game()
+
+
+func _on_instruction_pressed():
+	$popup_layer/instructions.visible = true

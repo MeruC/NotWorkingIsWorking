@@ -194,6 +194,7 @@ func score_validation():
 			var new_coins = current_coins+90
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
+			settings_data.crowsn+=2
 			settings_data.blue_shirt = "unlock"
 			settings_data.girl_pants = "unlock"
 			settings_data.gold_coins = new_coins
@@ -211,6 +212,11 @@ func score_validation():
 			settings_data.girl_pants = "unlock"
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
+			settings_data.crowsn+=3
 			settings_data.level2 = score
 			SaveManager.save_game()
 	
+
+
+func _on_instruction_pressed():
+	$"../popup_layer/instructions".visible = true

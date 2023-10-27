@@ -79,11 +79,13 @@ func _http_request_completed(result, response_code, headers, body):
 	else:
 		print(\"Invalid JSON response\")
 		$Label.text = \"No quiz level created\"
-
+		
+	
 func display_table(data):
 	# Define your headers manually
 	headers = [\"file_id\", \"file_name\", \"creator\"]
-
+	# Invert the sorted array to achieve descending order
+	data.invert()
 	# Clear the existing grid contents
 	clear_grid()
 
@@ -117,7 +119,6 @@ func display_table(data):
 				cell_label.add_color_override(\"font_color\", font_color)
 				grid_container.add_child(cell_label)
 				cell_label.align = Label.ALIGN_CENTER  # Center-align text
-
 
 func clear_grid():
 	# Remove all child nodes from the grid_container

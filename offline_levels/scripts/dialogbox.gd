@@ -87,7 +87,6 @@ func update_dialog():
 	else:
 		$"..".queue_free()
 		get_tree().change_scene(game_scene)
-		print("Dialog ended.")
 
 	# You can also return json_data here if needed
 
