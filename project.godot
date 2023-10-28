@@ -219,6 +219,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://global/objects/scripts/pc.gd"
 }, {
+"base": "Item_Usable",
+"class": "Use_Crimping",
+"language": "GDScript",
+"path": "res://inventory_system/scripts/resources/usable_items/use_crimping.gd"
+}, {
 "base": "Node",
 "class": "Utils",
 "language": "GDScript",
@@ -282,6 +287,7 @@ _global_script_class_icons={
 "Stat_Range": "",
 "Stat_Scale": "",
 "Tower_PC": "",
+"Use_Crimping": "",
 "Utils": "",
 "VirtualJoystick": "",
 "Window": "",

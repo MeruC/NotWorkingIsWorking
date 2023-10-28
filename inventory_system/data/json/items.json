@@ -17,7 +17,9 @@
 		"stack_size": 1,
 		"level": 1,
 		"usable": {
-			"type": "equipment"
+			"type": "equipment",
+			"data": {
+			}
 		}
 	},
 	"cross_over": {
