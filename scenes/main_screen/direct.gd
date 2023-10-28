@@ -120,7 +120,7 @@ func levels_completed():
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level8/level8.tscn")
 	if completed.empty():
-		settings_data.quick_game = "isplaying"
+		settings_data.quick_game = "notplaying"
 		SaveManager.save_game()
 		completed.append("res://scenes/quick_game/quickgame.tscn")
 	return completed

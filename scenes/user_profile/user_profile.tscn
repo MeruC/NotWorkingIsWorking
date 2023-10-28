@@ -970,10 +970,12 @@ func http_request_completed(result, response_code, headers, body):
 		$\"../notification/message\".text = \"No Internet Connection\"
 		$\"../prompt_upload\".visible = false
 	else:
-		yield(get_tree().create_timer(1), \"timeout\")
 		var request = HTTPRequest.new()
 		request.connect(\"request_completed\", self, \"_request_callback\")
+		add_child(request)
 		upload_questionbank(request)
+		$\"../prompt_upload\".visible = false
+		yield(get_tree().create_timer(1), \"timeout\")
 		$\"../notification\".visible = true
 		$\"../notification/message\".text = \"Your data successfully uploaded in the database.\"
 		$\"../prompt_upload\".visible = false
@@ -1028,6 +1030,7 @@ func _on_confirm_pressed():
 	request.connect(\"request_completed\", self, \"_request_callback\")
 	add_child(request)
 	upload_file(request)
+	upload_questionbank(request)
 	
 
 

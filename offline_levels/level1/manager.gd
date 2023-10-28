@@ -140,7 +140,6 @@ func _on_data_changed():
 	if setting_data.level1 == 10:
 		setting_data.crowns = 3
 		SaveManager.save_game()
-		
 	if setting_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
