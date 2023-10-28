@@ -154,7 +154,6 @@ func save_level(game_code):
 	toSave.pack(template)
 	ResourceSaver.save(saved_levels_folder + game_code + ".tscn", toSave)
 	successful_popup.find_node("message").text = "Your Level Code is: " + str(game_code)
-	successful_popup.visible = true
 	var request = HTTPRequest.new()
 	request.connect("request_completed", self, "_request_callback")
 	add_child(request)
@@ -226,9 +225,12 @@ func _on_home_pressed():
 func _request_callback(result, response_code, headers, body) -> void:
 	if response_code == HTTPClient.RESPONSE_OK:
 		var response = str2var(body.get_string_from_utf8())
+		successful_popup.visible = true
 		print("response", response)
 	elif response_code == HTTPClient.STATUS_DISCONNECTED:
 		print("not connected to server")
+		$popup/dialog_box.visible = true
+		$popup/dialog_box/ColorRect/VBoxContainer/message.text = "No Internet Connection"
 
 func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var file_name = game_code + ".tscn"
@@ -270,11 +272,7 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	
 	# Replace the following URL with the actual URL of your PHP server script
 	var server_url = "https://nwork.slarenasitsolutions.com/upload.php"  # Replace with your server's URL
-	
-	var error = request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
-	if error != OK:
-		push_error("An error occurred in the HTTP request.")
-
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 
 func _on_back_btn_pressed():
 	var ro = get_node("/root")

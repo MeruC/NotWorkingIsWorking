@@ -18,7 +18,7 @@ export(NodePath) onready var minute = get_node(minute) as LineEdit
 export(NodePath) onready var second = get_node(second) as LineEdit
 export(NodePath) onready var successful_popup = get_node(successful_popup) as Control
 export(NodePath) onready var qr_textureRect = get_node(qr_textureRect) as TextureRect
-
+export(Resource) var settings_data
 
 onready var level = get_node(".")
 
@@ -183,13 +183,15 @@ func save_level(game_code):
 	toSave.pack(template)
 	ResourceSaver.save(saved_levels_folder + game_code + ".tscn", toSave)
 	successful_popup.find_node("message").text = "Your Level Code is: " + str(game_code)
-	successful_popup.visible = true
+	var request = HTTPRequest.new()
+	request.connect("request_completed", self, "_request_callback")
+	add_child(request)
+	upload_file(request, game_code)
 	##
 	
 func _on_create_pressed():
 	
 	var game_code = generate_unique_code()
-	
 	# compile level data as json
 	new_json["game_code"] = game_code
 	new_json["level_name"] = level_name.text
@@ -206,7 +208,6 @@ func _on_create_pressed():
 	var file = File.new()
 	
 	if file.open(file_path, File.WRITE) == OK:
-		save_level(game_code)
 		file.store_string(json_string)
 		file.close()
 		print("JSON file saved to: " + file_path)
@@ -216,7 +217,7 @@ func _on_create_pressed():
 	
 	generate_qr(game_code)
 	create_confirmation.visible = false
-	
+	save_level(game_code)
 	##
 	
 func generate_qr(game_code):
@@ -240,7 +241,58 @@ func _on_create_button_pressed():
 		dialog_box.visible = true
 	##
 
+func upload_file(request: HTTPRequest, game_code: String) -> void:
+	var file_name = game_code + ".tscn"
+	var json_filename = game_code + ".json"
+	var creator_name = settings_data.email
+	
+	var file_path = "res://online_mode/saved_levels/" + file_name
+	var json_file_path = "res://online_mode/json/" + json_filename
+	
+	var file = File.new()
+	file.open(file_path, File.READ)
+	var file_data = file.get_buffer(file.get_len())
+	file.close()
+	
+	var json_file = File.new()
+	json_file.open(json_file_path, File.READ)
+	var json_data = json_file.get_buffer(json_file.get_len())
+	json_file.close()
+	
+	var body = PoolByteArray()
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
+	
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % file_name).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(file_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+	
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"json_file\"; filename=\"%s\"\r\n" % json_filename).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(json_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+	
+	var headers = [
+		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
+	]
+	
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = "https://nwork.slarenasitsolutions.com/upload.php"  # Replace with your server's URL
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 
+func _request_callback(result, response_code, headers, body) -> void:
+	if response_code == HTTPClient.RESPONSE_OK:
+		var response = str2var(body.get_string_from_utf8())
+		$popup/successful_popup.visible = true
+		print("response", response)
+	elif response_code == HTTPClient.STATUS_DISCONNECTED:
+		print("not connected to server")
+		$popup/dialog_box.visible = true
+		$popup/dialog_box/ColorRect/VBoxContainer/message.text = "No Internet Connection"
+		
 func _on_continue_pressed():
 	dialog_box.visible = false
 
