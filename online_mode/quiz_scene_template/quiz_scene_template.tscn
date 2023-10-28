@@ -1,11 +1,16 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://online_mode/quiz_scene_template/question_content.gd" type="Script" id=2]
 [ext_resource path="res://online_mode/quiz_scene_template/manager.gd" type="Script" id=3]
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/Themes/quiz_scene_template.tres" type="Theme" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=8]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=9]
+[ext_resource path="res://resources/font/user_profile_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://resources/Game buttons/simple_bg_worg _games.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -670,40 +675,12 @@ tracks/7/keys = {
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.784314 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 60
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 36
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 50
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 60
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 45
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 36
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 42
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 32
+[sub_resource type="DynamicFont" id=1]
+size = 36
 font_data = ExtResource( 1 )
 
 [node name="main" type="Control"]
@@ -724,6 +701,11 @@ choice1 = NodePath("choices/choice")
 choice2 = NodePath("choices/choice2")
 choice3 = NodePath("choices/choice3")
 choice4 = NodePath("choices/choice4")
+
+[node name="bg" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -788,7 +770,15 @@ margin_left = -500.0
 margin_top = -250.0
 margin_right = 500.0
 margin_bottom = 250.0
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/instructions/ColorRect"]
+margin_left = -119.0
+margin_top = -26.0
+margin_right = 177.0
+margin_bottom = 200.0
+rect_scale = Vector2( 4.11339, 2.9804 )
+texture = ExtResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/instructions/ColorRect"]
 anchor_left = 0.5
@@ -805,18 +795,20 @@ alignment = 1
 
 [node name="info" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
 margin_right = 950.0
-margin_bottom = 46.0
-custom_fonts/font = SubResource( 8 )
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "WELCOME!"
 align = 1
 valign = 1
 
 [node name="instructions" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
-margin_top = 71.0
+margin_top = 150.0
 margin_right = 950.0
-margin_bottom = 333.0
+margin_bottom = 402.0
 rect_min_size = Vector2( 950, 0 )
-custom_fonts/font = SubResource( 6 )
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "This quiz will test your knowledge with regards to computer networking. You will be presented with a series of questions, and for each question, you must select the correct answer by clicking the corresponding button."
 align = 3
 valign = 1
@@ -827,12 +819,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -125.0
-margin_right = 100.0
-margin_bottom = -25.0
+margin_left = -137.0
+margin_top = 23.0
+margin_right = 63.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 200, 100 )
-custom_fonts/font = SubResource( 9 )
+theme = ExtResource( 8 )
 text = "Start"
 
 [node name="game_over" type="Control" parent="CanvasLayer"]
@@ -854,7 +846,15 @@ margin_left = -500.0
 margin_top = -250.0
 margin_right = 500.0
 margin_bottom = 250.0
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/game_over/ColorRect"]
+margin_left = -54.0
+margin_top = -20.0
+margin_right = 242.0
+margin_bottom = 206.0
+rect_scale = Vector2( 3.81716, 2.31239 )
+texture = ExtResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/game_over/ColorRect"]
 anchor_left = 0.5
@@ -870,63 +870,67 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="info" type="Label" parent="CanvasLayer/game_over/ColorRect/VBoxContainer"]
-margin_top = 102.0
-margin_right = 950.0
-margin_bottom = 148.0
-custom_fonts/font = SubResource( 10 )
+margin_right = 953.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "CONGRATULATIONS!"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/game_over/ColorRect/VBoxContainer"]
-margin_top = 173.0
-margin_right = 950.0
-margin_bottom = 223.0
+margin_top = 115.0
+margin_right = 953.0
+margin_bottom = 391.0
 alignment = 1
 
 [node name="Score" type="Label" parent="CanvasLayer/game_over/ColorRect/VBoxContainer/HBoxContainer"]
-margin_left = 334.0
-margin_right = 454.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 120, 0 )
-custom_fonts/font = SubResource( 6 )
+margin_left = 254.0
+margin_top = 38.0
+margin_right = 499.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 120, 200 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "Score: "
 align = 3
 valign = 1
-autowrap = true
 
 [node name="user_score" type="Label" parent="CanvasLayer/game_over/ColorRect/VBoxContainer/HBoxContainer"]
-margin_left = 458.0
-margin_right = 508.0
-margin_bottom = 50.0
+margin_left = 503.0
+margin_right = 553.0
+margin_bottom = 276.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "0"
 align = 3
 valign = 1
 autowrap = true
 
 [node name="label" type="Label" parent="CanvasLayer/game_over/ColorRect/VBoxContainer/HBoxContainer"]
-margin_left = 512.0
-margin_right = 562.0
-margin_bottom = 50.0
+margin_left = 557.0
+margin_right = 607.0
+margin_bottom = 276.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "/"
 align = 3
 valign = 1
 autowrap = true
 
 [node name="total_items" type="Label" parent="CanvasLayer/game_over/ColorRect/VBoxContainer/HBoxContainer"]
-margin_left = 566.0
-margin_right = 616.0
-margin_bottom = 50.0
+margin_left = 611.0
+margin_top = 93.0
+margin_right = 698.0
+margin_bottom = 183.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "10"
 align = 3
 valign = 1
-autowrap = true
 
 [node name="exit" type="Button" parent="CanvasLayer/game_over/ColorRect"]
 anchor_left = 0.5
@@ -934,63 +938,68 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -100.0
-margin_top = -125.0
+margin_top = -121.0
 margin_right = 100.0
-margin_bottom = -25.0
+margin_bottom = -21.0
 rect_min_size = Vector2( 200, 100 )
-custom_fonts/font = SubResource( 11 )
+theme = ExtResource( 8 )
 text = "Exit"
 
 [node name="level_name" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -139.5
-margin_top = 20.0
-margin_right = 139.5
-margin_bottom = 79.0
-custom_fonts/font = SubResource( 4 )
+margin_left = -287.0
+margin_top = 53.0
+margin_right = 287.0
+margin_bottom = 143.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "LEVEL NAME"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 25.0
-margin_top = 25.0
+margin_left = 81.0
+margin_top = 67.0
 margin_right = 264.0
 margin_bottom = 68.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-margin_right = 134.0
-margin_bottom = 50.0
+margin_right = 157.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 1 )
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Timer:   "
 align = 1
 valign = 1
 
 [node name="minute" type="Label" parent="HBoxContainer"]
-margin_left = 138.0
-margin_right = 159.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 161.0
+margin_right = 184.0
+margin_bottom = 55.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer"]
-margin_left = 163.0
-margin_right = 200.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 188.0
+margin_right = 229.0
+margin_bottom = 55.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = " :  "
 align = 1
 valign = 1
 
 [node name="second" type="Label" parent="HBoxContainer"]
-margin_left = 204.0
-margin_right = 246.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 233.0
+margin_right = 279.0
+margin_bottom = 55.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "00"
 align = 1
 valign = 1
@@ -1093,8 +1102,7 @@ columns = 2
 [node name="choice" type="Button" parent="choices"]
 margin_right = 800.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 800, 90 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Option 1"
 
 [node name="choice2" type="Button" parent="choices"]
@@ -1102,7 +1110,7 @@ margin_left = 825.0
 margin_right = 1625.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 800, 90 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Option 2"
 
 [node name="choice3" type="Button" parent="choices"]
@@ -1110,7 +1118,7 @@ margin_top = 115.0
 margin_right = 800.0
 margin_bottom = 205.0
 rect_min_size = Vector2( 800, 90 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Option 3"
 
 [node name="choice4" type="Button" parent="choices"]
@@ -1119,7 +1127,7 @@ margin_top = 115.0
 margin_right = 1625.0
 margin_bottom = 205.0
 rect_min_size = Vector2( 800, 90 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Option 4"
 
 [connection signal="pressed" from="CanvasLayer/instructions/ColorRect/start" to="." method="_on_start_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=1]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://resources/Game buttons/result_button3.png" type="Texture" id=17]
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=18]
 [ext_resource path="res://resources/Themes/levelresult_theme.tres" type="Theme" id=19]
+[ext_resource path="res://resources/Game buttons/create_question_panel.png" type="Texture" id=20]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -88,9 +90,13 @@ font_data = ExtResource( 2 )
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=12]
-size = 50
-font_data = ExtResource( 2 )
+[sub_resource type="DynamicFont" id=79]
+size = 70
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=80]
+size = 45
+font_data = ExtResource( 12 )
 
 [node name="main" type="Control"]
 anchor_right = 1.0
@@ -376,30 +382,38 @@ margin_top = -250.0
 margin_right = 350.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 700, 500 )
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="bg" type="TextureRect" parent="popup/level_selection/ColorRect"]
+margin_left = -55.0
+margin_top = -106.0
+margin_right = 180.0
+margin_bottom = 292.0
+rect_scale = Vector2( 3.13621, 1.74566 )
+texture = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="popup/level_selection/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -200.0
-margin_top = 20.0
-margin_right = 200.0
-margin_bottom = 79.0
-custom_fonts/font = SubResource( 24 )
+margin_left = -234.0
+margin_top = -79.0
+margin_right = 166.0
+margin_bottom = -20.0
+theme = ExtResource( 14 )
 text = "Select Lesson"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="popup/level_selection/ColorRect"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -325.0
-margin_top = -415.0
-margin_right = 325.0
-margin_bottom = -15.0
+anchor_left = 0.46
+anchor_top = 0.593
+anchor_right = 0.46
+anchor_bottom = 0.593
+margin_left = -328.0
+margin_top = -260.5
+margin_right = 322.0
+margin_bottom = 274.5
 
 [node name="lessons_container" type="VBoxContainer" parent="popup/level_selection/ColorRect/ScrollContainer"]
 margin_right = 650.0
@@ -551,7 +565,15 @@ margin_top = -125.0
 margin_right = 400.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 800, 350 )
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="bg" type="TextureRect" parent="popup/dialog_box/ColorRect"]
+margin_left = -31.0
+margin_top = -5.0
+margin_right = 265.0
+margin_bottom = 221.0
+rect_scale = Vector2( 2.89004, 1.664 )
+texture = ExtResource( 21 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="popup/dialog_box/ColorRect"]
 anchor_right = 1.0
@@ -562,7 +584,8 @@ rect_min_size = Vector2( 800, 0 )
 margin_right = 800.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 79 )
 text = "Error"
 align = 1
 valign = 1
@@ -573,6 +596,7 @@ margin_top = 104.0
 margin_right = 800.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 24 )
 text = "Make sure to fill-up all text fields."
 align = 1
@@ -584,12 +608,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -100.0
+margin_left = -146.0
 margin_top = -100.0
-margin_right = 100.0
-margin_bottom = -25.0
+margin_right = 90.0
+margin_bottom = -5.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 25 )
+theme = ExtResource( 14 )
 text = "Continue"
 
 [node name="successful_popup" type="Control" parent="popup"]
@@ -612,18 +636,30 @@ margin_top = -364.5
 margin_right = 468.0
 margin_bottom = 364.5
 rect_min_size = Vector2( 100, 750 )
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="popup/successful_popup/ColorRect"]
+margin_left = 8.0
+margin_top = -56.0
+margin_right = 243.0
+margin_bottom = 342.0
+rect_scale = Vector2( 3.97133, 2.10561 )
+texture = ExtResource( 20 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="popup/successful_popup/ColorRect"]
 anchor_right = 1.0
-margin_bottom = 204.0
+margin_left = 11.0
+margin_top = -19.5
+margin_right = 5.0
+margin_bottom = 719.5
 rect_min_size = Vector2( 800, 0 )
 
 [node name="info" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
-margin_right = 936.0
+margin_right = 930.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 80 )
 text = "Level Created Successfully"
 align = 1
 valign = 1
@@ -631,9 +667,10 @@ autowrap = true
 
 [node name="message" type="Label" parent="popup/successful_popup/ColorRect/VBoxContainer"]
 margin_top = 104.0
-margin_right = 936.0
+margin_right = 930.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 24 )
 text = "game_code"
 align = 1
@@ -642,7 +679,7 @@ autowrap = true
 
 [node name="qr_code" type="TextureRect" parent="popup/successful_popup/ColorRect/VBoxContainer"]
 margin_top = 208.0
-margin_right = 936.0
+margin_right = 930.0
 margin_bottom = 558.0
 rect_min_size = Vector2( 350, 350 )
 stretch_mode = 6
@@ -652,12 +689,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -100.0
-margin_right = 100.0
-margin_bottom = -25.0
+margin_left = -101.0
+margin_top = -90.5
+margin_right = 99.0
+margin_bottom = 4.5
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 25 )
+theme = ExtResource( 14 )
 text = "HOME"
 
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]

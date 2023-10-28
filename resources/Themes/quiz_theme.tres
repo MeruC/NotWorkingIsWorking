@@ -31,6 +31,7 @@ margin_right = 3.0
 margin_top = 10.0
 
 [resource]
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.239216 )
 TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
 TabContainer/fonts/font = SubResource( 26 )
