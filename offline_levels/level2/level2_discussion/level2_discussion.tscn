@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://offline_levels/level2/level2_discussion/discussion_background.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level2/level2_discussion/level2_discussion.gd" type="Script" id=2]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=3]
 [ext_resource path="res://offline_levels/level2/level2_discussion/translator.png" type="Texture" id=4]
 [ext_resource path="res://offline_levels/level2/level2_discussion/data_security.png" type="Texture" id=5]
-[ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://offline_levels/level2/level2_discussion/exchange_management.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/level2/level2_discussion/routing.png" type="Texture" id=8]
 [ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=10]
@@ -15,6 +15,10 @@
 [ext_resource path="res://offline_levels/level2/level2_discussion/videopage.png" type="Texture" id=14]
 [ext_resource path="res://offline_levels/level2/level2_discussion/data_traffic.png" type="Texture" id=15]
 [ext_resource path="res://offline_levels/level2/level2_discussion/synchronization.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=14]
+size = 32
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "picture_animation"
@@ -183,7 +187,7 @@ margin_top = 861.0
 margin_right = 1389.0
 margin_bottom = 989.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = SubResource( 14 )
 text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 autowrap = true
 
