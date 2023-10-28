@@ -721,6 +721,7 @@ popup_control = NodePath("popup_layer/popup")
 popup_score_label = NodePath("popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("popup_layer/game_over")
 popup_next_button = NodePath("popup_layer/game_over/main_popup/GridContainer/next")
+popup_retry_button = NodePath("popup_layer/game_over/main_popup/GridContainer/retry")
 popup_indicator_label = NodePath("popup_layer/game_over/main_popup/indicator")
 crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
@@ -734,6 +735,7 @@ settings_data = ExtResource( 8 )
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 7 )]
+visible = false
 
 [node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
 visible = true
@@ -783,6 +785,7 @@ visible = false
 visible = false
 
 [node name="instructions" parent="popup_layer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0

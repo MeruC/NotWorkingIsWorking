@@ -76,6 +76,7 @@ score_label = NodePath("../score")
 popup_score_label = NodePath("../popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("../popup_layer/game_over")
 popup_next_button = NodePath("../popup_layer/game_over/main_popup/GridContainer/next")
+pop_retry_button = NodePath("../popup_layer/game_over/main_popup/GridContainer/retry")
 popup_indicator_label = NodePath("../popup_layer/game_over/main_popup/indicator")
 crowns = NodePath("../popup_layer/game_over/main_popup/crowns")
 animationplayer = NodePath("../popup_layer/game_over/AnimationPlayer")
@@ -114,10 +115,10 @@ text = "Score:   /10"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
-margin_left = 344.0
-margin_top = 31.0
-margin_right = 404.0
-margin_bottom = 99.0
+margin_left = 307.0
+margin_top = 29.0
+margin_right = 401.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 60, 50 )
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

@@ -11,6 +11,7 @@ export(NodePath) onready var gameover_popup = get_node(gameover_popup) as Contro
 export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) as Label
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
+export(NodePath) onready var gameover_retry = get_node(gameover_retry) as Button
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
@@ -132,6 +133,31 @@ func score_validation():
 	if settings_data.level7 == 5:
 		settings_data.level7 = score
 		SaveManager.save_game()
+	if settings_data.quick_game == "isplaying":
+		gameover_next.disabled = true
+		gameover_retry.disabled = true
+		if score == 5:
+			settings_data.crowns += 3
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		elif score == 4:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+90
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		elif score >= 3:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+80
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		elif score == 0:
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
 	else:
 		if score == 5:
 			settings_data.crowns += 3

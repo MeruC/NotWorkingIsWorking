@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=1]
 [ext_resource path="res://resources/Game buttons/game_menu.png" type="Texture" id=2]
@@ -38,6 +38,11 @@ func _on_home_pressed():
 	Load.load_scene(ro.get_child(ro.get_child_count()-1), \"res://scenes/main_screen/main_screen.tscn\")
 "
 
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1054, 410 )
+modulate_color = Color( 0.329412, 0.313726, 0.313726, 1 )
+
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 1054, 410 )
@@ -47,6 +52,7 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1054, 410 )
 
 [sub_resource type="Theme" id=9]
+Button/styles/disabled = SubResource( 20 )
 Button/styles/normal = SubResource( 7 )
 Button/styles/pressed = SubResource( 8 )
 

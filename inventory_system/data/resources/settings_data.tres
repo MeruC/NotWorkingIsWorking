@@ -30,6 +30,7 @@ net2_skills = 0
 crowns = 0
 costume = "male"
 email = ""
+quick_game = "notplaying"
 cict_shirt = "lock"
 blue_shirt = "lock"
 formal_attire = "lock"

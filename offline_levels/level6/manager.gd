@@ -21,6 +21,8 @@ export (NodePath) onready var type_label =  get_node(type_label) as Label
 export (NodePath) onready var game_over =  get_node(game_over) as Control
 export (NodePath) onready var gameover_indicator =  get_node(gameover_indicator) as Label
 export (NodePath) onready var gameover_score =  get_node(gameover_score) as Label
+export (NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
+export (NodePath) onready var popup_retry_button = get_node(popup_retry_button) as Button
 export (NodePath) onready var crowns = get_node(crowns) as TextureRect
 export (NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
@@ -116,6 +118,18 @@ func _on_crimp_pressed():
 func score_validation():
 	if settings_data.level6 == 5:
 		pass
+	if settings_data.quick_game == "isplaying":
+		popup_next_button.disabled = true
+		popup_retry_button.disabled = true
+		if score == 5:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		else:
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
 	else:
 		if score == 5:
 			settings_data.crowns += 3

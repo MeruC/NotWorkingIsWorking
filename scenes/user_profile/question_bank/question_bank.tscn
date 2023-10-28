@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=8]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=9]
+[ext_resource path="res://resources/Game buttons/simple_bg_worg _games(1).png" type="Texture" id=10]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=11]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=12]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=13]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=14]
 
 [sub_resource type="DynamicFont" id=44]
 size = 24
@@ -933,7 +938,14 @@ margin_left = -925.0
 margin_top = -500.0
 margin_right = 925.0
 margin_bottom = 500.0
-color = Color( 0.317647, 0.317647, 0.317647, 1 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="bg" type="TextureRect" parent="ColorRect"]
+margin_left = -22.0
+margin_top = -48.0
+margin_right = 1898.0
+margin_bottom = 1032.0
+texture = ExtResource( 10 )
 
 [node name="title" type="Label" parent="ColorRect"]
 anchor_left = 0.5
@@ -960,6 +972,7 @@ margin_bottom = 332.0
 [node name="questions_container" type="VBoxContainer" parent="ColorRect/ScrollContainer"]
 margin_right = 1800.0
 rect_min_size = Vector2( 1800, 0 )
+theme = ExtResource( 11 )
 
 [node name="add_button" type="Button" parent="ColorRect"]
 anchor_left = 0.5
@@ -990,21 +1003,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -500.0
-margin_top = -125.0
-margin_right = 500.0
-margin_bottom = 125.0
+margin_left = -485.0
+margin_top = -201.0
+margin_right = 515.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 1000, 250 )
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="bg" type="TextureRect" parent="popup/delete_confirmation/ColorRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 3.35748, 2.21034 )
+texture = ExtResource( 13 )
 
 [node name="info" type="Label" parent="popup/delete_confirmation/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -450.0
-margin_top = 25.0
-margin_right = 450.0
-margin_bottom = 125.0
+margin_left = -444.0
+margin_top = 190.0
+margin_right = 456.0
+margin_bottom = 290.0
 rect_min_size = Vector2( 900, 100 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 42 )
 text = "Are you sure you want to remove this question?"
 align = 1
@@ -1016,16 +1036,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -250.0
-margin_top = -100.0
-margin_right = 250.0
-margin_bottom = -25.0
+margin_left = -256.0
+margin_top = 107.0
+margin_right = 244.0
+margin_bottom = 222.0
 custom_constants/separation = 100
 
 [node name="yes" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 75.0
+margin_bottom = 115.0
 rect_min_size = Vector2( 200, 75 )
+theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 43 )
 text = "YES"
 script = ExtResource( 6 )
@@ -1033,10 +1054,20 @@ script = ExtResource( 6 )
 [node name="no" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
 margin_left = 300.0
 margin_right = 500.0
-margin_bottom = 75.0
+margin_bottom = 115.0
 rect_min_size = Vector2( 200, 75 )
+theme = ExtResource( 12 )
 custom_fonts/font = SubResource( 43 )
 text = "NO"
+
+[node name="Label" type="Label" parent="popup/delete_confirmation/ColorRect"]
+margin_left = 279.0
+margin_top = 25.0
+margin_right = 749.0
+margin_bottom = 115.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 14 )
+text = "warning!"
 
 [node name="add_popup" type="Control" parent="popup"]
 visible = false

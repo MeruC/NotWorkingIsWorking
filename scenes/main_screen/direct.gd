@@ -79,6 +79,7 @@ func _on_quick_game_pressed():
 		var random_level = pick_random_level(completed_levels)
 		Load.load_scene(self, random_level)
 # To play a random Networking 1 Level
+
 func pick_random_level(completed_levels):
 	var number = int(rand_range(0, completed_levels.size()))
 	return completed_levels[number]
@@ -87,22 +88,40 @@ func pick_random_level(completed_levels):
 func levels_completed():
 	var completed = []
 	if settings_data.level1 >= 7:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level1/level_1.tscn")
 	if settings_data.level2 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level2/level2.tscn")
 	if settings_data.level3 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level3/level3.tscn")
 	if settings_data.level4 >= 5:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()	
 		completed.append("res://offline_levels/level4/level4.tscn")
 	if settings_data.level5 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level5/level5.tscn")
 	if settings_data.level6 >= 5:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level6/level6.tscn")
 	if settings_data.level7 >= 3:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level7/level7.tscn")
 	if settings_data.level8 >= 30:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://offline_levels/level8/level8.tscn")
-	else:
+	if completed.empty():
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
 		completed.append("res://scenes/quick_game/quickgame.tscn")
 	return completed
 

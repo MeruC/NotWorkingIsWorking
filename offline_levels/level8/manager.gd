@@ -13,6 +13,7 @@ export(NodePath) onready var gameover_popup = get_node(gameover_popup) as Contro
 export(NodePath) onready var gameover_indicator = get_node(gameover_indicator) as Label
 export(NodePath) onready var gameover_score = get_node(gameover_score) as Label
 export(NodePath) onready var gameover_next = get_node(gameover_next) as Button
+export(NodePath) onready var gameover_retry = get_node(gameover_retry) as Button
 export(NodePath) onready var score_display = get_node(score_display) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
@@ -200,12 +201,32 @@ func score_validation():
 		settings_data.girl_casual = "unlock"
 		settings_data.level8 = score
 		SaveManager.save_game()
+		
+	if settings_data.quick_game == "isplaying":
+		gameover_retry.disabled = true
+		gameover_next.disabled = true
+		if score >= 30:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+100
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		elif score >= 400:
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+200
+			settings_data.gold_coins = new_coins
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		else:
+			settings_data.quick_game = "notplaying"
+			SaveManager.save_game()
 	else:
 		if score >= 30:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
+			settings_data.crowns += 2
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
@@ -214,6 +235,7 @@ func score_validation():
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+200
 			var skills = settings_data.net1_skills
+			settings_data.crowns += 3
 			var update_skills = skills+10
 			settings_data.formal_attire = "unlock"
 			settings_data.girl_casual = "unlock"
@@ -221,6 +243,8 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
 			SaveManager.save_game()
+		else:
+			pass
 
 
 func _on_instruction_pressed():

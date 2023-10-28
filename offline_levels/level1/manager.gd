@@ -16,6 +16,7 @@ export(NodePath) onready var score_label = get_node(score_label) as Label
 export(NodePath) onready var popup_score_label = get_node(popup_score_label) as Label
 export(NodePath) onready var game_over_popup = get_node(game_over_popup) as Control
 export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
+export(NodePath) onready var pop_retry_button = get_node(pop_retry_button) as Button
 export(NodePath) onready var popup_indicator_label = get_node(popup_indicator_label) as Label
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
@@ -139,6 +140,26 @@ func _on_data_changed():
 	if setting_data.level1 == 10:
 		setting_data.crowns = 3
 		SaveManager.save_game()
+		
+	if setting_data.quick_game == "isplaying":
+		pop_retry_button.disabled = true
+		popup_next_button.disabled = true
+		if score >= 7 and score <= 9:
+			var coins = setting_data.gold_coins
+			var current = coins+100
+			setting_data.gold_coins = current
+			setting_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		elif score == 10:
+			var coins = setting_data.gold_coins
+			var current = coins+100
+			setting_data.gold_coins = current
+			setting_data.quick_game = "notplaying"
+			SaveManager.save_game()
+		else:
+			setting_data.quick_game = "notplaying"
+			SaveManager.save_game()
+			
 	else:
 		if score >= 7 and score <= 9:
 			setting_data.crowns = 2

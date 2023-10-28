@@ -41,6 +41,7 @@ margin_right = 203.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 150, 0 )
 theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Question: "
 
 [node name="question_content" type="Label" parent="VBoxContainer/question_container"]
@@ -48,6 +49,7 @@ margin_left = 233.0
 margin_right = 1733.0
 margin_bottom = 103.0
 rect_min_size = Vector2( 1500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "lkasjdlasj dasdlaj sklasjd laksjdlasjdalk jalsk djlska djalskd jalks djaskld ajsd lkajd lkasdj alksd jalksd jaslkd jadlkja  dlkajs dlkadsj alksdj alksd jaldk jadlkjadk"
 autowrap = true
@@ -63,6 +65,7 @@ margin_right = 171.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 150, 0 )
 theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]
@@ -71,6 +74,7 @@ margin_top = 2.0
 margin_right = 1701.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1500, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "asdaasdlk"
 autowrap = true

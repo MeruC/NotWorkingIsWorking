@@ -28,6 +28,7 @@ export (int) var net2_skills = 0
 export (int) var crowns = 0
 export (String) var costume = "male"
 export (String) var email
+export (String) var quick_game = "notplaying"
 
 #costume for boy
 export (String) var cict_shirt = "lock"
@@ -69,6 +70,7 @@ func set_data( data ):
 	level8 = data.level8
 	level9 = data.level9
 	email = data.email
+	quick_game = data.quick_game
 	#male
 	cict_shirt = data.cict_shirt
 	blue_shirt = data.blue_shirt
@@ -113,5 +115,6 @@ func get_data():
 		"formal_attire": formal_attire,
 		"orange_shirt": orange_shirt,
 		"girl_pants": girl_pants,
-		"girl_casual": girl_casual
+		"girl_casual": girl_casual,
+		"quick_game": quick_game
 	}
