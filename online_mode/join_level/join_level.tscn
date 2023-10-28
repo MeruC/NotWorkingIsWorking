@@ -1,44 +1,24 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/Game buttons/simple_bg_worg _games(1).png" type="Texture" id=2]
 [ext_resource path="res://online_mode/join_level/qr-code.png" type="Texture" id=3]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=4]
 [ext_resource path="res://online_mode/join_level/manager.gd" type="Script" id=5]
 [ext_resource path="res://scenes/user_profile/buttons and panels/cat_loding.png" type="Texture" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=2]
+[ext_resource path="res://resources/font/error_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=8]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=9]
+[ext_resource path="res://resources/Themes/user_profile_line_edit.tres" type="Theme" id=10]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=11]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/soundtrack/menu/random silly chip song.ogg" type="AudioStream" id=13]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 82
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 46
-font_data = ExtResource( 1 )
-
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.392157 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 38
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 40
-font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=10]
 resource_name = "loading"
@@ -63,6 +43,11 @@ script = ExtResource( 5 )
 textfield = NodePath("HBoxContainer/code")
 error_popup = NodePath("CanvasLayer/dialog_box")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,8 +63,7 @@ custom_constants/separation = 50
 margin_right = 750.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 750, 100 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
+theme = ExtResource( 10 )
 align = 1
 placeholder_text = "5FZ135ZB"
 
@@ -98,11 +82,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -417.0
-margin_top = -240.0
-margin_right = 417.0
-margin_bottom = -164.0
-custom_fonts/font = SubResource( 4 )
+margin_left = -693.0
+margin_top = -246.0
+margin_right = 622.0
+margin_bottom = -156.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Enter/Scan a Level Code"
 
 [node name="join" type="Button" parent="."]
@@ -110,20 +95,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = 140.0
-margin_right = 100.0
-margin_bottom = 240.0
+margin_left = -169.0
+margin_top = 120.0
+margin_right = 31.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 200, 100 )
-custom_fonts/font = SubResource( 5 )
+theme = ExtResource( 9 )
 text = "JOIN"
 
 [node name="back" type="Button" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 120.0
-margin_bottom = 120.0
+margin_left = 57.0
+margin_top = 37.0
+margin_right = 164.0
+margin_bottom = 159.0
 rect_min_size = Vector2( 100, 100 )
+theme = ExtResource( 11 )
 custom_fonts/font = ExtResource( 4 )
 text = "<"
 
@@ -149,7 +135,15 @@ margin_top = -125.0
 margin_right = 400.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 800, 350 )
-color = Color( 0.984314, 0.780392, 0.235294, 1 )
+color = Color( 0.984314, 0.780392, 0.235294, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/dialog_box/ColorRect"]
+margin_left = -10.0
+margin_top = -18.0
+margin_right = 286.0
+margin_bottom = 208.0
+rect_scale = Vector2( 2.83593, 1.97677 )
+texture = ExtResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/dialog_box/ColorRect"]
 anchor_right = 1.0
@@ -160,7 +154,8 @@ rect_min_size = Vector2( 800, 0 )
 margin_right = 800.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "Error"
 align = 1
 valign = 1
@@ -171,7 +166,8 @@ margin_top = 104.0
 margin_right = 800.0
 margin_bottom = 204.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 8 )
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Please Enter a Valid Level Code"
 align = 1
 valign = 1
@@ -182,12 +178,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -100.0
-margin_right = 100.0
-margin_bottom = -25.0
+margin_left = -126.0
+margin_top = -42.0
+margin_right = 121.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 9 )
+theme = ExtResource( 9 )
 text = "Continue"
 
 [node name="loading_scrreen" type="CanvasLayer" parent="."]
@@ -208,6 +204,9 @@ position = Vector2( 958, 549 )
 scale = Vector2( 1.51297, 1.29287 )
 texture = ExtResource( 6 )
 hframes = 40
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 12 )]
+stream = ExtResource( 13 )
 
 [connection signal="pressed" from="join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

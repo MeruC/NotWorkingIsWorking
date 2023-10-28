@@ -788,14 +788,15 @@ anchor_bottom = 0.5
 margin_left = -475.0
 margin_top = -225.0
 margin_right = 475.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 950, 325 )
+margin_bottom = 225.0
+rect_min_size = Vector2( 950, 450 )
 custom_constants/separation = 25
 alignment = 1
 
 [node name="info" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
+margin_top = 24.0
 margin_right = 950.0
-margin_bottom = 90.0
+margin_bottom = 114.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "WELCOME!"
@@ -803,9 +804,9 @@ align = 1
 valign = 1
 
 [node name="instructions" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
-margin_top = 150.0
+margin_top = 139.0
 margin_right = 950.0
-margin_bottom = 402.0
+margin_bottom = 426.0
 rect_min_size = Vector2( 950, 0 )
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
