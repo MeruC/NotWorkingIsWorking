@@ -30,6 +30,7 @@ func _http_request_completed(result, response_code, headers, body):
 		$"../warning/warning2".text = "No Internet Connection"
 		$username/username.text = ""
 		$password2.text = ""
+		$login_enter_btn.disabled = false
 		return
 
 	var response_body = body.get_string_from_utf8()
@@ -54,13 +55,16 @@ func _http_request_completed(result, response_code, headers, body):
 				SaveManager.save_game()
 				$".".visible = false
 				$"../retrieve_savedata".visible = true
+				$login_enter_btn.disabled = false
 			else:
 				# Authentication failed, check if the response contains "account_exists" key
 				if "account_exists" in response_dict and response_dict["account_exists"] == false:
 					print("Account doesn't exist")
+					$login_enter_btn.disabled = false
 				else:
 					$"../warning".visible = true
 					$"../warning/warning2".text = "email/password incorrect"
+					$login_enter_btn.disabled = false
 					
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
@@ -88,6 +92,7 @@ func _send_request(request : Dictionary):
 		return
 
 func _authenticate():
+	$login_enter_btn.disabled = true
 	var username_input = $username/username
 	var password_input = $password2
 
