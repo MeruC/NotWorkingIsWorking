@@ -12,7 +12,7 @@ font = SubResource( 6 )
 depth = 0.2
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 1, 0, 0, 1 )
+albedo_color = Color( 0.552941, 0, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )

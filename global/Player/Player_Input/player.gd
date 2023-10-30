@@ -180,8 +180,9 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta):
 	object_point2 = WhatObject()
-	var selected = current_level.get_node(object_point2.collider.name)
+	
 	if LevelGlobal.on_cable_mode:
+		var selected = current_level.get_node(object_point2.collider.name)
 		match(object_number):
 			0:
 				if("object_monitor" in object_point2.collider.name):
