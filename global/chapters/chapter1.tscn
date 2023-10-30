@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://global/chapters/level_selector_manager.gd" type="Script" id=5]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/Game buttons/0_crowns.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
@@ -32,65 +33,83 @@ func _ready():
 	if settings_data.level1 == 0:
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
 		$\"../level1\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 0
 	elif settings_data.level8 >= 30:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
 		$\"../level9\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 8
 	elif settings_data.level7 >= 3:
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
 		$\"../level8\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 7
 	elif settings_data.level6 == 5:
+		$\"../crowns\".visible = false
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
 		$\"../level7\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 6
 	elif settings_data.level5 >= 4:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 4), \"completed\")
 		$\"../level6\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 5
 	elif settings_data.level4 >= 5:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
 		$\"../level5\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 4
 	elif settings_data.level3 >= 4:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
 		$\"../level4\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 3
 	elif settings_data.level2 >= 4:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 4), \"completed\")
 		$\"../level3\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 2
 	elif settings_data.level1 >= 7:
 		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
 		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 4), \"completed\")
 		$\"../level2\".visible = true
 		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
 		current = 1
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
@@ -107,8 +126,21 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level2\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 2), \"completed\")
 			$\"../level1\".visible = true
+			if settings_data.level1 >= 7 and settings_data.level1 <= 9:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				$\"../crowns\".visible = true
+			elif settings_data.level1 == 10:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				$\"../crowns\".visible = true
+			elif settings_data.level1 <= 6:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				$\"../crowns\".visible = true
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
+				$\"../crowns\".visible = true
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -119,8 +151,18 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level3\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level3_camera, level2_camera, 2), \"completed\")
 			$\"../level2\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level2 == 4:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level2 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level2 <= 3:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -131,8 +173,18 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level4\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level4_camera, level3_camera, 2), \"completed\")
 			$\"../level3\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level3 == 4:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level3 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level3 <= 3:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -143,8 +195,18 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level5\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 2), \"completed\")
 			$\"../level4\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level4 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level4 == 4:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level4 <= 3:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../left\".disabled = false
@@ -156,8 +218,18 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level6\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 2), \"completed\")
 			$\"../level5\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level5 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level5 == 4:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level5 <= 3:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -168,8 +240,14 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level7\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level7_camera, level6_camera, 2), \"completed\")
 			$\"../level6\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level6 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -180,8 +258,18 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level8\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level8_camera, level7_camera, 2), \"completed\")
 			$\"../level7\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level7 == 5:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level7 == 4:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level7 <= 3:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -194,6 +282,15 @@ func _on_left_pressed():
 			$\"../notif\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 2), \"completed\")
 			$\"../level8\".visible = true
+			$\"../crowns\".visible = false
+			if settings_data.level8 >= 200:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+			elif settings_data.level8 >= 30 and settings_data.level8 <= 199:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+			elif settings_data.level8 <= 20:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+			else:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -207,8 +304,18 @@ func _on_right_pressed():
 				$\"../right\".disabled = true
 				$\"../back\".disabled = true
 				$\"../level1\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level1_camera, level2_camera, 2), \"completed\")
 				$\"../left\".disabled = false
+				$\"../crowns\".visible = true
+				if settings_data.level2 == 4:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level2 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level2 <= 3 and settings_data.level2 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../right\".disabled = false
 				$\"../level2\".visible = true
 				$\"../back\".disabled = false
@@ -222,8 +329,18 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level2\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level2_camera, level3_camera, 2), \"completed\")
 				$\"../level3\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level3 == 4:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level3 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level3 <= 3 and settings_data.level3 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -237,8 +354,18 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level3\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level3_camera, level4_camera, 2), \"completed\")
 				$\"../level4\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level4 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level4 == 4:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level4 <= 3 and settings_data.level4 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -253,8 +380,18 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level4\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 2), \"completed\")
 				$\"../level5\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level5 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level5 == 4:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level5 <= 3 and settings_data.level5 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -269,8 +406,14 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level5\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level5_camera, level6_camera, 2), \"completed\")
 				$\"../level6\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level6 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -286,8 +429,18 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level6\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level6_camera, level7_camera, 2), \"completed\")
 				$\"../level7\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level7 == 5:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level7 == 4:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level7 <= 3 and settings_data.level7 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -302,8 +455,18 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level7\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level7_camera, level8_camera, 2), \"completed\")
 				$\"../level8\".visible = true
+				$\"../crowns\".visible = true
+				if settings_data.level8 >= 200:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+				elif settings_data.level8 >= 30 and settings_data.level8 <= 199:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
+				elif settings_data.level8 <= 20 and settings_data.level8 > 0:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
+				else:
+					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
@@ -318,11 +481,13 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../notif\".visible = false
 				$\"../level8\".visible = false
+				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 2), \"completed\")
 				$\"../level9\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
+				$\"../crowns\".visible = true
 				current+=1
 			else:
 				$\"../notif\".visible = true
@@ -556,6 +721,14 @@ margin_right = 334.0
 margin_bottom = 157.0
 theme = ExtResource( 4 )
 text = "Back"
+
+[node name="crowns" type="TextureRect" parent="."]
+margin_left = 683.0
+margin_top = 567.0
+margin_right = 980.0
+margin_bottom = 660.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
 
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]

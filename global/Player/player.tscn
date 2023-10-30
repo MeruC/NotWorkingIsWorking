@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/Models/Player/Walk/1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://global/player/Player_Input/player.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/Models/Player/Walk/6.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=12]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
+[ext_resource path="res://global/Player/player.tres" type="Material" id=14]
 
 [sub_resource type="CylinderShape" id=19]
 height = 2.8
@@ -162,7 +163,7 @@ unique_name_in_owner = true
 [node name="CSGSphere" type="CSGMesh" parent="Pivot"]
 transform = Transform( -0.62, 0, -9.36174e-08, 0, 0.62, 0, 9.36174e-08, 0, -0.62, 0, -1.45127, 0 )
 mesh = ExtResource( 6 )
-material = ExtResource( 4 )
+material = ExtResource( 14 )
 
 [node name="walk" type="Spatial" parent="Pivot"]
 transform = Transform( 0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, -0.451477, 0 )
