@@ -290,9 +290,10 @@ func _input( event ):
 		current_interactable.interact()
 		
 	if mode == "cable":
+		print(cabletype)
 		if cabletype == "Console_Cable":
 			pass
-		elif cabletype == "cross_over" or cabletype == "straight_through":
+		elif cabletype == "crossover" or cabletype == "straight_through":
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
 				pass
 			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
@@ -300,6 +301,7 @@ func _input( event ):
 					var selected = current_level.get_node(object_point.collider.name)
 					match object_number:
 						0:
+							print(selected.test)
 							if selected.fe0 == null:
 								print(selected.device_name)
 								previous_object = object_point.collider.name

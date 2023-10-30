@@ -4,9 +4,15 @@
 [ext_resource path="res://inventory_system/scenes/ui/inner_panel.tscn" type="PackedScene" id=2]
 
 [node name="inventory" instance=ExtResource( 2 )]
+margin_left = -98.0
+margin_right = 99.0
+margin_bottom = 115.04
 size_flags_vertical = 3
 script = ExtResource( 1 )
 slot_container = NodePath("MarginContainer/slot_container")
+
+[node name="title" parent="." index="0"]
+margin_bottom = 120.0
 
 [node name="Label" parent="title/TextureRect" index="0"]
 margin_top = -20.0
@@ -17,16 +23,17 @@ __meta__ = {
 }
 
 [node name="MarginContainer" parent="." index="1"]
+margin_bottom = 120.0
 custom_constants/margin_right = 10
-custom_constants/margin_top = 24
+custom_constants/margin_top = 30
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
 [node name="slot_container" type="GridContainer" parent="MarginContainer" index="0"]
 margin_left = 10.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 171.0
-margin_bottom = 88.0
+margin_bottom = 102.0
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 10

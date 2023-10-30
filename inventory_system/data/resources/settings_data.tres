@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 resolution = "1600 x 900"
 fullscreen = false
-scale = 1.0
+scale = 2.0
 master_volume = 0
 music_volume = -10
 sound_volume = -10

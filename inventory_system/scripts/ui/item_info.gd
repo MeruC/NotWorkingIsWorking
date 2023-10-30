@@ -1,11 +1,11 @@
-class_name Item_Info extends Scale_Control
+class_name Item_Info extends PanelContainer
 
 export( NodePath ) onready var item_name = get_node( item_name ) as Label
 export( NodePath ) onready var line_container = get_node( line_container ) as Control
 
 # Display the hovered item info.
 # Each components on the item also adds their info.
-func display( slot_node : Inventory_Slot_Node ):
+func display( slot_node : Inventory_Slot_Node ): 
 	for c in line_container.get_children():
 		line_container.remove_child( c )
 		c.queue_free()
@@ -24,13 +24,13 @@ func display( slot_node : Inventory_Slot_Node ):
 	
 	rect_global_position = ( slot_node.rect_size * SettingsManager.scale ) + slot_node.rect_global_position
 	var window_size = get_viewport().get_visible_rect().size
-	var scaled = ( rect_size * scale )
+	#var scaled = ( rect_size * scale )
 	
-	if rect_global_position.y + scaled.y > window_size.y:
-		rect_global_position.y = window_size.y - scaled.y
+	#if rect_global_position.y + scaled.y > window_size.y:
+	#	rect_global_position.y = window_size.y - scaled.y
 	
-	if rect_global_position.x + scaled.x > window_size.x:
-		rect_global_position.x = slot_node.rect_global_position.x - scaled.x
+	#if rect_global_position.x + scaled.x > window_size.x:
+	#	rect_global_position.x = slot_node.rect_global_position.x - scaled.x
 
 # Add a line node in the list.
 func add_line( line ):

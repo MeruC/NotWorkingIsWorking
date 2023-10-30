@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://inventory_system/scripts/resources/usable_items/item_healing.gd"
 }, {
-"base": "Scale_Control",
+"base": "PanelContainer",
 "class": "Item_Info",
 "language": "GDScript",
 "path": "res://inventory_system/scripts/ui/item_info.gd"

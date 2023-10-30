@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/Sprites/rotate.png" type="Texture" id=1]
 [ext_resource path="res://mobile_controls/joystick/virtual_joystick.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mobile_controls/textures/e.png" type="Texture" id=3]
+[ext_resource path="res://inventory_system/resources/sprites/interactables/bag.png" type="Texture" id=4]
+[ext_resource path="res://online_mode/level_create_Menu/DroidSans-Bold.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+font_data = ExtResource( 5 )
 
 [node name="mobile_controls" type="CanvasLayer"]
 
@@ -15,6 +21,29 @@ action_left = "left"
 action_right = "right"
 action_up = "up"
 action_down = "down"
+
+[node name="I" type="TouchScreenButton" parent="."]
+position = Vector2( 1231, 842 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 4 )
+action = "inventory"
+
+[node name="use" type="TouchScreenButton" parent="."]
+position = Vector2( 1700, 405 )
+scale = Vector2( 4.90626, 4.72456 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 4 )
+action = "hotbar_1"
+
+[node name="Label" type="Label" parent="use"]
+margin_left = 2.76544
+margin_top = 18.0512
+margin_right = 50.7654
+margin_bottom = 51.0512
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 2 )
+text = "USE"
 
 [node name="camLeft" type="TouchScreenButton" parent="."]
 position = Vector2( 1440, 882 )

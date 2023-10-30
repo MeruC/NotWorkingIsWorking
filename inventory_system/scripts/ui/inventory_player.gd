@@ -1,4 +1,4 @@
-extends Window
+extends PanelContainer
 
 export( NodePath ) onready var inventory_container = get_node( inventory_container ) as Control
 

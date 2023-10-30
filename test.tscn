@@ -123,7 +123,6 @@ unique_name_in_owner = true
 visible = false
 
 [node name="tasks_ui" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="task_manager" type="Panel" parent="tasks_ui"]
 margin_left = 25.0

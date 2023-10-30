@@ -48,14 +48,14 @@ func _on_data_changed():
 	lbl_coin.text = str( settings_data.gold_coins )
 "
 
+[sub_resource type="DynamicFont" id=20]
+size = 297
+font_data = ExtResource( 13 )
+
 [sub_resource type="DynamicFont" id=16]
 size = 60
 extra_spacing_bottom = 5
 font_data = ExtResource( 7 )
-
-[sub_resource type="DynamicFont" id=20]
-size = 250
-font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 80
@@ -189,17 +189,124 @@ rect_rotation = 9.32357
 mouse_filter = 1
 color = Color( 1, 0.847059, 0, 1 )
 script = SubResource( 32 )
-lbl_coin = NodePath("container/player_coins")
+lbl_coin = NodePath("../ui_container/container/player_coins")
 settings_data = ExtResource( 14 )
 
-[node name="container" type="Control" parent="coins"]
-margin_left = 609.512
-margin_top = 169.492
-margin_right = 942.512
-margin_bottom = 306.492
-rect_rotation = -9.04409
+[node name="ColorRect" type="ColorRect" parent="coins"]
+show_behind_parent = true
+margin_left = -209.0
+margin_top = 79.0
+margin_right = 1054.0
+margin_bottom = 524.0
+rect_rotation = -3.1034
+color = Color( 0, 0, 0, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="coins/container"]
+[node name="Label4" type="Label" parent="coins"]
+visible = false
+margin_left = 666.981
+margin_top = 62.7718
+margin_right = 1237.98
+margin_bottom = 312.772
+rect_rotation = -0.0506091
+rect_pivot_offset = Vector2( 337.807, 125 )
+custom_colors/font_color = Color( 1, 1, 1, 0.45098 )
+custom_fonts/font = SubResource( 20 )
+
+[node name="Label3" type="Label" parent="coins"]
+margin_left = 261.808
+margin_top = 33.0207
+margin_right = 1130.81
+margin_bottom = 416.021
+rect_rotation = -0.0506091
+rect_pivot_offset = Vector2( 337.807, 125 )
+custom_colors/font_color = Color( 1, 1, 1, 0.45098 )
+custom_fonts/font = SubResource( 20 )
+text = "SHOP"
+
+[node name="TextureRect" type="TextureRect" parent="coins"]
+modulate = Color( 1, 1, 1, 0.392157 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 60.1204
+margin_top = 14.8251
+margin_right = 100.12
+margin_bottom = 54.8251
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 0, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 22 )
+
+[node name="ui_container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+player_inventory = NodePath("inventory_player")
+
+[node name="inventory_player2" type="PanelContainer" parent="ui_container"]
+margin_left = 441.0
+margin_top = 332.0
+margin_right = 773.0
+margin_bottom = 483.0
+rect_rotation = -5.68309
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 0, -60 )
+mouse_filter = 1
+theme = ExtResource( 12 )
+
+[node name="title" type="Control" parent="ui_container"]
+margin_left = 520.0
+margin_top = 425.0
+margin_right = 753.0
+margin_bottom = 601.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="ui_container/title"]
+anchor_right = 1.0
+margin_left = -2.66669
+margin_top = -98.0
+margin_right = 44.3333
+margin_bottom = -56.0
+grow_vertical = 0
+rect_rotation = 5.91588
+mouse_filter = 1
+theme = ExtResource( 10 )
+text = "COINS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="title" type="PanelContainer" parent="ui_container/title/Label"]
+show_behind_parent = true
+anchor_left = -0.0515799
+anchor_top = -0.286
+anchor_right = 1.052
+anchor_bottom = 1.28571
+margin_left = -17.3397
+margin_top = 0.012001
+margin_right = 17.204
+margin_bottom = 2.00018
+mouse_filter = 1
+
+[node name="container" type="Control" parent="ui_container"]
+margin_left = 553.0
+margin_top = 378.0
+margin_right = 886.0
+margin_bottom = 515.0
+rect_scale = Vector2( 1.25, 1.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ui_container/container"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = -6.76556
@@ -212,7 +319,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 22 )
 
-[node name="player_coins" type="Label" parent="coins/container"]
+[node name="player_coins" type="Label" parent="ui_container/container"]
 unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
@@ -226,58 +333,26 @@ custom_fonts/font = SubResource( 16 )
 text = "0"
 valign = 1
 
-[node name="ColorRect" type="ColorRect" parent="coins"]
-show_behind_parent = true
-margin_left = -209.0
-margin_top = 79.0
-margin_right = 1054.0
-margin_bottom = 380.0
-rect_rotation = -3.1034
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label3" type="Label" parent="coins"]
-margin_left = 59.1779
-margin_top = 70.3419
-margin_right = 630.178
-margin_bottom = 320.342
-rect_rotation = -0.0506091
-custom_colors/font_color = Color( 1, 1, 1, 0.45098 )
-custom_fonts/font = SubResource( 20 )
-text = "SHOP"
-
-[node name="Label4" type="Label" parent="coins"]
-margin_left = 675.789
-margin_top = 91.7274
-margin_right = 895.789
-margin_bottom = 171.728
-rect_rotation = -9.506
+[node name="Label4" type="Label" parent="ui_container/container"]
+visible = false
+margin_left = 77.6772
+margin_top = -66.3794
+margin_right = 297.677
+margin_bottom = 13.6212
+rect_rotation = -0.494361
 custom_colors/font_color = Color( 0, 0, 0, 0.647059 )
 custom_fonts/font = SubResource( 21 )
 text = "COINS"
-
-[node name="ui_container" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-player_inventory = NodePath("inventory_player")
 
 [node name="inventory_player" type="PanelContainer" parent="ui_container"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -964.0
-margin_top = 128.0
-margin_right = -452.0
-margin_bottom = 384.0
+margin_left = -973.0
+margin_top = -269.0
+margin_right = -660.0
+margin_bottom = -13.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 0, -60 )
 mouse_filter = 1
@@ -289,15 +364,18 @@ player_data = ExtResource( 24 )
 [node name="title" type="Control" parent="ui_container/inventory_player"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 492.0
+margin_right = 293.0
 margin_bottom = 236.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="ui_container/inventory_player/title"]
 anchor_right = 1.0
-margin_top = -65.0
-margin_bottom = -23.0
+margin_left = -4.0
+margin_top = -83.3333
+margin_right = 43.0
+margin_bottom = -41.3333
 grow_vertical = 0
+rect_rotation = 5.91588
 mouse_filter = 1
 theme = ExtResource( 10 )
 text = "Your Inventory"
@@ -322,7 +400,7 @@ mouse_filter = 1
 [node name="inventory_container" type="VBoxContainer" parent="ui_container/inventory_player"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 492.0
+margin_right = 293.0
 margin_bottom = 236.0
 custom_constants/separation = 2
 __meta__ = {
@@ -794,10 +872,10 @@ color = Color( 0, 0, 0, 0.588235 )
 
 [node name="save" type="Button" parent="."]
 modulate = Color( 0.54902, 1, 0.176471, 1 )
-margin_left = 101.0
-margin_top = 309.0
-margin_right = 688.0
-margin_bottom = 417.0
+margin_left = 159.0
+margin_top = 753.0
+margin_right = 746.0
+margin_bottom = 861.0
 focus_mode = 0
 theme = ExtResource( 12 )
 custom_fonts/font = SubResource( 34 )
@@ -807,10 +885,10 @@ script = SubResource( 35 )
 
 [node name="cancel" type="Button" parent="."]
 modulate = Color( 0.94902, 0.223529, 0.223529, 1 )
-margin_left = 68.0
-margin_top = 463.0
-margin_right = 618.0
-margin_bottom = 571.0
+margin_left = 172.0
+margin_top = 911.0
+margin_right = 722.0
+margin_bottom = 1019.0
 focus_mode = 0
 theme = ExtResource( 12 )
 custom_fonts/font = SubResource( 34 )

@@ -2,7 +2,7 @@ class_name Settings_Data extends Resource
 
 export ( String ) var resolution = "1600 x 900"
 export( bool ) var fullscreen = false
-export( float ) var scale = 1
+export( float ) var scale = 2
 export( int ) var master_volume = 0
 export( int ) var music_volume = -10
 export( int ) var sound_volume = -10

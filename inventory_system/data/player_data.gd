@@ -35,14 +35,14 @@ func _init():
 	equipment.groups = [ "player", "equipment" ]
 	inventory_left = Inventory.new().duplicate()
 	inventory_left.name = "Left Pocket"
-	inventory_left.size = 10
+	inventory_left.size = 5
 	inventory_left.groups = [ "player", "crafting" ]
 	inventory_right = Inventory.new().duplicate()
 	inventory_right.name = "Right Pocket"
-	inventory_right.size = 10
+	inventory_right.size = 5
 	inventory_right.groups = [ "player", "crafting" ]
 	hotbar = Hotbar.new().duplicate()
-	hotbar.size = 5
+	hotbar.size = 1
 	
 
 # Set the data from a Dictionary.
