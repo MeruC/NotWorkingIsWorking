@@ -24,8 +24,8 @@
     "definition": "A crossover cable is a type of cable installation that is used for the interconnection of two similar devices. It is enabled by reversing the transmission and receiving pins at both ends, so that output from one computer becomes input to the other, and vice versa."
   },
   {
-    "term": "DHCP (Dynamic Host Configuration Protocol)",
-    "definition": "DHCP is a network protocol that automatically assigns IP addresses to devices on a network, simplifying the process of configuring devices."
+    "term": "DHCP",
+    "definition": "DHCP or Dynamic Host Configuration Protocol is a network protocol that automatically assigns IP addresses to devices on a network, simplifying the process of configuring devices."
   },
   {
     "term": "DNS (Domain Name System)",
@@ -152,8 +152,8 @@
     "definition": "SSID broadcast is the practice of making the SSID of a wireless network visible to all nearby devices. It simplifies the process of connecting to the network but can be a security risk."
   },
   {
-    "term": "SSL/TLS (Secure Sockets Layer/Transport Layer Security)",
-    "definition": "SSL and TLS are cryptographic protocols used to secure data transmission over a network, typically used for secure web browsing (HTTPS)."
+    "term": "SSL/TLS",
+    "definition": "SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols used to secure data transmission over a network, typically used for secure web browsing (HTTPS)."
   },
   {
     "term": "Straight Through Cable",
@@ -176,8 +176,8 @@
     "definition": "A switch is a networking device that operates at the data link layer of the OSI model and is used to connect devices within the same local network. It makes forwarding decisions based on MAC addresses."
   },
   {
-    "term": "TCP/IP (Transmission Control Protocol/Internet Protocol)",
-    "definition": "TCP/IP is a set of protocols that form the backbone of the internet and many local networks. It provides a reliable and standardized method for data communication."
+    "term": "TCP/IP",
+    "definition": "TCP/IP or Transmission Control Protocol/Internet Protocol is a set of protocols that form the backbone of the internet and many local networks. It provides a reliable and standardized method for data communication."
   },
   {
     "term": "Traceroute",

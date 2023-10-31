@@ -3,6 +3,7 @@ extends Control
 export (PackedScene) var entry_scene
 export (NodePath) onready var item_container = get_node(item_container) as VBoxContainer
 export (NodePath) onready var content_holder = get_node(content_holder) as Label
+export (NodePath) onready var term_label = get_node(term_label) as Label
 
 var previous_scene = "res://scenes/main_screen/main_screen.tscn"
 var json_file = "res://encyclopedia/json/encyclopedia.json"
@@ -33,6 +34,7 @@ func list_items():
 		var new_entry = entry_scene.instance()
 		new_entry.find_node("word").text = json_data[i]["term"]
 		new_entry.content_holder = content_holder
+		new_entry.term_label = term_label
 		new_entry.definition = json_data[i]["definition"]
 		#new_entry.image = json_data[i]["image"]
 		i += 1

@@ -12,8 +12,8 @@ font_data = ExtResource( 5 )
 [node name="letter" type="Button"]
 margin_left = 413.0
 margin_top = 441.0
-margin_right = 493.0
-margin_bottom = 521.0
+margin_right = 513.0
+margin_bottom = 541.0
 rect_pivot_offset = Vector2( -185, -102 )
 focus_mode = 0
 theme = ExtResource( 1 )

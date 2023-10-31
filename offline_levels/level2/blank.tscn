@@ -8,8 +8,8 @@
 [node name="blank" type="Button"]
 margin_left = 390.0
 margin_top = 265.0
-margin_right = 470.0
-margin_bottom = 345.0
+margin_right = 490.0
+margin_bottom = 365.0
 rect_pivot_offset = Vector2( -185, -102 )
 theme = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
