@@ -23,7 +23,7 @@ func load_game():
 		
 		if data != null:
 			game_data.set_data( data )
-	print(game_data.get_data())
+	#print(game_data.get_data())
 
 func save_game():
 	SignalManager.emit_signal( "saving_game" )
@@ -37,7 +37,7 @@ func save_game():
 	file.open( save_path, File.WRITE )
 	
 	file.store_var( game_data.get_data(), true )
-	print(game_data.get_data())
+	#print(game_data.get_data())
 	file.close()
 
 

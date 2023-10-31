@@ -19,6 +19,8 @@
 		"usable": {
 			"type": "equipment",
 			"data": {
+				"cooldown": 5,
+				"unlimited_use": true
 			}
 		}
 	},
