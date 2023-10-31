@@ -307,9 +307,9 @@ anchor_left = 0.5
 anchor_top = 0.588
 anchor_right = 0.5
 anchor_bottom = 0.653
-margin_left = -700.0
+margin_left = -721.0
 margin_top = -275.084
-margin_right = 700.0
+margin_right = 730.0
 margin_bottom = 233.121
 rect_min_size = Vector2( 1400, 540 )
 
