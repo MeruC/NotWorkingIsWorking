@@ -807,10 +807,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -835.0
-margin_top = -375.0
-margin_right = -85.0
-margin_bottom = 375.0
+margin_left = -913.0
+margin_top = -381.0
+margin_right = -163.0
+margin_bottom = 369.0
 rect_min_size = Vector2( 750, 750 )
 texture = ExtResource( 4 )
 expand = true
@@ -821,10 +821,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -815.0
-margin_top = -419.0
-margin_right = -115.0
-margin_bottom = 431.0
+margin_left = -1016.0
+margin_top = -428.0
+margin_right = -316.0
+margin_bottom = 422.0
 custom_constants/separation = 50
 
 [node name="star" type="Button" parent="options_container"]
@@ -877,6 +877,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Hybrid Topology"
 
 [node name="counter" type="HBoxContainer" parent="."]
+visible = false
 margin_left = 125.0
 margin_top = 100.0
 margin_right = 289.0

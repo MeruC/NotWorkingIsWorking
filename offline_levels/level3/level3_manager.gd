@@ -131,6 +131,7 @@ func _on_play_btn_pressed():
 	touch = false
 	$"../video_player".visible = true
 	$"../video".visible = false
+	$"../skip".visible = false
 	$"../play_btn".visible = false
 	click = 0
 
@@ -139,12 +140,19 @@ func _on_video_player_cancel():
 	$"../video_player".visible = false
 	$"../video".visible = true
 	$"../play_btn".visible = true
+	$"../skip".visible = true
 	touch = true
 	click = 0
 
 func _on_video_player_finish():
+	$"../skip".visible = true
 	$"../video_player".visible = false
 	$"../video".visible = true
 	$"../play_btn".visible = true
 	touch = true
 	click = 0
+
+
+func _on_skip_pressed():
+	$"..".queue_free()
+	get_tree().change_scene(game_scene)

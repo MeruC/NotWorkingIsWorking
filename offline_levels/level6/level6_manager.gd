@@ -89,6 +89,7 @@ func update_dialog():
 		if size == 8:
 			$AnimationPlayer.play("discussion_anim")
 		if size == 9:
+			$AnimationPlayer.play("new_discussion")
 			$image_holder.visible = false
 		if size == 10:
 			$AnimationPlayer.play("discussion_anim")
@@ -99,11 +100,13 @@ func update_dialog():
 			$AnimationPlayer.play("discussion_anim")
 			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
 		if size == 13:
+			$AnimationPlayer.play("new_discussion")
 			$image_holder.visible = false
 		if size == 14:
 			$AnimationPlayer.play("discussion_anim")
 			$image_holder.texture = load("res://resources/offline_mode_Asset/level_6/"+card_title+".png")
 		if size == 15:
+			$AnimationPlayer.play("new_discussion")
 			$image_holder.visible = false
 		if size == 16:
 			$videoplayer.visible = true

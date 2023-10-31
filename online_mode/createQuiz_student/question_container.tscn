@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.gd" type="Script" id=2]
@@ -6,100 +6,25 @@
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=5]
 [ext_resource path="res://resources/Game buttons/check.png" type="Texture" id=6]
-[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=7]
-[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="Theme" id=10]
 CheckBox/icons/checked = ExtResource( 6 )
 CheckBox/icons/unchecked = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 40
-font_data = ExtResource( 8 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resources/font/OpenSans-Regular.ttf"
 
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxFlat" id=18]
-content_margin_left = 33.0
-content_margin_right = 33.0
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_size = 1
-shadow_offset = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 0.941176, 0, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_offset = Vector2( -20, 20 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 60
-font_data = ExtResource( 8 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-content_margin_left = 35.0
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="DynamicFont" id=9]
-size = 40
-font_data = ExtResource( 8 )
-
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="Theme" id=20]
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
-Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-Button/fonts/font = SubResource( 17 )
-Button/styles/focus = SubResource( 8 )
-Button/styles/hover = SubResource( 18 )
-Button/styles/normal = SubResource( 18 )
-Button/styles/pressed = SubResource( 3 )
-Label/fonts/font = SubResource( 17 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/fonts/font = SubResource( 4 )
-LineEdit/styles/focus = SubResource( 5 )
-LineEdit/styles/normal = SubResource( 5 )
-LineEdit/styles/read_only = SubResource( 5 )
-TextEdit/fonts/font = SubResource( 17 )
-Tree/colors/font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
-Tree/colors/font_color_selected = Color( 0, 0, 0, 1 )
-Tree/fonts/font = SubResource( 9 )
-Tree/fonts/title_button_font = SubResource( 9 )
-Tree/styles/bg = SubResource( 19 )
-WindowDialog/styles/panel = SubResource( 11 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 26
+[sub_resource type="DynamicFont" id=23]
+size = 36
+extra_spacing_top = 4
 extra_spacing_bottom = 16
-font_data = ExtResource( 4 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 36
+extra_spacing_top = 4
+extra_spacing_bottom = 16
+font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 32
@@ -107,6 +32,8 @@ extra_spacing_bottom = 16
 font_data = ExtResource( 4 )
 
 [node name="question" type="HBoxContainer"]
+margin_right = 1445.0
+margin_bottom = 228.0
 script = ExtResource( 2 )
 selected_question = ExtResource( 3 )
 question_content = NodePath("VBoxContainer/question_container/question_content")
@@ -115,82 +42,82 @@ incorrect_content = NodePath("VBoxContainer/incorrect_container/incorrect_conten
 
 [node name="CheckBox" type="CheckBox" parent="."]
 margin_right = 108.0
-margin_bottom = 172.0
+margin_bottom = 228.0
 focus_mode = 0
 theme = SubResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 112.0
-margin_right = 1469.0
-margin_bottom = 172.0
+margin_right = 1445.0
+margin_bottom = 228.0
 custom_constants/separation = 10
 
 [node name="question_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1357.0
-margin_bottom = 107.0
+margin_right = 1333.0
+margin_bottom = 143.0
 
 [node name="question_label" type="Label" parent="VBoxContainer/question_container"]
-margin_top = 26.0
+margin_top = 34.0
 margin_right = 300.0
-margin_bottom = 81.0
+margin_bottom = 109.0
 rect_min_size = Vector2( 300, 0 )
-theme = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Question: "
 
 [node name="question_content" type="Label" parent="VBoxContainer/question_container"]
 margin_left = 304.0
 margin_right = 1329.0
-margin_bottom = 107.0
+margin_bottom = 143.0
 rect_min_size = Vector2( 1025, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
-text = "lkasjdlasj dasdlaj sklasjd laksjdlasjdalk jalsk djlska djalskd jalks djaskld ajsd lkajd lkasdj alksd jalksd jaslkd jadlkja  dlkajs dlkadsj alksdj alksd jaldk jadlkjadk"
+custom_fonts/font = SubResource( 23 )
+text = "lkasjdlasj dasdlaj sklasjd laksjdlasjdalk jalsk djlska djalskd jalksd jaslkd jadlkja  alksd jaldk jadlkjadk"
 autowrap = true
 
 [node name="answer_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 117.0
-margin_right = 1357.0
-margin_bottom = 172.0
+margin_top = 153.0
+margin_right = 1333.0
+margin_bottom = 228.0
 
 [node name="answer_label" type="Label" parent="VBoxContainer/answer_container"]
-margin_right = 328.0
-margin_bottom = 55.0
+margin_right = 304.0
+margin_bottom = 75.0
 rect_min_size = Vector2( 300, 0 )
-theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Correct Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]
-margin_left = 332.0
-margin_top = 1.0
-margin_right = 1357.0
-margin_bottom = 53.0
+margin_left = 308.0
+margin_top = 2.0
+margin_right = 1333.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 1025, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 22 )
 text = "asdaasdlk"
 valign = 1
 autowrap = true
 
 [node name="incorrect_container" type="HBoxContainer" parent="VBoxContainer"]
 visible = false
-margin_top = 283.0
-margin_right = 1384.0
-margin_bottom = 357.0
+margin_top = 310.0
+margin_right = 1363.0
+margin_bottom = 385.0
 
 [node name="incorrect_label" type="Label" parent="VBoxContainer/incorrect_container"]
-margin_right = 355.0
-margin_bottom = 74.0
+margin_right = 334.0
+margin_bottom = 75.0
 rect_min_size = Vector2( 300, 0 )
 custom_fonts/font = ExtResource( 1 )
 text = "Incorrect Answer: "
 
 [node name="incorrect_content" type="Label" parent="VBoxContainer/incorrect_container"]
-margin_left = 359.0
-margin_top = 6.0
-margin_right = 1384.0
-margin_bottom = 67.0
+margin_left = 338.0
+margin_top = 7.0
+margin_right = 1363.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 1025, 0 )
 custom_fonts/font = SubResource( 21 )
 text = "asdaasdlk"

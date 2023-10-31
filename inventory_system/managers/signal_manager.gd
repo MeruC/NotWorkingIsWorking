@@ -33,3 +33,6 @@ signal pc_closed()
 signal confirm()
 signal cancel()
 signal ok()
+
+
+signal showcable()

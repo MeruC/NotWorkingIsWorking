@@ -23,6 +23,7 @@ func get_use_text():
 # Apply the healing.
 func execute():
 	Global.player._on_cable_used( cable_type )
+	SignalManager.emit_signal("showcable")
 	print("Place")
 
 

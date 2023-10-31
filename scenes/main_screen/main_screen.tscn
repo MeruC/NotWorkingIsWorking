@@ -2616,7 +2616,7 @@ mesh = ExtResource( 34 )
 material/0 = SubResource( 18 )
 
 [node name="exit" parent="main_screen" instance=ExtResource( 37 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.536241, 3.26982, 14.7358 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.79299, 3.26982, 14.7358 )
 
 [node name="Sprite3D2" type="Sprite3D" parent="main_screen"]
 transform = Transform( -6.70672e-09, 0, 0.153432, 0, 0.153432, 0, -0.153432, 0, -6.70672e-09, -9.90851, 3.4659, 15.5596 )
@@ -3059,15 +3059,15 @@ rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 3884.0
+margin_right = 1964.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ui_quick/CenterContainer"]
-margin_left = 1617.0
-margin_right = 2267.0
+margin_left = 657.0
+margin_right = 1307.0
 margin_bottom = 1473.0
 mouse_filter = 2
 custom_constants/margin_top = 30

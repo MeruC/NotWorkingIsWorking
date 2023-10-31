@@ -15,7 +15,6 @@ var game_scene = "res://offline_levels/level4/level4.tscn"
 func _ready():
 	Pixelizer.set_visible(false)
 	VoiceGen.pitch_scale = 1.5
-	$CanvasLayer/well_done.visible == false
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
 		var json_content = file.get_as_text()
@@ -101,6 +100,7 @@ func update_dialog():
 
 func _on_video_player_cancel():
 	$CanvasLayer/video_player.visible = false
+	$CanvasLayer/skip.visible = true
 	$CanvasLayer/title.visible = true
 	$CanvasLayer/dialog.visible = true
 	$CanvasLayer/video_cover.visible = true
@@ -112,6 +112,7 @@ func _on_play_btn_pressed():
 	touch = false
 	$CanvasLayer/video_player.visible = true
 	$CanvasLayer/title.visible = false
+	$CanvasLayer/skip.visible = false
 	$CanvasLayer/dialog.visible = false
 	$CanvasLayer/video_cover.visible = false
 	$CanvasLayer/play_btn.visible = false
@@ -120,6 +121,12 @@ func _on_play_btn_pressed():
 func _on_video_player_finish():
 	$"../video_player".visible = false
 	$"../video".visible = true
+	$CanvasLayer/skip.visible = true
 	$"../play_btn".visible = true
 	touch = true
 	click = 0
+
+
+func _on_skip_pressed():
+	$".".queue_free()
+	get_tree().change_scene(game_scene)

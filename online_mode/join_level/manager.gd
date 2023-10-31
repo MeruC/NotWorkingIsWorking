@@ -90,6 +90,7 @@ func _http_request_completed(result, response_code, headers, body):
 				$loading_scrreen/AnimationPlayer.stop()
 				$loading_scrreen.visible = false
 				$CanvasLayer/dialog_box.visible = true
+				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/info.text = "notice"
 				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "The level has been successfully downloaded."
 			else:
 				printerr("Failed to save the file")
@@ -122,4 +123,5 @@ func get_json_file():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$loading_scrreen.visible = false
 	$CanvasLayer/dialog_box.visible = true
+	$CanvasLayer/dialog_box/ColorRect/VBoxContainer/info.text = "Error"
 	$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "Invalid level code"

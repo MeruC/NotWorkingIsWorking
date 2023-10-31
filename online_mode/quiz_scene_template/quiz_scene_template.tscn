@@ -753,6 +753,7 @@ anims/submenu = SubResource( 15 )
 anims/video = SubResource( 16 )
 
 [node name="instructions" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1103,6 +1104,7 @@ columns = 2
 [node name="choice" type="Button" parent="choices"]
 margin_right = 800.0
 margin_bottom = 90.0
+focus_mode = 0
 theme = ExtResource( 5 )
 text = "Option 1"
 
@@ -1111,7 +1113,9 @@ margin_left = 825.0
 margin_right = 1625.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 800, 90 )
+focus_mode = 0
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "Option 2"
 
 [node name="choice3" type="Button" parent="choices"]
@@ -1119,7 +1123,9 @@ margin_top = 115.0
 margin_right = 800.0
 margin_bottom = 205.0
 rect_min_size = Vector2( 800, 90 )
+focus_mode = 0
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "Option 3"
 
 [node name="choice4" type="Button" parent="choices"]
@@ -1128,7 +1134,9 @@ margin_top = 115.0
 margin_right = 1625.0
 margin_bottom = 205.0
 rect_min_size = Vector2( 800, 90 )
+focus_mode = 0
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "Option 4"
 
 [connection signal="pressed" from="CanvasLayer/instructions/ColorRect/start" to="." method="_on_start_pressed"]

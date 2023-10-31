@@ -70,7 +70,7 @@ func _http_request_completed(result, response_code, headers, body):
 
 func display_table(data):
 	# Define your headers manually
-	headers = ["id", "username", "scores", "timestamp"]
+	headers = ["username", "scores"]
 	# Clear the existing grid contents
 	clear_grid()
 
@@ -79,7 +79,7 @@ func display_table(data):
 	for j in range(headers.size()):
 		var header_label = Label.new()
 		header_label.text = headers[j]
-		header_label.rect_min_size = Vector2(100, 30)  # Set the size here
+		header_label.rect_min_size = Vector2(600, 30)  # Set the size here
 		header_label.add_font_override("font", font_resource)
 		header_label.add_color_override("font_color", font_color)
 		grid_container.add_child(header_label)
@@ -145,13 +145,12 @@ func _on_SaveFileDialog_file_selected(path):
 
 # Modify your export_csv_data function to accept the path as an argument
 func export_csv_data(data, path):
-	var csv_data = "Name, student score, Time\n"  # CSV header row
+	var csv_data = "Name, score\n"  # CSV header row
 	for item in data:
 		if item is Dictionary:
 			var name = item.get("username", "")
 			var scores = item.get("scores", 0)
-			var time = item.get("timestamp", 0)
-			csv_data += '"' + name + '",' + str(scores) + ',"' + str(time).replace('"', '""') + '"\n'
+			csv_data += '"' + name + '",' + str(scores) + ',"' + '"\n'
 
 
 	# You can use responseData here to access the response data

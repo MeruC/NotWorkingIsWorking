@@ -106,6 +106,7 @@ func update_dialog():
 
 func _on_play_pressed():
 	touch = false
+	$"../skip".visible = false
 	$"../AnimationPlayer/title".visible = false
 	$"../video_player".visible = true
 	$"../video".visible = false
@@ -114,6 +115,7 @@ func _on_play_pressed():
 
 func _on_video_player_cancel():
 	touch = true
+	$"../skip".visible = true
 	$"../AnimationPlayer/title".visible = true
 	$"../video_player".visible = false
 	$"../video".visible = true
@@ -121,7 +123,13 @@ func _on_video_player_cancel():
 
 func _on_video_player_finish():
 	touch = true
+	$"../skip".visible = true
 	$"../AnimationPlayer/title".visible = true
 	$"../video_player".visible = false
 	$"../video".visible = true
 	$"../play".visible = true
+
+
+func _on_skip_pressed():
+	$"..".queue_free()
+	get_tree().change_scene(game_scene)	
