@@ -117,8 +117,7 @@ func _on_crimp_pressed():
 
 func score_validation():
 	if settings_data.level6 == 5:
-		settings_data.quick_game = "notplaying"
-		SaveManager.save_game()
+		pass
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true

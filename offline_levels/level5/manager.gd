@@ -141,7 +141,6 @@ func _on_restart_pressed():
 
 func score_validation():
 	if settings_data.level5 == 7:
-		settings_data.quick_game = "notplaying"
 		settings_data.level5 = score
 		SaveManager.save_game()
 		

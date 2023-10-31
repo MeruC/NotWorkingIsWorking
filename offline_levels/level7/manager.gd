@@ -132,7 +132,6 @@ func _on_retry_pressed():
 func score_validation():
 	if settings_data.level7 == 5:
 		settings_data.level7 = score
-		settings_data.quick_game = "notplaying"
 		SaveManager.save_game()
 		
 	if settings_data.quick_game == "isplaying":

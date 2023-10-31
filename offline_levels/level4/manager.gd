@@ -194,7 +194,6 @@ func score_validation():
 	
 	if settings_data.level4 == 5:
 		settings_data.level4 = score
-		settings_data.quick_game = "notplaying"
 		SaveManager.save_game()
 		
 	if settings_data.quick_game == "isplaying":
