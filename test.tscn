@@ -145,7 +145,7 @@ scroll_horizontal_enabled = false
 
 [node name="tasks_vbox" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer"]
 margin_right = 380.0
-margin_bottom = 534.0
+margin_bottom = 261.0
 custom_constants/separation = 25
 
 [node name="task1" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
@@ -170,6 +170,7 @@ text = "- Use your Cross-Over cable to connect on PC to the other."
 autowrap = true
 
 [node name="task2" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 117.0
 margin_right = 380.0
 margin_bottom = 365.0
@@ -198,9 +199,9 @@ Subnet Mask: 255.255.255.0"
 autowrap = true
 
 [node name="task3" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 390.0
+margin_top = 117.0
 margin_right = 380.0
-margin_bottom = 534.0
+margin_bottom = 261.0
 
 [node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
 margin_right = 380.0

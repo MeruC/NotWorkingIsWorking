@@ -1,4 +1,4 @@
-extends Scale_Control
+extends Control
 
 
 func _ready():
