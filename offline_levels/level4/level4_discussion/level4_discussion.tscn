@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://resources/font/sev7cyr.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://offline_levels/level4/level4_discussion/tv_frame/tv frame_with cat.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://offline_levels/level4/level4_discussion/tv_frame/tv frame_2.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/level4/level4_discussion/tv_frame/tv frame_1.png" type="Texture" id=8]
 [ext_resource path="res://offline_levels/level4/level4_discussion/tv_frame/tv frame_3.png" type="Texture" id=9]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://offline_levels/video_player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://offline_levels/level4/level4_discussion/gif_asset/video_cover.png" type="Texture" id=13]
@@ -18,10 +17,6 @@
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=16]
 [ext_resource path="res://resources/font/level3-4_dialog_fonr.tres" type="DynamicFont" id=17]
 [ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=18]
-
-[sub_resource type="DynamicFont" id=11]
-size = 90
-font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 78
@@ -156,7 +151,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 127, 105 ), Vector2( 280, 369 ) ]
+"values": [ Vector2( 127, 105 ), Vector2( 175, 400 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/dialog:rect_position")
@@ -195,24 +190,12 @@ tracks/3/keys = {
 "values": [ true, false, true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/well_done:visible")
+tracks/4/path = NodePath("CanvasLayer/dialog:rect_size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/dialog:rect_size")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -378,24 +361,13 @@ theme = ExtResource( 18 )
 text = "skip"
 flat = true
 
-[node name="well_done" type="Label" parent="CanvasLayer"]
-visible = false
-margin_left = 1092.0
-margin_top = 808.0
-margin_right = 1467.0
-margin_bottom = 877.0
-rect_rotation = -14.8823
-custom_colors/font_color = Color( 0, 1, 0.278431, 1 )
-custom_fonts/font = SubResource( 11 )
-text = "Well done !"
-align = 1
-valign = 1
-
 [node name="title" type="Label" parent="CanvasLayer"]
-margin_left = 127.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -833.0
 margin_top = 105.0
-margin_right = 1685.0
-margin_bottom = 234.0
+margin_right = 725.0
+margin_bottom = 255.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 16 )
 text = "title"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/offline_mode_Asset/level_6/cards.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/background.png" type="Texture" id=2]
@@ -99,10 +99,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.2 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 399, 236 ), Vector2( 901, 188 ) ]
+"values": [ Vector2( 399, 236 ), Vector2( 817, 175 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("dialog:rect_size")
@@ -243,6 +243,33 @@ tracks/2/keys = {
 "values": [ Vector2( 1153, 333 ), Vector2( 534, 164 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "new_discussion"
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1153, 333 ), Vector2( 978, 333 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 478, 226 ), Vector2( 474, 179 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "new_intro"
 tracks/0/type = "value"
@@ -309,6 +336,7 @@ anims/RESET = SubResource( 3 )
 anims/card_flip = SubResource( 2 )
 anims/discussion_anim = SubResource( 5 )
 anims/end = SubResource( 7 )
+anims/new_discussion = SubResource( 8 )
 anims/new_intro = SubResource( 6 )
 
 [node name="dialog" type="Label" parent="."]
