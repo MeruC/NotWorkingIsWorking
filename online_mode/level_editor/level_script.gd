@@ -11,7 +11,25 @@ export (Resource) var setting_data
 var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
+
+var nodes : Array = []
+func get_all_monitor(node) -> Array:
+	for N in node.get_children():
+		#print(N)
+		if "object_monitor" in N.name:
+			nodes.append(N)
+	return nodes
+	
+func check_ip(ip, subnetmask):
+	for N in nodes:
+		if (N.ipv4_address == ip) and (N.subnet_mask == subnetmask):
+			print("pass")
+			
+
 func _ready():
+	get_all_monitor(self)
+	check_ip("0.0.0.0", "0.0.0.0")
+	
 	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
 		inventory.set_visible(true)
