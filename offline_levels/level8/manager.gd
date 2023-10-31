@@ -135,7 +135,7 @@ func correct_popup():
 
 # To indicate that time ran out
 func timeout_popup():
-	perQuestion_title.text = "Time Ran Out"
+	perQuestion_title.text = "Time's up"
 	perQuestion_content.text = "Gained Score: " + str(int(timer.time_left))
 	perQuestion_popup.visible = true
 ##
@@ -172,11 +172,12 @@ func calculate_score():
 		gameover_next.disabled = false
 		score_validation()
 		
-	elif score >= 30:
+	elif score >= 30 and score <= 199:
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		audioplayer.play()
 		celebration.visible = true
 		gameover_indicator.text = "Level Complete!"
+		gameover_anim.play("win")
 		gameover_score.text = "Your Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		gameover_next.disabled = false

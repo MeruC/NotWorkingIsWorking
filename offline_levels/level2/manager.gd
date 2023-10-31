@@ -188,6 +188,7 @@ func _on_next_pressed():
 func score_validation():
 	if settings_data.level2 == 5:
 		settings_data.level2 = score
+		settings_data.quick_game = "notplaying"
 	if settings_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
@@ -220,7 +221,9 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
 			SaveManager.save_game()
-		elif score >= 3 and score <= 1:
+		elif score <= 3:
+			settings_data.level2 = score
+			SaveManager.save_game()
 			pass
 		elif score == 5:
 			var current_coins = settings_data.gold_coins

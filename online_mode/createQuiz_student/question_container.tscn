@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.gd" type="Script" id=2]
@@ -71,7 +71,7 @@ bg_color = Color( 0.392157, 0.784314, 1, 1 )
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="Theme" id=20]
+[sub_resource type="Theme" id=22]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
 Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
@@ -96,8 +96,13 @@ Tree/fonts/title_button_font = SubResource( 9 )
 Tree/styles/bg = SubResource( 19 )
 WindowDialog/styles/panel = SubResource( 11 )
 
+[sub_resource type="DynamicFont" id=23]
+size = 40
+extra_spacing_bottom = 16
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=6]
-size = 26
+size = 40
 extra_spacing_bottom = 16
 font_data = ExtResource( 4 )
 
@@ -115,47 +120,48 @@ incorrect_content = NodePath("VBoxContainer/incorrect_container/incorrect_conten
 
 [node name="CheckBox" type="CheckBox" parent="."]
 margin_right = 108.0
-margin_bottom = 172.0
+margin_bottom = 300.0
 focus_mode = 0
 theme = SubResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 112.0
 margin_right = 1469.0
-margin_bottom = 172.0
+margin_bottom = 300.0
 custom_constants/separation = 10
 
 [node name="question_container" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1357.0
-margin_bottom = 107.0
+margin_bottom = 219.0
 
 [node name="question_label" type="Label" parent="VBoxContainer/question_container"]
-margin_top = 26.0
+margin_top = 82.0
 margin_right = 300.0
-margin_bottom = 81.0
+margin_bottom = 137.0
 rect_min_size = Vector2( 300, 0 )
-theme = SubResource( 20 )
+theme = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Question: "
 
 [node name="question_content" type="Label" parent="VBoxContainer/question_container"]
 margin_left = 304.0
 margin_right = 1329.0
-margin_bottom = 107.0
+margin_bottom = 219.0
 rect_min_size = Vector2( 1025, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 23 )
 text = "lkasjdlasj dasdlaj sklasjd laksjdlasjdalk jalsk djlska djalskd jalks djaskld ajsd lkajd lkasdj alksd jalksd jaslkd jadlkja  dlkajs dlkadsj alksdj alksd jaldk jadlkjadk"
 autowrap = true
 
 [node name="answer_container" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 117.0
+margin_top = 229.0
 margin_right = 1357.0
-margin_bottom = 172.0
+margin_bottom = 300.0
 
 [node name="answer_label" type="Label" parent="VBoxContainer/answer_container"]
+margin_top = 8.0
 margin_right = 328.0
-margin_bottom = 55.0
+margin_bottom = 63.0
 rect_min_size = Vector2( 300, 0 )
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -163,9 +169,8 @@ text = "Correct Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]
 margin_left = 332.0
-margin_top = 1.0
 margin_right = 1357.0
-margin_bottom = 53.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 1025, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )

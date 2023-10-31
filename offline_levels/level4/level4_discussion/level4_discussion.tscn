@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://resources/font/sev7cyr.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://offline_levels/level4/level4_discussion/tv_frame/tv frame_with cat.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://offline_levels/level4/level4_discussion/gif_asset/level4.ogv" type="VideoStream" id=15]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=16]
 [ext_resource path="res://resources/font/level3-4_dialog_fonr.tres" type="DynamicFont" id=17]
+[ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=18]
 
 [sub_resource type="DynamicFont" id=11]
 size = 90
@@ -365,6 +366,18 @@ margin_bottom = 1076.0
 rect_scale = Vector2( 1.00173, 1.00346 )
 texture = ExtResource( 2 )
 
+[node name="skip" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_top = 20.0
+margin_right = -63.0
+margin_bottom = 87.0
+focus_mode = 0
+theme = ExtResource( 18 )
+text = "skip"
+flat = true
+
 [node name="well_done" type="Label" parent="CanvasLayer"]
 visible = false
 margin_left = 1092.0
@@ -470,6 +483,7 @@ anims/illustration_animation = SubResource( 5 )
 
 [node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 11 )]
 
+[connection signal="pressed" from="CanvasLayer/skip" to="." method="_on_skip_pressed"]
 [connection signal="cancel" from="CanvasLayer/video_player" to="." method="_on_video_player_cancel"]
 [connection signal="finish" from="CanvasLayer/video_player" to="." method="_on_video_player_finish"]
 [connection signal="pressed" from="CanvasLayer/play_btn" to="." method="_on_play_btn_pressed"]

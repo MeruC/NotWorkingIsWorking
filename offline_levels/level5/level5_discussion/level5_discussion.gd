@@ -86,12 +86,14 @@ func update_dialog():
 
 func _on_play_btn_pressed():
 	touch = false
+	$CanvasLayer/NinePatchRect/skip.visible = false
 	$CanvasLayer/videoplayer/TextureRect.visible = false
 	$CanvasLayer/videoplayer/video_player.visible = true
 
 
 func _on_video_player_cancel():
 	$CanvasLayer/videoplayer.visible = true
+	$CanvasLayer/NinePatchRect/skip.visible = true
 	$CanvasLayer/videoplayer/TextureRect.visible = true
 	$CanvasLayer/videoplayer/video_player.visible = false
 	click = 0
@@ -100,7 +102,13 @@ func _on_video_player_cancel():
 
 func _on_video_player_finish():
 	$CanvasLayer/videoplayer.visible = true
+	$CanvasLayer/NinePatchRect/skip.visible = true
 	$CanvasLayer/videoplayer/TextureRect.visible = true
 	$CanvasLayer/videoplayer/video_player.visible = false
 	click = 0
 	touch = true
+
+
+func _on_skip_pressed():
+	$".".queue_free()
+	get_tree().change_scene(game_scene)

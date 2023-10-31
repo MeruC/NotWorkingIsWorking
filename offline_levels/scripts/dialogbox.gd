@@ -93,6 +93,7 @@ func update_dialog():
 func _on_play_button_pressed():
 	touch = false
 	$"../video_player".visible = true
+	$"../skip".visible = false
 	$"../CanvasLayer/NinePatchRect/title".visible = false
 	$"../CanvasLayer/NinePatchRect/dialog".visible = false
 	click = 0
@@ -102,6 +103,7 @@ func _on_video_player_cancel():
 	$"../CanvasLayer/NinePatchRect/title".visible = true
 	$"../CanvasLayer/NinePatchRect/dialog".visible = true
 	$"../video_player".visible = false
+	$"../skip".visible = true
 	touch = true
 	click = 0
 
@@ -109,5 +111,11 @@ func _on_video_player_finish():
 	$"../CanvasLayer/NinePatchRect/title".visible = true
 	$"../CanvasLayer/NinePatchRect/dialog".visible = true
 	$"../video_player".visible = false
+	$"../skip".visible = true
 	touch = true
 	click = 0
+
+
+func _on_skip_pressed():
+	$"..".queue_free()
+	get_tree().change_scene(game_scene)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=9]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=11]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -712,14 +715,6 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=17]
-size = 100
-font_data = ExtResource( 7 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 80
-font_data = ExtResource( 7 )
-
 [sub_resource type="DynamicFont" id=8]
 size = 120
 font_data = ExtResource( 5 )
@@ -894,14 +889,24 @@ margin_bottom = 187.5
 rect_min_size = Vector2( 1100, 375 )
 custom_styles/panel = SubResource( 13 )
 
+[node name="TextureRect" type="TextureRect" parent="popup_layer/perQuestion_popup/main_popup"]
+margin_left = -6.0
+margin_top = -20.5
+margin_right = 290.0
+margin_bottom = 205.5
+rect_scale = Vector2( 3.76638, 1.91973 )
+texture = ExtResource( 12 )
+
 [node name="title" type="Label" parent="popup_layer/perQuestion_popup/main_popup"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -350.0
-margin_right = 350.0
-margin_bottom = 60.0
+margin_left = -348.0
+margin_top = -7.5
+margin_right = 352.0
+margin_bottom = 82.5
 rect_min_size = Vector2( 700, 80 )
-custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "RESULT"
 align = 1
 valign = 1
@@ -912,12 +917,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -450.0
-margin_top = -37.5
-margin_right = 450.0
-margin_bottom = 112.5
+margin_left = -531.0
+margin_top = -68.5
+margin_right = 522.0
+margin_bottom = 178.5
 rect_min_size = Vector2( 900, 150 )
-custom_fonts/font = SubResource( 18 )
+theme = ExtResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gained Score: "
 align = 1
 valign = 1

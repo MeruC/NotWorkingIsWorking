@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=15]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=16]
 [ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=17]
+[ext_resource path="res://resources/Themes/history.tres" type="Theme" id=18]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
@@ -2116,8 +2117,17 @@ margin_bottom = -9.0
 texture = SubResource( 14 )
 expand = true
 
+[node name="Button" type="Button" parent="3dlevel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -180.0
+margin_top = 25.0
+margin_right = -30.0
+margin_bottom = 175.0
+focus_mode = 0
+theme = ExtResource( 18 )
+
 [node name="choosetype" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="create" type="Label" parent="choosetype"]
 margin_left = 2006.0

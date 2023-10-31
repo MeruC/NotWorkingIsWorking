@@ -141,8 +141,10 @@ func _on_restart_pressed():
 
 func score_validation():
 	if settings_data.level5 == 7:
+		settings_data.quick_game = "notplaying"
 		settings_data.level5 = score
 		SaveManager.save_game()
+		
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -170,7 +172,7 @@ func score_validation():
 	else:
 		if score == 0:
 			pass
-		elif score >= 4:
+		elif score <= 4:
 			settings_data.crowns += 1
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+80
@@ -191,6 +193,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
+			settings_data.orange_shirt = "unlock"
 			SaveManager.save_game()
 		elif score == 7:
 			settings_data.crowns += 3
@@ -201,6 +204,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
+			settings_data.orange_shirt = "unlock"
 			SaveManager.save_game()
 
 

@@ -140,6 +140,8 @@ func _on_data_changed():
 	if setting_data.level1 == 10:
 		setting_data.crowns = 3
 		SaveManager.save_game()
+		setting_data.quick_game = "notplaying"
+		
 	if setting_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
@@ -170,6 +172,7 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			SaveManager.save_game()
+			
 		elif score == 10:
 			setting_data.crowns = 3
 			var coins = setting_data.gold_coins

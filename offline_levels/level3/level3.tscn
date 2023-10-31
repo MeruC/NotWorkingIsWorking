@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/soundtrack/level/button_click.wav" type="AudioStream" id=10]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
+[ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -813,18 +814,35 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 autowrap = true
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 325.0
+margin_top = 20.0
+margin_right = 1475.0
+margin_bottom = 628.0
+texture = ExtResource( 12 )
+
+[node name="title" type="Label" parent="."]
+margin_left = 843.0
+margin_top = 108.0
+margin_right = 943.0
+margin_bottom = 163.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CLUE"
+
 [node name="clue" type="Label" parent="."]
-margin_left = 151.0
-margin_top = 125.0
-margin_right = 1151.0
-margin_bottom = 343.0
-rect_min_size = Vector2( 1000, 150 )
+margin_left = 433.0
+margin_top = 199.0
+margin_right = 1360.0
+margin_bottom = 461.0
+rect_min_size = Vector2( 800, 150 )
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
 autowrap = true
 
 [node name="choices" parent="." instance=ExtResource( 2 )]
+position = Vector2( -52, 93 )
 script = null
 
 [node name="image_holder" parent="choices/choices_container/choice1" index="0"]

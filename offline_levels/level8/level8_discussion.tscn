@@ -3,9 +3,11 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://resources/offline_mode_Asset/level_7/lvl_7_8_discuss_bg.png" type="Texture" id=3]
-[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://offline_levels/video_player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/VoiceGeneratorAudioStreamPlayer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=6]
+[ext_resource path="res://offline_levels/level8/decimal to binary.ogv" type="VideoStream" id=6]
+[ext_resource path="res://offline_levels/level8/decimal_to_binary.png" type="Texture" id=7]
+[ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -66,10 +68,6 @@ func update_dialog():
 	if size < json_data.size():
 		var title = json_data[size][\"title\"]
 		var content = json_data[size][\"content\"]
-		var title1 = json_data[size][\"title1\"]
-		var title2 = json_data[size][\"title2\"]
-		link1 = json_data[size][\"link1\"]
-		link2 = json_data[size][\"link2\"]
 		
 		$NinePatchRect/dialog.text = content
 		total_character = content.length()
@@ -79,39 +77,38 @@ func update_dialog():
 		VoiceGen.read(dialog.text)
 		
 		if size == 2:
-			$NinePatchRect/dialog.visible = false
-			$NinePatchRect/title1.text = title1
-			$NinePatchRect/title2.text = title2
-			$NinePatchRect/watch1.visible = true
-			$NinePatchRect/watch2.visible = true
+			$video_cover.visible = true
+			$video_player.visible = true
 		if size == 3:
-			$NinePatchRect/dialog.visible = true
-			$NinePatchRect/title1.visible = false
-			$NinePatchRect/title2.visible = false
-			$NinePatchRect/watch1.visible = false
-			$NinePatchRect/watch2.visible = false
-		
+			$video_cover.texture = preload(\"res://offline_levels/level8/binary_to_decimal.png\")
+			$video_player.stream = preload(\"res://offline_levels/level8/binary to decimal.ogv\")
+		if size == 4:
+			$video_cover.visible = false
+			$video_player.visible = false
 	else:
 		$\".\".queue_free()
 		get_tree().change_scene(game_scene)
 		print(\"Dialog ended.\")
 
 
-func _on_watch1_pressed():
-	 OS.shell_open(link1)
+func _on_video_player_cancel():
+	$video_cover.visible = true
+	$video_player.visible = false
+	touch = true
+	click = 0
+
+func _on_video_player_finish():
+	$video_cover.visible = true
+	$video_player.visible = false
+	touch = true
+	click = 0
 
 
-func _on_watch2_pressed():
-	 OS.shell_open(link2)
+func _on_play_pressed():
+	$video_player.visible = true
+	$video_cover.visible = false
+	touch = false
 "
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 46
-font_data = ExtResource( 4 )
 
 [node name="level8" type="Node2D"]
 script = SubResource( 1 )
@@ -146,45 +143,30 @@ text = "dialog"
 valign = 1
 autowrap = true
 
-[node name="title1" type="Label" parent="NinePatchRect"]
-margin_left = 396.0
-margin_top = 380.0
-margin_right = 1131.0
-margin_bottom = 448.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-valign = 1
-autowrap = true
-
-[node name="title2" type="Label" parent="NinePatchRect"]
-margin_left = 409.0
-margin_top = 520.0
-margin_right = 995.0
-margin_bottom = 588.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-valign = 1
-autowrap = true
-
-[node name="watch1" type="Button" parent="NinePatchRect"]
-visible = false
-margin_left = 1121.0
-margin_top = 373.0
-margin_right = 1488.0
-margin_bottom = 448.0
-theme = ExtResource( 6 )
-text = "watch now"
-
-[node name="watch2" type="Button" parent="NinePatchRect"]
-visible = false
-margin_left = 1123.0
-margin_top = 502.0
-margin_right = 1490.0
-margin_bottom = 577.0
-theme = ExtResource( 6 )
-text = "watch now"
-
 [node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 5 )]
 
-[connection signal="pressed" from="NinePatchRect/watch1" to="." method="_on_watch1_pressed"]
-[connection signal="pressed" from="NinePatchRect/watch2" to="." method="_on_watch2_pressed"]
+[node name="video_cover" type="TextureRect" parent="."]
+visible = false
+margin_left = 669.0
+margin_top = 456.0
+margin_right = 1916.0
+margin_bottom = 1068.0
+rect_min_size = Vector2( 500, 500 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="play" type="Button" parent="video_cover"]
+margin_right = 6225.0
+margin_bottom = 2962.0
+rect_scale = Vector2( 0.2, 0.2 )
+icon = ExtResource( 8 )
+flat = true
+icon_align = 1
+
+[node name="video_player" parent="." instance=ExtResource( 4 )]
+visible = false
+stream = ExtResource( 6 )
+
+[connection signal="pressed" from="video_cover/play" to="." method="_on_play_pressed"]
+[connection signal="cancel" from="video_player" to="." method="_on_video_player_cancel"]
+[connection signal="finish" from="video_player" to="." method="_on_video_player_finish"]

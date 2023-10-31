@@ -191,8 +191,12 @@ func _on_restart_pressed():
 	Load.load_scene(self,level4_scene)
 
 func score_validation():
+	
 	if settings_data.level4 == 5:
 		settings_data.level4 = score
+		settings_data.quick_game = "notplaying"
+		SaveManager.save_game()
+		
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -223,6 +227,7 @@ func score_validation():
 	else:
 		if score == 0:
 			pass
+			
 		elif score == 5:
 			settings_data.crowns+= 3
 			var current_coins = settings_data.gold_coins
@@ -243,7 +248,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level4 = score
 			SaveManager.save_game()
-		elif score >= 3:
+		elif score <= 3 and score > 0:
 			settings_data.crowns += 1
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+80

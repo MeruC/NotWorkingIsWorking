@@ -222,11 +222,11 @@ func _on_left_pressed():
 			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 2), \"completed\")
 			$\"../level5\".visible = true
 			$\"../crowns\".visible = true
-			if settings_data.level5 == 5:
+			if settings_data.level5 == 7:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
-			elif settings_data.level5 == 4:
+			elif settings_data.level5 >= 5 and settings_data.level5 <= 6:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
-			elif settings_data.level5 <= 3:
+			elif settings_data.level5 <= 4 and settings_data.level5 > 0:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
 			else:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
@@ -280,9 +280,10 @@ func _on_left_pressed():
 			$\"../back\".disabled = true
 			$\"../level9\".visible = false
 			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 2), \"completed\")
 			$\"../level8\".visible = true
-			$\"../crowns\".visible = false
+			$\"../crowns\".visible = true
 			if settings_data.level8 >= 200:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
 			elif settings_data.level8 >= 30 and settings_data.level8 <= 199:
@@ -384,11 +385,11 @@ func _on_right_pressed():
 				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 2), \"completed\")
 				$\"../level5\".visible = true
 				$\"../crowns\".visible = true
-				if settings_data.level5 == 5:
+				if settings_data.level5 == 7:
 					$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
-				elif settings_data.level5 == 4:
+				elif settings_data.level5 >= 5 and settings_data.level5 <= 6:
 					$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
-				elif settings_data.level5 <= 3 and settings_data.level5 > 0:
+				elif settings_data.level5 <= 4 and settings_data.level5 > 0:
 					$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
 				else:
 					$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
@@ -487,6 +488,7 @@ func _on_right_pressed():
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
 				$\"../crowns\".visible = true
 				current+=1
 			else:
