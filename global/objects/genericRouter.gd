@@ -29,6 +29,7 @@ export(String) var console_port_connection = null
 export(int) var port_count = 3
 export(Array) var connected_to = []
 
+#Checks if all ports are in use
 func checkports():
 	if console_port0 == null:
 		console = true
