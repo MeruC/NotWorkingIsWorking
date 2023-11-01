@@ -1,10 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://resources/Sprites/rotate.png" type="Texture" id=1]
+[ext_resource path="res://resources/Game buttons/touch/cam2.png" type="Texture" id=1]
 [ext_resource path="res://mobile_controls/joystick/virtual_joystick.tscn" type="PackedScene" id=2]
-[ext_resource path="res://mobile_controls/textures/e.png" type="Texture" id=3]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_19.png" type="Texture" id=3]
 [ext_resource path="res://inventory_system/resources/sprites/interactables/bag.png" type="Texture" id=4]
 [ext_resource path="res://online_mode/level_create_Menu/DroidSans-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=6]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_18.png" type="Texture" id=7]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=8]
+[ext_resource path="res://resources/Game buttons/touch/cam1.png" type="Texture" id=9]
+[ext_resource path="res://resources/Game buttons/touch/cam1pressed.png" type="Texture" id=10]
+[ext_resource path="res://resources/Game buttons/touch/cam2pressed.png" type="Texture" id=11]
+[ext_resource path="res://resources/Game buttons/touch/bag.png" type="Texture" id=12]
+[ext_resource path="res://resources/Game buttons/touch/bagPressed.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 size = 27
@@ -13,9 +21,9 @@ font_data = ExtResource( 5 )
 [node name="mobile_controls" type="CanvasLayer"]
 
 [node name="joystick" parent="." instance=ExtResource( 2 )]
-margin_left = 83.0
+margin_left = 111.0
 margin_top = -281.0
-margin_right = 283.0
+margin_right = 311.0
 margin_bottom = -81.0
 action_left = "left"
 action_right = "right"
@@ -23,13 +31,14 @@ action_up = "up"
 action_down = "down"
 
 [node name="I" type="TouchScreenButton" parent="."]
-position = Vector2( 1231, 842 )
-scale = Vector2( 5, 5 )
-normal = ExtResource( 4 )
-pressed = ExtResource( 4 )
+position = Vector2( 1162, 883 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 12 )
+pressed = ExtResource( 13 )
 action = "inventory"
 
 [node name="use" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 1700, 405 )
 scale = Vector2( 4.90626, 4.72456 )
 normal = ExtResource( 4 )
@@ -45,23 +54,47 @@ rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 2 )
 text = "USE"
 
-[node name="camLeft" type="TouchScreenButton" parent="."]
-position = Vector2( 1440, 882 )
-scale = Vector2( 3.34375, 3.28125 )
+[node name="Control" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+
+[node name="camLeft" type="TouchScreenButton" parent="Control"]
+position = Vector2( 50, 0 )
+scale = Vector2( 10.167, 9.977 )
 normal = ExtResource( 1 )
-pressed = ExtResource( 1 )
+pressed = ExtResource( 11 )
 action = "camera_rotate_left"
 
-[node name="camRight" type="TouchScreenButton" parent="."]
-position = Vector2( 1577, 882 )
-scale = Vector2( 3.34375, 3.28125 )
-normal = ExtResource( 1 )
-pressed = ExtResource( 1 )
+[node name="Control2" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 40, 0 )
+
+[node name="camRight" type="TouchScreenButton" parent="Control2"]
+position = Vector2( -130, 0 )
+scale = Vector2( 10.1667, 9.97664 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
 action = "camera_rotate_right"
 
-[node name="E" type="TouchScreenButton" parent="."]
-position = Vector2( 1715, 884 )
-scale = Vector2( 3.34375, 3.28125 )
-normal = ExtResource( 3 )
+[node name="aButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1656, 790 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 7 )
 pressed = ExtResource( 3 )
 action = "interact"
+
+[node name="bButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1433, 883 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 8 )
+action = "hotbar_1"

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://mobile_controls/joystick/textures/joystick_base_outline.png" type="Texture" id=1]
-[ext_resource path="res://mobile_controls/joystick/textures/joystick_tip_arrows.png" type="Texture" id=2]
 [ext_resource path="res://mobile_controls/joystick/virtual_joystick.gd" type="Script" id=3]
+[ext_resource path="res://mobile_controls/dpad.tscn" type="PackedScene" id=4]
 
 [node name="Virtual joystick" type="Control"]
 modulate = Color( 1, 1, 1, 0.509804 )
@@ -15,6 +15,7 @@ margin_bottom = -50.0
 script = ExtResource( 3 )
 
 [node name="Base" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -45,4 +46,10 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 2 )
+
+[node name="dpad" parent="Base/Tip" instance=ExtResource( 4 )]
+margin_left = -34.0
+margin_top = -34.0
+margin_right = -34.0
+margin_bottom = -34.0
+rect_scale = Vector2( 3.5, 3.5 )

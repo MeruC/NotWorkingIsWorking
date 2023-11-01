@@ -67,15 +67,15 @@ func _on_pc_opened():
 	
 func _on_pc_closed():
 	#player = main.get_node("Player")
-	inventory.set_visible(true)
-	mobile_controls.set_visible(true)
-	task_manager.visible = true
 	if (onMenu):
 		yield(CameraTransition.transition_camera3D(get_viewport().get_camera(), Global.playerCamera , 1), "completed")
 		Global.player.get_node("Pivot").set_visible(true)
 		onMenu = false
 		Global.playerCanMove = true
 		Global.playerInteractLbl.set_visible(true)
+		inventory.set_visible(true)
+		mobile_controls.set_visible(true)
+		task_manager.visible = true
 		
 		
 func _on_cable_used():

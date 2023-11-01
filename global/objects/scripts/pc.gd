@@ -28,8 +28,8 @@ func out_of_range():
 	var mats = power.get_material()
 	mats.albedo_color = Color(255, 0, 0)
 	power.set_material(mats)
-	ui.set_visible(false)
-	io.set_visible(false)
 	pc_screen.set_visible(true)
 	SignalManager.emit_signal( "pc_closed")
-	
+	#yield(get_tree().create_timer(2.0), "timeout")
+	ui.set_visible(false)
+	io.set_visible(false)
