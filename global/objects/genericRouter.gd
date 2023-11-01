@@ -1,9 +1,17 @@
 extends StaticBody
 
 var ge0 : StaticBody
+var ge0_type
 var ge1 : StaticBody
+var ge1_type
 var ge2 : StaticBody
+var ge2_type
+var console_port0 : StaticBody
+var console_portType
 var other_end : StaticBody
+var fe0 = "asda"
+var rj = true
+var console = true
 
 export(String) var priveleged_password = null
 export(String) var device_type = "router"
@@ -21,17 +29,46 @@ export(String) var console_port_connection = null
 export(int) var port_count = 3
 export(Array) var connected_to = []
 
-func _set_connector( connection ):
+func checkports():
+	if console_port0 == null:
+		console = true
+	else:
+		console = false
+	if ge0 == null or ge1 == null or ge2 == null:
+		rj = true
+	else:
+		rj = false
+
+func _set_connector( connection , type):
 	if ge0 == null:
 		ge0 = connection
-		emit_signal("cable_connected")
+		ge0_type = type
+		#label.text = "Connected to " + str(ge0.device_name) + "\nUsing: " + str(type)
+		connected_to.append(ge0.device_name)
 	elif ge1 == null:
 		ge1 = connection
-		emit_signal("cable_connected")
+		ge1_type = type
+		#label.text = "Connected to " + str(ge1.device_name) + "\nUsing: " + str(type)
+		connected_to.append(ge1.device_name)
 	elif ge2 == null:
 		ge2 = connection
-		emit_signal("cable_connected")
+		ge2_type = type
+		#label.text = "Connected to " + str(ge2.device_name) + "\nUsing: " + str(type)
+		connected_to.append(ge2.device_name)
 	else:
 		print("no port available")
+		
 	connected_to.append(connection.device_name)
 	print(connected_to)
+
+func _set_connectorConsole( connection, type ):
+	if console_port0 == null:
+		console_port0 = connection
+		console_portType = type
+		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
+		connected_to.append(console_port0.device_name)
+		#emit_signal("cable_connected")
+	else:
+		pass
+#	elif other_end == null:
+#		other_end = connection

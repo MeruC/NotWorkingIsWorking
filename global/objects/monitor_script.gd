@@ -4,9 +4,12 @@ export var device_name : String
 var fe0 : StaticBody = null
 var fe0_type
 var console_port0 : StaticBody
+var console_portType
 #var other_end : StaticBody
 var isSaved = false
 var test = "test"
+var rj = true
+var console = true
 
 signal cable_connected()
 
@@ -45,6 +48,19 @@ onready var commands_container = $ui/cmd_app/cmd_screen/main_panel/ScrollContain
 
 onready var terminal_app = $ui/terminal_app
 
+func _process(delta):
+	pass
+	
+func checkports():
+	if console_port0 == null:
+		console = true
+	else:
+		console = false
+	if fe0 == null:
+		rj = true
+	else:
+		rj = false
+
 func _ready():
 	if device_name.empty():
 		device_name = self.name
@@ -68,8 +84,19 @@ func _set_connector( connection, type ):
 		fe0_type = type
 		label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
-		emit_signal("cable_connected")
-		
+		#emit_signal("cable_connected")
+	else:
+		pass
+#	elif other_end == null:
+#		other_end = connection
+
+func _set_connectorConsole( connection, type ):
+	if console_port0 == null:
+		console_port0 = connection
+		console_portType = type
+		label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
+		connected_to.append(console_port0.device_name)
+		#emit_signal("cable_connected")
 	else:
 		pass
 #	elif other_end == null:

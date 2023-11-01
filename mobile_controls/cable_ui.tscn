@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=1]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=2]
+
+[node name="cable_ui" type="CanvasLayer"]
+
+[node name="bButton" type="TouchScreenButton" parent="."]
+position = Vector2( 1697, 883 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+action = "cam_test"

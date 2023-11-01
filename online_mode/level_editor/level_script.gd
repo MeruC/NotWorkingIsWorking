@@ -80,6 +80,11 @@ func _on_pc_closed():
 		
 func _on_cable_used():
 	inventory.ui_container.set_visible(false)
+	mobile_controls.buttons.set_visible(false)
+	mobile_controls.cable_ui.set_visible(true)
 
 func _on_cable_done():
 	inventory.ui_container.set_visible(true)
+	mobile_controls.buttons.set_visible(true)
+	#mobile_controls.cable_ui.set_visible(false)
+

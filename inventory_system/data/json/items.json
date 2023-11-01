@@ -32,7 +32,7 @@
 		"usable": {
 			"type": "cable",
 			"data": {
-				"cable_type": "crossover"
+				"cable_type": "cross_over"
 			}
 		}
 	},
@@ -68,7 +68,7 @@
 		"usable": {
 			"type": "cable",
 			"data": {
-				"cable_type": "console"
+				"cable_type": "Console_Cable"
 			}
 		}
 	},

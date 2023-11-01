@@ -3,7 +3,7 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=3]
-[ext_resource path="res://global/objects/huaweiRouter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://global/objects/genericRouter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=6]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=7]
@@ -41,11 +41,12 @@ onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
 onready var root_scene = get_tree().get_current_scene()
 
 func _ready():
-	for object in root_scene.get_children():
-		if object is StaticBody and object.get(\"connected_to\") != null:
-			object.connect(\"cable_connected\", self, \"on_cable_connected\")
-			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
+	pass
+	#for object in root_scene.get_children():
+	#	if object is StaticBody and object.get(\"connected_to\") != null:
+	#		object.connect(\"cable_connected\", self, \"on_cable_connected\")
+#			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
+#			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
 # To check if both pc is connected with each other
 func check_connection():
 	pass
@@ -115,12 +116,10 @@ material = ExtResource( 8 )
 
 [node name="inventory" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
-visible = false
 script = SubResource( 12 )
 
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
-visible = false
 
 [node name="tasks_ui" type="CanvasLayer" parent="."]
 
@@ -240,7 +239,28 @@ device_name = "object_monitor"
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0.9375, -2 )
 device_name = "@object_monitor@332"
 
-[node name="object_huaweiRouter" parent="." instance=ExtResource( 4 )]
+[node name="object_table114" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+
+[node name="object_monitor332" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.9375, -2 )
+device_name = "@object_monitor@332"
+
+[node name="object_table115" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2 )
+
+[node name="object_monitor333" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0.9375, -2 )
+device_name = "@object_monitor@332"
+
+[node name="object_table116" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2 )
+
+[node name="object_monitor334" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0.9375, -2 )
+device_name = "@object_monitor@332"
+
+[node name="object_genericRouter" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.9375, -8 )
 
 [editable path="environment"]

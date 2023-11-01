@@ -12,6 +12,7 @@ onready var tween = $"%Tween"
 var current_level : Spatial
 var object_point
 var cabletype
+var device : Array
 
 #NodeReferences
 onready var camera = $"%Camera"
@@ -183,21 +184,19 @@ func _process(delta):
 	
 	if LevelGlobal.on_cable_mode:
 		var selected = current_level.get_node(object_point2.collider.name)
+		var last
 		match(object_number):
 			0:
-				if("object_monitor" in object_point2.collider.name):
-					if selected.fe0 == null:
-						previewCursor()
-						place.set_visible(true)
-						no_sign.set_visible(false)
-					else:
-						previewCursor()
-						place.set_visible(false)
-						no_sign.set_visible(true)
+				if("object" in object_point2.collider.name):
+					previewCursor()
+					place.set_visible(true)
+					no_sign.set_visible(false)
+					#last = object_point2.collider.name
 				else:
 					previewCursor()
 					place.set_visible(false)
 					no_sign.set_visible(true)
+					#last = object_point2.collider.name
 			1:
 				match(object_point2.collider.name):
 					previous_object:
@@ -205,19 +204,63 @@ func _process(delta):
 						place.set_visible(false)
 						no_sign.set_visible(true)
 					_:
-						if("object_monitor" in object_point2.collider.name):
-							if selected.fe0 == null:
-								previewCursor()
-								place.set_visible(true)
-								no_sign.set_visible(false)
-							else:
-								previewCursor()
-								place.set_visible(false)
-								no_sign.set_visible(true)
+						if("object" in object_point2.collider.name):
+							previewCursor()
+							place.set_visible(true)
+							no_sign.set_visible(false)
+							#last = object_point2.collider.name
 						else:
 							previewCursor()
 							place.set_visible(false)
 							no_sign.set_visible(true)
+							#last = object_point2.collider.name
+#		match(object_number):
+#			0:
+#				for D in device:
+#					if(last == object_point2.collider.name):
+#						break
+#					elif(D in object_point2.collider.name):
+#						if selected.rj:
+#							previewCursor()
+#							place.set_visible(true)
+#							no_sign.set_visible(false)
+#							last = object_point2.collider.name
+#						else:
+#							previewCursor()
+#							place.set_visible(false)
+#							no_sign.set_visible(true)
+#							last = object_point2.collider.name
+#					else:
+#						previewCursor()
+#						place.set_visible(false)
+#						no_sign.set_visible(true)
+#						last = object_point2.collider.name
+#			1:
+#				match(object_point2.collider.name):
+#					previous_object:
+#						previewCursor()
+#						place.set_visible(false)
+#						no_sign.set_visible(true)
+#					_:
+#						for D in device:
+#							if(last == object_point2.collider.name):
+#								break
+#							elif(D in object_point2.collider.name):
+#								if selected.rj:
+#									previewCursor()
+#									place.set_visible(true)
+#									no_sign.set_visible(false)
+#									last = object_point2.collider.name
+#								else:
+#									previewCursor()
+#									place.set_visible(false)
+#									no_sign.set_visible(true)
+#									last = object_point2.collider.name
+#							else:
+#								previewCursor()
+#								place.set_visible(false)
+#								no_sign.set_visible(true)
+#								last = object_point2.collider.name
 					
 	
 	if velocity.x == 0 and velocity.z == 0:
@@ -277,48 +320,83 @@ func _input( event ):
 	cursor_pos.x = stepify(cursor_pos.x, 2)
 	cursor_pos.z = stepify(cursor_pos.z, 2)
 	object_point = WhatObject()
-	if Input.is_action_just_pressed("cam_test"):
-		match cam:
-			0:
-				CameraTransition.transition_camera3D(Global.playerCamera, Global.playerCameraTop, 1)
-				cam = 1
-			1:
-				CameraTransition.transition_camera3D(Global.playerCameraTop, Global.playerCamera, 1)
-				cam = 0
+#	if Input.is_action_just_pressed("cam_test"):
+#		match cam:
+#			0:
+#				CameraTransition.transition_camera3D(Global.playerCamera, Global.playerCameraTop, 1)
+#				cam = 1
+#			1:
+#				CameraTransition.transition_camera3D(Global.playerCameraTop, Global.playerCamera, 1)
+#				cam = 0
 	if event.is_action_pressed("interact") and current_interactable:
 		pivot.set_visible(false)
 		current_interactable.interact()
 		
-	if mode == "cable":
+	if event.is_action_pressed("cam_test"):
+		_on_cable_cancel( cabletype )
+	
+	if mode == "cable" and !Global.is_usingJoystick:
 		print(cabletype)
 		if cabletype == "Console_Cable":
-			pass
-		elif cabletype == "crossover" or cabletype == "straight_through":
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
 				pass
 			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
-				if ("object_monitor" in object_point.collider.name):
-					var selected = current_level.get_node(object_point.collider.name)
-					match object_number:
-						0:
-							print(selected.test)
-							if selected.fe0 == null:
-								print(selected.device_name)
-								previous_object = object_point.collider.name
-								LevelGlobal.object_hold = selected
-								object_number = 1
-								print("Select a different device")
-						1:
-							if (LevelGlobal.object_hold == selected):
-								print("Select a different device")
-							else:
-								if selected.fe0 == null:
-									selected._set_connector(LevelGlobal.object_hold, cabletype)
-									LevelGlobal.object_hold._set_connector(selected, cabletype)
-									object_number = 0
-									_on_cable_connected()
-		
+				for D in device:
+					if (D in object_point.collider.name ):
+						_connect_cableConsole()
+		elif cabletype == "cross_over" or cabletype == "straight_through":
+			if event is InputEventScreenTouch and OS.get_name() == "Android":
+				pass
+			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
+				for D in device:
+					if (D in object_point.collider.name ):
+						_connect_cableRJ()
 							
+							
+func _connect_cableConsole():
+	var selected = current_level.get_node(object_point.collider.name)
+	selected.checkports()
+	match object_number:
+		0:
+			#print(selected.test)
+			if selected.console:
+				print(selected.device_name)
+				previous_object = object_point.collider.name
+				LevelGlobal.object_hold = selected
+				object_number = 1
+				print("Select a different device")
+		1:
+			if (LevelGlobal.object_hold == selected):
+				print("Select a different device")
+			else:
+				if selected.console:
+					selected._set_connectorConsole(LevelGlobal.object_hold, cabletype)
+					LevelGlobal.object_hold._set_connectorConsole(selected, cabletype)
+					object_number = 0
+					_on_cable_connected()
+
+func _connect_cableRJ():
+	var selected = current_level.get_node(object_point.collider.name)
+	selected.checkports()
+	match object_number:
+		0:
+			#print(selected.test)
+			if selected.rj:
+				#print(selected.device_name)
+				previous_object = object_point.collider.name
+				LevelGlobal.object_hold = selected
+				object_number = 1
+				print("Select a different device")
+		1:
+			if (LevelGlobal.object_hold == selected):
+				print("Select a different device")
+			else:
+				if selected.rj:
+					selected._set_connector(LevelGlobal.object_hold, cabletype)
+					LevelGlobal.object_hold._set_connector(selected, cabletype)
+					object_number = 0
+					_on_cable_connected()
+
 
 func _on_InteractionArea_area_exited(area):
 	if current_interactable == area:
@@ -330,6 +408,13 @@ func _on_InteractionArea_area_exited(area):
 
 func _on_cable_used( type ):
 	cabletype = type
+	match(type):
+		"straight_through":
+			device = ["object_monitor", "Router"]
+		"crossover":
+			device = ["object_monitor", "Router"]
+		"Console_Cable":
+			device = ["object_monitor", "Router"]
 	label.modulate = Color8(255,255,255,0)
 	yield(CameraTransition.transition_camera3D(camera_normal, camera_top, 1), "completed")
 	camera.c_rot = Vector3(0,0,0)
@@ -339,11 +424,26 @@ func _on_cable_used( type ):
 	SignalManager.emit_signal("cable_used")
 	LevelGlobal.on_cable_mode = true
 	
+func _on_cable_cancel( type ):
+	label.modulate = Color8(255,255,255,255)
+	mode = "normal"
+	preview_parent.set_visible(false)
+	LevelGlobal.on_cable_mode = false
+	current_level.mobile_controls.cable_ui.set_visible(false)
+	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
+	var produce = [{
+		"id": type, 
+		"quantity": 1
+	}]
+	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
+	SignalManager.emit_signal("cable_done")
+
 func _on_cable_connected():
 	label.modulate = Color8(255,255,255,255)
 	mode = "normal"
 	preview_parent.set_visible(false)
 	LevelGlobal.on_cable_mode = false
+	current_level.mobile_controls.cable_ui.set_visible(false)
 	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
 	SignalManager.emit_signal("cable_done")
 
