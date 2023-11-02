@@ -17,6 +17,7 @@ export(NodePath) onready var button_container = get_node(button_container) as Gr
 export(NodePath) onready var explanation_label = get_node(explanation_label) as Label
 export(NodePath) onready var logo_rect = get_node(logo_rect) as TextureRect
 export(NodePath) onready var popup_control = get_node(popup_control) as Control
+export(NodePath) onready var background = get_node(background) as NinePatchRect
 ##
 
 # Gameover popup paths
@@ -63,7 +64,9 @@ func _ready():
 	var clue = json_data[i]["question"]
 	answer = json_data[i]["answer"]
 	clue_label.text = clue
-	return answer
+	var picture = json_data[i]["picture"]
+	background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
+	return answer	
 	
 	pass # Replace with function body.
 
@@ -90,6 +93,8 @@ func _on_lan_button_pressed():
 		i += 1
 		var clue = json_data[i]["question"]
 		answer = json_data[i]["answer"]
+		var picture = json_data[i]["picture"]
+		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
 		clue_label.text = clue
 		return answer
 	i+=1
@@ -117,6 +122,8 @@ func _on_man_button_pressed():
 		var clue = json_data[i]["question"]
 		answer = json_data[i]["answer"]
 		clue_label.text = clue
+		var picture = json_data[i]["picture"]
+		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
 		return answer
 	i+=1
 	
@@ -143,6 +150,8 @@ func _on_wan_button_pressed():
 		var clue = json_data[i]["question"]
 		answer = json_data[i]["answer"]
 		clue_label.text = clue
+		var picture = json_data[i]["picture"]
+		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
 		return answer
 	i+=1
 	

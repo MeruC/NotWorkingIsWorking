@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://resources/soundtrack/level/button_click.wav" type="AudioStream" id=10]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
 [ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=12]
+[ext_resource path="res://resources/offline_mode_Asset/level_3/6.png" type="Texture" id=13]
+[ext_resource path="res://resources/Game buttons/square.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -792,11 +794,18 @@ anims/animation = SubResource( 4 )
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
 
+[node name="bg" type="NinePatchRect" parent="."]
+margin_left = -128.0
+margin_top = -37.0
+margin_right = 2056.0
+margin_bottom = 1147.0
+texture = ExtResource( 13 )
+
 [node name="score_board" type="Label" parent="."]
-margin_left = 51.0
-margin_top = 31.0
-margin_right = 613.0
-margin_bottom = 99.0
+margin_left = 686.0
+margin_top = 35.0
+margin_right = 1248.0
+margin_bottom = 103.0
 rect_min_size = Vector2( 300, 50 )
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -804,10 +813,10 @@ text = "Score:   /5"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
-margin_left = 350.0
-margin_top = 32.0
-margin_right = 390.0
-margin_bottom = 171.0
+margin_left = 985.0
+margin_top = 36.0
+margin_right = 1025.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 40, 50 )
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -815,34 +824,34 @@ text = "0"
 autowrap = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 325.0
-margin_top = 20.0
-margin_right = 1475.0
-margin_bottom = 628.0
+margin_left = 412.0
+margin_top = 88.0
+margin_right = 1385.0
+margin_bottom = 573.0
 texture = ExtResource( 12 )
 
 [node name="title" type="Label" parent="."]
 margin_left = 843.0
-margin_top = 108.0
+margin_top = 149.0
 margin_right = 943.0
-margin_bottom = 163.0
+margin_bottom = 204.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
 
 [node name="clue" type="Label" parent="."]
-margin_left = 433.0
-margin_top = 199.0
-margin_right = 1360.0
-margin_bottom = 461.0
-rect_min_size = Vector2( 800, 150 )
+margin_left = 496.0
+margin_top = 211.0
+margin_right = 1296.0
+margin_bottom = 456.0
+rect_min_size = Vector2( 800, 140 )
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
 autowrap = true
 
 [node name="choices" parent="." instance=ExtResource( 2 )]
-position = Vector2( -52, 93 )
+position = Vector2( -48, 99 )
 script = null
 
 [node name="image_holder" parent="choices/choices_container/choice1" index="0"]
@@ -869,6 +878,20 @@ margin_top = 971.0
 margin_right = 1912.0
 margin_bottom = 1071.0
 theme = ExtResource( 11 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+margin_left = -4.0
+margin_top = 425.0
+margin_right = 786.0
+margin_bottom = 1171.0
+texture = ExtResource( 14 )
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+margin_left = 1079.0
+margin_top = 417.0
+margin_right = 1869.0
+margin_bottom = 1163.0
+texture = ExtResource( 14 )
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]
