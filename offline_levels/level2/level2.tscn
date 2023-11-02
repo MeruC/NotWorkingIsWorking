@@ -734,7 +734,6 @@ anchor_bottom = 1.0
 texture = ExtResource( 10 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 8 )]
 
@@ -795,6 +794,12 @@ anims/RESET = SubResource( 3 )
 anims/animation = SubResource( 4 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
+visible = false
+
+[node name="level3" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="1"]
+visible = false
+
+[node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
 visible = false
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
@@ -1226,10 +1231,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1807.0
-margin_top = 969.0
-margin_right = 1907.0
-margin_bottom = 1069.0
+margin_left = 845.0
+margin_top = 423.0
+margin_right = 945.0
+margin_bottom = 523.0
 theme = ExtResource( 15 )
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]

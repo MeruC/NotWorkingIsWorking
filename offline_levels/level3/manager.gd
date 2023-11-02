@@ -147,7 +147,7 @@ func _on_choice1_pressed():
 			audioplayer.play()
 			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-		if score <= 3:
+		if score <= 3 and score > 0:
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 			audioplayer.play()
 			gameover_anim.play("lose")

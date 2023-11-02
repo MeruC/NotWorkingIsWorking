@@ -12,6 +12,7 @@ export(NodePath) onready var lan_button = get_node(lan_button) as Button
 export(NodePath) onready var man_button = get_node(man_button) as Button
 export(NodePath) onready var wan_button = get_node(wan_button) as Button
 export(NodePath) onready var button_container = get_node(button_container) as GridContainer
+export(NodePath) onready var question_no = get_node(question_no) as Label
 
 # Explanation popup paths
 export(NodePath) onready var explanation_label = get_node(explanation_label) as Label
@@ -45,7 +46,7 @@ export(Resource) var settings_data
 
 var home_scene = "res://main_screen/main_screen.tscn"
 var level4_scene = "res://offline_levels/level4/level4.tscn"
-
+var count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_player.play("level4_tutorial")
@@ -67,6 +68,8 @@ func _ready():
 	clue_label.text = clue
 	var picture = json_data[i]["picture"]
 	background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
+	count += 1
+	question_no.text = str(count)
 	return answer	
 	
 	pass # Replace with function body.
@@ -97,6 +100,8 @@ func _on_lan_button_pressed():
 		var picture = json_data[i]["picture"]
 		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
 		clue_label.text = clue
+		count += 1
+		question_no.text = str(count)
 		return answer
 	i+=1
 	
@@ -125,6 +130,8 @@ func _on_man_button_pressed():
 		clue_label.text = clue
 		var picture = json_data[i]["picture"]
 		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
+		count += 1
+		question_no.text = str(count)
 		return answer
 	i+=1
 	
@@ -153,6 +160,8 @@ func _on_wan_button_pressed():
 		clue_label.text = clue
 		var picture = json_data[i]["picture"]
 		background.texture = load("res://resources/offline_mode_Asset/level_3/"+picture)
+		count += 1
+		question_no.text = str(count)
 		return answer
 	i+=1
 	

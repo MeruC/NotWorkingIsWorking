@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=2]
 [ext_resource path="res://offline_levels/level4/manager.gd" type="Script" id=3]
 [ext_resource path="res://offline_levels/level4/popup.tscn" type="PackedScene" id=4]
@@ -712,6 +713,7 @@ lan_button = NodePath("button_container/lan_button")
 man_button = NodePath("button_container/man_button")
 wan_button = NodePath("button_container/wan_button")
 button_container = NodePath("button_container")
+question_no = NodePath("number")
 explanation_label = NodePath("popup_layer/popup/main_popup/explaination")
 logo_rect = NodePath("popup_layer/popup/main_popup/logo")
 popup_control = NodePath("popup_layer/popup")
@@ -816,11 +818,28 @@ margin_right = 1860.0
 margin_bottom = 1061.0
 texture = ExtResource( 13 )
 
+[node name="Question" type="Label" parent="."]
+margin_left = 630.0
+margin_top = 85.0
+margin_right = 1069.0
+margin_bottom = 153.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Question #"
+
+[node name="number" type="Label" parent="."]
+margin_left = 1089.0
+margin_top = 83.0
+margin_right = 1129.0
+margin_bottom = 151.0
+theme = ExtResource( 1 )
+text = "0"
+
 [node name="score_board" type="Label" parent="."]
-margin_left = 751.0
-margin_top = 115.0
-margin_right = 1051.0
-margin_bottom = 178.0
+margin_left = 29.0
+margin_top = 157.0
+margin_right = 329.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 300, 50 )
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -828,10 +847,10 @@ text = "Score:     / 5"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
-margin_left = 890.0
-margin_top = 116.0
-margin_right = 930.0
-margin_bottom = 171.0
+margin_left = 168.0
+margin_top = 158.0
+margin_right = 208.0
+margin_bottom = 213.0
 rect_min_size = Vector2( 40, 50 )
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

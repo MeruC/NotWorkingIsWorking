@@ -732,8 +732,10 @@ instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
 visible = true

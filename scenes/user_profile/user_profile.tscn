@@ -1267,7 +1267,7 @@ margin_top = -19.0
 margin_right = 360.0
 margin_bottom = 130.0
 theme = SubResource( 98 )
-text = "Cloud Storage"
+text = "Cloud Save"
 
 [node name="ViewportContainer" type="ViewportContainer" parent="user_profile"]
 margin_left = 250.0

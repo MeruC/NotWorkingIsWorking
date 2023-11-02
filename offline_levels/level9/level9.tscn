@@ -840,5 +840,7 @@ script = SubResource( 60 )
 [editable path="environment"]
 [editable path="inventory"]
 [editable path="object_monitor"]
+[editable path="object_monitor/ui/disconnect_confirm"]
 [editable path="object_monitor153"]
+[editable path="object_monitor153/ui/disconnect_confirm"]
 [editable path="popups/game_over"]
