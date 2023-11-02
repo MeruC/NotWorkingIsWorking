@@ -17,6 +17,7 @@ func _ready():
 			add_child(player.instance())
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
+	
 
 func _on_pc_opened():
 	mobile_controls = get_node("mobile_controls")
