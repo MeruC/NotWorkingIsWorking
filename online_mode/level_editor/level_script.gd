@@ -3,6 +3,7 @@ extends Spatial
 var player
 onready var mobile_controls = $"%mobile_controls"
 onready var inventory = $"%inventory"
+onready var tasks_ui = $"%tasks_ui"
 onready var task_manager = $tasks_ui/task_manager
 
 

@@ -323,11 +323,13 @@ onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
 onready var root_scene = get_tree().get_current_scene()
 
 func _ready():
-	for object in root_scene.get_children():
-		if object is StaticBody and object.get(\"connected_to\") != null:
-			object.connect(\"cable_connected\", self, \"on_cable_connected\")
-			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
+	pass
+	#DO NOT UNCOMMENT THIS, WHATEVER THIS IS IT'S BREAKING OTHER LEVELS, FIND ANOTHER WAY TO DO THIS
+#	for object in root_scene.get_children():
+#		if object is StaticBody and object.get(\"connected_to\") != null:
+#			object.connect(\"cable_connected\", self, \"on_cable_connected\")
+#			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
+#			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
 # To check if both pc is connected with each other
 func check_connection():
 	pass
@@ -970,6 +972,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="tasks_ui" type="CanvasLayer" parent="level"]
+unique_name_in_owner = true
 visible = false
 
 [node name="task_manager" type="Panel" parent="level/tasks_ui"]

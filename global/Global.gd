@@ -21,6 +21,8 @@ var main_screen = "res://scenes/main_screen/main_screen.tscn"
 
 var w = 10
 var d = 10
+var grid = preload("res://resources/Materials/grid.tres")
+var grid_out = preload("res://resources/Materials/grid_out.tres")
 
 var curOS = OS.get_name()
 

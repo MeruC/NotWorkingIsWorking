@@ -14,7 +14,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
-export( NodePath ) onready var ui_container = get_node(ui_container) as Control
+onready var ui_container = $ui_container
 onready var crafting_menu = $\"%crafting_menu\"
 "
 
@@ -27,7 +27,6 @@ font_data = ExtResource( 4 )
 [node name="inventory" type="CanvasLayer"]
 layer = 10
 script = SubResource( 1 )
-ui_container = NodePath("ui_container")
 
 [node name="ui_container" type="Control" parent="."]
 anchor_right = 1.0

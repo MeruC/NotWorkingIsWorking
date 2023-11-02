@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=8]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=9]
 [ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=10]
+[ext_resource path="res://resources/Sprites/grid.png" type="Texture" id=11]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -20,6 +21,13 @@ albedo_color = Color( 1, 1, 1, 0 )
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=17]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 11 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_offset = Vector3( 0.5, 0, 0.5 )
+uv1_triplanar = true
 
 [sub_resource type="GDScript" id=12]
 script/source = "extends CanvasLayer
@@ -103,7 +111,7 @@ use_collision = true
 width = 138.0
 height = 8.0
 depth = 138.0
-material = ExtResource( 8 )
+material = SubResource( 17 )
 
 [node name="playarea" type="CSGBox" parent="wall"]
 unique_name_in_owner = true
@@ -117,6 +125,7 @@ material = ExtResource( 8 )
 [node name="inventory" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 script = SubResource( 12 )
+ui_container = NodePath("")
 
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true

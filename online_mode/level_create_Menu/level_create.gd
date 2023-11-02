@@ -3,6 +3,7 @@ extends Control
 export( NodePath ) onready var width = get_node(width) as SpinBox
 export( NodePath ) onready var depth = get_node(depth) as SpinBox
 export( NodePath ) onready var playarea = get_node(playarea) as CSGBox
+export( NodePath ) onready var wall = get_node(wall) as CSGBox
 export( NodePath ) onready var camera = get_node(camera) as Camera
 
 var quiz_subMenu = "res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn"
@@ -11,6 +12,8 @@ var level_editor = "res://online_mode/level_editor/level_editor.tscn"
 
 var cur_w = 10
 var cur_d = 10
+var grid = preload("res://resources/Materials/grid.tres")
+var grid_out = preload("res://resources/Materials/grid_out.tres")
 
 var menu = 0
 
@@ -40,6 +43,8 @@ func _ready():
 func _on_create_pressed():
 	Global.w = cur_w
 	Global.d = cur_d
+	Global.grid = grid
+	Global.grid_out = grid_out
 	Load.load_scene(self, level_editor)
 
 
@@ -103,3 +108,29 @@ func _on_back2menu_pressed():
 func _on_play_pressed():
 	Load.load_scene(self,join_scene)
 	pass # Replace with function body.
+
+var gray = preload("res://resources/Materials/grid.tres")
+var gray_out = preload("res://resources/Materials/grid_out.tres")
+var blue = preload("res://resources/Materials/blue_grid.tres")
+var blue_out = preload("res://resources/Materials/blue_grid_out.tres")
+var orange = preload("res://resources/Materials/orange_grid.tres")
+var orange_out = preload("res://resources/Materials/orange_grid_out.tres")
+
+func _on_gray_pressed():
+	playarea.set_material(gray)
+	wall.set_material(gray_out)
+	grid = gray
+	grid_out = gray_out
+	
+
+func _on_blue_pressed():
+	playarea.set_material(blue)
+	wall.set_material(blue_out)
+	grid = blue
+	grid_out = blue_out
+
+func _on_orange_pressed():
+	playarea.set_material(orange)
+	wall.set_material(orange_out)
+	grid = orange
+	grid_out = orange_out
