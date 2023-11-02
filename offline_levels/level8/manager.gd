@@ -162,7 +162,7 @@ func calculate_score():
 		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = true
 		
-	if score<=20:
+	if score<=20 and score>0:
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		gameover_anim.play("lose")
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
@@ -207,7 +207,7 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		gameover_retry.disabled = true
 		gameover_next.disabled = true
-		if score >= 30:
+		if score >= 30 and score<=399:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			settings_data.gold_coins = new_coins
@@ -223,7 +223,7 @@ func score_validation():
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
 	else:
-		if score >= 30:
+		if score >= 30 and score>0:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			var skills = settings_data.net1_skills
