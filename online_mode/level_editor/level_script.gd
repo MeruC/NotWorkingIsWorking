@@ -43,6 +43,7 @@ func _ready():
 			Global.player = get_node("Player")
 			Global.player.current_level = self
 		elif setting_data.gender == "female":
+			print("Hello")
 			player = preload("res://global/player_girl/player-girl.tscn")
 			add_child(player.instance())
 			Global.playerCamera = get_node("Player/Camera/Camera")

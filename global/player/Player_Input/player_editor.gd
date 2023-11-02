@@ -59,6 +59,7 @@ func _ready():
 	print("Current Level: " + str(current_level))
 	
 	if get_parent().name != "editor":
+		print("hello")
 		if settings_data.gender == "female":
 			
 			if settings_data.costume == "girl_pants":

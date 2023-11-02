@@ -13,7 +13,7 @@
 [ext_resource path="res://resources/Models/Player/Walk/6.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=12]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
-[ext_resource path="res://global/Player/player.tres" type="Material" id=14]
+[ext_resource path="res://global/player/player.tres" type="Material" id=14]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_19.png" type="Texture" id=15]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_18.png" type="Texture" id=16]
 
