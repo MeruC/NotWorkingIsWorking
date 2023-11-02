@@ -15,7 +15,7 @@ var player
 func _ready():
 	Global.playerCanMove = false
 	if setting_data.gender == "male":
-		player = preload("res://global/player/player.tscn")
+		player = preload("res://global/Player/player.tscn")
 		add_child(player.instance())
 		Global.playerCamera = get_node("Player/Camera/Camera")
 		#Global.playerCamera.current = true
