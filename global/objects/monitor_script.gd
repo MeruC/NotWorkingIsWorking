@@ -10,6 +10,7 @@ var isSaved = false
 var test = "test"
 var rj = true
 var console = true
+var main_scene
 
 signal cable_connected()
 
@@ -48,6 +49,9 @@ onready var commands_container = $ui/cmd_app/cmd_screen/main_panel/ScrollContain
 
 onready var terminal_app = $ui/terminal_app
 
+onready var disconnect_confirm = $ui/disconnect_confirm
+onready var disconnectTo_label = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/device_name
+
 func _process(delta):
 	pass
 	
@@ -62,6 +66,8 @@ func checkports():
 		rj = false
 
 func _ready():
+	main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1).get_children()
+	
 	if device_name.empty():
 		device_name = self.name
 	name_line_edit.text = device_name
@@ -69,6 +75,7 @@ func _ready():
 	ipv4Subnet_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Subnet_lineEdit])
 	ipv4Gateway_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Gateway_lineEdit])
 	ipv4Dns_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Dns_lineEdit])
+	disconnect_confirm.connect("confirm", self, "_on_confirm_pressed")
 	
 func _on_line_edit_text_changed(line_edit, new_text):
 	isSaved = false
@@ -81,7 +88,7 @@ func _on_name_lineEdit_text_changed(new_text):
 func _set_connector( connection, type ):
 	if fe0 == null:
 		fe0 = connection
-		fe0_type = type
+		fe0_type = str(type)
 		label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
 		#emit_signal("cable_connected")
@@ -89,6 +96,9 @@ func _set_connector( connection, type ):
 		pass
 #	elif other_end == null:
 #		other_end = connection
+
+func has_property(obj, property_name):
+	return typeof(obj) == TYPE_OBJECT && property_name in obj
 
 func _set_connectorConsole( connection, type ):
 	if console_port0 == null:
@@ -180,3 +190,34 @@ func _on_terminal_button_pressed():
 
 func _on_terminal_close_button_pressed():
 	terminal_app.visible = false
+
+# CPU Scripts
+
+func _on_disconnect_button_pressed():
+	disconnectTo_label.text = fe0
+	disconnect_confirm.visible = true
+
+func _on_confirm_pressed():
+	pass
+	#for child in main_scene:
+	#	if child is StaticBody:
+	#		if has_property(child, "fe0") and child.fe0 == device_name:
+	#			child.fe0 = null
+	#		elif has_property(child, "ge0") and child.ge0 == device_name:
+	#			child.ge0 = null
+	#		elif has_property(child, "ge1") and child.ge1 == device_name:
+	#			child.ge1 = null
+	#		elif has_property(child, "ge2") and child.ge2 == device_name:
+	#			child.ge2 = null
+	#		return_cable()
+	#		fe0 = null
+	#		fe0_type = null
+##
+
+func return_cable():
+	var produce = [{
+		"id":fe0_type,
+		"quantity": 1
+	}]
+	InventoryManager.add_items(ItemManager.get_items(produce), "player")
+	SaveManager.save_game()
