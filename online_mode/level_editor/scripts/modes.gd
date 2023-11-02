@@ -89,19 +89,21 @@ func _on_play_pressed():
 		print(Global.playerInteractLbl)
 		#Changing Camera
 		CameraTransition.transition_camera3D(main.get_node("Editor_Camera/Camera"), main.get_node("Player/Camera/Camera"), 1.5)
+		#yield(get_tree().create_timer(1),"timeout")
 		#Editor Mode
 		last_mode = Global.editor_mode
 		Global.editor_mode = "play"
 		
 		#Changing UI
-		other_ui.set_visible(true)
+		previews.set_visible(false)
+		no_sign.set_visible(false)
 		ui.set_visible(false)
+		joystick_editor.use_input_actions = false
+		yield(get_tree().create_timer(1.5),"timeout")
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		joystick.use_input_actions = true
-		joystick_editor.use_input_actions = false
-		previews.set_visible(false)
-		no_sign.set_visible(false)
+		other_ui.set_visible(true)
 	elif(Global.editor_mode == "play"):
 		
 		#Changing Camera
@@ -115,10 +117,11 @@ func _on_play_pressed():
 		
 		#Changing UI
 		other_ui.set_visible(false)
-		ui.set_visible(true)
 		inventory.set_visible(false)
 		mobile_controls.set_visible(false)
 		joystick.use_input_actions = false
+		yield(get_tree().create_timer(1.5),"timeout")
+		ui.set_visible(true)
 		joystick_editor.use_input_actions = true
 		previews.set_visible(true)
 		no_sign.set_visible(true)
