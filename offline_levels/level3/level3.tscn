@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/soundtrack/level/button_click.wav" type="AudioStream" id=10]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
-[ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=12]
-[ext_resource path="res://resources/offline_mode_Asset/level_3/6.png" type="Texture" id=13]
-[ext_resource path="res://resources/Game buttons/square.png" type="Texture" id=14]
+[ext_resource path="res://resources/offline_mode_Asset/level_4/13.png" type="Texture" id=12]
+[ext_resource path="res://resources/offline_mode_Asset/level_4/15.png" type="Texture" id=13]
+[ext_resource path="res://resources/offline_mode_Asset/level_4/14.png" type="Texture" id=14]
+[ext_resource path="res://resources/offline_mode_Asset/level_4/16.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -732,10 +733,8 @@ instructions_popup = NodePath("popup_layer/instructions")
 instructions_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 6 )]
-visible = false
 
 [node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
 visible = true
@@ -799,14 +798,24 @@ visible = false
 [node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
 visible = false
 
+[node name="level5" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="3"]
+visible = false
+
+[node name="level7" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="4"]
+visible = false
+
+[node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
+visible = false
+
 [node name="bg" type="NinePatchRect" parent="."]
-margin_left = -120.0
-margin_top = -37.0
-margin_right = 2056.0
-margin_bottom = 1115.0
-texture = ExtResource( 13 )
+margin_left = -3.0
+margin_top = -2.0
+margin_right = 1920.0
+margin_bottom = 1083.0
+texture = ExtResource( 12 )
 
 [node name="score_board" type="Label" parent="."]
+visible = false
 margin_left = 686.0
 margin_top = 35.0
 margin_right = 1248.0
@@ -818,6 +827,7 @@ text = "Score:   /5"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
+visible = false
 margin_left = 985.0
 margin_top = 36.0
 margin_right = 1025.0
@@ -829,35 +839,50 @@ text = "0"
 autowrap = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 412.0
-margin_top = 88.0
-margin_right = 1385.0
-margin_bottom = 573.0
-texture = ExtResource( 12 )
-
-[node name="title" type="Label" parent="."]
-margin_left = 843.0
-margin_top = 149.0
-margin_right = 943.0
-margin_bottom = 204.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "CLUE"
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 458.0
+margin_top = 57.0
+margin_right = 1474.0
+margin_bottom = 389.0
+texture = ExtResource( 13 )
 
 [node name="clue" type="Label" parent="."]
-margin_left = 496.0
-margin_top = 211.0
-margin_right = 1296.0
-margin_bottom = 456.0
+margin_left = 513.0
+margin_top = 102.0
+margin_right = 1430.0
+margin_bottom = 347.0
 rect_min_size = Vector2( 800, 140 )
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
 autowrap = true
 
+[node name="choice1_bg" type="NinePatchRect" parent="."]
+margin_left = 343.0
+margin_top = 484.0
+margin_right = 646.0
+margin_bottom = 774.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 14 )
+
+[node name="choice2_bg" type="NinePatchRect" parent="."]
+margin_left = 1156.0
+margin_top = 486.0
+margin_right = 1459.0
+margin_bottom = 776.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 14 )
+
 [node name="choices" parent="." instance=ExtResource( 2 )]
-position = Vector2( -48, 99 )
+position = Vector2( 25, 99 )
 script = null
+
+[node name="choices_container" parent="choices" index="0"]
+margin_left = 351.0
+margin_top = 418.0
+margin_right = 1151.0
+margin_bottom = 668.0
 
 [node name="image_holder" parent="choices/choices_container/choice1" index="0"]
 anchor_left = -0.024
@@ -871,6 +896,10 @@ margin_top = -3.0
 margin_right = 253.0
 margin_bottom = 252.0
 
+[node name="Sprite" type="Sprite" parent="choices"]
+position = Vector2( 950, 605 )
+texture = ExtResource( 15 )
+
 [node name="animation_player" parent="." instance=ExtResource( 9 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -883,20 +912,6 @@ margin_top = 971.0
 margin_right = 1912.0
 margin_bottom = 1071.0
 theme = ExtResource( 11 )
-
-[node name="NinePatchRect2" type="NinePatchRect" parent="."]
-margin_left = -4.0
-margin_top = 419.0
-margin_right = 786.0
-margin_bottom = 1165.0
-texture = ExtResource( 14 )
-
-[node name="NinePatchRect3" type="NinePatchRect" parent="."]
-margin_left = 1079.0
-margin_top = 417.0
-margin_right = 1869.0
-margin_bottom = 1163.0
-texture = ExtResource( 14 )
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]

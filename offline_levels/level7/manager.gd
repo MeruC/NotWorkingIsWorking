@@ -16,6 +16,8 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
+
 ## result
 export(NodePath) onready var result_anim = get_node(result_anim) as AnimationPlayer
 export(NodePath) onready var mascot = get_node(mascot) as Sprite
@@ -35,6 +37,7 @@ var current_number = 1
 var score = 0
 
 func _ready():
+	tutorial_player.play("level7_tutorial")
 	display_image()
 
 func display_image():

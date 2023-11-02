@@ -804,6 +804,15 @@ visible = false
 [node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
 position = Vector2( 959, 849 )
 
+[node name="level5" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="3"]
+visible = false
+
+[node name="level7" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="4"]
+visible = false
+
+[node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
+visible = false
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = -124.0
 margin_top = -34.0

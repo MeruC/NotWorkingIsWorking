@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.gd" type="Script" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=4]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=5]
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=6]
-[ext_resource path="res://offline_levels/level3/tutorial.png" type="Texture" id=7]
+[ext_resource path="res://resources/offline_mode_Asset/level_3/tutorial.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/level4/level4_discussion/level4_tutorial.png" type="Texture" id=8]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/tutorial.png" type="Texture" id=9]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/tutorial.png" type="Texture" id=10]
+[ext_resource path="res://resources/offline_mode_Asset/level_8/tutorial.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
@@ -70,6 +73,57 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "level5_tutorial"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../level5:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "level7_tutorial"
+length = 0.95
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../level7:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "level8_tutorial"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../level8:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
 [node name="instructions" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,6 +131,9 @@ script = ExtResource( 2 )
 sprite = NodePath("main_popup/AnimationPlayer/Sprite")
 level3 = NodePath("main_popup/AnimationPlayer/level3")
 level4 = NodePath("main_popup/AnimationPlayer/level4")
+level5 = NodePath("main_popup/AnimationPlayer/level5")
+level7 = NodePath("main_popup/AnimationPlayer/level7")
+level8 = NodePath("main_popup/AnimationPlayer/level8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -150,6 +207,9 @@ root_node = NodePath("Sprite")
 anims/animation = SubResource( 3 )
 anims/level3_tutorial = SubResource( 6 )
 anims/level4_tutorial = SubResource( 7 )
+anims/level5_tutorial = SubResource( 8 )
+anims/level7_tutorial = SubResource( 9 )
+anims/level8_tutorial = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="main_popup/AnimationPlayer"]
 position = Vector2( 931, 810 )
@@ -158,10 +218,11 @@ texture = ExtResource( 3 )
 hframes = 10
 
 [node name="level3" type="Sprite" parent="main_popup/AnimationPlayer"]
-position = Vector2( 922, 806 )
-scale = Vector2( 0.649834, 0.740601 )
+position = Vector2( 959, 823 )
+scale = Vector2( 0.716135, 0.859128 )
 texture = ExtResource( 7 )
-hframes = 5
+hframes = 4
+frame = 2
 
 [node name="level4" type="Sprite" parent="main_popup/AnimationPlayer"]
 position = Vector2( 943, 843 )
@@ -169,6 +230,25 @@ scale = Vector2( 1.07339, 1.22404 )
 texture = ExtResource( 8 )
 hframes = 5
 frame = 4
+
+[node name="level5" type="Sprite" parent="main_popup/AnimationPlayer"]
+position = Vector2( 962.875, 839.5 )
+scale = Vector2( 1.38098, 1 )
+texture = ExtResource( 9 )
+hframes = 5
+
+[node name="level7" type="Sprite" parent="main_popup/AnimationPlayer"]
+position = Vector2( 961, 828 )
+scale = Vector2( 1.38716, 1.37347 )
+texture = ExtResource( 10 )
+hframes = 5
+
+[node name="level8" type="Sprite" parent="main_popup/AnimationPlayer"]
+position = Vector2( 959, 818 )
+scale = Vector2( 2.09154, 1.77778 )
+texture = ExtResource( 11 )
+hframes = 6
+frame = 3
 
 [node name="tap" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0.0980392 )

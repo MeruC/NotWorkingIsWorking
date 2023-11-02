@@ -19,13 +19,14 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 export(Resource) var settings_data
 
 var score = 0
 var question_number = 0
 
 func _ready():
-	pass
+	tutorial_player.play("level8_tutorial")
 
 func _process(delta):
 	display_time()
@@ -250,3 +251,7 @@ func score_validation():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
+
+
+func _on_next_pressed():
+	Load.load_scene(self,"res://global/chapters/chapter1.tscn")

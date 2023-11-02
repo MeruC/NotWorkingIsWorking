@@ -129,11 +129,13 @@ func _on_choice1_pressed():
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
 		if score == 4:
+			game_over_popup.visible = true
 			gameover_anim.play("win")
 			audioplayer.play()
 			celebration.visible = true
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		if score == 5:
+			game_over_popup.visible = true
 			gameover_anim.play("win")
 			audioplayer.play()
 			celebration.visible = true
@@ -143,16 +145,17 @@ func _on_choice1_pressed():
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
 		if score == 0:
+			game_over_popup.visible = true
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 			audioplayer.play()
 			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		if score <= 3 and score > 0:
+			game_over_popup.visible = true
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 			audioplayer.play()
 			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-	game_over_popup.visible = true
 	
 	clue_label.queue_free()
 	choices.queue_free()
@@ -220,7 +223,7 @@ func _on_choice2_pressed():
 		animationplayer.play("lose")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
-		if score <= 3:
+		if score <= 3 and score>0:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		elif score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
