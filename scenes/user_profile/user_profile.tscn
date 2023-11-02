@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=12]
 [ext_resource path="res://resources/font/user_profile_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://scenes/user_profile/podium.png" type="Texture" id=14]
-[ext_resource path="res://resources/Themes/levelresult_theme.tres" type="Theme" id=15]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=15]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
@@ -34,6 +34,9 @@
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=32]
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=34]
+[ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=35]
+[ext_resource path="res://resources/Game buttons/result_button3.png" type="Texture" id=36]
+[ext_resource path="res://resources/Game buttons/result_button2.png" type="Texture" id=37]
 
 [sub_resource type="DynamicFont" id=23]
 size = 30
@@ -87,6 +90,44 @@ font_data = ExtResource( 25 )
 [sub_resource type="DynamicFont" id=13]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=92]
+size = 40
+extra_spacing_top = 5
+extra_spacing_bottom = 9
+extra_spacing_space = 7
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=97]
+texture = ExtResource( 36 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=93]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=94]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=95]
+texture = ExtResource( 37 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=96]
+
+[sub_resource type="Theme" id=98]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.427451 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 0.890196 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
+Button/fonts/font = SubResource( 92 )
+Button/styles/disabled = SubResource( 97 )
+Button/styles/hover = SubResource( 93 )
+Button/styles/normal = SubResource( 94 )
+Button/styles/pressed = SubResource( 95 )
+LineEdit/styles/normal = SubResource( 96 )
 
 [sub_resource type="SpatialMaterial" id=21]
 albedo_texture = ExtResource( 22 )
@@ -1221,11 +1262,11 @@ margin_right = 1875.0
 margin_bottom = 1047.0
 
 [node name="logout_btn" type="Button" parent="user_profile/logout_bg"]
-margin_left = -8.0
+margin_left = -425.0
 margin_top = -19.0
-margin_right = 400.0
+margin_right = 360.0
 margin_bottom = 130.0
-theme = ExtResource( 15 )
+theme = SubResource( 98 )
 text = "Cloud Storage"
 
 [node name="ViewportContainer" type="ViewportContainer" parent="user_profile"]
