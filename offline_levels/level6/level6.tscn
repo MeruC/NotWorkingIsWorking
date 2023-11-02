@@ -803,6 +803,12 @@ anims/animation = SubResource( 2 )
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
 
+[node name="level3" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="1"]
+visible = false
+
+[node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
+visible = false
+
 [node name="rj45" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5

@@ -254,6 +254,7 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var body = PoolByteArray()
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
+	
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"level_name\"\r\n\r\n%s\r\n" % levelname).to_utf8())
 	

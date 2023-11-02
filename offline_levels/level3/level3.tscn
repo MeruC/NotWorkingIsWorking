@@ -794,11 +794,14 @@ anims/animation = SubResource( 4 )
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
 
+[node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
+visible = false
+
 [node name="bg" type="NinePatchRect" parent="."]
-margin_left = -128.0
+margin_left = -120.0
 margin_top = -37.0
 margin_right = 2056.0
-margin_bottom = 1147.0
+margin_bottom = 1115.0
 texture = ExtResource( 13 )
 
 [node name="score_board" type="Label" parent="."]
@@ -881,9 +884,9 @@ theme = ExtResource( 11 )
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 margin_left = -4.0
-margin_top = 425.0
+margin_top = 419.0
 margin_right = 786.0
-margin_bottom = 1171.0
+margin_bottom = 1165.0
 texture = ExtResource( 14 )
 
 [node name="NinePatchRect3" type="NinePatchRect" parent="."]

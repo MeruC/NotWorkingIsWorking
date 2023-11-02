@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=5]
 [ext_resource path="res://resources/Game buttons/check.png" type="Texture" id=6]
+[ext_resource path="res://resources/Themes/question_theme.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Theme" id=10]
 CheckBox/icons/checked = ExtResource( 6 )
@@ -25,12 +26,6 @@ font_data = SubResource( 1 )
 font_path = "res://resources/font/OpenSans-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=23]
-size = 36
-extra_spacing_top = 4
-extra_spacing_bottom = 16
-font_data = SubResource( 25 )
-
-[sub_resource type="DynamicFont" id=22]
 size = 36
 extra_spacing_top = 4
 extra_spacing_bottom = 16
@@ -107,7 +102,7 @@ margin_right = 1333.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 1025, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = ExtResource( 7 )
 text = "asdaasdlk"
 valign = 1
 autowrap = true

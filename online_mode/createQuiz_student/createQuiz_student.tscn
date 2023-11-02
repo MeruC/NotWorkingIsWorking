@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=1]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -38,10 +38,6 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=21]
-size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
@@ -196,7 +192,7 @@ placeholder_text = "Enter level name"
 [node name="timer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer"]
 margin_top = 217.0
 margin_right = 700.0
-margin_bottom = 422.0
+margin_bottom = 438.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer"]
@@ -212,14 +208,14 @@ autowrap = true
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer"]
 margin_top = 50.0
 margin_right = 700.0
-margin_bottom = 205.0
+margin_bottom = 221.0
 custom_constants/separation = 10
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
 margin_left = 88.0
 margin_right = 335.0
-margin_bottom = 155.0
+margin_bottom = 171.0
 
 [node name="minute" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer"]
 margin_right = 247.0
@@ -244,11 +240,11 @@ autowrap = true
 
 [node name="Label" type="Label" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
 margin_left = 345.0
-margin_top = 55.0
 margin_right = 355.0
-margin_bottom = 100.0
+margin_bottom = 171.0
 rect_min_size = Vector2( 10, 10 )
-custom_fonts/font = SubResource( 21 )
+theme = ExtResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = ":"
 align = 1
 valign = 1
@@ -257,7 +253,7 @@ autowrap = true
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer"]
 margin_left = 365.0
 margin_right = 612.0
-margin_bottom = 155.0
+margin_bottom = 171.0
 
 [node name="second" type="LineEdit" parent="TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer/VBoxContainer2"]
 margin_right = 247.0

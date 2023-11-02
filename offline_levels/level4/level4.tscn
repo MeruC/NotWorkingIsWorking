@@ -733,7 +733,6 @@ settings_data = ExtResource( 8 )
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 7 )]
-visible = false
 
 [node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
 visible = true
@@ -783,7 +782,6 @@ visible = false
 visible = false
 
 [node name="instructions" parent="popup_layer" instance=ExtResource( 6 )]
-visible = false
 
 [node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0
@@ -797,6 +795,12 @@ anims/animation = SubResource( 4 )
 
 [node name="Sprite" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="0"]
 visible = false
+
+[node name="level3" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="1"]
+visible = false
+
+[node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
+position = Vector2( 959, 849 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = -124.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=4]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=5]
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=6]
+[ext_resource path="res://offline_levels/level3/tutorial.png" type="Texture" id=7]
+[ext_resource path="res://offline_levels/level4/level4_discussion/level4_tutorial.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
@@ -34,11 +36,47 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "level3_tutorial"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../level3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "level4_tutorial"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../level4:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
 [node name="instructions" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 sprite = NodePath("main_popup/AnimationPlayer/Sprite")
+level3 = NodePath("main_popup/AnimationPlayer/level3")
+level4 = NodePath("main_popup/AnimationPlayer/level4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -52,10 +90,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -278.0
-margin_top = -119.0
-margin_right = 222.0
-margin_bottom = -59.0
+margin_left = -290.0
+margin_top = -82.0
+margin_right = 210.0
+margin_bottom = -22.0
 rect_min_size = Vector2( 500, 60 )
 custom_fonts/font = SubResource( 2 )
 text = "(Tap to Continue)"
@@ -68,10 +106,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -692.0
-margin_top = -448.0
-margin_right = 665.0
-margin_bottom = 423.0
+margin_left = -742.0
+margin_top = -469.0
+margin_right = 742.0
+margin_bottom = 469.0
 rect_min_size = Vector2( 666, 375 )
 theme = SubResource( 5 )
 
@@ -94,10 +132,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -633.5
-margin_top = -175.5
-margin_right = 642.5
-margin_bottom = 274.5
+margin_left = -707.0
+margin_top = -198.0
+margin_right = 710.0
+margin_bottom = 275.0
 rect_min_size = Vector2( 900, 450 )
 theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -110,12 +148,27 @@ autowrap = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main_popup"]
 root_node = NodePath("Sprite")
 anims/animation = SubResource( 3 )
+anims/level3_tutorial = SubResource( 6 )
+anims/level4_tutorial = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="main_popup/AnimationPlayer"]
 position = Vector2( 931, 810 )
 scale = Vector2( 0.717095, 0.666667 )
 texture = ExtResource( 3 )
 hframes = 10
+
+[node name="level3" type="Sprite" parent="main_popup/AnimationPlayer"]
+position = Vector2( 922, 806 )
+scale = Vector2( 0.649834, 0.740601 )
+texture = ExtResource( 7 )
+hframes = 5
+
+[node name="level4" type="Sprite" parent="main_popup/AnimationPlayer"]
+position = Vector2( 943, 843 )
+scale = Vector2( 1.07339, 1.22404 )
+texture = ExtResource( 8 )
+hframes = 5
+frame = 4
 
 [node name="tap" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0.0980392 )

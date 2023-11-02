@@ -47,6 +47,7 @@ var level3_scene = "res://offline_levels/level3/level3.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation_player.play("level3_tutorial")
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
 		var json_content = file.get_as_text()
