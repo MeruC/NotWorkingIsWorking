@@ -145,15 +145,14 @@ transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="interaction_area"]
-transform = Transform( -0.958506, 0, -1.44731e-07, 0, 0.958506, 0, 1.44731e-07, 0, -0.958506, 0.0550003, 2.095, -2.94594 )
-h_offset = -0.003
-v_offset = -1.572
+transform = Transform( -0.863644, 0, 0.415755, 0, 0.958506, 0, -0.415755, 0, -0.863644, 1.764, 1.598, -2.946 )
+h_offset = 0.055
+v_offset = -1.0
 projection = 1
 size = 1.376
 
 [node name="Camera2" type="Camera" parent="interaction_area"]
 transform = Transform( -2.70424e-07, 0, 0.958506, 0, 0.958506, 0, -0.958506, 0, -2.70424e-07, 2.883, 1.641, 1.209 )
-visible = false
 h_offset = 0.628
 v_offset = -1.0
 projection = 1
