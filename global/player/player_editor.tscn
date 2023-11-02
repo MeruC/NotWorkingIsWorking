@@ -1,13 +1,20 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://resources/Models/Player/Walk/1.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://global/player/Player_Input/player.gd" type="Script" id=2]
+[ext_resource path="res://global/player/Player_Input/player_editor.gd" type="Script" id=2]
 [ext_resource path="res://global/player/Player_Input/Camera.gd" type="Script" id=3]
 [ext_resource path="res://resources/Models/Player/player.tres" type="Material" id=4]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://resources/Models/Player/Idle/1.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://global/player/interact.gd" type="Script" id=7]
+[ext_resource path="res://global/objects/rotate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://global/objects/remove.tscn" type="PackedScene" id=9]
+[ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/Models/Player/Walk/6.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=12]
+[ext_resource path="res://global/player/player.tres" type="Material" id=14]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_19.png" type="Texture" id=15]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_18.png" type="Texture" id=16]
 
 [sub_resource type="CylinderShape" id=19]
 height = 2.8
@@ -127,22 +134,76 @@ outline_size = 4
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=21]
-size = 20
+size = 93
 outline_size = 2
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=22]
-size = 14
+size = 50
 outline_size = 2
 font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "button"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.445, 0 )
 collision_layer = 9
 collision_mask = 9
 script = ExtResource( 2 )
-interact_zone = NodePath("InteractionArea")
-interact_labels = NodePath("interact")
 
 [node name="Pivot" type="Position3D" parent="."]
 unique_name_in_owner = true
@@ -150,7 +211,7 @@ unique_name_in_owner = true
 [node name="CSGSphere" type="CSGMesh" parent="Pivot"]
 transform = Transform( -0.62, 0, -9.36174e-08, 0, 0.62, 0, 9.36174e-08, 0, -0.62, 0, -1.45127, 0 )
 mesh = ExtResource( 6 )
-material = ExtResource( 4 )
+material = ExtResource( 14 )
 
 [node name="walk" type="Spatial" parent="Pivot"]
 transform = Transform( 0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, -0.451477, 0 )
@@ -183,6 +244,14 @@ material = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0354198 )
 shape = SubResource( 19 )
 
+[node name="CameraTop" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.06915e-06, 32, -6.06915e-06 )
+h_offset = 0.05
+v_offset = -1.0
+projection = 1
+current = true
+size = 25.0
+
 [node name="Camera" type="Spatial" parent="."]
 unique_name_in_owner = true
 transform = Transform( 0.707107, -1.89661e-07, 0.707107, 0, 1, 2.68221e-07, -0.707107, -1.89661e-07, 0.707107, 0, 0, 0 )
@@ -202,6 +271,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 16 )
 
 [node name="Tween" type="Tween" parent="."]
+unique_name_in_owner = true
 playback_process_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -231,32 +301,72 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 32.0
-margin_top = -49.0
-margin_right = 127.0
-margin_bottom = -20.0
+margin_left = 58.0
+margin_top = -109.0
+margin_right = 192.0
+margin_bottom = 3.0
 rect_pivot_offset = Vector2( 0, 14 )
 custom_constants/separation = 2
 script = ExtResource( 7 )
-lbl_action = NodePath("action")
+lbl_action = NodePath("HBoxContainer/action")
 lbl_name = NodePath("object_name")
 
-[node name="action" type="Label" parent="interact"]
-margin_right = 95.0
-margin_bottom = 16.0
+[node name="HBoxContainer" type="Control" parent="interact"]
+margin_right = 134.0
+margin_bottom = 79.292
+rect_min_size = Vector2( 0, 79.292 )
+
+[node name="TextureRect" type="TextureRect" parent="interact/HBoxContainer"]
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 16 )
+
+[node name="TextureRect2" type="TextureRect" parent="interact/HBoxContainer"]
+visible = false
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 15 )
+
+[node name="action" type="Label" parent="interact/HBoxContainer"]
+margin_left = 81.0
+margin_right = 215.0
+margin_bottom = 71.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 21 )
 text = "E"
 
 [node name="object_name" type="Label" parent="interact"]
-margin_top = 18.0
-margin_right = 95.0
-margin_bottom = 29.0
+margin_top = 81.0
+margin_right = 134.0
+margin_bottom = 120.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 22 )
 text = "action"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interact"]
+autoplay = "button"
+anims/RESET = SubResource( 23 )
+anims/button = SubResource( 24 )
+
+[node name="previews" type="Spatial" parent="."]
+visible = false
+
+[node name="place" parent="previews" instance=ExtResource( 10 )]
+visible = false
+
+[node name="rotate" parent="previews" instance=ExtResource( 8 )]
+visible = false
+
+[node name="remove" parent="previews" instance=ExtResource( 9 )]
+visible = false
+
+[node name="no-sign" parent="previews" instance=ExtResource( 12 )]
 
 [connection signal="visibility_changed" from="." to="." method="_on_Player_visibility_changed"]
 [connection signal="tween_completed" from="Tween" to="Camera" method="_on_Tween_tween_completed"]
