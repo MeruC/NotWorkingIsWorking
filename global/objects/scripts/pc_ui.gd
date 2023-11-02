@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var io = $io
-onready var pc_screen = $pc_screen
+onready var pc_screen = $router
 onready var camera = $"../interaction_area/Camera"
 onready var camera_2 = $"../interaction_area/Camera2"
 

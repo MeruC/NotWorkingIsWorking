@@ -1,13 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://resources/Models/Materials/router/router-1-generic router.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/router/router-0-huawei router.png" type="Texture" id=2]
 [ext_resource path="res://global/objects/genericRouter.gd" type="Script" id=3]
+[ext_resource path="res://global/objects/interaction_area.gd" type="Script" id=4]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=15]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=16]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=17]
+[ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=20]
+[ext_resource path="res://global/objects/scripts/pc_ui.gd" type="Script" id=24]
 
 [sub_resource type="BoxShape" id=1]
 
+[sub_resource type="DynamicFont" id=22]
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0, 1, 0.0784314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 6000, 3375 )
+margin_right = 271.626
+margin_top = 3.9945
+
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=3]
 
 [node name="object_genericRouter" type="StaticBody"]
 script = ExtResource( 3 )
@@ -16,7 +38,128 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
+[node name="ui" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource( 24 )
+
+[node name="mode" type="CanvasLayer" parent="ui"]
+visible = false
+
+[node name="io" type="ColorRect" parent="ui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="holder" type="Control" parent="ui/io"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 15 )
+
+[node name="to_pc" type="Button" parent="ui/io/holder"]
+margin_left = 1711.0
+margin_top = 442.0
+margin_right = 1837.0
+margin_bottom = 574.0
+text = ">"
+
+[node name="router" type="ColorRect" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="holder" type="Control" parent="ui/router"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 15 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="ui/router/holder"]
+position = Vector2( 1753, 924 )
+scale = Vector2( 10, 10 )
+normal = ExtResource( 17 )
+pressed = ExtResource( 16 )
+
+[node name="Exit" type="Button" parent="ui/router/holder"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -526.0
+margin_top = 971.0
+margin_right = -260.952
+margin_bottom = -47.182
+custom_fonts/font = SubResource( 22 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/normal = SubResource( 23 )
+text = "Turn On"
+
+[node name="TextureRect" type="Panel" parent="ui/router/holder"]
+visible = false
+margin_left = 274.0
+margin_top = 38.0
+margin_right = 1652.0
+margin_bottom = 932.0
+rect_pivot_offset = Vector2( 766, 624 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="name_lineEdit" type="LineEdit" parent="ui/router/holder"]
+visible = false
+margin_left = 376.0
+margin_top = 101.0
+margin_right = 2630.0
+margin_bottom = 253.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="ui/router/holder"]
+margin_left = 376.0
+margin_top = 325.0
+margin_right = 416.0
+margin_bottom = 393.0
+
+[node name="to_io" type="Button" parent="ui/router/holder"]
+visible = false
+margin_left = 71.0
+margin_top = 442.0
+margin_right = 197.0
+margin_bottom = 574.0
+text = "<"
+
 [node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( 0.111, 0, -0.000153041, 0, 0.111, 0, 0.000153041, 0, 0.111, -1.09211, 0.0116419, 0.00347053 )
 mesh = ExtResource( 1 )
 material = SubResource( 2 )
+
+[node name="interaction_area" type="Area" parent="."]
+transform = Transform( 1.04329, 0, 0, 0, 1.04329, 0, 0, 0, 1.04329, 0, 0, 0 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 4 )
+pc_name = "Router"
+ui = NodePath("../ui")
+
+[node name="CollisionShape2" type="CollisionShape" parent="interaction_area"]
+transform = Transform( 1.04306, 0, 0, 0, 1.04306, 0, 0, 0, 1.04306, 0, 1, 0 )
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="interaction_area"]
+transform = Transform( -0.958506, 0, -1.44731e-07, 0, 0.958506, 0, 1.44731e-07, 0, -0.958506, 0.0550003, 2.095, -2.94594 )
+h_offset = -0.003
+v_offset = -1.572
+projection = 1
+size = 1.376
+
+[node name="Camera2" type="Camera" parent="interaction_area"]
+transform = Transform( -2.70424e-07, 0, 0.958506, 0, 0.958506, 0, -0.958506, 0, -2.70424e-07, 2.883, 1.641, 1.209 )
+visible = false
+h_offset = 0.628
+v_offset = -1.0
+projection = 1
+size = 1.679
+
+[connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
+[connection signal="pressed" from="ui/router/holder/TouchScreenButton" to="ui" method="_on_Exit_pressed"]
+[connection signal="pressed" from="ui/router/holder/Exit" to="ui" method="_on_Exit_pressed"]
+[connection signal="pressed" from="ui/router/holder/to_io" to="ui" method="_on_to_io_pressed"]

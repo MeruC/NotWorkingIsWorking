@@ -189,6 +189,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://inventory_system/managers/resource_manager.gd"
 }, {
+"base": "Area",
+"class": "Router",
+"language": "GDScript",
+"path": "res://global/objects/interaction_area.gd"
+}, {
 "base": "Control",
 "class": "Scale_Control",
 "language": "GDScript",
@@ -281,6 +286,7 @@ _global_script_class_icons={
 "Player_Data": "",
 "ReedSolomonGenerator": "",
 "Resource_Manager": "",
+"Router": "",
 "Scale_Control": "",
 "Settings_Data": "",
 "Split_Stack": "",

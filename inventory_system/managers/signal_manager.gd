@@ -28,6 +28,8 @@ signal saving_game()
 
 signal pc_opened()
 signal pc_closed()
+signal router_open()
+signal router_close()
 
 # Confirm / OK Dialog
 signal confirm()
