@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/Models/Player -girl/idle/idle- Girl.obj" type="ArrayMesh" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://global/objects/no-sign.tscn" type="PackedScene" id=11]
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=12]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=13]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_19.png" type="Texture" id=14]
+[ext_resource path="res://resources/Game buttons/touch/gamepad7_18.png" type="Texture" id=15]
 
 [sub_resource type="CylinderShape" id=19]
 height = 2.8
@@ -132,14 +134,70 @@ outline_size = 4
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=21]
-size = 20
+size = 93
 outline_size = 2
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=22]
-size = 14
+size = 50
 outline_size = 2
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "button"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer/TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.445, 0 )
@@ -246,39 +304,6 @@ font = SubResource( 20 )
 horizontal_alignment = 0
 vertical_alignment = 0
 
-[node name="interact" type="VBoxContainer" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 32.0
-margin_top = -49.0
-margin_right = 127.0
-margin_bottom = -20.0
-rect_pivot_offset = Vector2( 0, 14 )
-custom_constants/separation = 2
-script = ExtResource( 7 )
-lbl_action = NodePath("action")
-lbl_name = NodePath("object_name")
-
-[node name="action" type="Label" parent="interact"]
-margin_right = 95.0
-margin_bottom = 16.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 21 )
-text = "E"
-
-[node name="object_name" type="Label" parent="interact"]
-margin_top = 18.0
-margin_right = 95.0
-margin_bottom = 29.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 22 )
-text = "action"
-
 [node name="previews" type="Spatial" parent="."]
 visible = false
 
@@ -292,6 +317,65 @@ visible = false
 
 [node name="remove" parent="previews" instance=ExtResource( 10 )]
 visible = false
+
+[node name="interact" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 58.0
+margin_top = -109.0
+margin_right = 192.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 14 )
+custom_constants/separation = 2
+script = ExtResource( 7 )
+lbl_action = NodePath("HBoxContainer/action")
+lbl_name = NodePath("object_name")
+
+[node name="HBoxContainer" type="Control" parent="interact"]
+margin_right = 134.0
+margin_bottom = 79.292
+rect_min_size = Vector2( 0, 79.292 )
+
+[node name="TextureRect" type="TextureRect" parent="interact/HBoxContainer"]
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 15 )
+
+[node name="TextureRect2" type="TextureRect" parent="interact/HBoxContainer"]
+visible = false
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 14 )
+
+[node name="action" type="Label" parent="interact/HBoxContainer"]
+margin_left = 81.0
+margin_right = 215.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "E"
+
+[node name="object_name" type="Label" parent="interact"]
+margin_top = 81.0
+margin_right = 134.0
+margin_bottom = 120.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 22 )
+text = "action"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interact"]
+autoplay = "button"
+anims/RESET = SubResource( 23 )
+anims/button = SubResource( 24 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Player_visibility_changed"]
 [connection signal="tween_completed" from="Tween" to="Camera" method="_on_Tween_tween_completed"]

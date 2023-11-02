@@ -339,14 +339,18 @@ func _input( event ):
 		print(cabletype)
 		if cabletype == "Console_Cable":
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
-				pass
+				for D in device:
+					if (D in object_point.collider.name ):
+						_connect_cableConsole()
 			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
 				for D in device:
 					if (D in object_point.collider.name ):
 						_connect_cableConsole()
 		elif cabletype == "cross_over" or cabletype == "straight_through":
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
-				pass
+				for D in device:
+					if (D in object_point.collider.name ):
+						_connect_cableRJ()
 			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
 				for D in device:
 					if (D in object_point.collider.name ):
@@ -411,7 +415,7 @@ func _on_cable_used( type ):
 	match(type):
 		"straight_through":
 			device = ["object_monitor", "Router"]
-		"crossover":
+		"cross_over":
 			device = ["object_monitor", "Router"]
 		"Console_Cable":
 			device = ["object_monitor", "Router"]
@@ -443,6 +447,7 @@ func _on_cable_connected():
 	mode = "normal"
 	preview_parent.set_visible(false)
 	LevelGlobal.on_cable_mode = false
+	current_level.mobile_controls.cable_ui.set_visible(false)
 	current_level.mobile_controls.cable_ui.set_visible(false)
 	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
 	SignalManager.emit_signal("cable_done")

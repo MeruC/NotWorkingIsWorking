@@ -551,7 +551,7 @@ scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2"]
 margin_right = 591.0
-margin_bottom = 569.0
+margin_bottom = 538.0
 rect_min_size = Vector2( 591, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
