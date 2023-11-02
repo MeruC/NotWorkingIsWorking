@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -28,6 +28,11 @@
 [ext_resource path="res://global/objects/terminal_scenes/terminal_default.tscn" type="PackedScene" id=26]
 [ext_resource path="res://global/objects/monitor_script.gd" type="Script" id=27]
 [ext_resource path="res://global/objects/terminal_scenes/password_line.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/others/confirmDialog.tscn" type="PackedScene" id=29]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=30]
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="DynamicFont" id=7]
 
@@ -47,27 +52,31 @@ margin_top = 3.9945
 size = 32
 font_data = ExtResource( 13 )
 
+[sub_resource type="DynamicFont" id=29]
+size = 60
+font_data = ExtResource( 30 )
+
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0, 0, 0.392157 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=28]
 size = 42
 font_data = ExtResource( 13 )
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=29]
 bg_color = Color( 0.917647, 0.168627, 0.188235, 1 )
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=30]
 bg_color = Color( 0.788235, 0.333333, 0.333333, 1 )
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 0.596078, 0, 0.0156863, 1 )
 
 [sub_resource type="Theme" id=16]
-Button/fonts/font = SubResource( 14 )
-Button/styles/hover = SubResource( 20 )
-Button/styles/normal = SubResource( 15 )
-Button/styles/pressed = SubResource( 21 )
+Button/fonts/font = SubResource( 28 )
+Button/styles/hover = SubResource( 29 )
+Button/styles/normal = SubResource( 30 )
+Button/styles/pressed = SubResource( 31 )
 
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.823529, 0.823529, 0.823529, 1 )
@@ -151,6 +160,33 @@ margin_top = 442.0
 margin_right = 1837.0
 margin_bottom = 574.0
 text = ">"
+
+[node name="cpu_ui" type="Control" parent="ui/io"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -750.0
+margin_top = 110.0
+margin_right = -346.0
+margin_bottom = -82.0
+
+[node name="disconnect_button" type="Button" parent="ui/io/cpu_ui"]
+margin_left = 74.0
+margin_top = 194.0
+margin_right = 129.0
+margin_bottom = 248.0
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/disabled = SubResource( 28 )
+custom_styles/normal = SubResource( 28 )
+
+[node name="wire" type="ColorRect" parent="ui/io/cpu_ui"]
+margin_left = 83.0
+margin_top = 203.0
+margin_right = 120.0
+margin_bottom = 240.0
+color = Color( 0.14902, 0, 1, 1 )
 
 [node name="pc_screen" type="ColorRect" parent="ui"]
 anchor_right = 1.0
@@ -242,6 +278,74 @@ rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = SubResource( 27 )
 text = "CMD"
 clip_text = true
+
+[node name="disconnect_confirm" parent="ui" instance=ExtResource( 29 )]
+
+[node name="ColorRect" parent="ui/disconnect_confirm/ColorRect2" index="0"]
+margin_right = -710.0
+
+[node name="MarginContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect" index="0"]
+margin_right = 1380.0
+margin_bottom = 420.0
+
+[node name="VBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer" index="0"]
+margin_right = 1320.0
+margin_bottom = 350.0
+custom_constants/separation = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="0"]
+margin_right = 1215.0
+margin_bottom = 68.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 31.0
+margin_right = 706.0
+margin_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+custom_fonts/font = SubResource( 29 )
+text = "Disconnect from"
+align = 1
+valign = 1
+
+[node name="device_name" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 731.0
+margin_right = 1184.0
+margin_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+custom_fonts/font = SubResource( 29 )
+text = "Computer1?"
+align = 1
+valign = 1
+
+[node name="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="1"]
+visible = false
+margin_top = 128.0
+margin_bottom = 196.0
+text = "Disconnect from"
+
+[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="2"]
+margin_top = 168.0
+margin_right = 1215.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="cancel" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="0"]
+margin_left = 184.0
+margin_right = 542.0
+
+[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="1"]
+margin_left = 623.0
+margin_right = 1031.0
+
+[node name="ok" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="3"]
+margin_top = 320.0
+margin_bottom = 452.0
 
 [node name="ip_config_app" type="Panel" parent="ui"]
 visible = false
@@ -897,6 +1001,7 @@ projection = 1
 size = 1.679
 
 [connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
+[connection signal="pressed" from="ui/io/cpu_ui/disconnect_button" to="." method="_on_disconnect_button_pressed"]
 [connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
 [connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]
@@ -913,3 +1018,5 @@ size = 1.679
 [connection signal="visibility_changed" from="ui/terminal_app" to="ui/terminal_app/cmd_screen/terminal_manager" method="_on_terminal_app_visibility_changed"]
 [connection signal="pressed" from="ui/terminal_app/cmd_screen/terminal_close_button" to="." method="_on_terminal_close_button_pressed"]
 [connection signal="confirmed" from="ui/terminal_app/cmd_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
+
+[editable path="ui/disconnect_confirm"]

@@ -56,6 +56,8 @@ func _ready():
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
 	SignalManager.connect( "cable_used", self, "_on_cable_used" )
 	SignalManager.connect( "cable_done", self, "_on_cable_done" )
+	SignalManager.connect( "router_open", self, "_on_router_open" )
+	SignalManager.connect( "router_close", self, "_on_router_close" )
 
 func _on_pc_opened():
 	#player = main.get_node("Player")
@@ -78,6 +80,27 @@ func _on_pc_closed():
 		task_manager.visible = true
 		
 		
+func _on_router_open():
+	#player = main.get_node("Player")
+	inventory.set_visible(false)
+	mobile_controls.set_visible(false)
+	onMenu = true
+	Global.playerCanMove = false
+	task_manager.visible = false
+	
+func _on_router_close():
+	#player = main.get_node("Player")
+	if (onMenu):
+		yield(CameraTransition.transition_camera3D(get_viewport().get_camera(), Global.playerCamera , 1), "completed")
+		Global.player.get_node("Pivot").set_visible(true)
+		onMenu = false
+		Global.playerCanMove = true
+		Global.playerInteractLbl.set_visible(true)
+		inventory.set_visible(true)
+		mobile_controls.set_visible(true)
+		task_manager.visible = true
+		
+		
 func _on_cable_used():
 	inventory.ui_container.set_visible(false)
 	mobile_controls.buttons.set_visible(false)
@@ -87,4 +110,5 @@ func _on_cable_done():
 	inventory.ui_container.set_visible(true)
 	mobile_controls.buttons.set_visible(true)
 	#mobile_controls.cable_ui.set_visible(false)
+	
 
