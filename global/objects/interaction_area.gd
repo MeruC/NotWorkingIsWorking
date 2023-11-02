@@ -3,8 +3,8 @@ class_name Router extends Area
 export( String ) var pc_name
 export( NodePath ) onready var ui = get_node( ui ) as CanvasLayer
 onready var io = $"../ui/io"
-onready var pc_screen = $"../ui/pc_screen"
-onready var power = $"../CollisionShape2D/CSGMesh/CSGBox"
+#onready var pc_screen = $"../ui/pc_screen"
+#onready var power = $"../CollisionShape2D/CSGMesh/CSGBox"
 
 var inventory : Inventory
 var action = "open"

@@ -4,11 +4,11 @@
 [ext_resource path="res://resources/Models/Materials/router/router-0-huawei router.png" type="Texture" id=2]
 [ext_resource path="res://global/objects/genericRouter.gd" type="Script" id=3]
 [ext_resource path="res://global/objects/interaction_area.gd" type="Script" id=4]
+[ext_resource path="res://global/objects/uiRouter.gd" type="Script" id=5]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=16]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=17]
 [ext_resource path="res://resources/offline_mode_Asset/level_1/desktop_bg.png" type="Texture" id=20]
-[ext_resource path="res://global/objects/scripts/pc_ui.gd" type="Script" id=24]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 
 [node name="ui" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource( 24 )
+script = ExtResource( 5 )
 
 [node name="mode" type="CanvasLayer" parent="ui"]
 visible = false
