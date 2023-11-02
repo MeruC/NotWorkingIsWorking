@@ -28,6 +28,7 @@ var new_json = {}
 var question_list = []
 var json_file = "res://online_mode/json/question_bank.json"
 var qBank_file = "res://scenes/user_profile/question_bank/json/question_bank.json"
+var questionBank_scene = "res://scenes/user_profile/question_bank/question_bank.tscn"
 var json_data = ""
 var initial_text = ""
 var fetched_questions = ""
@@ -303,3 +304,7 @@ func _on_home_pressed():
 
 func _on_back_btn_pressed():
 	Load.load_scene(self,main_screen)
+
+
+func _on_question_bank_pressed():
+	Load.load_scene(self, questionBank_scene)

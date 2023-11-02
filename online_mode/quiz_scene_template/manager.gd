@@ -193,11 +193,13 @@ func _send_request(request : Dictionary):
 
 func addScore():
 	var username = settings_data.player_name
+	var section = settings_data.section
 	var scores = score
 	var table_name = json_code
 	var data = {
 		"command": "upload_score",
 		"username": username,
+		"section": section,
 		"scores": scores,
 		"table_name": table_name
 	}

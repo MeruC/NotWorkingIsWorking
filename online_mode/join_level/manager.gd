@@ -91,7 +91,7 @@ func _http_request_completed(result, response_code, headers, body):
 				$loading_scrreen.visible = false
 				$CanvasLayer/dialog_box.visible = true
 				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/info.text = "notice"
-				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "The level has been successfully downloaded."
+				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "You are now ready to join. Please click the join button again."
 			else:
 				printerr("Failed to save the file")
 

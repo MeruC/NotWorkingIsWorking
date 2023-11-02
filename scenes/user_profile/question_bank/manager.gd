@@ -3,7 +3,7 @@ extends Control
 var json_file = "res://scenes/user_profile/question_bank/json/question_bank.json"
 var fetched_questions = ""
 var question_list = []
-var previous_scene = "res://scenes/user_profile/user_profile.tscn"
+var previous_scene = "res://online_mode/createQuiz_professor/createQuiz_professor.tscn"
 
 export (PackedScene) var question_entry
 export(NodePath) onready var delete_confirmation = get_node(delete_confirmation) as Control

@@ -12,14 +12,10 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=10]
 [ext_resource path="res://resources/Themes/login_buttons.tres" type="Theme" id=11]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/Themes/create_account.tres" type="DynamicFont" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 80
-extra_spacing_bottom = 28
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=43]
@@ -145,19 +141,19 @@ script = ExtResource( 5 )
 settings_data = ExtResource( 10 )
 
 [node name="title" type="Label" parent="create_account_scene"]
-margin_left = 452.0
-margin_top = 285.0
-margin_right = 1475.0
-margin_bottom = 407.0
+margin_left = 458.0
+margin_top = 171.0
+margin_right = 1481.0
+margin_bottom = 293.0
 custom_fonts/font = SubResource( 1 )
 text = "Create Character"
 
 [node name="Username" type="Label" parent="create_account_scene"]
-margin_left = 414.0
-margin_top = 507.0
-margin_right = 721.0
-margin_bottom = 617.0
-custom_fonts/font = SubResource( 7 )
+margin_left = 420.0
+margin_top = 393.0
+margin_right = 727.0
+margin_bottom = 503.0
+custom_fonts/font = ExtResource( 13 )
 text = "Name:"
 
 [node name="LineEdit" type="LineEdit" parent="create_account_scene/Username"]
@@ -173,15 +169,32 @@ theme = ExtResource( 11 )
 align = 1
 placeholder_text = "type your name"
 
+[node name="Section" type="Label" parent="create_account_scene"]
+margin_left = 317.0
+margin_top = 542.0
+margin_right = 687.0
+margin_bottom = 652.0
+custom_fonts/font = ExtResource( 13 )
+text = "Section: "
+
+[node name="LineEdit" type="LineEdit" parent="create_account_scene/Section"]
+margin_left = 424.0
+margin_top = 6.0
+margin_right = 1144.0
+margin_bottom = 156.0
+theme = ExtResource( 11 )
+align = 1
+placeholder_text = "Please Enter you section"
+
 [node name="confirm" type="Button" parent="create_account_scene"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -200.687
-margin_top = -380.0
-margin_right = 200.688
-margin_bottom = -265.932
+margin_left = -199.0
+margin_top = -279.0
+margin_right = 593.375
+margin_bottom = -79.9314
 rect_scale = Vector2( 0.7, 0.7 )
 focus_mode = 0
 theme = ExtResource( 11 )
@@ -189,10 +202,10 @@ enabled_focus_mode = 0
 text = "confirm"
 
 [node name="Label" type="Label" parent="create_account_scene"]
-margin_left = 818.0
-margin_top = 626.0
-margin_right = 858.0
-margin_bottom = 701.0
+margin_left = 806.0
+margin_top = 705.0
+margin_right = 846.0
+margin_bottom = 780.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
 align = 1

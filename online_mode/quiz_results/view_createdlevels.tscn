@@ -21,6 +21,7 @@ var request_queue : Array = []
 var is_requesting : bool = false
 onready var grid_container = $ScrollContainer/GridContainer
 var headers = []  # Initialize headers as an empty array
+var header_display = []
 export (Resource) var settings_data
 onready var result_table = $result_table
 
@@ -83,8 +84,9 @@ func _http_request_completed(result, response_code, headers, body):
 	
 func display_table(data):
 	# Define your headers manually
-	headers = [\"file_name\", \"creator\"]
+	headers = [\"level_name\", \"file_name\"]
 	# Invert the sorted array to achieve descending order
+	header_display = [\"Level Name\", \"Level Code\"]
 	data.invert()
 	# Clear the existing grid contents
 	clear_grid()
@@ -93,8 +95,8 @@ func display_table(data):
 	var font_color = Color(0, 0, 0, 1)
 	for j in range(headers.size()):
 		var header_label = Label.new()
-		header_label.text = headers[j]
-		header_label.rect_min_size = Vector2(100, 30)  # Set the size here
+		header_label.text = header_display[j]
+		header_label.rect_min_size = Vector2(550, 30)  # Set the size here
 		header_label.add_font_override(\"font\", font_resource)
 		header_label.add_color_override(\"font_color\", font_color)
 		grid_container.add_child(header_label)
@@ -106,9 +108,9 @@ func display_table(data):
 		for j in range(headers.size()):
 			if headers[j] == \"file_name\":  # Check if the header is \"email\"
 				var cell_button = Button.new()  # Create a button for email addresses
-				cell_button.text = str(row[headers[j]])  # Set the button text to the email address
-				cell_button.rect_min_size = Vector2(500, 90)  # Set the size here
-				var custom_load_theme = load(\"res://resources/Themes/levelresult_theme.tres\")
+				cell_button.text = str(row[headers[j]]).replace(\".tscn\", \"\")  # Set the button text to the email address
+				cell_button.rect_min_size = Vector2(200, 100)  # Set the size here
+				var custom_load_theme = load(\"res://resources/Themes/result_quiz.tres\")
 				cell_button.theme = custom_load_theme
 				cell_button.connect(\"pressed\", result_table, \"get_levelresult\", [row[headers[j]]])  # Connect the button press signal with email as an argument
 				grid_container.add_child(cell_button)
@@ -313,7 +315,7 @@ margin_bottom = 383.0
 [node name="GridContainer" type="GridContainer" parent="result_table/ScrollContainer"]
 custom_constants/vseparation = 0
 custom_constants/hseparation = 100
-columns = 2
+columns = 3
 
 [node name="back" type="Button" parent="result_table"]
 margin_left = 53.0

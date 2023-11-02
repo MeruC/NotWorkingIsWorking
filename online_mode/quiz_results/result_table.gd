@@ -70,7 +70,7 @@ func _http_request_completed(result, response_code, headers, body):
 
 func display_table(data):
 	# Define your headers manually
-	headers = ["username", "scores"]
+	headers = ["username", "section", "scores"]
 	# Clear the existing grid contents
 	clear_grid()
 

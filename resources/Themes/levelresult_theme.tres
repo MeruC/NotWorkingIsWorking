@@ -12,7 +12,7 @@ extra_spacing_bottom = 9
 extra_spacing_space = 7
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=72]
+[sub_resource type="StyleBoxTexture" id=97]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 96, 32 )
 
@@ -37,7 +37,7 @@ Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 0.890196 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
 Button/fonts/font = SubResource( 92 )
-Button/styles/disabled = SubResource( 72 )
+Button/styles/disabled = SubResource( 97 )
 Button/styles/hover = SubResource( 93 )
 Button/styles/normal = SubResource( 94 )
 Button/styles/pressed = SubResource( 95 )

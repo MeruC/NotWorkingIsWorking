@@ -29,6 +29,7 @@ export (int) var crowns = 0
 export (String) var costume = "male"
 export (String) var email
 export (String) var quick_game = "notplaying"
+export (String) var section = ""
 
 #costume for boy
 export (String) var cict_shirt = "lock"
@@ -53,6 +54,7 @@ func set_data( data ):
 	#pixel_size = data.pixel_size
 	
 	player_name = data.player_name
+	section = data.section
 	
 	gender = data.gender
 	account_status = data.account_status
@@ -94,6 +96,7 @@ func get_data():
 		"music_volume": music_volume,
 		"sound_volume": sound_volume,
 		"player_name": player_name,
+		"section": section,
 		"gender": gender,
 		"account_status": account_status,
 		"net1_skills": net1_skills,

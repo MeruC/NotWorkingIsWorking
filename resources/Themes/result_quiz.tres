@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=9 format=2]
+
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=2]
+[ext_resource path="res://resources/Game buttons/result_button3.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=20]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[resource]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 20 )
+Button/styles/focus = SubResource( 18 )
+Button/styles/hover = SubResource( 19 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 17 )
