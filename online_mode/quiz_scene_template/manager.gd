@@ -34,7 +34,7 @@ var main_screen = "res://scenes/main_screen/main_screen.tscn"
 
 func _ready():
 	add_child(http_request)
-	var json_file = "res://online_mode/json/" + json_code + ".json"
+	var json_file = "user://json/" + json_code + ".json"
 	#for getting data in a JSON file and putting it in the json_data variable as dictionary
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:

@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=3]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=59]
 size = 64
 font_data = ExtResource( 2 )
 
@@ -28,7 +28,7 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="StyleBoxEmpty" id=36]
+[sub_resource type="StyleBoxEmpty" id=61]
 
 [sub_resource type="StyleBoxFlat" id=35]
 content_margin_left = 40.0
@@ -67,7 +67,7 @@ expand_margin_bottom = 2.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 
-[sub_resource type="ImageTexture" id=9]
+[sub_resource type="ImageTexture" id=63]
 
 [sub_resource type="StyleBoxFlat" id=54]
 bg_color = Color( 1, 0.941176, 0, 1 )
@@ -104,7 +104,7 @@ shadow_offset = Vector2( 10, 10 )
 size = 60
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=64]
 content_margin_left = 85.0
 content_margin_right = 85.0
 content_margin_top = 40.0
@@ -142,7 +142,7 @@ expand_margin_bottom = 2.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 
-[sub_resource type="StyleBoxEmpty" id=40]
+[sub_resource type="StyleBoxEmpty" id=65]
 
 [sub_resource type="StyleBoxFlat" id=44]
 content_margin_left = 40.0
@@ -212,7 +212,7 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 shadow_offset = Vector2( 10, 10 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=66]
 bg_color = Color( 1, 0.941176, 0, 1 )
 border_width_left = 8
 border_width_top = 8
@@ -251,7 +251,7 @@ expand_margin_top = 15.0
 expand_margin_bottom = 2.0
 shadow_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=33]
+[sub_resource type="StyleBoxFlat" id=67]
 bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -269,16 +269,16 @@ Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-Button/fonts/font = SubResource( 4 )
+Button/fonts/font = SubResource( 59 )
 Button/styles/disabled = SubResource( 39 )
-Button/styles/focus = SubResource( 36 )
+Button/styles/focus = SubResource( 61 )
 Button/styles/hover = SubResource( 35 )
 Button/styles/normal = SubResource( 35 )
 Button/styles/pressed = SubResource( 53 )
-HSlider/icons/grabber = SubResource( 9 )
-HSlider/icons/grabber_disabled = SubResource( 9 )
-HSlider/icons/grabber_highlight = SubResource( 9 )
-HSlider/icons/tick = SubResource( 9 )
+HSlider/icons/grabber = SubResource( 63 )
+HSlider/icons/grabber_disabled = SubResource( 63 )
+HSlider/icons/grabber_highlight = SubResource( 63 )
+HSlider/icons/tick = SubResource( 63 )
 HSlider/styles/grabber_area = SubResource( 54 )
 HSlider/styles/grabber_area_highlight = SubResource( 54 )
 HSlider/styles/slider = SubResource( 8 )
@@ -286,18 +286,18 @@ Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = SubResource( 37 )
 LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
-LineEdit/fonts/font = SubResource( 4 )
-LineEdit/styles/focus = SubResource( 10 )
-LineEdit/styles/normal = SubResource( 10 )
+LineEdit/fonts/font = SubResource( 59 )
+LineEdit/styles/focus = SubResource( 64 )
+LineEdit/styles/normal = SubResource( 64 )
 OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-OptionButton/fonts/font = SubResource( 4 )
+OptionButton/fonts/font = SubResource( 59 )
 OptionButton/icons/arrow = SubResource( 48 )
 OptionButton/styles/disabled = SubResource( 43 )
-OptionButton/styles/focus = SubResource( 40 )
+OptionButton/styles/focus = SubResource( 65 )
 OptionButton/styles/hover = SubResource( 44 )
 OptionButton/styles/normal = SubResource( 44 )
 OptionButton/styles/pressed = SubResource( 43 )
@@ -311,7 +311,7 @@ PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
 PopupMenu/constants/hseparation = 4
 PopupMenu/constants/vseparation = 4
 PopupMenu/fonts/font = SubResource( 42 )
-PopupMenu/fonts/font_separator = SubResource( 4 )
+PopupMenu/fonts/font_separator = SubResource( 59 )
 PopupMenu/icons/checked = SubResource( 47 )
 PopupMenu/icons/radio_checked = SubResource( 47 )
 PopupMenu/icons/radio_unchecked = SubResource( 47 )
@@ -324,14 +324,14 @@ ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = SubResource( 55 )
 ProgressBar/styles/bg = SubResource( 56 )
-ProgressBar/styles/fg = SubResource( 3 )
+ProgressBar/styles/fg = SubResource( 66 )
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
 TabContainer/fonts/font = SubResource( 57 )
 TabContainer/styles/panel = ExtResource( 3 )
 TabContainer/styles/tab_bg = SubResource( 53 )
 TabContainer/styles/tab_fg = SubResource( 58 )
-VScrollBar/styles/grabber = SubResource( 33 )
-VScrollBar/styles/grabber_highlight = SubResource( 33 )
-VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/grabber = SubResource( 67 )
+VScrollBar/styles/grabber_highlight = SubResource( 67 )
+VScrollBar/styles/grabber_pressed = SubResource( 67 )
 VScrollBar/styles/scroll = SubResource( 38 )

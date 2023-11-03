@@ -5,6 +5,11 @@ var main_menu = "res://scenes/main_screen/main_screen.tscn"
 export( Resource ) var settings_data
 
 func _ready():
+	if settings_data.email == "":
+		$user_profile/logout_bg/logout.disabled = true
+	else:
+		$user_profile/logout_bg/logout.disabled = false
+		
 	Pixelizer.set_visible(false)
 	$user_profile/name_background/name.text = settings_data.player_name
 	$user_profile/router_progress.min_value = 0  # Set the minimum value
@@ -37,3 +42,5 @@ func _on_logout_btn_pressed():
 	else:
 		$login.visible = true
 		
+func _on_logout_pressed():
+	$logout_prompt.visible = true

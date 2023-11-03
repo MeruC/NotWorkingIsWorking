@@ -1,6 +1,6 @@
 extends Control
 
-var json_file = "res://scenes/user_profile/question_bank/json/question_bank.json"
+var json_file = "user://question_bank/question_bank.json"
 var fetched_questions = ""
 var question_list = []
 var previous_scene = "res://online_mode/createQuiz_professor/createQuiz_professor.tscn"
@@ -19,6 +19,20 @@ export(NodePath) onready var add_popup = get_node(add_popup) as Control
 export(Resource) var settings_data
 
 func _ready():
+	var folderName = "question_bank"
+	# Construct the full path to the second folder within the user directory
+	var folderPath = "user://" + folderName
+
+	# Create the first folder if it doesn't exist
+	var dir = Directory.new()
+	if not dir.dir_exists(folderPath):
+		if dir.make_dir(folderPath) == OK:
+			print("Folder created:", folderPath)
+		else:
+			printerr("Failed to create Folder 1:", folderPath)
+	else:
+		print("Folder already exists:", folderPath)
+
 	show_questions()
 	
 # A function to join items in an array as a string
@@ -109,7 +123,7 @@ func save_questions():
 		question_dict["incorrect"] = child.find_node("incorrect_content").text.split(", ")
 		question_list.append(question_dict)
 	var json_string = to_json(question_list)
-	var file_path = "res://scenes/user_profile/question_bank/json/question_bank.json"
+	var file_path = "user://question_bank/question_bank.json"
 	var file = File.new()
 	
 	if file.open(file_path, File.WRITE) == OK:
@@ -148,6 +162,7 @@ func _on_close_button_pressed():
 func upload_file(request: HTTPRequest) -> void:
 	var file_name = settings_data.email + ".json"
 	var email = settings_data.email
+	
 	var file = File.new()
 	file.open(json_file, File.READ)
 	var file_data = file.get_buffer(file.get_len())  # Read the file as binary data

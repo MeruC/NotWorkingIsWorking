@@ -4,14 +4,15 @@
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/offline_mode_Asset/level_7/hybrid_topology.png" type="Texture" id=4]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/Themes/level7.tres" type="Theme" id=5]
 [ext_resource path="res://offline_levels/level7/manager.gd" type="Script" id=6]
 [ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
-[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=9]
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=11]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=12]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/17.png" type="Texture" id=13]
+[ext_resource path="res://resources/offline_mode_Asset/level_7/19.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -710,10 +711,6 @@ script/source = "extends TextureRect
 export (String) var content
 "
 
-[sub_resource type="DynamicFont" id=3]
-size = 92
-font_data = ExtResource( 5 )
-
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -734,6 +731,7 @@ crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
+tutorial_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 result_anim = NodePath("animation_player/AnimationPlayer")
 mascot = NodePath("animation_player/AnimationPlayer/correct")
 bg = NodePath("animation_player/ColorRect")
@@ -808,16 +806,32 @@ visible = false
 [node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
 visible = false
 
+[node name="level5" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="3"]
+visible = false
+
+[node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
+visible = false
+
+[node name="bg" type="NinePatchRect" parent="."]
+margin_right = 1923.0
+margin_bottom = 1082.0
+texture = ExtResource( 13 )
+
+[node name="image_bg" type="NinePatchRect" parent="."]
+margin_left = 44.0
+margin_top = 168.0
+margin_right = 794.0
+margin_bottom = 918.0
+texture = ExtResource( 14 )
+
 [node name="topology_image" type="TextureRect" parent="."]
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -913.0
-margin_top = -381.0
-margin_right = -163.0
-margin_bottom = 369.0
-rect_min_size = Vector2( 750, 750 )
+margin_left = 95.0
+margin_top = -325.0
+margin_right = 745.0
+margin_bottom = 325.0
+rect_min_size = Vector2( 650, 650 )
 texture = ExtResource( 4 )
 expand = true
 script = SubResource( 4 )
@@ -827,59 +841,54 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -1016.0
-margin_top = -428.0
-margin_right = -316.0
-margin_bottom = 422.0
+margin_left = -979.0
+margin_top = -337.0
+margin_right = -279.0
+margin_bottom = 513.0
 custom_constants/separation = 50
 
 [node name="star" type="Button" parent="options_container"]
 margin_right = 700.0
-margin_bottom = 130.0
-rect_min_size = Vector2( 700, 100 )
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
 focus_mode = 0
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Star Topology"
 
 [node name="bus" type="Button" parent="options_container"]
-margin_top = 180.0
+margin_top = 150.0
 margin_right = 700.0
-margin_bottom = 310.0
-rect_min_size = Vector2( 700, 100 )
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 100 )
 focus_mode = 0
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Bus Topology"
 
 [node name="ring" type="Button" parent="options_container"]
-margin_top = 360.0
+margin_top = 300.0
 margin_right = 700.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 700, 100 )
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 100 )
 focus_mode = 0
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Ring Topology"
 
 [node name="mesh" type="Button" parent="options_container"]
-margin_top = 540.0
+margin_top = 450.0
 margin_right = 700.0
-margin_bottom = 670.0
-rect_min_size = Vector2( 700, 100 )
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 100 )
 focus_mode = 0
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Mesh Topology"
 
 [node name="hybrid" type="Button" parent="options_container"]
-margin_top = 720.0
+margin_top = 600.0
 margin_right = 700.0
-margin_bottom = 850.0
-rect_min_size = Vector2( 700, 100 )
+margin_bottom = 700.0
+rect_min_size = Vector2( 0, 100 )
 focus_mode = 0
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 5 )
 text = "Hybrid Topology"
 
 [node name="counter" type="HBoxContainer" parent="."]

@@ -22,7 +22,7 @@ export(Resource) var settings_data
 onready var level = get_node(".")
 
 var main_screen = "res://scenes/main_screen/main_screen.tscn"
-var saved_levels_folder = "res://online_mode/saved_levels/"
+var saved_levels_folder = "user://saved_levels/"
 var new_json = {}
 var question_list = []
 var json_file = "res://online_mode/json/question_bank.json"
@@ -32,6 +32,33 @@ var fetched_questions = ""
 var initial_text = ""
 var game_code
 func _ready():
+	var folderName1 = "saved_levels"
+	var folderName2 = "json"
+
+	# Construct the full path to the first folder within the user directory
+	var folderPath1 = "user://" + folderName1
+
+	# Construct the full path to the second folder within the user directory
+	var folderPath2 = "user://" + folderName2
+
+	# Create the first folder if it doesn't exist
+	var dir = Directory.new()
+	if not dir.dir_exists(folderPath1):
+		if dir.make_dir(folderPath1) == OK:
+			print("Folder 1 created:", folderPath1)
+		else:
+			printerr("Failed to create Folder 1:", folderPath1)
+	else:
+		print("Folder 1 already exists:", folderPath1)
+
+	# Create the second folder if it doesn't exist
+	if not dir.dir_exists(folderPath2):
+		if dir.make_dir(folderPath2) == OK:
+			print("Folder 2 created:", folderPath2)
+		else:
+			printerr("Failed to create Folder 2:", folderPath2)
+	else:
+		print("Folder 2 already exists:", folderPath2)
 	show_questions()
 	
 func show_questions():
@@ -177,7 +204,7 @@ func _on_create_pressed():
 		question_list.append(question_dict)
 	new_json["questions"] = question_list
 	var json_string = to_json(new_json)
-	var file_path = "res://online_mode/json/" + game_code + ".json"
+	var file_path = "user://json/" + game_code + ".json"
 	var file = File.new()
 	
 	if file.open(file_path, File.WRITE) == OK:
@@ -238,8 +265,8 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var creator_name = settings_data.email
 	var levelname = level_name.text
 	print(levelname)
-	var file_path = "res://online_mode/saved_levels/" + file_name
-	var json_file_path = "res://online_mode/json/" + json_filename
+	var file_path = "user://saved_levels/" + file_name
+	var json_file_path = "user://json/" + json_filename
 	
 	var file = File.new()
 	file.open(file_path, File.READ)

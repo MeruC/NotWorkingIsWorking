@@ -55,6 +55,7 @@ var textures = []
 
 
 func _ready():
+	animation_player.play("level5_tutorial")
 	textures = [layer1.texture, layer2.texture, layer3.texture, layer4.texture, layer5.texture, layer6.texture, layer7.texture]
 	shuffle()
 	position()

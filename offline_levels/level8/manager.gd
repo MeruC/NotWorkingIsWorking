@@ -19,13 +19,14 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
+export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 export(Resource) var settings_data
 
 var score = 0
 var question_number = 0
 
 func _ready():
-	pass
+	tutorial_player.play("level8_tutorial")
 
 func _process(delta):
 	display_time()
@@ -161,7 +162,7 @@ func calculate_score():
 		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = true
 		
-	if score<=20:
+	if score<=20 and score>0:
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		gameover_anim.play("lose")
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
@@ -206,7 +207,7 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		gameover_retry.disabled = true
 		gameover_next.disabled = true
-		if score >= 30:
+		if score >= 30 and score<=399:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			settings_data.gold_coins = new_coins
@@ -222,7 +223,7 @@ func score_validation():
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
 	else:
-		if score >= 30:
+		if score >= 30 and score>0:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			var skills = settings_data.net1_skills
@@ -250,3 +251,7 @@ func score_validation():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
+
+
+func _on_next_pressed():
+	Load.load_scene(self,"res://global/chapters/chapter1.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=12]
 [ext_resource path="res://resources/font/user_profile_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://scenes/user_profile/podium.png" type="Texture" id=14]
-[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=15]
+[ext_resource path="res://resources/Themes/user_profile.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=16]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=17]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
@@ -34,9 +34,6 @@
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=32]
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=34]
-[ext_resource path="res://resources/Game buttons/result_button1.png" type="Texture" id=35]
-[ext_resource path="res://resources/Game buttons/result_button3.png" type="Texture" id=36]
-[ext_resource path="res://resources/Game buttons/result_button2.png" type="Texture" id=37]
 
 [sub_resource type="DynamicFont" id=23]
 size = 30
@@ -90,44 +87,6 @@ font_data = ExtResource( 25 )
 [sub_resource type="DynamicFont" id=13]
 size = 50
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=92]
-size = 40
-extra_spacing_top = 5
-extra_spacing_bottom = 9
-extra_spacing_space = 7
-font_data = ExtResource( 15 )
-
-[sub_resource type="StyleBoxTexture" id=97]
-texture = ExtResource( 36 )
-region_rect = Rect2( 0, 0, 96, 32 )
-
-[sub_resource type="StyleBoxTexture" id=93]
-texture = ExtResource( 35 )
-region_rect = Rect2( 0, 0, 96, 32 )
-
-[sub_resource type="StyleBoxTexture" id=94]
-texture = ExtResource( 35 )
-region_rect = Rect2( 0, 0, 96, 32 )
-
-[sub_resource type="StyleBoxTexture" id=95]
-texture = ExtResource( 37 )
-region_rect = Rect2( 0, 0, 96, 32 )
-
-[sub_resource type="StyleBoxTexture" id=96]
-
-[sub_resource type="Theme" id=98]
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 0.427451 )
-Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 0.890196 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 0.992157 )
-Button/fonts/font = SubResource( 92 )
-Button/styles/disabled = SubResource( 97 )
-Button/styles/hover = SubResource( 93 )
-Button/styles/normal = SubResource( 94 )
-Button/styles/pressed = SubResource( 95 )
-LineEdit/styles/normal = SubResource( 96 )
 
 [sub_resource type="SpatialMaterial" id=21]
 albedo_texture = ExtResource( 22 )
@@ -652,6 +611,7 @@ func _http_request_completed(result, response_code, headers, body):
 				$\".\".visible = false
 				$\"..\".visible = false
 				$\"../../cloud_storage\".visible = true
+				$\"../../user_profile/logout_bg/logout\".disabled = false
 				
 			else:
 				# Authentication failed, check if the response contains \"account_exists\" key
@@ -792,14 +752,28 @@ func _on_Button_pressed():
 	var username = username_input.text
 	var user_password = password_input.text
 	var cpassword = cpassword_input.text
-	
+
+	# Minimum and maximum password length requirements
+	var minLength = 8
+	var maxLength = 16
+
 	if user_password == cpassword:
 		if username.find(\"@gmail.com\") != -1 or username.find(\"@bulsu.edu.ph\") != -1:
-			var command = \"add_user\"
-			var data = {\"username\": username, \"password\": user_password}
-			request_queue.push_back({\"command\": command, \"data\": data})
-			settings_data.email = username
-			SaveManager.save_game()
+			var password_length = len(user_password)
+			# Check if the password meets the minimum and maximum length requirements
+			if password_length >= minLength and password_length <= maxLength:
+				var command = \"add_user\"
+				var data = {\"username\": username, \"password\": user_password}
+				request_queue.push_back({\"command\": command, \"data\": data})
+				settings_data.email = username
+				$\"../../user_profile/logout_bg/logout\".disabled = false
+				SaveManager.save_game()
+			else:
+				$\"../../notification2\".visible = true
+				$\"../../notification2/message\".text = \"Password length must be between \" + str(minLength) + \" and \" + str(maxLength) + \" characters.\"
+				$s_email.text = \"\"
+				$s_password.text = \"\"
+				$c_password.text = \"\"
 		else:
 			$\"../../notification2\".visible = true
 			$\"../../notification2/message\".text = \"Invalid Email format.\"
@@ -811,10 +785,12 @@ func _on_Button_pressed():
 		$\"../../notification2/message\".text = \"Password didn't match.\"
 		$s_password.text = \"\"
 		$c_password.text = \"\"
+
 		
 func prompt_successfully(username):
 		$\"../../notification\".visible = true
 		$\"../../notification/message\".text = \"Welcome \"+username
+		$\"../../user_profile/logout_bg/logout\".disabled = false
 
 
 func _on_confirm_pressed():
@@ -1091,6 +1067,31 @@ func _on_no_pressed():
 	$\"../prompt_retrieve\".visible = false
 "
 
+[sub_resource type="GDScript" id=72]
+script/source = "extends CanvasLayer
+
+export(Resource) onready var settings_data
+
+
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_yes_pressed():
+	settings_data.email = \"\"
+	SaveManager.save_game()
+	$\"../user_profile/logout_bg/logout\".disabled = true
+	$\".\".visible = false
+
+func _on_no_pressed():
+	$\".\".visible = false
+"
+
 [node name="user_profile" type="Node2D"]
 script = ExtResource( 5 )
 settings_data = ExtResource( 18 )
@@ -1264,10 +1265,18 @@ margin_bottom = 1047.0
 [node name="logout_btn" type="Button" parent="user_profile/logout_bg"]
 margin_left = -425.0
 margin_top = -19.0
-margin_right = 360.0
-margin_bottom = 130.0
-theme = SubResource( 98 )
-text = "Cloud Storage"
+margin_right = -75.0
+margin_bottom = 131.0
+theme = ExtResource( 15 )
+text = "Cloud Save"
+
+[node name="logout" type="Button" parent="user_profile/logout_bg"]
+margin_left = -3.0
+margin_top = -21.0
+margin_right = 347.0
+margin_bottom = 129.0
+theme = ExtResource( 15 )
+text = "Log out"
 
 [node name="ViewportContainer" type="ViewportContainer" parent="user_profile"]
 margin_left = 250.0
@@ -2010,8 +2019,67 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 33 )
 text = "Warning !"
 
+[node name="logout_prompt" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 72 )
+settings_data = ExtResource( 18 )
+
+[node name="ColorRect" type="ColorRect" parent="logout_prompt"]
+margin_right = 1947.0
+margin_bottom = 1101.0
+color = Color( 0, 0, 0, 0.333333 )
+
+[node name="TextureRect" type="TextureRect" parent="logout_prompt"]
+margin_left = 347.0
+margin_top = 257.0
+margin_right = 643.0
+margin_bottom = 483.0
+rect_scale = Vector2( 4.00898, 2.65976 )
+texture = ExtResource( 32 )
+
+[node name="Label" type="Label" parent="logout_prompt"]
+margin_left = 394.0
+margin_top = 434.0
+margin_right = 1494.0
+margin_bottom = 645.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Are you absolutely certain you wish to log out? Please be aware that any unsaved progress may be lost if you proceed."
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="logout_prompt"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -245.0
+margin_top = -233.0
+margin_right = 225.0
+margin_bottom = -143.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 33 )
+text = "Warning!"
+
+[node name="yes" type="Button" parent="logout_prompt"]
+margin_left = 653.0
+margin_top = 693.0
+margin_right = 880.0
+margin_bottom = 825.0
+theme = ExtResource( 16 )
+text = "yes"
+
+[node name="no" type="Button" parent="logout_prompt"]
+margin_left = 1023.0
+margin_top = 699.0
+margin_right = 1222.0
+margin_bottom = 831.0
+theme = ExtResource( 26 )
+text = "No"
+
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
+[connection signal="pressed" from="user_profile/logout_bg/logout" to="." method="_on_logout_pressed"]
 [connection signal="pressed" from="user_profile/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/select_btn" to="edit_avatar" method="_on_select_btn_pressed"]
 [connection signal="pressed" from="edit_avatar/back_btn" to="edit_avatar" method="_on_back_btn_pressed"]
@@ -2031,3 +2099,5 @@ text = "Warning !"
 [connection signal="pressed" from="prompt_upload/cancel" to="cloud_storage" method="_on_cancel_pressed"]
 [connection signal="pressed" from="prompt_retrieve/yes" to="cloud_storage" method="_on_yes_pressed"]
 [connection signal="pressed" from="prompt_retrieve/no" to="cloud_storage" method="_on_no_pressed"]
+[connection signal="pressed" from="logout_prompt/yes" to="logout_prompt" method="_on_yes_pressed"]
+[connection signal="pressed" from="logout_prompt/no" to="logout_prompt" method="_on_no_pressed"]

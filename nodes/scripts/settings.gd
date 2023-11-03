@@ -13,3 +13,4 @@ func _on_settingsBtn_pressed():
 	yield(settings.animation_player, "animation_finished")
 	get_tree().paused = true
 	settings.audio_loop_player.stream_paused = false
+	Global.editor_mode = "play"

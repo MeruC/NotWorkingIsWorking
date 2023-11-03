@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://offline_levels/level5/layer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/offline_mode_Asset/level_5/application_layer.png" type="Texture" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=14]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=15]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=16]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/bg.png" type="Texture" id=17]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=19]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/osi_model.png" type="Texture" id=20]
+[ext_resource path="res://resources/offline_mode_Asset/level_5/glas2.png" type="Texture" id=21]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -708,6 +713,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
+[sub_resource type="DynamicFont" id=12]
+size = 18
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+font_data = ExtResource( 18 )
+
 [node name="level5" type="Control"]
 margin_left = 239.0
 margin_top = 165.0
@@ -812,13 +825,26 @@ visible = false
 [node name="level4" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="2"]
 visible = false
 
+[node name="level7" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="4"]
+visible = false
+
+[node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = -240.0
+margin_top = -165.0
+margin_right = 1682.0
+margin_bottom = 916.0
+texture = ExtResource( 17 )
+
 [node name="slot_container" type="GridContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 858.0
-margin_top = 44.0
-margin_right = 1218.0
-margin_bottom = 566.0
+margin_left = 1001.0
+margin_top = 33.0
+margin_right = 1361.0
+margin_bottom = 555.0
 custom_constants/vseparation = 10
 
 [node name="slot7" parent="slot_container" instance=ExtResource( 9 )]
@@ -852,10 +878,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 917.0
-margin_top = 590.0
-margin_right = 1167.0
-margin_bottom = 690.0
+margin_left = 1060.0
+margin_top = 579.0
+margin_right = 1310.0
+margin_bottom = 679.0
 custom_constants/hseparation = 50
 columns = 2
 
@@ -863,6 +889,9 @@ columns = 2
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+theme = ExtResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
 text = "RELOAD"
 
 [node name="submit" type="Button" parent="button_container"]
@@ -870,7 +899,15 @@ margin_left = 150.0
 margin_right = 250.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+theme = ExtResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 13 )
 text = "SUBMIT"
+
+[node name="model_bg" type="NinePatchRect" parent="."]
+margin_right = 842.0
+margin_bottom = 673.0
+texture = ExtResource( 21 )
 
 [node name="layer1" parent="." instance=ExtResource( 1 )]
 margin_left = 50.0
@@ -938,6 +975,10 @@ margin_top = 802.0
 margin_right = 1666.0
 margin_bottom = 902.0
 theme = ExtResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 430, -69 )
+texture = ExtResource( 20 )
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reload" to="." method="_on_reload_pressed"]
