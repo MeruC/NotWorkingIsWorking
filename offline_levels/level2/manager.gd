@@ -213,18 +213,25 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
-		if score == 4:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+90
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score == 5:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		if settings_data.reset_timer >= 120:
+			if score == 4:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+90
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
+			elif score == 5:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
+			else:
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
 		else:
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
@@ -241,6 +248,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
+			settings_data.reset_timer = 120
 			SaveManager.save_game()
 		elif score <= 3:
 			settings_data.level2 = score
@@ -256,6 +264,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.crowns+=3
+			settings_data.reset_timer = 120
 			settings_data.level2 = score
 			SaveManager.save_game()
 	

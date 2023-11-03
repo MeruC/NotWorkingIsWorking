@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://resources/Game buttons/cat_win.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level2/letter.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=14]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=16]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -1249,6 +1250,8 @@ margin_top = 423.0
 margin_right = 945.0
 margin_bottom = 523.0
 theme = ExtResource( 15 )
+
+[node name="manager2" parent="." instance=ExtResource( 17 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="manager" method="_on_tap_pressed"]

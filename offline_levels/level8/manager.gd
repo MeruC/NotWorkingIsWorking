@@ -207,18 +207,25 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		gameover_retry.disabled = true
 		gameover_next.disabled = true
-		if score >= 30 and score<=399:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score >= 400:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+200
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		if settings_data.reset_timer >= 120:
+			if score >= 30 and score<=399:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.reset_timer = 0
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			elif score >= 400:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+200
+				settings_data.gold_coins = new_coins
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			else:
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
 		else:
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()

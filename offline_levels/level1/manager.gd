@@ -142,18 +142,27 @@ func _on_data_changed():
 	if setting_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
-		if score >= 7 and score <= 9:
-			var coins = setting_data.gold_coins
-			var current = coins+100
-			setting_data.gold_coins = current
-			setting_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score == 10:
-			var coins = setting_data.gold_coins
-			var current = coins+100
-			setting_data.gold_coins = current
-			setting_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		
+		if setting_data.reset_timer >= 120:
+			if score >= 7 and score <= 9:
+				var coins = setting_data.gold_coins
+				var current = coins+100
+				setting_data.gold_coins = current
+				setting_data.reset_timer = 0
+				setting_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			elif score == 10:
+				var coins = setting_data.gold_coins
+				var current = coins+100
+				setting_data.reset_timer = 0
+				setting_data.gold_coins = current
+				setting_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			else:
+				setting_data.reset_timer = 0
+				setting_data.quick_game = "notplaying"
+				SaveManager.save_game()
+				
 		else:
 			setting_data.quick_game = "notplaying"
 			SaveManager.save_game()
@@ -168,6 +177,7 @@ func _on_data_changed():
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
+			setting_data.reset_timer = 120
 			SaveManager.save_game()
 			
 		elif score == 10:
@@ -179,10 +189,9 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			setting_data.level1 = score
+			setting_data.reset_timer = 120
 			SaveManager.save_game()
 			
-
-
 func _on_retry_pressed():
 	get_tree().change_scene("res://offline_levels/level1/level_1.tscn")
 

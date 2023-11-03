@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://offline_levels/level8/decimal to binary.ogv" type="VideoStream" id=6]
 [ext_resource path="res://offline_levels/level8/decimal_to_binary.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=8]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -166,6 +167,8 @@ icon_align = 1
 [node name="video_player" parent="." instance=ExtResource( 4 )]
 visible = false
 stream = ExtResource( 6 )
+
+[node name="manager" parent="." instance=ExtResource( 9 )]
 
 [connection signal="pressed" from="video_cover/play" to="." method="_on_play_pressed"]
 [connection signal="cancel" from="video_player" to="." method="_on_video_player_cancel"]

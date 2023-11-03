@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://offline_levels/level5/layer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/offline_mode_Asset/level_5/application_layer.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=19]
 [ext_resource path="res://resources/offline_mode_Asset/level_5/osi_model.png" type="Texture" id=20]
 [ext_resource path="res://resources/offline_mode_Asset/level_5/glas2.png" type="Texture" id=21]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -985,6 +986,8 @@ theme = ExtResource( 15 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 430, -69 )
 texture = ExtResource( 20 )
+
+[node name="manager" parent="." instance=ExtResource( 22 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reload" to="." method="_on_reload_pressed"]

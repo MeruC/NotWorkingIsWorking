@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_6/23.png" type="Texture" id=21]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/22.png" type="Texture" id=22]
 [ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=23]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -1051,6 +1052,8 @@ margin_right = 1910.0
 margin_bottom = 1071.0
 rect_min_size = Vector2( 100, 100 )
 theme = ExtResource( 20 )
+
+[node name="manager" parent="." instance=ExtResource( 24 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reset" to="." method="_on_reset_pressed"]

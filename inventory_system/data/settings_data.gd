@@ -23,6 +23,7 @@ export (int) var level6 = 0
 export (int) var level7 = 0
 export (int) var level8 = 0
 export (int) var level9 = 0
+export (int) var reset_timer = 0
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0
@@ -71,6 +72,7 @@ func set_data( data ):
 	level7 = data.level7
 	level8 = data.level8
 	level9 = data.level9
+	reset_timer = data.reset_timer
 	email = data.email
 	quick_game = data.quick_game
 	#male
@@ -119,5 +121,6 @@ func get_data():
 		"orange_shirt": orange_shirt,
 		"girl_pants": girl_pants,
 		"girl_casual": girl_casual,
-		"quick_game": quick_game
+		"quick_game": quick_game,
+		"reset_timer": reset_timer
 	}

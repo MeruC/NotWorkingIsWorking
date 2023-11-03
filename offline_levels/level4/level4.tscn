@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=11]
 [ext_resource path="res://resources/offline_mode_Asset/level_3/6.png" type="Texture" id=12]
 [ext_resource path="res://resources/offline_mode_Asset/level_3/7.png" type="Texture" id=13]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -930,6 +931,8 @@ margin_top = 969.0
 margin_right = 1911.0
 margin_bottom = 1069.0
 theme = ExtResource( 11 )
+
+[node name="manager" parent="." instance=ExtResource( 14 )]
 
 [connection signal="pressed" from="popup_layer/popup/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]

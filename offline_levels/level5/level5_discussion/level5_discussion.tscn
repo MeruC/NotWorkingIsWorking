@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://offline_levels/level5/level5_discussion/level5_discussion.gd" type="Script" id=1]
 [ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://offline_levels/level5/level5_discussion/gif_asset/level5_covervideo.png" type="Texture" id=9]
 [ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=10]
 [ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=11]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -391,6 +392,8 @@ anims/transport_layer = SubResource( 13 )
 anims/video_player = SubResource( 19 )
 
 [node name="VoiceGeneratorAudioStreamPlayer" parent="." instance=ExtResource( 5 )]
+
+[node name="manager" parent="." instance=ExtResource( 12 )]
 
 [connection signal="pressed" from="CanvasLayer/NinePatchRect/skip" to="." method="_on_skip_pressed"]
 [connection signal="cancel" from="CanvasLayer/videoplayer/video_player" to="." method="_on_video_player_cancel"]

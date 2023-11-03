@@ -4,7 +4,8 @@ export (Resource) var settings_data
 
 func _ready():
 	Pixelizer.set_visible(false)
-	
+	print(settings_data.reset_timer)
+
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 

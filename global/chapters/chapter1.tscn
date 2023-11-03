@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=6]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/Game buttons/0_crowns.png" type="Texture" id=8]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
@@ -731,6 +732,8 @@ margin_right = 980.0
 margin_bottom = 660.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
+
+[node name="manager" parent="." instance=ExtResource( 9 )]
 
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]
