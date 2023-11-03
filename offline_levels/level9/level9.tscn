@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=7]
 [ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=8]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=12]
@@ -24,66 +24,6 @@ albedo_color = Color( 1, 1, 1, 0 )
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0, 0, 0, 0.117647 )
-
-[sub_resource type="GDScript" id=15]
-script/source = "extends Panel
-
-onready var task1_cb = $ScrollContainer/tasks_vbox/task1/task_cb
-onready var task2_cb = $ScrollContainer/tasks_vbox/task2/task_cb
-onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
-onready var pc1_object = $\"../../object_monitor\"
-onready var pc2_object = $\"../../object_monitor153\"
-onready var root_scene = get_tree().get_current_scene()
-onready var submit_button = $submit_button
-
-func _ready():
-	for object in root_scene.get_children():
-		if object is StaticBody and object.get(\"connected_to\") != null:
-			object.connect(\"cable_connected\", self, \"on_cable_connected\")
-			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
-# To check if both pc is connected with each other
-func check_connection():
-	pass
-##
-
-# To check if 
-func _on_command_line_enter_pressed(text):
-	pass
-
-# To check if the player entered correct ip for each pc
-func _on_save_button_pressed():
-	if task2_cb.pressed == false:
-		if pc1_object.ipv4_address == \"192.168.1.101\" and pc1_object.subnet_mask == \"255.255.255.0\" and pc2_object.ipv4_address == \"192.168.1.102\" and pc2_object.subnet_mask == \"255.255.255.0\":
-			task2_cb.pressed = true
-##
-
-func on_cable_connected():
-	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-		task1_cb.pressed = true
-
-func on_device_pinged_succefully():
-	task3_cb.pressed = true
-
-func _on_task_cb_toggled(button_pressed):
-	if task1_cb.pressed == true and task2_cb.pressed == true and task3_cb.pressed == true:
-		submit_button.visible = true
-"
-
-[sub_resource type="DynamicFont" id=13]
-size = 22
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=14]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=16]
-size = 20
-extra_spacing_bottom = 16
-font_data = ExtResource( 9 )
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0, 0, 0, 0.215686 )
@@ -641,117 +581,22 @@ rect_min_size = Vector2( 150, 52.5 )
 [node name="exit_confirmation" parent="object_monitor153/ui/terminal_app/cmd_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
 
-[node name="tasks_ui" type="CanvasLayer" parent="."]
+[node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 
-[node name="task_manager" type="Panel" parent="tasks_ui"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 425.0
-margin_bottom = 425.0
-custom_styles/panel = SubResource( 12 )
-script = SubResource( 15 )
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_bottom = 300.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="tasks_ui/task_manager"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -190.0
-margin_top = -190.0
-margin_right = 190.0
-margin_bottom = 190.0
-scroll_horizontal_enabled = false
-
-[node name="tasks_vbox" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer"]
-margin_right = 380.0
-margin_bottom = 534.0
-custom_constants/separation = 25
-
-[node name="task1" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_right = 380.0
-margin_bottom = 92.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 13 )
-disabled = true
-text = "Connect two PCs"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 14 )
-text = "- Use your Cross-Over cable to connect on PC to the other."
-autowrap = true
-
-[node name="task2" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 117.0
-margin_right = 380.0
-margin_bottom = 365.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 13 )
-disabled = true
-text = "Configure IP Addresses"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 14 )
-text = "- Open each PC and configure their IP Addresses and subnet masks:
-PC1:
-IP Address: 192.168.1.101
-Subnet Mask: 255.255.255.0
-PC2:
-IP Address: 192.168.1.102
-Subnet Mask: 255.255.255.0"
-autowrap = true
-
-[node name="task3" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 390.0
-margin_right = 380.0
-margin_bottom = 534.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 13 )
-disabled = true
-text = "Test the Connection"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 14 )
-text = "- Go to the PC1 then open the command prompt.
-- Type the command \"ping 192.168.1.102\"
-- Go to the PC2 then open the command prompt.
-- Type the command \"ping 192.168.1.101\" "
-autowrap = true
-
-[node name="submit_button" type="Button" parent="tasks_ui/task_manager"]
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
 visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -75.0
-margin_right = 75.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 16 )
-text = "SUBMIT"
+
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = false
+margin_top = 208.0
+margin_bottom = 404.0
+
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+margin_top = 208.0
+margin_bottom = 300.0
 
 [node name="popups" type="CanvasLayer" parent="."]
 
@@ -829,16 +674,13 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 60 )
 
-[connection signal="pressed" from="object_monitor/ui/ip_config_app/ip_config_screen/main_panel/save_button" to="tasks_ui/task_manager" method="_on_save_button_pressed"]
-[connection signal="pressed" from="object_monitor153/ui/ip_config_app/ip_config_screen/main_panel/save_button" to="tasks_ui/task_manager" method="_on_save_button_pressed"]
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-[connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="manager" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
 
 [editable path="environment"]
 [editable path="inventory"]
 [editable path="object_monitor"]
+[editable path="object_monitor/ui/disconnect_confirm"]
 [editable path="object_monitor153"]
+[editable path="object_monitor153/ui/disconnect_confirm"]
+[editable path="tasks_ui"]
 [editable path="popups/game_over"]

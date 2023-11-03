@@ -4,6 +4,13 @@ var player
 onready var mobile_controls = $"%mobile_controls"
 onready var inventory = $"%inventory"
 onready var task_manager = $tasks_ui/task_manager
+onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
+onready var level_scene = $"%level"
+onready var main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
+
+var computer_list = []
+var tasks_list = []
+var tasks_cbs = []
 
 
 var joystick
@@ -18,6 +25,7 @@ func get_all_monitor(node) -> Array:
 		#print(N)
 		if "object_monitor" in N.name:
 			nodes.append(N)
+			N.connect("configuration_saved", self, "_on_configuration_saved")
 	return nodes
 	
 func check_ip(ip, subnetmask):
@@ -25,9 +33,12 @@ func check_ip(ip, subnetmask):
 		if (N.ipv4_address == ip) and (N.subnet_mask == subnetmask):
 			print("pass")
 			
+func _on_configuration_saved():
+	check_progress()
 
 func _ready():
-	get_all_monitor(self)
+	get_all_tasks()
+	computer_list = get_all_monitor(self)
 	check_ip("0.0.0.0", "0.0.0.0")
 	
 	LevelGlobal.object_hold = null
@@ -112,4 +123,71 @@ func _on_cable_done():
 	mobile_controls.buttons.set_visible(true)
 	#mobile_controls.cable_ui.set_visible(false)
 	
+func get_all_tasks():
+	for task in tasks_container.get_children():
+		if task.visible == true:
+			tasks_list.append(task.get_name())
+			tasks_cbs.append(task.get_child(0))
+			
+func check_progress():
+	if find_taskName(tasks_list, "task1") != -1:
+		var device_list = []
+		for node in main_scene.get_children():
+			if "object_monitor" in node.name or "genericRouter" in node.name:
+				device_list.append(node)
+		for device in device_list:
+			if "object_monitor" in device.name and device.fe0 != null:
+				print("May nakasaksak")
+				pass
+			elif "genericRouter" in device.name and device.ge0 != null and device.ge1 != null and device.ge2 != null:
+				print("May nakasaksak")
+				pass
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task1")].pressed = false
+				return
+		tasks_cbs[find_taskName(tasks_list, "task1")].pressed = true
+	elif find_taskName(tasks_list, "task2") != -1:
+		var splitted_ip = computer_list[0].ipv4_address.split(".")
+		if splitted_ip.size() == 4:
+			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
+			for computer in computer_list:
+				if starts_with(computer.ipv4_address, base_ip):
+					pass
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task2")].pressed = false
+					return
+			tasks_cbs[find_taskName(tasks_list, "task2")].pressed = true
+			return
+	elif find_taskName(tasks_list, "task3") != -1:
+		for computer in computer_list:
+			if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip:
+				pass
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
+				return
+		tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+	elif find_taskName(tasks_list, "task4") != -1:
+		var router
+		for device in main_scene.get_children():
+			if "object_genericRouter" in device.name:
+				router = device
+		var splitted_ge0ip = router.ge0_ip.split(".")
+		var splitted_ge1ip = router.ge1_ip.split(".")
+		var splitted_ge2ip = router.ge2_ip.split(".")
+		if int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223 and int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223 and int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223:
+			tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+		else:
+			tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+	elif find_taskName(tasks_list, "task5") != -1:
+		pass
+	
+func find_taskName(tasks_list, task_name):
+	for i in range(tasks_list.size()):
+		if tasks_list[i] == task_name:
+			return i
+	return -1
 
+func starts_with(text, prefix):
+	if text.length() < prefix.length():
+		return false
+	return text.substr(0, prefix.length()) == prefix

@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://global/objects/genericRouter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=6]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=8]
@@ -26,57 +26,6 @@ script/source = "extends CanvasLayer
 
 export( NodePath ) onready var ui_container = get_node(ui_container) as Control
 "
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0, 0, 0, 0.117647 )
-
-[sub_resource type="GDScript" id=14]
-script/source = "extends Panel
-
-onready var task1_cb = $ScrollContainer/tasks_vbox/task1/task_cb
-onready var task2_cb = $ScrollContainer/tasks_vbox/task2/task_cb
-onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
-#onready var pc1_object = $\"../../object_monitor\"
-#onready var pc2_object = $\"../../@object_monitor@153\"
-onready var root_scene = get_tree().get_current_scene()
-
-func _ready():
-	pass
-	#for object in root_scene.get_children():
-	#	if object is StaticBody and object.get(\"connected_to\") != null:
-	#		object.connect(\"cable_connected\", self, \"on_cable_connected\")
-#			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-#			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
-# To check if both pc is connected with each other
-func check_connection():
-	pass
-##
-
-# To check if 
-func _on_command_line_enter_pressed(text):
-	pass
-
-# To check if the player entered correct ip for each pc
-#func _on_save_button_pressed():
-#	if task2_cb.pressed == false:
-#		if pc1_object.ipv4_address == \"192.168.1.101\" and pc2_object.ipv4_address == \"192.168.1.102\":
-#			task2_cb.pressed = true
-##
-
-#func on_cable_connected():
-#	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-#		task1_cb.pressed = true
-
-func on_device_pinged_succefully():
-	task3_cb.pressed = true
-"
-
-[sub_resource type="DynamicFont" id=15]
-size = 22
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=16]
-font_data = ExtResource( 5 )
 
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
@@ -121,106 +70,32 @@ script = SubResource( 12 )
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
 
-[node name="tasks_ui" type="CanvasLayer" parent="."]
+[node name="tasks_ui" parent="." instance=ExtResource( 5 )]
 
-[node name="task_manager" type="Panel" parent="tasks_ui"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 425.0
-margin_bottom = 425.0
-custom_styles/panel = SubResource( 13 )
-script = SubResource( 14 )
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_bottom = 144.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="tasks_ui/task_manager"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -190.0
-margin_top = -190.0
-margin_right = 190.0
-margin_bottom = 190.0
-scroll_horizontal_enabled = false
+[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+visible = false
 
-[node name="tasks_vbox" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer"]
-margin_right = 380.0
-margin_bottom = 261.0
-custom_constants/separation = 25
-
-[node name="task1" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_right = 380.0
+[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
+visible = false
+margin_top = 0.0
 margin_bottom = 92.0
 
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-disabled = true
-text = "Connect two PCs"
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+margin_top = 0.0
+margin_bottom = 144.0
 
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 16 )
-text = "- Use your Cross-Over cable to connect on PC to the other."
-autowrap = true
-
-[node name="task2" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
 visible = false
 margin_top = 117.0
-margin_right = 380.0
-margin_bottom = 365.0
+margin_bottom = 313.0
 
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-disabled = true
-text = "Configure IP Addresses"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 16 )
-text = "- Open each PC and configure their IP Addresses and subnet masks:
-PC1:
-IP Address: 192.168.1.101
-Subnet Mask: 255.255.255.0
-PC2:
-IP Address: 192.168.1.102
-Subnet Mask: 255.255.255.0"
-autowrap = true
-
-[node name="task3" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+visible = false
 margin_top = 117.0
-margin_right = 380.0
-margin_bottom = 261.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-disabled = true
-text = "Test the Connection"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 16 )
-text = "- Go to the PC1 then open the command prompt.
-- Type the command \"ping 192.168.1.102\"
-- Go to the PC2 then open the command prompt.
-- Type the command \"ping 192.168.1.101\" "
-autowrap = true
+margin_bottom = 209.0
 
 [node name="object_table" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
@@ -233,34 +108,35 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8 )
 
 [node name="object_monitor" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -2 )
-device_name = "object_monitor"
+device_name = "pc5"
 
 [node name="@object_monitor@332" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0.9375, -2 )
-device_name = "@object_monitor@332"
+device_name = "pc4"
 
 [node name="object_table114" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
 
 [node name="object_monitor332" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.9375, -2 )
-device_name = "@object_monitor@332"
+device_name = "pc3"
 
 [node name="object_table115" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2 )
 
 [node name="object_monitor333" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0.9375, -2 )
-device_name = "@object_monitor@332"
+device_name = "pc2"
 
 [node name="object_table116" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2 )
 
 [node name="object_monitor334" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0.9375, -2 )
-device_name = "@object_monitor@332"
+device_name = "pc1"
 
 [node name="object_genericRouter" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.9375, -8 )
 
 [editable path="environment"]
+[editable path="tasks_ui"]

@@ -1,5 +1,7 @@
 extends StaticBody
 
+onready var level_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
+
 export var device_name : String
 var fe0 : StaticBody = null
 var fe0_type
@@ -12,15 +14,17 @@ var rj = true
 var console = true
 var main_scene
 
+signal configuration_saved()
+
 signal cable_connected()
 
 export(String) var device_type = "computer"
 export(Array) var connected_to = []
 export(String) var ip_allocation = "static"
-export(String) var ipv4_address = "0.0.0.0"
-export(String) var subnet_mask = "0.0.0.0"
-export(String) var default_gateway = "0.0.0.0"
-export(String) var dns_server = "0.0.0.0"
+export(String) var ipv4_address
+export(String) var subnet_mask
+export(String) var default_gateway
+export(String) var dns_server
 export(String) var console_port_connection = null
 
 #export(String) var ipv6_allocation = "static"
@@ -39,7 +43,9 @@ onready var ipv4Gateway_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel
 onready var ipv4Dns_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/dns_hbox2/dns_lineEdit
 onready var ipv4_vbox = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox
 onready var indicator_label = $ui/ip_config_app/ip_config_screen/main_panel/indicator_label
+onready var error_label = $ui/ip_config_app/ip_config_screen/main_panel/error_label
 onready var exit_confirmation = $ui/ip_config_app/ip_config_screen/exit_confirmation
+onready var ip_indicator = $ui/ip_config_app/ip_config_screen/main_panel/ip_indicator
 
 onready var ip_config_app = $ui/ip_config_app
 
@@ -49,8 +55,12 @@ onready var commands_container = $ui/cmd_app/cmd_screen/main_panel/ScrollContain
 
 onready var terminal_app = $ui/terminal_app
 
-onready var disconnect_confirm = $ui/disconnect_confirm
+onready var disconnect_popup = $ui/disconnect_confirm
+onready var disconnect_confirm = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/confirm
 onready var disconnectTo_label = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/device_name
+onready var fe_cable = $ui/io/cpu_ui/fe_cable
+onready var fe_disconnectBtn = $ui/io/cpu_ui/disconnect_button
+onready var ui_script = preload("res://global/objects/scripts/pc_ui.gd")
 
 func _process(delta):
 	pass
@@ -75,7 +85,7 @@ func _ready():
 	ipv4Subnet_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Subnet_lineEdit])
 	ipv4Gateway_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Gateway_lineEdit])
 	ipv4Dns_lineEdit.connect("text_changed", self, "_on_line_edit_text_changed", [ipv4Dns_lineEdit])
-	disconnect_confirm.connect("confirm", self, "_on_confirm_pressed")
+	disconnect_confirm.connect("pressed", self, "_on_confirm_pressed")
 	
 func _on_line_edit_text_changed(line_edit, new_text):
 	isSaved = false
@@ -91,6 +101,7 @@ func _set_connector( connection, type ):
 		fe0_type = str(type)
 		label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
+		level_scene.check_progress()
 		#emit_signal("cable_connected")
 	else:
 		pass
@@ -117,12 +128,18 @@ func _on_ipConfig_button_pressed():
 
 
 func _on_save_button_pressed():
-	ipv4_address = ipv4Add_lineEdit.text
-	subnet_mask = ipv4Subnet_lineEdit.text
-	default_gateway = ipv4Gateway_lineEdit.text
-	dns_server = ipv4Dns_lineEdit.text
-	indicator_label.visible = true
-	isSaved = true
+	if ip_indicator.visible == false:
+		ipv4_address = ipv4Add_lineEdit.text
+		subnet_mask = ipv4Subnet_lineEdit.text
+		default_gateway = ipv4Gateway_lineEdit.text
+		dns_server = ipv4Dns_lineEdit.text
+		indicator_label.visible = true
+		error_label.visible = false
+		isSaved = true
+		emit_signal("configuration_saved")
+	else:
+		error_label.visible = true
+		indicator_label.visible = false
 	
 func validInt_checker(iterable):
 	for item in iterable:
@@ -194,24 +211,30 @@ func _on_terminal_close_button_pressed():
 # CPU Scripts
 
 func _on_disconnect_button_pressed():
-	disconnectTo_label.text = fe0
-	disconnect_confirm.visible = true
+	disconnectTo_label.text = fe0.device_name
+	disconnect_popup.visible = true
 
 func _on_confirm_pressed():
-	pass
-	#for child in main_scene:
-	#	if child is StaticBody:
-	#		if has_property(child, "fe0") and child.fe0 == device_name:
-	#			child.fe0 = null
-	#		elif has_property(child, "ge0") and child.ge0 == device_name:
-	#			child.ge0 = null
-	#		elif has_property(child, "ge1") and child.ge1 == device_name:
-	#			child.ge1 = null
-	#		elif has_property(child, "ge2") and child.ge2 == device_name:
-	#			child.ge2 = null
-	#		return_cable()
-	#		fe0 = null
-	#		fe0_type = null
+	if fe0.device_type == "computer":
+		fe0.fe0 = null
+		fe0.fe0_type = null
+	elif fe0.device_type == "router":
+		if fe0.ge0 == device_name:
+			fe0.ge0 = null
+			fe0.ge0_type = null
+		elif fe0.ge1 == device_name:
+			fe0.ge1 = null
+			fe0.ge1_type = null
+		elif fe0.ge2 == device_name:
+			fe0.ge2 = null
+			fe0.ge2_type = null
+	
+	return_cable()
+	fe0 = null
+	fe0_type = null
+	label.text = ""
+	fe_cable.visible = false
+	fe_disconnectBtn.visible = false
 ##
 
 func return_cable():
@@ -221,3 +244,28 @@ func return_cable():
 	}]
 	InventoryManager.add_items(ItemManager.get_items(produce), "player")
 	SaveManager.save_game()
+
+
+func _on_ipAdd_lineEdit_focus_exited():
+	var splitted_ip = ipv4Add_lineEdit.text.split(".")
+	if splitted_ip.size() == 4:
+		for octet in splitted_ip:
+			if octet.length() > 3 and int(octet) < 0:
+				pass
+			else:
+				if int(splitted_ip[0]) >= 0 and int(splitted_ip[0]) <= 127:
+					ipv4Subnet_lineEdit.text = "255.0.0.0"
+					ip_indicator.visible = false
+					return
+				elif int(splitted_ip[0]) >= 128 and int(splitted_ip[0]) <= 191:
+					ipv4Subnet_lineEdit.text = "255.255.0.0"
+					ip_indicator.visible = false
+					return
+				elif int(splitted_ip[0]) >= 192 and int(splitted_ip[0]) <= 223:
+					ipv4Subnet_lineEdit.text = "255.255.255.0"
+					ip_indicator.visible = false
+					return
+	ip_indicator.visible = true
+	ipv4Add_lineEdit.text = ""
+	ipv4Subnet_lineEdit.text = ""
+	return

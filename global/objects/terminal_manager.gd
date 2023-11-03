@@ -72,6 +72,7 @@ func add_line():
 func _on_command_line_enter_pressed(text, result_line):
 	scan_command(text.to_lower(), result_line)
 	result_line.rect_min_size.y = result_line.get_line_count() * result_line.get_line_height()
+	level_scene.check_progress()
 
 func starts_with(text, prefix):
 	if text.length() < prefix.length():
