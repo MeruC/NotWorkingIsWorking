@@ -968,15 +968,12 @@ depth = 128.0
 material = ExtResource( 9 )
 
 [node name="inventory" parent="level" instance=ExtResource( 14 )]
-unique_name_in_owner = true
 visible = false
 
 [node name="mobile_controls" parent="level" instance=ExtResource( 16 )]
-unique_name_in_owner = true
 visible = false
 
 [node name="tasks_ui" type="CanvasLayer" parent="level"]
-unique_name_in_owner = true
 visible = false
 
 [node name="task_manager" type="Panel" parent="level/tasks_ui"]

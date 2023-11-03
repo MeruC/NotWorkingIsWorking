@@ -13,7 +13,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
-onready var ui_container = $ui_container
+onready var ui_container = $\"%ui_container\"
 onready var crafting_menu = $\"%crafting_menu\"
 "
 
@@ -28,6 +28,7 @@ layer = 10
 script = SubResource( 1 )
 
 [node name="ui_container" type="Control" parent="."]
+unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

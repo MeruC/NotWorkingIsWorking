@@ -9,10 +9,11 @@ const SAVE_FOLDER = "user://saved_levels/"
 onready var level = $"%level"
 onready var wall = $"%wall"
 onready var playarea = $"%playarea"
-onready var inventory = $"%inventory"
+onready var inventory = $level/inventory
 onready var other_ui = $"%other_ui"
-onready var mobile_controls = $"%mobile_controls"
-onready var tasks_ui = $"%tasks_ui"
+onready var mobile_controls = $level/mobile_controls
+onready var tasks_ui = $level/tasks_ui
+
 var timer = null
 var x = 1
 

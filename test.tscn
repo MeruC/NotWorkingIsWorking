@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -28,12 +28,6 @@ albedo_texture = ExtResource( 11 )
 uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_offset = Vector3( 0.5, 0, 0.5 )
 uv1_triplanar = true
-
-[sub_resource type="GDScript" id=12]
-script/source = "extends CanvasLayer
-
-export( NodePath ) onready var ui_container = get_node(ui_container) as Control
-"
 
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
@@ -72,12 +66,8 @@ depth = 20.0
 material = ExtResource( 8 )
 
 [node name="inventory" parent="." instance=ExtResource( 3 )]
-unique_name_in_owner = true
-script = SubResource( 12 )
-ui_container = NodePath("")
 
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
-unique_name_in_owner = true
 
 [node name="tasks_ui" parent="." instance=ExtResource( 5 )]
 
