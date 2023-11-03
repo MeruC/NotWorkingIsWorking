@@ -86,6 +86,7 @@ func _on_resume_pressed():
 	yield(animation_player, "animation_finished")
 	audio_loop_player.stream_paused = true
 	audio_loop_player.stop()
+	Global.editor_mode = "play"
 	#audio_loop_player.playing = false
 	hide()
 	
