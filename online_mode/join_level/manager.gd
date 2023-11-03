@@ -11,8 +11,8 @@ var request_done = 0
 
 # This script is for directing users into another scene
 var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
-var levels_folder = "res://online_mode/saved_levels/"
-var json_folder = "res://online_mode/json/"
+var levels_folder = "user://saved_levels/"
+var json_folder = "user://json/"
 onready var level_scene = $HBoxContainer/code
 
 export(NodePath) onready var textfield = get_node(textfield) as LineEdit
@@ -21,6 +21,34 @@ export(NodePath) onready var error_popup = get_node(error_popup) as Control
 func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed", self, "_http_request_completed")
+# Define the folder names you want to create
+	var folderName1 = "saved_levels"
+	var folderName2 = "json"
+
+	# Construct the full path to the first folder within the user directory
+	var folderPath1 = "user://" + folderName1
+
+	# Construct the full path to the second folder within the user directory
+	var folderPath2 = "user://" + folderName2
+
+	# Create the first folder if it doesn't exist
+	var dir = Directory.new()
+	if not dir.dir_exists(folderPath1):
+		if dir.make_dir(folderPath1) == OK:
+			print("Folder 1 created:", folderPath1)
+		else:
+			printerr("Failed to create Folder 1:", folderPath1)
+	else:
+		print("Folder 1 already exists:", folderPath1)
+
+	# Create the second folder if it doesn't exist
+	if not dir.dir_exists(folderPath2):
+		if dir.make_dir(folderPath2) == OK:
+			print("Folder 2 created:", folderPath2)
+		else:
+			printerr("Failed to create Folder 2:", folderPath2)
+	else:
+		print("Folder 2 already exists:", folderPath2)
 
 func _on_back_pressed():
 	Load.load_scene(self, previous_scene)
@@ -68,7 +96,7 @@ func _http_request_completed(result, response_code, headers, body):
 
 		if "game_code" in response_body:
 			# Save the response as a JSON file
-			var newJsonFilePath = "res://online_mode/json/" + textfield.text.to_upper() + ".json"
+			var newJsonFilePath = "user://json/" + textfield.text.to_upper() + ".json"
 			var jsonFile = File.new()
 			if jsonFile.open(newJsonFilePath, File.WRITE) == OK:
 				jsonFile.store_string(response_body)
@@ -79,7 +107,7 @@ func _http_request_completed(result, response_code, headers, body):
 				printerr("Failed to save the JSON file")
 		else:
 			# Save the response as a new file
-			var newFilePath = "res://online_mode/saved_levels/" + textfield.text.to_upper() + ".tscn"
+			var newFilePath = "user://saved_levels/" + textfield.text.to_upper() + ".tscn"
 			var file = File.new()
 			if file.open(newFilePath, File.WRITE) == OK:
 				file.store_string(response_body)
@@ -93,7 +121,8 @@ func _http_request_completed(result, response_code, headers, body):
 				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/info.text = "notice"
 				$CanvasLayer/dialog_box/ColorRect/VBoxContainer/message.text = "You are now ready to join. Please click the join button again."
 			else:
-				printerr("Failed to save the file")
+				printerr("Failed to save the .tscn file. Error: " + str(file.get_error()))
+
 
 func _send_request(request: Dictionary):
 	var client = HTTPClient.new()
