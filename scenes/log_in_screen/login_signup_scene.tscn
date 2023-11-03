@@ -361,7 +361,7 @@ margin_bottom = 126.0
 theme = ExtResource( 17 )
 align = 1
 secret = true
-placeholder_text = "Enter password"
+placeholder_text = "Passwords must be 8-16 words"
 
 [node name="_confirmpassword" type="Label" parent="signup_screen"]
 margin_left = 109.0
