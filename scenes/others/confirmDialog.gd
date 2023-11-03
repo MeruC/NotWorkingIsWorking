@@ -37,3 +37,7 @@ func _on_cancel_pressed():
 	yield(confirm_animation, "animation_finished")
 	hide()
 	action = ""
+
+
+func _on_disconnect_confirm_visibility_changed():
+	confirm_animation.play("intro")

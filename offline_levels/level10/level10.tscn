@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=11]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=12]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=13]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=14]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=15]
 
 [sub_resource type="PlaneMesh" id=11]
@@ -31,66 +31,6 @@ script/source = "extends CanvasLayer
 
 export( NodePath ) onready var ui_container = get_node(ui_container) as Control
 "
-
-[sub_resource type="StyleBoxFlat" id=59]
-bg_color = Color( 0, 0, 0, 0.117647 )
-
-[sub_resource type="GDScript" id=60]
-script/source = "extends Panel
-
-onready var task1_cb = $ScrollContainer/tasks_vbox/task1/task_cb
-onready var task2_cb = $ScrollContainer/tasks_vbox/task2/task_cb
-onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
-onready var root_scene = get_tree().get_current_scene()
-onready var submit_button = $submit_button
-
-func _ready():
-	for object in root_scene.get_children():
-		if object is StaticBody and object.get(\"connected_to\") != null and object.get(\"device_type\") != null and object.device_type == \"computer\":
-			object.connect(\"cable_connected\", self, \"on_cable_connected\")
-			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
-# To check if both pc is connected with each other
-func check_connection():
-	pass
-##
-
-# To check if 
-func _on_command_line_enter_pressed(text):
-	pass
-
-# To check if the player entered correct ip for each pc
-func _on_save_button_pressed():
-	pass
-	#if task2_cb.pressed == false:
-	#	if pc1_object.ipv4_address == \"192.168.1.101\" and pc1_object.subnet_mask == \"255.255.255.0\" and pc2_object.ipv4_address == \"192.168.1.102\" and pc2_object.subnet_mask == \"255.255.255.0\":
-	#		task2_cb.pressed = true
-##
-
-func on_cable_connected():
-	pass
-	#if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-	#	task1_cb.pressed = true
-
-func on_device_pinged_succefully():
-	task3_cb.pressed = true
-
-func _on_task_cb_toggled(button_pressed):
-	if task1_cb.pressed == true and task2_cb.pressed == true and task3_cb.pressed == true:
-		submit_button.visible = true
-"
-
-[sub_resource type="DynamicFont" id=61]
-size = 22
-font_data = ExtResource( 14 )
-
-[sub_resource type="DynamicFont" id=62]
-font_data = ExtResource( 14 )
-
-[sub_resource type="DynamicFont" id=63]
-size = 20
-extra_spacing_bottom = 16
-font_data = ExtResource( 14 )
 
 [sub_resource type="StyleBoxFlat" id=64]
 bg_color = Color( 0, 0, 0, 0.215686 )
@@ -632,161 +572,50 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 [node name="object_monitor" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 device_name = "pc1"
-connected_to = [ "router0" ]
-ipv4_address = "192.168.1.101"
-subnet_mask = "255.255.255.0"
-default_gateway = "192.168.1.1"
+
+[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -200.0
+margin_right = -910.0
+margin_bottom = 210.0
 
 [node name="object_monitor300" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9375, -4 )
 device_name = "pc2"
-connected_to = [ "router0" ]
-ipv4_address = "192.168.2.101"
-subnet_mask = "255.255.255.0"
-default_gateway = "192.168.2.1"
 
 [node name="object_monitor347" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -4 )
 device_name = "pc3"
-connected_to = [ "router0" ]
-ipv4_address = "192.168.3.101"
-subnet_mask = "255.255.255.0"
-default_gateway = "192.168.3.1"
-console_port_connection = "router0"
 
 [node name="object_genericRouter" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
 priveleged_password = "ayokonga"
-ge0_ip = "192.168.1.1"
-ge0_subnetMask = "255.255.255.0"
-ge1_ip = "192.168.2.1"
-ge1_subnetMask = "255.255.255.0"
-ge2_ip = "192.168.3.1"
-ge2_subnetMask = "0.0.0.0255.255.255.0"
-console_port_connection = "pc3"
 connected_to = [ "pc1", "pc2", "pc3" ]
 
-[node name="tasks_ui" type="CanvasLayer" parent="."]
+[node name="tasks_ui" parent="." instance=ExtResource( 14 )]
 
-[node name="task_manager" type="Panel" parent="tasks_ui"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 425.0
-margin_bottom = 425.0
-custom_styles/panel = SubResource( 59 )
-script = SubResource( 60 )
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_bottom = 573.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="tasks_ui/task_manager"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -190.0
-margin_top = -190.0
-margin_right = 190.0
-margin_bottom = 190.0
-scroll_horizontal_enabled = false
-scroll_vertical = 100
+[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
+visible = false
 
-[node name="tasks_vbox" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer"]
-margin_top = -100.0
-margin_right = 380.0
-margin_bottom = 902.0
-custom_constants/separation = 25
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+margin_top = 91.0
+margin_bottom = 235.0
 
-[node name="task1" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_right = 380.0
-margin_bottom = 378.0
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+margin_top = 260.0
+margin_bottom = 456.0
 
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 61 )
-disabled = true
-text = "Configure Router"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 378.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 62 )
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
 text = "- Use a console cable to connect any of the PCs into the router.
 - On a pc with console cable connected, open the Terminal.
-- For the GigabitEthernet port 0/0/0, set the IP address to 192.168.1.1 and the subnet mask to 255.255.255.0
-- For the GigabitEthernet port 0/0/1, set the IP address to 192.168.2.1 and the subnet mask to 255.255.255.0
-- For the GigabitEthernet port 0/0/2, set the IP address to 192.168.3.1 and the subnet mask to 255.255.255.0"
-autowrap = true
+- Configure the IP address of each port using Class C IP Addresses"
 
-[node name="task2" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 403.0
-margin_right = 380.0
-margin_bottom = 885.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 61 )
-disabled = true
-text = "Configure PCs"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 482.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 62 )
-text = "- Open each PC and configure their IP Addresses and subnet masks:
-PC1:
-IP Address: 192.168.1.101
-Subnet Mask: 255.255.255.0
-Default Gateway: IP Address of the corresponding port
-PC2:
-IP Address: 192.168.2.102
-Subnet Mask: 255.255.255.0
-Default Gateway: IP Address of the corresponding port
-PC3:
-IP Address: 192.168.3.102
-Subnet Mask: 255.255.255.0
-Default Gateway: IP Address of the corresponding port"
-autowrap = true
-
-[node name="task3" type="VBoxContainer" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 910.0
-margin_right = 380.0
-margin_bottom = 1002.0
-
-[node name="task_cb" type="CheckBox" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 61 )
-disabled = true
-text = "Test the Connection"
-
-[node name="Label" type="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 62 )
-text = "- Open any of the three PCs then ping another pc.
-- Do it for all PCs"
-autowrap = true
-
-[node name="submit_button" type="Button" parent="tasks_ui/task_manager"]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -75.0
-margin_right = 75.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 63 )
-text = "SUBMIT"
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+margin_top = 481.0
+margin_bottom = 573.0
 
 [node name="popups" type="CanvasLayer" parent="."]
 
@@ -864,11 +693,9 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 70 )
 
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3/task_cb" to="tasks_ui/task_manager" method="_on_task_cb_toggled"]
-
 [editable path="environment"]
 [editable path="inventory"]
 [editable path="object_monitor"]
+[editable path="object_monitor/ui/disconnect_confirm"]
+[editable path="tasks_ui"]
 [editable path="popups/game_over"]

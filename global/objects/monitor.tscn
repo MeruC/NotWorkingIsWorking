@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://global/objects/terminal_scenes/password_line.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/others/confirmDialog.tscn" type="PackedScene" id=29]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=30]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=31]
+[ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=32]
 
 [sub_resource type="StyleBoxFlat" id=28]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -52,9 +54,523 @@ margin_top = 3.9945
 size = 32
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=59]
+size = 48
+font_data = ExtResource( 30 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0.337255, 0.317647, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxEmpty" id=36]
+
+[sub_resource type="StyleBoxFlat" id=35]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=53]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="ImageTexture" id=60]
+
+[sub_resource type="StyleBoxFlat" id=54]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=61]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=37]
 size = 60
 font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 30 )
+
+[sub_resource type="StyleBoxFlat" id=62]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=48]
+
+[sub_resource type="StyleBoxFlat" id=43]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxFlat" id=44]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 54
+outline_size = 1
+extra_spacing_top = 20
+extra_spacing_bottom = 20
+font_data = ExtResource( 30 )
+
+[sub_resource type="ImageTexture" id=47]
+
+[sub_resource type="StyleBoxFlat" id=45]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_left = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=46]
+content_margin_left = 40.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=55]
+size = 38
+font_data = ExtResource( 31 )
+
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=57]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 30 )
+
+[sub_resource type="StyleBoxFlat" id=58]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=63]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 59 )
+Button/styles/disabled = SubResource( 39 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 53 )
+HSlider/icons/grabber = SubResource( 60 )
+HSlider/icons/grabber_disabled = SubResource( 60 )
+HSlider/icons/grabber_highlight = SubResource( 60 )
+HSlider/icons/tick = SubResource( 60 )
+HSlider/styles/grabber_area = SubResource( 54 )
+HSlider/styles/grabber_area_highlight = SubResource( 54 )
+HSlider/styles/slider = SubResource( 61 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 62 )
+LineEdit/styles/normal = SubResource( 62 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 4 )
+OptionButton/icons/arrow = SubResource( 48 )
+OptionButton/styles/disabled = SubResource( 43 )
+OptionButton/styles/focus = SubResource( 40 )
+OptionButton/styles/hover = SubResource( 44 )
+OptionButton/styles/normal = SubResource( 44 )
+OptionButton/styles/pressed = SubResource( 43 )
+Panel/styles/panel = ExtResource( 32 )
+PanelContainer/styles/panel = ExtResource( 32 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 42 )
+PopupMenu/fonts/font_separator = SubResource( 4 )
+PopupMenu/icons/checked = SubResource( 47 )
+PopupMenu/icons/radio_checked = SubResource( 47 )
+PopupMenu/icons/radio_unchecked = SubResource( 47 )
+PopupMenu/icons/submenu = SubResource( 47 )
+PopupMenu/icons/unchecked = SubResource( 47 )
+PopupMenu/styles/hover = SubResource( 45 )
+PopupMenu/styles/panel = SubResource( 46 )
+PopupMenu/styles/panel_disabled = SubResource( 45 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 55 )
+ProgressBar/styles/bg = SubResource( 56 )
+ProgressBar/styles/fg = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 57 )
+TabContainer/styles/panel = ExtResource( 32 )
+TabContainer/styles/tab_bg = SubResource( 53 )
+TabContainer/styles/tab_fg = SubResource( 58 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 38 )
+
+[sub_resource type="DynamicFont" id=64]
+size = 48
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=65]
+size = 48
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=66]
+size = 48
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=72]
+size = 64
+font_data = ExtResource( 30 )
+
+[sub_resource type="StyleBoxFlat" id=73]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id=67]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 66 )
+Button/styles/disabled = SubResource( 39 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 53 )
+HSlider/icons/grabber = SubResource( 60 )
+HSlider/icons/grabber_disabled = SubResource( 60 )
+HSlider/icons/grabber_highlight = SubResource( 60 )
+HSlider/icons/tick = SubResource( 60 )
+HSlider/styles/grabber_area = SubResource( 54 )
+HSlider/styles/grabber_area_highlight = SubResource( 54 )
+HSlider/styles/slider = SubResource( 61 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 72 )
+LineEdit/styles/focus = SubResource( 62 )
+LineEdit/styles/normal = SubResource( 62 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 72 )
+OptionButton/icons/arrow = SubResource( 48 )
+OptionButton/styles/disabled = SubResource( 43 )
+OptionButton/styles/focus = SubResource( 40 )
+OptionButton/styles/hover = SubResource( 44 )
+OptionButton/styles/normal = SubResource( 44 )
+OptionButton/styles/pressed = SubResource( 43 )
+Panel/styles/panel = ExtResource( 32 )
+PanelContainer/styles/panel = ExtResource( 32 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 42 )
+PopupMenu/fonts/font_separator = SubResource( 72 )
+PopupMenu/icons/checked = SubResource( 47 )
+PopupMenu/icons/radio_checked = SubResource( 47 )
+PopupMenu/icons/radio_unchecked = SubResource( 47 )
+PopupMenu/icons/submenu = SubResource( 47 )
+PopupMenu/icons/unchecked = SubResource( 47 )
+PopupMenu/styles/hover = SubResource( 45 )
+PopupMenu/styles/panel = SubResource( 46 )
+PopupMenu/styles/panel_disabled = SubResource( 45 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 55 )
+ProgressBar/styles/bg = SubResource( 56 )
+ProgressBar/styles/fg = SubResource( 73 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 57 )
+TabContainer/styles/panel = ExtResource( 32 )
+TabContainer/styles/tab_bg = SubResource( 53 )
+TabContainer/styles/tab_fg = SubResource( 58 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 38 )
+
+[sub_resource type="DynamicFont" id=68]
+size = 48
+font_data = ExtResource( 30 )
+
+[sub_resource type="Theme" id=69]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 68 )
+Button/styles/disabled = SubResource( 39 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 53 )
+HSlider/icons/grabber = SubResource( 60 )
+HSlider/icons/grabber_disabled = SubResource( 60 )
+HSlider/icons/grabber_highlight = SubResource( 60 )
+HSlider/icons/tick = SubResource( 60 )
+HSlider/styles/grabber_area = SubResource( 54 )
+HSlider/styles/grabber_area_highlight = SubResource( 54 )
+HSlider/styles/slider = SubResource( 61 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 62 )
+LineEdit/styles/normal = SubResource( 62 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 4 )
+OptionButton/icons/arrow = SubResource( 48 )
+OptionButton/styles/disabled = SubResource( 43 )
+OptionButton/styles/focus = SubResource( 40 )
+OptionButton/styles/hover = SubResource( 44 )
+OptionButton/styles/normal = SubResource( 44 )
+OptionButton/styles/pressed = SubResource( 43 )
+Panel/styles/panel = ExtResource( 32 )
+PanelContainer/styles/panel = ExtResource( 32 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 42 )
+PopupMenu/fonts/font_separator = SubResource( 4 )
+PopupMenu/icons/checked = SubResource( 47 )
+PopupMenu/icons/radio_checked = SubResource( 47 )
+PopupMenu/icons/radio_unchecked = SubResource( 47 )
+PopupMenu/icons/submenu = SubResource( 47 )
+PopupMenu/icons/unchecked = SubResource( 47 )
+PopupMenu/styles/hover = SubResource( 45 )
+PopupMenu/styles/panel = SubResource( 46 )
+PopupMenu/styles/panel_disabled = SubResource( 45 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 55 )
+ProgressBar/styles/bg = SubResource( 56 )
+ProgressBar/styles/fg = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 57 )
+TabContainer/styles/panel = ExtResource( 32 )
+TabContainer/styles/tab_bg = SubResource( 53 )
+TabContainer/styles/tab_fg = SubResource( 58 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 38 )
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0, 0, 0.392157 )
@@ -109,10 +625,10 @@ albedo_texture = ExtResource( 2 )
 [sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=70]
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=71]
 albedo_texture = ExtResource( 6 )
 
 [sub_resource type="BoxShape" id=6]
@@ -163,6 +679,12 @@ margin_top = 110.0
 margin_right = -346.0
 margin_bottom = -82.0
 
+[node name="fe_cable" type="ColorRect" parent="ui/io/cpu_ui"]
+margin_left = 83.0
+margin_top = 203.0
+margin_right = 120.0
+margin_bottom = 240.0
+
 [node name="disconnect_button" type="Button" parent="ui/io/cpu_ui"]
 margin_left = 74.0
 margin_top = 194.0
@@ -173,13 +695,6 @@ custom_styles/pressed = SubResource( 28 )
 custom_styles/focus = SubResource( 28 )
 custom_styles/disabled = SubResource( 28 )
 custom_styles/normal = SubResource( 28 )
-
-[node name="wire" type="ColorRect" parent="ui/io/cpu_ui"]
-margin_left = 83.0
-margin_top = 203.0
-margin_right = 120.0
-margin_bottom = 240.0
-color = Color( 0.14902, 0, 1, 1 )
 
 [node name="pc_screen" type="ColorRect" parent="ui"]
 anchor_right = 1.0
@@ -275,43 +790,47 @@ clip_text = true
 [node name="disconnect_confirm" parent="ui" instance=ExtResource( 29 )]
 
 [node name="ColorRect" parent="ui/disconnect_confirm/ColorRect2" index="0"]
-margin_right = 250.0
+margin_right = 50.0
+margin_bottom = 750.0
 
 [node name="MarginContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect" index="0"]
-margin_right = 1380.0
-margin_bottom = 420.0
+margin_right = 1180.0
+margin_bottom = 390.0
 
 [node name="VBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer" index="0"]
-margin_right = 1320.0
-margin_bottom = 350.0
+margin_right = 1120.0
+margin_bottom = 320.0
 custom_constants/separation = 100
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1215.0
-margin_bottom = 68.0
+margin_right = 1015.0
+margin_bottom = 55.0
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 31.0
-margin_right = 706.0
-margin_bottom = 68.0
+margin_left = 43.0
+margin_right = 584.0
+margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 1618, -369 )
-custom_fonts/font = SubResource( 29 )
+theme = SubResource( 63 )
+custom_fonts/font = SubResource( 64 )
 text = "Disconnect from"
 align = 1
 valign = 1
 
 [node name="device_name" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 731.0
-margin_right = 1184.0
-margin_bottom = 68.0
+margin_left = 609.0
+margin_right = 971.0
+margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 1618, -369 )
-custom_fonts/font = SubResource( 29 )
+theme = SubResource( 63 )
+custom_fonts/font = SubResource( 65 )
 text = "Computer1?"
 align = 1
 valign = 1
@@ -323,18 +842,22 @@ margin_bottom = 196.0
 text = "Disconnect from"
 
 [node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="2"]
-margin_top = 168.0
-margin_right = 1215.0
-margin_bottom = 300.0
+margin_top = 155.0
+margin_right = 1015.0
+margin_bottom = 270.0
 alignment = 1
 
 [node name="cancel" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="0"]
-margin_left = 184.0
-margin_right = 542.0
+margin_left = 160.0
+margin_right = 448.0
+margin_bottom = 115.0
+theme = SubResource( 67 )
 
 [node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="1"]
-margin_left = 623.0
-margin_right = 1031.0
+margin_left = 529.0
+margin_right = 854.0
+margin_bottom = 115.0
+theme = SubResource( 69 )
 
 [node name="ok" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="3"]
 margin_top = 320.0
@@ -395,6 +918,34 @@ margin_bottom = 70.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
 text = "Configuration has been saved."
+align = 1
+valign = 1
+
+[node name="error_label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 25.0
+margin_right = 20.0
+margin_bottom = 70.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Unable to save configuration."
+align = 1
+valign = 1
+
+[node name="ip_indicator" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 125.0
+margin_right = 433.0
+margin_bottom = 170.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Invalid IP Address"
 align = 1
 valign = 1
 
@@ -505,6 +1056,7 @@ custom_colors/font_color_uneditable = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_fonts/font = ExtResource( 15 )
 custom_styles/read_only = SubResource( 23 )
 custom_styles/normal = SubResource( 17 )
+editable = false
 clear_button_enabled = true
 placeholder_text = "0.0.0.0"
 placeholder_alpha = 0.25
@@ -955,17 +1507,17 @@ material = SubResource( 11 )
 [node name="CSGMesh2" type="CSGMesh" parent="CollisionShape2D"]
 transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.125, -1, -0.608576 )
 mesh = ExtResource( 3 )
-material = SubResource( 3 )
+material = SubResource( 70 )
 
 [node name="CSGMesh3" type="CSGMesh" parent="CollisionShape2D"]
 transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -0.75, -1, -0.733576 )
 mesh = ExtResource( 5 )
-material = SubResource( 4 )
+material = SubResource( 71 )
 
 [node name="CSGMesh4" type="CSGMesh" parent="CollisionShape2D"]
 transform = Transform( -2.73196e-08, 0, 0.625, 0, 0.625, 0, -0.625, 0, -2.73196e-08, -0.433958, -1, 0.317955 )
 mesh = ExtResource( 12 )
-material = SubResource( 4 )
+material = SubResource( 71 )
 
 [node name="interaction_area" type="Area" parent="."]
 transform = Transform( 1.04329, 0, 0, 0, 1.04329, 0, 0, 0, 1.04329, 0, 0, 0 )
@@ -1001,9 +1553,11 @@ size = 1.679
 [connection signal="pressed" from="ui/pc_screen/apps/ipConfig_button" to="." method="_on_ipConfig_button_pressed"]
 [connection signal="pressed" from="ui/pc_screen/apps/terminal_button" to="." method="_on_terminal_button_pressed"]
 [connection signal="pressed" from="ui/pc_screen/apps/cmd_button" to="." method="_on_cmd_button_pressed"]
+[connection signal="visibility_changed" from="ui/disconnect_confirm" to="ui/disconnect_confirm" method="_on_disconnect_confirm_visibility_changed"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/ipConfig_close_button" to="." method="_on_ipConfig_close_button_pressed"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio" to="." method="_on_dhcp_radio_pressed"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/static_radio" to="." method="_on_static_radio_pressed"]
+[connection signal="focus_exited" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox/ipAdd_lineEdit" to="." method="_on_ipAdd_lineEdit_focus_exited"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/main_panel/save_button" to="." method="_on_save_button_pressed"]
 [connection signal="confirmed" from="ui/ip_config_app/ip_config_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
 [connection signal="pressed" from="ui/cmd_app/cmd_screen/cmd_close_button" to="." method="_on_cmd_close_button_pressed"]

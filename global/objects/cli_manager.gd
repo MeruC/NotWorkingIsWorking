@@ -57,7 +57,6 @@ func extract_ip(command_entered):
 # To ping a device with the inputted ip add
 func ping_device(device_object, ipv4_add, current_device):
 	passed_devices.append(current_device)
-	print("Sender: ", current_device, " Receiver: ", device_object.device_name)
 	if device_object.device_type == "computer" and device_object.ipv4_address == ipv4_add:
 		return true
 	elif device_object.device_type == "router" and (device_object.ge0_ip == ipv4_add or device_object.ge1_ip == ipv4_add or device_object.ge2_ip == ipv4_add):
