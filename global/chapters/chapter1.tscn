@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -9,6 +9,26 @@
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/Game buttons/0_crowns.png" type="Texture" id=8]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/Themes/shop.tres" type="Theme" id=10]
+[ext_resource path="res://resources/Game buttons/quick_game_icon.png" type="Texture" id=11]
+[ext_resource path="res://resources/font/OpenSans-Semibold.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 512, 512 )
+modulate_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+
+[sub_resource type="Theme" id=5]
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
@@ -533,6 +553,34 @@ directional_shadow_normal_bias = 0.1
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, -0.0426606, 0.99909, 0, -0.99909, -0.0426606, 11.9227, 19.502, 15.3499 )
 
+[node name="shop" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -212.0
+margin_top = 9.0
+margin_right = -12.0
+margin_bottom = 209.0
+focus_mode = 0
+theme = ExtResource( 10 )
+
+[node name="reset_time" type="Label" parent="."]
+margin_left = 1699.0
+margin_top = 800.0
+margin_right = 1889.0
+margin_bottom = 855.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "time"
+align = 1
+autowrap = true
+
+[node name="quick_game" type="Button" parent="."]
+margin_left = 1703.0
+margin_top = 866.0
+margin_right = 1903.0
+margin_bottom = 1066.0
+theme = SubResource( 5 )
+
 [node name="level1" type="Button" parent="."]
 visible = false
 anchor_left = 0.5
@@ -735,6 +783,8 @@ texture = ExtResource( 8 )
 
 [node name="manager" parent="." instance=ExtResource( 9 )]
 
+[connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="quick_game" to="." method="_on_quick_game_pressed"]
 [connection signal="pressed" from="level1" to="." method="_on_level1_pressed"]
 [connection signal="pressed" from="level2" to="." method="_on_level2_pressed"]
 [connection signal="pressed" from="level3" to="." method="_on_level3_pressed"]

@@ -1,10 +1,28 @@
 extends Spatial
 export (Resource) var settings_data 
 
+var net1_levels = ["res://offline_levels/level1/level_1.tscn", "res://offline_levels/level2/level2.tscn",
+					"res://offline_levels/level3/level3.tscn", "res://offline_levels/level4/level4.tscn",
+					"res://offline_levels/level5/level5.tscn", "res://offline_levels/level6/level6.tscn",
+					"res://offline_levels/level7/level7.tscn", "res://offline_levels/level8/level8.tscn"]
+var playable = false
 
 func _ready():
 	Pixelizer.set_visible(false)
-	print(settings_data.reset_timer)
+	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+		$shop.disabled = false
+	else:
+		$shop.disabled = true
+		
+func _process(delta):
+	var reset_timer_float = settings_data.reset_timer
+	var reset_timer_int = int(reset_timer_float)
+	var total_seconds = 10800
+	var remaining_seconds = total_seconds - reset_timer_int
+	var remaining_minutes = int(remaining_seconds / 60)
+	var remaining_seconds_remainder = remaining_seconds % 60
+	$reset_time.text = str(remaining_minutes) + ":" + str(remaining_seconds_remainder)
+
 
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
@@ -38,3 +56,60 @@ func _on_level9_pressed():
 func _on_back_pressed():
 	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
 	
+func _on_shop_pressed():
+	Load.load_scene(self, "res://scenes/main_shop/main_shop.tscn")
+
+
+func _on_quick_game_pressed():
+	var completed_levels = levels_completed()
+	if completed_levels.empty():
+		# Handle the case when no levels are completed (e.g., show a message).
+		pass
+	else:
+		var random_level = pick_random_level(completed_levels)
+		Load.load_scene(self, random_level)
+# To play a random Networking 1 Level
+
+func pick_random_level(completed_levels):
+	var number = int(rand_range(0, completed_levels.size()))
+	return completed_levels[number]
+
+func levels_completed():
+	var completed = []
+	if settings_data.level1 >= 7:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level1/level_1.tscn")
+	if settings_data.level2 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level2/level2.tscn")
+	if settings_data.level3 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level3/level3.tscn")
+	if settings_data.level4 >= 5:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()	
+		completed.append("res://offline_levels/level4/level4.tscn")
+	if settings_data.level5 >= 4:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level5/level5.tscn")
+	if settings_data.level6 >= 5:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level6/level6.tscn")
+	if settings_data.level7 >= 3:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level7/level7.tscn")
+	if settings_data.level8 >= 30:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level8/level8.tscn")
+	if completed.empty():
+		settings_data.quick_game = "notplaying"
+		SaveManager.save_game()
+		completed.append("res://scenes/quick_game/quickgame.tscn")
+	return completed

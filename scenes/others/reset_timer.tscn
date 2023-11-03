@@ -25,7 +25,6 @@ func _on_Timer_timeout():
 	print(\"Timer timeout reached.\")
 	current_time = 0
 	istop = true
-	print(\"Timer stopped\")
 	# Other logic you want to perform
 
 func _process(delta):
@@ -36,7 +35,6 @@ func _process(delta):
 		current_time += delta
 		settings_data.reset_timer = current_time
 		SaveManager.save_game()
-		print(current_time)
 		if current_time >= 10800:
 			_on_Timer_timeout()
 			SaveManager.save_game()

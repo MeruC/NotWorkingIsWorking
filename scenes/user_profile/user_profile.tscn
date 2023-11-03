@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=32]
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=34]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=35]
 
 [sub_resource type="DynamicFont" id=23]
 size = 30
@@ -2076,6 +2077,8 @@ margin_right = 1222.0
 margin_bottom = 831.0
 theme = ExtResource( 26 )
 text = "No"
+
+[node name="manager" parent="." instance=ExtResource( 35 )]
 
 [connection signal="pressed" from="user_profile/name_background/edit_avatar" to="." method="_on_edit_avatar_pressed"]
 [connection signal="pressed" from="user_profile/logout_bg/logout_btn" to="." method="_on_logout_btn_pressed"]
