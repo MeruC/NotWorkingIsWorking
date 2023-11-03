@@ -2616,7 +2616,7 @@ mesh = ExtResource( 34 )
 material/0 = SubResource( 18 )
 
 [node name="exit" parent="main_screen" instance=ExtResource( 37 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.79299, 3.26982, 14.7358 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.26675, 3.26982, 14.7358 )
 
 [node name="Sprite3D2" type="Sprite3D" parent="main_screen"]
 transform = Transform( -6.70672e-09, 0, 0.153432, 0, 0.153432, 0, -0.153432, 0, -6.70672e-09, -9.90851, 3.4659, 15.5596 )
