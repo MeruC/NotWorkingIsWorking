@@ -25,6 +25,7 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animation_player = get_node(animation_player) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 ##
 
 # Instructions popup paths
@@ -36,6 +37,7 @@ var home_scene = "res://scenes/main_screen/main_screen.tscn"
 var level2_scene = "res://offline_levels/level2/level2.tscn"
 
 func _ready():
+	tutorial_player.play("level2_tutorial")
 	# To store JSON Contents into file variable
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:

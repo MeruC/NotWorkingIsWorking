@@ -811,6 +811,9 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 margin_left = 395.0
 margin_top = 23.0
@@ -861,6 +864,7 @@ crowns = NodePath("../popup_layer/game_over/main_popup/crowns")
 animation_player = NodePath("../popup_layer/game_over/AnimationPlayer")
 celebrate = NodePath("../popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("../popup_layer/game_over/AudioStreamPlayer")
+tutorial_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 

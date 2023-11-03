@@ -27,6 +27,7 @@ export (NodePath) onready var crowns = get_node(crowns) as TextureRect
 export (NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export (NodePath) onready var celebration = get_node(celebration) as Sprite
+export (NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
@@ -34,6 +35,7 @@ var textures_holder = []
 var score
 func _ready():
 	# To set the texture of wires in a random order
+	tutorial_player.play("level6_tutorial")
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())

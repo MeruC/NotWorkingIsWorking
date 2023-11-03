@@ -813,6 +813,12 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = -124.0
 margin_top = -34.0

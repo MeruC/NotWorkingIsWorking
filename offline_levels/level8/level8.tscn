@@ -896,6 +896,12 @@ visible = false
 [node name="level7" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="4"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
 [node name="perQuestion_popup" type="Control" parent="popup_layer"]
 visible = false
 anchor_right = 1.0

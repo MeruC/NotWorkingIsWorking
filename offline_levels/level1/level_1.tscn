@@ -64,6 +64,12 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
 [node name="DesktopBg" type="Sprite" parent="."]
 position = Vector2( 961.116, 537.5 )
 scale = Vector2( 0.321039, 0.320889 )
