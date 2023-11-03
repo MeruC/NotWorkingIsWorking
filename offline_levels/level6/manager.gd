@@ -27,6 +27,7 @@ export (NodePath) onready var crowns = get_node(crowns) as TextureRect
 export (NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export (NodePath) onready var celebration = get_node(celebration) as Sprite
+export (NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
@@ -34,6 +35,7 @@ var textures_holder = []
 var score
 func _ready():
 	# To set the texture of wires in a random order
+	tutorial_player.play("level6_tutorial")
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -121,12 +123,18 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
-		if score == 5:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		if settings_data.reset_timer >= 10800:
+			if score == 5:
+				settings_data.reset_timer = 0
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			else:
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
 		else:
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
@@ -140,6 +148,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level6 = 5
+			settings_data.reset_time = 10800
 			SaveManager.save_game()
 		elif score == 0:
 			pass

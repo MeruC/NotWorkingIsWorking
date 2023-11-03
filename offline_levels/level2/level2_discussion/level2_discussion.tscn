@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://offline_levels/level2/level2_discussion/discussion_background.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level2/level2_discussion/level2_discussion.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://offline_levels/level2/level2_discussion/videopage.png" type="Texture" id=14]
 [ext_resource path="res://offline_levels/level2/level2_discussion/data_traffic.png" type="Texture" id=15]
 [ext_resource path="res://offline_levels/level2/level2_discussion/synchronization.png" type="Texture" id=16]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFont" id=14]
 size = 32
@@ -291,6 +292,8 @@ focus_mode = 0
 theme = ExtResource( 9 )
 text = "skip"
 flat = true
+
+[node name="manager" parent="." instance=ExtResource( 17 )]
 
 [connection signal="cancel" from="video_player" to="Manager" method="_on_video_player_cancel"]
 [connection signal="finish" from="video_player" to="Manager" method="_on_video_player_finish"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://resources/Game buttons/cat_win.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level2/letter.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://resources/soundtrack/level/submit.wav" type="AudioStream" id=14]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=16]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -811,6 +812,9 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 margin_left = 395.0
 margin_top = 23.0
@@ -861,6 +865,7 @@ crowns = NodePath("../popup_layer/game_over/main_popup/crowns")
 animation_player = NodePath("../popup_layer/game_over/AnimationPlayer")
 celebrate = NodePath("../popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("../popup_layer/game_over/AudioStreamPlayer")
+tutorial_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
 
@@ -1245,6 +1250,8 @@ margin_top = 423.0
 margin_right = 945.0
 margin_bottom = 523.0
 theme = ExtResource( 15 )
+
+[node name="manager2" parent="." instance=ExtResource( 17 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="manager" method="_on_tap_pressed"]

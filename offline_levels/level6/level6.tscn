@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/instructions.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_6/rj45.png" type="Texture" id=10]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/whiteOrange.png" type="Texture" id=11]
 [ext_resource path="res://resources/offline_mode_Asset/level_6/whiteGreen.png" type="Texture" id=12]
-[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=13]
 [ext_resource path="res://offline_levels/level6/slot.gd" type="Script" id=14]
 [ext_resource path="res://offline_levels/level6/wire.gd" type="Script" id=15]
 [ext_resource path="res://offline_levels/level6/manager.gd" type="Script" id=16]
@@ -20,6 +20,10 @@
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=18]
 [ext_resource path="res://resources/soundtrack/level/wire.wav" type="AudioStream" id=19]
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=20]
+[ext_resource path="res://resources/offline_mode_Asset/level_6/23.png" type="Texture" id=21]
+[ext_resource path="res://resources/offline_mode_Asset/level_6/22.png" type="Texture" id=22]
+[ext_resource path="res://resources/Themes/level2_theme.tres" type="Theme" id=23]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -712,6 +716,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
+[sub_resource type="DynamicFont" id=10]
+size = 50
+font_data = ExtResource( 13 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 50
 font_data = ExtResource( 13 )
@@ -738,6 +746,7 @@ crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
+tutorial_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 settings_data = ExtResource( 18 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
@@ -818,14 +827,29 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
+[node name="bg" type="NinePatchRect" parent="."]
+margin_right = 1924.0
+margin_bottom = 1083.0
+texture = ExtResource( 22 )
+
+[node name="table" type="NinePatchRect" parent="."]
+margin_left = -112.0
+margin_top = 146.0
+margin_right = 1193.0
+margin_bottom = 1077.0
+texture = ExtResource( 21 )
+
 [node name="rj45" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 200.0
+margin_left = 136.0
 margin_top = -370.0
-margin_right = 1111.0
+margin_right = 1047.0
 margin_bottom = 671.0
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
@@ -907,9 +931,9 @@ script = ExtResource( 14 )
 type = "slot"
 
 [node name="button_container" type="GridContainer" parent="."]
-margin_left = 1270.0
+margin_left = 1206.0
 margin_top = 970.0
-margin_right = 1720.0
+margin_right = 1656.0
 margin_bottom = 1045.0
 rect_min_size = Vector2( 200, 75 )
 custom_constants/hseparation = 50
@@ -919,7 +943,9 @@ columns = 2
 margin_right = 200.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
-custom_fonts/font = SubResource( 3 )
+theme = ExtResource( 23 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
 text = "CLEAR"
 
 [node name="crimp" type="Button" parent="button_container"]
@@ -927,14 +953,16 @@ margin_left = 250.0
 margin_right = 450.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 200, 75 )
+theme = ExtResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "CRIMP"
 
 [node name="wire_container" type="HBoxContainer" parent="."]
 margin_left = 100.0
-margin_top = 343.0
+margin_top = 247.0
 margin_right = 962.0
-margin_bottom = 1080.0
+margin_bottom = 984.0
 rect_min_size = Vector2( 862, 737 )
 custom_constants/separation = 50
 
@@ -1002,10 +1030,12 @@ script = ExtResource( 15 )
 type = "wire"
 
 [node name="cable_type" type="Label" parent="."]
-margin_left = 98.0
-margin_top = 114.0
-margin_right = 960.0
-margin_bottom = 226.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 111.0
+margin_top = -494.0
+margin_right = 973.0
+margin_bottom = -382.0
 custom_fonts/font = SubResource( 4 )
 text = "Wiring Standard: "
 align = 1
@@ -1022,6 +1052,8 @@ margin_right = 1910.0
 margin_bottom = 1071.0
 rect_min_size = Vector2( 100, 100 )
 theme = ExtResource( 20 )
+
+[node name="manager" parent="." instance=ExtResource( 24 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="button_container/reset" to="." method="_on_reset_pressed"]

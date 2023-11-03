@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://online_mode/level_editor/scripts/Editor_Object.gd" type="Script" id=7]
 [ext_resource path="res://online_mode/level_editor/scripts/FileDialog.gd" type="Script" id=8]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=9]
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=10]
 [ext_resource path="res://global/objects/rotate.tscn" type="PackedScene" id=11]
 [ext_resource path="res://online_mode/level_editor/scripts/level_editor.gd" type="Script" id=12]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=13]
@@ -309,58 +309,6 @@ shadow_size = 1
 [sub_resource type="StyleBoxEmpty" id=18]
 
 [sub_resource type="PlaneMesh" id=11]
-
-[sub_resource type="StyleBoxFlat" id=44]
-bg_color = Color( 0, 0, 0, 0.117647 )
-
-[sub_resource type="GDScript" id=45]
-script/source = "extends Panel
-
-onready var task1_cb = $ScrollContainer/tasks_vbox/task1/task_cb
-onready var task2_cb = $ScrollContainer/tasks_vbox/task2/task_cb
-onready var task3_cb = $ScrollContainer/tasks_vbox/task3/task_cb
-#onready var pc1_object = $\"../../object_monitor\"
-#onready var pc2_object = $\"../../@object_monitor@153\"
-onready var root_scene = get_tree().get_current_scene()
-
-func _ready():
-	pass
-	#DO NOT UNCOMMENT THIS, WHATEVER THIS IS IT'S BREAKING OTHER LEVELS, FIND ANOTHER WAY TO DO THIS
-#	for object in root_scene.get_children():
-#		if object is StaticBody and object.get(\"connected_to\") != null:
-#			object.connect(\"cable_connected\", self, \"on_cable_connected\")
-#			var object_cli = object.find_node(\"ui\").find_node(\"cmd_app\").find_node(\"cmd_screen\").find_node(\"cli_manager\")
-#			object_cli.connect(\"device_pinged\", self, \"on_device_pinged_succefully\")
-# To check if both pc is connected with each other
-func check_connection():
-	pass
-##
-
-# To check if 
-func _on_command_line_enter_pressed(text):
-	pass
-
-# To check if the player entered correct ip for each pc
-#func _on_save_button_pressed():
-#	if task2_cb.pressed == false:
-#		if pc1_object.ipv4_address == \"192.168.1.101\" and pc2_object.ipv4_address == \"192.168.1.102\":
-#			task2_cb.pressed = true
-##
-
-#func on_cable_connected():
-#	if pc1_object.device_name in pc2_object.connected_to and pc2_object.device_name in pc1_object.connected_to:
-#		task1_cb.pressed = true
-
-func on_device_pinged_succefully():
-	task3_cb.pressed = true
-"
-
-[sub_resource type="DynamicFont" id=46]
-size = 22
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=47]
-font_data = ExtResource( 10 )
 
 [sub_resource type="BoxShape" id=13]
 
@@ -968,114 +916,60 @@ depth = 128.0
 material = ExtResource( 9 )
 
 [node name="inventory" parent="level" instance=ExtResource( 14 )]
-unique_name_in_owner = true
 visible = false
 
 [node name="mobile_controls" parent="level" instance=ExtResource( 16 )]
-unique_name_in_owner = true
 visible = false
 
-[node name="tasks_ui" type="CanvasLayer" parent="level"]
-unique_name_in_owner = true
+[node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
 visible = false
 
-[node name="task_manager" type="Panel" parent="level/tasks_ui"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 425.0
-margin_bottom = 425.0
-custom_styles/panel = SubResource( 44 )
-script = SubResource( 45 )
+[node name="_h_scroll2" type="HScrollBar" parent="level/tasks_ui/task_manager/ScrollContainer" index="0"]
+visible = false
+margin_right = 12.0
+margin_bottom = 12.0
+max_value = 380.0
+page = 380.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="level/tasks_ui/task_manager"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -190.0
-margin_top = -190.0
-margin_right = 190.0
-margin_bottom = 190.0
-scroll_horizontal_enabled = false
+[node name="_v_scroll2" type="VScrollBar" parent="level/tasks_ui/task_manager/ScrollContainer" index="1"]
+visible = false
+margin_right = 12.0
+margin_bottom = 12.0
+max_value = 144.0
+page = 380.0
 
-[node name="tasks_vbox" type="VBoxContainer" parent="level/tasks_ui/task_manager/ScrollContainer"]
-margin_right = 380.0
-margin_bottom = 534.0
-custom_constants/separation = 25
+[node name="_h_scroll3" type="HScrollBar" parent="level/tasks_ui/task_manager/ScrollContainer" index="2"]
+margin_right = 12.0
+margin_bottom = 12.0
 
-[node name="task1" type="VBoxContainer" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_right = 380.0
-margin_bottom = 92.0
+[node name="_v_scroll3" type="VScrollBar" parent="level/tasks_ui/task_manager/ScrollContainer" index="3"]
+margin_right = 12.0
+margin_bottom = 12.0
 
-[node name="task_cb" type="CheckBox" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 46 )
-disabled = true
-text = "Connect two PCs"
-
-[node name="Label" type="Label" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 47 )
-text = "- Use your Cross-Over cable to connect on PC to the other."
-autowrap = true
-
-[node name="task2" type="VBoxContainer" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 117.0
-margin_right = 380.0
-margin_bottom = 365.0
-
-[node name="task_cb" type="CheckBox" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 46 )
-disabled = true
-text = "Configure IP Addresses"
-
-[node name="Label" type="Label" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 47 )
-text = "- Open each PC and configure their IP Addresses and subnet masks:
-PC1:
-IP Address: 192.168.1.101
-Subnet Mask: 255.255.255.0
-PC2:
-IP Address: 192.168.1.102
-Subnet Mask: 255.255.255.0"
-autowrap = true
-
-[node name="task3" type="VBoxContainer" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 390.0
-margin_right = 380.0
-margin_bottom = 534.0
-
-[node name="task_cb" type="CheckBox" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 46 )
-disabled = true
-text = "Test the Connection"
-
-[node name="Label" type="Label" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_top = 43.0
-margin_right = 380.0
+[node name="tasks_vbox" parent="level/tasks_ui/task_manager/ScrollContainer" index="4"]
 margin_bottom = 144.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 47 )
-text = "- Go to the PC1 then open the command prompt.
-- Type the command \"ping 192.168.1.102\"
-- Go to the PC2 then open the command prompt.
-- Type the command \"ping 192.168.1.101\" "
-autowrap = true
+
+[node name="task1" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+visible = false
+
+[node name="task2" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
+visible = false
+margin_top = 0.0
+margin_bottom = 92.0
+
+[node name="task3" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+margin_top = 0.0
+margin_bottom = 144.0
+
+[node name="task4" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = false
+margin_top = 117.0
+margin_bottom = 313.0
+
+[node name="task5" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+visible = false
+margin_top = 117.0
+margin_bottom = 209.0
 
 [node name="other_ui" type="Control" parent="."]
 unique_name_in_owner = true
@@ -1187,3 +1081,4 @@ bus = "Music"
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
 
 [editable path="level/environment"]
+[editable path="level/tasks_ui"]

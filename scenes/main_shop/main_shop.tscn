@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://inventory_system/resources/sprites/x_normal.png" type="Texture" id=20]
 [ext_resource path="res://inventory_system/resources/sprites/x_hover.png" type="Texture" id=21]
 [ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=22]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=23]
 [ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=24]
 
 [sub_resource type="GDScript" id=13]
@@ -551,7 +552,7 @@ scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2"]
 margin_right = 591.0
-margin_bottom = 538.0
+margin_bottom = 569.0
 rect_min_size = Vector2( 591, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
@@ -895,6 +896,8 @@ custom_fonts/font = SubResource( 34 )
 enabled_focus_mode = 0
 text = "cancel purchase"
 script = SubResource( 36 )
+
+[node name="manager" parent="." instance=ExtResource( 23 )]
 
 [connection signal="pressed" from="settings2/title/close" to="settings2" method="_on_close_pressed"]
 [connection signal="gui_input" from="settings2/setting list/scale/HSlider" to="settings2" method="_on_scale_slider_gui_input"]

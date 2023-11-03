@@ -148,27 +148,36 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
-		if score >= 4:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+80
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score >= 5 and score <= 6:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+90
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score == 7:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		if settings_data.reset_timer >= 10800:
+			if score >= 4:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+80
+				settings_data.gold_coins = new_coins
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			elif score >= 5 and score <= 6:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+90
+				settings_data.gold_coins = new_coins
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			elif score == 7:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
+			else:
+				settings_data.reset_timer = 0
+				settings_data.quick_game = "notplaying"
+				SaveManager.save_game()
 		else:
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
+			
 	else:
 		if score == 0:
 			pass
@@ -179,7 +188,7 @@ func score_validation():
 			
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
-			
+			settings_data.reset_time = 10800
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
@@ -194,6 +203,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
+			settings_data.reset_time = 10800
 			SaveManager.save_game()
 		elif score == 7:
 			settings_data.crowns += 3
@@ -205,6 +215,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
+			settings_data.reset_time = 10800		
 			SaveManager.save_game()
 
 

@@ -1,12 +1,12 @@
 extends Spatial
 
 var player
-onready var mobile_controls = $"%mobile_controls"
-onready var inventory = $"%inventory"
-onready var tasks_ui = $"%tasks_ui"
+onready var inventory = $inventory
+onready var mobile_controls = $mobile_controls
+onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
-onready var level_scene = $"%level"
+onready var level_scene = self
 onready var main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
 onready var submit_button
 

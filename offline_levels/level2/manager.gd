@@ -25,6 +25,7 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animation_player = get_node(animation_player) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 ##
 
 # Instructions popup paths
@@ -36,6 +37,7 @@ var home_scene = "res://scenes/main_screen/main_screen.tscn"
 var level2_scene = "res://offline_levels/level2/level2.tscn"
 
 func _ready():
+	tutorial_player.play("level2_tutorial")
 	# To store JSON Contents into file variable
 	var file = File.new()
 	if file.open(json_file, File.READ) == OK:
@@ -211,18 +213,25 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
-		if score == 4:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+90
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
-		elif score == 5:
-			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
-			settings_data.gold_coins = new_coins
-			settings_data.quick_game = "notplaying"
-			SaveManager.save_game()
+		if settings_data.reset_timer >= 10800:
+			if score == 4:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+90
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
+			elif score == 5:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
+			else:
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
 		else:
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
@@ -239,6 +248,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 		elif score <= 3:
 			settings_data.level2 = score
@@ -254,6 +264,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.crowns+=3
+			settings_data.reset_timer = 10800
 			settings_data.level2 = score
 			SaveManager.save_game()
 	

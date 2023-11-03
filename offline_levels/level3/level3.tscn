@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://offline_levels/level3/manager.gd" type="Script" id=1]
 [ext_resource path="res://offline_levels/level3/choices.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_4/15.png" type="Texture" id=13]
 [ext_resource path="res://resources/offline_mode_Asset/level_4/14.png" type="Texture" id=14]
 [ext_resource path="res://resources/offline_mode_Asset/level_4/16.png" type="Texture" id=15]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -807,6 +808,12 @@ visible = false
 [node name="level8" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="5"]
 visible = false
 
+[node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
+visible = false
+
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
 [node name="bg" type="NinePatchRect" parent="."]
 margin_left = -3.0
 margin_top = -2.0
@@ -912,6 +919,8 @@ margin_top = 971.0
 margin_right = 1912.0
 margin_bottom = 1071.0
 theme = ExtResource( 11 )
+
+[node name="manager" parent="." instance=ExtResource( 16 )]
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="." method="_on_tap_pressed"]

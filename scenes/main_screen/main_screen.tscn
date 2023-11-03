@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/Sprites/no-sign.png" type="Texture" id=9]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=10]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=11]
+[ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/pause.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/soundtrack/menu/title/intro.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/main_screen/introMusic.gd" type="Script" id=15]
@@ -3038,7 +3039,6 @@ layer = 5
 visible = false
 
 [node name="settings" parent="CanvasLayer" instance=ExtResource( 13 )]
-mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -3059,7 +3059,7 @@ rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 1964.0
+margin_right = 650.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -3173,6 +3173,8 @@ anims/quick = SubResource( 54 )
 
 [node name="settings" parent="." instance=ExtResource( 45 )]
 
+[node name="Timer" parent="." instance=ExtResource( 12 )]
+
 [connection signal="pressed" from="profile_button" to="." method="_on_profile_button_pressed"]
 [connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/offline_btn" to="." method="_on_offline_btn_pressed"]
 [connection signal="pressed" from="ui/CenterContainer/MarginContainer/VBoxContainer/online_btn" to="." method="_on_online_btn_pressed"]
@@ -3202,3 +3204,5 @@ anims/quick = SubResource( 54 )
 [connection signal="pressed" from="ColorRect/ui_quick/CenterContainer/MarginContainer/VBoxContainer/quit_btn2" to="." method="_on_quit_btn2_pressed"]
 [connection signal="pressed" from="ColorRect/btn_quicknavback" to="ColorRect" method="_on_btn_quicknavback_pressed"]
 [connection signal="animation_finished" from="tap_screen" to="tap_screen" method="_on_tap_screen_animation_finished"]
+
+[editable path="Timer"]

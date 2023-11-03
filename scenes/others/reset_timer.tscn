@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node  # Not extending Timer
+
+# Export properties if needed
+export(Resource) onready var settings_data
+export(NodePath) onready var reset_time = get_node(reset_time) as Timer  # Make sure this references your Timer node
+
+var current_time = 0
+var istop = false
+
+func _ready():
+	if settings_data.reset_timer >= 10800:  # Ensure settings_data.reset_timer is greater than 5
+		current_time = settings_data.reset_timer
+		reset_time.stop()
+	else:
+		current_time = settings_data.reset_timer
+		reset_time.start()  # Start the timer
+
+# Connect this function to the Timer node's \"timeout\" signal
+func _on_Timer_timeout():
+	print(\"Timer timeout reached.\")
+	current_time = 0
+	istop = true
+	# Other logic you want to perform
+
+func _process(delta):
+	if istop == true:
+		return
+	else:
+		var timer = reset_time  # Access the Timer node using the NodePath
+		current_time += delta
+		settings_data.reset_timer = current_time
+		SaveManager.save_game()
+		if current_time >= 10800:
+			_on_Timer_timeout()
+			SaveManager.save_game()
+	SaveManager.save_game()
+
+# In this version, you no longer stop the Timer manually in _process
+# Timer will stop on its own when it times out
+"
+
+[node name="manager" type="Node2D"]
+script = SubResource( 1 )
+settings_data = ExtResource( 1 )
+reset_time = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10800.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
