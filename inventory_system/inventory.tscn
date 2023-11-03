@@ -13,8 +13,9 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
-onready var ui_container = $\"%ui_container\"
-onready var crafting_menu = $\"%crafting_menu\"
+onready var ui_container = $ui_container
+onready var crafting_menu = $crafting_menu
+
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -28,7 +29,6 @@ layer = 10
 script = SubResource( 1 )
 
 [node name="ui_container" type="Control" parent="."]
-unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -96,6 +96,5 @@ rect_scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 
 [node name="crafting_menu" parent="." instance=ExtResource( 1 )]
-unique_name_in_owner = true
 
 [node name="pause" parent="." instance=ExtResource( 2 )]
