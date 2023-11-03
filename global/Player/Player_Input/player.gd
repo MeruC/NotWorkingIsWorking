@@ -53,12 +53,13 @@ var inventory
 
 func _ready():
 	
-	current_level = get_parent()
+	
 	print(inventory)
 	
 	print("Current Level: " + str(current_level))
 	
 	if get_parent().name != "editor":
+		current_level = get_parent()
 		if settings_data.gender == "female":
 			
 			if settings_data.costume == "girl_pants":
@@ -169,7 +170,8 @@ func _ready():
 				#4
 				$"Pivot/walk/4".mesh = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.obj")
 				$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.png")
-				
+	elif get_parent().name == "editor":
+		current_level = get_parent().level
 	Global.playerInteractLbl = get_node("interact")
 
 func _physics_process(delta: float) -> void:
