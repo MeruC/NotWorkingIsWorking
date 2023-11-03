@@ -83,7 +83,6 @@ func _send_request(request : Dictionary):
 
 func _add_user():
 	# Disable relevant UI elements here (e.g., $signup_btn)
-
 	var username_input = $s_username/s_username
 	var password_input = $s_password/s_password
 	var cpassword_input = $_confirmpassword/cpassword
@@ -92,19 +91,27 @@ func _add_user():
 	var user_password = password_input.text
 	var cpassword = cpassword_input.text
 
+	var minLength = 8  # Define your minimum password length
+	var maxLength = 16  # Define your maximum password length
+
 	if user_password == cpassword:
 		# Check if the email contains either '@gmail.com' or '@bulsu.edu.ph'
 		if username.find("@gmail.com") != -1 or username.find("@bulsu.edu.ph") != -1:
-			var command = "add_user"
-			var data = {"username": username, "password": user_password}
-			request_queue.push_back({"command": command, "data": data})
-			settings_data.email = username
+			if len(user_password) >= minLength and len(user_password) <= maxLength:
+				var command = "add_user"
+				var data = {"username": username, "password": user_password}
+				request_queue.push_back({"command": command, "data": data})
+				settings_data.email = username
+			else:
+				$"../warning".visible = true
+				$"../warning/warning2".text = "Password length must be between " + str(minLength) + " and " + str(maxLength) + " characters."
 		else:
 			$"../warning".visible = true
 			$"../warning/warning2".text = "Invalid email format."
 	else:
 		$"../warning".visible = true
 		$"../warning/warning2".text = "Password didn't match."
+
 
 		
 func _change_scene():
