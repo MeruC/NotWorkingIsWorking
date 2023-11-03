@@ -142,7 +142,6 @@ func _on_data_changed():
 	if setting_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
-		
 		if setting_data.reset_timer >= 120:
 			if score >= 7 and score <= 9:
 				var coins = setting_data.gold_coins
