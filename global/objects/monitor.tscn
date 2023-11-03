@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -587,6 +587,10 @@ Button/styles/hover = null
 Button/styles/normal = SubResource( 30 )
 Button/styles/pressed = SubResource( 31 )
 
+[sub_resource type="DynamicFont" id=74]
+size = 32
+font_data = ExtResource( 13 )
+
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.823529, 0.823529, 0.823529, 1 )
 
@@ -887,6 +891,7 @@ anchor_right = 1.0
 margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
+custom_fonts/font = SubResource( 74 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/ip_config_app/ip_config_screen"]
@@ -1135,27 +1140,36 @@ custom_constants/separation = 200
 [node name="dhcp_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
 margin_right = 114.0
 margin_bottom = 53.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+disabled = true
 text = "DHCP"
 
 [node name="auto_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
 margin_left = 314.0
 margin_right = 516.0
 margin_bottom = 53.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+disabled = true
 text = "Auto Config"
 
 [node name="static_radio" type="CheckBox" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/radio_buttons"]
 margin_left = 716.0
 margin_right = 825.0
 margin_bottom = 53.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+disabled = true
 pressed = true
 text = "Static"
 
@@ -1185,7 +1199,10 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 568, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
 custom_styles/normal = SubResource( 17 )
+editable = false
 placeholder_alpha = 0.25
 
 [node name="label" type="Label" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox/ip_hbox/HBoxContainer"]
@@ -1203,7 +1220,10 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 150, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 18 )
+custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 18 )
+editable = false
 placeholder_alpha = 0.25
 
 [node name="subnet_hbox" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
@@ -1227,7 +1247,10 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 750, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
 custom_styles/normal = SubResource( 17 )
+editable = false
 placeholder_text = "FE80::260:5CFF:FE14:4CEE"
 placeholder_alpha = 0.25
 
@@ -1252,7 +1275,10 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 750, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
 custom_styles/normal = SubResource( 17 )
+editable = false
 placeholder_alpha = 0.25
 
 [node name="dns_hbox2" type="HBoxContainer" parent="ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv6_config_hbox"]
@@ -1276,7 +1302,10 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 750, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 15 )
+custom_styles/read_only = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
 custom_styles/normal = SubResource( 17 )
+editable = false
 placeholder_alpha = 0.25
 
 [node name="save_button" type="Button" parent="ui/ip_config_app/ip_config_screen/main_panel"]
@@ -1332,6 +1361,7 @@ anchor_right = 1.0
 margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
+custom_fonts/font = SubResource( 74 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/cmd_app/cmd_screen"]
@@ -1419,6 +1449,7 @@ anchor_right = 1.0
 margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
+custom_fonts/font = SubResource( 74 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/terminal_app/cmd_screen"]
@@ -1448,7 +1479,7 @@ margin_left = -849.0
 margin_top = -892.0
 margin_right = 849.0
 rect_min_size = Vector2( 1698, 892 )
-follow_focus = true
+scroll_horizontal_enabled = false
 
 [node name="commands_container" type="VBoxContainer" parent="ui/terminal_app/cmd_screen/main_panel/ScrollContainer"]
 margin_right = 1698.0

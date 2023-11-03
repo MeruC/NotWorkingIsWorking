@@ -8,6 +8,7 @@ onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var level_scene = $"%level"
 onready var main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
+onready var submit_button
 
 var computer_list = []
 var tasks_list = []
@@ -36,10 +37,16 @@ func check_ip(ip, subnetmask):
 			
 func _on_configuration_saved():
 	check_progress()
+	
+func get_all_computer():
+	for node in self.get_children():
+		if "object_monitor" in node.name:
+			computer_list.append(node)
 
 func _ready():
+	submit_button = task_manager.get_child(1)
 	get_all_tasks()
-	computer_list = get_all_monitor(self)
+	get_all_computer()
 	check_ip("0.0.0.0", "0.0.0.0")
 	
 	LevelGlobal.object_hold = null
@@ -130,7 +137,23 @@ func get_all_tasks():
 			tasks_list.append(task.get_name())
 			tasks_cbs.append(task.get_child(0))
 			
+func enable_submit():
+	for cb in tasks_cbs:
+		if cb.pressed == true:
+			pass
+		else:
+			return
+	submit_button.visible = true
+			
 func check_progress():
+	check_task1()
+	check_task2()
+	check_task3()
+	check_task4()
+	check_task5()
+	enable_submit()
+
+func check_task1():
 	if find_taskName(tasks_list, "task1") != -1:
 		var device_list = []
 		for node in main_scene.get_children():
@@ -138,16 +161,16 @@ func check_progress():
 				device_list.append(node)
 		for device in device_list:
 			if "object_monitor" in device.name and device.fe0 != null:
-				print("May nakasaksak")
 				pass
 			elif "genericRouter" in device.name and device.ge0 != null and device.ge1 != null and device.ge2 != null:
-				print("May nakasaksak")
 				pass
 			else:
 				tasks_cbs[find_taskName(tasks_list, "task1")].pressed = false
 				return
 		tasks_cbs[find_taskName(tasks_list, "task1")].pressed = true
-	elif find_taskName(tasks_list, "task2") != -1:
+
+func check_task2():
+	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
 		if splitted_ip.size() == 4:
 			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
@@ -159,28 +182,43 @@ func check_progress():
 					return
 			tasks_cbs[find_taskName(tasks_list, "task2")].pressed = true
 			return
-	elif find_taskName(tasks_list, "task3") != -1:
+
+func check_task3():
+	if find_taskName(tasks_list, "task3") != -1:
 		for computer in computer_list:
-			if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip:
-				pass
+			if computer.fe0 != null and computer.ipv4_address != null:
+				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip:
+					tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
+					return
 			else:
 				tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
 				return
 		tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
-	elif find_taskName(tasks_list, "task4") != -1:
+		
+func check_task4():
+	if find_taskName(tasks_list, "task4") != -1:
 		var router
 		for device in main_scene.get_children():
-			if "object_genericRouter" in device.name:
+			if "genericRouter" in device.name:
 				router = device
 		var splitted_ge0ip = router.ge0_ip.split(".")
 		var splitted_ge1ip = router.ge1_ip.split(".")
 		var splitted_ge2ip = router.ge2_ip.split(".")
-		if int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223 and int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223 and int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223:
+		if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
 			tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+			return
 		else:
 			tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
-	elif find_taskName(tasks_list, "task5") != -1:
-		pass
+			return
+			
+func check_task5():
+	if find_taskName(tasks_list, "task5") != -1:
+		var device_list = []
+		for node in self.get_children():
+			if "object_monitor" in node.name or "genericRouter" in node.name:
+				device_list.append(node)
 	
 func find_taskName(tasks_list, task_name):
 	for i in range(tasks_list.size()):

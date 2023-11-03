@@ -552,6 +552,7 @@ material = ExtResource( 8 )
 unique_name_in_owner = true
 visible = false
 script = SubResource( 13 )
+ui_container = NodePath("ui_container")
 
 [node name="mobile_controls" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
@@ -589,7 +590,7 @@ device_name = "pc3"
 
 [node name="object_genericRouter" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
-priveleged_password = "ayokonga"
+device_name = "router1"
 connected_to = [ "pc1", "pc2", "pc3" ]
 
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
@@ -600,18 +601,18 @@ margin_bottom = 573.0
 [node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
 visible = false
 
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
 margin_top = 91.0
-margin_bottom = 235.0
-
-[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
-margin_top = 260.0
-margin_bottom = 456.0
+margin_bottom = 287.0
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
 text = "- Use a console cable to connect any of the PCs into the router.
 - On a pc with console cable connected, open the Terminal.
 - Configure the IP address of each port using Class C IP Addresses"
+
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+margin_top = 312.0
+margin_bottom = 456.0
 
 [node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
 margin_top = 481.0

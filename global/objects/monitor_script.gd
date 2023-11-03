@@ -114,6 +114,7 @@ func has_property(obj, property_name):
 func _set_connectorConsole( connection, type ):
 	if console_port0 == null:
 		console_port0 = connection
+		console_port_connection = connection.device_name
 		console_portType = type
 		label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(console_port0.device_name)
@@ -137,6 +138,7 @@ func _on_save_button_pressed():
 		error_label.visible = false
 		isSaved = true
 		emit_signal("configuration_saved")
+		level_scene.check_progress()
 	else:
 		error_label.visible = true
 		indicator_label.visible = false

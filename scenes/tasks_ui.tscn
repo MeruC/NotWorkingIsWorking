@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=2]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0, 0, 0.117647 )
@@ -19,10 +21,8 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=18]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=16]
-size = 20
-extra_spacing_bottom = 16
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 3 )
 
 [node name="tasks_ui" type="CanvasLayer"]
 
@@ -92,33 +92,10 @@ custom_fonts/font = SubResource( 14 )
 text = "- Open each PC and configure their IP addresses using Class C IP addresses."
 autowrap = true
 
-[node name="task3" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+[node name="task4" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
 margin_top = 208.0
 margin_right = 380.0
-margin_bottom = 352.0
-
-[node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_right = 380.0
-margin_bottom = 39.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 17 )
-disabled = true
-text = "Configure PCs"
-
-[node name="Label" type="Label" parent="task_manager/ScrollContainer/tasks_vbox/task3"]
-margin_top = 43.0
-margin_right = 380.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 380, 0 )
-custom_fonts/font = SubResource( 18 )
-text = "- Open each PC and configure their IP addresses using Class C IP addresses.
-- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
-autowrap = true
-
-[node name="task4" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 377.0
-margin_right = 380.0
-margin_bottom = 573.0
+margin_bottom = 404.0
 
 [node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task4"]
 margin_right = 380.0
@@ -137,6 +114,29 @@ custom_fonts/font = SubResource( 18 )
 text = "- Use a console cable to connect any of the PCs into the router.
 - On a pc with console cable connected, open the Terminal.
 - Configure the IP address of each port using Class A IP Addresses"
+autowrap = true
+
+[node name="task3" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+margin_top = 429.0
+margin_right = 380.0
+margin_bottom = 573.0
+
+[node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task3"]
+margin_right = 380.0
+margin_bottom = 39.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+disabled = true
+text = "Configure PCs"
+
+[node name="Label" type="Label" parent="task_manager/ScrollContainer/tasks_vbox/task3"]
+margin_top = 43.0
+margin_right = 380.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 380, 0 )
+custom_fonts/font = SubResource( 18 )
+text = "- Open each PC and configure their IP addresses using Class C IP addresses.
+- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
 autowrap = true
 
 [node name="task5" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
@@ -170,9 +170,6 @@ anchor_bottom = 1.0
 margin_left = -75.0
 margin_right = 75.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 16 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 19 )
 text = "SUBMIT"
-
-[connection signal="toggled" from="task_manager/ScrollContainer/tasks_vbox/task1/task_cb" to="task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="task_manager/ScrollContainer/tasks_vbox/task2/task_cb" to="task_manager" method="_on_task_cb_toggled"]
-[connection signal="toggled" from="task_manager/ScrollContainer/tasks_vbox/task5/task_cb" to="task_manager" method="_on_task_cb_toggled"]

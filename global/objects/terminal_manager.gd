@@ -124,17 +124,19 @@ func scan_command(command, result_line):
 				to_be_configured = "se2"
 				position = 3
 			else:
-				print("invalid interface")
+				result_line.text = "Invalid Interface"
 		elif starts_with(command, "enable secret"):
 			configurable_router.privileged_password = splitted_command[2]
 		elif command == "exit":
 			position -= 1
-			correct_pass = false
+			if configurable_router.priveleged_password != null:
+				correct_pass = false
 		else:
 			result_line.text = "Unknown Command"
 	elif position == 3:
+		print(to_be_configured)
 		if starts_with(command, "ip address"):
-			if splitted_command[2] != null and splitted_command[3] != null:
+			if splitted_command.size() == 4:
 				if to_be_configured == "ge0":
 					configurable_router.ge0_ip = splitted_command[2]
 					configurable_router.ge0_subnetMask = splitted_command[3]
@@ -145,23 +147,21 @@ func scan_command(command, result_line):
 					configurable_router.ge2_ip = splitted_command[2]
 					configurable_router.ge2_subnetMask = splitted_command[3]
 			else:
-				print("invalid input")
+				result_line.text = "Invalid Input"
+		elif command == "exit":
+			position -= 1
+			to_be_configured = ""
 		elif command == "no shutdown":
-			if to_be_configured == "ge0":
+			if to_be_configured == "ge0" and configurable_router.ge0_port_up == false:
 				configurable_router.ge0_port_up = true
-				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/0, changed state to up
-
-%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up"""
-			elif to_be_configured == "ge1":
+				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/0, changed state to up\n\n%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up"""
+			elif to_be_configured == "ge1" and configurable_router.ge1_port_up == false:
 				configurable_router.ge1_port_up = true
-				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/1, changed state to up
-
-%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/1, changed state to up"""
-			elif to_be_configured == "ge2":
+				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/1, changed state to up\n\n%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/1, changed state to up"""
+			elif to_be_configured == "ge2" and configurable_router.ge2_port_up == false:
 				configurable_router.ge2_port_up = true
-				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/2, changed state to up
-
-%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/2, changed state to up"""
+				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/2, changed state to up\n\n%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/2, changed state to up"""
+		else:
 			result_line.text = "Unknown Command"
 			
 			

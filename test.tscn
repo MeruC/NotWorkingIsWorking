@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=9]
 [ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=10]
 [ext_resource path="res://resources/Sprites/grid.png" type="Texture" id=11]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -34,6 +35,9 @@ script/source = "extends CanvasLayer
 
 export( NodePath ) onready var ui_container = get_node(ui_container) as Control
 "
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 13 )
 
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
@@ -74,7 +78,7 @@ material = ExtResource( 8 )
 [node name="inventory" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 script = SubResource( 12 )
-ui_container = NodePath("")
+ui_container = NodePath("ui_container")
 
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -82,29 +86,30 @@ unique_name_in_owner = true
 [node name="tasks_ui" parent="." instance=ExtResource( 5 )]
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 144.0
-
-[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
-visible = false
+margin_bottom = 66.0
 
 [node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
 visible = false
 margin_top = 0.0
 margin_bottom = 92.0
 
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+visible = false
+margin_top = 0.0
+margin_bottom = 196.0
+
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = false
 margin_top = 0.0
 margin_bottom = 144.0
 
-[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
-visible = false
-margin_top = 117.0
-margin_bottom = 313.0
-
 [node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
 visible = false
-margin_top = 117.0
-margin_bottom = 209.0
+margin_top = 0.0
+margin_bottom = 92.0
+
+[node name="submit_button" parent="tasks_ui/task_manager" index="1"]
+custom_fonts/font = SubResource( 18 )
 
 [node name="object_table" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
@@ -148,4 +153,5 @@ device_name = "pc1"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.9375, -8 )
 
 [editable path="environment"]
+[editable path="inventory"]
 [editable path="tasks_ui"]
