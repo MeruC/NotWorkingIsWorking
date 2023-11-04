@@ -206,15 +206,16 @@ func check_task4():
 		for device in main_scene.get_children():
 			if "genericRouter" in device.name:
 				router = device
-				splitted_ge0ip = router.ge0_ip.split(".")
-				splitted_ge1ip = router.ge1_ip.split(".")
-				splitted_ge2ip = router.ge2_ip.split(".")
-				if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
-					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
-					return
-				else:
-					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
-					return
+		if "genericRouter" in router.name:
+			splitted_ge0ip = router.ge0_ip.split(".")
+			splitted_ge1ip = router.ge1_ip.split(".")
+			splitted_ge2ip = router.ge2_ip.split(".")
+			if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
+				tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+				return
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+				return
 			
 func check_task5():
 	if find_taskName(tasks_list, "task5") != -1:
