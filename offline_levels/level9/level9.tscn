@@ -496,13 +496,20 @@ script/source = "extends Control
 
 onready var submit_popup = $\"../popups/submit_confirmation_popup\"
 onready var gameover_popup = $\"../popups/game_over\"
+export(NodePath) onready var game_over_popup = get_node(gameover_popup) as Control
+export(NodePath) onready var crowns = get_node(crowns) as TextureRect
+export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
+export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
 
 func _on_submit_button_pressed():
 	submit_popup.visible = true
 
 
 func _on_yes_button_pressed():
-	gameover_popup.visible = true
+	game_over_popup.visible = true
+	animationplayer.play(\"win\")
+	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+	celebrate.visible = true
 "
 
 [node name="level" type="Spatial"]
@@ -683,6 +690,10 @@ anims/win = SubResource( 63 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 60 )
+game_over_popup = NodePath("../popups/game_over")
+crowns = NodePath("../popups/game_over/main_popup/crowns")
+animationplayer = NodePath("../popups/game_over/AnimationPlayer")
+celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
 
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
 
