@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://online_mode/quiz_scene_template/question_content.gd" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=9]
 [ext_resource path="res://resources/font/user_profile_font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://resources/Game buttons/simple_bg_worg _games.png" type="Texture" id=11]
-[ext_resource path="res://resources/Game buttons/text_box.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -676,28 +675,6 @@ tracks/7/keys = {
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.784314 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 60
-extra_spacing_top = -11
-extra_spacing_bottom = 16
-extra_spacing_char = -1
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 12 )
-region_rect = Rect2( 0, 0, 318, 66 )
-
-[sub_resource type="Theme" id=17]
-LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/selection_color = Color( 0.490196, 0.490196, 0.490196, 0.105882 )
-LineEdit/fonts/font = SubResource( 1 )
-LineEdit/styles/focus = SubResource( 3 )
-LineEdit/styles/normal = SubResource( 2 )
-
 [sub_resource type="DynamicFont" id=18]
 size = 42
 font_data = ExtResource( 1 )
@@ -805,9 +782,9 @@ texture = ExtResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/instructions/ColorRect"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.536
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.682
 margin_left = -468.0
 margin_top = -278.0
 margin_right = 482.0
@@ -817,9 +794,9 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="info" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
-margin_top = 83.0
+margin_top = 60.0
 margin_right = 950.0
-margin_bottom = 173.0
+margin_bottom = 150.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 7 )
 text = "WELCOME!"
@@ -827,24 +804,15 @@ align = 1
 valign = 1
 
 [node name="instructions" type="Label" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
-margin_top = 198.0
+margin_top = 175.0
 margin_right = 950.0
-margin_bottom = 253.0
+margin_bottom = 462.0
 rect_min_size = Vector2( 950, 0 )
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Enter your section:"
-align = 1
-valign = 1
+text = "This quiz will test your knowledge with regards to computer networking. You will be presented with a series of questions, and for each question, you must select the correct answer by clicking the corresponding button."
+valign = 3
 autowrap = true
-
-[node name="section" type="LineEdit" parent="CanvasLayer/instructions/ColorRect/VBoxContainer"]
-margin_top = 278.0
-margin_right = 950.0
-margin_bottom = 366.0
-theme = SubResource( 17 )
-align = 1
-placeholder_text = "Enter your section"
 
 [node name="start" type="Button" parent="CanvasLayer/instructions/ColorRect"]
 anchor_left = 0.5
