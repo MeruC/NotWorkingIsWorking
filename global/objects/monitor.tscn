@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -32,6 +32,10 @@
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=31]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=32]
+
+[sub_resource type="DynamicFont" id=76]
+size = 12
+font_data = ExtResource( 30 )
 
 [sub_resource type="StyleBoxFlat" id=28]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -398,6 +402,10 @@ font_data = ExtResource( 30 )
 size = 48
 font_data = ExtResource( 30 )
 
+[sub_resource type="DynamicFont" id=75]
+size = 36
+font_data = ExtResource( 30 )
+
 [sub_resource type="DynamicFont" id=66]
 size = 48
 font_data = ExtResource( 30 )
@@ -683,17 +691,57 @@ margin_top = 110.0
 margin_right = -346.0
 margin_bottom = -82.0
 
+[node name="Label" type="Label" parent="ui/io/cpu_ui"]
+margin_left = 200.0
+margin_top = 619.0
+margin_right = 361.0
+margin_bottom = 633.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 76 )
+text = "FastEthernet"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="ui/io/cpu_ui"]
+margin_left = 200.0
+margin_top = 700.0
+margin_right = 310.0
+margin_bottom = 714.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 76 )
+text = "Console"
+align = 1
+valign = 1
+
 [node name="fe_cable" type="ColorRect" parent="ui/io/cpu_ui"]
-margin_left = 83.0
-margin_top = 203.0
-margin_right = 120.0
-margin_bottom = 240.0
+margin_left = 166.0
+margin_top = 607.0
+margin_right = 203.0
+margin_bottom = 644.0
 
 [node name="disconnect_button" type="Button" parent="ui/io/cpu_ui"]
-margin_left = 74.0
-margin_top = 194.0
-margin_right = 129.0
-margin_bottom = 248.0
+margin_left = 157.0
+margin_top = 599.0
+margin_right = 212.0
+margin_bottom = 653.0
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/disabled = SubResource( 28 )
+custom_styles/normal = SubResource( 28 )
+
+[node name="console_cable" type="ColorRect" parent="ui/io/cpu_ui"]
+margin_left = 166.0
+margin_top = 687.0
+margin_right = 203.0
+margin_bottom = 724.0
+color = Color( 0, 0.694118, 1, 1 )
+
+[node name="disconnect_console" type="Button" parent="ui/io/cpu_ui"]
+margin_left = 157.0
+margin_top = 679.0
+margin_right = 212.0
+margin_bottom = 733.0
 custom_styles/hover = SubResource( 28 )
 custom_styles/pressed = SubResource( 28 )
 custom_styles/focus = SubResource( 28 )
@@ -794,28 +842,28 @@ clip_text = true
 [node name="disconnect_confirm" parent="ui" instance=ExtResource( 29 )]
 
 [node name="ColorRect" parent="ui/disconnect_confirm/ColorRect2" index="0"]
-margin_right = 50.0
-margin_bottom = 750.0
+margin_right = 250.0
+margin_bottom = 891.0
 
 [node name="MarginContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect" index="0"]
-margin_right = 1180.0
-margin_bottom = 390.0
+margin_right = 1380.0
+margin_bottom = 531.0
 
 [node name="VBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer" index="0"]
-margin_right = 1120.0
-margin_bottom = 320.0
+margin_right = 1320.0
+margin_bottom = 461.0
 custom_constants/separation = 100
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1015.0
+margin_right = 1215.0
 margin_bottom = 55.0
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 43.0
-margin_right = 584.0
+margin_left = 143.0
+margin_right = 684.0
 margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -827,8 +875,8 @@ align = 1
 valign = 1
 
 [node name="device_name" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 609.0
-margin_right = 971.0
+margin_left = 709.0
+margin_right = 1071.0
 margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -839,31 +887,77 @@ text = "Computer1?"
 align = 1
 valign = 1
 
-[node name="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="1"]
+margin_top = 155.0
+margin_right = 1215.0
+margin_bottom = 196.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 28.0
+margin_right = 141.0
+margin_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+theme = SubResource( 63 )
+custom_fonts/font = SubResource( 75 )
+text = "Your"
+align = 1
+valign = 1
+
+[node name="cable_type" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 166.0
+margin_right = 610.0
+margin_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+theme = SubResource( 63 )
+custom_fonts/font = SubResource( 75 )
+text = "Straight-Through"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 635.0
+margin_right = 1186.0
+margin_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+theme = SubResource( 63 )
+custom_fonts/font = SubResource( 75 )
+text = "cable will be returned"
+align = 1
+valign = 1
+
+[node name="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="2"]
 visible = false
 margin_top = 128.0
 margin_bottom = 196.0
 text = "Disconnect from"
 
-[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="2"]
-margin_top = 155.0
-margin_right = 1015.0
-margin_bottom = 270.0
+[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="3"]
+margin_top = 296.0
+margin_right = 1215.0
+margin_bottom = 411.0
 alignment = 1
 
 [node name="cancel" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="0"]
-margin_left = 160.0
-margin_right = 448.0
+margin_left = 260.0
+margin_right = 548.0
 margin_bottom = 115.0
 theme = SubResource( 67 )
 
 [node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="1"]
-margin_left = 529.0
-margin_right = 854.0
+margin_left = 629.0
+margin_right = 954.0
 margin_bottom = 115.0
 theme = SubResource( 69 )
 
-[node name="ok" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="3"]
+[node name="ok" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="4"]
 margin_top = 320.0
 margin_bottom = 452.0
 
@@ -1578,6 +1672,7 @@ size = 1.679
 
 [connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
 [connection signal="pressed" from="ui/io/cpu_ui/disconnect_button" to="." method="_on_disconnect_button_pressed"]
+[connection signal="pressed" from="ui/io/cpu_ui/disconnect_console" to="." method="_on_disconnect_console_pressed"]
 [connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
 [connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]

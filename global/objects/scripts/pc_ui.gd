@@ -6,9 +6,11 @@ onready var camera = $"../interaction_area/Camera"
 onready var camera_2 = $"../interaction_area/Camera2"
 onready var fe_cable = $io/cpu_ui/fe_cable
 onready var disconnect_button = $io/cpu_ui/disconnect_button
+onready var console_cable = $io/cpu_ui/console_cable
+onready var disconnect_consoleBtn = $io/cpu_ui/disconnect_console
 
-var red = Color(155, 0, 0, 1)
-var blue = Color(0, 11, 73, 1)
+var red = Color("#8a0000")
+var blue = Color("#001480")
 
 func _on_Exit_pressed():
 	get_parent().get_node("interaction_area").out_of_range()
@@ -32,7 +34,13 @@ func display_wires(node):
 	else:
 		fe_cable.visible = false
 		disconnect_button.visible = false
-		
+	
+	if node.console_port0 != null:
+		console_cable.visible = true
+		disconnect_consoleBtn.visible = true
+	else:
+		console_cable.visible = false
+		disconnect_consoleBtn.visible = false
 		
 
 

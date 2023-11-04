@@ -85,7 +85,7 @@ func _on_pc_opened():
 	mobile_controls.set_visible(false)
 	onMenu = true
 	Global.playerCanMove = false
-	task_manager.visible = false
+	tasks_ui.get_child(0).pressed = false
 	
 func _on_pc_closed():
 	#player = main.get_node("Player")
@@ -97,7 +97,7 @@ func _on_pc_closed():
 		Global.playerInteractLbl.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
-		task_manager.visible = true
+		tasks_ui.get_child(0).pressed = false
 		
 		
 func _on_router_open():
@@ -106,7 +106,7 @@ func _on_router_open():
 	mobile_controls.set_visible(false)
 	onMenu = true
 	Global.playerCanMove = false
-	task_manager.visible = false
+	tasks_ui.get_child(0).pressed = false
 	
 func _on_router_close():
 	#player = main.get_node("Player")
@@ -118,17 +118,18 @@ func _on_router_close():
 		Global.playerInteractLbl.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
-		task_manager.visible = true
-		
+		tasks_ui.get_child(0).pressed = false
 		
 func _on_cable_used():
 	inventory.ui_container.set_visible(false)
 	mobile_controls.buttons.set_visible(false)
 	mobile_controls.cable_ui.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
 
 func _on_cable_done():
 	inventory.ui_container.set_visible(true)
 	mobile_controls.buttons.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
 	#mobile_controls.cable_ui.set_visible(false)
 	
 func get_all_tasks():
@@ -157,12 +158,12 @@ func check_task1():
 	if find_taskName(tasks_list, "task1") != -1:
 		var device_list = []
 		for node in main_scene.get_children():
-			if "object_monitor" in node.name or "genericRouter" in node.name:
+			if "object_monitor" in node.name or "Router" in node.name:
 				device_list.append(node)
 		for device in device_list:
 			if "object_monitor" in device.name and device.fe0 != null:
 				pass
-			elif "genericRouter" in device.name and device.ge0 != null and device.ge1 != null and device.ge2 != null:
+			elif "Router" in device.name and device.ge0 != null and device.ge1 != null and device.ge2 != null:
 				pass
 			else:
 				tasks_cbs[find_taskName(tasks_list, "task1")].pressed = false
@@ -186,7 +187,7 @@ func check_task2():
 func check_task3():
 	if find_taskName(tasks_list, "task3") != -1:
 		for computer in computer_list:
-			if computer.fe0 != null and computer.ipv4_address != null:
+			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
 				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip:
 					tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
 				else:
@@ -204,9 +205,9 @@ func check_task4():
 		var splitted_ge1ip
 		var splitted_ge2ip
 		for device in main_scene.get_children():
-			if "genericRouter" in device.name:
+			if "Router" in device.name:
 				router = device
-		if "genericRouter" in router.name:
+		if "Router" in router.name:
 			splitted_ge0ip = router.ge0_ip.split(".")
 			splitted_ge1ip = router.ge1_ip.split(".")
 			splitted_ge2ip = router.ge2_ip.split(".")
@@ -221,7 +222,7 @@ func check_task5():
 	if find_taskName(tasks_list, "task5") != -1:
 		var device_list = []
 		for node in self.get_children():
-			if "object_monitor" in node.name or "genericRouter" in node.name:
+			if "object_monitor" in node.name or "Router" in node.name:
 				device_list.append(node)
 	
 func find_taskName(tasks_list, task_name):

@@ -26,8 +26,6 @@ custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
 text = "A"
 script = ExtResource( 2 )
-blank_container = NodePath("GridContainer")
-submit_button = NodePath(".")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 40.0

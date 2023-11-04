@@ -20,7 +20,6 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "A"
 script = ExtResource( 2 )
-letter_container = NodePath("GridContainer")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 40.0

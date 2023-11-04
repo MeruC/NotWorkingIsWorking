@@ -43,7 +43,7 @@ func _ready():
 			device_list.append(node)
 		elif node.name == "tasks_ui":
 			var tasks_ui = node
-			var tasks = tasks_ui.get_child(0).get_child(0).get_child(2)
+			var tasks = tasks_ui.get_child(1).get_child(0).get_child(2)
 			for task in tasks.get_children():
 				if task.name == "task5":
 					task5_cb = task.get_child(0)

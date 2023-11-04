@@ -11,8 +11,8 @@ var score = 0
 var i
 export(NodePath) onready var clue_label = get_node(clue_label) as Label
 export(NodePath) onready var score_label = get_node(score_label) as Label
-export(NodePath) onready var letter_container = get_node(letter_container) as GridContainer
-export(NodePath) onready var blank_container = get_node(blank_container) as GridContainer
+onready var letter_container = $"../letter_CenterContainer/letter_container"
+onready var blank_container = $"../blank_CenterContainer/blank_container"
 export(NodePath) onready var submit_button = get_node(submit_button) as Button
 
 # Gameover popup paths
@@ -54,23 +54,22 @@ func _ready():
 	
 	i = 0
 
-	var scrambled = json_data[i]["scrambled"]
-	var clue = json_data[i]["clue"]
-	answer = json_data[i]["answer"]
-	clue_label.text = clue
+	#var scrambled = json_data[i]["scrambled"]
+	#var clue = json_data[i]["clue"]
+	#answer = json_data[i]["answer"]
+	#clue_label.text = clue
 	
-	var x = 0
-	for child in letter_container.get_children():
-		if child is Button:
-			child.text = scrambled[x]
-			x += 1
+	#var x = 0
+	#for child in letter_container.get_children():
+	#	if child is Button:
+	#		child.text = scrambled[x]
+	#		x += 1
 	
-	give_hints(answer)
+	display_next()
 	
 	return json_data
 	
-	
-func _process(delta):
+func enable_submit():
 	# To enable the submit button when all blanks are filled and to disable if not
 	var blank_counts = blank_container.get_child_count()
 	var last_blank = blank_container.get_child(blank_counts - 1)
@@ -80,6 +79,8 @@ func _process(delta):
 		else:
 			submit_button.disabled = true
 	##
+	
+	
 
 
 func _on_clear_pressed():
@@ -120,13 +121,12 @@ func _on_submit_pressed():
 		$"../animation_player/ColorRect".visible = false
 	
 	for child in blank_container.get_children():
-		child.queue_free()
+		child.free()
 	for child in letter_container.get_children():
-		child.queue_free()
+		child.free()
 	clue_label.text = ""
 	
 	display_next()
-	give_hints(answer)
 	
 func display_next():
 # To display the next question
@@ -143,26 +143,16 @@ func display_next():
 				blank_container.add_child(new_blank)
 				new_blank.text = "_"
 				new_blank.rect_min_size = Vector2(100, 100)
-				new_blank.letter_container = letter_container
+				#new_blank.letter_container = letter_container
 				letter_container.add_child(new_letter)
 				new_letter.text = scrambled[x]
 				new_letter.rect_min_size = Vector2(100, 100)
-				new_letter.blank_container = blank_container
+				#new_letter.blank_container = blank_container
 				x += 1
+		give_hints(answer)
 		return i
 	##
 	
-func give_hints(answer):
-	var counter = 0
-	var random_number
-	while counter != 3:
-		random_number = int(rand_range(0, answer.length() - 1))
-		blank_container.get_child(random_number).text = answer[random_number]
-		for letter in letter_container.get_children():
-			if letter.text.to_lower() == answer[random_number].to_lower():
-				letter.disabled = true
-				break
-		counter += 1
 		
 	# To show popup and set its contents
 	popup_score_label.text = "Your Score: " + score_label.text + " / 5"
@@ -196,6 +186,17 @@ func give_hints(answer):
 	game_over_popup.visible = true
 	##
 
+func give_hints(answer):
+	var counter = 0
+	var random_number
+	while counter != 3:
+		random_number = int(rand_range(0, answer.length()))
+		blank_container.get_child(random_number).text = answer[random_number]
+		for letter in letter_container.get_children():
+			if letter.text.to_lower() == answer[random_number].to_lower():
+				letter.disabled = true
+				break
+		counter += 1
 
 func _on_tap_pressed():
 	instructions_popup.visible = false

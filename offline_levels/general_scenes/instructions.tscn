@@ -18,12 +18,12 @@
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 296, 226 )
 
 [sub_resource type="Theme" id=5]
-Panel/styles/panel = SubResource( 4 )
+Panel/styles/panel = SubResource( 13 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "animation"
@@ -164,8 +164,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 sprite = NodePath("main_popup/AnimationPlayer/Sprite")
-level3 = NodePath("main_popup/AnimationPlayer/level3")
 level2 = NodePath("main_popup/AnimationPlayer/level2")
+level3 = NodePath("main_popup/AnimationPlayer/level3")
 level4 = NodePath("main_popup/AnimationPlayer/level4")
 level5 = NodePath("main_popup/AnimationPlayer/level5")
 level6 = NodePath("main_popup/AnimationPlayer/level6")

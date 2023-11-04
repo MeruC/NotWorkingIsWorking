@@ -58,9 +58,12 @@ onready var terminal_app = $ui/terminal_app
 onready var disconnect_popup = $ui/disconnect_confirm
 onready var disconnect_confirm = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/confirm
 onready var disconnectTo_label = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/device_name
+onready var cableType_label = $ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/cable_type
 onready var fe_cable = $ui/io/cpu_ui/fe_cable
 onready var fe_disconnectBtn = $ui/io/cpu_ui/disconnect_button
-onready var ui_script = preload("res://global/objects/scripts/pc_ui.gd")
+onready var console_cable = $ui/io/cpu_ui/console_cable
+onready var consolde_disconnectBtn = $ui/io/cpu_ui/disconnect_console
+onready var ui_script = load("res://global/objects/scripts/pc_ui.gd")
 
 func _process(delta):
 	pass
@@ -99,7 +102,7 @@ func _set_connector( connection, type ):
 	if fe0 == null:
 		fe0 = connection
 		fe0_type = str(type)
-		label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
+		#label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
 		level_scene.check_progress()
 		#emit_signal("cable_connected")
@@ -116,8 +119,7 @@ func _set_connectorConsole( connection, type ):
 		console_port0 = connection
 		console_port_connection = connection.device_name
 		console_portType = type
-		label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
-		connected_to.append(console_port0.device_name)
+		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		#emit_signal("cable_connected")
 	else:
 		pass
@@ -213,35 +215,55 @@ func _on_terminal_close_button_pressed():
 # CPU Scripts
 
 func _on_disconnect_button_pressed():
-	disconnectTo_label.text = fe0.device_name
+	disconnectTo_label.text = fe0.device_name + "?"
+	if fe0_type == "straight_through":
+		cableType_label.text = "Straight-Through"
+	elif fe0_type == "cross_over":
+		cableType_label.text = "Cross-Over"
+	disconnect_popup.visible = true
+
+func _on_disconnect_console_pressed():
+	disconnectTo_label.text = console_port_connection + "?"
+	cableType_label.text = "Console"
 	disconnect_popup.visible = true
 
 func _on_confirm_pressed():
-	if fe0.device_type == "computer":
-		fe0.fe0 = null
-		fe0.fe0_type = null
-	elif fe0.device_type == "router":
-		if fe0.ge0 == device_name:
-			fe0.ge0 = null
-			fe0.ge0_type = null
-		elif fe0.ge1 == device_name:
-			fe0.ge1 = null
-			fe0.ge1_type = null
-		elif fe0.ge2 == device_name:
-			fe0.ge2 = null
-			fe0.ge2_type = null
-	
-	return_cable()
-	fe0 = null
-	fe0_type = null
-	label.text = ""
-	fe_cable.visible = false
-	fe_disconnectBtn.visible = false
+	if cableType_label.text == "Cross-Over" or cableType_label.text == "Straight-Through":
+		if fe0.device_type == "computer":
+			fe0.fe0 = null
+			fe0.fe0_type = null
+		elif fe0.device_type == "router":
+			if fe0.ge0.device_name == device_name:
+				fe0.ge0 = null
+				fe0.ge0_type = null
+			elif fe0.ge1.device_name == device_name:
+				fe0.ge1 = null
+				fe0.ge1_type = null
+			elif fe0.ge2.device_name == device_name:
+				fe0.ge2 = null
+				fe0.ge2_type = null
+		if fe0.connected_to.has(device_name):
+			fe0.connected_to.remove(device_name)
+		return_cable(fe0_type)
+		fe0 = null
+		fe0_type = null
+		#label.text = ""
+		fe_cable.visible = false
+		fe_disconnectBtn.visible = false
+	elif cableType_label.text == "Console":
+		console_port0.console_port0 = null
+		console_port0.console_portType = null
+		return_cable("Console_Cable")
+		console_port0 = null
+		console_portType = null
+		#label.text = ""
+		console_cable.visible = false
+		consolde_disconnectBtn.visible = false
 ##
 
-func return_cable():
+func return_cable(cable_type):
 	var produce = [{
-		"id":fe0_type,
+		"id":cable_type,
 		"quantity": 1
 	}]
 	InventoryManager.add_items(ItemManager.get_items(produce), "player")
@@ -271,3 +293,5 @@ func _on_ipAdd_lineEdit_focus_exited():
 	ipv4Add_lineEdit.text = ""
 	ipv4Subnet_lineEdit.text = ""
 	return
+
+

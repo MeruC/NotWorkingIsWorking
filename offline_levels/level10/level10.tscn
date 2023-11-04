@@ -1,8 +1,8 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://global/objects/genericRouter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=3]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=4]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=5]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=6]
@@ -15,6 +15,9 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=13]
 [ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=14]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=15]
+[ext_resource path="res://global/objects/huaweiRouter.tscn" type="PackedScene" id=16]
+[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=18]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -492,12 +495,23 @@ tracks/2/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=71]
+size = 40
+font_data = ExtResource( 17 )
+
+[sub_resource type="StyleBoxTexture" id=72]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 296, 226 )
+
+[sub_resource type="Theme" id=73]
+Panel/styles/panel = SubResource( 72 )
+
 [sub_resource type="GDScript" id=70]
 script/source = "extends Control
 
 onready var submit_popup = $\"../popups/submit_confirmation_popup\"
 onready var gameover_popup = $\"../popups/game_over\"
-export(NodePath) onready var game_over_popup = get_node(gameover_popup) as Control
+onready var introduction_popup = $\"../popups/introduction\"
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
@@ -508,6 +522,10 @@ func _on_submit_button_pressed():
 
 func _on_yes_button_pressed():
 	gameover_popup.visible = true
+
+
+func _on_tap_pressed():
+	introduction_popup.visible = false
 "
 
 [node name="level" type="Spatial"]
@@ -546,10 +564,10 @@ height = 10.0
 depth = 20.0
 material = ExtResource( 8 )
 
-[node name="inventory" parent="." instance=ExtResource( 5 )]
-
 [node name="mobile_controls" parent="." instance=ExtResource( 6 )]
 visible = false
+
+[node name="inventory" parent="." instance=ExtResource( 5 )]
 
 [node name="object_table" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
@@ -566,6 +584,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 [node name="object_monitor" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 device_name = "pc1"
+
+[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -200.0
+margin_right = -710.0
+margin_bottom = 351.0
 
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
@@ -584,37 +608,14 @@ device_name = "pc2"
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -4 )
 device_name = "pc3"
 
-[node name="object_genericRouter" parent="." instance=ExtResource( 3 )]
+[node name="object_huaweiRouter" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
-device_name = "router1"
-connected_to = [ "pc1", "pc2", "pc3" ]
+device_name = "Router0"
 
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
 
-[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 573.0
-
-[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
-visible = false
-
-[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
-margin_top = 91.0
-margin_bottom = 287.0
-
-[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
-text = "- Use a console cable to connect any of the PCs into the router.
-- On a pc with console cable connected, open the Terminal.
-- Configure the IP address of each port using Class C IP Addresses"
-
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
-margin_top = 312.0
-margin_bottom = 456.0
-
-[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
-margin_top = 481.0
-margin_bottom = 573.0
-
 [node name="popups" type="CanvasLayer" parent="."]
+layer = 11
 
 [node name="submit_confirmation_popup" type="Panel" parent="popups"]
 visible = false
@@ -685,14 +686,96 @@ anims/level1 = SubResource( 67 )
 anims/lose = SubResource( 68 )
 anims/win = SubResource( 69 )
 
+[node name="introduction" type="Control" parent="popups"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="popups/introduction"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 666, 375 )
+rect_scale = Vector2( 1.0047, 1 )
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="command" type="Label" parent="popups/introduction"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -290.0
+margin_top = -82.0
+margin_right = 210.0
+margin_bottom = -22.0
+rect_min_size = Vector2( 500, 60 )
+custom_fonts/font = SubResource( 71 )
+text = "(Tap to Continue)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="main_popup" type="Panel" parent="popups/introduction"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -742.0
+margin_top = -469.0
+margin_right = 742.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 666, 375 )
+theme = SubResource( 73 )
+
+[node name="title" type="Label" parent="popups/introduction/main_popup"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -346.5
+margin_top = 74.0
+margin_right = 353.5
+margin_bottom = 154.0
+rect_min_size = Vector2( 700, 80 )
+theme = ExtResource( 13 )
+text = "Introduction"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="content" type="Label" parent="popups/introduction/main_popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -707.0
+margin_top = -198.0
+margin_right = 710.0
+margin_bottom = 427.0
+rect_min_size = Vector2( 900, 450 )
+theme = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Welcome to the next level of your networking journey! In this stage, we'll delve deeper into the world of networking by exploring how routers and PCs work together to create a network that can connect, communicate, and share information. In this level, you'll learn how to set up a basic network with a router and three PCs. By the end of this level, you'll be able to create a network where devices can talk to each other, and you'll understand the role of IP addresses, subnet masks, and default gateways in making it all happen. Let's get started on our journey to understanding how routers and PCs connect and communicate!"
+align = 3
+valign = 1
+autowrap = true
+
+[node name="tap" type="Button" parent="popups/introduction"]
+self_modulate = Color( 1, 1, 1, 0.0980392 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = 6.0
+text = "aaaaaa"
+
 [node name="manager" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 70 )
-game_over_popup = NodePath("../popups/game_over")
 crowns = NodePath("../popups/game_over/main_popup/crowns")
 animationplayer = NodePath("../popups/game_over/AnimationPlayer")
 celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
+
+[connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
 
 [editable path="environment"]
 [editable path="object_monitor"]

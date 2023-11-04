@@ -4,8 +4,6 @@ var ge0 : StaticBody
 var ge0_type
 var ge1 : StaticBody
 var ge1_type
-var ge2 : StaticBody
-var ge2_type
 var console_port0 : StaticBody
 var console_portType
 var other_end : StaticBody
@@ -22,11 +20,8 @@ export(bool) var ge0_port_up = false
 export(String) var ge1_ip 
 export(String) var ge1_subnetMask
 export(bool) var ge1_port_up = false
-export(String) var ge2_ip
-export(String) var ge2_subnetMask
-export(bool) var ge2_port_up = false
 export(String) var console_port_connection = null
-export(int) var port_count = 3
+export(int) var port_count = 2
 export(Array) var connected_to = []
 
 #Checks if all ports are in use
@@ -35,7 +30,7 @@ func checkports():
 		console = true
 	else:
 		console = false
-	if ge0 == null or ge1 == null or ge2 == null:
+	if ge0 == null or ge1 == null:
 		rj = true
 	else:
 		rj = false
@@ -51,11 +46,6 @@ func _set_connector( connection , type):
 		ge1_type = type
 		#label.text = "Connected to " + str(ge1.device_name) + "\nUsing: " + str(type)
 		connected_to.append(ge1.device_name)
-	elif ge2 == null:
-		ge2 = connection
-		ge2_type = type
-		#label.text = "Connected to " + str(ge2.device_name) + "\nUsing: " + str(type)
-		connected_to.append(ge2.device_name)
 	else:
 		print("no port available")
 		

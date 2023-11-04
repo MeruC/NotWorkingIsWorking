@@ -853,8 +853,6 @@ blank_scene = ExtResource( 4 )
 settings_data = ExtResource( 9 )
 clue_label = NodePath("../clue")
 score_label = NodePath("../score")
-letter_container = NodePath("../letter_CenterContainer/letter_container")
-blank_container = NodePath("../blank_CenterContainer/blank_container")
 submit_button = NodePath("../submit")
 popup_score_label = NodePath("../popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("../popup_layer/game_over")
@@ -923,146 +921,12 @@ margin_right = 960.0
 margin_bottom = 285.0
 
 [node name="letter_container" type="GridContainer" parent="letter_CenterContainer"]
-margin_left = 175.0
-margin_right = 1745.0
-margin_bottom = 100.0
+margin_left = 960.0
+margin_top = 50.0
+margin_right = 960.0
+margin_bottom = 50.0
 custom_constants/hseparation = 5
 columns = 15
-
-[node name="letter1" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter2" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 105.0
-margin_top = 0.0
-margin_right = 205.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter3" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 210.0
-margin_top = 0.0
-margin_right = 310.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter4" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 315.0
-margin_top = 0.0
-margin_right = 415.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter5" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 420.0
-margin_top = 0.0
-margin_right = 520.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter6" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 525.0
-margin_top = 0.0
-margin_right = 625.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter7" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 630.0
-margin_top = 0.0
-margin_right = 730.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter8" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 735.0
-margin_top = 0.0
-margin_right = 835.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter9" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 840.0
-margin_top = 0.0
-margin_right = 940.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter10" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 945.0
-margin_top = 0.0
-margin_right = 1045.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter11" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 1050.0
-margin_top = 0.0
-margin_right = 1150.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter12" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 1155.0
-margin_top = 0.0
-margin_right = 1255.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter13" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 1260.0
-margin_top = 0.0
-margin_right = 1360.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter14" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 1365.0
-margin_top = 0.0
-margin_right = 1465.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
-
-[node name="letter15" parent="letter_CenterContainer/letter_container" instance=ExtResource( 2 )]
-margin_left = 1470.0
-margin_top = 0.0
-margin_right = 1570.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-blank_container = NodePath("../../../blank_CenterContainer/blank_container")
-submit_button = NodePath("../../../submit")
 
 [node name="blank_CenterContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5
@@ -1075,147 +939,13 @@ margin_right = 960.0
 margin_bottom = 123.0
 
 [node name="blank_container" type="GridContainer" parent="blank_CenterContainer"]
-margin_left = 175.0
-margin_right = 1745.0
-margin_bottom = 100.0
+margin_left = 960.0
+margin_top = 50.0
+margin_right = 960.0
+margin_bottom = 50.0
 rect_clip_content = true
 custom_constants/hseparation = 5
 columns = 15
-
-[node name="blank" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank2" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 105.0
-margin_top = 0.0
-margin_right = 205.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank3" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 210.0
-margin_top = 0.0
-margin_right = 310.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank4" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 315.0
-margin_top = 0.0
-margin_right = 415.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank5" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 420.0
-margin_top = 0.0
-margin_right = 520.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank6" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 525.0
-margin_top = 0.0
-margin_right = 625.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank7" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 630.0
-margin_top = 0.0
-margin_right = 730.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank8" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 735.0
-margin_top = 0.0
-margin_right = 835.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank9" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 840.0
-margin_top = 0.0
-margin_right = 940.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank10" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 945.0
-margin_top = 0.0
-margin_right = 1045.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank11" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 1050.0
-margin_top = 0.0
-margin_right = 1150.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank12" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 1155.0
-margin_top = 0.0
-margin_right = 1255.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank13" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 1260.0
-margin_top = 0.0
-margin_right = 1360.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank14" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 1365.0
-margin_top = 0.0
-margin_right = 1465.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
-
-[node name="blank15" parent="blank_CenterContainer/blank_container" instance=ExtResource( 4 )]
-margin_left = 1470.0
-margin_top = 0.0
-margin_right = 1570.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-text = "_"
-letter_container = NodePath("../../../letter_CenterContainer/letter_container")
 
 [node name="animation_player" type="Node2D" parent="."]
 

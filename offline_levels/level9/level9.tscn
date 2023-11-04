@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=12]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=13]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=15]
+[ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=17]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -491,12 +494,24 @@ tracks/2/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=97]
+size = 40
+font_data = ExtResource( 16 )
+
+[sub_resource type="StyleBoxTexture" id=99]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 296, 226 )
+
+[sub_resource type="Theme" id=98]
+Panel/styles/panel = SubResource( 99 )
+
 [sub_resource type="GDScript" id=60]
 script/source = "extends Control
 
 onready var submit_popup = $\"../popups/submit_confirmation_popup\"
 onready var gameover_popup = $\"../popups/game_over\"
-export(NodePath) onready var game_over_popup = get_node(gameover_popup) as Control
+onready var introduction_popup = $\"../popups/introduction\"
+#export(NodePath) onready var game_over_popup = get_node(gameover_popup) as Control
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
@@ -506,10 +521,14 @@ func _on_submit_button_pressed():
 
 
 func _on_yes_button_pressed():
-	game_over_popup.visible = true
+	gameover_popup.visible = true
 	animationplayer.play(\"win\")
 	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
 	celebrate.visible = true
+
+
+func _on_tap_pressed():
+	introduction_popup.visible = false
 "
 
 [node name="level" type="Spatial"]
@@ -549,8 +568,6 @@ depth = 20.0
 material = ExtResource( 7 )
 
 [node name="inventory" parent="." instance=ExtResource( 1 )]
-unique_name_in_owner = true
-visible = false
 
 [node name="mobile_controls" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -566,12 +583,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -6 )
 device_name = "PC1"
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -200.0
-margin_right = -910.0
-margin_bottom = 210.0
-
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
 
@@ -585,12 +596,6 @@ rect_min_size = Vector2( 150, 52.5 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
 
-[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -200.0
-margin_right = -910.0
-margin_bottom = 210.0
-
 [node name="exit_confirmation" parent="object_monitor153/ui/ip_config_app/ip_config_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
 
@@ -603,7 +608,8 @@ rect_min_size = Vector2( 150, 52.5 )
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 300.0
+margin_right = 380.0
+margin_bottom = 340.0
 
 [node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
 visible = false
@@ -616,6 +622,7 @@ margin_top = 208.0
 margin_bottom = 300.0
 
 [node name="popups" type="CanvasLayer" parent="."]
+layer = 128
 
 [node name="submit_confirmation_popup" type="Panel" parent="popups"]
 visible = false
@@ -686,19 +693,104 @@ anims/level1 = SubResource( 61 )
 anims/lose = SubResource( 62 )
 anims/win = SubResource( 63 )
 
+[node name="introduction" type="Control" parent="popups"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="popups/introduction"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 666, 375 )
+rect_scale = Vector2( 1.0047, 1 )
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="command" type="Label" parent="popups/introduction"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -290.0
+margin_top = -82.0
+margin_right = 210.0
+margin_bottom = -22.0
+rect_min_size = Vector2( 500, 60 )
+custom_fonts/font = SubResource( 97 )
+text = "(Tap to Continue)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="main_popup" type="Panel" parent="popups/introduction"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -742.0
+margin_top = -469.0
+margin_right = 742.0
+margin_bottom = 469.0
+rect_min_size = Vector2( 666, 375 )
+theme = SubResource( 98 )
+
+[node name="title" type="Label" parent="popups/introduction/main_popup"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -346.5
+margin_top = 74.0
+margin_right = 353.5
+margin_bottom = 154.0
+rect_min_size = Vector2( 700, 80 )
+theme = ExtResource( 10 )
+text = "Introduction"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="content" type="Label" parent="popups/introduction/main_popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -707.0
+margin_top = -198.0
+margin_right = 710.0
+margin_bottom = 427.0
+rect_min_size = Vector2( 900, 450 )
+theme = ExtResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "In the world of networking, the ability to establish connections between devices is at the heart of everything we do. Whether you're browsing the web, sending emails, streaming videos, or accessing shared resources, it all begins with a basic understanding of how devices communicate with eachother. In this level, you'll start with the most fundamental building block: connecting two PCs directly to each other.
+
+In this level, you’ll learn how to establish a direct connection between two PCs and enable communication between them. Let’s start!
+"
+align = 3
+valign = 1
+autowrap = true
+
+[node name="tap" type="Button" parent="popups/introduction"]
+self_modulate = Color( 1, 1, 1, 0.0980392 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = 6.0
+text = "aaaaaa"
+
 [node name="manager" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = SubResource( 60 )
-game_over_popup = NodePath("../popups/game_over")
 crowns = NodePath("../popups/game_over/main_popup/crowns")
 animationplayer = NodePath("../popups/game_over/AnimationPlayer")
 celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
 
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
 
 [editable path="environment"]
 [editable path="inventory"]
+[editable path="mobile_controls"]
 [editable path="object_monitor"]
 [editable path="object_monitor/ui/disconnect_confirm"]
 [editable path="object_monitor153"]
