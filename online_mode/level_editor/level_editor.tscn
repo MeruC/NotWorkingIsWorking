@@ -957,14 +957,14 @@ visible = false
 margin_top = 0.0
 margin_bottom = 92.0
 
-[node name="task3" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
-margin_top = 0.0
-margin_bottom = 144.0
-
-[node name="task4" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+[node name="task4" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
 visible = false
 margin_top = 117.0
 margin_bottom = 313.0
+
+[node name="task3" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+margin_top = 0.0
+margin_bottom = 144.0
 
 [node name="task5" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
 visible = false

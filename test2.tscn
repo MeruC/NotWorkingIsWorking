@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=1]
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=2]
@@ -20,13 +20,6 @@ albedo_color = Color( 1, 1, 1, 0 )
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0 )
-
-[sub_resource type="GDScript" id=12]
-script/source = "extends CanvasLayer
-
-onready var ui_container = $\"%ui_container\"
-onready var crafting_menu = $\"%crafting_menu\"
-"
 
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
@@ -64,59 +57,19 @@ height = 10.0
 depth = 20.0
 material = ExtResource( 2 )
 
-[node name="inventory" parent="." instance=ExtResource( 4 )]
-unique_name_in_owner = true
-visible = false
-script = SubResource( 12 )
-
 [node name="tasks_ui" parent="." instance=ExtResource( 6 )]
 
-[node name="_h_scroll2" type="HScrollBar" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_bottom = 521.0
+
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
 visible = false
-margin_right = 12.0
-margin_bottom = 12.0
-max_value = 380.0
-page = 380.0
-
-[node name="_v_scroll2" type="VScrollBar" parent="tasks_ui/task_manager/ScrollContainer" index="1"]
-visible = false
-margin_right = 12.0
-margin_bottom = 12.0
-max_value = 144.0
-page = 380.0
-
-[node name="_h_scroll3" type="HScrollBar" parent="tasks_ui/task_manager/ScrollContainer" index="2"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll3" type="VScrollBar" parent="tasks_ui/task_manager/ScrollContainer" index="3"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="4"]
-margin_bottom = 144.0
-
-[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
-visible = false
-
-[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
-visible = false
-margin_top = 0.0
-margin_bottom = 92.0
-
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
-margin_top = 0.0
-margin_bottom = 144.0
-
-[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
-visible = false
-margin_top = 117.0
-margin_bottom = 313.0
 
 [node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
-visible = false
-margin_top = 117.0
-margin_bottom = 209.0
+margin_top = 429.0
+margin_bottom = 521.0
+
+[node name="inventory" parent="." instance=ExtResource( 4 )]
 
 [node name="mobile_controls" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
