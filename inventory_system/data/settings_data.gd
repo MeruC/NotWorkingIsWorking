@@ -23,6 +23,7 @@ export (int) var level6 = 0
 export (int) var level7 = 0
 export (int) var level8 = 0
 export (int) var level9 = 0
+export (int) var level10 = 0
 export (int) var reset_timer = 0
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
@@ -31,7 +32,7 @@ export (String) var costume = "male"
 export (String) var email
 export (String) var quick_game = "notplaying"
 export (String) var section = ""
-
+export (String) var online_level = ""
 #costume for boy
 export (String) var cict_shirt = "lock"
 export (String) var blue_shirt = "lock"
@@ -56,6 +57,7 @@ func set_data( data ):
 	
 	player_name = data.player_name
 	section = data.section
+	online_level = data.online_level
 	
 	gender = data.gender
 	account_status = data.account_status
@@ -114,6 +116,7 @@ func get_data():
 		"level7": level7,
 		"level8": level8,
 		"level9": level9,
+		"level10": level10,
 		"email": email,
 		"cict_shirt": cict_shirt,
 		"blue_shirt": blue_shirt,
@@ -122,5 +125,6 @@ func get_data():
 		"girl_pants": girl_pants,
 		"girl_casual": girl_casual,
 		"quick_game": quick_game,
-		"reset_timer": reset_timer
+		"reset_timer": reset_timer,
+		"online_level": online_level
 	}

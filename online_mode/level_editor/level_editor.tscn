@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -30,7 +30,9 @@
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=29]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=30]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=31]
 [ext_resource path="res://resources/Shaders/drop_shadow.gdshader" type="Shader" id=32]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=33]
 
 [sub_resource type="ShaderMaterial" id=44]
 shader = ExtResource( 32 )
@@ -362,6 +364,29 @@ shadow_size = 1
 
 [sub_resource type="StyleBoxEmpty" id=18]
 
+[sub_resource type="GDScript" id=54]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_confirm_pressed():
+	$\".\".visible = false
+"
+
 [sub_resource type="PlaneMesh" id=51]
 
 [sub_resource type="BoxShape" id=13]
@@ -680,6 +705,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+settings_data = ExtResource( 3 )
 
 [node name="file" type="Control" parent="UI/editor"]
 anchor_left = 1.0
@@ -740,6 +766,16 @@ rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
 text = "Orphan"
 icon = SubResource( 14 )
+
+[node name="upload" type="Button" parent="UI/editor/file"]
+margin_left = 37.0
+margin_top = 464.0
+margin_right = 415.0
+margin_bottom = 596.0
+focus_mode = 0
+theme = ExtResource( 30 )
+enabled_focus_mode = 0
+text = "Upload"
 
 [node name="modes" type="Control" parent="UI/editor"]
 anchor_top = 1.0
@@ -961,6 +997,57 @@ visible = false
 margin_right = 26.0
 margin_bottom = 22.0
 
+[node name="prompt_QR" type="CanvasLayer" parent="UI/editor"]
+visible = false
+script = SubResource( 54 )
+
+[node name="ColorRect" type="ColorRect" parent="UI/editor/prompt_QR"]
+margin_left = -25.0
+margin_top = -19.0
+margin_right = 1964.0
+margin_bottom = 1097.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="TextureRect" type="TextureRect" parent="UI/editor/prompt_QR"]
+margin_left = 436.0
+margin_top = 122.0
+margin_right = 732.0
+margin_bottom = 348.0
+rect_scale = Vector2( 3.99044, 3.88582 )
+texture = ExtResource( 33 )
+
+[node name="title" type="Label" parent="UI/editor/prompt_QR"]
+margin_left = 486.0
+margin_top = 139.0
+margin_right = 1557.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "Level uploaded successfully"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="qr" type="TextureRect" parent="UI/editor/prompt_QR"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -215.0
+margin_top = -188.0
+margin_right = 285.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 500, 500 )
+stretch_mode = 5
+
+[node name="confirm" type="Button" parent="UI/editor/prompt_QR"]
+margin_left = 872.0
+margin_top = 877.0
+margin_right = 1094.0
+margin_bottom = 972.0
+theme = ExtResource( 15 )
+text = "confirm"
+
 [node name="joystickEditor" parent="UI" instance=ExtResource( 20 )]
 unique_name_in_owner = true
 anchor_left = 1.0
@@ -980,6 +1067,7 @@ playback_process_mode = 0
 [node name="level" type="Spatial" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 25 )
+settings_data = ExtResource( 3 )
 setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="level"]
@@ -1091,6 +1179,7 @@ bus = "Music"
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
 [connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
 [connection signal="confirmed" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_confirmed"]
+[connection signal="file_selected" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_file_selected"]
 [connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
 [connection signal="mouse_entered" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
@@ -1102,6 +1191,7 @@ bus = "Music"
 [connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
+[connection signal="pressed" from="UI/editor/file/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
@@ -1129,6 +1219,7 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
+[connection signal="pressed" from="UI/editor/prompt_QR/confirm" to="UI/editor/prompt_QR" method="_on_confirm_pressed"]
 [connection signal="mouse_entered" from="UI/joystickEditor" to="." method="_on_Virtual_joystick_gui_input"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]

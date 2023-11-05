@@ -515,7 +515,7 @@ onready var introduction_popup = $\"../popups/introduction\"
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
-
+export(Resource) onready var settings_data
 func _on_submit_button_pressed():
 	submit_popup.visible = true
 
@@ -525,6 +525,9 @@ func _on_yes_button_pressed():
 	animationplayer.play(\"win\")
 	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
 	celebrate.visible = true
+	settings_data.level9 = 30
+	settings_data.coins += 100
+	settings_data.net2_skills += 30
 
 
 func _on_tap_pressed():
@@ -583,6 +586,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -6 )
 device_name = "PC1"
 
+[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -200.0
+margin_right = -710.0
+margin_bottom = 351.0
+
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
 
@@ -595,6 +604,12 @@ rect_min_size = Vector2( 150, 52.5 )
 [node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
+
+[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -200.0
+margin_right = -710.0
+margin_bottom = 351.0
 
 [node name="exit_confirmation" parent="object_monitor153/ui/ip_config_app/ip_config_screen" index="3"]
 rect_min_size = Vector2( 150, 52.5 )
@@ -784,6 +799,7 @@ script = SubResource( 60 )
 crowns = NodePath("../popups/game_over/main_popup/crowns")
 animationplayer = NodePath("../popups/game_over/AnimationPlayer")
 celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
+settings_data = ExtResource( 3 )
 
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]

@@ -9,11 +9,17 @@ onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var level_scene = self
 onready var main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
 onready var submit_button
-
+onready var verified = false
 var computer_list = []
 var tasks_list = []
 var tasks_cbs = []
 
+export (Resource) onready var settings_data
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
+const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
+var request_queue : Array = []
+var is_requesting : bool = false
 
 var joystick
 export (Resource) var setting_data
@@ -56,6 +62,7 @@ func get_all_computer():
 			computer_list.append(node)
 
 func _ready():
+	#upload_btn.disabled = true
 	submit_button = task_manager.get_child(1)
 	get_all_tasks()
 	get_all_computer()
@@ -250,3 +257,78 @@ func starts_with(text, prefix):
 	if text.length() < prefix.length():
 		return false
 	return text.substr(0, prefix.length()) == prefix
+
+#online
+func addScore():
+	var username = settings_data.player_name
+	var section = settings_data.section
+	var scores = "complete"
+	var table_name = setting_data.online_level
+	var data = {
+		"command": "upload_score",
+		"username": username,
+		"section": section,
+		"scores": scores,
+		"table_name": table_name
+	}
+	print(data)
+	var command = "upload_score"
+	request_queue.push_back({"command": command, "data": data})
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+	# Handle the submission process (e.g., show a success message)
+	print("Score submitted successfully.")
+
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	# Re-enable UI elements here (e.g., $signup_btn)
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		printerr("Error with connection: " + str(result))
+		return
+
+	var response_body = body.get_string_from_utf8()
+
+	if response_body.empty():
+		printerr("Empty response body")
+		return
+
+	var response = parse_json(response_body)
+
+	if result == HTTPRequest.RESULT_SUCCESS:
+		var _response_data = body.get_string_from_utf8()
+		print("Response Data:", _response_data)
+
+	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
+		var response_dict = response["response"]
+		if "authenticated" in response_dict and response_dict["authenticated"] == true:
+			# Authentication was successful, redirect to the main screen
+			Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+		else:
+			# Authentication failed, you can show an error message
+			print("Authentication failed")
+	
+	if !request_queue.empty():
+		var next_request = request_queue.pop_front()
+		_send_request(next_request)
+
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({"data" : JSON.print(request['data'])})
+	var body = "command=" + request['command'] + "&" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr("HTTPRequest error: " + String(err))
+		return

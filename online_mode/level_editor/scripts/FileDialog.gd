@@ -4,7 +4,9 @@ onready var level = get_node("/root/editor/level")
 onready var ui = get_node("/root/editor/UI")
 onready var play = get_node("/root/editor/UI/editor/modes/play")
 onready var main = get_node("/root/editor")
-
+export(Resource) onready var settings_data
+var selected_file = ""
+var game_code
 func refresh():
 	self._draw()
 	
@@ -16,9 +18,10 @@ onready var file_dialog_top_bar = $"../../FileDialogTopBar"
 onready var file_dialog = $".."
 onready var file_dialog_title = $"../../FileDialogTopBar/FileDialogTitle"
 
-
+func _ready():
+	$"../../file/upload".disabled = true
+		
 func _on_Save_pressed():
-
 	file_dialog_title.text = "SAVE LEVEL"
 	file_dialog.set_visible(true)
 	file_dialog_top_bar.set_visible(true)
@@ -96,4 +99,78 @@ func _on_New_pressed():
 
 func _on_Orphan_pressed():
 	 print_stray_nodes()
+
+
+
+func _on_upload_pressed():
+	var request = HTTPRequest.new()
+	request.connect("request_completed", self, "_request_callback")
+	add_child(request)
+	upload_file(request, selected_file)
+	
+
+
+func _on_FileDialog_file_selected(path):
+	var filename = path.replace("user://saved_levels/", "")
+	selected_file = filename
+	$"../../file/upload".disabled = false
+
+func generate_unique_code(length: int = 8) -> String:
+	# To generate a unique level code
+	var isNotUnique = true
+	var charset = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789"
+	var code = ""
+	var file_name
+	
+	for i in range(length):
+		var random_index = randi() % charset.length()
+		code += charset.substr(random_index, 1)
+		file_name = code + ".tscn"
+	return code
+	##
+	
+func generate_qr(game_code):
+	var QRcode: qr_code = qr_code.new()
+	QRcode.error_correct_level = QrCode.ERROR_CORRECT_LEVEL.MEDIUM
+	var texture: ImageTexture = QRcode.get_texture(game_code)
+	$"../../prompt_QR/qr".texture = texture
+	
+func upload_file(request: HTTPRequest, game_code: String) -> void:
+	var original_file_name = game_code
+	var creator_name = settings_data.email
+	var file_path = "user://saved_levels/" + original_file_name
+	var file = File.new()
+	file.open(file_path, File.READ)
+	var file_data = file.get_buffer(file.get_len())
+	file.close()
+
+	var unique_file_name = generate_unique_code() + ".tscn"  # Generate a unique name for the file
+	
+	var body = PoolByteArray()
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
+
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % unique_file_name).to_utf8())
+	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
+	body.append_array(file_data)
+	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
+
+	var headers = [
+		"Content-Type: multipart/form-data; boundary=BodyBoundaryHere"
+	]
+
+	# Replace the following URL with the actual URL of your PHP server script
+	var server_url = "https://nwork.slarenasitsolutions.com/upload_3d.php"  # Replace with your server's URL
+	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
+	generate_qr(unique_file_name)
+	$"../../prompt_QR".visible = true
+	# You can also save the unique_file_name and original_file_name for reference if needed
+
+func _request_callback(result, response_code, headers, body) -> void:
+	if response_code == HTTPClient.RESPONSE_OK:
+		var response = str2var(body.get_string_from_utf8())
+		print(response)
+	elif response_code == HTTPClient.STATUS_DISCONNECTED:
+		print("not connected to server")
 
