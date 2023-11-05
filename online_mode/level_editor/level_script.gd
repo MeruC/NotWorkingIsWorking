@@ -32,6 +32,12 @@ func get_all_monitor(node) -> Array:
 	return nodes
 	
 func reset_level():
+	get_all_tasks()
+	tasks_cbs[find_taskName(tasks_list, "task1")].pressed = false
+	tasks_cbs[find_taskName(tasks_list, "task2")].pressed = false
+	tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
+	tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+	tasks_cbs[find_taskName(tasks_list, "task5")].pressed = false
 	for N in self.get_children():
 		if N.has_method("resetLevel"):
 			N.resetLevel()
@@ -178,6 +184,7 @@ func check_task1():
 
 func check_task2():
 	get_all_computer()
+	print(computer_list)
 	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
 		if splitted_ip.size() == 4:

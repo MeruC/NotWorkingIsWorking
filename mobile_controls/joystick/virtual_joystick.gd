@@ -164,10 +164,13 @@ func _reset():
 
 func _on_Virtual_joystick_gui_input(event):
 	Global.is_usingJoystick = true
+	#Global.can_place = false
 	justMoved = true
-	print(Global.can_place)
+	#print("waht")
 
 func _process(delta):
 	if justMoved:
 		Global.is_usingJoystick = false
+		#Global.can_place = true
+		#justMoved = false
 		pass

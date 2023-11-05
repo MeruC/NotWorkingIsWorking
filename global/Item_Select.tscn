@@ -44,13 +44,13 @@ shader = ExtResource( 1 )
 shader_param/offset = Vector2( -5, 5 )
 shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=11]
 size = 30
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 21 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=12]
 content_margin_left = 15.0
 content_margin_right = 15.0
 content_margin_top = 15.0
@@ -63,10 +63,10 @@ border_width_bottom = 10
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+default_font = SubResource( 11 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/fonts/font = SubResource( 1 )
-Label/styles/normal = SubResource( 11 )
+Label/fonts/font = SubResource( 11 )
+Label/styles/normal = SubResource( 12 )
 
 [node name="Item_Select" type="Control"]
 anchor_right = 1.0
@@ -98,21 +98,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Furniture/ScrollContainer"]
-margin_right = 1030.0
-margin_bottom = 362.0
+margin_right = 385.0
+margin_bottom = 182.0
 custom_constants/margin_top = 50
 custom_constants/margin_left = 75
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Furniture/ScrollContainer/MarginContainer"]
 margin_left = 75.0
 margin_top = 50.0
-margin_right = 1030.0
-margin_bottom = 362.0
+margin_right = 385.0
+margin_bottom = 182.0
 custom_constants/vseparation = 48
 custom_constants/hseparation = 79
 columns = 2
 
 [node name="cube" parent="TabContainer/Furniture/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
+visible = false
 margin_right = 555.0
 margin_bottom = 132.0
 text = "Cube"
@@ -120,17 +121,17 @@ this_scene = ExtResource( 18 )
 placeOn = [ "floor" ]
 
 [node name="chest" parent="TabContainer/Furniture/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
-margin_left = 634.0
-margin_right = 955.0
+visible = false
+margin_right = 321.0
 margin_bottom = 132.0
 text = "Chest"
 this_scene = ExtResource( 14 )
 placeOn = [ "floor" ]
 
 [node name="worktable" parent="TabContainer/Furniture/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
-margin_top = 180.0
+visible = false
 margin_right = 555.0
-margin_bottom = 312.0
+margin_bottom = 132.0
 text = "Work Table"
 this_scene = ExtResource( 19 )
 placeOn = [ "floor" ]
@@ -146,10 +147,8 @@ this_scene = ExtResource( 15 )
 placeOn = [ "floor" ]
 
 [node name="table" parent="TabContainer/Furniture/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
-margin_left = 634.0
-margin_top = 180.0
-margin_right = 955.0
-margin_bottom = 312.0
+margin_right = 310.0
+margin_bottom = 132.0
 text = "Table"
 this_scene = ExtResource( 8 )
 placeOn = [ "floor" ]
@@ -170,13 +169,13 @@ margin_bottom = 2.0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Devices/ScrollContainer"]
 margin_right = 1011.0
-margin_bottom = 1470.0
+margin_bottom = 1292.0
 custom_constants/margin_left = 269
 
 [node name="GridContainer" type="VBoxContainer" parent="TabContainer/Devices/ScrollContainer/MarginContainer"]
 margin_left = 269.0
 margin_right = 1011.0
-margin_bottom = 1470.0
+margin_bottom = 1292.0
 grow_horizontal = 0
 custom_constants/separation = 46
 alignment = 1
@@ -185,6 +184,7 @@ alignment = 1
 margin_right = 742.0
 
 [node name="pc_tower" parent="TabContainer/Devices/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource( 17 )]
+visible = false
 margin_top = 46.0
 margin_right = 742.0
 margin_bottom = 178.0

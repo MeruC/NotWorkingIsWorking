@@ -29,7 +29,7 @@ func _ready():
 
 func _on_modes_mouse_entered():
 	Global.can_place = false
-	print(Global.can_place)
+	#print(Global.can_place)
 
 
 func _on_modes_mouse_exited():

@@ -11,4 +11,4 @@ func _on_objects_pressed():
 	objects_menu.set_visible(true)
 	
 func _process(delta):
-	current.text = "Currently Selected: " + object_cursor.current_item_name
+	current.text = object_cursor.current_item_name

@@ -46,6 +46,9 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 50, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="dpad" parent="Base/Tip" instance=ExtResource( 4 )]
 margin_left = -34.0
@@ -53,3 +56,8 @@ margin_top = -34.0
 margin_right = -34.0
 margin_bottom = -34.0
 rect_scale = Vector2( 3.5, 3.5 )
+
+[connection signal="gui_input" from="." to="." method="_on_Virtual_joystick_gui_input"]
+[connection signal="gui_input" from="Base" to="." method="_on_Virtual_joystick_gui_input"]
+[connection signal="gui_input" from="Base/Tip" to="." method="_on_Virtual_joystick_gui_input"]
+[connection signal="gui_input" from="Base/Tip/dpad" to="." method="_on_Virtual_joystick_gui_input"]

@@ -86,11 +86,11 @@ func resetLevel():
 	device_type = "computer"
 	connected_to = []
 	ip_allocation = "static"
-	ipv4_address = null
-	subnet_mask = null
-	default_gateway = null
-	dns_server = null
-	console_port_connection = null
+	ipv4_address = ""
+	subnet_mask = ""
+	default_gateway = ""
+	dns_server = ""
+	console_port_connection = ""
 
 func _process(delta):
 	pass

@@ -11,6 +11,7 @@ onready var preview_lbl = $"%previewLbl"
 
 func _ready():
 	connect("gui_input",self,"_item_clicked")
+	#_item_clicked(InputEventMouseButton)
 	pass # Replace with function body.
 
 
@@ -21,6 +22,7 @@ func _item_clicked(event):
 		object_cursor.placeOn = placeOn
 		object_cursor.height = height * 0.0625
 		preview_lbl.text = self.text
+		object_cursor.current_item_name = self.text
 		for n in spin.get_children():
 			spin.remove_child(n)
 			n.queue_free()

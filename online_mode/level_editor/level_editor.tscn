@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -30,6 +30,60 @@
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=29]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=30]
+[ext_resource path="res://resources/Shaders/drop_shadow.gdshader" type="Shader" id=32]
+
+[sub_resource type="ShaderMaterial" id=44]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ViewportTexture" id=45]
+viewport_path = NodePath("UI/editor/Item_Select_Menu/Item_Select_Menu/Item_Select/Viewport")
+
+[sub_resource type="ShaderMaterial" id=46]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=47]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=48]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="DynamicFont" id=52]
+size = 44
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=49]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="Theme" id=53]
+default_font = SubResource( 49 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/fonts/font = SubResource( 52 )
+Label/styles/normal = SubResource( 11 )
 
 [sub_resource type="CameraTexture" id=14]
 
@@ -308,7 +362,7 @@ shadow_size = 1
 
 [sub_resource type="StyleBoxEmpty" id=18]
 
-[sub_resource type="PlaneMesh" id=11]
+[sub_resource type="PlaneMesh" id=51]
 
 [sub_resource type="BoxShape" id=13]
 
@@ -495,6 +549,43 @@ mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="preview" type="Sprite" parent="UI/editor"]
+material = SubResource( 44 )
+position = Vector2( 116, 303 )
+scale = Vector2( 0.58366, 0.58366 )
+texture = SubResource( 45 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect2" type="Sprite" parent="UI/editor/preview"]
+material = SubResource( 46 )
+position = Vector2( 0, -1.71332 )
+texture = SubResource( 45 )
+
+[node name="TextureRect4" type="Sprite" parent="UI/editor/preview"]
+material = SubResource( 47 )
+texture = SubResource( 45 )
+
+[node name="TextureRect5" type="Sprite" parent="UI/editor/preview"]
+material = SubResource( 48 )
+texture = SubResource( 45 )
+
+[node name="previewLbl" type="Label" parent="UI/editor/preview"]
+unique_name_in_owner = true
+anchor_right = 1.0
+margin_left = -211.867
+margin_top = -310.127
+margin_right = -311.867
+margin_bottom = -208.127
+input_pass_on_modal_close_click = false
+size_flags_vertical = 6
+theme = SubResource( 53 )
+text = "Current"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="rotate" type="Control" parent="UI/editor"]
 visible = false
@@ -839,7 +930,7 @@ margin_right = 87.0
 margin_bottom = 52.0
 script = ExtResource( 24 )
 objects_btn = NodePath("objects")
-current = NodePath("current_obj")
+current = NodePath("../preview/previewLbl")
 objects_menu = NodePath("../Item_Select_Menu")
 
 [node name="objects" type="Button" parent="UI/editor/place"]
@@ -852,6 +943,7 @@ theme = ExtResource( 30 )
 text = "OBJECTS"
 
 [node name="current_obj" type="Label" parent="UI/editor/place"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -893,7 +985,7 @@ setting_data = ExtResource( 3 )
 [node name="floor" type="CSGMesh" parent="level"]
 transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
 use_collision = true
-mesh = SubResource( 11 )
+mesh = SubResource( 51 )
 material = ExtResource( 9 )
 
 [node name="environment" parent="level" instance=ExtResource( 2 )]
@@ -922,12 +1014,6 @@ visible = false
 visible = false
 
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
-visible = false
-
-[node name="tasks_vbox" parent="level/tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 658.0
-
-[node name="task2" parent="level/tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
 visible = false
 
 [node name="other_ui" type="Control" parent="."]
@@ -1006,13 +1092,21 @@ bus = "Music"
 [connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
 [connection signal="confirmed" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_confirmed"]
 [connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
+[connection signal="mouse_entered" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_exited"]
@@ -1035,6 +1129,7 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
+[connection signal="mouse_entered" from="UI/joystickEditor" to="." method="_on_Virtual_joystick_gui_input"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]

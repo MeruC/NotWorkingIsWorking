@@ -13,6 +13,7 @@ onready var inventory = $level/inventory
 onready var other_ui = $"%other_ui"
 onready var mobile_controls = $level/mobile_controls
 onready var tasks_ui = $level/tasks_ui
+onready var item__select__menu = $UI/editor/Item_Select_Menu/Item_Select_Menu
 
 var timer = null
 var x = 1
@@ -32,6 +33,8 @@ func _ready():
 	var dir = Directory.new()
 	if not dir.dir_exists( SAVE_FOLDER ):
 		dir.make_dir_recursive( SAVE_FOLDER )
+		
+	item__select__menu.get_node("Item_Select").ready()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,3 +45,7 @@ func on_timeout_complete():
 	#print(x)
 	#x += 1
 	pass
+
+
+func _on_Virtual_joystick_gui_input():
+	pass # Replace with function body.
