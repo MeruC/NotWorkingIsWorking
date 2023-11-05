@@ -108,8 +108,20 @@ func levels_completed():
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level8/level8.tscn")
+	if settings_data.level9 >= 30:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level9/level9.tscn")
+	if settings_data.level10 >= 30:
+		settings_data.quick_game = "isplaying"
+		SaveManager.save_game()
+		completed.append("res://offline_levels/level10/level10.tscn")
 	if completed.empty():
 		settings_data.quick_game = "notplaying"
 		SaveManager.save_game()
 		completed.append("res://scenes/quick_game/quickgame.tscn")
 	return completed
+
+
+func _on_level10_pressed():
+	Load.load_scene(self,"res://offline_levels/level10/level10.tscn")

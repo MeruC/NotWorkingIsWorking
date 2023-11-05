@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://online_mode/createQuiz_professor/manager.gd" type="Script" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.tscn" type="PackedScene" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://resources/font/error_font.tres" type="DynamicFont" id=22]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=24]
+[ext_resource path="res://resources/Game buttons/simple_bg_worg _games(1).png" type="Texture" id=25]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=26]
+[ext_resource path="res://resources/soundtrack/menu/VGMA Challenge - July 2nd.wav" type="AudioStream" id=27]
 
 [sub_resource type="DynamicFont" id=14]
 size = 62
@@ -168,6 +171,11 @@ second = NodePath("TabContainer/Level Settings/VBoxContainer/timer/HBoxContainer
 successful_popup = NodePath("popup/successful_popup")
 qr_textureRect = NodePath("popup/successful_popup/ColorRect/VBoxContainer/qr_code")
 settings_data = ExtResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 25 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -827,6 +835,10 @@ margin_right = 1894.0
 margin_bottom = 1056.0
 theme = SubResource( 98 )
 text = "Question Bank"
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 26 )]
+stream = ExtResource( 27 )
+bus = "Music"
 
 [connection signal="focus_entered" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_entered"]
 [connection signal="focus_exited" from="TabContainer/Level Settings/VBoxContainer/level_name/level_name" to="TabContainer/Level Settings/VBoxContainer/level_name/level_name" method="_on_level_name_focus_exited"]
