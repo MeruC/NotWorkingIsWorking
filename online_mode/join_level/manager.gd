@@ -8,7 +8,7 @@ var is_requesting: bool = false
 var levelname = ""
 var result = ""
 var request_done = 0
-
+export(Resource) onready var settings_data
 # This script is for directing users into another scene
 var previous_scene = "res://online_mode/level_create_Menu/level_create.tscn"
 var levels_folder = "user://saved_levels/"
@@ -56,6 +56,9 @@ func _on_back_pressed():
 func _on_join_pressed():
 	$loading_scrreen.visible = true
 	$loading_scrreen/AnimationPlayer.play("loading")
+	settings_data.online_level = textfield.text.to_upper()
+	SaveManager.save_game()
+	print(settings_data.online_level)
 	level_scene = textfield.text.to_upper() + ".tscn"
 	var full_path = levels_folder + level_scene
 	get_file()
@@ -88,7 +91,6 @@ func _http_request_completed(result, response_code, headers, body):
 	var response = parse_json(response_body)
 
 	if result == HTTPRequest.RESULT_SUCCESS:
-		print("Response Data:", response_body)  # Print the response data
 
 		if response_body == "Failed to download file from FTP server":
 			result = "failed"

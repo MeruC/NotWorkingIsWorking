@@ -44,11 +44,15 @@ onready var level6_camera = $\"%level6\"
 onready var level7_camera = $\"%level7\"
 onready var level8_camera = $\"%level8\"
 onready var level9_camera = $\"%level9\"
+onready var level10_camera = $\"%level10\"
 var current = 0
 export (Resource) var settings_data
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Pixelizer.set_visible(false)
+	$\"../reset_time\".visible = false
+	$\"../quick_game\".visible = false
+	$\"../shop\".visible = false
 	$\"../right\".disabled = true
 	$\"../left\".disabled = true
 	if settings_data.level1 == 0:
@@ -60,6 +64,24 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 0
+	elif settings_data.level10 >= 30:
+		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		$\"../level10\".visible = true
+		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
+		
+	elif settings_data.level9 >= 30:
+		$\"../back\".disabled = true
+		$\"../crowns\".visible = false
+		TransitionNode.animation_player.play(\"in\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		$\"../level10\".visible = true
+		$\"../back\".disabled = false
+		$\"../crowns\".visible = true
+		
 	elif settings_data.level8 >= 30:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
@@ -134,7 +156,9 @@ func _ready():
 		current = 1
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
-	
+	$\"../reset_time\".visible = true
+	$\"../quick_game\".visible = true
+	$\"../shop\".visible = true
 
 
 func _on_left_pressed():
@@ -556,18 +580,18 @@ transform = Transform( 1, 0, 0, 0, -0.0426606, 0.99909, 0, -0.99909, -0.0426606,
 [node name="shop" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -212.0
-margin_top = 9.0
-margin_right = -12.0
-margin_bottom = 209.0
+margin_left = -1893.0
+margin_top = 900.0
+margin_right = -1743.0
+margin_bottom = 1050.0
 focus_mode = 0
 theme = ExtResource( 10 )
 
 [node name="reset_time" type="Label" parent="."]
-margin_left = 1699.0
-margin_top = 800.0
-margin_right = 1889.0
-margin_bottom = 855.0
+margin_left = 1721.0
+margin_top = 840.0
+margin_right = 1911.0
+margin_bottom = 895.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "time"
@@ -575,10 +599,10 @@ align = 1
 autowrap = true
 
 [node name="quick_game" type="Button" parent="."]
-margin_left = 1703.0
-margin_top = 866.0
-margin_right = 1903.0
-margin_bottom = 1066.0
+margin_left = 1749.0
+margin_top = 911.0
+margin_right = 1899.0
+margin_bottom = 1061.0
 theme = SubResource( 5 )
 
 [node name="level1" type="Button" parent="."]
@@ -677,6 +701,15 @@ theme = ExtResource( 4 )
 enabled_focus_mode = 0
 text = "level 9"
 
+[node name="level10" type="Button" parent="."]
+visible = false
+margin_left = 762.0
+margin_top = 806.0
+margin_right = 1161.0
+margin_bottom = 938.0
+theme = ExtResource( 4 )
+text = "level 10"
+
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 3 )
 bus = "Music"
@@ -729,6 +762,10 @@ transform = Transform( 0.0909013, 0.438167, -0.894285, -0.04431, 0.898893, 0.435
 [node name="level9" type="Camera" parent="level_camera"]
 unique_name_in_owner = true
 transform = Transform( -0.0176734, 0.299513, -0.953929, -0.0108909, 0.953963, 0.299725, 0.999785, 0.0156863, -0.0135978, 2.22029, 9.47539, 30.6388 )
+
+[node name="level10" type="Camera" parent="level_camera"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 0.984953, 0.172823, 0, -0.172823, 0.984953, 26.3566, 9.30429, 33.4793 )
 
 [node name="left" type="Button" parent="."]
 anchor_top = 0.5
@@ -794,6 +831,7 @@ texture = ExtResource( 8 )
 [connection signal="pressed" from="level7" to="." method="_on_level7_pressed"]
 [connection signal="pressed" from="level8" to="." method="_on_level8_pressed"]
 [connection signal="pressed" from="level9" to="." method="_on_level9_pressed"]
+[connection signal="pressed" from="level10" to="." method="_on_level10_pressed"]
 [connection signal="pressed" from="left" to="level_camera" method="_on_left_pressed"]
 [connection signal="pressed" from="right" to="level_camera" method="_on_right_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

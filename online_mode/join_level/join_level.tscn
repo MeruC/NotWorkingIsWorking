@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/Game buttons/simple_bg_worg _games(1).png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=11]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/soundtrack/menu/random silly chip song.ogg" type="AudioStream" id=13]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=14]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.980392, 0.980392, 0.980392, 1 )
@@ -40,6 +41,7 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
+settings_data = ExtResource( 14 )
 textfield = NodePath("HBoxContainer/code")
 error_popup = NodePath("CanvasLayer/dialog_box")
 
