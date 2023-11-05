@@ -144,14 +144,14 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var file_data = file.get_buffer(file.get_len())
 	file.close()
 
-	var unique_file_name = generate_unique_code() + ".tscn"  # Generate a unique name for the file
-	
+	var unique_file_name = generate_unique_code()  # Generate a unique name for the file
+	var level_name = unique_file_name+".tscn"
 	var body = PoolByteArray()
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
 
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
-	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % unique_file_name).to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % level_name).to_utf8())
 	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
 	body.append_array(file_data)
 	body.append_array("\r\n--BodyBoundaryHere--\r\n".to_utf8())
@@ -164,6 +164,7 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var server_url = "https://nwork.slarenasitsolutions.com/upload_3d.php"  # Replace with your server's URL
 	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	generate_qr(unique_file_name)
+	$"../../prompt_QR/code".text = unique_file_name.replace(".tscn", "")
 	$"../../prompt_QR".visible = true
 	# You can also save the unique_file_name and original_file_name for reference if needed
 
