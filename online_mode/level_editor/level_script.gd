@@ -21,6 +21,7 @@ var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
 
+
 var nodes : Array = []
 func get_all_monitor(node) -> Array:
 	for N in node.get_children():
@@ -29,6 +30,11 @@ func get_all_monitor(node) -> Array:
 			nodes.append(N)
 			N.connect("configuration_saved", self, "_on_configuration_saved")
 	return nodes
+	
+func reset_level():
+	for N in self.get_children():
+		if N.has_method("resetLevel"):
+			N.resetLevel()
 	
 func check_ip(ip, subnetmask):
 	for N in nodes:
@@ -171,6 +177,7 @@ func check_task1():
 		tasks_cbs[find_taskName(tasks_list, "task1")].pressed = true
 
 func check_task2():
+	get_all_computer()
 	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
 		if splitted_ip.size() == 4:
@@ -207,16 +214,17 @@ func check_task4():
 		for device in main_scene.get_children():
 			if "Router" in device.name:
 				router = device
-		if "Router" in router.name:
-			splitted_ge0ip = router.ge0_ip.split(".")
-			splitted_ge1ip = router.ge1_ip.split(".")
-			splitted_ge2ip = router.ge2_ip.split(".")
-			if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
-				tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
-				return
-			else:
-				tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
-				return
+		if router != null:
+			if "Router" in router.name:
+				splitted_ge0ip = router.ge0_ip.split(".")
+				splitted_ge1ip = router.ge1_ip.split(".")
+				splitted_ge2ip = router.ge2_ip.split(".")
+				if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
+					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+					return
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+					return
 			
 func check_task5():
 	if find_taskName(tasks_list, "task5") != -1:

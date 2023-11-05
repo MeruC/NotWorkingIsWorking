@@ -60,7 +60,7 @@ material = ExtResource( 2 )
 [node name="tasks_ui" parent="." instance=ExtResource( 6 )]
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 521.0
+margin_bottom = 596.0
 
 [node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
 visible = false

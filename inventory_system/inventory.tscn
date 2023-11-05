@@ -89,5 +89,6 @@ rect_scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 
 [node name="crafting_menu" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 
 [node name="pause" parent="." instance=ExtResource( 2 )]

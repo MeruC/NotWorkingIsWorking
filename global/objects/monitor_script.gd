@@ -1,6 +1,6 @@
 extends StaticBody
 
-onready var level_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
+onready var level_scene = get_parent()
 
 export var device_name : String
 var fe0 : StaticBody = null
@@ -65,6 +65,33 @@ onready var console_cable = $ui/io/cpu_ui/console_cable
 onready var consolde_disconnectBtn = $ui/io/cpu_ui/disconnect_console
 onready var ui_script = load("res://global/objects/scripts/pc_ui.gd")
 
+func resetLevel():
+	SaveManager.load_game()
+	if device_name.empty():
+		device_name = self.name
+	#if fe0 != null:
+	#	return_cable(fe0_type)
+	fe0 = null
+	fe0_type = null
+	#if console_port0 != null:
+	#	return_cable("Console_Cable")
+	console_port0 = null
+	console_portType = null
+	#other_end : StaticBody
+	isSaved = false
+	test = "test"
+	rj = true
+	console = true
+
+	device_type = "computer"
+	connected_to = []
+	ip_allocation = "static"
+	ipv4_address = null
+	subnet_mask = null
+	default_gateway = null
+	dns_server = null
+	console_port_connection = null
+
 func _process(delta):
 	pass
 	
@@ -79,6 +106,7 @@ func checkports():
 		rj = false
 
 func _ready():
+	resetLevel()
 	main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1).get_children()
 	
 	if device_name.empty():
@@ -104,6 +132,7 @@ func _set_connector( connection, type ):
 		fe0_type = str(type)
 		#label.text = "Connected to " + str(fe0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(fe0.device_name)
+		
 		level_scene.check_progress()
 		#emit_signal("cable_connected")
 	else:

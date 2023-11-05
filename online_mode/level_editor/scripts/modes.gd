@@ -8,6 +8,8 @@ export( NodePath ) onready var ui = get_node(ui) as CanvasLayer
 var inventory
 var mobile_controls
 var joystick
+var task_ui
+var level
 onready var joystick_editor = $"%joystickEditor"
 export( NodePath ) onready var previews = get_node(previews) as Spatial
 export( NodePath ) onready var no_sign = get_node(no_sign) as StaticBody
@@ -75,8 +77,10 @@ func _on_play_pressed():
 	inventory = main.get_node("level/inventory")
 	mobile_controls = main.get_node("level/mobile_controls")
 	joystick = main.get_node("level/mobile_controls/joystick")
+	task_ui =  main.get_node("level/tasks_ui")
+	level = main.get_node("level")
 	if(Global.editor_mode != "play"):
-		
+		level.reset_level()
 		#Spawning Player
 		var new_item = playerSpawn.instance() 
 		main.add_child(new_item)
@@ -104,6 +108,7 @@ func _on_play_pressed():
 		mobile_controls.set_visible(true)
 		joystick.use_input_actions = true
 		other_ui.set_visible(true)
+		task_ui.set_visible(true)
 	elif(Global.editor_mode == "play"):
 		
 		#Changing Camera
@@ -120,11 +125,13 @@ func _on_play_pressed():
 		inventory.set_visible(false)
 		mobile_controls.set_visible(false)
 		joystick.use_input_actions = false
+		task_ui.set_visible(false)
 		yield(get_tree().create_timer(1.5),"timeout")
 		ui.set_visible(true)
 		joystick_editor.use_input_actions = true
 		previews.set_visible(true)
 		no_sign.set_visible(true)
+		
 
 
 func _on_select_pressed():
