@@ -13,6 +13,8 @@ var test = "test"
 var rj = true
 var console = true
 var main_scene
+var devices = []
+var connected_router
 
 signal configuration_saved()
 
@@ -35,6 +37,7 @@ export(String) var console_port_connection = null
 
 onready var label = $ui/pc_screen/holder/Label
 onready var name_line_edit = $ui/pc_screen/holder/name_lineEdit
+onready var deviceName_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/device_name_hbox/deviceName_lineEdit
 onready var dhcp_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/dhcp_radio
 onready var static_radio = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/radio_buttons/static_radio
 onready var ipv4Add_lineEdit = $ui/ip_config_app/ip_config_screen/main_panel/content_panel/ipv4_config_hbox/ip_hbox/ipAdd_lineEdit
@@ -46,7 +49,7 @@ onready var indicator_label = $ui/ip_config_app/ip_config_screen/main_panel/indi
 onready var error_label = $ui/ip_config_app/ip_config_screen/main_panel/error_label
 onready var exit_confirmation = $ui/ip_config_app/ip_config_screen/exit_confirmation
 onready var ip_indicator = $ui/ip_config_app/ip_config_screen/main_panel/ip_indicator
-
+onready var dhcp_timer = $ui/ip_config_app/ip_config_screen/dhcp_timer
 onready var ip_config_app = $ui/ip_config_app
 
 onready var cmd_app = $ui/cmd_app
@@ -105,7 +108,13 @@ func checkports():
 	else:
 		rj = false
 
+func get_devices():
+	for node in self.get_parent().get_children():
+		if "Router" in node.name or "monitor" in node.name:
+			devices.append(node)
+
 func _ready():
+	get_devices()
 	resetLevel()
 	main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1).get_children()
 	
@@ -156,17 +165,37 @@ func _set_connectorConsole( connection, type ):
 #		other_end = connection
 
 func _on_ipConfig_button_pressed():
+	deviceName_lineEdit.text = device_name
+	ipv4Add_lineEdit.text = ipv4_address
+	ipv4Subnet_lineEdit.text = subnet_mask
+	ipv4Gateway_lineEdit.text = default_gateway
+	dns_server = ipv4Dns_lineEdit.text
+	indicator_label.visible = false
+	ip_indicator.visible = false
+	if ip_allocation == "dhcp":
+		dhcp_radio.pressed = true
+		dhcp_radio.disabled = true
+		static_radio.pressed = false
+	else:
+		dhcp_radio.pressed = false
+		static_radio.pressed = true
+		static_radio.disabled = true	
 	ip_config_app.visible = true
 
 
 func _on_save_button_pressed():
 	if ip_indicator.visible == false:
+		device_name = deviceName_lineEdit.text
 		ipv4_address = ipv4Add_lineEdit.text
 		subnet_mask = ipv4Subnet_lineEdit.text
 		default_gateway = ipv4Gateway_lineEdit.text
 		dns_server = ipv4Dns_lineEdit.text
 		indicator_label.visible = true
 		error_label.visible = false
+		if dhcp_radio.pressed == true:
+			ip_allocation = "dhcp"
+		elif static_radio.pressed == true:
+			ip_allocation = "static"
 		isSaved = true
 		emit_signal("configuration_saved")
 		level_scene.check_progress()
@@ -184,26 +213,38 @@ func validInt_checker(iterable):
 func _on_dhcp_radio_pressed():
 	uncheck_other(static_radio)
 	toggle_lineEdits()
+	dhcp_timer.start(3)
 
 func _on_static_radio_pressed():
 	uncheck_other(dhcp_radio)
 	toggle_lineEdits()
+	dhcp_timer.stop()
 		
 func toggle_lineEdits():
 	if ipv4Add_lineEdit.editable == true:
 		ipv4Add_lineEdit.editable = false
 		ipv4Add_lineEdit.max_length = 0
 		ipv4Add_lineEdit.text = "Retrieving IP Address..."
+		ipv4Add_lineEdit.focus_mode = Control.FOCUS_NONE
 		ipv4Subnet_lineEdit.editable = false
 		ipv4Subnet_lineEdit.max_length = 0
 		ipv4Subnet_lineEdit.text = "Retrieving Subnet Mask..."
+		ipv4Gateway_lineEdit.editable = false
+		ipv4Dns_lineEdit.editable = false
+		dhcp_radio.disabled = true
+		static_radio.disabled = false
 	else:
 		ipv4Add_lineEdit.editable = true
 		ipv4Add_lineEdit.max_length = 15
 		ipv4Add_lineEdit.text = ""
+		ipv4Add_lineEdit.focus_mode = Control.FOCUS_ALL
 		ipv4Subnet_lineEdit.editable = true
 		ipv4Subnet_lineEdit.max_length = 15
 		ipv4Subnet_lineEdit.text = ""
+		ipv4Gateway_lineEdit.editable = true
+		ipv4Dns_lineEdit.editable = true
+		static_radio.disabled = true
+		dhcp_radio.disabled = false
 
 func uncheck_other(radio):
 	radio.pressed = false
@@ -306,7 +347,7 @@ func _on_ipAdd_lineEdit_focus_exited():
 			if octet.length() > 3 and int(octet) < 0:
 				pass
 			else:
-				if int(splitted_ip[0]) >= 0 and int(splitted_ip[0]) <= 127:
+				if int(splitted_ip[0]) >= 1 and int(splitted_ip[0]) <= 127:
 					ipv4Subnet_lineEdit.text = "255.0.0.0"
 					ip_indicator.visible = false
 					return
@@ -324,3 +365,48 @@ func _on_ipAdd_lineEdit_focus_exited():
 	return
 
 
+func find_connected_router():
+	if connected_to.size() != 0:
+		for x in connected_to:
+			for device in devices:
+				if device.device_name == x and device.device_type == "router":
+					return device
+
+func _on_dhcp_timer_timeout():
+	var connected_router = find_connected_router()
+	if connected_router != null:
+		if connected_router.dhcp_pools.size() != 0:
+			var new_ip
+			if connected_router.dhcp_pools[0]["low_ip"] != null:
+				new_ip = connected_router.dhcp_pools[0]["low_ip"]
+			for device in devices:
+				if device.device_type == "computer":
+					while device.ipv4_address == new_ip:
+						new_ip = increment_ip(new_ip)
+			ipv4Add_lineEdit.text = new_ip
+			var splitted_new_ip = new_ip.split(".")
+			if int(splitted_new_ip[0]) >= 0 and int(splitted_new_ip[0]) <= 127:
+				ipv4Subnet_lineEdit.text = "255.0.0.0"
+				ip_indicator.visible = false
+			elif int(splitted_new_ip[0]) >= 128 and int(splitted_new_ip[0]) <= 191:
+				ipv4Subnet_lineEdit.text = "255.255.0.0"
+				ip_indicator.visible = false
+			elif int(splitted_new_ip[0]) >= 192 and int(splitted_new_ip[0]) <= 223:
+				ipv4Subnet_lineEdit.text = "255.255.255.0"
+				ip_indicator.visible = false
+				
+			if connected_router.dhcp_pools[0]["dns-server"] != null:
+				ipv4Dns_lineEdit.text = connected_router.dhcp_pools[0]["dns-server"]
+			
+			if connected_router.dhcp_pools[0]["gateway"] != null:
+				ipv4Gateway_lineEdit.text = connected_router.dhcp_pools[0]["gateway"]
+	else:
+		ipv4Add_lineEdit.text = "Unable to obtain IP Address"
+		ipv4Subnet_lineEdit.text = ""
+			
+
+func increment_ip(ip):
+	var splitted_ip = ip.split(".")
+	splitted_ip[3] = str(int(splitted_ip[3]) + 1 )
+	var new_ip = splitted_ip.join(".")
+	return new_ip

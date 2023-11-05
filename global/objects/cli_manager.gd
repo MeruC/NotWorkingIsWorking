@@ -4,7 +4,7 @@ extends Control
 export(PackedScene) var command_line
 
 var task5_cb
-onready var level_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
+onready var level_scene
 var device_list = []
 onready var this_device = $"../../../.."
 var passed_devices = []
@@ -38,6 +38,8 @@ Ping statistics:
 
 
 func _ready():
+	level_scene = this_device.get_parent()
+	
 	for node in level_scene.get_children():
 		if "object_monitor" in node.name or "genericRouter" in node.name:
 			device_list.append(node)

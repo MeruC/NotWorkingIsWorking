@@ -6,13 +6,12 @@ onready var mobile_controls = $mobile_controls
 onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
-onready var level_scene = self
-onready var main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
 onready var submit_button
 
 var computer_list = []
 var tasks_list = []
 var tasks_cbs = []
+var device_list = []
 
 
 var joystick
@@ -41,6 +40,7 @@ func reset_level():
 	for N in self.get_children():
 		if N.has_method("resetLevel"):
 			N.resetLevel()
+	SaveManager.load_game()
 	
 func check_ip(ip, subnetmask):
 	for N in nodes:
@@ -54,8 +54,8 @@ func get_all_computer():
 	for node in self.get_children():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
-
 func _ready():
+	
 	submit_button = task_manager.get_child(1)
 	get_all_tasks()
 	get_all_computer()
@@ -169,7 +169,7 @@ func check_progress():
 func check_task1():
 	if find_taskName(tasks_list, "task1") != -1:
 		var device_list = []
-		for node in main_scene.get_children():
+		for node in self.get_children():
 			if "object_monitor" in node.name or "Router" in node.name:
 				device_list.append(node)
 		for device in device_list:
@@ -184,7 +184,6 @@ func check_task1():
 
 func check_task2():
 	get_all_computer()
-	print(computer_list)
 	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
 		if splitted_ip.size() == 4:
@@ -218,7 +217,7 @@ func check_task4():
 		var splitted_ge0ip
 		var splitted_ge1ip
 		var splitted_ge2ip
-		for device in main_scene.get_children():
+		for device in self.get_children():
 			if "Router" in device.name:
 				router = device
 		if router != null:

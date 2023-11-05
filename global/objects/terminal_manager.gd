@@ -2,7 +2,7 @@ extends Control
 
 onready var computer = $"../../../.."
 onready var commands_container = $"../main_panel/ScrollContainer/commands_container"
-onready var level_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1)
+onready var level_scene
 var configurable_router
 export(PackedScene) var global_cli
 export(PackedScene) var interface_cli
@@ -15,6 +15,10 @@ export(PackedScene) var password_line
 export(String) var to_be_configured 
 export(int) var position = 0
 var correct_pass
+var new_dhcp_pool = {}
+
+func _ready():
+	level_scene = computer.get_parent()
 
 func _on_terminal_app_visibility_changed():
 	if computer.console_port_connection != null:
@@ -131,10 +135,13 @@ func scan_command(command, result_line):
 			position -= 1
 			if configurable_router.priveleged_password != null:
 				correct_pass = false
+		elif starts_with(command, "ip dhcp pool"):
+			new_dhcp_pool = {}
+			new_dhcp_pool["pool_name"] = splitted_command[3]
+			position = 4
 		else:
 			result_line.text = "Unknown Command"
 	elif position == 3:
-		print(to_be_configured)
 		if starts_with(command, "ip address"):
 			if splitted_command.size() == 4:
 				if to_be_configured == "ge0":
@@ -161,6 +168,32 @@ func scan_command(command, result_line):
 			elif to_be_configured == "ge2" and configurable_router.ge2_port_up == false:
 				configurable_router.ge2_port_up = true
 				result_line.text = """%LINK-5-CHANGED: Interface GigabitEthernet0/0/2, changed state to up\n\n%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/2, changed state to up"""
+		else:
+			result_line.text = "Unknown Command"
+	elif position == 4:
+		print(command)
+		print(splitted_command.size())
+		if command == "exit":
+			print("umexit")
+			position = 2
+			configurable_router.dhcp_pools.append(new_dhcp_pool)
+		elif starts_with(command, "network") and splitted_command.size() == 3:
+			new_dhcp_pool["network"] = splitted_command[1]
+		elif starts_with(command, "default-router"):
+			new_dhcp_pool["gateway"] = splitted_command[1]
+		elif starts_with(command, "dns-server"):
+			new_dhcp_pool["dns_server"] = splitted_command[1]
+		elif starts_with(command, "address"):
+			print("dito pumasok")
+			if splitted_command.size() == 2:
+				new_dhcp_pool["low_ip"] = splitted_command[1]
+			elif splitted_command.size() == 3:
+				new_dhcp_pool["low_ip"] = splitted_command[1]
+				new_dhcp_pool["high_ip"] = splitted_command[2]
+			else:
+				result_line.text = "Unknown Command"
+		elif starts_with(command, "lease"):
+			new_dhcp_pool["lease"] = int(splitted_command[1])
 		else:
 			result_line.text = "Unknown Command"
 			

@@ -583,15 +583,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 
 [node name="object_monitor" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
-device_name = "pc1"
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -200.0
-margin_right = -710.0
-margin_bottom = 351.0
-
-[node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="3"]
+[node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="4"]
 rect_min_size = Vector2( 150, 52.5 )
 
 [node name="exit_confirmation" parent="object_monitor/ui/cmd_app/cmd_screen" index="3"]
@@ -602,11 +595,9 @@ rect_min_size = Vector2( 150, 52.5 )
 
 [node name="object_monitor300" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9375, -4 )
-device_name = "pc2"
 
 [node name="object_monitor347" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -4 )
-device_name = "pc3"
 
 [node name="object_huaweiRouter" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )

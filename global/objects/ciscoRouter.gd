@@ -12,6 +12,7 @@ var other_end : StaticBody
 var fe0 = "asda"
 var rj = true
 var console = true
+var dhcp_pools = []
 
 export(String) var priveleged_password = null
 export(String) var device_type = "router"
@@ -28,6 +29,42 @@ export(bool) var ge2_port_up = false
 export(String) var console_port_connection = null
 export(int) var port_count = 3
 export(Array) var connected_to = []
+
+func reset_level():
+	SaveManager.load_game()
+	ge0 = null
+	ge0_type = null
+	ge1 = null
+	ge1_type = null
+	ge2 = null
+	ge2_type = null
+	console_port0 = null
+	console_portType = null
+	other_end = null
+	fe0 = "asda"
+	rj = true
+	console = true
+	dhcp_pools = []
+
+	priveleged_password = null
+	device_type = "router"
+	device_name = self.name
+	ge0_ip = ""
+	ge0_subnetMask = ""
+	ge0_port_up = false
+	ge1_ip  = ""
+	ge1_subnetMask = ""
+	ge1_port_up = false
+	ge2_ip = ""
+	ge2_subnetMask = ""
+	ge2_port_up = false
+	console_port_connection = null
+	port_count = 3
+	connected_to = []
+
+func _ready():
+	reset_level()
+	
 
 #Checks if all ports are in use
 func checkports():
