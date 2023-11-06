@@ -159,7 +159,7 @@ func display_next():
 	if int(score_label.text) >= 4:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
-		if score == 4:
+		if score >= 3 and score <= 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			animation_player.play("win")
 			audioplayer.play()
@@ -171,7 +171,7 @@ func display_next():
 			audioplayer.play()
 		score_validation()
 	else:
-		if score <= 3:
+		if score <= 2 and score > 0 :
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 			animation_player.play("lose")
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
@@ -249,7 +249,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score <= 3:
 			settings_data.level2 = score
@@ -265,7 +265,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.crowns+=3
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 10800.18888
 			settings_data.level2 = score
 			SaveManager.save_game()
 	

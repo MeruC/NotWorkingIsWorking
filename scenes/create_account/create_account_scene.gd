@@ -41,7 +41,7 @@ func _http_request_completed(result, response_code, headers, body):
 		var response_dict = response["response"]
 		if "authenticated" in response_dict and response_dict["authenticated"] == true:
 			# Authentication was successful, redirect to the main screen
-			Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+			pass
 		else:
 			# Authentication failed, you can show an error message
 			print("Authentication failed")
@@ -81,8 +81,10 @@ func _send_request(request : Dictionary):
 func _on_confirm_pressed():
 	var nickname_input = $Username/LineEdit
 	var nickname = nickname_input.text
+	var section_input = $Section/LineEdit
+	var section = section_input.text
 	update_name()
-	if nickname == "":
+	if nickname == "" or section == "empty" :
 		$Label.text = "Invalid nickname"
 	else:
 		# Update the player_name property of settings_data
@@ -97,3 +99,19 @@ func _on_confirm_pressed():
 		$"../select_gender".visible = true
 		SaveManager.save_game()
 		$"../AnimationPlayer".play("male_anim")
+
+
+func _on_back_pressed():
+	$"../select_gender".visible = false
+	$"../AnimationPlayer".play("RESET")
+	$".".visible = true
+
+
+func _on_yes_pressed():
+	$"..".queue_free()
+	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_no_pressed():
+	$"../prompt_confirmation".visible = false
+	$"../select_gender".visible = true

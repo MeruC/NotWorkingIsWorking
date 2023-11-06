@@ -136,3 +136,8 @@ func _on_video_player_finish():
 	$videoplayer/video_player.visible = false
 	touch = true
 	click = 0
+
+
+func _on_skip_pressed():
+		$".".queue_free()
+		get_tree().change_scene(game_scene)

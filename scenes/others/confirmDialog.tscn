@@ -216,20 +216,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1150.0
-margin_top = 340.0
-margin_right = -30.0
-margin_bottom = 740.0
+margin_left = -2110.0
+margin_top = -200.0
+margin_right = -1017.0
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
 rect_pivot_offset = Vector2( 560, 200 )
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect2/ColorRect"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 1100.0
+margin_right = 1073.0
 margin_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
 rect_pivot_offset = Vector2( 540, 180 )
-custom_constants/margin_right = 40
+custom_constants/margin_right = 100
 custom_constants/margin_top = 50
 custom_constants/margin_left = 105
 custom_constants/margin_bottom = 50
@@ -237,26 +243,34 @@ custom_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ColorRect/MarginContainer"]
 margin_left = 105.0
 margin_top = 50.0
-margin_right = 1040.0
+margin_right = 953.0
 margin_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_constants/separation = 60
+alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
-margin_right = 935.0
+margin_right = 848.0
 margin_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 1618, -369 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
-text = "Return to Main Menu?"
+text = "Return to main menu"
 align = 1
 valign = 1
 
 [node name="confirm" type="HBoxContainer" parent="ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 128.0
-margin_right = 935.0
+margin_right = 848.0
 margin_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_constants/separation = 81
+alignment = 1
 
 [node name="cancel" type="Button" parent="ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm"]
 modulate = Color( 0.94902, 0.223529, 0.223529, 1 )
@@ -280,7 +294,7 @@ text = "Confirm"
 [node name="ok" type="HBoxContainer" parent="ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 visible = false
 margin_top = 128.0
-margin_right = 935.0
+margin_right = 780.0
 margin_bottom = 260.0
 custom_constants/separation = 81
 alignment = 1

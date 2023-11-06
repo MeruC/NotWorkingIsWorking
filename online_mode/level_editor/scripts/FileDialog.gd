@@ -20,11 +20,18 @@ onready var file_dialog_title = $"../../FileDialogTopBar/FileDialogTitle"
 
 func _ready():
 	$"../../file/upload".disabled = true
+	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
+
+func _on_confirm_pressed(action):
+	match(action):
+		"new_level":
+			get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 		
 func _on_Save_pressed():
 	file_dialog_title.text = "SAVE LEVEL"
 	file_dialog.set_visible(true)
 	file_dialog_top_bar.set_visible(true)
+	level.saved = true
 	play.set_visible(false)
 	ui.set_visible(false)
 	Global.can_place = false
@@ -74,8 +81,15 @@ func load_level():
 	level = this_level
 	
 func new_level():
-	get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
-	pass
+	if level.saved:
+		get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
+	else:
+		#ConfirmDialog.mode = "OK Dialog"
+		#ConfirmDialog._ready()
+		ConfirmDialog.set_visible(true)
+		ConfirmDialog.confirm_animation.play("intro")
+		ConfirmDialog.label.text = "Level hasn't been\nsaved yet, continue?"
+		ConfirmDialog.action = "new_level"
 
 func _on_Save_mouse_entered():
 	Global.can_place = false

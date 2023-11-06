@@ -8,12 +8,12 @@ onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var submit_button
 onready var verified = false
+onready var saved = false
 var computer_list = []
 var tasks_list = []
 var tasks_cbs = []
 var device_list = []
 
-export (Resource) onready var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
@@ -61,6 +61,7 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	Global.playerCanMove = true
 	#upload_btn.disabled = true
 	submit_button = task_manager.get_child(1)
 	get_all_tasks()
@@ -259,8 +260,8 @@ func starts_with(text, prefix):
 
 #online
 func addScore():
-	var username = settings_data.player_name
-	var section = settings_data.section
+	var username = setting_data.player_name
+	var section = setting_data.section
 	var scores = "complete"
 	var table_name = setting_data.online_level
 	var data = {

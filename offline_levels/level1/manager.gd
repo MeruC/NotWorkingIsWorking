@@ -176,7 +176,7 @@ func _on_data_changed():
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
-			setting_data.reset_timer = 10800
+			setting_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 			
 		elif score == 10:
@@ -188,7 +188,7 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			setting_data.level1 = score
-			setting_data.reset_timer = 10800
+			setting_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 			
 func _on_retry_pressed():

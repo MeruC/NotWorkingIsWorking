@@ -134,3 +134,7 @@ func _on_orange_pressed():
 	wall.set_material(orange_out)
 	grid = orange
 	grid_out = orange_out
+
+
+func _on_history_pressed():
+	Load.load_scene(self,"res://online_mode/3d_result/view_3dresult.tscn")

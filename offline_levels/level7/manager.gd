@@ -84,7 +84,7 @@ func display_gameover():
 		gameover_next.disabled = false
 		if score == 5:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
-		elif score == 4:
+		elif score >= 3 and score <= 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		score_validation()
 		
@@ -96,7 +96,7 @@ func display_gameover():
 		score_text = "Your Score: " + str(score) + " / 5"
 		gameover_score.text = score_text
 		gameover_next.disabled = true
-		if score <= 3:
+		if score <= 2 and score > 0:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		elif score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
@@ -148,14 +148,14 @@ func score_validation():
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
-			elif score == 4:
+			elif score >= 3 and score <= 4:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+90
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
-			elif score <= 3 and score > 0:
+			elif score <= 2 and score > 0:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+80
 				settings_data.gold_coins = new_coins
@@ -179,9 +179,9 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
-		elif score == 4:
+		elif score >= 3 and score <= 4:
 			settings_data.crowns += 2
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+90
@@ -190,9 +190,9 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
-		elif score <= 3 and score > 0:
+		elif score <= 2 and score > 0:
 			settings_data.crowns += 1
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+80
@@ -201,7 +201,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 0:
 			pass

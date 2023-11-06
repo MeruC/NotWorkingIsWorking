@@ -234,25 +234,25 @@ func score_validation():
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
 			var skills = settings_data.net1_skills
-			var update_skills = skills+10
+			var update_skills = skills+30
 			settings_data.crowns += 2
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
-			settings_data.reset_time = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score >= 400:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+200
 			var skills = settings_data.net1_skills
 			settings_data.crowns += 3
-			var update_skills = skills+10
+			var update_skills = skills+30
 			settings_data.formal_attire = "unlock"
 			settings_data.girl_casual = "unlock"
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
-			settings_data.reset_time = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		else:
 			pass
