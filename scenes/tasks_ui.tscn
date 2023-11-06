@@ -71,7 +71,7 @@ scroll_horizontal_enabled = false
 
 [node name="tasks_vbox" type="VBoxContainer" parent="task_manager/ScrollContainer"]
 margin_right = 465.0
-margin_bottom = 790.0
+margin_bottom = 1054.0
 custom_constants/separation = 25
 
 [node name="task1" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
@@ -95,10 +95,54 @@ custom_fonts/font = SubResource( 24 )
 text = "- Use an Ethernet Cable to connect Devices"
 autowrap = true
 
-[node name="task2" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+[node name="task6" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
 margin_top = 101.0
 margin_right = 465.0
 margin_bottom = 208.0
+
+[node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task6"]
+margin_right = 465.0
+margin_bottom = 44.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 23 )
+disabled = true
+text = "Configure IP Addresses"
+
+[node name="Label" type="Label" parent="task_manager/ScrollContainer/tasks_vbox/task6"]
+margin_top = 48.0
+margin_right = 465.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 380, 0 )
+custom_fonts/font = SubResource( 24 )
+text = "- Open each PC and configure their IP addresses using Class A IP addresses."
+autowrap = true
+
+[node name="task7" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+margin_top = 233.0
+margin_right = 465.0
+margin_bottom = 340.0
+
+[node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task7"]
+margin_right = 465.0
+margin_bottom = 44.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 23 )
+disabled = true
+text = "Configure IP Addresses"
+
+[node name="Label" type="Label" parent="task_manager/ScrollContainer/tasks_vbox/task7"]
+margin_top = 48.0
+margin_right = 465.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 380, 0 )
+custom_fonts/font = SubResource( 24 )
+text = "- Open each PC and configure their IP addresses using Class B IP addresses."
+autowrap = true
+
+[node name="task2" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+margin_top = 365.0
+margin_right = 465.0
+margin_bottom = 472.0
 
 [node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task2"]
 margin_right = 465.0
@@ -118,9 +162,9 @@ text = "- Open each PC and configure their IP addresses using Class C IP address
 autowrap = true
 
 [node name="task4" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 233.0
+margin_top = 497.0
 margin_right = 465.0
-margin_bottom = 464.0
+margin_bottom = 728.0
 
 [node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task4"]
 margin_right = 465.0
@@ -142,9 +186,9 @@ text = "- Use a console cable to connect any of the PCs into the router.
 autowrap = true
 
 [node name="task3" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 489.0
+margin_top = 753.0
 margin_right = 465.0
-margin_bottom = 658.0
+margin_bottom = 922.0
 
 [node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task3"]
 margin_right = 465.0
@@ -165,9 +209,9 @@ text = "- Open each PC and configure their IP addresses using Class C IP address
 autowrap = true
 
 [node name="task5" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
-margin_top = 683.0
+margin_top = 947.0
 margin_right = 465.0
-margin_bottom = 790.0
+margin_bottom = 1054.0
 
 [node name="task_cb" type="CheckBox" parent="task_manager/ScrollContainer/tasks_vbox/task5"]
 margin_right = 465.0

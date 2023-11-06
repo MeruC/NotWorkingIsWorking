@@ -116,7 +116,7 @@ func get_devices():
 func _ready():
 	get_devices()
 	resetLevel()
-	main_scene = get_tree().get_root().get_child(get_tree().get_root().get_child_count()-1).get_children()
+	main_scene = self.get_parent()
 	
 	if device_name.empty():
 		device_name = self.name
