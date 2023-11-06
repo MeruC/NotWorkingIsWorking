@@ -344,8 +344,9 @@ func _input( event ):
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
 				for D in device:
 					if (D in object_point.collider.name ):
-						_connect_cableConsole()
-			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
+						#_connect_cableConsole()
+						pass
+			if event is InputEventMouseButton and event.is_pressed():
 				for D in device:
 					if (D in object_point.collider.name ):
 						_connect_cableConsole()
@@ -353,8 +354,9 @@ func _input( event ):
 			if event is InputEventScreenTouch and OS.get_name() == "Android":
 				for D in device:
 					if (D in object_point.collider.name ):
-						_connect_cableRJ()
-			if event is InputEventMouseButton and event.is_pressed() and Global.curOS != "Android":
+						#_connect_cableRJ()
+						pass
+			if event is InputEventMouseButton and event.is_pressed():
 				for D in device:
 					if (D in object_point.collider.name ):
 						_connect_cableRJ()
