@@ -2608,9 +2608,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 221.0
-margin_top = -693.0
+margin_top = 96.0
 margin_right = 221.0
-margin_bottom = -693.0
+margin_bottom = 96.0
 rect_rotation = -2.90868
 rect_scale = Vector2( 1.155, 1.1 )
 color = Color( 0, 0, 0, 1 )
@@ -2619,9 +2619,9 @@ color = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 253.0
-margin_top = -690.0
+margin_top = 69.0
 margin_right = 253.0
-margin_bottom = -690.0
+margin_bottom = 69.0
 rect_scale = Vector2( 1.085, 1.066 )
 color = Color( 0.623529, 0.168627, 0, 1 )
 
@@ -2706,7 +2706,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 40 )
 text = "D"
 
-[node name="Button" type="Button" parent="3dlevel"]
+[node name="history" type="Button" parent="3dlevel"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -180.0
@@ -2970,6 +2970,7 @@ anims/ui = SubResource( 18 )
 [connection signal="pressed" from="3dlevel/bottom/buttons/create2" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="3dlevel/bottom/buttons/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="3dlevel/bottom/buttons/inventory test" to="." method="_on_inventory_test_pressed"]
+[connection signal="pressed" from="3dlevel/history" to="." method="_on_history_pressed"]
 [connection signal="pressed" from="choosetype/Control/3dlevel" to="." method="_on_3dlevel_pressed"]
 [connection signal="pressed" from="choosetype/Control/quiz" to="." method="_on_quiz_pressed"]
 [connection signal="pressed" from="choosetype/back2menu" to="." method="_on_back2menu_pressed"]
