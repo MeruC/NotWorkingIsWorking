@@ -192,7 +192,7 @@ func check_task2():
 	get_all_computer()
 	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
-		if splitted_ip.size() == 4:
+		if splitted_ip.size() == 4 and (int(splitted_ip[0]) > 191 and int(splitted_ip[0]) < 224):
 			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
 			for computer in computer_list:
 				if starts_with(computer.ipv4_address, base_ip):
@@ -244,6 +244,7 @@ func check_task5():
 		for node in self.get_children():
 			if "object_monitor" in node.name or "Router" in node.name:
 				device_list.append(node)
+				
 	
 func find_taskName(tasks_list, task_name):
 	for i in range(tasks_list.size()):

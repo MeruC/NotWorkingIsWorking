@@ -82,7 +82,7 @@ func ping_device(device_object, ipv4_add, current_device):
 				pass
 			else:
 				var new_device_object
-				for child in get_tree().get_root().get_child(size).get_children():
+				for child in level_scene.get_children():
 					if child is StaticBody and has_property(child, "device_name") and child.device_name == another_device:
 						new_device_object = child
 				if ping_device(new_device_object, ipv4_add, device_object.device_name):
@@ -100,7 +100,7 @@ func _on_command_line_enter_pressed(text, result_line):
 			for device_name in this_device.connected_to:
 				if device_name != this_device.device_name:
 					var device_object
-					for child in get_tree().get_root().get_child(size).get_children():
+					for child in level_scene.get_children():
 						if child is StaticBody and has_property(child, "device_name") and child.device_name == device_name:
 							device_object = child
 					if device_object != null:
@@ -156,7 +156,7 @@ func ping_all_devices():
 			for device_name in this_device.connected_to:
 				if device_name != this_device.device_name:
 					var device_object
-					for child in get_tree().get_root().get_child(size).get_children():
+					for child in level_scene.get_children():
 						if child is StaticBody and has_property(child, "device_name") and child.device_name == device_name:
 							device_object = child
 					if device_object != null:
@@ -184,7 +184,7 @@ func add_cmd_line():
 		commands_container.add_child(new_command_line)
 		new_command_line.find_node("command_line_container").find_node("command_line").connect("enter_pressed", self, "_on_command_line_enter_pressed")
 		new_command_line.find_node("command_line_container").find_node("command_line").grab_focus()
-		scroll_container.ensure_control_visible(new_command_line)
+		scroll_container.ensure_control_visible(new_command_line.find_node("command_line_container").find_node("command_line"))
 #
 	
 func starts_with(text, prefix):

@@ -1613,6 +1613,7 @@ margin_left = -849.0
 margin_top = -892.0
 margin_right = 849.0
 rect_min_size = Vector2( 1698, 892 )
+follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="commands_container" type="VBoxContainer" parent="ui/terminal_app/cmd_screen/main_panel/ScrollContainer"]
