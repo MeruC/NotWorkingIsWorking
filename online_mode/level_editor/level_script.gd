@@ -60,6 +60,7 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	Global.playerCanMove = true
 	#upload_btn.disabled = true
 	submit_button = task_manager.get_child(1)
 	get_all_tasks()
