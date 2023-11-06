@@ -1003,6 +1003,7 @@ margin_right = 26.0
 margin_bottom = 22.0
 
 [node name="prompt_QR" type="CanvasLayer" parent="UI/editor"]
+visible = false
 script = SubResource( 54 )
 
 [node name="ColorRect" type="ColorRect" parent="UI/editor/prompt_QR"]
@@ -1083,7 +1084,6 @@ playback_process_mode = 0
 [node name="level" type="Spatial" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 25 )
-settings_data = ExtResource( 3 )
 setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="level"]

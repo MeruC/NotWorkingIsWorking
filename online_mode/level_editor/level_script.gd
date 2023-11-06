@@ -13,7 +13,6 @@ var tasks_list = []
 var tasks_cbs = []
 var device_list = []
 
-export (Resource) onready var settings_data
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
@@ -258,8 +257,8 @@ func starts_with(text, prefix):
 
 #online
 func addScore():
-	var username = settings_data.player_name
-	var section = settings_data.section
+	var username = setting_data.player_name
+	var section = setting_data.section
 	var scores = "complete"
 	var table_name = setting_data.online_level
 	var data = {

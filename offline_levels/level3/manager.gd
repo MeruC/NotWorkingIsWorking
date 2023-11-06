@@ -125,10 +125,10 @@ func _on_choice1_pressed():
 	#	new_questions()
 	
 	popup_score_label.text = "Your Score: " + score_label.text + " / 5"
-	if int(score_label.text) >= 4:
+	if int(score_label.text) >= 3:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
-		if score == 4:
+		if score >= 3 and score <= 4:
 			game_over_popup.visible = true
 			gameover_anim.play("win")
 			audioplayer.play()
@@ -150,7 +150,7 @@ func _on_choice1_pressed():
 			audioplayer.play()
 			gameover_anim.play("lose")
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-		if score <= 3 and score > 0:
+		if score <= 2 and score > 0:
 			game_over_popup.visible = true
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 			audioplayer.play()
@@ -206,14 +206,14 @@ func _on_choice2_pressed():
 	#	new_questions()
 	
 	popup_score_label.text = "Your Score: " + score_label.text + " / 5"
-	if int(score_label.text) >= 4:
+	if int(score_label.text) >= 3 :
 		game_over_popup.visible = true
 		animationplayer.play("win")
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
 		if score == 5:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
-		elif score == 4:
+		elif score >= 3 and score <= 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		score_validation()
 	else:
@@ -223,7 +223,8 @@ func _on_choice2_pressed():
 		animationplayer.play("lose")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
-		if score <= 3 and score>0:
+		
+		if score <= 2 and score > 0:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		elif score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
@@ -247,6 +248,7 @@ func score_validation():
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
+		
 		if settings_data.reset_timer >= 10800:
 			if score == 5:
 				var current_coins = settings_data.gold_coins
@@ -255,7 +257,7 @@ func score_validation():
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
 				SaveManager.save_game()
-			elif score == 4:
+			elif score >= 3 and score <= 4:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+90
 				settings_data.gold_coins = new_coins
@@ -280,9 +282,9 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level3 = score
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
-		elif score == 4:
+		elif score >= 3 and score <= 4:
 			settings_data.crowns += 2
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+90
@@ -291,9 +293,9 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level3 = score
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
-		elif score <= 3:
+		elif score <= 2 and score > 0:
 			settings_data.level3 = score
 			SaveManager.save_game()
 		elif score == 0:

@@ -15,14 +15,17 @@ func _ready():
 		$shop.disabled = true
 		
 func _process(delta):
-	var reset_timer_float = settings_data.reset_timer
-	var reset_timer_int = int(reset_timer_float)
-	var total_seconds = 10800
-	var remaining_seconds = total_seconds - reset_timer_int
-	var remaining_minutes = int(remaining_seconds / 60)
-	var remaining_seconds_remainder = remaining_seconds % 60
-	$reset_time.text = str(remaining_minutes) + ":" + str(remaining_seconds_remainder)
-
+	print(settings_data.reset_timer)
+	if settings_data.reset_timer <= 10799:
+		var reset_timer_float = settings_data.reset_timer
+		var reset_timer_int = int(reset_timer_float)
+		var total_seconds = 10800
+		var remaining_seconds = total_seconds - reset_timer_int
+		var remaining_minutes = int(remaining_seconds / 60)
+		var remaining_seconds_remainder = remaining_seconds % 60
+		$reset_time.text = str(remaining_minutes) + ":" + str(remaining_seconds_remainder)
+	else:
+		$reset_time.text = ""
 
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")

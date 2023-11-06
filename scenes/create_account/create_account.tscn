@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/log_in_screen/login_screen_bg.gd" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://resources/Themes/login_buttons.tres" type="Theme" id=11]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/Themes/create_account.tres" type="DynamicFont" id=13]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=14]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=15]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=16]
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -29,6 +33,33 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=45]
 size = 200
 font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=48]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../choose_male:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=46]
 length = 0.4
@@ -204,9 +235,9 @@ text = "confirm"
 [node name="Label" type="Label" parent="create_account_scene"]
 margin_left = 806.0
 margin_top = 705.0
-margin_right = 846.0
+margin_right = 1397.0
 margin_bottom = 780.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
 align = 1
 valign = 1
@@ -247,12 +278,71 @@ render_target_update_mode = 0
 [node name="Spatial" parent="select_gender/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
 [node name="confirm" type="Button" parent="select_gender"]
-margin_left = 740.0
-margin_top = 888.0
-margin_right = 1148.37
-margin_bottom = 1002.07
+margin_left = 601.0
+margin_top = 890.0
+margin_right = 1009.37
+margin_bottom = 1004.07
 theme = ExtResource( 9 )
 text = "CONFIRM"
+
+[node name="back" type="Button" parent="select_gender"]
+margin_left = 1059.0
+margin_top = 889.0
+margin_right = 1326.37
+margin_bottom = 1003.07
+theme = ExtResource( 9 )
+text = "back"
+
+[node name="prompt_confirmation" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="prompt_confirmation"]
+margin_right = 1969.0
+margin_bottom = 1112.0
+color = Color( 0, 0, 0, 0.384314 )
+
+[node name="panel" type="TextureRect" parent="prompt_confirmation"]
+margin_left = 330.0
+margin_top = 133.0
+margin_right = 626.0
+margin_bottom = 359.0
+rect_scale = Vector2( 4.51519, 3.81585 )
+texture = ExtResource( 14 )
+
+[node name="content" type="Label" parent="prompt_confirmation"]
+margin_left = 390.0
+margin_top = 429.0
+margin_right = 1552.0
+margin_bottom = 793.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 16 )
+text = "Are you sure in this setup?"
+valign = 1
+autowrap = true
+
+[node name="Label" type="Label" parent="prompt_confirmation"]
+margin_left = 821.0
+margin_top = 214.0
+margin_right = 1156.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 16 )
+text = "Notice"
+
+[node name="yes" type="Button" parent="prompt_confirmation"]
+margin_left = 700.0
+margin_top = 815.0
+margin_right = 921.0
+margin_bottom = 947.0
+theme = ExtResource( 17 )
+text = "Yes"
+
+[node name="no" type="Button" parent="prompt_confirmation"]
+margin_left = 1039.0
+margin_top = 818.0
+margin_right = 1238.0
+margin_bottom = 950.0
+theme = ExtResource( 15 )
+text = "No"
 
 [node name="choose_male" type="Control" parent="."]
 margin_left = -1076.0
@@ -343,6 +433,7 @@ E
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../choose_female")
+anims/RESET = SubResource( 48 )
 anims/female_anim = SubResource( 46 )
 anims/male_anim = SubResource( 47 )
 
@@ -353,7 +444,7 @@ script = ExtResource( 2 )
 motion_mirroring = Vector2( 1920, 0 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 967, 543 )
+position = Vector2( 956, 543 )
 scale = Vector2( 1, 1.00741 )
 texture = ExtResource( 1 )
 
@@ -364,3 +455,7 @@ bus = "Music"
 [connection signal="pressed" from="create_account_scene/confirm" to="create_account_scene" method="_on_confirm_pressed"]
 [connection signal="toggled" from="select_gender/CheckButton" to="select_gender/ViewportContainer/Viewport/Spatial" method="_on_CheckButton_toggled"]
 [connection signal="pressed" from="select_gender/confirm" to="select_gender/ViewportContainer/Viewport/Spatial" method="_on_confirm_pressed"]
+[connection signal="pressed" from="select_gender/back" to="create_account_scene" method="_on_back_pressed"]
+[connection signal="pressed" from="prompt_confirmation/yes" to="create_account_scene" method="_on_yes_pressed"]
+[connection signal="pressed" from="prompt_confirmation/no" to="create_account_scene" method="_on_no_pressed"]
+[connection signal="pressed" from="prompt_confirmation/no" to="prompt_confirmation" method="_on_no_pressed"]

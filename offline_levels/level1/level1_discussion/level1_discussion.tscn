@@ -171,7 +171,7 @@ process_priority = -2
 layer = -10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-margin_right = 1924.0
+margin_right = 1929.0
 margin_bottom = 1070.0
 rect_scale = Vector2( 0.995955, 1.01082 )
 rect_pivot_offset = Vector2( -144, 191 )

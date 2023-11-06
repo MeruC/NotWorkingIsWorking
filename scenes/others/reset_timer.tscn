@@ -15,9 +15,11 @@ var istop = false
 func _ready():
 	if settings_data.reset_timer >= 10800:  # Ensure settings_data.reset_timer is greater than 5
 		current_time = settings_data.reset_timer
+		reset_time.wait_time = current_time
 		reset_time.stop()
 	else:
 		current_time = settings_data.reset_timer
+		reset_time.wait_time = current_time
 		reset_time.start()  # Start the timer
 
 # Connect this function to the Timer node's \"timeout\" signal
@@ -34,6 +36,7 @@ func _process(delta):
 		var timer = reset_time  # Access the Timer node using the NodePath
 		current_time += delta
 		settings_data.reset_timer = current_time
+		reset_time.wait_time = current_time
 		SaveManager.save_game()
 		if current_time >= 10800:
 			_on_Timer_timeout()
@@ -50,7 +53,7 @@ settings_data = ExtResource( 1 )
 reset_time = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10800.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

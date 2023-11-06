@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=1]
 [ext_resource path="res://resources/Game buttons/game_menu.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://resources/Game buttons/confetti-25.png" type="Texture" id=12]
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/soundtrack/game_over/100_victories.wav" type="AudioStream" id=14]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=15]
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 6 )
@@ -29,10 +30,12 @@ Button/styles/pressed = SubResource( 11 )
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Button
-
+export(Resource) onready var settings_data
 
 
 func _on_home_pressed():
+	settings_data.quick_game = \"notplaying\"
+	SaveManager.save_game()
 	$\"../../..\".visible = false
 	var ro = get_node(\"/root\")
 	Load.load_scene(ro.get_child(ro.get_child_count()-1), \"res://scenes/main_screen/main_screen.tscn\")
@@ -239,6 +242,7 @@ rect_min_size = Vector2( 100, 100 )
 focus_mode = 0
 theme = SubResource( 6 )
 script = SubResource( 5 )
+settings_data = ExtResource( 15 )
 
 [node name="retry" type="Button" parent="main_popup/GridContainer"]
 margin_left = 125.0
