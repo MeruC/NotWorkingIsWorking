@@ -31,6 +31,7 @@ func _ready():
 	
 var editor_mode = "place"
 var e_mode_history = "place"
+var on_save_load = false
 
 func _input(event):
 	if(Input.is_action_just_pressed("main_menu")):

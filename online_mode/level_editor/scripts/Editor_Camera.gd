@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	apply_friction(direction, delta)
 	apply_movement(input_vector, direction, delta)
 	velocity = move_and_slide(velocity, Vector3.UP) 
+	#print(self.translation)
 
 #Getting The Input
 func get_input_vector():

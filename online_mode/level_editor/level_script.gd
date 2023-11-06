@@ -7,8 +7,8 @@ onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var submit_button
-onready var verified = false
-onready var saved = false
+var verified = false
+var saved = false
 var computer_list = []
 var tasks_list = []
 var tasks_cbs = []

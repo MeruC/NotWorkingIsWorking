@@ -772,16 +772,6 @@ theme = ExtResource( 30 )
 text = "Orphan"
 icon = SubResource( 14 )
 
-[node name="upload" type="Button" parent="UI/editor/file"]
-margin_left = 37.0
-margin_top = 464.0
-margin_right = 415.0
-margin_bottom = 596.0
-focus_mode = 0
-theme = ExtResource( 30 )
-enabled_focus_mode = 0
-text = "Upload"
-
 [node name="modes" type="Control" parent="UI/editor"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -799,6 +789,7 @@ previews = NodePath("../../../previews")
 no_sign = NodePath("../../../no-sign")
 item_select = NodePath("../place")
 other_ui = NodePath("../../../other_ui")
+verify_ui = NodePath("../../../verify_ui")
 
 [node name="play" type="Button" parent="UI/editor/modes"]
 margin_left = 1630.0
@@ -808,6 +799,16 @@ margin_bottom = -227.0
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
 text = "Play "
+
+[node name="upload" type="Button" parent="UI/editor/modes"]
+margin_left = 1172.0
+margin_top = -361.0
+margin_right = 1550.0
+margin_bottom = -229.0
+focus_mode = 0
+theme = ExtResource( 30 )
+enabled_focus_mode = 0
+text = "Upload"
 
 [node name="modeMenu" type="Button" parent="UI/editor/modes"]
 margin_left = -21.0
@@ -1120,6 +1121,23 @@ visible = false
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
 visible = false
 
+[node name="verify_ui" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="upload" type="Button" parent="verify_ui"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -189.0
+margin_top = 38.0
+margin_right = 189.0
+margin_bottom = 170.0
+focus_mode = 0
+theme = ExtResource( 30 )
+enabled_focus_mode = 0
+text = "Upload"
+
 [node name="other_ui" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -1194,8 +1212,12 @@ bus = "Music"
 
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
 [connection signal="pressed" from="UI/editor/rotate/done" to="UI/editor/rotate" method="_on_done_pressed"]
+[connection signal="mouse_entered" from="UI/editor/FileDialog/PanelContainer" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/FileDialog/PanelContainer" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_exited"]
 [connection signal="confirmed" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_confirmed"]
 [connection signal="file_selected" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_file_selected"]
+[connection signal="mouse_entered" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_exited"]
 [connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
 [connection signal="mouse_entered" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
@@ -1207,10 +1229,10 @@ bus = "Music"
 [connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
-[connection signal="pressed" from="UI/editor/file/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
+[connection signal="pressed" from="UI/editor/modes/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
@@ -1237,6 +1259,7 @@ bus = "Music"
 [connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
 [connection signal="pressed" from="UI/editor/prompt_QR/confirm" to="UI/editor/prompt_QR" method="_on_confirm_pressed"]
 [connection signal="mouse_entered" from="UI/joystickEditor" to="." method="_on_Virtual_joystick_gui_input"]
+[connection signal="pressed" from="verify_ui/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]

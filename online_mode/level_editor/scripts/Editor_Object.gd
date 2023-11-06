@@ -132,21 +132,21 @@ func previewCursor():
 				
 func placeObject():
 	in_action = true
-	level.saved = false
 	cursor_pos.y = 0
 	if !("floor" in object_point.collider.name): cursor_pos.y = height
 	for i in placeOn:
 		if (i in object_point.collider.name):
-			if (Global.can_place and !Global.is_usingJoystick and current_item != null and object_point != null):
+			if (!Global.on_save_load and Global.can_place and !Global.is_usingJoystick and current_item != null and object_point != null):
 				var new_item = current_item.instance() 
 				if (new_item != null):
+					level.saved = false
 					level.add_child(new_item)
 					new_item.owner = level
 					new_item.global_translation = cursor_pos
 	in_action = false
 	
 func rotateObject():
-	if ("object" in object_point.collider.name and !Global.is_usingJoystick):
+	if (!Global.on_save_load and Global.can_place and "object" in object_point.collider.name and !Global.is_usingJoystick):
 		current_object = level.get_node(object_point.collider.name)
 		rotate_object.current_object = current_object
 		Global.editor_mode = "in_action"
@@ -155,9 +155,9 @@ func rotateObject():
 		rotate_object.set_visible(true)
 	
 func removeObject():
-	level.saved = false
-	if ("object" in object_point.collider.name and !Global.is_usingJoystick):
+	if (!Global.on_save_load and Global.can_place and "object" in object_point.collider.name and !Global.is_usingJoystick):
 		in_action = true
+		level.saved = false
 		current_object = level.get_node(object_point.collider.name)
 		current_object.queue_free()
 		yield(get_tree().create_timer(0.1),"timeout")

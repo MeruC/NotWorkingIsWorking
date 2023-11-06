@@ -39,6 +39,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(Global.on_save_load)
 	pass
 	
 func on_timeout_complete():
