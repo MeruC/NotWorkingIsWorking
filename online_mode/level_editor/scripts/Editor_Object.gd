@@ -132,6 +132,7 @@ func previewCursor():
 				
 func placeObject():
 	in_action = true
+	level.saved = false
 	cursor_pos.y = 0
 	if !("floor" in object_point.collider.name): cursor_pos.y = height
 	for i in placeOn:
@@ -154,6 +155,7 @@ func rotateObject():
 		rotate_object.set_visible(true)
 	
 func removeObject():
+	level.saved = false
 	if ("object" in object_point.collider.name and !Global.is_usingJoystick):
 		in_action = true
 		current_object = level.get_node(object_point.collider.name)
