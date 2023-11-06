@@ -118,8 +118,6 @@ func get_levelresult(value):
 	
 	currentLevelName = levelname
 	
-
-
 func _on_back_pressed():
 	$".".visible = false
 	$"../exit".disabled = false
@@ -176,3 +174,7 @@ func _on_FileDialog_popup_hide():
 		$"../message_prompt/message".text = "The operation was cancelled"
 		$"../file_dialog_title".visible = false
 		$"../file_dialog".visible = false
+
+
+func _on_FileDialog_custom_action(action):
+	pass # Replace with function body.
