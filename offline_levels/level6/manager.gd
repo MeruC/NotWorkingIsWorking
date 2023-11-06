@@ -149,7 +149,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level6 = 5
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 0:
 			pass

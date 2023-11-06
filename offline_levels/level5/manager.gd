@@ -188,7 +188,7 @@ func score_validation():
 			
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
@@ -203,7 +203,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 7:
 			settings_data.crowns += 3
@@ -215,7 +215,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
-			settings_data.reset_time = 10800.18888		
+			settings_data.reset_timer = 10800.18888		
 			SaveManager.save_game()
 
 

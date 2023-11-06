@@ -179,7 +179,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score >= 3 and score <= 4:
 			settings_data.crowns += 2
@@ -190,7 +190,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score <= 2 and score > 0:
 			settings_data.crowns += 1
@@ -201,7 +201,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level7 = score
-			settings_data.reset_time = 10800.18888
+			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 0:
 			pass

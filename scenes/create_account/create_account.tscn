@@ -299,7 +299,7 @@ visible = false
 [node name="ColorRect" type="ColorRect" parent="prompt_confirmation"]
 margin_right = 1969.0
 margin_bottom = 1112.0
-color = Color( 0, 0, 0, 0.384314 )
+color = Color( 0, 0, 0, 0.831373 )
 
 [node name="panel" type="TextureRect" parent="prompt_confirmation"]
 margin_left = 330.0
@@ -345,6 +345,7 @@ theme = ExtResource( 15 )
 text = "No"
 
 [node name="choose_male" type="Control" parent="."]
+visible = false
 margin_left = -1076.0
 margin_top = 1147.0
 margin_right = -1036.0
@@ -386,6 +387,7 @@ L
 E"
 
 [node name="choose_female" type="Control" parent="."]
+visible = false
 margin_left = 266.0
 margin_top = -462.0
 margin_right = 306.0
