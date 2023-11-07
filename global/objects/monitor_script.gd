@@ -115,7 +115,7 @@ func get_devices():
 
 func _ready():
 	get_devices()
-	resetLevel()
+	#resetLevel()
 	main_scene = self.get_parent()
 	
 	if device_name.empty():
@@ -400,10 +400,14 @@ func _on_dhcp_timer_timeout():
 			
 			if connected_router.dhcp_pools[0]["gateway"] != null:
 				ipv4Gateway_lineEdit.text = connected_router.dhcp_pools[0]["gateway"]
+		else:
+			ipv4Add_lineEdit.text = "Unable to obtain IP Address"
+			ipv4Subnet_lineEdit.text = ""
+			ip_indicator.visible = true
 	else:
-		ipv4Add_lineEdit.text = "Unable to obtain IP Address"
-		ipv4Subnet_lineEdit.text = ""
-			
+			ipv4Add_lineEdit.text = "Unable to obtain IP Address"
+			ipv4Subnet_lineEdit.text = ""
+			ip_indicator.visible = true
 
 func increment_ip(ip):
 	var splitted_ip = ip.split(".")

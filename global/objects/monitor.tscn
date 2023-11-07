@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -28,7 +28,7 @@
 [ext_resource path="res://global/objects/terminal_scenes/terminal_default.tscn" type="PackedScene" id=26]
 [ext_resource path="res://global/objects/monitor_script.gd" type="Script" id=27]
 [ext_resource path="res://global/objects/terminal_scenes/password_line.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/others/confirmDialog.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/others/confirmDialog.gd" type="Script" id=29]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=31]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=32]
@@ -407,6 +407,10 @@ font_data = ExtResource( 30 )
 size = 36
 font_data = ExtResource( 30 )
 
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 30 )
+
 [sub_resource type="DynamicFont" id=66]
 size = 48
 font_data = ExtResource( 30 )
@@ -581,6 +585,197 @@ VScrollBar/styles/grabber_highlight = SubResource( 33 )
 VScrollBar/styles/grabber_pressed = SubResource( 33 )
 VScrollBar/styles/scroll = SubResource( 38 )
 
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect2:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect2:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ColorRect2:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ColorRect2:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("ColorRect2/ColorRect:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -1150, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ColorRect2/ColorRect:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 264.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=78]
+resource_name = "intro"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect2/ColorRect:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1150, -0.25, 0, 0.25, 0, 258.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect2/ColorRect:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 264.5, -0.25, 0, 0.25, 0, 264.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ColorRect2:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ColorRect2:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("ColorRect2:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ColorRect2:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.588235, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "outro"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect2/ColorRect:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 258.5, -0.25, 0, 0.25, 0, 1952, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect2/ColorRect:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 264.5, -0.25, 0, 0.25, 0, 264.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ColorRect2:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ColorRect2:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("ColorRect2:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ColorRect2:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.588235, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0, 0, 0.392157 )
 
@@ -634,7 +829,7 @@ border_color = Color( 0, 0, 0, 1 )
 [sub_resource type="Theme" id=26]
 default_font = ExtResource( 15 )
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=80]
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 2 )
@@ -844,31 +1039,66 @@ custom_fonts/font = SubResource( 27 )
 text = "CMD"
 clip_text = true
 
-[node name="disconnect_confirm" parent="ui" instance=ExtResource( 29 )]
+[node name="disconnect_confirm" type="CanvasLayer" parent="ui"]
+pause_mode = 2
+layer = 20
+visible = false
+script = ExtResource( 29 )
 
-[node name="ColorRect" parent="ui/disconnect_confirm/ColorRect2" index="0"]
-margin_right = 250.0
-margin_bottom = 891.0
+[node name="ColorRect2" type="ColorRect" parent="ui/disconnect_confirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+color = Color( 0, 0, 0, 0 )
 
-[node name="MarginContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect" index="0"]
-margin_right = 1380.0
+[node name="ColorRect" type="PanelContainer" parent="ui/disconnect_confirm/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1150.0
+margin_top = 264.5
+margin_right = 253.0
+margin_bottom = 815.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 560, 200 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1383.0
 margin_bottom = 531.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 540, 180 )
+custom_constants/margin_right = 100
+custom_constants/margin_top = 50
+custom_constants/margin_left = 105
+custom_constants/margin_bottom = 50
 
-[node name="VBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer" index="0"]
-margin_right = 1320.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer"]
+margin_left = 105.0
+margin_top = 50.0
+margin_right = 1263.0
 margin_bottom = 461.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_constants/separation = 100
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1215.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
+margin_right = 1158.0
 margin_bottom = 55.0
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 143.0
-margin_right = 684.0
+margin_left = 115.0
+margin_right = 656.0
 margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -880,8 +1110,8 @@ align = 1
 valign = 1
 
 [node name="device_name" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 709.0
-margin_right = 1071.0
+margin_left = 681.0
+margin_right = 1043.0
 margin_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -892,16 +1122,15 @@ text = "Computer1?"
 align = 1
 valign = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="1"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 155.0
-margin_right = 1215.0
+margin_right = 1158.0
 margin_bottom = 196.0
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 28.0
-margin_right = 141.0
+margin_right = 113.0
 margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -913,8 +1142,8 @@ align = 1
 valign = 1
 
 [node name="cable_type" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 166.0
-margin_right = 610.0
+margin_left = 138.0
+margin_right = 582.0
 margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -926,8 +1155,8 @@ align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 635.0
-margin_right = 1186.0
+margin_left = 607.0
+margin_right = 1158.0
 margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -938,33 +1167,73 @@ text = "cable will be returned"
 align = 1
 valign = 1
 
-[node name="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="2"]
+[node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 visible = false
 margin_top = 128.0
+margin_right = 848.0
 margin_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 1618, -369 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
 text = "Disconnect from"
+align = 1
+valign = 1
 
-[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="3"]
+[node name="confirm" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 296.0
-margin_right = 1215.0
+margin_right = 1158.0
 margin_bottom = 411.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 81
 alignment = 1
 
-[node name="cancel" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="0"]
-margin_left = 260.0
-margin_right = 548.0
+[node name="cancel" type="Button" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm"]
+modulate = Color( 0.94902, 0.223529, 0.223529, 1 )
+margin_left = 232.0
+margin_right = 520.0
 margin_bottom = 115.0
+focus_mode = 0
 theme = SubResource( 67 )
+enabled_focus_mode = 0
+text = "cancel"
 
-[node name="confirm" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm" index="1"]
-margin_left = 629.0
-margin_right = 954.0
+[node name="confirm" type="Button" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm"]
+modulate = Color( 0.54902, 1, 0.176471, 1 )
+margin_left = 601.0
+margin_right = 926.0
 margin_bottom = 115.0
+focus_mode = 0
 theme = SubResource( 69 )
+enabled_focus_mode = 0
+text = "Confirm"
 
-[node name="ok" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer" index="4"]
+[node name="ok" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 320.0
+margin_right = 780.0
 margin_bottom = 452.0
+custom_constants/separation = 81
+alignment = 1
+
+[node name="okBtn" type="Button" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok"]
+modulate = Color( 0.54902, 1, 0.176471, 1 )
+margin_left = 375.0
+margin_right = 560.0
+margin_bottom = 132.0
+focus_mode = 0
+theme = ExtResource( 10 )
+enabled_focus_mode = 0
+text = "OK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ui/disconnect_confirm"]
+playback_speed = 1.5
+anims/RESET = SubResource( 2 )
+anims/intro = SubResource( 78 )
+anims/outro = SubResource( 79 )
 
 [node name="ip_config_app" type="Panel" parent="ui"]
 visible = false
@@ -1656,7 +1925,7 @@ password_line = ExtResource( 28 )
 
 [node name="CollisionShape2D" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 80 )
 
 [node name="CSGMesh" type="CSGMesh" parent="CollisionShape2D"]
 transform = Transform( 0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 6.2499e-08, -1, 0.0350946 )
@@ -1721,6 +1990,9 @@ size = 1.679
 [connection signal="pressed" from="ui/pc_screen/apps/terminal_button" to="." method="_on_terminal_button_pressed"]
 [connection signal="pressed" from="ui/pc_screen/apps/cmd_button" to="." method="_on_cmd_button_pressed"]
 [connection signal="visibility_changed" from="ui/disconnect_confirm" to="ui/disconnect_confirm" method="_on_disconnect_confirm_visibility_changed"]
+[connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/cancel" to="ui/disconnect_confirm" method="_on_cancel_pressed"]
+[connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/confirm" to="ui/disconnect_confirm" method="_on_confirm_pressed"]
+[connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok/okBtn" to="ui/disconnect_confirm" method="_on_okBtn_pressed"]
 [connection signal="timeout" from="ui/ip_config_app/ip_config_screen/dhcp_timer" to="." method="_on_dhcp_timer_timeout"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/ipConfig_close_button" to="." method="_on_ipConfig_close_button_pressed"]
 [connection signal="focus_exited" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/device_name_hbox/deviceName_lineEdit" to="." method="_on_ipAdd_lineEdit_focus_exited"]
@@ -1734,5 +2006,3 @@ size = 1.679
 [connection signal="visibility_changed" from="ui/terminal_app" to="ui/terminal_app/cmd_screen/terminal_manager" method="_on_terminal_app_visibility_changed"]
 [connection signal="pressed" from="ui/terminal_app/cmd_screen/terminal_close_button" to="." method="_on_terminal_close_button_pressed"]
 [connection signal="confirmed" from="ui/terminal_app/cmd_screen/exit_confirmation" to="." method="_on_exit_confirmation_confirmed"]
-
-[editable path="ui/disconnect_confirm"]

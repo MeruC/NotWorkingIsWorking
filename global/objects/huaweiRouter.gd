@@ -63,8 +63,8 @@ func reset_level():
 	connected_to = []
 
 func _ready():
-	reset_level()
-	
+	#reset_level()
+	pass
 
 #Checks if all ports are in use
 func checkports():

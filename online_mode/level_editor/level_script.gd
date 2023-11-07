@@ -171,6 +171,12 @@ func check_progress():
 	check_task3()
 	check_task4()
 	check_task5()
+	check_task6()
+	check_task7()
+	check_task8()
+	check_task9()
+	check_task10()
+	check_task11()
 	enable_submit()
 
 func check_task1():
@@ -193,7 +199,7 @@ func check_task2():
 	get_all_computer()
 	if find_taskName(tasks_list, "task2") != -1:
 		var splitted_ip = computer_list[0].ipv4_address.split(".")
-		if splitted_ip.size() == 4 and (int(splitted_ip[0]) > 191 and int(splitted_ip[0]) < 224):
+		if splitted_ip.size() == 4 and (int(splitted_ip[0]) > 0 and int(splitted_ip[0]) < 127):
 			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
 			for computer in computer_list:
 				if starts_with(computer.ipv4_address, base_ip):
@@ -203,23 +209,113 @@ func check_task2():
 					return
 			tasks_cbs[find_taskName(tasks_list, "task2")].pressed = true
 			return
-
+			
 func check_task3():
+	get_all_computer()
 	if find_taskName(tasks_list, "task3") != -1:
-		for computer in computer_list:
-			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
-				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip:
-					tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+		var splitted_ip = computer_list[0].ipv4_address.split(".")
+		if splitted_ip.size() == 4 and (int(splitted_ip[0]) > 127 and int(splitted_ip[0]) < 192):
+			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
+			for computer in computer_list:
+				if starts_with(computer.ipv4_address, base_ip):
+					pass
 				else:
 					tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
 					return
-			else:
-				tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
-				return
-		tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
-		
+			tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+			return
+
 func check_task4():
+	get_all_computer()
 	if find_taskName(tasks_list, "task4") != -1:
+		var splitted_ip = computer_list[0].ipv4_address.split(".")
+		if splitted_ip.size() == 4 and (int(splitted_ip[0]) > 191 and int(splitted_ip[0]) < 224):
+			var base_ip = splitted_ip[0] + "." + splitted_ip [1] + "." + splitted_ip[2]
+			for computer in computer_list:
+				if starts_with(computer.ipv4_address, base_ip):
+					pass
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+					return
+			tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+			return
+
+func check_task5():
+	if find_taskName(tasks_list, "task5") != -1:
+		var router
+		var splitted_ge0ip
+		var splitted_ge1ip
+		var splitted_ge2ip
+		for device in self.get_children():
+			if "Router" in device.name:
+				router = device
+		if router != null:
+			if "Router" in router.name:
+				splitted_ge0ip = router.ge0_ip.split(".")
+				splitted_ge1ip = router.ge1_ip.split(".")
+				splitted_ge2ip = router.ge2_ip.split(".")
+				if (int(splitted_ge0ip[0]) >= 1 and int(splitted_ge0ip[0]) <= 126) and (int(splitted_ge1ip[0]) >= 1 and int(splitted_ge1ip[0]) <= 126) and (int(splitted_ge2ip[0]) >= 1 and int(splitted_ge2ip[0]) <= 126):
+					tasks_cbs[find_taskName(tasks_list, "task5")].pressed = true
+					return
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task5")].pressed = false
+					return
+
+func check_task6():
+	if find_taskName(tasks_list, "task6") != -1:
+		for computer in computer_list:
+			var splitted_ip = computer.ipv4_address.split(".")
+			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
+				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip and (int(splitted_ip[0]) >= 1 and int(splitted_ip[0]) <= 126):
+					#tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+					pass
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task6")].pressed = false
+					return
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task6")].pressed = false
+				return
+		tasks_cbs[find_taskName(tasks_list, "task6")].pressed = true
+
+func check_task7():
+	if find_taskName(tasks_list, "task7") != -1:
+		var router
+		var splitted_ge0ip
+		var splitted_ge1ip
+		var splitted_ge2ip
+		for device in self.get_children():
+			if "Router" in device.name:
+				router = device
+		if router != null:
+			if "Router" in router.name:
+				splitted_ge0ip = router.ge0_ip.split(".")
+				splitted_ge1ip = router.ge1_ip.split(".")
+				splitted_ge2ip = router.ge2_ip.split(".")
+				if (int(splitted_ge0ip[0]) >= 128 and int(splitted_ge0ip[0]) <= 191) and (int(splitted_ge1ip[0]) >= 128 and int(splitted_ge1ip[0]) <= 191) and (int(splitted_ge2ip[0]) >= 128 and int(splitted_ge2ip[0]) <= 191):
+					tasks_cbs[find_taskName(tasks_list, "task7")].pressed = true
+					return
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task7")].pressed = false
+					return
+
+func check_task8():
+	if find_taskName(tasks_list, "task8") != -1:
+		for computer in computer_list:
+			var splitted_ip = computer.ipv4_address.split(".")
+			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
+				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip and (int(splitted_ip[0]) >= 128 and int(splitted_ip[0]) <= 191):
+					#tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+					pass
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task8")].pressed = false
+					return
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task8")].pressed = false
+				return
+		tasks_cbs[find_taskName(tasks_list, "task8")].pressed = true
+
+func check_task9():
+	if find_taskName(tasks_list, "task9") != -1:
 		var router
 		var splitted_ge0ip
 		var splitted_ge1ip
@@ -233,14 +329,30 @@ func check_task4():
 				splitted_ge1ip = router.ge1_ip.split(".")
 				splitted_ge2ip = router.ge2_ip.split(".")
 				if (int(splitted_ge0ip[0]) >= 192 and int(splitted_ge0ip[0]) <= 223) and (int(splitted_ge1ip[0]) >= 192 and int(splitted_ge1ip[0]) <= 223) and (int(splitted_ge2ip[0]) >= 192 and int(splitted_ge2ip[0]) <= 223):
-					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = true
+					tasks_cbs[find_taskName(tasks_list, "task9")].pressed = true
 					return
 				else:
-					tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
+					tasks_cbs[find_taskName(tasks_list, "task9")].pressed = false
 					return
+
+func check_task10():
+	if find_taskName(tasks_list, "task10") != -1:
+		for computer in computer_list:
+			var splitted_ip = computer.ipv4_address.split(".")
+			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
+				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip and (int(splitted_ip[0]) >= 192 and int(splitted_ip[0]) <= 223):
+					#tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
+					pass
+				else:
+					tasks_cbs[find_taskName(tasks_list, "task10")].pressed = false
+					return
+			else:
+				tasks_cbs[find_taskName(tasks_list, "task10")].pressed = false
+				return
+		tasks_cbs[find_taskName(tasks_list, "task10")].pressed = true
 			
-func check_task5():
-	if find_taskName(tasks_list, "task5") != -1:
+func check_task11():
+	if find_taskName(tasks_list, "task11") != -1:
 		var device_list = []
 		for node in self.get_children():
 			if "object_monitor" in node.name or "Router" in node.name:
