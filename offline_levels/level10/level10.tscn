@@ -585,7 +585,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 
 [node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_right = 250.0
+margin_left = -2110.0
+margin_top = -275.5
+margin_right = -707.0
+margin_bottom = 275.5
 
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="4"]
 rect_min_size = Vector2( 150, 52.5 )
@@ -616,6 +619,9 @@ ge2_subnetMask = "255.255.255.0"
 ge2_port_up = true
 
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
+
+[node name="task_manager" parent="tasks_ui" index="1"]
+visible = false
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
 margin_bottom = 916.0
@@ -650,9 +656,6 @@ margin_bottom = 562.0
 [node name="task10" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="9"]
 margin_top = 612.0
 margin_bottom = 916.0
-
-[node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
-visible = false
 
 [node name="popups" type="CanvasLayer" parent="."]
 layer = 11

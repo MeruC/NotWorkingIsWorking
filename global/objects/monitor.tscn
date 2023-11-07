@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -28,7 +28,7 @@
 [ext_resource path="res://global/objects/terminal_scenes/terminal_default.tscn" type="PackedScene" id=26]
 [ext_resource path="res://global/objects/monitor_script.gd" type="Script" id=27]
 [ext_resource path="res://global/objects/terminal_scenes/password_line.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/others/confirmDialog.gd" type="Script" id=29]
+[ext_resource path="res://global/objects/disconnect_confirm.gd" type="Script" id=29]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=31]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=32]
@@ -405,10 +405,6 @@ font_data = ExtResource( 30 )
 
 [sub_resource type="DynamicFont" id=75]
 size = 36
-font_data = ExtResource( 30 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 60
 font_data = ExtResource( 30 )
 
 [sub_resource type="DynamicFont" id=66]
@@ -1167,21 +1163,6 @@ text = "cable will be returned"
 align = 1
 valign = 1
 
-[node name="Label" type="Label" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
-visible = false
-margin_top = 128.0
-margin_right = 848.0
-margin_bottom = 196.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 1618, -369 )
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
-text = "Disconnect from"
-align = 1
-valign = 1
-
 [node name="confirm" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 296.0
 margin_right = 1158.0
@@ -1210,24 +1191,6 @@ focus_mode = 0
 theme = SubResource( 69 )
 enabled_focus_mode = 0
 text = "Confirm"
-
-[node name="ok" type="HBoxContainer" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
-visible = false
-margin_top = 320.0
-margin_right = 780.0
-margin_bottom = 452.0
-custom_constants/separation = 81
-alignment = 1
-
-[node name="okBtn" type="Button" parent="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok"]
-modulate = Color( 0.54902, 1, 0.176471, 1 )
-margin_left = 375.0
-margin_right = 560.0
-margin_bottom = 132.0
-focus_mode = 0
-theme = ExtResource( 10 )
-enabled_focus_mode = 0
-text = "OK"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ui/disconnect_confirm"]
 playback_speed = 1.5
@@ -1992,7 +1955,6 @@ size = 1.679
 [connection signal="visibility_changed" from="ui/disconnect_confirm" to="ui/disconnect_confirm" method="_on_disconnect_confirm_visibility_changed"]
 [connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/cancel" to="ui/disconnect_confirm" method="_on_cancel_pressed"]
 [connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/confirm" to="ui/disconnect_confirm" method="_on_confirm_pressed"]
-[connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok/okBtn" to="ui/disconnect_confirm" method="_on_okBtn_pressed"]
 [connection signal="timeout" from="ui/ip_config_app/ip_config_screen/dhcp_timer" to="." method="_on_dhcp_timer_timeout"]
 [connection signal="pressed" from="ui/ip_config_app/ip_config_screen/ipConfig_close_button" to="." method="_on_ipConfig_close_button_pressed"]
 [connection signal="focus_exited" from="ui/ip_config_app/ip_config_screen/main_panel/content_panel/device_name_hbox/deviceName_lineEdit" to="." method="_on_ipAdd_lineEdit_focus_exited"]
