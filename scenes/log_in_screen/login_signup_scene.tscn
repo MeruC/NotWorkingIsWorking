@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=23]
 [ext_resource path="res://scenes/user_profile/buttons and panels/panel.png" type="Texture" id=24]
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=25]
+[ext_resource path="res://resources/Themes/option_button.tres" type="Theme" id=26]
+[ext_resource path="res://resources/Themes/view_createdlevels.tres" type="Theme" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -41,6 +43,11 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=65]
 size = 60
+extra_spacing_bottom = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=67]
+size = 40
 extra_spacing_bottom = 28
 font_data = ExtResource( 5 )
 
@@ -61,6 +68,211 @@ font_data = ExtResource( 5 )
 size = 60
 extra_spacing_bottom = 28
 font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=72]
+script/source = "extends CanvasLayer
+
+export (Resource) var settings_data
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+var pusername = \"\"
+var password = \"\"
+var cpassword =\"\"
+var result = \"\"
+var reset_question = \"\"
+
+func _ready():
+	# Connect our request handler:
+	$OptionButton.connect(\"item_selected\", self, \"_on_popup_item_selected\")
+	# Add items to the PopupMenu
+	$OptionButton.add_item(\"Choose Question\")
+	$OptionButton.add_item(\"What was the name of your first pet?\")
+	$OptionButton.add_item(\"In which city were you born?\")
+	$OptionButton.add_item(\"What is your favorite book or movie?\")
+	$OptionButton.add_item(\"What is the name of your childhood best friend?\")
+	$OptionButton.add_item(\"What is your mother's maiden name?\")
+	$OptionButton.add_item(\"What is the name of your favorite teacher?\")
+	
+	add_child(http_request)
+	print(settings_data)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+	$submit.connect(\"pressed\", self, \"check_account\")
+	$\"../signup_success/ok_btn\".connect(\"pressed\", self, \"_change_scene\")
+
+func _on_popup_item_selected(index):
+	# This function is called when an item is selected
+	var selected_item_text = $OptionButton.get_item_text(index)
+	reset_question = selected_item_text
+		
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	# Re-enable UI elements here (e.g., $signup_btn)
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"No Internet Connection\"
+		return
+
+	var response_body = body.get_string_from_utf8()
+
+	if response_body.empty():
+		printerr(\"Empty response body\")
+		return
+
+	var response = parse_json(response_body)
+		
+	if \"error\" in response and response[\"error\"] == \"account_doesnt_exist\":
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"Email or reset question is not valid\"
+		return
+
+	if result == HTTPRequest.RESULT_SUCCESS:
+		var _response_data = body.get_string_from_utf8()
+		_change_scene()
+		print(\"Response Data:\", _response_data)
+		
+	if !request_queue.empty():
+		var next_request = request_queue.pop_front()
+		_send_request(next_request)
+
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+
+func check_account():
+	# Disable relevant UI elements here (e.g., $signup_btn)
+	var username_input = $email2
+	var reset_answer = $reset_answer
+	var username = username_input.text
+	var reset = reset_answer.text
+	if username != \"\" and reset_question != \"\" and reset != \"\":
+		var command = \"check_reset\"
+		settings_data.email = username
+		SaveManager
+		var data = {\"email\": username, \"reset_question\": reset_question, \"reset_answer\": reset}
+		print(data)
+		request_queue.push_back({\"command\": command, \"data\": data})
+	else:
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"Please answer all required fields.\"
+		
+func _change_scene():
+	$\".\".visible = false
+	$\"../forgot_password\".visible = true
+
+func _on_ok_btn_pressed():
+	pass # Replace with function body.
+
+	
+func _on_back_pressed():
+	$\".\".visible = false
+	$\"../login_screen\".visible = true
+"
+
+[sub_resource type="GDScript" id=73]
+script/source = "extends CanvasLayer
+
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+export( Resource ) var settings_data
+
+func _ready():
+	add_child(http_request)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+	
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+		
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	# Re-enable UI elements here (e.g., $signup_btn)
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		printerr(\"Error with connection: \" + str(result))
+		return
+
+	var response_body = body.get_string_from_utf8()
+
+	if response_body.empty():
+		printerr(\"Empty response body\")
+		return
+
+	var response = parse_json(response_body)
+
+	if result == HTTPRequest.RESULT_SUCCESS:
+		var _response_data = body.get_string_from_utf8()
+		$\".\".visible = false
+		$\"../login_signup_screen\".visible = true
+		print(\"Response Data:\", _response_data)
+	
+	if !request_queue.empty():
+		var next_request = request_queue.pop_front()
+		_send_request(next_request)
+
+func update_password():
+	var email = settings_data.email
+	var password = $new_password2.text
+	var command = \"forgot_password\"
+	var data = {\"email\": email, \"password\": password}
+	request_queue.push_back({\"command\": command, \"data\": data})
+
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+		
+
+func _on_submit_pressed():
+	update_password()
+"
 
 [sub_resource type="GDScript" id=66]
 script/source = "extends CanvasLayer
@@ -168,7 +380,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 6.05858, -2.79481 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 3.68835, -3.09151 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("message:visible")
@@ -316,6 +528,17 @@ theme = ExtResource( 17 )
 enabled_focus_mode = 0
 text = "login"
 
+[node name="forgot_password" type="Button" parent="login_screen"]
+margin_left = 1066.0
+margin_top = 735.0
+margin_right = 1462.0
+margin_bottom = 811.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 67 )
+text = "forgot password?"
+flat = true
+
 [node name="signup_screen" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource( 9 )
@@ -324,36 +547,36 @@ settings_data = ExtResource( 13 )
 [node name="title" type="Label" parent="signup_screen"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -189.0
-margin_top = 150.0
-margin_right = 189.0
-margin_bottom = 252.0
+margin_left = -88.0
+margin_top = 41.0
+margin_right = 290.0
+margin_bottom = 143.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 40 )
 text = "Sign Up"
 
 [node name="s_username" type="Label" parent="signup_screen"]
-margin_left = 173.0
-margin_top = 336.0
-margin_right = 682.0
-margin_bottom = 425.0
+margin_left = 340.0
+margin_top = 236.0
+margin_right = 849.0
+margin_bottom = 325.0
 custom_fonts/font = SubResource( 45 )
 text = "Email address:"
 
 [node name="s_username" type="LineEdit" parent="signup_screen/s_username"]
-margin_left = 699.0
+margin_left = 654.0
 margin_top = -32.0
-margin_right = 1419.0
+margin_right = 1374.0
 margin_bottom = 118.0
 theme = ExtResource( 17 )
 align = 1
 placeholder_text = "Enter email"
 
 [node name="s_password" type="Label" parent="signup_screen"]
-margin_left = 363.0
-margin_top = 508.0
-margin_right = 663.0
-margin_bottom = 569.0
+margin_left = 464.0
+margin_top = 399.0
+margin_right = 781.0
+margin_bottom = 460.0
 custom_fonts/font = SubResource( 42 )
 text = "password:"
 
@@ -368,10 +591,10 @@ secret = true
 placeholder_text = "Passwords must be 8-16 words"
 
 [node name="_confirmpassword" type="Label" parent="signup_screen"]
-margin_left = 109.0
-margin_top = 680.0
-margin_right = 705.0
-margin_bottom = 769.0
+margin_left = 210.0
+margin_top = 571.0
+margin_right = 806.0
+margin_bottom = 660.0
 custom_fonts/font = SubResource( 63 )
 text = "Confirm Password:"
 
@@ -386,10 +609,10 @@ secret = true
 placeholder_text = "Re-type Password"
 
 [node name="sign_in_btn" type="Button" parent="signup_screen"]
-margin_left = 720.0
-margin_top = 888.0
-margin_right = 1511.37
-margin_bottom = 1087.07
+margin_left = 697.0
+margin_top = 920.0
+margin_right = 1488.37
+margin_bottom = 1119.07
 rect_scale = Vector2( 0.7, 0.7 )
 focus_mode = 0
 theme = ExtResource( 17 )
@@ -408,6 +631,138 @@ enabled_focus_mode = 0
 text = "back"
 script = ExtResource( 15 )
 
+[node name="OptionButton" type="OptionButton" parent="signup_screen"]
+margin_left = 222.0
+margin_top = 737.0
+margin_right = 783.0
+margin_bottom = 848.0
+focus_mode = 0
+theme = ExtResource( 26 )
+enabled_focus_mode = 0
+text = "Question"
+align = 1
+
+[node name="reset_password" type="LineEdit" parent="signup_screen"]
+margin_left = 959.0
+margin_top = 725.0
+margin_right = 1679.0
+margin_bottom = 875.0
+theme = ExtResource( 17 )
+align = 1
+placeholder_text = "Type here"
+
+[node name="check_account" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 72 )
+settings_data = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="check_account"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -450.0
+margin_top = -301.0
+margin_right = 450.0
+margin_bottom = -211.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "Fogot password"
+align = 1
+valign = 1
+
+[node name="email" type="Label" parent="check_account"]
+margin_left = 421.0
+margin_top = 416.0
+margin_right = 560.0
+margin_bottom = 492.0
+custom_fonts/font = ExtResource( 4 )
+text = "Email:"
+
+[node name="email2" type="LineEdit" parent="check_account"]
+margin_left = 945.0
+margin_top = 345.0
+margin_right = 1668.0
+margin_bottom = 495.0
+theme = ExtResource( 17 )
+align = 1
+
+[node name="OptionButton" type="OptionButton" parent="check_account"]
+margin_left = 228.0
+margin_top = 561.0
+margin_right = 789.0
+margin_bottom = 672.0
+theme = ExtResource( 26 )
+
+[node name="reset_answer" type="LineEdit" parent="check_account"]
+margin_left = 912.0
+margin_top = 548.0
+margin_right = 1635.0
+margin_bottom = 698.0
+theme = ExtResource( 17 )
+align = 1
+
+[node name="submit" type="Button" parent="check_account"]
+margin_left = 648.0
+margin_top = 815.0
+margin_right = 1371.37
+margin_bottom = 1014.07
+rect_scale = Vector2( 0.7, 0.7 )
+theme = ExtResource( 17 )
+text = "submit"
+
+[node name="back" type="Button" parent="check_account"]
+margin_left = 13.0
+margin_top = 15.0
+margin_right = 517.374
+margin_bottom = 214.068
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 17 )
+text = "Back"
+
+[node name="forgot_password" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource( 73 )
+settings_data = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="forgot_password"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -438.0
+margin_top = 235.0
+margin_right = 432.0
+margin_bottom = 325.0
+theme = ExtResource( 27 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "reset password"
+
+[node name="new_password" type="Label" parent="forgot_password"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 298.0
+margin_top = -53.0
+margin_right = 807.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 4 )
+text = "Enter new password:"
+
+[node name="new_password2" type="LineEdit" parent="forgot_password"]
+margin_left = 918.0
+margin_top = 438.0
+margin_right = 1641.0
+margin_bottom = 588.0
+theme = ExtResource( 17 )
+
+[node name="submit" type="Button" parent="forgot_password"]
+margin_left = 670.0
+margin_top = 682.0
+margin_right = 1462.37
+margin_bottom = 881.069
+rect_scale = Vector2( 0.7, 0.7 )
+theme = ExtResource( 17 )
+text = "confirm"
+
 [node name="warning" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource( 12 )
@@ -422,15 +777,15 @@ texture = ExtResource( 11 )
 
 [node name="warning" type="Sprite" parent="warning"]
 modulate = Color( 1, 0.917647, 0.917647, 1 )
-position = Vector2( 962, 572.5 )
-scale = Vector2( 4, 3 )
+position = Vector2( 999, 539 )
+scale = Vector2( 2.73311, 2.86062 )
 texture = ExtResource( 19 )
 
 [node name="warning2" type="Label" parent="warning"]
-margin_left = 391.0
-margin_top = 423.0
-margin_right = 1223.0
-margin_bottom = 740.0
+margin_left = 631.0
+margin_top = 407.0
+margin_right = 1160.0
+margin_bottom = 611.0
 rect_scale = Vector2( 1.36017, 1.31583 )
 theme = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -440,10 +795,10 @@ valign = 1
 autowrap = true
 
 [node name="ok_btn" type="Button" parent="warning"]
-margin_left = 868.0
-margin_top = 762.0
-margin_right = 1045.0
-margin_bottom = 894.0
+margin_left = 906.0
+margin_top = 719.0
+margin_right = 1083.0
+margin_bottom = 851.0
 theme = ExtResource( 6 )
 text = "ok"
 
@@ -560,9 +915,9 @@ rect_scale = Vector2( 1.63855, 1.88541 )
 texture = ExtResource( 11 )
 
 [node name="panel" type="Sprite" parent="login_sucess"]
-position = Vector2( 969, 508 )
+position = Vector2( 973, 551 )
 rotation = -3.14094
-scale = Vector2( 4, -2.795 )
+scale = Vector2( 3.68835, -3.09151 )
 texture = ExtResource( 19 )
 
 [node name="message" type="Label" parent="login_sucess"]
@@ -646,7 +1001,10 @@ bus = "Music"
 [connection signal="pressed" from="login_signup_screen/signup_btn" to="login_signup_screen" method="_on_signup_btn_pressed"]
 [connection signal="pressed" from="login_signup_screen/skip" to="login_signup_screen" method="_on_skip_pressed"]
 [connection signal="pressed" from="login_screen/back_btn" to="login_screen/back_btn" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="login_screen/forgot_password" to="login_screen" method="_on_forgot_password_pressed"]
 [connection signal="pressed" from="signup_screen/back_btn" to="signup_screen/back_btn" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="check_account/back" to="check_account" method="_on_back_pressed"]
+[connection signal="pressed" from="forgot_password/submit" to="forgot_password" method="_on_submit_pressed"]
 [connection signal="pressed" from="warning/ok_btn" to="warning" method="_on_ok_btn_pressed"]
 [connection signal="pressed" from="signup_success/ok_btn" to="signup_screen" method="_on_ok_btn_pressed"]
 [connection signal="pressed" from="retrieve_savedata/Yes" to="retrieve_savedata" method="_on_Yes_pressed"]
