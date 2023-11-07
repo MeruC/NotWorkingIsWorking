@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://resources/Textures/background/bg_01.png" type="Texture" id=1]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=2]
@@ -27,6 +27,9 @@
 [ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=25]
 [ext_resource path="res://resources/Themes/option_button.tres" type="Theme" id=26]
 [ext_resource path="res://resources/Themes/view_createdlevels.tres" type="Theme" id=27]
+[ext_resource path="res://resources/Themes/result_quiz.tres" type="Theme" id=28]
+[ext_resource path="res://iconNW.png" type="Texture" id=29]
+[ext_resource path="res://resources/font/OpenSans-Semibold.ttf" type="DynamicFontData" id=30]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -234,7 +237,7 @@ func _http_request_completed(result, response_code, headers, body):
 		$\".\".visible = false
 		$\"../warning\".visible = true
 		$\"../warning/warning2\".text = \"Password changed successfully.\"
-		$\"../login_signup_screen\".visible = true
+		$\"../login_screen\".visible = true
 		print(\"Response Data:\", _response_data)
 	
 	if !request_queue.empty():
@@ -398,6 +401,44 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+
+[sub_resource type="GDScript" id=74]
+script/source = "extends CanvasLayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_allow_pressed():
+	$\".\".visible = false
+
+func _on_deny_pressed():
+	get_tree().quit()
+"
+
+[sub_resource type="DynamicFont" id=75]
+size = 60
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=76]
+size = 60
+font_data = ExtResource( 30 )
+
+[sub_resource type="DynamicFont" id=77]
+size = 60
+font_data = ExtResource( 30 )
 
 [node name="login_signup" type="Control"]
 anchor_right = 1.0
@@ -690,6 +731,7 @@ margin_right = 1668.0
 margin_bottom = 495.0
 theme = ExtResource( 17 )
 align = 1
+placeholder_text = "Enter your email"
 
 [node name="OptionButton" type="OptionButton" parent="check_account"]
 margin_left = 228.0
@@ -706,6 +748,7 @@ margin_right = 1635.0
 margin_bottom = 698.0
 theme = ExtResource( 17 )
 align = 1
+placeholder_text = "Enter your answer"
 
 [node name="submit" type="Button" parent="check_account"]
 margin_left = 648.0
@@ -758,6 +801,8 @@ margin_top = 438.0
 margin_right = 1641.0
 margin_bottom = 588.0
 theme = ExtResource( 17 )
+align = 1
+placeholder_text = "Enter new password"
 
 [node name="submit" type="Button" parent="forgot_password"]
 margin_left = 670.0
@@ -941,6 +986,57 @@ autowrap = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="login_sucess"]
 anims/login_sucessful = SubResource( 13 )
 
+[node name="permission" type="CanvasLayer" parent="."]
+script = SubResource( 74 )
+
+[node name="ColorRect" type="ColorRect" parent="permission"]
+margin_right = 2007.0
+margin_bottom = 1120.0
+color = Color( 0, 0, 0, 0.780392 )
+
+[node name="ColorRect2" type="ColorRect" parent="permission"]
+margin_left = 466.0
+margin_top = 87.0
+margin_right = 1516.0
+margin_bottom = 997.0
+
+[node name="Label" type="Label" parent="permission"]
+margin_left = 540.0
+margin_top = 381.0
+margin_right = 1442.0
+margin_bottom = 636.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+text = "Allow NotWorking to read and write external storage?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Sprite" type="Sprite" parent="permission"]
+position = Vector2( 983, 266 )
+scale = Vector2( 0.13099, 0.135417 )
+texture = ExtResource( 29 )
+
+[node name="allow" type="Button" parent="permission"]
+margin_left = 544.0
+margin_top = 683.0
+margin_right = 1444.0
+margin_bottom = 783.0
+theme = ExtResource( 28 )
+custom_colors/font_color = Color( 0.0823529, 0.498039, 0.831373, 1 )
+custom_fonts/font = SubResource( 76 )
+text = "Allow"
+
+[node name="deny" type="Button" parent="permission"]
+margin_left = 542.0
+margin_top = 825.0
+margin_right = 1442.0
+margin_bottom = 925.0
+theme = ExtResource( 28 )
+custom_colors/font_color = Color( 0.0823529, 0.498039, 0.831373, 1 )
+custom_fonts/font = SubResource( 77 )
+text = "Deny"
+
 [node name="cloud_prompt" type="CanvasLayer" parent="."]
 visible = false
 
@@ -1014,4 +1110,6 @@ bus = "Music"
 [connection signal="pressed" from="signup_success/ok_btn" to="signup_screen" method="_on_ok_btn_pressed"]
 [connection signal="pressed" from="retrieve_savedata/Yes" to="retrieve_savedata" method="_on_Yes_pressed"]
 [connection signal="pressed" from="retrieve_savedata/no" to="retrieve_savedata" method="_on_no_pressed"]
+[connection signal="pressed" from="permission/allow" to="permission" method="_on_allow_pressed"]
+[connection signal="pressed" from="permission/deny" to="permission" method="_on_deny_pressed"]
 [connection signal="pressed" from="cloud_prompt/confirm" to="retrieve_savedata" method="_on_confirm_pressed"]

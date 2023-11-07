@@ -70,6 +70,7 @@ align = 1
 placeholder_text = "5FZ135ZB"
 
 [node name="scan_qr" type="Button" parent="HBoxContainer"]
+visible = false
 margin_left = 800.0
 margin_right = 900.0
 margin_bottom = 100.0
