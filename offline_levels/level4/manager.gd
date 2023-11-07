@@ -180,16 +180,20 @@ func _on_next_pressed():
 func _on_continue_pressed():
 	popup_control.visible = false
 	if i == 5:
-		if int(score_label.text) >= 4:
+		if int(score_label.text) >= 3:
 			popup_indicator_label.text = "Level Complete!"
 			popup_next_button.disabled = false
 			gameover_anim.play("win")
+			audioplayer.stream = preload("res://resources/soundtrack/game_over/Won!.wav")
 			audioplayer.play()
 			celebration.visible = true
-			if score >= 3 and score <= 4:
+			if score == 4:
 				crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			elif score == 5:
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+			elif score == 3:
+				crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			
 			score_validation()
 		else:
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
@@ -199,8 +203,6 @@ func _on_continue_pressed():
 			gameover_anim.play("lose")
 			if score == 0:
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-			elif score <= 2 and score > 0:
-				crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 	
 		popup_score_label.text = "Your Score: " + score_label.text + " / 5"
 		game_over_popup.visible = true
@@ -290,3 +292,4 @@ func score_validation():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
+	instructions_sprite.visible = true

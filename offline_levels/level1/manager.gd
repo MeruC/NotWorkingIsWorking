@@ -95,14 +95,20 @@ func spawn_new():
 	
 	# To show popup and set its contents
 	popup_score_label.text = "Your Score: " + score_label.text + " / 10"
-	if int(score_label.text) >= 7:
+	if int(score_label.text) >= 6:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
-		if score == 0:
-			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-		elif score <= 6:
+		if score == 6:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-		elif score >= 7 and score <= 9:
+			audioplayer.play()
+			animationplayer.play("win")
+			celebrate.visible = true
+		elif score == 7:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			audioplayer.play()
+			animationplayer.play("win")
+			celebrate.visible = true
+		elif score >= 8 and score <= 9:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			audioplayer.play()
 			animationplayer.play("win")
@@ -119,10 +125,7 @@ func spawn_new():
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 		audioplayer.play()
 		popup_indicator_label.text = "Level Failed!"
-		if score == 0:
-			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
-		elif score <= 6:
-			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 	game_over_popup.visible = true
 	##
 

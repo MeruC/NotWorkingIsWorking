@@ -6,7 +6,7 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_7/hybrid_topology.png" type="Texture" id=4]
 [ext_resource path="res://resources/Themes/level7.tres" type="Theme" id=5]
 [ext_resource path="res://offline_levels/level7/manager.gd" type="Script" id=6]
-[ext_resource path="res://resources/font/dialog_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://offline_levels/result.tscn" type="PackedScene" id=10]
@@ -733,6 +733,7 @@ gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
 tutorial_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
+instruction_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/level7")
 result_anim = NodePath("animation_player/AnimationPlayer")
 mascot = NodePath("animation_player/AnimationPlayer/correct")
 bg = NodePath("animation_player/ColorRect")
@@ -899,24 +900,30 @@ theme = ExtResource( 5 )
 text = "Hybrid Topology"
 
 [node name="counter" type="HBoxContainer" parent="."]
-visible = false
-margin_left = 125.0
-margin_top = 100.0
-margin_right = 289.0
-margin_bottom = 145.0
+margin_left = 17.0
+margin_top = 16.0
+margin_right = 249.0
+margin_bottom = 71.0
 
 [node name="Label" type="Label" parent="counter"]
-margin_right = 142.0
-margin_bottom = 45.0
-custom_fonts/font = ExtResource( 7 )
-text = "Number: "
+margin_right = 120.0
+margin_bottom = 55.0
+theme = ExtResource( 7 )
+text = "Score:"
 
 [node name="current_number" type="Label" parent="counter"]
-margin_left = 146.0
-margin_right = 164.0
-margin_bottom = 45.0
-custom_fonts/font = ExtResource( 7 )
+margin_left = 124.0
+margin_right = 147.0
+margin_bottom = 55.0
+theme = ExtResource( 7 )
 text = "1"
+
+[node name="Label2" type="Label" parent="counter"]
+margin_left = 151.0
+margin_right = 191.0
+margin_bottom = 55.0
+theme = ExtResource( 7 )
+text = "/5"
 
 [node name="animation_player" parent="." instance=ExtResource( 10 )]
 

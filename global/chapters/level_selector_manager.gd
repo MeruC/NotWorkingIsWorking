@@ -11,11 +11,14 @@ func _ready():
 	Pixelizer.set_visible(false)
 	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 		$shop.disabled = false
+	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7:
+		$quick_game.disabled = false
 	else:
+		$reset_time.visible = false
+		$quick_game.disabled = true
 		$shop.disabled = true
 		
 func _process(delta):
-	print(settings_data.reset_timer)
 	if settings_data.reset_timer <= 10799:
 		var reset_timer_float = settings_data.reset_timer
 		var reset_timer_int = int(reset_timer_float)

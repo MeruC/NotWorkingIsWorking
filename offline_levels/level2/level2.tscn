@@ -835,6 +835,8 @@ rect_min_size = Vector2( 1000, 150 )
 theme = ExtResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
+align = 1
+valign = 1
 autowrap = true
 
 [node name="title" type="Label" parent="."]
@@ -865,7 +867,7 @@ celebrate = NodePath("../popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("../popup_layer/game_over/AudioStreamPlayer")
 tutorial_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
 instructions_popup = NodePath("../popup_layer/instructions")
-instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/Sprite")
+instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/level2")
 
 [node name="submit" type="Button" parent="."]
 margin_left = 1015.0

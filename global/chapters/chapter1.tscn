@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://resources/Map/tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -17,6 +17,11 @@
 size = 40
 font_data = ExtResource( 12 )
 
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 512, 512 )
+modulate_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 512, 512 )
@@ -27,6 +32,7 @@ region_rect = Rect2( 0, 0, 512, 512 )
 modulate_color = Color( 0.588235, 0.588235, 0.588235, 1 )
 
 [sub_resource type="Theme" id=5]
+Button/styles/disabled = SubResource( 7 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
 
@@ -154,9 +160,9 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 1
+		
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
-	$\"../reset_time\".visible = true
 	$\"../quick_game\".visible = true
 	$\"../shop\".visible = true
 
@@ -588,6 +594,7 @@ focus_mode = 0
 theme = ExtResource( 10 )
 
 [node name="reset_time" type="Label" parent="."]
+visible = false
 margin_left = 1721.0
 margin_top = 840.0
 margin_right = 1911.0
