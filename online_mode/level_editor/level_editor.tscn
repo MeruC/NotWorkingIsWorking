@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -34,61 +34,8 @@
 [ext_resource path="res://resources/Shaders/drop_shadow.gdshader" type="Shader" id=32]
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=33]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=34]
-
-[sub_resource type="CameraTexture" id=14]
-
-[sub_resource type="ShaderMaterial" id=44]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( -5, -5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ViewportTexture" id=45]
-viewport_path = NodePath("UI/editor/Item_Select_Menu/Item_Select_Menu/Item_Select/Viewport")
-
-[sub_resource type="ShaderMaterial" id=46]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( 5, -5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ShaderMaterial" id=47]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( 5, 5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ShaderMaterial" id=48]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( -5, 5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="DynamicFont" id=52]
-size = 44
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 28 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-content_margin_left = 15.0
-content_margin_right = 15.0
-content_margin_top = 15.0
-content_margin_bottom = 15.0
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=49]
-size = 30
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 28 )
-
-[sub_resource type="Theme" id=53]
-default_font = SubResource( 49 )
-Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/fonts/font = SubResource( 52 )
-Label/styles/normal = SubResource( 11 )
+[ext_resource path="res://resources/icons/OptionsA.png" type="Texture" id=35]
+[ext_resource path="res://online_mode/level_editor/menu.gd" type="Script" id=36]
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -96,41 +43,39 @@ font_data = ExtResource( 28 )
 
 [sub_resource type="StyleBoxEmpty" id=36]
 
-[sub_resource type="StyleBoxFlat" id=38]
-content_margin_left = 6.0
+[sub_resource type="StyleBoxFlat" id=56]
+content_margin_left = 387.0
 content_margin_right = 169.0
-content_margin_top = 72.0
-content_margin_bottom = 9.0
+content_margin_top = 150.0
+content_margin_bottom = 100.0
 bg_color = Color( 0, 0.741176, 1, 1 )
-skew = Vector2( -0.159, -0.273 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+skew = Vector2( -0.4, -0.35 )
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
 border_color = Color( 0, 0, 0, 1 )
 expand_margin_left = 853.0
-expand_margin_right = 384.0
-expand_margin_top = 75.0
-expand_margin_bottom = 135.0
+expand_margin_right = 310.0
+expand_margin_top = 234.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="StyleBoxFlat" id=41]
-content_margin_left = 6.0
+[sub_resource type="StyleBoxFlat" id=57]
+content_margin_left = 387.0
 content_margin_right = 169.0
-content_margin_top = 72.0
-content_margin_bottom = 9.0
+content_margin_top = 150.0
+content_margin_bottom = 90.0
 bg_color = Color( 0, 0.34902, 0.47451, 1 )
-skew = Vector2( -0.159, -0.273 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+skew = Vector2( -0.4, -0.35 )
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
 border_color = Color( 0, 0, 0, 1 )
 expand_margin_left = 853.0
-expand_margin_right = 384.0
-expand_margin_top = 75.0
-expand_margin_bottom = 135.0
+expand_margin_right = 310.0
+expand_margin_top = 234.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_offset = Vector2( 20, 20 )
 
@@ -280,6 +225,140 @@ corner_radius_bottom_left = 10
 bg_color = Color( 0, 0, 0, 1 )
 border_width_right = 25
 border_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="Theme" id=58]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 40 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 56 )
+Button/styles/normal = SubResource( 56 )
+Button/styles/pressed = SubResource( 57 )
+HSlider/icons/grabber = SubResource( 9 )
+HSlider/icons/grabber_disabled = SubResource( 9 )
+HSlider/icons/grabber_highlight = SubResource( 9 )
+HSlider/icons/tick = SubResource( 9 )
+HSlider/styles/grabber_area = SubResource( 7 )
+HSlider/styles/grabber_area_highlight = SubResource( 7 )
+HSlider/styles/slider = SubResource( 8 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 10 )
+LineEdit/styles/normal = SubResource( 10 )
+PanelContainer/styles/panel = ExtResource( 29 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 1 )
+ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/styles/fg = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 12 )
+TabContainer/styles/panel = ExtResource( 29 )
+TabContainer/styles/tab_bg = SubResource( 6 )
+TabContainer/styles/tab_fg = SubResource( 5 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 34 )
+
+[sub_resource type="CameraTexture" id=14]
+
+[sub_resource type="ShaderMaterial" id=44]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ViewportTexture" id=45]
+viewport_path = NodePath("UI/editor/Item_Select_Menu/Item_Select_Menu/Item_Select/Viewport")
+
+[sub_resource type="ShaderMaterial" id=46]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=47]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=48]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="DynamicFont" id=52]
+size = 44
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=49]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="Theme" id=53]
+default_font = SubResource( 49 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/fonts/font = SubResource( 52 )
+Label/styles/normal = SubResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+content_margin_left = 6.0
+content_margin_right = 169.0
+content_margin_top = 72.0
+content_margin_bottom = 9.0
+bg_color = Color( 0, 0.741176, 1, 1 )
+skew = Vector2( -0.159, -0.273 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 853.0
+expand_margin_right = 384.0
+expand_margin_top = 75.0
+expand_margin_bottom = 135.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+content_margin_left = 6.0
+content_margin_right = 169.0
+content_margin_top = 72.0
+content_margin_bottom = 9.0
+bg_color = Color( 0, 0.34902, 0.47451, 1 )
+skew = Vector2( -0.159, -0.273 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 853.0
+expand_margin_right = 384.0
+expand_margin_top = 75.0
+expand_margin_bottom = 135.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 20, 20 )
 
 [sub_resource type="Theme" id=39]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
@@ -477,6 +556,249 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "points": PoolRealArray( 214, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("UI/editor/file/menu/New:rect_position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( -146, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("UI/editor/file/menu/New:rect_position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( -204, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("UI/editor/file/menu/Load:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -222, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("UI/editor/file/menu/Load:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -178, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("UI/editor/file/menu/Save:rect_position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -246, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("UI/editor/file/menu/Save:rect_position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -216, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("UI/editor/file/menu/upload:rect_position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 420, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("UI/editor/file/menu/upload:rect_position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 36, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("UI/editor/file/menu/play:rect_position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 478, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("UI/editor/file/menu/play:rect_position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 144, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("UI/editor/file/ColorRect:rect_position:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( -580, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("UI/editor/file/ColorRect:rect_position:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( -1157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=59]
+resource_name = "menu"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/editor/file/menu/New:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"points": PoolRealArray( -146, -0.25, 0, 0.25, 0, -146, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/editor/file/menu/New:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -204, -0.25, 0, 0.25, 0, 1214, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/editor/file/menu/Load:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"points": PoolRealArray( -222, -0.25, 0, 0.25, 0, -222, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/editor/file/menu/Load:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -178, -0.25, 0, 0.25, 0, 917, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/editor/file/menu/Save:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"points": PoolRealArray( -246, -0.25, 0, 0.25, 0, -246, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/editor/file/menu/Save:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -216, -0.25, 0, 0.25, 0, 568, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("UI/editor/file/menu/upload:rect_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 830, -0.25, 0, 0.25, 0, -1578, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("UI/editor/file/menu/upload:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 36, -0.25, 0, 0.25, 0, 52, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("UI/editor/file/menu/play:rect_position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 464, -0.25, 0, 0.25, 0, -596, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("UI/editor/file/menu/play:rect_position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( -346, -0.25, 0, 0.25, 0, 218, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("UI/editor/file/ColorRect:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -348, -0.25, 0, 0.25, 0, -580, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("UI/editor/file/ColorRect:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -1355, -0.25, 0, 0.25, 0, -1157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="Animation" id=42]
@@ -687,40 +1009,94 @@ margin_bottom = -177.0
 rect_pivot_offset = Vector2( 119, 35 )
 mouse_filter = 2
 
-[node name="New" type="Button" parent="UI/editor/file"]
+[node name="ColorRect" type="ColorRect" parent="UI/editor/file"]
+margin_left = -348.0
+margin_top = -1355.0
+margin_right = 1608.0
+margin_bottom = -767.0
+rect_rotation = 34.7386
+color = Color( 0, 0, 0, 1 )
+
+[node name="menu" type="Button" parent="UI/editor/file"]
+margin_left = -4.0
+margin_top = -361.0
+margin_right = 1436.0
+margin_bottom = 233.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = SubResource( 58 )
+toggle_mode = true
+icon = ExtResource( 35 )
+align = 0
+script = ExtResource( 36 )
+
+[node name="New" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_right = 1.0
-margin_left = 169.0
-margin_top = -82.0
-margin_right = 321.0
-margin_bottom = 50.0
+margin_left = 337.885
+margin_top = -204.0
+margin_right = -621.115
+margin_bottom = -52.0001
+rect_rotation = 2.26268
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
-text = "New "
+text = " New      "
 
-[node name="Load" type="Button" parent="UI/editor/file"]
+[node name="Load" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 129.0
-margin_top = 58.0
-margin_right = 321.0
-margin_bottom = 190.0
+margin_left = 261.885
+margin_top = -475.0
+margin_right = -742.115
+margin_bottom = -327.0
+rect_rotation = -0.683644
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
 text = "Load "
 
-[node name="Save" type="Button" parent="UI/editor/file"]
+[node name="Save" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 112.0
-margin_top = 199.0
-margin_right = 319.0
-margin_bottom = 331.0
+margin_left = 240.0
+margin_top = -810.0
+margin_right = -736.0
+margin_bottom = -647.0
+rect_rotation = 3.90576
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
 text = "Save "
 icon = SubResource( 14 )
+
+[node name="upload" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
+margin_left = 830.0
+margin_top = 36.0
+margin_right = 1308.0
+margin_bottom = 210.0
+rect_rotation = 5.74959
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 30 )
+enabled_focus_mode = 0
+text = "Upload"
+
+[node name="play" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
+margin_left = 464.0
+margin_top = -346.0
+margin_right = 929.0
+margin_bottom = -131.0
+rect_rotation = 3.32205
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 65, 40 )
+theme = ExtResource( 30 )
+text = " Play  "
 
 [node name="Orphan" type="Button" parent="UI/editor/file"]
 visible = false
@@ -819,25 +1195,6 @@ item_select = NodePath("../place")
 other_ui = NodePath("../../../other_ui")
 verify_ui = NodePath("../../../verify_ui")
 
-[node name="play" type="Button" parent="UI/editor/modes"]
-margin_left = 1630.0
-margin_top = -359.0
-margin_right = 1943.0
-margin_bottom = -227.0
-rect_pivot_offset = Vector2( 65, 40 )
-theme = ExtResource( 30 )
-text = "Play "
-
-[node name="upload" type="Button" parent="UI/editor/modes"]
-margin_left = 1172.0
-margin_top = -361.0
-margin_right = 1550.0
-margin_bottom = -229.0
-focus_mode = 0
-theme = ExtResource( 30 )
-enabled_focus_mode = 0
-text = "Upload"
-
 [node name="modeMenu" type="Button" parent="UI/editor/modes"]
 margin_left = -21.0
 margin_top = 508.0
@@ -852,9 +1209,9 @@ script = ExtResource( 26 )
 [node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -46.5583
-margin_top = 216.0
+margin_top = 225.0
 margin_right = 569.442
-margin_bottom = 389.0
+margin_bottom = 398.0
 rect_rotation = -1.47408
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -868,9 +1225,9 @@ text = "Rotate"
 [node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -28.5583
-margin_top = 195.0
+margin_top = 214.0
 margin_right = 530.442
-margin_bottom = 368.0
+margin_bottom = 387.0
 rect_rotation = 5.48748
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -884,9 +1241,9 @@ text = " Place "
 [node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -66.5583
-margin_top = 216.0
+margin_top = 282.0
 margin_right = 590.442
-margin_bottom = 389.0
+margin_bottom = 455.0
 rect_rotation = -5.19831
 rect_pivot_offset = Vector2( 34, 40 )
 theme = ExtResource( 30 )
@@ -901,9 +1258,9 @@ text = "Remove"
 visible = false
 show_behind_parent = true
 margin_left = -80.5583
-margin_top = 221.0
+margin_top = 216.0
 margin_right = 527.442
-margin_bottom = 394.0
+margin_bottom = 389.0
 rect_rotation = -0.632662
 rect_pivot_offset = Vector2( 0, 40 )
 theme = ExtResource( 30 )
@@ -1206,6 +1563,7 @@ unique_name_in_owner = true
 reset_on_save = false
 playback_speed = 2.0
 anims/RESET = SubResource( 43 )
+anims/menu = SubResource( 59 )
 anims/mode = SubResource( 42 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
@@ -1221,21 +1579,24 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_exited"]
 [connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
-[connection signal="mouse_entered" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
-[connection signal="mouse_entered" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
-[connection signal="mouse_entered" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu" to="UI/editor/file/menu" method="_on_menu_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/Load" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/Load" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="pressed" from="UI/editor/file/menu/upload" to="UI/editor/modes" method="_on_uploadVerify"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_play_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
 [connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
-[connection signal="pressed" from="UI/editor/modes/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
@@ -1267,4 +1628,3 @@ bus = "Music"
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
 
 [editable path="level/environment"]
-[editable path="level/tasks_ui"]

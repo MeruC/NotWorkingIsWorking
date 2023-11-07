@@ -2,7 +2,7 @@ extends FileDialog
 
 onready var level = get_node("/root/editor/level")
 onready var ui = get_node("/root/editor/UI")
-onready var play = get_node("/root/editor/UI/editor/modes/play")
+onready var play = get_node("/root/editor/UI/editor/file/menu/play")
 onready var main = get_node("/root/editor")
 
 var last_pos
