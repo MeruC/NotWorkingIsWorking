@@ -532,7 +532,7 @@ albedo_texture = ExtResource( 22 )
 
 [sub_resource type="GDScript" id=25]
 script/source = "extends CanvasLayer
-
+export(Resource) onready var settings_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -541,7 +541,8 @@ func _ready():
 
 func _on_close_pressed():
 	$\".\".visible = false
-
+	settings_data.email = \"\"
+	SaveManager.save_game()
 func _on_selection_toggled(button_pressed):
 	if button_pressed == false:
 		$signin.visible = false
@@ -1745,6 +1746,7 @@ autowrap = true
 [node name="login" type="CanvasLayer" parent="."]
 visible = false
 script = SubResource( 25 )
+settings_data = ExtResource( 18 )
 
 [node name="bg" type="TextureRect" parent="login"]
 modulate = Color( 0, 0, 0, 0.635294 )

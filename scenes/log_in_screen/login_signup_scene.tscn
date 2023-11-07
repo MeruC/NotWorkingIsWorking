@@ -232,6 +232,8 @@ func _http_request_completed(result, response_code, headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
 		$\".\".visible = false
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"Password changed successfully.\"
 		$\"../login_signup_screen\".visible = true
 		print(\"Response Data:\", _response_data)
 	
@@ -242,9 +244,13 @@ func _http_request_completed(result, response_code, headers, body):
 func update_password():
 	var email = settings_data.email
 	var password = $new_password2.text
-	var command = \"forgot_password\"
-	var data = {\"email\": email, \"password\": password}
-	request_queue.push_back({\"command\": command, \"data\": data})
+	if len(password) >= 8 and len(password) <= 16:
+		var command = \"forgot_password\"
+		var data = {\"email\": email, \"password\": password}
+		request_queue.push_back({\"command\": command, \"data\": data})
+	else:
+		$\"../warning\".visible = true
+		$\"../warning/warning2\".text = \"Password length must be between 8 and 16 characters.\"
 
 func _send_request(request : Dictionary):
 	# Check if a request is already in progress
@@ -691,6 +697,7 @@ margin_top = 561.0
 margin_right = 789.0
 margin_bottom = 672.0
 theme = ExtResource( 26 )
+align = 1
 
 [node name="reset_answer" type="LineEdit" parent="check_account"]
 margin_left = 912.0
