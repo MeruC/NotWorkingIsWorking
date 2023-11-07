@@ -247,7 +247,7 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
-	Load.load_scene(self,"res://scenes/main_screen/main_screen.tscn")
+	Load.load_scene(self,"res://online_mode/level_create_Menu/level_create.tscn")
 
 func _request_callback(result, response_code, headers, body) -> void:
 	if response_code == HTTPClient.RESPONSE_OK:

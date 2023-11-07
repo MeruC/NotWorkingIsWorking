@@ -17,7 +17,7 @@ export(NodePath) onready var gameover_anim = get_node(gameover_anim) as Animatio
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
-
+export(NodePath) onready var instruction_sprite = get_node(instruction_sprite) as Sprite
 ## result
 export(NodePath) onready var result_anim = get_node(result_anim) as AnimationPlayer
 export(NodePath) onready var mascot = get_node(mascot) as Sprite
@@ -41,7 +41,7 @@ func _ready():
 	display_image()
 
 func display_image():
-	number_label.text = str(current_number)
+	number_label.text = str(score)
 	var i = rand_range(0,topologies.size())
 	topology_image.texture = topologies[i]
 	topologies.remove(i)
@@ -74,7 +74,8 @@ func check_answer(answer):
 
 func display_gameover():
 	var score_text = ""
-	if score > 3:
+	$counter.visible = false
+	if score > 2:
 		gameover_anim.play("win")
 		celebration.visible = true
 		audioplayer.play()
@@ -84,8 +85,10 @@ func display_gameover():
 		gameover_next.disabled = false
 		if score == 5:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
-		elif score >= 3 and score <= 4:
+		elif score == 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		elif score == 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		score_validation()
 		
 	else:
@@ -96,9 +99,7 @@ func display_gameover():
 		score_text = "Your Score: " + str(score) + " / 5"
 		gameover_score.text = score_text
 		gameover_next.disabled = true
-		if score <= 2 and score > 0:
-			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-		elif score == 0:
+		if score < 3:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 	gameover_popup.visible = true
 
@@ -213,3 +214,4 @@ func _on_next_pressed():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
+	instruction_sprite.visible = true

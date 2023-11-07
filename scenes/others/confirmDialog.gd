@@ -2,10 +2,10 @@ extends CanvasLayer
 
 var action = ""
 onready var confirm_animation = $AnimationPlayer
-onready var label = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/Label
+onready var label = $ColorRect2/Control/ColorRect/MarginContainer/VBoxContainer/Label
 
-onready var confirm = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm
-onready var ok = $ColorRect2/ColorRect/MarginContainer/VBoxContainer/ok
+onready var confirm = $ColorRect2/Control/ColorRect/MarginContainer/VBoxContainer/confirm
+onready var ok = $ColorRect2/Control/ColorRect/MarginContainer/VBoxContainer/ok
 
 
 export(String, "Confirm Dialog", "OK Dialog") var mode = "Confirm Dialog"
@@ -21,7 +21,15 @@ func _ready():
 
 #OK DIALOG
 func _on_okBtn_pressed():
-	pass # Replace with function body.
+	confirm_animation.play("outro")
+	yield(confirm_animation, "animation_finished")
+	hide()
+	action = ""
+	
+func _process(delta):
+	pass
+	#color_rect.set_pivot_offset(color_rect.rect_size/2)
+	#color_rect_2.set_pivot_offset(color_rect_2.rect_size/2)
 
 
 #CONFIRM DIALOG

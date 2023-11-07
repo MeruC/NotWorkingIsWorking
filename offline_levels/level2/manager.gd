@@ -106,6 +106,7 @@ func _on_submit_pressed():
 		score_label.text = str(score)
 		$"../animation_player/AnimationPlayer/correct".visible = true
 		$"../animation_player/ColorRect".visible = true
+		$"../animation_player/AnimationPlayer/correct".texture = preload("res://resources/Game buttons/cat_win.png")
 		$"../animation_player/AnimationPlayer".play("win")
 		yield(get_tree().create_timer(1.0), "timeout")
 		$"../animation_player/AnimationPlayer/correct".visible = false
@@ -156,10 +157,15 @@ func display_next():
 		
 	# To show popup and set its contents
 	popup_score_label.text = "Your Score: " + score_label.text + " / 5"
-	if int(score_label.text) >= 4:
+	if int(score_label.text) >= 3:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
-		if score >= 3 and score <= 4:
+		if score == 3:
+			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			animation_player.play("win")
+			audioplayer.play()
+			celebrate.visible = true
+		if score == 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			animation_player.play("win")
 			audioplayer.play()
@@ -171,13 +177,7 @@ func display_next():
 			audioplayer.play()
 		score_validation()
 	else:
-		if score <= 2 and score > 0 :
-			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-			animation_player.play("lose")
-			audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
-			audioplayer.play()
-		elif score == 0:
-			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		popup_next_button.disabled = true
 		popup_indicator_label.text = "Level Failed!"
 		animation_player.play("lose")
@@ -243,7 +243,7 @@ func score_validation():
 			var new_coins = current_coins+90
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
-			settings_data.crowsn+=2
+			settings_data.crowns+=2
 			settings_data.blue_shirt = "unlock"
 			settings_data.girl_pants = "unlock"
 			settings_data.gold_coins = new_coins
@@ -273,3 +273,4 @@ func score_validation():
 
 func _on_instruction_pressed():
 	$"../popup_layer/instructions".visible = true
+	instructions_sprite.visible = true

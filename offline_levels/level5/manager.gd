@@ -225,3 +225,4 @@ func _on_next_pressed():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
+	instructions_sprite.visible = true

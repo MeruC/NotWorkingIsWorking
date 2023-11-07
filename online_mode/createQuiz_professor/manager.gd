@@ -330,7 +330,7 @@ func _on_continue_pressed():
 
 
 func _on_home_pressed():
-	Load.load_scene(self,main_screen)
+	Load.load_scene(self,"res://online_mode/level_create_Menu/level_create.tscn")
 
 
 func _on_back_btn_pressed():

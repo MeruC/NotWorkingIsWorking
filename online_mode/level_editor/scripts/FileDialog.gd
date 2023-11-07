@@ -4,6 +4,9 @@ onready var level = get_node("/root/editor/level")
 onready var ui = get_node("/root/editor/UI")
 onready var play = get_node("/root/editor/UI/editor/modes/play")
 onready var main = get_node("/root/editor")
+
+var last_pos
+onready var editor_camera = $"../../../../Editor_Camera"
 export(Resource) onready var settings_data
 var selected_file = ""
 var game_code
@@ -19,7 +22,8 @@ onready var file_dialog = $".."
 onready var file_dialog_title = $"../../FileDialogTopBar/FileDialogTitle"
 
 func _ready():
-	$"../../file/upload".disabled = true
+	last_pos = Vector3(0, 0, 0)
+	#$"../../file/upload".disabled = true
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
 
 func _on_confirm_pressed(action):
@@ -28,10 +32,12 @@ func _on_confirm_pressed(action):
 			get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 		
 func _on_Save_pressed():
+	#last_pos = editor_camera.translation
+	#editor_camera.translation = Vector3(100,0,100)
+	Global.on_save_load = true
 	file_dialog_title.text = "SAVE LEVEL"
 	file_dialog.set_visible(true)
 	file_dialog_top_bar.set_visible(true)
-	level.saved = true
 	play.set_visible(false)
 	ui.set_visible(false)
 	Global.can_place = false
@@ -40,6 +46,9 @@ func _on_Save_pressed():
 	pass # Replace with function body.
 
 func _on_Load_pressed():
+	#last_pos = editor_camera.translation
+	#editor_camera.translation = Vector3(100,0,100)
+	Global.on_save_load = true
 	file_dialog_title.text = "LOAD LEVEL"
 	file_dialog.set_visible(true)
 	file_dialog_top_bar.set_visible(true)
@@ -51,6 +60,9 @@ func _on_Load_pressed():
 
 
 func _on_FileDialog_popup_hide():
+	#last_pos = editor_camera.translation
+	#editor_camera.translation = last_pos
+	Global.on_save_load = false
 	Global.can_place = true
 	play.set_visible(true)
 	ui.set_visible(true)
@@ -69,7 +81,9 @@ func _on_FileDialog_confirmed():
 func save_level():
 	var toSave : PackedScene = PackedScene.new()
 	toSave.pack(level)
-	ResourceSaver.save(popup.current_path,toSave)
+	var result = ResourceSaver.save(popup.current_path,toSave)
+	level.saved = true
+	
 	
 func load_level():
 	var toLoad : PackedScene = PackedScene.new()
@@ -84,8 +98,8 @@ func new_level():
 	if level.saved:
 		get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 	else:
-		#ConfirmDialog.mode = "OK Dialog"
-		#ConfirmDialog._ready()
+		ConfirmDialog.mode = "Confirm Dialog"
+		ConfirmDialog._ready()
 		ConfirmDialog.set_visible(true)
 		ConfirmDialog.confirm_animation.play("intro")
 		ConfirmDialog.label.text = "Level hasn't been\nsaved yet, continue?"
@@ -114,8 +128,6 @@ func _on_New_pressed():
 func _on_Orphan_pressed():
 	 print_stray_nodes()
 
-
-
 func _on_upload_pressed():
 	var request = HTTPRequest.new()
 	request.connect("request_completed", self, "_request_callback")
@@ -127,7 +139,7 @@ func _on_upload_pressed():
 func _on_FileDialog_file_selected(path):
 	var filename = path.replace("user://saved_levels/", "")
 	selected_file = filename
-	$"../../file/upload".disabled = false
+	#$"../../file/upload".disabled = false
 
 func generate_unique_code(length: int = 8) -> String:
 	# To generate a unique level code
@@ -189,3 +201,11 @@ func _request_callback(result, response_code, headers, body) -> void:
 	elif response_code == HTTPClient.STATUS_DISCONNECTED:
 		print("not connected to server")
 
+
+
+func _on_FileDialog_mouse_entered():
+	Global.can_place = false
+
+
+func _on_FileDialog_mouse_exited():
+	Global.can_place = true

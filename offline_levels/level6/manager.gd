@@ -28,6 +28,7 @@ export (NodePath) onready var gameover_anim = get_node(gameover_anim) as Animati
 export (NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export (NodePath) onready var celebration = get_node(celebration) as Sprite
 export (NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
+export (NodePath) onready var instruction_sprite = get_node(instruction_sprite) as Sprite
 export (Resource) var settings_data
 
 var level6 = "res://offline_levels/level6/level6.tscn"
@@ -161,3 +162,4 @@ func _on_next_pressed():
 
 func _on_Button_pressed():
 	$popup_layer/instructions.visible = true
+	instruction_sprite.visible = true

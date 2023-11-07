@@ -792,6 +792,7 @@ audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
 gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 tutorial_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
+instruction_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/level8")
 settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]

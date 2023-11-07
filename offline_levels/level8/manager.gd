@@ -20,6 +20,7 @@ export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamP
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
+export(NodePath) onready var instruction_sprite = get_node(instruction_sprite) as Sprite
 export(Resource) var settings_data
 
 var score = 0
@@ -164,10 +165,9 @@ func calculate_score():
 		
 	if score<=20 and score>0:
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
-		gameover_anim.play("lose")
-		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		gameover_anim.play("win")
 		audioplayer.play()
-		gameover_indicator.text = "Level Failed"
+		gameover_indicator.text = "Level Complete"
 		gameover_score.text = "Your Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		gameover_next.disabled = false
@@ -260,7 +260,7 @@ func score_validation():
 
 func _on_instruction_pressed():
 	$popup_layer/instructions.visible = true
-
+	instruction_sprite.visible = true
 
 func _on_next_pressed():
 	Load.load_scene(self,"res://global/chapters/chapter1.tscn")
