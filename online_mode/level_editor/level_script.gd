@@ -38,11 +38,10 @@ func get_all_monitor(node) -> Array:
 	
 func reset_level():
 	get_all_tasks()
-	tasks_cbs[find_taskName(tasks_list, "task1")].pressed = false
-	tasks_cbs[find_taskName(tasks_list, "task2")].pressed = false
-	tasks_cbs[find_taskName(tasks_list, "task3")].pressed = false
-	tasks_cbs[find_taskName(tasks_list, "task4")].pressed = false
-	tasks_cbs[find_taskName(tasks_list, "task5")].pressed = false
+	
+	for cb in tasks_cbs:
+		cb.pressed = false
+	
 	for N in self.get_children():
 		if N.has_method("resetLevel"):
 			N.resetLevel()
@@ -340,7 +339,7 @@ func check_task10():
 		for computer in computer_list:
 			var splitted_ip = computer.ipv4_address.split(".")
 			if computer.fe0 != null and computer.ipv4_address != null and "Router" in computer.fe0.name:
-				if computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip and (int(splitted_ip[0]) >= 192 and int(splitted_ip[0]) <= 223):
+				if computer.fe0.ge0_ip != "" and computer.fe0.ge1_ip != "" and computer.fe0.ge2_ip != "" and computer.default_gateway == computer.fe0.ge0_ip or computer.default_gateway == computer.fe0.ge1_ip or computer.default_gateway == computer.fe0.ge2_ip and (int(splitted_ip[0]) >= 192 and int(splitted_ip[0]) <= 223):
 					#tasks_cbs[find_taskName(tasks_list, "task3")].pressed = true
 					pass
 				else:

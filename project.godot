@@ -324,6 +324,7 @@ CameraTransitionDefault="*res://addon/camera_transititionDefault/camera_transiti
 TransitionNode="*res://nodes/transition.tscn"
 Pixelizer="*res://nodes/pixelizer.tscn"
 LevelGlobal="*res://global/level_global.gd"
+LogoWatermark="*res://logo_watermark.tscn"
 
 [debug]
 

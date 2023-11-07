@@ -876,7 +876,7 @@ visible = false
 [node name="content" parent="popup_layer/instructions/main_popup" index="1"]
 margin_bottom = 30.0
 rect_min_size = Vector2( 900, 230 )
-text = "In this game, you'll be presented with a series of binary numbers or decimal numbers. Your task is to convert each binary number into its decimal equivalent or vice versa. Type your answer in the provided box and click \"Submit.\" If your answer is correct, you'll earn points and move on to the next binary number. But be quick – the clock is ticking!"
+text = "In this game, you'll be presented with a series of 8-bit binary numbers or decimal numbers. Your task is to convert each binary number into its decimal equivalent or vice versa. Type your answer in the provided box and click \"Submit.\" If your answer is correct, you'll earn points and move on to the next number. But be quick – the clock is ticking!"
 
 [node name="AnimationPlayer" parent="popup_layer/instructions/main_popup" index="2"]
 playback_speed = 0.25

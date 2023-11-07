@@ -585,10 +585,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 
 [node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
+margin_left = -1150.0
+margin_top = 264.5
+margin_right = 253.0
+margin_bottom = 815.5
 
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="4"]
 rect_min_size = Vector2( 150, 52.5 )
@@ -608,23 +608,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.93
 [node name="object_huaweiRouter" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
 device_name = "Router0"
-ge0_ip = "192.168.1.1"
-ge0_subnetMask = "255.255.255.0"
-ge0_port_up = true
-ge1_ip = "192.168.2.1"
-ge1_subnetMask = "255.255.255.0"
-ge1_port_up = true
-ge2_ip = "192.168.3.1"
-ge2_subnetMask = "255.255.255.0"
-ge2_port_up = true
 
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
 
-[node name="task_manager" parent="tasks_ui" index="1"]
-visible = false
-
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 916.0
+margin_bottom = 1144.0
 
 [node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
 visible = false

@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://encyclopedia/sprites/notebook.png" type="Texture" id=1]
-[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://resources/font/login_signup_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/icons/GoBack.png" type="Texture" id=3]
 [ext_resource path="res://encyclopedia/entry.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=5]
 [ext_resource path="res://encyclopedia/manager.gd" type="Script" id=6]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=8]
@@ -18,9 +17,34 @@ size = 32
 extra_spacing_bottom = 29
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 42
+[sub_resource type="DynamicFont" id=4]
+size = 36
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 0.996078, 0.92549, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+expand_margin_left = 30.0
+
+[sub_resource type="DynamicFont" id=5]
+size = 52
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 256, 256 )
 
 [node name="main" type="Control"]
 anchor_right = 1.0
@@ -34,9 +58,10 @@ term_label = NodePath("notebook/term_label")
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 52.0
 margin_top = 260.0
-margin_right = 952.0
+margin_right = 990.0
 margin_bottom = 1040.0
 rect_min_size = Vector2( 900, 780 )
+scroll_horizontal_enabled = false
 
 [node name="item_container" type="VBoxContainer" parent="ScrollContainer"]
 custom_constants/separation = 15
@@ -85,7 +110,10 @@ margin_top = 129.0
 margin_right = 919.0
 margin_bottom = 229.0
 rect_min_size = Vector2( 800, 100 )
-custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
 placeholder_text = "Search..."
 
 [node name="scene_name" type="Label" parent="."]
@@ -94,7 +122,7 @@ margin_top = 39.0
 margin_right = 782.0
 margin_bottom = 113.0
 rect_pivot_offset = Vector2( 119, 75 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "ENCYCLOPEDIA"
 align = 1
 valign = 1
@@ -102,11 +130,12 @@ valign = 1
 [node name="back" type="Button" parent="."]
 margin_left = 25.0
 margin_top = 25.0
-margin_right = 100.0
-margin_bottom = 100.0
+margin_right = 125.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
-custom_fonts/font = ExtResource( 5 )
-text = "<"
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
 
 [node name="item_image" type="TextureRect" parent="."]
 margin_left = 1312.0

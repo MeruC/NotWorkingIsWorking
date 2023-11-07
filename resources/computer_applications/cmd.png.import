@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/task_button-normal.png-aaebfe8f5a8796670f1fabef86bf6855.stex"
+path="res://.import/cmd.png-9c126c8e0fb3e74644c3072016dea8de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Game buttons/touch/task_button-normal.png"
-dest_files=[ "res://.import/task_button-normal.png-aaebfe8f5a8796670f1fabef86bf6855.stex" ]
+source_file="res://resources/computer_applications/cmd.png"
+dest_files=[ "res://.import/cmd.png-9c126c8e0fb3e74644c3072016dea8de.stex" ]
 
 [params]
 
