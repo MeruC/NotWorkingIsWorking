@@ -586,12 +586,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -6 )
 device_name = "PC1"
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="4"]
 rect_min_size = Vector2( 150, 52.5 )
 
@@ -605,12 +599,6 @@ rect_min_size = Vector2( 150, 52.5 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
 
-[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="exit_confirmation" parent="object_monitor153/ui/ip_config_app/ip_config_screen" index="4"]
 rect_min_size = Vector2( 150, 52.5 )
 
@@ -621,6 +609,9 @@ rect_min_size = Vector2( 150, 52.5 )
 rect_min_size = Vector2( 150, 52.5 )
 
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
+
+[node name="task_manager" parent="tasks_ui" index="1"]
+visible = false
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
 margin_bottom = 694.0
