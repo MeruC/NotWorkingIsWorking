@@ -47,7 +47,7 @@ func _ready():
 			var tasks_ui = node
 			var tasks = tasks_ui.get_child(1).get_child(0).get_child(2)
 			for task in tasks.get_children():
-				if task.name == "task5":
+				if task.name == "task11":
 					task5_cb = task.get_child(0)
 			
 	size = get_tree().get_root().get_child_count() - 1

@@ -74,20 +74,20 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
 		$\"../level10\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
-		
+		current = 10
 	elif settings_data.level9 >= 30:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level10_camera, 4), \"completed\")
 		$\"../level10\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
-		
+		current = 9
 	elif settings_data.level8 >= 30:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
@@ -160,6 +160,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 1
+	
 		
 	$\"../right\".disabled = false
 	$\"../left\".disabled = false
@@ -343,6 +344,22 @@ func _on_left_pressed():
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/1_crowns.png\")
 			else:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
+			$\"../left\".disabled = false
+			$\"../right\".disabled = false
+			$\"../back\".disabled = false
+			current-=1
+		9:
+			$\"../left\".disabled = true
+			$\"../right\".disabled = true
+			$\"../back\".disabled = true
+			$\"../level10\".visible = false
+			$\"../notif\".visible = false
+			$\"../crowns\".visible = false
+			yield(CameraTransitionDefault.transition_camera3D(level10_camera, level9_camera, 2), \"completed\")
+			$\"../level9\".visible = true
+			$\"../crowns\".visible = true
+			if settings_data.level9 == 30:
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/3_crowns.png\")
 			$\"../left\".disabled = false
 			$\"../right\".disabled = false
 			$\"../back\".disabled = false
@@ -536,6 +553,25 @@ func _on_right_pressed():
 				$\"../crowns\".visible = false
 				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 2), \"completed\")
 				$\"../level9\".visible = true
+				$\"../left\".disabled = false
+				$\"../right\".disabled = false
+				$\"../back\".disabled = false
+				$\"../crowns\".texture = preload(\"res://resources/Game buttons/0_crowns.png\")
+				$\"../crowns\".visible = true
+				current+=1
+			else:
+				$\"../notif\".visible = true
+				$\"../notif\".text = \"level is not completed\"
+		8:
+			if settings_data.level9 == 30:
+				$\"../left\".disabled = true
+				$\"../right\".disabled = true
+				$\"../back\".disabled = true
+				$\"../notif\".visible = false
+				$\"../level8\".visible = false
+				$\"../crowns\".visible = false
+				yield(CameraTransitionDefault.transition_camera3D(level9_camera, level10_camera, 2), \"completed\")
+				$\"../level10\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
 				$\"../back\".disabled = false
