@@ -35,6 +35,8 @@
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=33]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=34]
 
+[sub_resource type="CameraTexture" id=14]
+
 [sub_resource type="ShaderMaterial" id=44]
 shader = ExtResource( 32 )
 shader_param/offset = Vector2( -5, -5 )
@@ -87,8 +89,6 @@ default_font = SubResource( 49 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/fonts/font = SubResource( 52 )
 Label/styles/normal = SubResource( 11 )
-
-[sub_resource type="CameraTexture" id=14]
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -399,7 +399,7 @@ font_data = ExtResource( 34 )
 [sub_resource type="Animation" id=43]
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -409,7 +409,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -419,7 +419,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -429,7 +429,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -439,7 +439,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -449,7 +449,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -483,7 +483,7 @@ tracks/7/keys = {
 resource_name = "mode"
 length = 0.6
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -493,7 +493,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.6 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -503,7 +503,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -513,7 +513,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -523,7 +523,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -533,7 +533,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -579,43 +579,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="preview" type="Sprite" parent="UI/editor"]
-material = SubResource( 44 )
-position = Vector2( 116, 303 )
-scale = Vector2( 0.58366, 0.58366 )
-texture = SubResource( 45 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="TextureRect2" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 46 )
-position = Vector2( 0, -1.71332 )
-texture = SubResource( 45 )
-
-[node name="TextureRect4" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 47 )
-texture = SubResource( 45 )
-
-[node name="TextureRect5" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 48 )
-texture = SubResource( 45 )
-
-[node name="previewLbl" type="Label" parent="UI/editor/preview"]
-unique_name_in_owner = true
-anchor_right = 1.0
-margin_left = -211.867
-margin_top = -310.127
-margin_right = -311.867
-margin_bottom = -208.127
-input_pass_on_modal_close_click = false
-size_flags_vertical = 6
-theme = SubResource( 53 )
-text = "Current"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="rotate" type="Control" parent="UI/editor"]
 visible = false
@@ -772,6 +735,71 @@ theme = ExtResource( 30 )
 text = "Orphan"
 icon = SubResource( 14 )
 
+[node name="place" type="Control" parent="UI/editor"]
+margin_right = 87.0
+margin_bottom = 52.0
+script = ExtResource( 24 )
+objects_btn = NodePath("objects")
+current = NodePath("preview/previewLbl")
+objects_menu = NodePath("../Item_Select_Menu")
+
+[node name="preview" type="Sprite" parent="UI/editor/place"]
+material = SubResource( 44 )
+position = Vector2( 116, 303 )
+scale = Vector2( 0.58366, 0.58366 )
+texture = SubResource( 45 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect2" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 46 )
+position = Vector2( 0, -1.71332 )
+texture = SubResource( 45 )
+
+[node name="TextureRect4" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 47 )
+texture = SubResource( 45 )
+
+[node name="TextureRect5" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 48 )
+texture = SubResource( 45 )
+
+[node name="previewLbl" type="Label" parent="UI/editor/place/preview"]
+unique_name_in_owner = true
+anchor_right = 1.0
+margin_left = -211.867
+margin_top = -310.127
+margin_right = -311.867
+margin_bottom = -208.127
+input_pass_on_modal_close_click = false
+size_flags_vertical = 6
+theme = SubResource( 53 )
+text = "Current"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="objects" type="Button" parent="UI/editor/place"]
+anchor_right = 1.0
+margin_left = -39.0
+margin_top = -38.0
+margin_right = 296.0
+margin_bottom = 94.0
+theme = ExtResource( 30 )
+text = "OBJECTS"
+
+[node name="current_obj" type="Label" parent="UI/editor/place"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 76.0
+margin_right = 64.0
+margin_bottom = 90.0
+text = "Currently Selected: Null"
+valign = 1
+
 [node name="modes" type="Control" parent="UI/editor"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -821,12 +849,12 @@ text = "Place"
 align = 0
 script = ExtResource( 26 )
 
-[node name="select" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -46.5583
-margin_top = 225.0
+margin_top = 216.0
 margin_right = 569.442
-margin_bottom = 398.0
+margin_bottom = 389.0
 rect_rotation = -1.47408
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -835,14 +863,14 @@ custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = " Select "
+text = "Rotate"
 
 [node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -28.5583
-margin_top = 214.0
+margin_top = 195.0
 margin_right = 530.442
-margin_bottom = 387.0
+margin_bottom = 368.0
 rect_rotation = 5.48748
 rect_pivot_offset = Vector2( 65, 40 )
 theme = ExtResource( 30 )
@@ -853,12 +881,12 @@ custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
 text = " Place "
 
-[node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -66.5583
-margin_top = 282.0
+margin_top = 216.0
 margin_right = 590.442
-margin_bottom = 455.0
+margin_bottom = 389.0
 rect_rotation = -5.19831
 rect_pivot_offset = Vector2( 34, 40 )
 theme = ExtResource( 30 )
@@ -867,14 +895,15 @@ custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = " Rotate "
+text = "Remove"
 
-[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="removes" type="Button" parent="UI/editor/modes/modeMenu"]
+visible = false
 show_behind_parent = true
 margin_left = -80.5583
-margin_top = 216.0
+margin_top = 221.0
 margin_right = 527.442
-margin_bottom = 389.0
+margin_bottom = 394.0
 rect_rotation = -0.632662
 rect_pivot_offset = Vector2( 0, 40 )
 theme = ExtResource( 30 )
@@ -967,39 +996,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="place" type="Control" parent="UI/editor"]
-margin_right = 87.0
-margin_bottom = 52.0
-script = ExtResource( 24 )
-objects_btn = NodePath("objects")
-current = NodePath("../preview/previewLbl")
-objects_menu = NodePath("../Item_Select_Menu")
-
-[node name="objects" type="Button" parent="UI/editor/place"]
-anchor_right = 1.0
-margin_left = -39.0
-margin_top = -38.0
-margin_right = 296.0
-margin_bottom = 94.0
-theme = ExtResource( 30 )
-text = "OBJECTS"
-
-[node name="current_obj" type="Label" parent="UI/editor/place"]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 76.0
-margin_right = 64.0
-margin_bottom = 90.0
-text = "Currently Selected: Null"
-valign = 1
-
 [node name="Item_Select_Menu" type="CanvasLayer" parent="UI/editor"]
 layer = 5
 visible = false
 
 [node name="Item_Select_Menu" parent="UI/editor/Item_Select_Menu" instance=ExtResource( 4 )]
+unique_name_in_owner = true
 margin_right = 26.0
 margin_bottom = 22.0
 
@@ -1229,6 +1231,7 @@ bus = "Music"
 [connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
+[connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
@@ -1236,18 +1239,18 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_select_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_place_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_rotate_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_place_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_remove_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_remove_pressed"]
 [connection signal="mouse_entered" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="mouse_entered" from="UI/editor/move/down" to="UI/editor/modes" method="_on_modes_mouse_entered"]
@@ -1256,7 +1259,6 @@ bus = "Music"
 [connection signal="mouse_exited" from="UI/editor/move/left" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="mouse_entered" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
 [connection signal="pressed" from="UI/editor/prompt_QR/confirm" to="UI/editor/prompt_QR" method="_on_confirm_pressed"]
 [connection signal="mouse_entered" from="UI/joystickEditor" to="." method="_on_Virtual_joystick_gui_input"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/modes" method="_on_uploadVerify"]

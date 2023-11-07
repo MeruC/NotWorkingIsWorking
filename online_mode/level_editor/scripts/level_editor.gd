@@ -13,7 +13,7 @@ onready var inventory = $level/inventory
 onready var other_ui = $"%other_ui"
 onready var mobile_controls = $level/mobile_controls
 onready var tasks_ui = $level/tasks_ui
-onready var item__select__menu = $UI/editor/Item_Select_Menu/Item_Select_Menu
+onready var item__select__menu = $"%Item_Select_Menu"
 
 var timer = null
 var x = 1
