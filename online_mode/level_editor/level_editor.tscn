@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=150 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=34]
 [ext_resource path="res://resources/icons/OptionsA.png" type="Texture" id=35]
 [ext_resource path="res://online_mode/level_editor/menu.gd" type="Script" id=36]
+[ext_resource path="res://online_mode/level_editor/TextEdit.gd" type="Script" id=37]
 [ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=39]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=40]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=41]
@@ -1531,6 +1532,130 @@ tracks/25/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:x")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/27/type = "bezier"
+tracks/27/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:y")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("UI/infopanel/Control/desc/infopanel:color:r")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("UI/infopanel/Control/desc/infopanel:color:g")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("UI/infopanel/Control/desc/infopanel:color:b")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("UI/infopanel/Control/desc/infopanel:color:a")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=121]
+resource_name = "desc"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/infopanel/Control/desc/infopanel:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/infopanel/Control/desc/infopanel:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/infopanel/Control/desc/infopanel:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/infopanel/Control/desc/infopanel:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.686275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
 
 [sub_resource type="Animation" id=120]
 resource_name = "info"
@@ -1926,10 +2051,10 @@ rect_pivot_offset = Vector2( 119, 35 )
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI/editor/file"]
-margin_left = -348.0
-margin_top = -1355.0
-margin_right = 1608.0
-margin_bottom = -767.0
+margin_left = -580.0
+margin_top = -1157.0
+margin_right = 1376.0
+margin_bottom = -569.0
 rect_rotation = 34.7386
 color = Color( 0, 0, 0, 1 )
 
@@ -1991,9 +2116,9 @@ icon = SubResource( 14 )
 
 [node name="upload" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 830.0
+margin_left = 420.0
 margin_top = 36.0
-margin_right = 1308.0
+margin_right = 898.0
 margin_bottom = 210.0
 rect_rotation = 5.74959
 rect_scale = Vector2( 2, 2 )
@@ -2004,10 +2129,10 @@ text = "Upload"
 
 [node name="play" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 464.0
-margin_top = -346.0
-margin_right = 929.0
-margin_bottom = -131.0
+margin_left = 478.0
+margin_top = 144.0
+margin_right = 943.0
+margin_bottom = 359.0
 rect_rotation = 3.32205
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 65, 40 )
@@ -2386,9 +2511,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -740.0
+margin_left = -901.0
 margin_top = -506.0
-margin_right = 740.0
+margin_right = 901.0
 margin_bottom = 506.0
 theme = ExtResource( 30 )
 
@@ -2406,11 +2531,11 @@ align = 1
 unique_name_in_owner = true
 margin_left = 173.0
 margin_top = 170.0
-margin_right = 1319.0
+margin_right = 1247.0
 margin_bottom = 333.0
 theme = SubResource( 110 )
 custom_fonts/font = SubResource( 84 )
-text = "MyLevel"
+max_length = 24
 
 [node name="TextureRect3" type="TextureRect" parent="UI/infopanel/Control/PanelContainer"]
 visible = false
@@ -2420,10 +2545,10 @@ margin_right = 1310.0
 margin_bottom = 917.0
 
 [node name="timer" type="Label" parent="UI/infopanel/Control/PanelContainer"]
-margin_left = -302.0
-margin_top = 378.0
-margin_right = 1138.0
-margin_bottom = 435.0
+margin_left = -226.0
+margin_top = 382.0
+margin_right = 1214.0
+margin_bottom = 439.0
 rect_pivot_offset = Vector2( 2291, -89 )
 custom_fonts/font = SubResource( 85 )
 text = "Timer"
@@ -2435,9 +2560,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -334.0
+margin_left = -395.0
 margin_top = 71.5
-margin_right = 330.0
+margin_right = 391.0
 margin_bottom = 203.5
 rect_pivot_offset = Vector2( 380, 0 )
 theme = ExtResource( 30 )
@@ -2451,9 +2576,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -347.0
+margin_left = -504.0
 margin_top = 215.0
-margin_right = -174.0
+margin_right = -331.0
 margin_bottom = 246.0
 rect_scale = Vector2( 2.5, 2.5 )
 rect_pivot_offset = Vector2( 87.5, 15 )
@@ -2547,20 +2672,20 @@ text = "Width"
 [node name="color2" type="Label" parent="UI/infopanel/Control"]
 unique_name_in_owner = true
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 623.0
-margin_top = 412.0
-margin_right = 2063.0
-margin_bottom = 469.0
+margin_left = 1265.0
+margin_top = 417.0
+margin_right = 1493.0
+margin_bottom = 474.0
 rect_pivot_offset = Vector2( 1796, -70 )
 custom_fonts/font = SubResource( 85 )
 text = "Color: "
 align = 1
 
 [node name="color" type="HBoxContainer" parent="UI/infopanel/Control"]
-margin_left = 1072.0
-margin_top = 515.0
-margin_right = 1755.0
-margin_bottom = 680.0
+margin_left = 1108.0
+margin_top = 520.0
+margin_right = 1791.0
+margin_bottom = 685.0
 rect_scale = Vector2( 0.75, 0.75 )
 custom_constants/separation = 79
 __meta__ = {
@@ -2599,11 +2724,77 @@ text = "                                                                        
 [node name="done" type="Button" parent="UI/infopanel/Control"]
 modulate = Color( 0.113725, 1, 0, 1 )
 anchor_right = 1.0
-margin_left = 1089.0
-margin_top = 753.0
-margin_right = -542.0
-margin_bottom = 885.0
+margin_left = 943.0
+margin_top = 751.0
+margin_right = -471.0
+margin_bottom = 883.0
 rect_scale = Vector2( 1.5, 1.5 )
+theme = ExtResource( 30 )
+text = "DONE"
+
+[node name="description" type="Button" parent="UI/infopanel/Control"]
+modulate = Color( 1, 0.470588, 0, 1 )
+anchor_right = 1.0
+margin_left = 1449.0
+margin_top = 213.0
+margin_right = -164.0
+margin_bottom = 345.0
+theme = ExtResource( 30 )
+text = "Desc."
+
+[node name="desc" type="Control" parent="UI/infopanel/Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 960, 0 )
+
+[node name="infopanel" type="ColorRect" parent="UI/infopanel/Control/desc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PanelContainer" type="Panel" parent="UI/infopanel/Control/desc"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -727.0
+margin_top = -425.0
+margin_right = 727.0
+margin_bottom = 425.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 727, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 30 )
+
+[node name="description" type="TextEdit" parent="UI/infopanel/Control/desc/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+margin_left = 116.0
+margin_top = 90.0
+margin_right = 1352.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 30 )
+wrap_enabled = true
+script = ExtResource( 37 )
+LIMIT = 255
+
+[node name="descdone" type="Button" parent="UI/infopanel/Control/desc/PanelContainer"]
+modulate = Color( 0.113725, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.5
+margin_top = 188.0
+margin_right = 144.5
+margin_bottom = 320.0
 theme = ExtResource( 30 )
 text = "DONE"
 
@@ -2732,6 +2923,7 @@ unique_name_in_owner = true
 reset_on_save = false
 playback_speed = 2.0
 anims/RESET = SubResource( 91 )
+anims/desc = SubResource( 121 )
 anims/info = SubResource( 120 )
 anims/menu = SubResource( 92 )
 anims/mode = SubResource( 93 )
@@ -2803,6 +2995,13 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/infopanel/Control/done" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/infopanel/Control/done" to="." method="_exited"]
 [connection signal="pressed" from="UI/infopanel/Control/done" to="." method="_on_done_pressed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/description" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/description" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/description" to="." method="_on_description_pressed"]
+[connection signal="text_changed" from="UI/infopanel/Control/desc/PanelContainer/description" to="UI/infopanel/Control/desc/PanelContainer/description" method="_on_TextEdit_text_changed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_on_descdone_pressed"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]

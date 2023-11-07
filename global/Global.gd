@@ -13,6 +13,8 @@ var playerCameraTop : Camera
 var playerCanMove = true
 var playerInteractLbl : Control
 
+var playerInEditor = false
+
 # For QR Code
 var qr_text: String = "text"
 var error_correction_level: int = 0
@@ -40,3 +42,10 @@ func _input(event):
 		var ro = get_node("/root")
 		Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
 	
+func _scene_IN():
+	TransitionNode.animation_player.play("in")
+	yield(get_tree().create_timer(1), "timeout")
+
+func _scene_OUT():
+	TransitionNode.animation_player.play("out")
+	yield(get_tree().create_timer(1), "timeout")
