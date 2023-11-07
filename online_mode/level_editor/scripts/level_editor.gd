@@ -45,6 +45,7 @@ func _exited():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.editor_mode = "menu"
 	Global.on_save_load = true
 	grid = Global.grid
 	grid_out = Global.grid_out
@@ -81,13 +82,17 @@ func on_timeout_complete():
 func _on_Virtual_joystick_gui_input():
 	pass # Replace with function body.
 
+var last_mode = "place"
 
 func _on_info_pressed():
+	last_mode = Global.editor_mode
+	Global.editor_mode = "menu"
 	infopanel.set_visible(true)
 	Global.on_save_load = true
 	menu_animations.play_backwards("info")
 
 func _on_done_pressed():
+	Global.editor_mode = last_mode
 	menu_animations.play("info")
 	yield(menu_animations, "animation_finished")
 	infopanel.set_visible(false)

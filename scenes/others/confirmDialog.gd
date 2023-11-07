@@ -10,7 +10,11 @@ onready var ok = $ColorRect2/Control/ColorRect/MarginContainer/VBoxContainer/ok
 
 export(String, "Confirm Dialog", "OK Dialog") var mode = "Confirm Dialog"
 
+var last_mode = "place"
+
 func _ready():
+	last_mode = Global.editor_mode
+	Global.editor_mode = "menu"
 	match mode:
 		"Confirm Dialog":
 			ok.set_visible(false)
@@ -21,6 +25,7 @@ func _ready():
 
 #OK DIALOG
 func _on_okBtn_pressed():
+	Global.editor_mode = last_mode
 	confirm_animation.play("outro")
 	yield(confirm_animation, "animation_finished")
 	hide()
@@ -32,8 +37,10 @@ func _process(delta):
 	#color_rect_2.set_pivot_offset(color_rect_2.rect_size/2)
 
 
+
 #CONFIRM DIALOG
 func _on_confirm_pressed():
+	Global.editor_mode = last_mode
 	confirm_animation.play("outro")
 	yield(confirm_animation, "animation_finished")
 	hide()
@@ -41,6 +48,7 @@ func _on_confirm_pressed():
 	action = ""
 
 func _on_cancel_pressed():
+	Global.editor_mode = last_mode
 	confirm_animation.play("outro")
 	yield(confirm_animation, "animation_finished")
 	hide()

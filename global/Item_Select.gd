@@ -5,7 +5,7 @@ onready var current_label = get_node("preview/previewLbl")
 onready var table = $TabContainer/Furniture/ScrollContainer/MarginContainer/GridContainer/table
 
 func _on_Done_pressed():
-	get_parent().get_parent().visible = false
+	get_parent()._outro()
 	yield(get_tree().create_timer(0.2),"timeout")
 	Global.editor_mode = "place"
 	Global.just_onMenu = true
