@@ -142,12 +142,17 @@ func _on_router_close():
 		tasks_ui.get_child(0).pressed = false
 		
 func _on_cable_used():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(false)
 	inventory.ui_container.set_visible(false)
 	mobile_controls.buttons.set_visible(false)
+	yield(get_tree().create_timer(1), "timeout")
 	mobile_controls.cable_ui.set_visible(true)
 	tasks_ui.get_child(0).pressed = false
 
 func _on_cable_done():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(true)
 	inventory.ui_container.set_visible(true)
 	mobile_controls.buttons.set_visible(true)
 	tasks_ui.get_child(0).pressed = false

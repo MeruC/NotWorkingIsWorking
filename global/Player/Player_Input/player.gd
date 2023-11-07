@@ -416,6 +416,7 @@ func _on_InteractionArea_area_exited(area):
 		current_interactable = null
 
 func _on_cable_used( type ):
+	SignalManager.emit_signal("cable_used")
 	cabletype = type
 	match(type):
 		"straight_through":
@@ -430,7 +431,6 @@ func _on_cable_used( type ):
 	camera.rotation_degrees.y = 0
 	mode = "cable"
 	preview_parent.set_visible(true)
-	SignalManager.emit_signal("cable_used")
 	LevelGlobal.on_cable_mode = true
 	
 func _on_cable_cancel( type ):
