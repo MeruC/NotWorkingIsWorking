@@ -84,8 +84,8 @@ func _next():
 	
 
 func _on_reset_pressed():
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer2.stream = preload("res://resources/soundtrack/level/undo_click.wav")
+	$AudioStreamPlayer2.play()
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -99,8 +99,8 @@ func _on_reset_pressed():
 	type_label.text = "START CRIMPING"
 
 func _on_crimp_pressed():
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/crimp.wav")
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer2.stream = preload("res://resources/soundtrack/level/crimp.wav")
+	$AudioStreamPlayer2.play()
 	#yield($AudioStreamPlayer, "finished")
 	#$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/wire.wav")
 	# Pagkapress ng crimp pwedeng magkaron ng animated vid na pagccrimp ng cable -
@@ -146,7 +146,9 @@ func _on_crimp_pressed():
 						end = 1
 						_on_craft_complete("invalid")
 				"Invalid":
-					pass
+					type = "Invalid"
+					end = 1
+					_on_craft_complete("invalid")
 		elif end == 1:
 			if slot_textures == arrangement_A:
 				type = "T-568A"
@@ -157,12 +159,12 @@ func _on_crimp_pressed():
 			elif slot_textures == arrangement_B:
 				type = "T-568B"
 				type_label.text = type
-				end = 1
+				end = 2
 				_next()
 			else:
 				type = "Invalid"
 				type_label.text = type
-				end = 1
+				end = 2
 				_next()
 			
 		#game_over.visible = true
@@ -197,4 +199,9 @@ func _on_craft_complete(type):
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
 	SaveManager.save_game()
 	_on_start()
-	hide()
+	get_parent().set_visible(false)
+
+
+func _on_craft_pressed():
+	get_parent().set_visible(false)
+	SignalManager.emit_signal("craft_end")

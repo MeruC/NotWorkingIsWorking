@@ -59,9 +59,10 @@ func set_craft_button():
 
 # When crafting, remove the price tiems, adds the produces.
 func _on_craft_pressed():
-	$"%level6".set_visible(true)
+	$"%level6".get_parent().set_visible(true)
 	$"%level6"._on_start()
 	$"%level6".raise()
+	SignalManager.emit_signal("craft")
 	pass
 
 # Check to see if it's possible to craft after a change in the player/crafting inventories.

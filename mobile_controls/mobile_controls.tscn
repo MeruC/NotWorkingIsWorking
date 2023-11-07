@@ -14,6 +14,7 @@
 [ext_resource path="res://resources/Game buttons/touch/bagPressed.png" type="Texture" id=13]
 
 [node name="mobile_controls" type="CanvasLayer"]
+layer = 11
 script = ExtResource( 4 )
 
 [node name="joystick" parent="." instance=ExtResource( 2 )]

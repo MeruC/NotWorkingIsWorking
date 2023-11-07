@@ -100,6 +100,16 @@ func _ready():
 	SignalManager.connect( "cable_done", self, "_on_cable_done" )
 	SignalManager.connect( "router_open", self, "_on_router_open" )
 	SignalManager.connect( "router_close", self, "_on_router_close" )
+	SignalManager.connect( "craft", self, "_craft")
+	SignalManager.connect( "craft_end", self, "_craft_end")
+
+func _craft():
+	mobile_controls.set_visible(false)
+	Global.playerCanMove = false
+	
+func _craft_end():
+	mobile_controls.set_visible(true)
+	Global.playerCanMove = true
 
 func _on_pc_opened():
 	#player = main.get_node("Player")

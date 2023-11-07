@@ -42,6 +42,7 @@ font_data = ExtResource( 7 )
 font_data = ExtResource( 3 )
 
 [node name="tasks_ui" type="CanvasLayer"]
+layer = 12
 
 [node name="task_button" type="Button" parent="."]
 margin_left = 50.0
