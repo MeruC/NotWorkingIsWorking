@@ -41,6 +41,17 @@ func _on_Save_pressed():
 	play.set_visible(false)
 	ui.set_visible(false)
 	Global.can_place = false
+	#self.deselect_items()
+	#self.current_dir = "user://saved_levels/"
+	#self.current_file = ""
+	#var thisFD = get_node("/root/editor/UI/editor/FileDialog/FileDialog")
+	#for n in thisFD.get_children():
+	#	if n is VBoxContainer:
+	#		var j = n.get_child(n.get_child_count()-1)
+	#		var i = j.get_child(1)
+	#		print(i.text)
+	#		i.text = level.level_name + ".tscn"		
+	#self.current_file = level.level_name + ".tscn"
 	popup.mode = 4
 	popup.popup()
 	pass # Replace with function body.

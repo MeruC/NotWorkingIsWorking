@@ -1,5 +1,7 @@
 extends Spatial
 
+var level_name = "MyLevel"
+
 var player
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
