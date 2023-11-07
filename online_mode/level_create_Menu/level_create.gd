@@ -46,6 +46,8 @@ func _on_create_pressed():
 	Global.d = cur_d
 	Global.grid = grid
 	Global.grid_out = grid_out
+	TransitionNode.animation_player.play("out")
+	yield(get_tree().create_timer(1), "timeout")
 	Load.load_scene(self, level_editor)
 
 

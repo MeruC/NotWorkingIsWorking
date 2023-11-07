@@ -1,6 +1,7 @@
 extends Spatial
 
 var level_name = "MyLevel"
+var level_desc = "Set a description for your level!"
 
 var player
 onready var inventory = $inventory
