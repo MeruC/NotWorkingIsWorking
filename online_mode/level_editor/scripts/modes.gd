@@ -116,6 +116,8 @@ func _on_remove_pressed():
 	menu_animations.play_backwards("mode")
 
 func _on_play_pressed():
+	joystick_editor.use_input_actions = true
+	joystick_editor.set_visible(true)
 	$"../file/menu".pressed = false
 	$"%MenuAnimations".play_backwards("menu")
 	inventory = main.get_node("level/inventory")
@@ -187,6 +189,8 @@ func _on_select_pressed():
 	menu_animations.play_backwards("mode")
 	
 func _on_uploadVerify():
+	joystick_editor.use_input_actions = true
+	joystick_editor.set_visible(true)
 	$"../file/menu".pressed = false
 	$"%MenuAnimations".play_backwards("menu")
 	level = get_node("/root/editor/level")

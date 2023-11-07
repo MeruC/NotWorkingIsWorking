@@ -63,7 +63,6 @@ func _ready():
 	floormesh.set_material(Global.grid)
 	wall.set_material(Global.grid_out)
 	color_2.text = ("Color: " + Global.color)
-	
 	var dir = Directory.new()
 	if not dir.dir_exists( SAVE_FOLDER ):
 		dir.make_dir_recursive( SAVE_FOLDER )
@@ -142,3 +141,10 @@ func _on_descdone_pressed():
 	menu_animations.play_backwards("desc")
 	yield(menu_animations, "animation_finished")
 	desc.set_visible(false)
+
+
+func _on_mainmenu_pressed():
+	ConfirmDialog.set_visible(true)
+	ConfirmDialog.confirm_animation.play("intro")
+	ConfirmDialog.label.text = "Return to Main Menu?"
+	ConfirmDialog.action = "main_menu"

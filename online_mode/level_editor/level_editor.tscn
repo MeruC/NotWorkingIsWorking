@@ -2051,10 +2051,10 @@ rect_pivot_offset = Vector2( 119, 35 )
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI/editor/file"]
-margin_left = -580.0
-margin_top = -1157.0
-margin_right = 1376.0
-margin_bottom = -569.0
+margin_left = -348.0
+margin_top = -1355.0
+margin_right = 1608.0
+margin_bottom = -767.0
 rect_rotation = 34.7386
 color = Color( 0, 0, 0, 1 )
 
@@ -2076,7 +2076,7 @@ anchor_right = 1.0
 margin_left = 404.0
 margin_top = -204.0
 margin_right = -555.0
-margin_bottom = -52.0001
+margin_bottom = -52.0002
 rect_rotation = 2.26268
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
@@ -2116,9 +2116,9 @@ icon = SubResource( 14 )
 
 [node name="upload" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 420.0
+margin_left = 830.0
 margin_top = 36.0
-margin_right = 898.0
+margin_right = 1308.0
 margin_bottom = 210.0
 rect_rotation = 5.74959
 rect_scale = Vector2( 2, 2 )
@@ -2129,10 +2129,10 @@ text = "Upload"
 
 [node name="play" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 478.0
-margin_top = 144.0
-margin_right = 943.0
-margin_bottom = 359.0
+margin_left = 464.0
+margin_top = -346.0
+margin_right = 929.0
+margin_bottom = -131.0
 rect_rotation = 3.32205
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 65, 40 )
@@ -2481,13 +2481,23 @@ action_down = "down"
 
 [node name="info" type="Button" parent="UI"]
 anchor_right = 1.0
-margin_left = 1408.0
-margin_top = 907.0
-margin_right = 53.0001
-margin_bottom = 1075.0
+margin_left = 998.0
+margin_top = 898.0
+margin_right = -357.0
+margin_bottom = 1066.0
 rect_scale = Vector2( 0.8, 0.8 )
 theme = ExtResource( 30 )
 text = "LEVEL INFO"
+
+[node name="mainmenu" type="Button" parent="UI"]
+anchor_right = 1.0
+margin_left = 1501.0
+margin_top = 898.0
+margin_right = 146.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 30 )
+text = "MAIN MENU"
 
 [node name="infopanel" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
@@ -2989,6 +2999,9 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/info" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/info" to="." method="_exited"]
 [connection signal="pressed" from="UI/info" to="." method="_on_info_pressed"]
+[connection signal="mouse_entered" from="UI/mainmenu" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/mainmenu" to="." method="_exited"]
+[connection signal="pressed" from="UI/mainmenu" to="." method="_on_mainmenu_pressed"]
 [connection signal="pressed" from="UI/infopanel/Control/color/gray" to="." method="_on_gray_pressed"]
 [connection signal="pressed" from="UI/infopanel/Control/color/blue" to="." method="_on_blue_pressed"]
 [connection signal="pressed" from="UI/infopanel/Control/color/orange" to="." method="_on_orange_pressed"]
