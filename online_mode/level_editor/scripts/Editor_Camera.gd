@@ -17,11 +17,12 @@ func _ready():
 	t = false
 
 func _physics_process(delta: float) -> void:
-	var input_vector = get_input_vector()
-	var direction = get_direction(input_vector)
-	apply_friction(direction, delta)
-	apply_movement(input_vector, direction, delta)
-	velocity = move_and_slide(velocity, Vector3.UP) 
+	if !Global.on_save_load:
+		var input_vector = get_input_vector()
+		var direction = get_direction(input_vector)
+		apply_friction(direction, delta)
+		apply_movement(input_vector, direction, delta)
+		velocity = move_and_slide(velocity, Vector3.UP) 
 	#print(self.translation)
 
 #Getting The Input

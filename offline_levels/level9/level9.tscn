@@ -516,9 +516,8 @@ onready var submit_button
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
+export(NodePath) onready var score = get_node(score) as Label
 export(Resource) onready var settings_data
-			
-			
 func _on_submit_button_pressed():
 	submit_popup.visible = true
 
@@ -527,10 +526,12 @@ func _on_yes_button_pressed():
 	gameover_popup.visible = true
 	animationplayer.play(\"win\")
 	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+	var points = 30
+	score.text = \"Your Score: \" + str(points)
 	celebrate.visible = true
 	settings_data.level9 = 30
-	settings_data.coins += 100
-	settings_data.net2_skills += 30
+	settings_data.gold_coins += 100
+	settings_data.net2_skills += 50
 
 
 func _on_tap_pressed():
@@ -834,8 +835,10 @@ script = SubResource( 60 )
 crowns = NodePath("../popups/game_over/main_popup/crowns")
 animationplayer = NodePath("../popups/game_over/AnimationPlayer")
 celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
+score = NodePath("../popups/game_over/main_popup/score")
 settings_data = ExtResource( 3 )
 
+[connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="manager" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
 

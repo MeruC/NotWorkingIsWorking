@@ -22,8 +22,8 @@ func get_use_text():
 
 # Apply the healing.
 func execute():
-	#Global.player._on_cable_used( cable_type )
-	print("Place")
+	SignalManager.emit_signal("crimp")
+	#print("Place")
 
 
 

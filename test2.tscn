@@ -60,14 +60,42 @@ material = ExtResource( 2 )
 [node name="tasks_ui" parent="." instance=ExtResource( 6 )]
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 596.0
+margin_bottom = 3076.0
 
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
 visible = false
 
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+margin_top = 516.0
+margin_bottom = 724.0
+
 [node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
-margin_top = 429.0
-margin_bottom = 521.0
+margin_top = 774.0
+margin_bottom = 1078.0
+
+[node name="task6" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="5"]
+margin_top = 1128.0
+margin_bottom = 1432.0
+
+[node name="task7" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="6"]
+margin_top = 1482.0
+margin_bottom = 1786.0
+
+[node name="task8" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="7"]
+margin_top = 1836.0
+margin_bottom = 2140.0
+
+[node name="task9" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="8"]
+margin_top = 2190.0
+margin_bottom = 2494.0
+
+[node name="task10" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="9"]
+margin_top = 2544.0
+margin_bottom = 2848.0
+
+[node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
+margin_top = 2898.0
+margin_bottom = 3076.0
 
 [node name="inventory" parent="." instance=ExtResource( 4 )]
 

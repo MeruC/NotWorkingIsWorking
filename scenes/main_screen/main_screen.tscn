@@ -155,7 +155,10 @@ func _on_btn_down_pressed():
 			online_btn.disabled = true
 			shop_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
-			quick_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				quick_btn.disabled = false
+			else:
+				quick_btn.disabled = true
 			current += 1
 			btn_down.disabled = false
 			btn_up.disabled = false
@@ -166,7 +169,10 @@ func _on_btn_down_pressed():
 			quick_btn.disabled = true
 			dict_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
-			shop_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				shop_btn.disabled = false
+			else:
+				shop_btn.disabled = true
 			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
@@ -252,7 +258,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			quick_btn.set_visible(false)
 			online_btn.disabled = true
-			
 			quit_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
@@ -282,18 +287,23 @@ func _on_btn_up_pressed():
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
 			btn_up.disabled = false
-			quick_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				quick_btn.disabled = false
+			else:
+				quick_btn.disabled = true
 			btn_down.disabled = false
 		4:
 			btn_down.disabled = true
 			btn_up.disabled = true
 			user_btn.set_visible(false)
 			dict_btn.disabled = true
-			
 			quick_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
-			shop_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				shop_btn.disabled = false
+			else:
+				shop_btn.disabled = true
 			btn_up.disabled = false
 			btn_down.disabled = false
 		5:
@@ -312,7 +322,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			quit_btn_2.set_visible(false)
 			settings_btn.disabled = true
-			
 			dict_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
@@ -324,7 +333,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			offline_btn_2.set_visible(false)
 			quit_btn_2.disabled = true
-			
 			user_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
@@ -3059,15 +3067,15 @@ rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 650.0
+margin_right = 3884.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ui_quick/CenterContainer"]
-margin_left = 657.0
-margin_right = 1307.0
+margin_left = 1617.0
+margin_right = 2267.0
 margin_bottom = 1473.0
 mouse_filter = 2
 custom_constants/margin_top = 30

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=150 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -34,61 +34,13 @@
 [ext_resource path="res://resources/Shaders/drop_shadow.gdshader" type="Shader" id=32]
 [ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=33]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=34]
-
-[sub_resource type="ShaderMaterial" id=44]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( -5, -5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ViewportTexture" id=45]
-viewport_path = NodePath("UI/editor/Item_Select_Menu/Item_Select_Menu/Item_Select/Viewport")
-
-[sub_resource type="ShaderMaterial" id=46]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( 5, -5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ShaderMaterial" id=47]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( 5, 5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="ShaderMaterial" id=48]
-shader = ExtResource( 32 )
-shader_param/offset = Vector2( -5, 5 )
-shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
-
-[sub_resource type="DynamicFont" id=52]
-size = 44
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 28 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-content_margin_left = 15.0
-content_margin_right = 15.0
-content_margin_top = 15.0
-content_margin_bottom = 15.0
-bg_color = Color( 0.392157, 0.784314, 1, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=49]
-size = 30
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 28 )
-
-[sub_resource type="Theme" id=53]
-default_font = SubResource( 49 )
-Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/fonts/font = SubResource( 52 )
-Label/styles/normal = SubResource( 11 )
-
-[sub_resource type="CameraTexture" id=14]
+[ext_resource path="res://resources/icons/OptionsA.png" type="Texture" id=35]
+[ext_resource path="res://online_mode/level_editor/menu.gd" type="Script" id=36]
+[ext_resource path="res://online_mode/level_editor/TextEdit.gd" type="Script" id=37]
+[ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=39]
+[ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=40]
+[ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=41]
+[ext_resource path="res://demo/visuals/fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=42]
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -96,41 +48,39 @@ font_data = ExtResource( 28 )
 
 [sub_resource type="StyleBoxEmpty" id=36]
 
-[sub_resource type="StyleBoxFlat" id=38]
-content_margin_left = 6.0
+[sub_resource type="StyleBoxFlat" id=56]
+content_margin_left = 387.0
 content_margin_right = 169.0
-content_margin_top = 72.0
-content_margin_bottom = 9.0
+content_margin_top = 150.0
+content_margin_bottom = 100.0
 bg_color = Color( 0, 0.741176, 1, 1 )
-skew = Vector2( -0.159, -0.273 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+skew = Vector2( -0.4, -0.35 )
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
 border_color = Color( 0, 0, 0, 1 )
 expand_margin_left = 853.0
-expand_margin_right = 384.0
-expand_margin_top = 75.0
-expand_margin_bottom = 135.0
+expand_margin_right = 310.0
+expand_margin_top = 234.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="StyleBoxFlat" id=41]
-content_margin_left = 6.0
+[sub_resource type="StyleBoxFlat" id=57]
+content_margin_left = 387.0
 content_margin_right = 169.0
-content_margin_top = 72.0
-content_margin_bottom = 9.0
+content_margin_top = 150.0
+content_margin_bottom = 90.0
 bg_color = Color( 0, 0.34902, 0.47451, 1 )
-skew = Vector2( -0.159, -0.273 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+skew = Vector2( -0.4, -0.35 )
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
 border_color = Color( 0, 0, 0, 1 )
 expand_margin_left = 853.0
-expand_margin_right = 384.0
-expand_margin_top = 75.0
-expand_margin_bottom = 135.0
+expand_margin_right = 310.0
+expand_margin_top = 234.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_offset = Vector2( 20, 20 )
 
@@ -281,6 +231,140 @@ bg_color = Color( 0, 0, 0, 1 )
 border_width_right = 25
 border_color = Color( 0, 0, 0, 0.392157 )
 
+[sub_resource type="Theme" id=58]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 40 )
+Button/styles/focus = SubResource( 36 )
+Button/styles/hover = SubResource( 56 )
+Button/styles/normal = SubResource( 56 )
+Button/styles/pressed = SubResource( 57 )
+HSlider/icons/grabber = SubResource( 9 )
+HSlider/icons/grabber_disabled = SubResource( 9 )
+HSlider/icons/grabber_highlight = SubResource( 9 )
+HSlider/icons/tick = SubResource( 9 )
+HSlider/styles/grabber_area = SubResource( 7 )
+HSlider/styles/grabber_area_highlight = SubResource( 7 )
+HSlider/styles/slider = SubResource( 8 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 10 )
+LineEdit/styles/normal = SubResource( 10 )
+PanelContainer/styles/panel = ExtResource( 29 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 1 )
+ProgressBar/styles/bg = SubResource( 2 )
+ProgressBar/styles/fg = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 12 )
+TabContainer/styles/panel = ExtResource( 29 )
+TabContainer/styles/tab_bg = SubResource( 6 )
+TabContainer/styles/tab_fg = SubResource( 5 )
+VScrollBar/styles/grabber = SubResource( 33 )
+VScrollBar/styles/grabber_highlight = SubResource( 33 )
+VScrollBar/styles/grabber_pressed = SubResource( 33 )
+VScrollBar/styles/scroll = SubResource( 34 )
+
+[sub_resource type="CameraTexture" id=14]
+
+[sub_resource type="ShaderMaterial" id=44]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ViewportTexture" id=45]
+viewport_path = NodePath("UI/editor/Item_Select_Menu/Item_Select_Menu/Item_Select/Viewport")
+
+[sub_resource type="ShaderMaterial" id=46]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, -5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=47]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( 5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=48]
+shader = ExtResource( 32 )
+shader_param/offset = Vector2( -5, 5 )
+shader_param/modulate = Color( 0.392157, 0.784314, 1, 1 )
+
+[sub_resource type="DynamicFont" id=52]
+size = 44
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=49]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="Theme" id=53]
+default_font = SubResource( 49 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/fonts/font = SubResource( 52 )
+Label/styles/normal = SubResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+content_margin_left = 6.0
+content_margin_right = 169.0
+content_margin_top = 72.0
+content_margin_bottom = 9.0
+bg_color = Color( 0, 0.741176, 1, 1 )
+skew = Vector2( -0.159, -0.273 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 853.0
+expand_margin_right = 384.0
+expand_margin_top = 75.0
+expand_margin_bottom = 135.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+content_margin_left = 6.0
+content_margin_right = 169.0
+content_margin_top = 72.0
+content_margin_bottom = 9.0
+bg_color = Color( 0, 0.34902, 0.47451, 1 )
+skew = Vector2( -0.159, -0.273 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 853.0
+expand_margin_right = 384.0
+expand_margin_top = 75.0
+expand_margin_bottom = 135.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 20, 20 )
+
 [sub_resource type="Theme" id=39]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
@@ -392,14 +476,804 @@ func _on_confirm_pressed():
 size = 50
 font_data = ExtResource( 34 )
 
+[sub_resource type="DynamicFont" id=85]
+size = 50
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=59]
+size = 64
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=94]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0.337255, 0.317647, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxEmpty" id=61]
+
+[sub_resource type="StyleBoxFlat" id=35]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=95]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="ImageTexture" id=63]
+
+[sub_resource type="StyleBoxFlat" id=96]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=97]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=98]
+size = 60
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=99]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 1, 1, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=100]
+
+[sub_resource type="StyleBoxFlat" id=43]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=65]
+
+[sub_resource type="StyleBoxFlat" id=101]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 54
+outline_size = 1
+extra_spacing_top = 20
+extra_spacing_bottom = 20
+font_data = ExtResource( 28 )
+
+[sub_resource type="ImageTexture" id=102]
+
+[sub_resource type="StyleBoxFlat" id=103]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_left = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=104]
+content_margin_left = 40.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=105]
+size = 38
+font_data = ExtResource( 27 )
+
+[sub_resource type="StyleBoxFlat" id=106]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=107]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=108]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=67]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=109]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=110]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 59 )
+Button/styles/disabled = SubResource( 94 )
+Button/styles/focus = SubResource( 61 )
+Button/styles/hover = SubResource( 35 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 95 )
+HSlider/icons/grabber = SubResource( 63 )
+HSlider/icons/grabber_disabled = SubResource( 63 )
+HSlider/icons/grabber_highlight = SubResource( 63 )
+HSlider/icons/tick = SubResource( 63 )
+HSlider/styles/grabber_area = SubResource( 96 )
+HSlider/styles/grabber_area_highlight = SubResource( 96 )
+HSlider/styles/slider = SubResource( 97 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 98 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 59 )
+LineEdit/styles/focus = SubResource( 99 )
+LineEdit/styles/normal = SubResource( 99 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 59 )
+OptionButton/icons/arrow = SubResource( 100 )
+OptionButton/styles/disabled = SubResource( 43 )
+OptionButton/styles/focus = SubResource( 65 )
+OptionButton/styles/hover = SubResource( 101 )
+OptionButton/styles/normal = SubResource( 101 )
+OptionButton/styles/pressed = SubResource( 43 )
+Panel/styles/panel = ExtResource( 29 )
+PanelContainer/styles/panel = ExtResource( 29 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 42 )
+PopupMenu/fonts/font_separator = SubResource( 59 )
+PopupMenu/icons/checked = SubResource( 102 )
+PopupMenu/icons/radio_checked = SubResource( 102 )
+PopupMenu/icons/radio_unchecked = SubResource( 102 )
+PopupMenu/icons/submenu = SubResource( 102 )
+PopupMenu/icons/unchecked = SubResource( 102 )
+PopupMenu/styles/hover = SubResource( 103 )
+PopupMenu/styles/panel = SubResource( 104 )
+PopupMenu/styles/panel_disabled = SubResource( 103 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 105 )
+ProgressBar/styles/bg = SubResource( 106 )
+ProgressBar/styles/fg = SubResource( 66 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 107 )
+TabContainer/styles/panel = ExtResource( 29 )
+TabContainer/styles/tab_bg = SubResource( 95 )
+TabContainer/styles/tab_fg = SubResource( 108 )
+VScrollBar/styles/grabber = SubResource( 67 )
+VScrollBar/styles/grabber_highlight = SubResource( 67 )
+VScrollBar/styles/grabber_pressed = SubResource( 67 )
+VScrollBar/styles/scroll = SubResource( 109 )
+
+[sub_resource type="DynamicFont" id=84]
+size = 60
+font_data = ExtResource( 34 )
+
+[sub_resource type="GDScript" id=86]
+script/source = "extends OptionButton
+
+onready var option_button = $\".\"
+
+func _ready():
+	_add_items()
+
+func _add_items():
+	option_button.add_item(\"5:00\")
+	option_button.add_item(\"10:00\")
+	option_button.add_item(\"15:00\")
+	option_button.add_item(\"30:00\")
+	option_button.add_item(\"60:00\")
+"
+
+[sub_resource type="DynamicFont" id=29]
+size = 64
+outline_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+extra_spacing_top = 12
+extra_spacing_bottom = 6
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxTexture" id=87]
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 0, 296.674, 79 )
+margin_left = 32.0956
+margin_right = 38.2788
+margin_top = 8.95609
+margin_bottom = 15.1124
+modulate_color = Color( 1, 0.588235, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=88]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 296, 79 )
+margin_left = 41.3694
+margin_right = 37.4199
+margin_top = 18.4803
+margin_bottom = 10.5574
+
+[sub_resource type="DynamicFont" id=30]
+size = 33
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 42 )
+
+[sub_resource type="StyleBoxFlat" id=111]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0.109804, 1, 1 )
+
+[sub_resource type="Theme" id=89]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 0.54902, 0.54902, 0.54902, 1 )
+Button/fonts/font = SubResource( 29 )
+Button/styles/hover = SubResource( 87 )
+Button/styles/normal = SubResource( 87 )
+Button/styles/pressed = SubResource( 88 )
+LineEdit/colors/font_color = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 30 )
+LineEdit/styles/normal = SubResource( 111 )
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 0.29 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 6
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = null
+
+[sub_resource type="DynamicFont" id=90]
+size = 102
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=112]
+size = 64
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=60]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 1, 1, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxEmpty" id=113]
+
+[sub_resource type="StyleBoxFlat" id=62]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=114]
+
+[sub_resource type="StyleBoxFlat" id=68]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=69]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=70]
+size = 60
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=64]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=71]
+
+[sub_resource type="StyleBoxFlat" id=115]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=116]
+
+[sub_resource type="StyleBoxFlat" id=72]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=117]
+size = 54
+outline_size = 1
+extra_spacing_top = 20
+extra_spacing_bottom = 20
+font_data = ExtResource( 28 )
+
+[sub_resource type="ImageTexture" id=73]
+
+[sub_resource type="StyleBoxFlat" id=74]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_left = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=75]
+content_margin_left = 40.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=76]
+size = 38
+font_data = ExtResource( 27 )
+
+[sub_resource type="StyleBoxFlat" id=77]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=118]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=78]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
+[sub_resource type="StyleBoxFlat" id=79]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=80]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=119]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=81]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=82]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 112 )
+Button/styles/disabled = SubResource( 60 )
+Button/styles/focus = SubResource( 113 )
+Button/styles/hover = SubResource( 60 )
+Button/styles/normal = SubResource( 60 )
+Button/styles/pressed = SubResource( 62 )
+HSlider/icons/grabber = SubResource( 114 )
+HSlider/icons/grabber_disabled = SubResource( 114 )
+HSlider/icons/grabber_highlight = SubResource( 114 )
+HSlider/icons/tick = SubResource( 114 )
+HSlider/styles/grabber_area = SubResource( 68 )
+HSlider/styles/grabber_area_highlight = SubResource( 68 )
+HSlider/styles/slider = SubResource( 69 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 70 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = SubResource( 112 )
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 64 )
+LineEdit/styles/normal = SubResource( 64 )
+LineEdit/styles/read_only = null
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 112 )
+OptionButton/icons/arrow = SubResource( 71 )
+OptionButton/styles/disabled = SubResource( 115 )
+OptionButton/styles/focus = SubResource( 116 )
+OptionButton/styles/hover = SubResource( 72 )
+OptionButton/styles/normal = SubResource( 72 )
+OptionButton/styles/pressed = SubResource( 115 )
+Panel/styles/panel = ExtResource( 29 )
+PanelContainer/styles/panel = ExtResource( 29 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 117 )
+PopupMenu/fonts/font_separator = SubResource( 112 )
+PopupMenu/icons/checked = SubResource( 73 )
+PopupMenu/icons/radio_checked = SubResource( 73 )
+PopupMenu/icons/radio_unchecked = SubResource( 73 )
+PopupMenu/icons/submenu = SubResource( 73 )
+PopupMenu/icons/unchecked = SubResource( 73 )
+PopupMenu/styles/hover = SubResource( 74 )
+PopupMenu/styles/panel = SubResource( 75 )
+PopupMenu/styles/panel_disabled = SubResource( 74 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 76 )
+ProgressBar/styles/bg = SubResource( 77 )
+ProgressBar/styles/fg = SubResource( 118 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 78 )
+TabContainer/styles/panel = ExtResource( 29 )
+TabContainer/styles/tab_bg = SubResource( 79 )
+TabContainer/styles/tab_fg = SubResource( 80 )
+VScrollBar/styles/grabber = SubResource( 119 )
+VScrollBar/styles/grabber_highlight = SubResource( 119 )
+VScrollBar/styles/grabber_pressed = SubResource( 119 )
+VScrollBar/styles/scroll = SubResource( 81 )
+
+[sub_resource type="DynamicFont" id=83]
+size = 1
+
 [sub_resource type="PlaneMesh" id=51]
 
 [sub_resource type="BoxShape" id=13]
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=91]
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -409,7 +1283,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -419,7 +1293,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -429,7 +1303,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -439,7 +1313,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -449,7 +1323,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -478,12 +1352,501 @@ tracks/7/keys = {
 "points": PoolRealArray( 214, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("UI/editor/file/menu/New:rect_position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/keys = {
+"points": PoolRealArray( -146, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("UI/editor/file/menu/New:rect_position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( -204, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("UI/editor/file/menu/Load:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/keys = {
+"points": PoolRealArray( -222, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("UI/editor/file/menu/Load:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -178, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("UI/editor/file/menu/Save:rect_position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = false
+tracks/12/keys = {
+"points": PoolRealArray( -246, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("UI/editor/file/menu/Save:rect_position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -216, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("UI/editor/file/menu/upload:rect_position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 420, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("UI/editor/file/menu/upload:rect_position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 36, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("UI/editor/file/menu/play:rect_position:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 478, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("UI/editor/file/menu/play:rect_position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 144, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("UI/editor/file/ColorRect:rect_position:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( -580, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("UI/editor/file/ColorRect:rect_position:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( -1157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/20/type = "bezier"
+tracks/20/path = NodePath("UI/infopanel:color:r")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/21/type = "bezier"
+tracks/21/path = NodePath("UI/infopanel:color:g")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/22/type = "bezier"
+tracks/22/path = NodePath("UI/infopanel:color:b")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("UI/infopanel:color:a")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( 0.686275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/24/type = "bezier"
+tracks/24/path = NodePath("UI/infopanel/Control:rect_scale:x")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("UI/infopanel/Control:rect_scale:y")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/26/type = "bezier"
+tracks/26/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:x")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/27/type = "bezier"
+tracks/27/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:y")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/28/type = "bezier"
+tracks/28/path = NodePath("UI/infopanel/Control/desc/infopanel:color:r")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/29/type = "bezier"
+tracks/29/path = NodePath("UI/infopanel/Control/desc/infopanel:color:g")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/30/type = "bezier"
+tracks/30/path = NodePath("UI/infopanel/Control/desc/infopanel:color:b")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/31/type = "bezier"
+tracks/31/path = NodePath("UI/infopanel/Control/desc/infopanel:color:a")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
-[sub_resource type="Animation" id=42]
-resource_name = "mode"
+[sub_resource type="Animation" id=121]
+resource_name = "desc"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/infopanel/Control/desc/PanelContainer:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/infopanel/Control/desc/infopanel:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/infopanel/Control/desc/infopanel:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/infopanel/Control/desc/infopanel:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/infopanel/Control/desc/infopanel:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.686275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=120]
+resource_name = "info"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/infopanel/Control:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/infopanel/Control:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/infopanel:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/infopanel:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/infopanel:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/infopanel:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.686275, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=92]
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/editor/file/menu/New:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"points": PoolRealArray( -146, -0.25, 0, 0.25, 0, -146, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/editor/file/menu/New:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -204, -0.25, 0, 0.25, 0, 1214, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/editor/file/menu/Load:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"points": PoolRealArray( -222, -0.25, 0, 0.25, 0, -222, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/editor/file/menu/Load:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -178, -0.25, 0, 0.25, 0, 917, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/editor/file/menu/Save:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"points": PoolRealArray( -246, -0.25, 0, 0.25, 0, -246, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/editor/file/menu/Save:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -216, -0.25, 0, 0.25, 0, 568, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("UI/editor/file/menu/upload:rect_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 830, -0.25, 0, 0.25, 0, -1578, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("UI/editor/file/menu/upload:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 36, -0.25, 0, 0.25, 0, 52, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("UI/editor/file/menu/play:rect_position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 464, -0.25, 0, 0.25, 0, -596, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("UI/editor/file/menu/play:rect_position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( -346, -0.25, 0, 0.25, 0, 218, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("UI/editor/file/ColorRect:rect_position:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -348, -0.25, 0, 0.25, 0, -580, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("UI/editor/file/ColorRect:rect_position:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( -1355, -0.25, 0, 0.25, 0, -1157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=93]
 length = 0.6
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
+tracks/0/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -493,7 +1856,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.6 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
+tracks/1/path = NodePath("UI/editor/modes/modeMenu/removes:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -503,7 +1866,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
+tracks/2/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -513,7 +1876,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
+tracks/3/path = NodePath("UI/editor/modes/modeMenu/remove:rect_position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -523,7 +1886,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:x")
+tracks/4/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -533,7 +1896,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("UI/editor/modes/modeMenu/select:rect_position:y")
+tracks/5/path = NodePath("UI/editor/modes/modeMenu/rotate:rect_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -579,43 +1942,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="preview" type="Sprite" parent="UI/editor"]
-material = SubResource( 44 )
-position = Vector2( 116, 303 )
-scale = Vector2( 0.58366, 0.58366 )
-texture = SubResource( 45 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="TextureRect2" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 46 )
-position = Vector2( 0, -1.71332 )
-texture = SubResource( 45 )
-
-[node name="TextureRect4" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 47 )
-texture = SubResource( 45 )
-
-[node name="TextureRect5" type="Sprite" parent="UI/editor/preview"]
-material = SubResource( 48 )
-texture = SubResource( 45 )
-
-[node name="previewLbl" type="Label" parent="UI/editor/preview"]
-unique_name_in_owner = true
-anchor_right = 1.0
-margin_left = -211.867
-margin_top = -310.127
-margin_right = -311.867
-margin_bottom = -208.127
-input_pass_on_modal_close_click = false
-size_flags_vertical = 6
-theme = SubResource( 53 )
-text = "Current"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="rotate" type="Control" parent="UI/editor"]
 visible = false
@@ -724,40 +2050,94 @@ margin_bottom = -177.0
 rect_pivot_offset = Vector2( 119, 35 )
 mouse_filter = 2
 
-[node name="New" type="Button" parent="UI/editor/file"]
+[node name="ColorRect" type="ColorRect" parent="UI/editor/file"]
+margin_left = -348.0
+margin_top = -1355.0
+margin_right = 1608.0
+margin_bottom = -767.0
+rect_rotation = 34.7386
+color = Color( 0, 0, 0, 1 )
+
+[node name="menu" type="Button" parent="UI/editor/file"]
+margin_left = -4.0
+margin_top = -361.0
+margin_right = 1436.0
+margin_bottom = 233.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = SubResource( 58 )
+toggle_mode = true
+icon = ExtResource( 35 )
+align = 0
+script = ExtResource( 36 )
+
+[node name="New" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_right = 1.0
-margin_left = 169.0
-margin_top = -82.0
-margin_right = 321.0
-margin_bottom = 50.0
+margin_left = 404.0
+margin_top = -204.0
+margin_right = -555.0
+margin_bottom = -52.0002
+rect_rotation = 2.26268
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
-text = "New "
+text = " New      "
 
-[node name="Load" type="Button" parent="UI/editor/file"]
+[node name="Load" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 129.0
-margin_top = 58.0
-margin_right = 321.0
-margin_bottom = 190.0
+margin_left = 320.0
+margin_top = -475.0
+margin_right = -684.0
+margin_bottom = -327.0
+rect_rotation = -0.683644
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
-text = "Load "
+text = "Load  "
 
-[node name="Save" type="Button" parent="UI/editor/file"]
+[node name="Save" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 112.0
-margin_top = 199.0
-margin_right = 319.0
-margin_bottom = 331.0
+margin_left = 247.928
+margin_top = -810.0
+margin_right = -728.072
+margin_bottom = -647.0
+rect_rotation = 3.90576
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
 text = "Save "
 icon = SubResource( 14 )
+
+[node name="upload" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
+margin_left = 830.0
+margin_top = 36.0
+margin_right = 1308.0
+margin_bottom = 210.0
+rect_rotation = 5.74959
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 30 )
+enabled_focus_mode = 0
+text = "Upload"
+
+[node name="play" type="Button" parent="UI/editor/file/menu"]
+show_behind_parent = true
+margin_left = 464.0
+margin_top = -346.0
+margin_right = 929.0
+margin_bottom = -131.0
+rect_rotation = 3.32205
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 65, 40 )
+theme = ExtResource( 30 )
+text = " Play  "
 
 [node name="Orphan" type="Button" parent="UI/editor/file"]
 visible = false
@@ -771,6 +2151,71 @@ rect_pivot_offset = Vector2( 119, 20 )
 theme = ExtResource( 30 )
 text = "Orphan"
 icon = SubResource( 14 )
+
+[node name="place" type="Control" parent="UI/editor"]
+margin_right = 87.0
+margin_bottom = 52.0
+script = ExtResource( 24 )
+objects_btn = NodePath("objects")
+current = NodePath("preview/previewLbl")
+objects_menu = NodePath("../Item_Select_Menu")
+
+[node name="preview" type="Sprite" parent="UI/editor/place"]
+material = SubResource( 44 )
+position = Vector2( 116, 303 )
+scale = Vector2( 0.58366, 0.58366 )
+texture = SubResource( 45 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect2" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 46 )
+position = Vector2( 0, -1.71332 )
+texture = SubResource( 45 )
+
+[node name="TextureRect4" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 47 )
+texture = SubResource( 45 )
+
+[node name="TextureRect5" type="Sprite" parent="UI/editor/place/preview"]
+material = SubResource( 48 )
+texture = SubResource( 45 )
+
+[node name="previewLbl" type="Label" parent="UI/editor/place/preview"]
+unique_name_in_owner = true
+anchor_right = 1.0
+margin_left = -211.867
+margin_top = -310.127
+margin_right = -311.867
+margin_bottom = -208.127
+input_pass_on_modal_close_click = false
+size_flags_vertical = 6
+theme = SubResource( 53 )
+text = "Current"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="objects" type="Button" parent="UI/editor/place"]
+anchor_right = 1.0
+margin_left = -39.0
+margin_top = -38.0
+margin_right = 296.0
+margin_bottom = 94.0
+theme = ExtResource( 30 )
+text = "OBJECTS"
+
+[node name="current_obj" type="Label" parent="UI/editor/place"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 76.0
+margin_right = 64.0
+margin_bottom = 90.0
+text = "Currently Selected: Null"
+valign = 1
 
 [node name="modes" type="Control" parent="UI/editor"]
 anchor_top = 1.0
@@ -791,25 +2236,6 @@ item_select = NodePath("../place")
 other_ui = NodePath("../../../other_ui")
 verify_ui = NodePath("../../../verify_ui")
 
-[node name="play" type="Button" parent="UI/editor/modes"]
-margin_left = 1630.0
-margin_top = -359.0
-margin_right = 1943.0
-margin_bottom = -227.0
-rect_pivot_offset = Vector2( 65, 40 )
-theme = ExtResource( 30 )
-text = "Play "
-
-[node name="upload" type="Button" parent="UI/editor/modes"]
-margin_left = 1172.0
-margin_top = -361.0
-margin_right = 1550.0
-margin_bottom = -229.0
-focus_mode = 0
-theme = ExtResource( 30 )
-enabled_focus_mode = 0
-text = "Upload"
-
 [node name="modeMenu" type="Button" parent="UI/editor/modes"]
 margin_left = -21.0
 margin_top = 508.0
@@ -821,7 +2247,7 @@ text = "Place"
 align = 0
 script = ExtResource( 26 )
 
-[node name="select" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -46.5583
 margin_top = 225.0
@@ -835,7 +2261,7 @@ custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = " Select "
+text = "Rotate"
 
 [node name="place" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
@@ -853,7 +2279,7 @@ custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
 text = " Place "
 
-[node name="rotate" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
 show_behind_parent = true
 margin_left = -66.5583
 margin_top = 282.0
@@ -867,9 +2293,10 @@ custom_styles/hover = SubResource( 16 )
 custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
 custom_styles/normal = SubResource( 16 )
-text = " Rotate "
+text = "Remove"
 
-[node name="remove" type="Button" parent="UI/editor/modes/modeMenu"]
+[node name="removes" type="Button" parent="UI/editor/modes/modeMenu"]
+visible = false
 show_behind_parent = true
 margin_left = -80.5583
 margin_top = 216.0
@@ -967,39 +2394,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="place" type="Control" parent="UI/editor"]
-margin_right = 87.0
-margin_bottom = 52.0
-script = ExtResource( 24 )
-objects_btn = NodePath("objects")
-current = NodePath("../preview/previewLbl")
-objects_menu = NodePath("../Item_Select_Menu")
-
-[node name="objects" type="Button" parent="UI/editor/place"]
-anchor_right = 1.0
-margin_left = -39.0
-margin_top = -38.0
-margin_right = 296.0
-margin_bottom = 94.0
-theme = ExtResource( 30 )
-text = "OBJECTS"
-
-[node name="current_obj" type="Label" parent="UI/editor/place"]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 76.0
-margin_right = 64.0
-margin_bottom = 90.0
-text = "Currently Selected: Null"
-valign = 1
-
 [node name="Item_Select_Menu" type="CanvasLayer" parent="UI/editor"]
 layer = 5
 visible = false
 
 [node name="Item_Select_Menu" parent="UI/editor/Item_Select_Menu" instance=ExtResource( 4 )]
+unique_name_in_owner = true
 margin_right = 26.0
 margin_bottom = 22.0
 
@@ -1070,14 +2470,343 @@ text = "confirm"
 unique_name_in_owner = true
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -323.0
-margin_top = -279.0
-margin_right = -123.0
-margin_bottom = -79.0
+margin_left = -314.0
+margin_top = -597.0
+margin_right = -114.0
+margin_bottom = -397.0
 action_left = "left"
 action_right = "right"
 action_up = "up"
 action_down = "down"
+
+[node name="info" type="Button" parent="UI"]
+anchor_right = 1.0
+margin_left = 998.0
+margin_top = 898.0
+margin_right = -357.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 30 )
+text = "LEVEL INFO"
+
+[node name="mainmenu" type="Button" parent="UI"]
+anchor_right = 1.0
+margin_left = 1501.0
+margin_top = 898.0
+margin_right = 146.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 30 )
+text = "MAIN MENU"
+
+[node name="infopanel" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.686275 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Control" type="Control" parent="UI/infopanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 960, 540 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PanelContainer" type="Panel" parent="UI/infopanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -901.0
+margin_top = -506.0
+margin_right = 901.0
+margin_bottom = 506.0
+theme = ExtResource( 30 )
+
+[node name="name" type="Label" parent="UI/infopanel/Control/PanelContainer"]
+margin_left = 10.0
+margin_top = 69.0
+margin_right = 1450.0
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 1796, -70 )
+custom_fonts/font = SubResource( 85 )
+text = "Name"
+align = 1
+
+[node name="nameLE" type="LineEdit" parent="UI/infopanel/Control/PanelContainer"]
+unique_name_in_owner = true
+margin_left = 173.0
+margin_top = 170.0
+margin_right = 1247.0
+margin_bottom = 333.0
+theme = SubResource( 110 )
+custom_fonts/font = SubResource( 84 )
+max_length = 24
+
+[node name="TextureRect3" type="TextureRect" parent="UI/infopanel/Control/PanelContainer"]
+visible = false
+margin_left = 170.0
+margin_top = 95.0
+margin_right = 1310.0
+margin_bottom = 917.0
+
+[node name="timer" type="Label" parent="UI/infopanel/Control/PanelContainer"]
+margin_left = -226.0
+margin_top = 382.0
+margin_right = 1214.0
+margin_bottom = 439.0
+rect_pivot_offset = Vector2( 2291, -89 )
+custom_fonts/font = SubResource( 85 )
+text = "Timer"
+align = 1
+
+[node name="timer" type="OptionButton" parent="UI/infopanel/Control/PanelContainer/timer"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -395.0
+margin_top = 71.5
+margin_right = 391.0
+margin_bottom = 203.5
+rect_pivot_offset = Vector2( 380, 0 )
+theme = ExtResource( 30 )
+text = "5:00"
+align = 1
+icon_align = 1
+script = SubResource( 86 )
+
+[node name="size2" type="Control" parent="UI/infopanel/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -504.0
+margin_top = 215.0
+margin_right = -331.0
+margin_bottom = 246.0
+rect_scale = Vector2( 2.5, 2.5 )
+rect_pivot_offset = Vector2( 87.5, 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="w" type="SpinBox" parent="UI/infopanel/Control/size2"]
+unique_name_in_owner = true
+anchor_bottom = 1.0
+margin_left = 66.5
+margin_top = -14.6667
+margin_right = 152.5
+margin_bottom = 4.33333
+rect_pivot_offset = Vector2( 37, 13 )
+theme = SubResource( 89 )
+min_value = 10.0
+max_value = 64.0
+step = 2.0
+value = 10.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/size2/w"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 5.0
+mouse_filter = 2
+color = Color( 0, 0.109804, 1, 1 )
+
+[node name="d" type="SpinBox" parent="UI/infopanel/Control/size2"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -106.167
+margin_top = 51.6667
+margin_right = -20.1667
+margin_bottom = 70.6667
+rect_pivot_offset = Vector2( 37, 11 )
+theme = ExtResource( 41 )
+min_value = 10.0
+max_value = 64.0
+step = 2.0
+value = 10.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/size2/d"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 5.0
+mouse_filter = 2
+color = Color( 1, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/size2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -123.867
+margin_top = -19.5
+margin_right = 333.133
+margin_bottom = 95.5
+rect_scale = Vector2( 0.2, 0.2 )
+rect_pivot_offset = Vector2( 4, 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 90 )
+text = "Length"
+align = 2
+
+[node name="Label2" type="Label" parent="UI/infopanel/Control/size2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -123.533
+margin_top = 47.5
+margin_right = 274.467
+margin_bottom = 162.5
+rect_scale = Vector2( 0.2, 0.2 )
+rect_pivot_offset = Vector2( 4, 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 90 )
+text = "Width"
+
+[node name="color2" type="Label" parent="UI/infopanel/Control"]
+unique_name_in_owner = true
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1265.0
+margin_top = 417.0
+margin_right = 1493.0
+margin_bottom = 474.0
+rect_pivot_offset = Vector2( 1796, -70 )
+custom_fonts/font = SubResource( 85 )
+text = "Color: "
+align = 1
+
+[node name="color" type="HBoxContainer" parent="UI/infopanel/Control"]
+margin_left = 1108.0
+margin_top = 520.0
+margin_right = 1791.0
+margin_bottom = 685.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_constants/separation = 79
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="gray" type="Button" parent="UI/infopanel/Control/color"]
+modulate = Color( 0.360784, 0.360784, 0.360784, 1 )
+margin_right = 175.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 113.932, 9.33118 )
+theme = SubResource( 82 )
+custom_fonts/font = SubResource( 83 )
+text = "                                                                                               "
+
+[node name="blue" type="Button" parent="UI/infopanel/Control/color"]
+modulate = Color( 0, 0.741176, 1, 1 )
+margin_left = 254.0
+margin_right = 429.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 113.932, 9.33118 )
+theme = SubResource( 82 )
+custom_fonts/font = SubResource( 83 )
+text = "                                                                                               "
+
+[node name="orange" type="Button" parent="UI/infopanel/Control/color"]
+modulate = Color( 1, 0.4, 0, 1 )
+margin_left = 508.0
+margin_right = 683.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 113.932, 9.33118 )
+theme = SubResource( 82 )
+custom_fonts/font = SubResource( 83 )
+text = "                                                                                               "
+
+[node name="done" type="Button" parent="UI/infopanel/Control"]
+modulate = Color( 0.113725, 1, 0, 1 )
+anchor_right = 1.0
+margin_left = 943.0
+margin_top = 751.0
+margin_right = -471.0
+margin_bottom = 883.0
+rect_scale = Vector2( 1.5, 1.5 )
+theme = ExtResource( 30 )
+text = "DONE"
+
+[node name="description" type="Button" parent="UI/infopanel/Control"]
+modulate = Color( 1, 0.470588, 0, 1 )
+anchor_right = 1.0
+margin_left = 1449.0
+margin_top = 213.0
+margin_right = -164.0
+margin_bottom = 345.0
+theme = ExtResource( 30 )
+text = "Desc."
+
+[node name="desc" type="Control" parent="UI/infopanel/Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 960, 0 )
+
+[node name="infopanel" type="ColorRect" parent="UI/infopanel/Control/desc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PanelContainer" type="Panel" parent="UI/infopanel/Control/desc"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -727.0
+margin_top = -425.0
+margin_right = 727.0
+margin_bottom = 425.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 727, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 30 )
+
+[node name="description" type="TextEdit" parent="UI/infopanel/Control/desc/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+margin_left = 116.0
+margin_top = 90.0
+margin_right = 1352.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 30 )
+wrap_enabled = true
+script = ExtResource( 37 )
+LIMIT = 255
+
+[node name="descdone" type="Button" parent="UI/infopanel/Control/desc/PanelContainer"]
+modulate = Color( 0.113725, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.5
+margin_top = 188.0
+margin_right = 144.5
+margin_bottom = 320.0
+theme = ExtResource( 30 )
+text = "DONE"
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
@@ -1203,8 +2932,11 @@ editor_camera = NodePath("../Editor_Camera")
 unique_name_in_owner = true
 reset_on_save = false
 playback_speed = 2.0
-anims/RESET = SubResource( 43 )
-anims/mode = SubResource( 42 )
+anims/RESET = SubResource( 91 )
+anims/desc = SubResource( 121 )
+anims/info = SubResource( 120 )
+anims/menu = SubResource( 92 )
+anims/mode = SubResource( 93 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 19 )
@@ -1219,35 +2951,41 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_mouse_exited"]
 [connection signal="popup_hide" from="UI/editor/FileDialog/FileDialog" to="UI/editor/FileDialog/FileDialog" method="_on_FileDialog_popup_hide"]
-[connection signal="mouse_entered" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
-[connection signal="mouse_entered" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/Load" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
-[connection signal="mouse_entered" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/file/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/file/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu" to="UI/editor/file/menu" method="_on_menu_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/New" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/New" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/New" to="UI/editor/FileDialog/FileDialog" method="_on_New_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/Load" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/Load" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/Load" to="UI/editor/FileDialog/FileDialog" method="_on_Load_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="pressed" from="UI/editor/file/menu/upload" to="UI/editor/modes" method="_on_uploadVerify"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_play_pressed"]
 [connection signal="pressed" from="UI/editor/file/Orphan" to="UI/editor/FileDialog/FileDialog" method="_on_Orphan_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/play" to="UI/editor/modes" method="_on_play_pressed"]
-[connection signal="pressed" from="UI/editor/modes/upload" to="UI/editor/modes" method="_on_uploadVerify"]
+[connection signal="mouse_entered" from="UI/editor/place/objects" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/editor/place/objects" to="." method="_exited"]
+[connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu" to="UI/editor/modes/modeMenu" method="_on_modeMenu_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/select" to="UI/editor/modes" method="_on_select_pressed"]
-[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
-[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_place_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/rotate" to="UI/editor/modes" method="_on_rotate_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/place" to="UI/editor/modes" method="_on_place_pressed"]
 [connection signal="mouse_entered" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/modes/modeMenu/remove" to="UI/editor/modes" method="_on_remove_pressed"]
+[connection signal="mouse_entered" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_modes_mouse_entered"]
+[connection signal="mouse_exited" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_modes_mouse_exited"]
+[connection signal="pressed" from="UI/editor/modes/modeMenu/removes" to="UI/editor/modes" method="_on_remove_pressed"]
 [connection signal="mouse_entered" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/up" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="mouse_entered" from="UI/editor/move/down" to="UI/editor/modes" method="_on_modes_mouse_entered"]
@@ -1256,13 +2994,30 @@ bus = "Music"
 [connection signal="mouse_exited" from="UI/editor/move/left" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="mouse_entered" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/move/right" to="UI/editor/modes" method="_on_modes_mouse_exited"]
-[connection signal="pressed" from="UI/editor/place/objects" to="UI/editor/place" method="_on_objects_pressed"]
 [connection signal="pressed" from="UI/editor/prompt_QR/confirm" to="UI/editor/prompt_QR" method="_on_confirm_pressed"]
 [connection signal="mouse_entered" from="UI/joystickEditor" to="." method="_on_Virtual_joystick_gui_input"]
+[connection signal="mouse_entered" from="UI/info" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/info" to="." method="_exited"]
+[connection signal="pressed" from="UI/info" to="." method="_on_info_pressed"]
+[connection signal="mouse_entered" from="UI/mainmenu" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/mainmenu" to="." method="_exited"]
+[connection signal="pressed" from="UI/mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="UI/infopanel/Control/color/gray" to="." method="_on_gray_pressed"]
+[connection signal="pressed" from="UI/infopanel/Control/color/blue" to="." method="_on_blue_pressed"]
+[connection signal="pressed" from="UI/infopanel/Control/color/orange" to="." method="_on_orange_pressed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/done" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/done" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/done" to="." method="_on_done_pressed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/description" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/description" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/description" to="." method="_on_description_pressed"]
+[connection signal="text_changed" from="UI/infopanel/Control/desc/PanelContainer/description" to="UI/infopanel/Control/desc/PanelContainer/description" method="_on_TextEdit_text_changed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_on_descdone_pressed"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
 
 [editable path="level/environment"]
-[editable path="level/tasks_ui"]

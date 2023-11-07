@@ -208,9 +208,8 @@ func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 
 func score_validation():
-	if settings_data.level2 == 5:
-		settings_data.level2 = score
-		SaveManager.save_game()
+	if settings_data.level2 > 0:
+		return
 	if settings_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true

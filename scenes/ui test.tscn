@@ -73,6 +73,7 @@ margin_right = 909.0
 margin_bottom = 521.0
 theme = ExtResource( 3 )
 access = 1
+show_hidden_files = true
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
@@ -147,6 +148,7 @@ text = "TEXT LINE EDIT"
 placeholder_text = "TEXTPLACEHOLDER"
 
 [node name="2" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0

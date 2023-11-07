@@ -19,7 +19,7 @@
 		"usable": {
 			"type": "equipment",
 			"data": {
-				"cooldown": 5,
+				"cooldown": 0,
 				"unlimited_use": true
 			}
 		}
@@ -59,6 +59,18 @@
 		"type": "MATERIAL",
 		"stack_size": 64,
 		"level": 1
+	},
+	"invalid": {
+		"name": "RJ45 Head",
+		"type": "CABLE",
+		"stack_size": 64,
+		"level": 1,
+		"usable": {
+			"type": "cable",
+			"data": {
+				"cable_type": "invalid"
+			}
+		}
 	},
 	"Console_Cable": {
 		"name": "Console Cable",

@@ -1046,6 +1046,10 @@ valign = 1
 stream = ExtResource( 19 )
 bus = "SFX"
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "SFX"
+
 [node name="instruction" type="Button" parent="."]
 margin_left = 1810.0
 margin_top = 971.0

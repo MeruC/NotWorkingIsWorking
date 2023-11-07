@@ -1,5 +1,8 @@
 extends Spatial
 
+var level_name = "MyLevel"
+var level_desc = "Set a description for your level!"
+
 var player
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
@@ -96,6 +99,16 @@ func _ready():
 	SignalManager.connect( "cable_done", self, "_on_cable_done" )
 	SignalManager.connect( "router_open", self, "_on_router_open" )
 	SignalManager.connect( "router_close", self, "_on_router_close" )
+	SignalManager.connect( "craft", self, "_craft")
+	SignalManager.connect( "craft_end", self, "_craft_end")
+
+func _craft():
+	mobile_controls.set_visible(false)
+	Global.playerCanMove = false
+	
+func _craft_end():
+	mobile_controls.set_visible(true)
+	Global.playerCanMove = true
 
 func _on_pc_opened():
 	#player = main.get_node("Player")
@@ -139,12 +152,17 @@ func _on_router_close():
 		tasks_ui.get_child(0).pressed = false
 		
 func _on_cable_used():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(false)
 	inventory.ui_container.set_visible(false)
 	mobile_controls.buttons.set_visible(false)
+	yield(get_tree().create_timer(1), "timeout")
 	mobile_controls.cable_ui.set_visible(true)
 	tasks_ui.get_child(0).pressed = false
 
 func _on_cable_done():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(true)
 	inventory.ui_container.set_visible(true)
 	mobile_controls.buttons.set_visible(true)
 	tasks_ui.get_child(0).pressed = false

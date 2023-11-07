@@ -13,8 +13,12 @@
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
+[sub_resource type="StreamTexture" id=26]
+flags = 2
+load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
+
 [sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 1 )
+texture = SubResource( 26 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
 [sub_resource type="StyleBoxFlat" id=27]
@@ -36,6 +40,7 @@ font_data = ExtResource( 7 )
 font_data = ExtResource( 3 )
 
 [node name="tasks_ui" type="CanvasLayer"]
+layer = 12
 
 [node name="task_button" type="Button" parent="."]
 margin_left = 50.0

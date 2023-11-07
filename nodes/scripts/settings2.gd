@@ -11,8 +11,8 @@ export( NodePath ) onready var pixelize_check = get_node( pixelize_check ) as Ch
 export( NodePath ) onready var master_vol_slider = get_node( master_vol_slider ) as HSlider
 export( NodePath ) onready var music_vol_slider = get_node( music_vol_slider ) as HSlider
 export( NodePath ) onready var sound_vol_slider = get_node( sound_vol_slider ) as HSlider
-onready var audio_loop_player = $AudioLoopPlayer
-onready var pixel_size = $"%pixel_size"
+#onready var audio_loop_player = $AudioLoopPlayer
+onready var pixel_size = $videoSubmenu/videoPanel/VBoxContainer/pixel_size
 onready var tween = $Tween
 
 
@@ -28,8 +28,8 @@ func _ready():
 	
 	SignalManager.connect( "ok", self, "_on_ok_pressed" )
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
-	audio_loop_player.play()
-	audio_loop_player.stream_paused = true
+	#audio_loop_player.play()
+	#audio_loop_player.stream_paused = true
 	settings_data.connect( "changed", self, "_on_data_changed" )
 	_on_data_changed()
 
@@ -79,13 +79,13 @@ func _on_video_pressed():
 func _on_music_pressed():
 	animation_player.play("music")
 	menu = 2
-
-func _on_resume_pressed():
+	
+func _on_resume_pressed2():
 	animation_player.play_backwards("intro")
 	get_tree().paused = false
 	yield(animation_player, "animation_finished")
-	audio_loop_player.stream_paused = true
-	audio_loop_player.stop()
+	#audio_loop_player.stream_paused = true
+	#audio_loop_player.stop()
 	Global.editor_mode = "play"
 	#audio_loop_player.playing = false
 	get_parent().hide()

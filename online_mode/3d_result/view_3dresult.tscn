@@ -89,9 +89,9 @@ func _http_request_completed(result, response_code, headers, body):
 	
 func display_table(data):
 	# Define your headers manually
-	headers = [\"filename\"]
+	headers = [\"filename\", \"level_name\"]
 	# Invert the sorted array to achieve descending order
-	header_display = [\"Level Code\"]
+	header_display = [\"Level Code\", \"Level Name\"]
 	data.invert()
 	# Clear the existing grid contents
 	clear_grid()
@@ -380,21 +380,24 @@ theme = ExtResource( 5 )
 text = "back"
 
 [node name="message" type="Label" parent="."]
-margin_left = 684.0
+margin_left = 639.0
 margin_top = 491.0
 margin_right = 1295.0
 margin_bottom = 533.0
 theme = ExtResource( 2 )
+align = 1
+valign = 1
 autowrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 644.0
-margin_top = 176.0
-margin_right = 1354.0
-margin_bottom = 931.0
+margin_left = 425.0
+margin_top = 138.0
+margin_right = 1626.0
+margin_bottom = 893.0
 scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+columns = 2
 
 [node name="result" type="CanvasLayer" parent="."]
 visible = false

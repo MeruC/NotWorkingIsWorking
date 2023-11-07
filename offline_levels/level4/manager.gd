@@ -213,10 +213,8 @@ func _on_restart_pressed():
 
 func score_validation():
 	
-	if settings_data.level4 == 5:
-		settings_data.level4 = score
-		SaveManager.save_game()
-		
+	if settings_data.level4 > 0:
+		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -252,8 +250,7 @@ func score_validation():
 			SaveManager.save_game()
 	else:
 		if score == 0:
-			pass
-			
+			return
 		elif score == 5:
 			settings_data.crowns+= 3
 			var current_coins = settings_data.gold_coins

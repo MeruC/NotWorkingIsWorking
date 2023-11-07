@@ -14,6 +14,7 @@ func _ready():
 	#if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7:
 	if $level9.visible == true:
 		$quick_game.disabled = false
+		$reset_time.visible = true
 	else:
 		$reset_time.visible = false
 		$quick_game.disabled = true

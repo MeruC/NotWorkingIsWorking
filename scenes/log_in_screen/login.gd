@@ -103,7 +103,6 @@ func _authenticate():
 	var data = {"username": username, "password": user_password}
 	request_queue.push_back({"command": command, "data": data})
 
-
-
-
-
+func _on_forgot_password_pressed():
+	$".".visible = false
+	$"../check_account".visible = true

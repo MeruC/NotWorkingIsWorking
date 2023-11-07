@@ -201,7 +201,7 @@ tracks/5/keys = {
 
 [node name="confirm" type="CanvasLayer"]
 pause_mode = 2
-layer = 20
+layer = 70
 visible = false
 script = ExtResource( 3 )
 

@@ -59,6 +59,7 @@ func _ready():
 	print("Current Level: " + str(current_level))
 	
 	if get_parent().name != "editor":
+		Global.playerInEditor = false
 		current_level = get_parent()
 		if settings_data.gender == "female":
 			
@@ -172,6 +173,7 @@ func _ready():
 				$"Pivot/walk/4".material_override = preload("res://resources/Models/Character skin boy/orange_shirt/idle/idle.png")
 	elif get_parent().name == "editor":
 		current_level = get_parent().level
+		Global.playerInEditor = true
 	Global.playerInteractLbl = get_node("interact")
 
 func _physics_process(delta: float) -> void:
@@ -416,6 +418,7 @@ func _on_InteractionArea_area_exited(area):
 		current_interactable = null
 
 func _on_cable_used( type ):
+	SignalManager.emit_signal("cable_used")
 	cabletype = type
 	match(type):
 		"straight_through":
@@ -430,7 +433,6 @@ func _on_cable_used( type ):
 	camera.rotation_degrees.y = 0
 	mode = "cable"
 	preview_parent.set_visible(true)
-	SignalManager.emit_signal("cable_used")
 	LevelGlobal.on_cable_mode = true
 	
 func _on_cable_cancel( type ):

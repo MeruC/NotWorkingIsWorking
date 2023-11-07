@@ -140,8 +140,8 @@ func _on_tap_pressed():
 	
 func _on_data_changed():
 	#update coins
-	if setting_data.level1 == 10:
-		pass
+	if setting_data.level1 > 0:
+		return
 	if setting_data.quick_game == "isplaying":
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true

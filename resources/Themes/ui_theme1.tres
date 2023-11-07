@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=29 format=2]
+[gd_resource type="Theme" load_steps=32 format=2]
 
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=3]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=59]
 size = 64
@@ -251,6 +252,27 @@ expand_margin_top = 15.0
 expand_margin_bottom = 2.0
 shadow_color = Color( 0, 0, 0, 1 )
 
+[sub_resource type="DynamicFont" id=68]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=69]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
 [sub_resource type="StyleBoxFlat" id=67]
 bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
 corner_radius_top_left = 10
@@ -331,6 +353,14 @@ TabContainer/fonts/font = SubResource( 57 )
 TabContainer/styles/panel = ExtResource( 3 )
 TabContainer/styles/tab_bg = SubResource( 53 )
 TabContainer/styles/tab_fg = SubResource( 58 )
+TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_readonly = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+TextEdit/fonts/font = SubResource( 68 )
+TextEdit/styles/completion = SubResource( 69 )
+TextEdit/styles/focus = SubResource( 69 )
+TextEdit/styles/normal = SubResource( 69 )
+TextEdit/styles/read_only = SubResource( 69 )
 VScrollBar/styles/grabber = SubResource( 67 )
 VScrollBar/styles/grabber_highlight = SubResource( 67 )
 VScrollBar/styles/grabber_pressed = SubResource( 67 )

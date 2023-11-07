@@ -4,6 +4,7 @@ export( NodePath ) onready var width = get_node(width) as SpinBox
 export( NodePath ) onready var depth = get_node(depth) as SpinBox
 export( NodePath ) onready var playarea = get_node(playarea) as CSGBox
 export( NodePath ) onready var wall = get_node(wall) as CSGBox
+export( NodePath ) onready var floormesh = get_node(floormesh) as CSGMesh
 export( NodePath ) onready var camera = get_node(camera) as Camera
 
 var quiz_subMenu = "res://online_mode/createQuiz_sub-menu/createQuiz_sub-menu.tscn"
@@ -45,6 +46,8 @@ func _on_create_pressed():
 	Global.d = cur_d
 	Global.grid = grid
 	Global.grid_out = grid_out
+	TransitionNode.animation_player.play("out")
+	yield(get_tree().create_timer(1), "timeout")
 	Load.load_scene(self, level_editor)
 
 
@@ -118,22 +121,28 @@ var orange_out = preload("res://resources/Materials/orange_grid_out.tres")
 
 func _on_gray_pressed():
 	playarea.set_material(gray)
+	floormesh.set_material(gray)
 	wall.set_material(gray_out)
 	grid = gray
 	grid_out = gray_out
+	Global.color = "Gray"
 	
 
 func _on_blue_pressed():
 	playarea.set_material(blue)
+	floormesh.set_material(blue)
 	wall.set_material(blue_out)
 	grid = blue
 	grid_out = blue_out
+	Global.color = "Blue"
 
 func _on_orange_pressed():
 	playarea.set_material(orange)
+	floormesh.set_material(orange)
 	wall.set_material(orange_out)
 	grid = orange
 	grid_out = orange_out
+	Global.color = "Orange"
 
 
 func _on_history_pressed():

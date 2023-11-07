@@ -53,8 +53,8 @@ func _ready():
 
 
 func _on_reset_pressed():
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/undo_click.wav")
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer2.stream = preload("res://resources/soundtrack/level/undo_click.wav")
+	$AudioStreamPlayer2.play()
 	textures_holder = wire_textures.duplicate()
 	for child in wire_container.get_children():
 		var number = rand_range(0, textures_holder.size())
@@ -68,8 +68,8 @@ func _on_reset_pressed():
 
 
 func _on_crimp_pressed():
-	$AudioStreamPlayer.stream = preload("res://resources/soundtrack/level/crimp.wav")
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer2.stream = preload("res://resources/soundtrack/level/crimp.wav")
+	$AudioStreamPlayer2.play()
 	# Pagkapress ng crimp pwedeng magkaron ng animated vid na pagccrimp ng cable -
 	# bago ilabas yung result
 	
@@ -119,8 +119,8 @@ func _on_crimp_pressed():
 		game_over.visible = true
 
 func score_validation():
-	if settings_data.level6 == 5:
-		pass
+	if settings_data.level6 > 0:
+		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -153,7 +153,7 @@ func score_validation():
 			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 0:
-			pass
+			return
 
 
 func _on_next_pressed():

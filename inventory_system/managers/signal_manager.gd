@@ -38,3 +38,7 @@ signal ok()
 
 
 signal showcable()
+
+signal crimp()
+signal craft()
+signal craft_end()
