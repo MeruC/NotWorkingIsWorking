@@ -1743,6 +1743,7 @@ align = 1
 autowrap = true
 
 [node name="login" type="CanvasLayer" parent="."]
+visible = false
 script = SubResource( 25 )
 
 [node name="bg" type="TextureRect" parent="login"]
