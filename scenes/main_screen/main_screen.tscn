@@ -155,7 +155,10 @@ func _on_btn_down_pressed():
 			online_btn.disabled = true
 			shop_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
-			quick_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				quick_btn.disabled = false
+			else:
+				quick_btn.disabled = true
 			current += 1
 			btn_down.disabled = false
 			btn_up.disabled = false
@@ -252,7 +255,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			quick_btn.set_visible(false)
 			online_btn.disabled = true
-			
 			quit_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
@@ -282,14 +284,16 @@ func _on_btn_up_pressed():
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
 			btn_up.disabled = false
-			quick_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				quick_btn.disabled = false
+			else:
+				quick_btn.disabled = true
 			btn_down.disabled = false
 		4:
 			btn_down.disabled = true
 			btn_up.disabled = true
 			user_btn.set_visible(false)
 			dict_btn.disabled = true
-			
 			quick_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
@@ -3052,14 +3056,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -22.0
 margin_top = 443.0
-margin_right = 1942.0
-margin_bottom = 637.0
+margin_right = 22.0
+margin_bottom = -443.0
 rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 650.0
+margin_right = 1964.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -3140,10 +3144,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1350.0
-margin_top = 473.0
-margin_right = 1489.0
-margin_bottom = 605.0
+margin_left = 390.0
+margin_top = -67.0
+margin_right = 529.0
+margin_bottom = 65.0
 theme = ExtResource( 10 )
 text = "Q"
 
