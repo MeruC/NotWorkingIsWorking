@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/user_profile/yellow_bg.png" type="Texture" id=2]
@@ -35,6 +35,8 @@
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://resources/Themes/user_profile_buttons.tres" type="Theme" id=34]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=35]
+[ext_resource path="res://resources/Themes/option_button.tres" type="Theme" id=36]
+[ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=37]
 
 [sub_resource type="DynamicFont" id=23]
 size = 30
@@ -548,16 +550,20 @@ func _on_selection_toggled(button_pressed):
 		$login.visible = false
 		$signin.visible = true
 
-
 func _on_confirm_pressed():
 	$\".\".visible = false
 	$\"../cloud_storage\".visible = false
 	$\"../notification\".visible = false
 "
 
+[sub_resource type="StreamTexture" id=74]
+flags = 2
+load_path = "res://.import/button_login_02.png-f2c3f69dd146987e8c10179a87a94938.stex"
+
 [sub_resource type="Theme" id=32]
 CheckButton/colors/font_color_focus = Color( 0.941176, 0.941176, 0.941176, 0 )
 CheckButton/icons/off = ExtResource( 31 )
+CheckButton/icons/off_disabled = SubResource( 74 )
 CheckButton/icons/on = ExtResource( 30 )
 
 [sub_resource type="GDScript" id=57]
@@ -666,6 +672,12 @@ func _authenticate():
 func _on_enter_btn_pressed():
 	_authenticate()
 	$enter_btn.disabled = true
+
+
+func _on_forgot_password_pressed():
+	$\"../check_account\".visible = true
+	$\".\".visible = false
+	$\"../selection\".disabled = true
 "
 
 [sub_resource type="GDScript" id=59]
@@ -796,6 +808,208 @@ func prompt_successfully(username):
 
 func _on_confirm_pressed():
 	$\"../../notification2\".visible = false
+"
+
+[sub_resource type="GDScript" id=73]
+script/source = "extends Control
+
+export (Resource) var settings_data
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+var pusername = \"\"
+var result = \"\"
+var reset_question = \"\"
+
+func _ready():
+	# Connect our request handler:
+	$OptionButton.connect(\"item_selected\", self, \"_on_popup_item_selected\")
+	# Add items to the PopupMenu
+	$OptionButton.add_item(\"Choose Question\")
+	$OptionButton.add_item(\"What was the name of your first pet?\")
+	$OptionButton.add_item(\"In which city were you born?\")
+	$OptionButton.add_item(\"What is your favorite book or movie?\")
+	$OptionButton.add_item(\"What is the name of your childhood best friend?\")
+	$OptionButton.add_item(\"What is your mother's maiden name?\")
+	$OptionButton.add_item(\"What is the name of your favorite teacher?\")
+	
+	add_child(http_request)
+	print(settings_data)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+	$submit.connect(\"pressed\", self, \"check_account\")
+
+func _on_popup_item_selected(index):
+	# This function is called when an item is selected
+	var selected_item_text = $OptionButton.get_item_text(index)
+	reset_question = selected_item_text
+		
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	# Re-enable UI elements here (e.g., $signup_btn)
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		$\"../../notification2\".visible = true
+		$\"../../notification2/message\".text = \"No Internet Connection\"
+		return
+
+	var response_body = body.get_string_from_utf8()
+
+	if response_body.empty():
+		printerr(\"Empty response body\")
+		return
+
+	var response = parse_json(response_body)
+		
+	if \"error\" in response and response[\"error\"] == \"account_doesnt_exist\":
+		$\"../../notification2\".visible = true
+		$\"../../notification2/message\".text = \"Email or reset question is not valid\"
+		return
+
+	if result == HTTPRequest.RESULT_SUCCESS:
+		var _response_data = body.get_string_from_utf8()
+		_change_scene()
+		print(\"Response Data:\", _response_data)
+		
+	if !request_queue.empty():
+		var next_request = request_queue.pop_front()
+		_send_request(next_request)
+
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+
+func check_account():
+	# Disable relevant UI elements here (e.g., $signup_btn)
+	var username_input = $email2
+	var reset_answer = $reset_answer
+	var username = username_input.text
+	var reset = reset_answer.text
+	if username != \"\" and reset_question != \"\" and reset != \"\":
+		var command = \"check_reset\"
+		settings_data.email = username
+		SaveManager
+		var data = {\"email\": username, \"reset_question\": reset_question, \"reset_answer\": reset}
+		print(data)
+		request_queue.push_back({\"command\": command, \"data\": data})
+	else:
+		$\"../../notification2\".visible = true
+		$\"../../notification2/message\".text = \"Please answer all required fields.\"
+		
+func _change_scene():
+	$\".\".visible = false
+	$\"../forgot_password\".visible = true
+
+"
+
+[sub_resource type="GDScript" id=75]
+script/source = "extends Control
+
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
+const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
+var request_queue : Array = []
+var is_requesting : bool = false
+export( Resource ) var settings_data
+
+func _ready():
+	add_child(http_request)
+	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
+	
+func _process(_delta):
+	# Check if we have pending requests in the queue:
+	if !request_queue.empty() and !is_requesting:
+		var request = request_queue.pop_front()
+		_send_request(request)
+		
+func _http_request_completed(result, response_code, headers, body):
+	is_requesting = false
+	# Re-enable UI elements here (e.g., $signup_btn)
+	
+	if result != HTTPRequest.RESULT_SUCCESS:
+		printerr(\"Error with connection: \" + str(result))
+		return
+
+	var response_body = body.get_string_from_utf8()
+
+	if response_body.empty():
+		printerr(\"Empty response body\")
+		return
+
+	var response = parse_json(response_body)
+
+	if result == HTTPRequest.RESULT_SUCCESS:
+		var _response_data = body.get_string_from_utf8()
+		$\".\".visible = false
+		$\"../login\".visible = true
+		$\"../selection\".disabled = false
+		$\"../../notification2\".visible = true
+		$\"../../notification2/message\".text = \"Password changed successfully.\"
+		print(\"Response Data:\", _response_data)
+	
+	if !request_queue.empty():
+		var next_request = request_queue.pop_front()
+		_send_request(next_request)
+
+func update_password():
+	var email = settings_data.email
+	var password = $new_password2.text
+	if len(password) >= 8 and len(password) <= 16:
+		var command = \"forgot_password\"
+		var data = {\"email\": email, \"password\": password}
+		request_queue.push_back({\"command\": command, \"data\": data})
+	else:
+		$\"../../notification2\".visible = true
+		$\"../../notification2/message\".text = \"Password length must be between 8 and 16 characters.\"
+
+func _send_request(request : Dictionary):
+	# Check if a request is already in progress
+	if is_requesting:
+		# If a request is already in progress, add the request to the queue
+		request_queue.push_back(request)
+		return
+
+	is_requesting = true
+
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({\"data\" : JSON.print(request['data'])})
+	var body = \"command=\" + request['command'] + \"&\" + data
+
+	# Make request to the server:
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+
+	# Check if there were problems:
+	if err != OK:
+		printerr(\"HTTPRequest error: \" + String(err))
+		return
+		
+
+func _on_submit_pressed():
+	update_password()
 "
 
 [sub_resource type="DynamicFont" id=55]
@@ -1529,7 +1743,6 @@ align = 1
 autowrap = true
 
 [node name="login" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource( 25 )
 
 [node name="bg" type="TextureRect" parent="login"]
@@ -1627,6 +1840,16 @@ margin_bottom = 889.0
 theme = ExtResource( 16 )
 text = "enter"
 
+[node name="forgot_password" type="Button" parent="login/login"]
+margin_left = 1023.0
+margin_top = 680.0
+margin_right = 1363.0
+margin_bottom = 761.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 37 )
+text = "Forgot password?"
+flat = true
+
 [node name="signin" type="Control" parent="login"]
 visible = false
 margin_right = 40.0
@@ -1696,6 +1919,90 @@ margin_left = 713.0
 margin_top = 808.0
 margin_right = 1095.0
 margin_bottom = 940.0
+theme = ExtResource( 16 )
+text = "Submit"
+
+[node name="check_account" type="Control" parent="login"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = SubResource( 73 )
+settings_data = ExtResource( 18 )
+
+[node name="email" type="Label" parent="login/check_account"]
+margin_left = 542.0
+margin_top = 381.0
+margin_right = 753.0
+margin_bottom = 481.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 13 )
+text = "Email:"
+
+[node name="email2" type="LineEdit" parent="login/check_account"]
+margin_left = 831.0
+margin_top = 342.0
+margin_right = 1448.0
+margin_bottom = 494.0
+theme = ExtResource( 6 )
+align = 1
+
+[node name="reset_answer" type="LineEdit" parent="login/check_account"]
+margin_left = 828.0
+margin_top = 533.0
+margin_right = 1445.0
+margin_bottom = 685.0
+theme = ExtResource( 6 )
+
+[node name="OptionButton" type="OptionButton" parent="login/check_account"]
+margin_left = 263.0
+margin_top = 552.0
+margin_right = 763.0
+margin_bottom = 663.0
+theme = ExtResource( 36 )
+align = 1
+
+[node name="submit" type="Button" parent="login/check_account"]
+margin_left = 783.0
+margin_top = 801.0
+margin_right = 1162.0
+margin_bottom = 933.0
+theme = ExtResource( 16 )
+text = "submit"
+
+[node name="forgot_password" type="Control" parent="login"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = SubResource( 75 )
+settings_data = ExtResource( 18 )
+
+[node name="new_password" type="Label" parent="login/forgot_password"]
+margin_left = 209.0
+margin_top = 487.0
+margin_right = 982.0
+margin_bottom = 587.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 13 )
+text = "Enter new password:"
+
+[node name="new_password2" type="LineEdit" parent="login/forgot_password"]
+margin_left = 1042.0
+margin_top = 445.0
+margin_right = 1659.0
+margin_bottom = 597.0
+theme = ExtResource( 6 )
+align = 1
+placeholder_text = "Enter new password"
+
+[node name="submit" type="Button" parent="login/forgot_password"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 723.0
+margin_top = 650.0
+margin_right = 1105.0
+margin_bottom = 782.0
 theme = ExtResource( 16 )
 text = "Submit"
 
@@ -2090,7 +2397,9 @@ text = "No"
 [connection signal="pressed" from="edit_avatar/left" to="edit_avatar" method="_on_left_pressed"]
 [connection signal="toggled" from="login/selection" to="login" method="_on_selection_toggled"]
 [connection signal="pressed" from="login/login/enter_btn" to="login/login" method="_on_enter_btn_pressed"]
+[connection signal="pressed" from="login/login/forgot_password" to="login/login" method="_on_forgot_password_pressed"]
 [connection signal="pressed" from="login/signin/Button" to="login/signin" method="_on_Button_pressed"]
+[connection signal="pressed" from="login/forgot_password/submit" to="login/forgot_password" method="_on_submit_pressed"]
 [connection signal="pressed" from="login/close" to="login" method="_on_close_pressed"]
 [connection signal="pressed" from="cloud_storage/retrieve_data" to="cloud_storage" method="_on_retrieve_data_pressed"]
 [connection signal="pressed" from="cloud_storage/upload_data" to="cloud_storage" method="_on_upload_data_pressed"]

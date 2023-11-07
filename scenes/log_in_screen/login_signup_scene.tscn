@@ -79,8 +79,6 @@ const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"C
 var request_queue : Array = []
 var is_requesting : bool = false
 var pusername = \"\"
-var password = \"\"
-var cpassword =\"\"
 var result = \"\"
 var reset_question = \"\"
 
