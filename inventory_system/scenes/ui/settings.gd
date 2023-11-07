@@ -88,7 +88,7 @@ func _on_resume_pressed():
 	audio_loop_player.stop()
 	Global.editor_mode = "play"
 	#audio_loop_player.playing = false
-	hide()
+	get_parent().hide()
 	
 #Video Submenu
 func _on_resolution_item_selected(index):

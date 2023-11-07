@@ -248,7 +248,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-settings = NodePath("settings")
+settings = NodePath("CanvasLayer/settings")
 
 [node name="pauseBtn" type="Button" parent="."]
 anchor_left = 1.0
@@ -262,6 +262,11 @@ theme = SubResource( 41 )
 custom_fonts/font = SubResource( 42 )
 text = "II"
 
-[node name="settings" parent="." instance=ExtResource( 1 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+visible = false
+
+[node name="settings" parent="CanvasLayer" instance=ExtResource( 1 )]
+visible = true
 
 [connection signal="pressed" from="pauseBtn" to="." method="_on_settingsBtn_pressed"]
