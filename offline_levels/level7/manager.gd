@@ -134,9 +134,8 @@ func _on_retry_pressed():
 	get_tree().reload_current_scene()
 
 func score_validation():
-	if settings_data.level7 == 5:
-		settings_data.level7 = score
-		SaveManager.save_game()
+	if settings_data.level7 > 0:
+		return
 		
 	if settings_data.quick_game == "isplaying":
 		gameover_next.disabled = true
@@ -205,7 +204,7 @@ func score_validation():
 			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		elif score == 0:
-			pass
+			return
 
 
 func _on_next_pressed():

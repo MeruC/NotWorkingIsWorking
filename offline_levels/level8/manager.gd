@@ -198,12 +198,8 @@ func calculate_score():
 ##
 
 func score_validation():
-	if settings_data.level8 == 400:
-		settings_data.formal_attire = "unlock"
-		settings_data.girl_casual = "unlock"
-		settings_data.level8 = score
-		SaveManager.save_game()
-		
+	if settings_data.level8 > 0:
+		return
 	if settings_data.quick_game == "isplaying":
 		gameover_retry.disabled = true
 		gameover_next.disabled = true
@@ -255,7 +251,7 @@ func score_validation():
 			settings_data.reset_timer = 10800.18888
 			SaveManager.save_game()
 		else:
-			pass
+			return
 
 
 func _on_instruction_pressed():

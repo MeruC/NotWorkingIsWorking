@@ -169,7 +169,10 @@ func _on_btn_down_pressed():
 			quick_btn.disabled = true
 			dict_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
-			shop_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				shop_btn.disabled = false
+			else:
+				shop_btn.disabled = true
 			btn_up.disabled = false
 			current += 1
 			btn_down.disabled = false
@@ -297,7 +300,10 @@ func _on_btn_up_pressed():
 			quick_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
-			shop_btn.disabled = false
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+				shop_btn.disabled = false
+			else:
+				shop_btn.disabled = true
 			btn_up.disabled = false
 			btn_down.disabled = false
 		5:
@@ -316,7 +322,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			quit_btn_2.set_visible(false)
 			settings_btn.disabled = true
-			
 			dict_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
@@ -328,7 +333,6 @@ func _on_btn_up_pressed():
 			btn_up.disabled = true
 			offline_btn_2.set_visible(false)
 			quit_btn_2.disabled = true
-			
 			user_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
@@ -3056,8 +3060,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -22.0
 margin_top = 443.0
-margin_right = 22.0
-margin_bottom = -443.0
+margin_right = 1942.0
+margin_bottom = 637.0
 rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
@@ -3144,10 +3148,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 390.0
-margin_top = -67.0
-margin_right = 529.0
-margin_bottom = 65.0
+margin_left = 1350.0
+margin_top = 473.0
+margin_right = 1489.0
+margin_bottom = 605.0
 theme = ExtResource( 10 )
 text = "Q"
 
