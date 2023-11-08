@@ -206,3 +206,5 @@ func _on_craft_complete(type):
 func _on_craft_pressed():
 	get_parent().set_visible(false)
 	SignalManager.emit_signal("craft_end")
+
+

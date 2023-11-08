@@ -638,24 +638,12 @@ device_name = "PC1"
 [node name="ipConfig_button" parent="object_monitor/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
 
 [node name="ipConfig_button" parent="object_monitor153/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
-
-[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
 
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 layer = 128

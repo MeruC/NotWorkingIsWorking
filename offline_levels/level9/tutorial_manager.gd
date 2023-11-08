@@ -5,6 +5,8 @@ var configure_router = preload("res://resources/video_tutorials/configure_router
 var connecting_devices = preload("res://resources/video_tutorials/connecting_devices.webm")
 var ip_configuration = preload("res://resources/video_tutorials/ip_configuration.webm")
 var ping_device = preload("res://resources/video_tutorials/ping_device.webm")
+var wire_crimping = preload("res://resources/video_tutorials/wire_crimping.webm")
+var buying_materials = preload("res://resources/video_tutorials/buying_materials.webm")
 
 func _on_connect_devices_pressed():
 	video_player.set_stream(connecting_devices)
@@ -48,3 +50,15 @@ func _on_open_tutorials_toggled(button_pressed):
 		self.visible = true
 	else:
 		self.visible = false
+
+
+func _on_buying_materials_pressed():
+	video_player.set_stream(buying_materials)
+	video_player.visible = true
+	video_player.play()
+
+
+func _on_wire_crimping_pressed():
+	video_player.set_stream(wire_crimping)
+	video_player.visible = true
+	video_player.play()

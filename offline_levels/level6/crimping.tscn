@@ -577,6 +577,7 @@ theme = SubResource( 30 )
 custom_fonts/font = ExtResource( 3 )
 text = "BACK"
 
+[connection signal="visibility_changed" from="." to="." method="_on_level6_visibility_changed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/home" to="popup_layer/game_over/main_popup/GridContainer/home" method="_on_home_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/retry" to="popup_layer/game_over/main_popup/GridContainer/retry" method="_on_retry_pressed"]
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="." method="_on_next_pressed"]

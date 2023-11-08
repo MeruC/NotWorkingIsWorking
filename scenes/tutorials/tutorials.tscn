@@ -20,8 +20,8 @@ Panel/styles/panel = SubResource( 99 )
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=100]
-size = 60
+[sub_resource type="DynamicFont" id=106]
+size = 48
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=101]
@@ -96,56 +96,80 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -709.0
-margin_top = -193.0
+margin_top = -204.0
 margin_right = 709.0
-margin_bottom = 427.0
-custom_constants/separation = 50
+margin_bottom = 446.0
+custom_constants/separation = 25
 alignment = 1
 
-[node name="connect_devices" type="Button" parent="tutorials/main_popup/buttons_container"]
-margin_top = 35.0
+[node name="wire_crimping" type="Button" parent="tutorials/main_popup/buttons_container"]
+margin_top = 22.0
 margin_right = 1418.0
-margin_bottom = 135.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 80 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 106 )
+custom_styles/hover = SubResource( 101 )
+custom_styles/normal = SubResource( 101 )
+text = "How to craft Ethernet Cables?"
+
+[node name="buying_materials" type="Button" parent="tutorials/main_popup/buttons_container"]
+margin_top = 127.0
+margin_right = 1418.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 0, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
+custom_fonts/font = SubResource( 106 )
+custom_styles/hover = SubResource( 101 )
+custom_styles/normal = SubResource( 101 )
+text = "Where can i get materials for crafting?"
+
+[node name="connect_devices" type="Button" parent="tutorials/main_popup/buttons_container"]
+margin_top = 232.0
+margin_right = 1418.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 0, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
+custom_fonts/font = SubResource( 106 )
 custom_styles/hover = SubResource( 101 )
 custom_styles/normal = SubResource( 101 )
 text = "How to connect two devices?"
 
 [node name="configure_ip" type="Button" parent="tutorials/main_popup/buttons_container"]
-margin_top = 185.0
+margin_top = 337.0
 margin_right = 1418.0
-margin_bottom = 285.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 417.0
+rect_min_size = Vector2( 0, 80 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 106 )
 custom_styles/hover = SubResource( 101 )
 custom_styles/normal = SubResource( 101 )
-text = "How to configure a PC's IP Address?"
+text = "How to configure the IP Address of a PC?"
 
 [node name="configure_router" type="Button" parent="tutorials/main_popup/buttons_container"]
-margin_top = 335.0
+margin_top = 442.0
 margin_right = 1418.0
-margin_bottom = 435.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 522.0
+rect_min_size = Vector2( 0, 80 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 106 )
 custom_styles/hover = SubResource( 101 )
 custom_styles/normal = SubResource( 101 )
 text = "How to configure a router?"
 
 [node name="ping_device" type="Button" parent="tutorials/main_popup/buttons_container"]
-margin_top = 485.0
+margin_top = 547.0
 margin_right = 1418.0
-margin_bottom = 585.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 627.0
+rect_min_size = Vector2( 0, 80 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.721569, 0.231373, 0.368627, 1 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 106 )
 custom_styles/hover = SubResource( 101 )
 custom_styles/normal = SubResource( 101 )
 text = "How to ping a device?"
@@ -176,6 +200,8 @@ rect_min_size = Vector2( 150, 150 )
 custom_styles/hover = SubResource( 103 )
 custom_styles/normal = SubResource( 103 )
 
+[connection signal="pressed" from="tutorials/main_popup/buttons_container/wire_crimping" to="tutorials" method="_on_wire_crimping_pressed"]
+[connection signal="pressed" from="tutorials/main_popup/buttons_container/buying_materials" to="tutorials" method="_on_buying_materials_pressed"]
 [connection signal="pressed" from="tutorials/main_popup/buttons_container/connect_devices" to="tutorials" method="_on_connect_devices_pressed"]
 [connection signal="pressed" from="tutorials/main_popup/buttons_container/configure_ip" to="tutorials" method="_on_configure_ip_pressed"]
 [connection signal="pressed" from="tutorials/main_popup/buttons_container/configure_router" to="tutorials" method="_on_configure_router_pressed"]
