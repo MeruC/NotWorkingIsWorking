@@ -586,6 +586,7 @@ func _ready():
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
 script = ExtResource( 8 )
+level_desc = "In the world of networking, the ability to establish connections between devices is at the heart of everything we do. Whether you're browsing the web, sending emails, streaming videos, or accessing shared resources, it all begins with a basic understanding of how devices communicate with eachother. In this level, you'll start with the most fundamental building block: connecting two PCs directly to each other.In this level, you’ll learn how to establish a direct connection between two PCs and enable communication between them. Let’s start!"
 setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="."]
@@ -859,6 +860,9 @@ margin_top = 6.0
 margin_right = -6.0
 margin_bottom = 6.0
 text = "aaaaaa"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="manager" type="Control" parent="."]
 margin_right = 40.0

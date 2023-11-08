@@ -2433,6 +2433,7 @@ mouse_filter = 2
 script = ExtResource( 17 )
 main = NodePath("../../..")
 current = NodePath("current_mode")
+time = NodePath("../../../level/popups/Timer")
 ui = NodePath("../..")
 previews = NodePath("../../../previews")
 no_sign = NodePath("../../../no-sign")
@@ -3088,7 +3089,7 @@ scroll_horizontal_enabled = false
 
 [node name="tasks_vbox" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer"]
 margin_right = 1325.0
-margin_bottom = 1048.0
+margin_bottom = 1192.0
 custom_constants/separation = 50
 
 [node name="taskSetConn" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
@@ -3178,7 +3179,7 @@ color = Color( 0, 0, 0, 1 )
 unique_name_in_owner = true
 margin_top = 516.0
 margin_right = 1325.0
-margin_bottom = 724.0
+margin_bottom = 772.0
 custom_constants/separation = 25
 
 [node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
@@ -3202,26 +3203,28 @@ script = ExtResource( 46 )
 [node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
 margin_top = 133.0
 margin_right = 1325.0
-margin_bottom = 178.0
+margin_bottom = 226.0
 rect_min_size = Vector2( 1100, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 122 )
-text = "- Open each PC and configure their IP addresses using                      IP addresses."
+text = "- Open each PC and configure their IP addresses using                           IP addresses.
+"
 autowrap = true
 
 [node name="confIPoption" type="OptionButton" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/Label"]
-margin_left = 851.0
-margin_top = -3.0
-margin_right = 993.0
-margin_bottom = 48.0
+margin_left = 836.0
+margin_top = -34.0
+margin_right = 1024.0
+margin_bottom = 71.0
+theme = ExtResource( 30 )
 custom_fonts/font = SubResource( 122 )
 text = "Class A"
 script = ExtResource( 45 )
 
 [node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
-margin_top = 203.0
+margin_top = 251.0
 margin_right = 1325.0
-margin_bottom = 208.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
@@ -3271,9 +3274,9 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="taskConfRouter" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
 unique_name_in_owner = true
-margin_top = 774.0
+margin_top = 822.0
 margin_right = 1325.0
-margin_bottom = 1048.0
+margin_bottom = 1192.0
 custom_constants/separation = 25
 
 [node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter"]
@@ -3296,20 +3299,23 @@ text = "Configure Router"
 [node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter"]
 margin_top = 133.0
 margin_right = 1325.0
-margin_bottom = 274.0
+margin_bottom = 370.0
 rect_min_size = Vector2( 1100, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 122 )
 text = "- Use a console cable to connect any of the PCs into the router.
 - On a pc with console cable connected, open the Terminal.
-- Configure the IP address of each port using                     IP Addresses"
+
+- Configure the IP address of each port using                           IP Addresses
+"
 autowrap = true
 
 [node name="confRouterPoption" type="OptionButton" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter/Label"]
-margin_left = 702.0
-margin_top = 88.0
-margin_right = 844.0
-margin_bottom = 139.0
+margin_left = 693.0
+margin_top = 105.0
+margin_right = 881.0
+margin_bottom = 210.0
+theme = ExtResource( 30 )
 custom_fonts/font = SubResource( 122 )
 text = "Class A"
 script = ExtResource( 47 )
@@ -3348,6 +3354,11 @@ playback_process_mode = 0
 [node name="level" type="Spatial" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 25 )
+submit_button = NodePath("popups/gameover")
+instruction = NodePath("popups/instruction/content")
+prompt = NodePath("popups/submit_button_prompt")
+timer = NodePath("popups/Timer")
+time = NodePath("popups/GridContainer/time")
 setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="level"]

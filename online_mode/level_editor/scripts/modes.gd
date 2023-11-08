@@ -2,6 +2,7 @@ extends Control
 
 export( NodePath ) onready var main = get_node(main) as Spatial
 export( NodePath ) onready var current = get_node(current) as Label
+export( NodePath ) onready var time = get_node(time) as Timer
 
 var player
 export( NodePath ) onready var ui = get_node(ui) as CanvasLayer
@@ -19,11 +20,13 @@ export( NodePath ) onready var verify_ui = get_node(verify_ui) as Control
 onready var mode_menu = $modeMenu
 onready var menu_animations = $"%MenuAnimations"
 
+onready var popups = $"../../../level/popups"
 
 var playerSpawn = preload("res://global/player/player.tscn")
 var last_mode = "place"
 
 func _ready():
+	#time.stop()
 	Global.editor_mode = "place"
 	current.text = "Current Mode: Place"
 	main.get_node("level/mobile_controls/joystick").use_input_actions = false
@@ -68,6 +71,7 @@ func _on_confirm_pressed(action):
 				other_ui.set_visible(true)
 				task_ui.set_visible(true)
 				verify_ui.set_visible(true)
+				popups.set_visible(true)
 				
 
 func _on_modes_mouse_entered():
@@ -116,6 +120,8 @@ func _on_remove_pressed():
 	mode_menu.pressed = false
 	menu_animations.play_backwards("mode")
 
+
+
 func _on_play_pressed():
 	joystick_editor.use_input_actions = true
 	joystick_editor.set_visible(true)
@@ -156,6 +162,7 @@ func _on_play_pressed():
 		joystick.use_input_actions = true
 		other_ui.set_visible(true)
 		task_ui.set_visible(true)
+		popups.set_visible(true)
 	elif(Global.editor_mode == "play"):
 		
 		#Changing Camera
@@ -174,12 +181,13 @@ func _on_play_pressed():
 		mobile_controls.set_visible(false)
 		joystick.use_input_actions = false
 		task_ui.set_visible(false)
+		popups.set_visible(false)
 		yield(get_tree().create_timer(1.5),"timeout")
 		ui.set_visible(true)
 		joystick_editor.use_input_actions = true
 		previews.set_visible(true)
 		no_sign.set_visible(true)
-		
+		time.stop()
 
 
 func _on_select_pressed():

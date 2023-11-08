@@ -12,7 +12,6 @@
 [ext_resource path="res://resources/Game buttons/0_crowns.png" type="Texture" id=10]
 [ext_resource path="res://resources/soundtrack/game_over/Won!.wav" type="AudioStream" id=11]
 [ext_resource path="res://resources/Game buttons/confetti-25.png" type="Texture" id=12]
-[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/soundtrack/game_over/100_victories.wav" type="AudioStream" id=14]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=15]
 [ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=16]
@@ -165,6 +164,16 @@ tracks/2/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="GDScript" id=124]
+script/source = "extends AudioStreamPlayer
+
+export (bool) var loop_sound = true
+
+func _on_AudioStreamPlayer_finished():
+	if loop_sound == true:
+		play()
+"
+
 [node name="game_over" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -315,9 +324,11 @@ frame = 12
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
-[node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
+[node name="AudioLoopPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 bus = "Music"
+script = SubResource( 124 )
 
 [connection signal="pressed" from="main_popup/GridContainer/home" to="main_popup/GridContainer/home" method="_on_home_pressed"]
 [connection signal="pressed" from="main_popup/GridContainer/retry" to="main_popup/GridContainer/retry" method="_on_retry_pressed"]
+[connection signal="finished" from="AudioLoopPlayer" to="AudioLoopPlayer" method="_on_AudioStreamPlayer_finished"]
