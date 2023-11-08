@@ -34,6 +34,10 @@ func _on_Button_pressed():
 	
 
 
+func _on_no_pressed():
+	$\"../submit_button_prompt\".visible = true
+
+
 func _on_instruction_btn_pressed():
 	$\".\".visible = true
 "
@@ -67,6 +71,7 @@ extra_spacing_bottom = 28
 font_data = ExtResource( 4 )
 
 [node name="popups" type="CanvasLayer"]
+layer = 70
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 26.0

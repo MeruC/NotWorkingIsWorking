@@ -111,7 +111,7 @@ func _on_done_pressed():
 	floormesh.set_material(grid)
 	wall.set_material(grid_out)
 	level.level_name = name_le.text
-	level.level_desc = description.get_text()
+	level.level_desc = description.text
 	level.timerChoice = timerChoice.text
 	#print(level.level_desc)
 	Global.on_save_load = false
@@ -143,6 +143,7 @@ func _on_description_pressed():
 	
 func _on_descdone_pressed():
 	menu_animations.play_backwards("desc")
+	#level.level_desc = description.text
 	yield(menu_animations, "animation_finished")
 	desc.set_visible(false)
 
