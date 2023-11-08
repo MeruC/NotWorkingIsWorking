@@ -445,7 +445,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="login_signup_screen" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource( 7 )
 settings_data = ExtResource( 13 )
 
@@ -586,6 +585,7 @@ text = "forgot password?"
 flat = true
 
 [node name="signup_screen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource( 9 )
 settings_data = ExtResource( 13 )
 

@@ -3508,6 +3508,7 @@ bus = "Music"
 [connection signal="pressed" from="UI/infopanel/Control/task_option/tasks/taskdone" to="UI/infopanel/Control/task_option" method="_on_taskdone_pressed"]
 [connection signal="pressed" from="level/tasks_ui/task_manager/submit_button" to="level" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="level/popups/submit_button_prompt/prompt/yes" to="level" method="_on_yes_pressed"]
+[connection signal="pressed" from="level/popups/submit_button_prompt/prompt/no" to="level" method="_on_no_pressed"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
