@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=2]
+[gd_scene load_steps=162 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -1289,6 +1289,16 @@ size = 32
 font_data = ExtResource( 34 )
 
 [sub_resource type="PlaneMesh" id=51]
+
+[sub_resource type="GDScript" id=124]
+script/source = "extends AudioStreamPlayer
+
+export (bool) var loop_sound = true
+
+func _on_AudioStreamPlayer_finished():
+	if loop_sound == true:
+		play()
+"
 
 [sub_resource type="BoxShape" id=13]
 
@@ -3332,6 +3342,11 @@ margin_bottom = 0.0
 [node name="popups" parent="level" instance=ExtResource( 38 )]
 visible = false
 
+[node name="LevelAudioLoopPlayer" type="AudioStreamPlayer" parent="level"]
+stream = ExtResource( 19 )
+bus = "Music"
+script = SubResource( 124 )
+
 [node name="verify_ui" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -3423,6 +3438,7 @@ anims/task_option = SubResource( 123 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 19 )
+autoplay = true
 bus = "Music"
 
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]
@@ -3446,6 +3462,8 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/upload" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/upload" to="." method="_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
@@ -3510,6 +3528,7 @@ bus = "Music"
 [connection signal="pressed" from="level/popups/submit_button_prompt/prompt/yes" to="level" method="_on_yes_pressed"]
 [connection signal="pressed" from="level/popups/submit_button_prompt/prompt/no" to="level" method="_on_no_pressed"]
 [connection signal="timeout" from="level/popups/Timer" to="level" method="_on_Timer_timeout"]
+[connection signal="finished" from="level/LevelAudioLoopPlayer" to="level/LevelAudioLoopPlayer" method="_on_AudioStreamPlayer_finished"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]

@@ -10,6 +10,8 @@ var json_file = "res://encyclopedia/json/encyclopedia.json"
 var json_data
 
 func _ready():
+	TransitionNode.animation_player.play("in")
+	#yield(get_tree().create_timer(0.5), "timeout")
 	list_items()
 	pass
 	

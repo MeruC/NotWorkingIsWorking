@@ -447,6 +447,7 @@ func _on_cable_cancel( type ):
 	preview_parent.set_visible(false)
 	LevelGlobal.on_cable_mode = false
 	current_level.mobile_controls.cable_ui.set_visible(false)
+	object_number = 0
 	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
 	var produce = [{
 		"id": type, 
