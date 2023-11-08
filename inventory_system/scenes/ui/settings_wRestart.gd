@@ -78,7 +78,7 @@ func _on_resume_pressed():
 	audio_loop_player.stream_paused = true
 	audio_loop_player.stop()
 	#audio_loop_player.playing = false
-	hide()
+	get_parent().set_visible(false)
 
 #Video Submenu
 func _on_fullscreen_toggled(button_pressed):
