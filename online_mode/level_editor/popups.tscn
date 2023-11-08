@@ -20,7 +20,7 @@ script/source = "extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$\"../Timer\".start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,6 +29,7 @@ func _ready():
 
 
 func _on_Button_pressed():
+	$\"../Timer\".start()
 	$\".\".visible = false
 	
 
@@ -66,6 +67,28 @@ extra_spacing_bottom = 28
 font_data = ExtResource( 4 )
 
 [node name="popups" type="CanvasLayer"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 26.0
+margin_top = 25.0
+margin_right = 274.0
+margin_bottom = 80.0
+columns = 2
+
+[node name="timer" type="Label" parent="GridContainer"]
+margin_right = 167.0
+margin_bottom = 55.0
+theme = ExtResource( 3 )
+text = "Timer:    "
+align = 1
+
+[node name="time" type="Label" parent="GridContainer"]
+margin_left = 171.0
+margin_right = 248.0
+margin_bottom = 55.0
+theme = ExtResource( 3 )
+text = "0 : 0"
+valign = 1
 
 [node name="submit_button_prompt" type="Panel" parent="."]
 visible = false
@@ -200,6 +223,8 @@ margin_right = 1139.0
 margin_bottom = 751.0
 theme = ExtResource( 7 )
 text = "Submit"
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="instruction/Button" to="instruction" method="_on_Button_pressed"]
 [connection signal="pressed" from="instruction_btn" to="instruction_btn" method="_on_instruction_btn_pressed"]

@@ -13,7 +13,9 @@ var all_task = []
 export(String) var level_name = "MyLevel"
 export(String) var level_desc = "Set a description for your level!"
 export(String) var timerChoice = "5:00"
+var initialTimerDuration: int = 300
 var player
+
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
 onready var tasks_ui = $tasks_ui
@@ -23,6 +25,8 @@ onready var popups = $popups
 export (NodePath) onready var submit_button = find_node("submit_button")
 export (NodePath) onready var instruction = find_node("content")
 export (NodePath) onready var prompt = find_node("submit_button_prompt")
+export (NodePath) onready var timer = find_node("Timer")
+export (NodePath) onready var time = find_node("time")
 var verified = false
 var saved = false
 var computer_list = []
@@ -35,6 +39,7 @@ const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
+var current_time = 0
 
 var joystick
 export (Resource) var setting_data
@@ -106,6 +111,7 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	timer.start()
 	_enable_task()
 	instruction.text = ""+level_desc
 	add_child(http_request)
@@ -520,3 +526,64 @@ func addScore():
 
 func _on_no_pressed():
 	prompt.visible = false
+
+func _on_set_time():
+	match timerChoice:
+		"5:00":
+			set_timer_duration(300)
+		"10:00":
+			set_timer_duration(600)
+		"15:00":
+			set_timer_duration(900)
+		"30:00":
+			set_timer_duration(1800)
+		"60:00":
+			set_timer_duration(3600)
+
+func set_timer_duration(duration):
+	initialTimerDuration = duration
+	timer.set_wait_time(duration)
+	current_time = 0.0
+	update_time_label()
+
+func _process(delta):
+	current_time += delta
+	var remaining_time = initialTimerDuration - current_time
+
+	if remaining_time <= 0:
+		remaining_time = 0
+		timer.stop()
+	timer.set_wait_time(remaining_time)
+	update_time_label()
+
+func update_time_label():
+	# Assuming you have a label node named 'time' in your scene
+	time.text = format_time(timer.get_time_left())
+
+func format_time(seconds):
+	var minutes = int(seconds / 60)
+	var remainingSeconds = int(seconds) % 60
+	return str(minutes).pad_zeros(2) + ":" + str(remainingSeconds).pad_zeros(2)
+
+
+func _on_Timer_timeout():
+	var username = setting_data.player_name
+	var section = setting_data.section
+	var scores = "Incomplete"
+	var table_name = setting_data.online_level
+	var data = {
+		"command": "upload_score",
+		"username": username,
+		"section": section,
+		"scores": scores,
+		"table_name": table_name
+	}
+	var command = "upload_score"
+	request_queue.push_back({"command": command, "data": data})
+	_send_request({"command": command, "data": data})
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_Button_pressed():
+	timer.start()
