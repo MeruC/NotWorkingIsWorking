@@ -72,6 +72,18 @@
 			}
 		}
 	},
+	"Invalid": {
+		"name": "RJ45 Head",
+		"type": "CABLE",
+		"stack_size": 64,
+		"level": 1,
+		"usable": {
+			"type": "cable",
+			"data": {
+				"cable_type": "invalid"
+			}
+		}
+	},
 	"Console_Cable": {
 		"name": "Console Cable",
 		"type": "MATERIAL",
