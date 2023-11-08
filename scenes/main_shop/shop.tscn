@@ -44,12 +44,14 @@ func _ready():
 "
 
 [node name="shop" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 45.0
-margin_top = 2.0
-margin_right = 45.0
-margin_bottom = 2.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 
 [node name="crafting_list" type="PanelContainer" parent="."]
 anchor_left = 0.5
@@ -132,10 +134,10 @@ margin_right = 674.0
 margin_bottom = 594.0
 
 [node name="inventory_player" parent="." instance=ExtResource( 9 )]
-margin_left = -992.0
-margin_top = -474.0
-margin_right = -470.0
-margin_bottom = -305.0
+margin_left = -860.0
+margin_top = -440.0
+margin_right = -338.0
+margin_bottom = -271.0
 script = SubResource( 4 )
 
 [connection signal="pressed" from="crafting_list/title/close" to="crafting_list" method="_on_close_pressed"]

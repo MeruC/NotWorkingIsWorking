@@ -30,7 +30,10 @@
       "title": "Todo",
       "tasks": [
         12,
-        11
+        11,
+        14,
+        15,
+        16
       ]
     },
     {
@@ -125,6 +128,21 @@
     {
       "category": 0,
       "title": "3D Level Touch Control UI",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "Add Coin Rewards Display Per Level",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "3D tutorial Videos",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "discussion sounds",
       "details": ""
     }
   ]

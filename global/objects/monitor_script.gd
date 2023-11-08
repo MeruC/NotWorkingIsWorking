@@ -185,7 +185,6 @@ func _on_ipConfig_button_pressed():
 
 func _on_save_button_pressed():
 	if ip_indicator.visible == false:
-		device_name = deviceName_lineEdit.text
 		ipv4_address = ipv4Add_lineEdit.text
 		subnet_mask = ipv4Subnet_lineEdit.text
 		default_gateway = ipv4Gateway_lineEdit.text

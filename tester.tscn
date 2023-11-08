@@ -5,12 +5,12 @@
 [ext_resource path="res://resources/Materials/grid.tres" type="Material" id=3]
 [ext_resource path="res://resources/Materials/grid_out.tres" type="Material" id=4]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://global/objects/huaweiRouter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=9]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=11]
-[ext_resource path="res://global/objects/genericRouter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/Game buttons/touch/close_task_button.png" type="Texture" id=15]
 [ext_resource path="res://resources/Game buttons/touch/task_button.png" type="Texture" id=16]
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=21]
@@ -104,11 +104,21 @@ custom_styles/normal = SubResource( 21 )
 [node name="task_manager" parent="tasks_ui" index="1"]
 custom_styles/panel = SubResource( 27 )
 
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="1"]
 custom_fonts/font = SubResource( 29 )
+
+[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
+visible = false
 
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="0"]
 custom_fonts/font = SubResource( 28 )
@@ -116,11 +126,17 @@ custom_fonts/font = SubResource( 28 )
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="1"]
 custom_fonts/font = SubResource( 29 )
 
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="1"]
 custom_fonts/font = SubResource( 29 )
+
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = false
 
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="0"]
 custom_fonts/font = SubResource( 28 )
@@ -128,11 +144,17 @@ custom_fonts/font = SubResource( 28 )
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
 custom_fonts/font = SubResource( 29 )
 
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="1"]
 custom_fonts/font = SubResource( 29 )
+
+[node name="task6" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="5"]
+visible = false
 
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="0"]
 custom_fonts/font = SubResource( 28 )
@@ -140,11 +162,17 @@ custom_fonts/font = SubResource( 28 )
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="1"]
 custom_fonts/font = SubResource( 29 )
 
+[node name="task7" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="6"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="1"]
 custom_fonts/font = SubResource( 29 )
+
+[node name="task8" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="7"]
+visible = false
 
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="0"]
 custom_fonts/font = SubResource( 28 )
@@ -152,17 +180,26 @@ custom_fonts/font = SubResource( 28 )
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="1"]
 custom_fonts/font = SubResource( 29 )
 
+[node name="task9" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="8"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="1"]
 custom_fonts/font = SubResource( 29 )
 
+[node name="task10" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="9"]
+visible = false
+
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="0"]
 custom_fonts/font = SubResource( 28 )
 
 [node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="1"]
 custom_fonts/font = SubResource( 29 )
+
+[node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
+visible = false
 
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task11" index="0"]
 custom_fonts/font = SubResource( 28 )
@@ -182,17 +219,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2 )
 [node name="@object_table@102" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2 )
 
-[node name="object_genericRouter" parent="." instance=ExtResource( 12 )]
+[node name="object_huaweiRouter" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
-device_name = "object_genericRouter"
+device_name = "router1"
 
 [node name="object_monitor" parent="." instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -2 )
-device_name = "object_monitor"
 
 [node name="@object_monitor@454" parent="." instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -2 )
-device_name = "@object_monitor@454"
 
 [editable path="environment"]
 [editable path="tasks_ui"]

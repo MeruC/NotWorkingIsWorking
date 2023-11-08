@@ -65,6 +65,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 750, 100 )
 theme = ExtResource( 10 )
 align = 1
+max_length = 8
 placeholder_text = "5FZ135ZB"
 
 [node name="Label" type="Label" parent="."]
