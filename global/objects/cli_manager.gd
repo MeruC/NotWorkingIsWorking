@@ -3,6 +3,7 @@ extends Control
 #signal on_ping_result_display("successful")
 export(PackedScene) var command_line
 
+signal devices_pinged
 var task11_cb
 onready var level_scene
 var device_list = []
@@ -39,16 +40,18 @@ Ping statistics:
 
 func _ready():
 	level_scene = this_device.get_parent()
+	self.connect("devices_pinged", this_device.get_parent(), "_on_devices_pinged")
 	
 	for node in level_scene.get_children():
 		if "object_monitor" in node.name or "genericRouter" in node.name:
 			device_list.append(node)
 		elif node.name == "tasks_ui":
 			var tasks_ui = node
-			var tasks = tasks_ui.get_child(1).get_child(0).get_child(2)
+			var tasks = tasks_ui.get_child(1).get_child(0).get_child(0)
 			for task in tasks.get_children():
 				if task.name == "task11":
 					task11_cb = task.get_child(0)
+					break
 			
 	set_process_input(true)
 		
@@ -119,6 +122,7 @@ func _on_command_line_enter_pressed(text, result_line):
 			result_line.rect_min_size.y = result_line.get_line_count() * result_line.get_line_height()
 	add_cmd_line()
 	ping_all_devices()
+	emit_signal("devices_pinged")
 
 func ping_all_devices():
 	var device_list = []
@@ -147,13 +151,11 @@ func ping_all_devices():
 					if device_object != null:
 						#print(device_object)
 						if ping_device(device_object, ip, this_device.device_name) == true:
-							print("napiping si " + ip)
 							break
 						else:
 							pass
 					else:
 						pass
-	print("Everything is pingable")
 	if task11_cb != null:
 		task11_cb.pressed = true
 		level_scene.enable_submit()

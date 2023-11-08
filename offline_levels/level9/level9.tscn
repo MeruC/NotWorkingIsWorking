@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=17]
 [ext_resource path="res://scenes/tutorials/tutorials.tscn" type="PackedScene" id=18]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://resources/soundtrack/menu/Curious Critters (Extended Version) 1.mp3" type="AudioStream" id=20]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -528,6 +530,7 @@ func _on_submit_button_pressed():
 
 
 func _on_yes_button_pressed():
+	SaveManager.save_game()
 	gameover_popup.visible = true
 	animationplayer.play(\"win\")
 	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
@@ -538,7 +541,7 @@ func _on_yes_button_pressed():
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
 		if settings_data.reset_timer >= 10800:
-			if score == 30:
+			if points == 30:
 				settings_data.reset_timer = 0
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
@@ -559,7 +562,7 @@ func _on_yes_button_pressed():
 		coins.text = \"+0\"
 		return
 	else:
-		if score == 5:
+		if points == 5:
 			settings_data.crowns += 3
 			net1_skills.text = \"Networking 2 skills: 50\"
 			coins.text = \"+100\"
@@ -569,7 +572,7 @@ func _on_yes_button_pressed():
 			settings_data.net2_skills += 50
 			settings_data.reset_timer = 10800
 			SaveManager.save_game()
-		elif score == 0:
+		elif points == 0:
 			return
 func _on_tap_pressed():
 	introduction_popup.visible = false
@@ -658,10 +661,14 @@ margin_bottom = 275.5
 layer = 128
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
+margin_right = 1325.0
+margin_bottom = 694.0
+
+[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+visible = true
 
 [node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = true
 margin_top = 258.0
 margin_bottom = 466.0
 
@@ -690,6 +697,7 @@ margin_top = 516.0
 margin_bottom = 820.0
 
 [node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
+visible = true
 margin_top = 516.0
 margin_bottom = 694.0
 
@@ -865,6 +873,10 @@ coins = NodePath("../popups/game_over/main_popup/GridContainer2/coins")
 popup_next_button = NodePath("../popups/game_over/main_popup/GridContainer/next")
 popup_retry_button = NodePath("../popups/game_over/main_popup/GridContainer/retry")
 settings_data = ExtResource( 3 )
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 19 )]
+stream = ExtResource( 20 )
+bus = "Music"
 
 [connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="manager" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]

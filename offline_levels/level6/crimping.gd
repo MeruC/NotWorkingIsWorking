@@ -164,8 +164,8 @@ func _on_crimp_pressed():
 			else:
 				type = "Invalid"
 				type_label.text = type
-				end = 2
-				_next()
+				end = 1
+				_on_craft_complete("invalid")
 			
 		#game_over.visible = true
 
