@@ -3,7 +3,7 @@ extends Control
 #signal on_ping_result_display("successful")
 export(PackedScene) var command_line
 
-var task5_cb
+var task11_cb
 onready var level_scene
 var device_list = []
 onready var this_device = $"../../../.."
@@ -48,9 +48,8 @@ func _ready():
 			var tasks = tasks_ui.get_child(1).get_child(0).get_child(2)
 			for task in tasks.get_children():
 				if task.name == "task11":
-					task5_cb = task.get_child(0)
+					task11_cb = task.get_child(0)
 			
-	size = get_tree().get_root().get_child_count() - 1
 	set_process_input(true)
 		
 # To check what does the user intend to perform
@@ -121,20 +120,6 @@ func _on_command_line_enter_pressed(text, result_line):
 	add_cmd_line()
 	ping_all_devices()
 
-	#for child in get_tree().get_root().get_child(size).get_children():
-	#	if child is StaticBody and child.get("ipv4_address") != null and child.get("ipv4_address") == ipv4_add and child.device_name in this_device.connected_to:
-	#		return true
-	#	elif child.connected_to != null:
-	#		for device_name in child.connected_to:
-	#			for device in get_tree().get_root().get_child(size).get_children():
-	#				if device.device_name == device_name:
-	#					if device.device_type == "computer" and device.ipv4_add == ipv4_add:
-	#						return true
-	#					elif device.device_type == "router" and (device.ge0_ip == ipv4_add or device.ge1_ip == ipv4_add or device.ge2_ip == ipv4_add):
-	#						return true
-	#return false
-##
-
 func ping_all_devices():
 	var device_list = []
 	var ip_list = []
@@ -168,9 +153,9 @@ func ping_all_devices():
 							pass
 					else:
 						pass
-	print("Everything are pingable")
-	if task5_cb != null:
-		task5_cb.pressed = true
+	print("Everything is pingable")
+	if task11_cb != null:
+		task11_cb.pressed = true
 		level_scene.enable_submit()
 	
 
