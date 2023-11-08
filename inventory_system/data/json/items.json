@@ -61,7 +61,7 @@
 		"level": 1
 	},
 	"invalid": {
-		"name": "RJ45 Head",
+		"name": "Invalid RJ45 Cable",
 		"type": "CABLE",
 		"stack_size": 64,
 		"level": 1,

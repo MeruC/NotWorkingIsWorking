@@ -191,6 +191,7 @@ func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 	
 func _on_craft_complete(type):
+	SignalManager.emit_signal("craft_end")
 	InventoryManager.remove_items( ItemManager.get_items( price ), "crafting" )
 	var produce = [{
 		"id": type, 
