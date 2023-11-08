@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=17]
 [ext_resource path="res://scenes/tutorials/tutorials.tscn" type="PackedScene" id=18]
+[ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://resources/soundtrack/menu/Curious Critters (Extended Version) 1.mp3" type="AudioStream" id=20]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -635,12 +637,6 @@ device_name = "PC1"
 [node name="ipConfig_button" parent="object_monitor/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
@@ -648,18 +644,8 @@ device_name = "PC2"
 [node name="ipConfig_button" parent="object_monitor153/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
-[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 layer = 128
-
-[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
 
 [node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
 margin_top = 258.0
@@ -865,6 +851,11 @@ coins = NodePath("../popups/game_over/main_popup/GridContainer2/coins")
 popup_next_button = NodePath("../popups/game_over/main_popup/GridContainer/next")
 popup_retry_button = NodePath("../popups/game_over/main_popup/GridContainer/retry")
 settings_data = ExtResource( 3 )
+
+[node name="AudioLoopPlayer" parent="." instance=ExtResource( 19 )]
+stream = ExtResource( 20 )
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="manager" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]

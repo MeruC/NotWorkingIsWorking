@@ -14,7 +14,6 @@ region_rect = Rect2( 0, 0, 1080, 1080 )
 
 [sub_resource type="StreamTexture" id=26]
 flags = 2
-load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
 
 [sub_resource type="StyleBoxTexture" id=22]
 texture = SubResource( 26 )
@@ -81,8 +80,6 @@ rect_min_size = Vector2( 1350, 700 )
 scroll_horizontal_enabled = false
 
 [node name="tasks_vbox" type="VBoxContainer" parent="task_manager/ScrollContainer"]
-margin_right = 1325.0
-margin_bottom = 3334.0
 custom_constants/separation = 50
 
 [node name="task1" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]

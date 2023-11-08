@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=2]
+[gd_scene load_steps=168 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -48,6 +48,48 @@
 [ext_resource path="res://online_mode/level_editor/task_choice2.gd" type="Script" id=46]
 [ext_resource path="res://online_mode/level_editor/confRouterPoption.gd" type="Script" id=47]
 [ext_resource path="res://online_mode/level_editor/task_option.gd" type="Script" id=48]
+[ext_resource path="res://resources/font/OpenSans-Semibold.ttf" type="DynamicFontData" id=49]
+
+[sub_resource type="DynamicFont" id=125]
+size = 24
+font_data = ExtResource( 49 )
+
+[sub_resource type="StyleBoxEmpty" id=126]
+
+[sub_resource type="StyleBoxFlat" id=127]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.223529, 0.835294, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=128]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.0431373, 0.380392, 0.470588, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Theme" id=129]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 125 )
+Button/styles/focus = SubResource( 126 )
+Button/styles/hover = SubResource( 127 )
+Button/styles/normal = SubResource( 127 )
+Button/styles/pressed = SubResource( 128 )
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -2104,16 +2146,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 44.0
-margin_top = -31.0
-margin_right = 92.0
-margin_bottom = 31.0
+margin_left = 52.392
+margin_top = -50.214
+margin_right = 100.391
+margin_bottom = 11.7856
 rect_pivot_offset = Vector2( 0, 31 )
 script = ExtResource( 23 )
 
 [node name="rotate" type="Button" parent="UI/editor/rotate"]
 anchor_right = 1.0
-margin_bottom = 20.0
+margin_top = -41.0
+margin_right = -6.0
+margin_bottom = 3.0
+rect_scale = Vector2( 2, 2 )
+theme = SubResource( 129 )
 icon = ExtResource( 22 )
 icon_align = 1
 
@@ -2121,7 +2167,10 @@ icon_align = 1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
+margin_top = 3.00037
+margin_right = 36.0
+margin_bottom = 56.0003
+theme = SubResource( 129 )
 text = "Done"
 
 [node name="FileDialogTopBar" type="CanvasLayer" parent="UI/editor"]
@@ -3335,10 +3384,6 @@ visible = false
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
 visible = false
 
-[node name="tasks_vbox" parent="level/tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="popups" parent="level" instance=ExtResource( 38 )]
 visible = false
 
@@ -3527,6 +3572,7 @@ bus = "Music"
 [connection signal="pressed" from="level/tasks_ui/task_manager/submit_button" to="level" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="level/popups/submit_button_prompt/prompt/yes" to="level" method="_on_yes_pressed"]
 [connection signal="pressed" from="level/popups/submit_button_prompt/prompt/no" to="level" method="_on_no_pressed"]
+[connection signal="timeout" from="level/popups/Timer" to="level" method="_on_Timer_timeout"]
 [connection signal="finished" from="level/LevelAudioLoopPlayer" to="level/LevelAudioLoopPlayer" method="_on_AudioStreamPlayer_finished"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]

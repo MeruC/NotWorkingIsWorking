@@ -877,7 +877,8 @@ theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="videoSubmenu/videoPanel"]
-margin_right = 583.0
+margin_left = 247.0
+margin_right = 830.0
 margin_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -952,7 +953,7 @@ theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="musicSubmenu/musicPanel"]
-margin_right = 862.0
+margin_right = 1078.0
 margin_bottom = 992.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -1133,7 +1134,6 @@ custom_styles/panel = SubResource( 28 )
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
 volume_db = -5.0
-autoplay = false
 bus = "Music"
 
 [connection signal="pressed" from="pausemenu/restart" to="." method="_on_restart_pressed"]

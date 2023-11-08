@@ -148,6 +148,7 @@ func placeObject():
 func rotateObject():
 	if (!Global.on_save_load and Global.can_place and "object" in object_point.collider.name and !Global.is_usingJoystick):
 		current_object = level.get_node(object_point.collider.name)
+		print(current_object)
 		rotate_object.current_object = current_object
 		Global.editor_mode = "in_action"
 		editor_camera.global_translation.x = cursor_pos.x

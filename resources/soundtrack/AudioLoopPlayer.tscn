@@ -11,6 +11,7 @@ func _on_AudioStreamPlayer_finished():
 "
 
 [node name="AudioLoopPlayer" type="AudioStreamPlayer"]
+autoplay = true
 script = SubResource( 124 )
 
 [connection signal="finished" from="." to="." method="_on_AudioStreamPlayer_finished"]

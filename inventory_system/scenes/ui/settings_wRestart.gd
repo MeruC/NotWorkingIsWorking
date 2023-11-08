@@ -34,6 +34,8 @@ func _on_confirm_pressed(action):
 			get_tree().paused = false
 			action = ""
 			settings_data.quick_game = "notplaying"
+			settings_data.online_level = ""
+			SaveManager.save_game()
 			var ro = get_node("/root")
 			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
 		"quit":
@@ -76,7 +78,7 @@ func _on_resume_pressed():
 	audio_loop_player.stream_paused = true
 	audio_loop_player.stop()
 	#audio_loop_player.playing = false
-	hide()
+	get_parent().set_visible(false)
 
 #Video Submenu
 func _on_fullscreen_toggled(button_pressed):
