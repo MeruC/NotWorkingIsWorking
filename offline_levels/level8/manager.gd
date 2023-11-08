@@ -40,6 +40,7 @@ func next_question():
 	set_timer()
 	question_number += 1
 	questionNumber_label.text = str(question_number)
+	user_input.text = ""
 	
 func set_timer():
 	timer.start(60)
@@ -79,6 +80,13 @@ func decimalToBinary(decimal_value: int) -> String:
 		var remainder = decimal_value % 2
 		binary_string = str(remainder) + binary_string
 		decimal_value = decimal_value / 2
+	if binary_string.length() < 8:
+		var zerosToAdd = 8 - binary_string.length()
+		var zeros = ""
+		for i in range(zerosToAdd):
+			zeros += "0"
+		binary_string = zeros + binary_string
+	print(binary_string)
 	return binary_string
 ##
 
@@ -154,7 +162,7 @@ func _on_tap_pressed():
 
 # To calculate score then display the gameover popup
 func calculate_score():
-	if score == 0:
+	if score < 50:
 		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 		gameover_anim.play("lose")
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
@@ -163,7 +171,7 @@ func calculate_score():
 		gameover_score.text = "Your Score: " + str(score)
 		gameover_next.disabled = true
 		
-	if score<=20 and score>0:
+	if score >= 50 and score <= 99:
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		gameover_anim.play("win")
 		audioplayer.play()
@@ -173,7 +181,7 @@ func calculate_score():
 		gameover_next.disabled = false
 		score_validation()
 		
-	elif score >= 30 and score <= 199:
+	elif score >= 100 and score <= 149:
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		audioplayer.play()
 		celebration.visible = true
@@ -183,7 +191,7 @@ func calculate_score():
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		gameover_next.disabled = false
 		score_validation()
-	elif score >= 200:
+	elif score >= 150:
 		gameover_anim.play("win")
 		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		audioplayer.play()

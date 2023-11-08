@@ -930,21 +930,13 @@ add_popup = NodePath("popup/add_popup")
 settings_data = ExtResource( 9 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -925.0
-margin_top = -500.0
-margin_right = 925.0
-margin_bottom = 500.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 1, 1, 1, 0 )
 
 [node name="bg" type="TextureRect" parent="ColorRect"]
-margin_left = -22.0
-margin_top = -48.0
-margin_right = 1898.0
-margin_bottom = 1032.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 10 )
 
 [node name="title" type="Label" parent="ColorRect"]
@@ -987,9 +979,9 @@ theme = SubResource( 40 )
 text = "Add Question"
 
 [node name="popup" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="delete_confirmation" type="Control" parent="popup"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1042,23 +1034,23 @@ margin_right = 244.0
 margin_bottom = 222.0
 custom_constants/separation = 100
 
-[node name="yes" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
+[node name="no" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
 margin_right = 200.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 200, 75 )
+theme = ExtResource( 12 )
+custom_fonts/font = SubResource( 43 )
+text = "NO"
+
+[node name="yes" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
+margin_left = 300.0
+margin_right = 500.0
 margin_bottom = 115.0
 rect_min_size = Vector2( 200, 75 )
 theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 43 )
 text = "YES"
 script = ExtResource( 6 )
-
-[node name="no" type="Button" parent="popup/delete_confirmation/ColorRect/HBoxContainer"]
-margin_left = 300.0
-margin_right = 500.0
-margin_bottom = 115.0
-rect_min_size = Vector2( 200, 75 )
-theme = ExtResource( 12 )
-custom_fonts/font = SubResource( 43 )
-text = "NO"
 
 [node name="Label" type="Label" parent="popup/delete_confirmation/ColorRect"]
 margin_left = 279.0
@@ -1106,6 +1098,7 @@ margin_top = 10.0
 margin_right = 333.0
 margin_bottom = 92.0
 theme = SubResource( 68 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Add Question"
 align = 1
 valign = 1
@@ -1118,6 +1111,7 @@ margin_top = 100.0
 margin_right = 161.5
 margin_bottom = 124.0
 theme = SubResource( 69 )
+custom_colors/font_color = Color( 1, 0.941176, 0, 1 )
 text = "All fields are required."
 align = 1
 valign = 1
@@ -1149,6 +1143,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 1680, 0 )
 rect_pivot_offset = Vector2( -160, 232 )
 theme = SubResource( 70 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Question: "
 valign = 1
 
@@ -1172,6 +1167,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 1680, 0 )
 rect_pivot_offset = Vector2( -160, 232 )
 theme = SubResource( 70 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Correct Answer:"
 valign = 1
 
@@ -1194,6 +1190,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 1680, 0 )
 rect_pivot_offset = Vector2( -160, 232 )
 theme = SubResource( 70 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Incorrect Answer 1:"
 valign = 1
 
@@ -1216,6 +1213,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 1680, 0 )
 rect_pivot_offset = Vector2( -160, 232 )
 theme = SubResource( 70 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Incorrect Answer 2:"
 valign = 1
 
@@ -1238,6 +1236,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 1680, 0 )
 rect_pivot_offset = Vector2( -160, 232 )
 theme = SubResource( 70 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Incorrect Answer 3:"
 valign = 1
 
@@ -1331,8 +1330,8 @@ theme = SubResource( 40 )
 text = "Back"
 
 [connection signal="pressed" from="ColorRect/add_button" to="." method="_on_add_button_pressed"]
-[connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="popup/delete_confirmation/ColorRect/HBoxContainer/yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="popup/add_popup/Panel/ColorRect/close_button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="popup/add_popup/Panel/ColorRect/popupAdd_button" to="." method="_on_popupAdd_button_pressed"]
 [connection signal="pressed" from="popup/error_popup/Panel/ColorRect/continue_button" to="." method="_on_continue_button_pressed"]

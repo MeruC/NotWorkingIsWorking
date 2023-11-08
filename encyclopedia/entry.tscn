@@ -1,17 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://encyclopedia/onclick.gd" type="Script" id=2]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-extra_spacing_bottom = 16
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
-[node name="entry" type="ColorRect"]
+[node name="entry" type="Panel"]
 margin_right = 880.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 880, 75 )
+custom_styles/panel = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="word" type="Label" parent="."]
@@ -29,9 +41,12 @@ text = "Sample Text"
 valign = 1
 
 [node name="onclick" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 margin_right = 880.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 880, 75 )
+focus_mode = 1
+enabled_focus_mode = 1
 
 [connection signal="pressed" from="onclick" to="." method="_on_onclick_pressed"]

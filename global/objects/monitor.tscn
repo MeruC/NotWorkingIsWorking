@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -33,6 +33,9 @@
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=31]
 [ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=32]
 [ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=33]
+[ext_resource path="res://resources/computer_applications/cmd.png" type="Texture" id=34]
+[ext_resource path="res://resources/computer_applications/terminal.png" type="Texture" id=35]
+[ext_resource path="res://resources/computer_applications/ip_add.png" type="Texture" id=36]
 
 [sub_resource type="DynamicFont" id=76]
 size = 12
@@ -55,8 +58,32 @@ region_rect = Rect2( 0, 0, 6000, 3375 )
 margin_right = 271.626
 margin_top = 3.9945
 
+[sub_resource type="StyleBoxTexture" id=81]
+texture = ExtResource( 36 )
+region_rect = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="DynamicFont" id=84]
+size = 20
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxTexture" id=82]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 40, 40 )
+
 [sub_resource type="DynamicFont" id=27]
 size = 32
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxTexture" id=83]
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="DynamicFont" id=85]
+size = 18
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=59]
@@ -791,6 +818,9 @@ Button/styles/pressed = SubResource( 31 )
 size = 32
 font_data = ExtResource( 13 )
 
+[sub_resource type="StyleBoxFlat" id=86]
+bg_color = Color( 0.5, 0.150391, 0.150391, 1 )
+
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.823529, 0.823529, 0.823529, 1 )
 
@@ -1003,37 +1033,90 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -667.0
+margin_left = -643.0
 margin_top = -481.0
 margin_right = 676.0
 margin_bottom = 312.0
-custom_constants/vseparation = 25
+custom_constants/vseparation = 75
 custom_constants/hseparation = 25
-columns = 3
 
-[node name="ipConfig_button" type="Button" parent="ui/pc_screen/apps"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/pc_screen/apps"]
+margin_right = 150.0
+margin_bottom = 182.0
+alignment = 1
+
+[node name="ipConfig_button" type="Button" parent="ui/pc_screen/apps/VBoxContainer"]
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 15 )
-text = "IP Config"
+custom_styles/hover = SubResource( 81 )
+custom_styles/pressed = SubResource( 81 )
+custom_styles/focus = SubResource( 81 )
+custom_styles/disabled = SubResource( 81 )
+custom_styles/normal = SubResource( 81 )
+icon_align = 1
+expand_icon = true
 
-[node name="terminal_button" type="Button" parent="ui/pc_screen/apps"]
-margin_left = 175.0
-margin_right = 325.0
+[node name="Label" type="Label" parent="ui/pc_screen/apps/VBoxContainer"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 182.0
+custom_fonts/font = SubResource( 84 )
+text = "IP Configuration"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ui/pc_screen/apps"]
+margin_top = 257.0
+margin_right = 150.0
+margin_bottom = 439.0
+
+[node name="terminal_button" type="Button" parent="ui/pc_screen/apps/VBoxContainer2"]
+margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 15 )
-text = "Terminal"
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 82 )
+custom_styles/focus = SubResource( 82 )
+custom_styles/disabled = SubResource( 82 )
+custom_styles/normal = SubResource( 82 )
 
-[node name="cmd_button" type="Button" parent="ui/pc_screen/apps"]
-margin_left = 350.0
-margin_right = 500.0
+[node name="Label" type="Label" parent="ui/pc_screen/apps/VBoxContainer2"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 182.0
+custom_fonts/font = SubResource( 84 )
+text = "Terminal"
+align = 1
+valign = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ui/pc_screen/apps"]
+margin_top = 514.0
+margin_right = 150.0
+margin_bottom = 694.0
+
+[node name="cmd_button" type="Button" parent="ui/pc_screen/apps/VBoxContainer3"]
+margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = SubResource( 27 )
-text = "CMD"
+custom_styles/hover = SubResource( 83 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/focus = SubResource( 83 )
+custom_styles/disabled = SubResource( 83 )
+custom_styles/normal = SubResource( 83 )
 clip_text = true
+
+[node name="Label" type="Label" parent="ui/pc_screen/apps/VBoxContainer3"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 85 )
+text = "Commad Prompt"
+align = 1
+valign = 1
 
 [node name="disconnect_confirm" type="CanvasLayer" parent="ui"]
 pause_mode = 2
@@ -1226,6 +1309,7 @@ margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
 custom_fonts/font = SubResource( 74 )
+custom_styles/hover = SubResource( 86 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/ip_config_app/ip_config_screen"]
@@ -1729,6 +1813,7 @@ margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
 custom_fonts/font = SubResource( 74 )
+custom_styles/hover = SubResource( 86 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/cmd_app/cmd_screen"]
@@ -1818,6 +1903,7 @@ margin_left = -169.0
 margin_bottom = 65.0
 theme = SubResource( 16 )
 custom_fonts/font = SubResource( 74 )
+custom_styles/hover = SubResource( 86 )
 text = "×"
 
 [node name="app_title" type="Label" parent="ui/terminal_app/cmd_screen"]
@@ -1952,9 +2038,9 @@ size = 1.679
 [connection signal="pressed" from="ui/pc_screen/holder/Exit" to="ui" method="_on_Exit_pressed"]
 [connection signal="text_changed" from="ui/pc_screen/holder/name_lineEdit" to="." method="_on_name_lineEdit_text_changed"]
 [connection signal="pressed" from="ui/pc_screen/holder/to_io" to="ui" method="_on_to_io_pressed"]
-[connection signal="pressed" from="ui/pc_screen/apps/ipConfig_button" to="." method="_on_ipConfig_button_pressed"]
-[connection signal="pressed" from="ui/pc_screen/apps/terminal_button" to="." method="_on_terminal_button_pressed"]
-[connection signal="pressed" from="ui/pc_screen/apps/cmd_button" to="." method="_on_cmd_button_pressed"]
+[connection signal="pressed" from="ui/pc_screen/apps/VBoxContainer/ipConfig_button" to="." method="_on_ipConfig_button_pressed"]
+[connection signal="pressed" from="ui/pc_screen/apps/VBoxContainer2/terminal_button" to="." method="_on_terminal_button_pressed"]
+[connection signal="pressed" from="ui/pc_screen/apps/VBoxContainer3/cmd_button" to="." method="_on_cmd_button_pressed"]
 [connection signal="visibility_changed" from="ui/disconnect_confirm" to="ui/disconnect_confirm" method="_on_disconnect_confirm_visibility_changed"]
 [connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/cancel" to="ui/disconnect_confirm" method="_on_cancel_pressed"]
 [connection signal="pressed" from="ui/disconnect_confirm/ColorRect2/ColorRect/MarginContainer/VBoxContainer/confirm/confirm" to="ui/disconnect_confirm" method="_on_confirm_pressed"]

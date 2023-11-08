@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://wood.tres" type="Material" id=1]
 [ext_resource path="res://global/chapters/environment.tres" type="Environment" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-13.obj" type="ArrayMesh" id=12]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-35.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://resources/Models/3D/Voxel Universe Objects-62.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://iconNW.png" type="Texture" id=16]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -30,6 +32,9 @@ albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_offset = Vector3( 0.5, 0, 0.5 )
 uv1_triplanar = true
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 15 )
 
 [node name="main_screen" type="Spatial"]
 script = ExtResource( 9 )
@@ -213,3 +218,29 @@ __meta__ = {
 [node name="Voxel Universe Objects-62" type="MeshInstance" parent="Spatial3/Spatial5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41832, 0, 5.56107 )
 mesh = ExtResource( 14 )
+
+[node name="logo_watermark" type="CanvasLayer" parent="."]
+
+[node name="logo_watermark" type="VBoxContainer" parent="logo_watermark"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -98.0
+margin_right = 155.0
+margin_bottom = -25.0
+alignment = 1
+
+[node name="game_icon" type="TextureRect" parent="logo_watermark/logo_watermark"]
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="game_name" type="Label" parent="logo_watermark/logo_watermark"]
+margin_top = 54.0
+margin_right = 130.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 5 )
+text = "NotWorking"

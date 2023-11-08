@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/Game buttons/simple_bg_worg _games(1).png" type="Texture" id=2]
-[ext_resource path="res://online_mode/join_level/qr-code.png" type="Texture" id=3]
 [ext_resource path="res://resources/font/button.tres" type="DynamicFont" id=4]
 [ext_resource path="res://online_mode/join_level/manager.gd" type="Script" id=5]
 [ext_resource path="res://scenes/user_profile/buttons and panels/cat_loding.png" type="Texture" id=6]
@@ -14,9 +13,6 @@
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://resources/soundtrack/menu/random silly chip song.ogg" type="AudioStream" id=13]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=14]
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.392157 )
@@ -60,48 +56,41 @@ margin_top = -50.0
 margin_right = 450.0
 margin_bottom = 50.0
 custom_constants/separation = 50
+alignment = 1
 
 [node name="code" type="LineEdit" parent="HBoxContainer"]
-margin_right = 750.0
+margin_left = 75.0
+margin_right = 825.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 750, 100 )
 theme = ExtResource( 10 )
 align = 1
 placeholder_text = "5FZ135ZB"
 
-[node name="scan_qr" type="Button" parent="HBoxContainer"]
-visible = false
-margin_left = 800.0
-margin_right = 900.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-custom_styles/normal = SubResource( 3 )
-icon = ExtResource( 3 )
-icon_align = 1
-expand_icon = true
-
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -693.0
-margin_top = -246.0
-margin_right = 622.0
-margin_bottom = -156.0
+margin_left = -657.5
+margin_top = -290.0
+margin_right = 657.5
+margin_bottom = -200.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Enter/Scan a Level Code"
+text = "Enter a Level Code"
+align = 1
+valign = 1
 
 [node name="join" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -169.0
-margin_top = 120.0
-margin_right = 31.0
-margin_bottom = 220.0
+margin_left = -100.0
+margin_top = 160.0
+margin_right = 100.0
+margin_bottom = 260.0
 rect_min_size = Vector2( 200, 100 )
 theme = ExtResource( 9 )
 text = "JOIN"

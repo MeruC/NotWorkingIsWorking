@@ -1,4 +1,4 @@
-extends ColorRect
+extends Panel
 
 export (NodePath) onready var content_holder
 export (NodePath) onready var term_label
