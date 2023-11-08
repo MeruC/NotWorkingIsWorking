@@ -65,7 +65,7 @@ func _ready():
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 1), \"completed\")
 		$\"../level1\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -74,7 +74,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level1_camera, 1), \"completed\")
 		$\"../level10\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -83,7 +83,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level10_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level10_camera, 1), \"completed\")
 		$\"../level10\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -92,7 +92,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level9_camera, 1), \"completed\")
 		$\"../level9\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -101,7 +101,7 @@ func _ready():
 		TransitionNode.animation_player.play(\"in\")
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level8_camera, 1), \"completed\")
 		$\"../level8\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -110,7 +110,7 @@ func _ready():
 		$\"../crowns\".visible = false
 		$\"../back\".disabled = true
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level7_camera, 1), \"completed\")
 		$\"../level7\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -119,7 +119,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level6_camera, 1), \"completed\")
 		$\"../level6\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -128,7 +128,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level5_camera, 1), \"completed\")
 		$\"../level5\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -137,7 +137,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level4_camera, 1), \"completed\")
 		$\"../level4\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -146,7 +146,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level3_camera, 1), \"completed\")
 		$\"../level3\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -155,7 +155,7 @@ func _ready():
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
-		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 4), \"completed\")
+		yield(CameraTransitionDefault.transition_camera3D(main_camera, level2_camera, 1), \"completed\")
 		$\"../level2\".visible = true
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
@@ -179,7 +179,7 @@ func _on_left_pressed():
 			$\"../level2\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 1), \"completed\")
 			$\"../level1\".visible = true
 			if settings_data.level1 >= 7 and settings_data.level1 <= 9:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
@@ -204,7 +204,7 @@ func _on_left_pressed():
 			$\"../level3\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level3_camera, level2_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level3_camera, level2_camera, 1), \"completed\")
 			$\"../level2\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level2 == 4:
@@ -226,7 +226,7 @@ func _on_left_pressed():
 			$\"../level4\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level4_camera, level3_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level4_camera, level3_camera, 1), \"completed\")
 			$\"../level3\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level3 == 4:
@@ -248,7 +248,7 @@ func _on_left_pressed():
 			$\"../level5\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level5_camera, level4_camera, 1), \"completed\")
 			$\"../level4\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level4 == 5:
@@ -271,7 +271,7 @@ func _on_left_pressed():
 			$\"../level6\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level6_camera, level5_camera, 1), \"completed\")
 			$\"../level5\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level5 == 7:
@@ -293,7 +293,7 @@ func _on_left_pressed():
 			$\"../level7\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level7_camera, level6_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level7_camera, level6_camera, 1), \"completed\")
 			$\"../level6\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level6 == 5:
@@ -311,7 +311,7 @@ func _on_left_pressed():
 			$\"../level8\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level8_camera, level7_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level8_camera, level7_camera, 1), \"completed\")
 			$\"../level7\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level7 == 5:
@@ -333,7 +333,7 @@ func _on_left_pressed():
 			$\"../level9\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level9_camera, level8_camera, 1), \"completed\")
 			$\"../level8\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level8 >= 200:
@@ -355,7 +355,7 @@ func _on_left_pressed():
 			$\"../level10\".visible = false
 			$\"../notif\".visible = false
 			$\"../crowns\".visible = false
-			yield(CameraTransitionDefault.transition_camera3D(level10_camera, level9_camera, 2), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(level10_camera, level9_camera, 1), \"completed\")
 			$\"../level9\".visible = true
 			$\"../crowns\".visible = true
 			if settings_data.level9 == 30:
@@ -374,7 +374,7 @@ func _on_right_pressed():
 				$\"../back\".disabled = true
 				$\"../level1\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level1_camera, level2_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level1_camera, level2_camera, 1), \"completed\")
 				$\"../left\".disabled = false
 				$\"../crowns\".visible = true
 				if settings_data.level2 == 4:
@@ -399,7 +399,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level2\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level2_camera, level3_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level2_camera, level3_camera, 1), \"completed\")
 				$\"../level3\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level3 == 4:
@@ -424,7 +424,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level3\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level3_camera, level4_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level3_camera, level4_camera, 1), \"completed\")
 				$\"../level4\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level4 == 5:
@@ -450,7 +450,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level4\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level4_camera, level5_camera, 1), \"completed\")
 				$\"../level5\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level5 == 7:
@@ -476,7 +476,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level5\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level5_camera, level6_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level5_camera, level6_camera, 1), \"completed\")
 				$\"../level6\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level6 == 5:
@@ -499,7 +499,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level6\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level6_camera, level7_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level6_camera, level7_camera, 1), \"completed\")
 				$\"../level7\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level7 == 5:
@@ -525,7 +525,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level7\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level7_camera, level8_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level7_camera, level8_camera, 1), \"completed\")
 				$\"../level8\".visible = true
 				$\"../crowns\".visible = true
 				if settings_data.level8 >= 200:
@@ -551,7 +551,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level8\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level8_camera, level9_camera, 1), \"completed\")
 				$\"../level9\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
@@ -570,7 +570,7 @@ func _on_right_pressed():
 				$\"../notif\".visible = false
 				$\"../level8\".visible = false
 				$\"../crowns\".visible = false
-				yield(CameraTransitionDefault.transition_camera3D(level9_camera, level10_camera, 2), \"completed\")
+				yield(CameraTransitionDefault.transition_camera3D(level9_camera, level10_camera, 1), \"completed\")
 				$\"../level10\".visible = true
 				$\"../left\".disabled = false
 				$\"../right\".disabled = false
