@@ -150,3 +150,7 @@ func _on_mainmenu_pressed():
 	ConfirmDialog.confirm_animation.play("intro")
 	ConfirmDialog.label.text = "Return to Main Menu?"
 	ConfirmDialog.action = "main_menu"
+
+
+func _on_set_task_pressed():
+	pass # Replace with function body.
