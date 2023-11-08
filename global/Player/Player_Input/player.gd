@@ -340,6 +340,12 @@ func _input( event ):
 	if event.is_action_pressed("cam_test"):
 		_on_cable_cancel( cabletype )
 	
+	if event.is_action_pressed("cable"):
+		_on_cable_see()
+		
+	if event.is_action_pressed("cable_back"):
+		_on_cable_back()
+	
 	if mode == "cable" and !Global.is_usingJoystick:
 		print(cabletype)
 		if cabletype == "Console_Cable":
@@ -487,3 +493,22 @@ func WhatObject():
 	var rayEnd = rayOrigin + camera.project_ray_normal(mousePos) * 2000
 	var rayArray = spaceState.intersect_ray(rayOrigin, rayEnd)
 	return rayArray
+
+func _on_cable_see():
+	SignalManager.emit_signal("cable_ui")
+	label.modulate = Color8(255,255,255,0)
+	yield(CameraTransition.transition_camera3D(camera_normal, camera_top, 1), "completed")
+	camera.c_rot = Vector3(0,0,0)
+	camera.rotation_degrees.y = 0
+	mode = "cable2"
+	#preview_parent.set_visible(true)
+	LevelGlobal.on_cable_mode = true
+	
+func _on_cable_back():
+	label.modulate = Color8(255,255,255,255)
+	mode = "normal"
+	preview_parent.set_visible(false)
+	LevelGlobal.on_cable_mode = false
+	current_level.mobile_controls.cable_ui2.set_visible(false)
+	yield(CameraTransition.transition_camera3D(camera_top, camera_normal, 1), "completed")
+	SignalManager.emit_signal("cable_back")

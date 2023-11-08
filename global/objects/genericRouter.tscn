@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://resources/Models/Materials/router/router-1-generic router.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/router/router-0-huawei router.png" type="Texture" id=2]
 [ext_resource path="res://global/objects/genericRouter.gd" type="Script" id=3]
 [ext_resource path="res://global/objects/interaction_area.gd" type="Script" id=4]
 [ext_resource path="res://global/objects/uiRouter.gd" type="Script" id=5]
+[ext_resource path="res://addons/Line3D/Line3D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=16]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=17]
@@ -157,6 +158,31 @@ h_offset = 0.628
 v_offset = -1.0
 projection = 1
 size = 1.679
+
+[node name="ge" type="Spatial" parent="."]
+
+[node name="ge0" parent="ge" instance=ExtResource( 6 )]
+end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point_node = NodePath("../pointge0")
+
+[node name="pointge0" type="Position3D" parent="ge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
+
+[node name="ge1" parent="ge" instance=ExtResource( 6 )]
+end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point_node = NodePath("../pointge1")
+
+[node name="pointge1" type="Position3D" parent="ge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
+
+[node name="console0" type="Spatial" parent="."]
+
+[node name="console0line" parent="console0" instance=ExtResource( 6 )]
+end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point_node = NodePath("../console0point")
+
+[node name="console0point" type="Position3D" parent="console0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
 
 [connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
 [connection signal="pressed" from="ui/router/holder/TouchScreenButton" to="ui" method="_on_Exit_pressed"]
