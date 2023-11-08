@@ -170,7 +170,7 @@ func generate_qr(game_code):
 	var QRcode: qr_code = qr_code.new()
 	QRcode.error_correct_level = QrCode.ERROR_CORRECT_LEVEL.MEDIUM
 	var texture: ImageTexture = QRcode.get_texture(game_code)
-	$"../../../../prompt_QR/qr".texture = texture
+	$"../../prompt_QR/qr".texture = texture
 	
 func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var original_file_name = game_code
@@ -205,8 +205,8 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var server_url = "https://nwork.slarenasitsolutions.com/upload_3d.php"  # Replace with your server's URL
 	request.request_raw(server_url, headers, true, HTTPClient.METHOD_POST, body)
 	generate_qr(unique_file_name)
-	$"../../../../prompt_QR/code".text = unique_file_name.replace(".tscn", "")
-	$"../../../../prompt_QR".visible = true
+	$"../../prompt_QR/code".text = unique_file_name.replace(".tscn", "")
+	$"../../prompt_QR".visible = true
 	# You can also save the unique_file_name and original_file_name for reference if needed
 
 func _request_callback(result, response_code, headers, body) -> void:
