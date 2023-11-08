@@ -568,9 +568,9 @@ bus = "SFX"
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
 [node name="craft" type="Button" parent="."]
-margin_left = 79.0
+margin_left = 200.0
 margin_top = 52.0
-margin_right = 279.0
+margin_right = 400.0
 margin_bottom = 114.0
 rect_scale = Vector2( 2, 2 )
 theme = SubResource( 30 )
