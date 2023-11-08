@@ -68,6 +68,7 @@ func _on_confirm_pressed(action):
 				other_ui.set_visible(true)
 				task_ui.set_visible(true)
 				verify_ui.set_visible(true)
+				
 
 func _on_modes_mouse_entered():
 	Global.can_place = false

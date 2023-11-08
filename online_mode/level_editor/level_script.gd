@@ -22,6 +22,7 @@ onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var popups = $popups
+
 export (NodePath) onready var submit_button = find_node("submit_button")
 export (NodePath) onready var instruction = find_node("content")
 export (NodePath) onready var prompt = find_node("submit_button_prompt")
@@ -42,7 +43,7 @@ var is_requesting : bool = false
 var current_time = 0
 
 var joystick
-export (Resource) var setting_data
+export (Resource) onready var setting_data
 var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
@@ -110,8 +111,12 @@ func get_all_computer():
 	for node in self.get_children():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
+			
 func _ready():
-	timer.start()
+	if setting_data.online_level == "":
+		pass
+	else:
+		timer.start()
 	_enable_task()
 	instruction.text = ""+level_desc
 	add_child(http_request)
@@ -249,7 +254,7 @@ func check_progress():
 	check_task10()
 	check_task11()
 	enable_submit()
-
+	
 func check_task1():
 	if find_taskName(tasks_list, "task1") != -1:
 		var device_list = []
@@ -498,8 +503,10 @@ func _send_request(request : Dictionary):
 		return
 
 func _on_yes_pressed():
-	addScore()
-
+	if setting_data.online_level != "":
+		addScore()
+	else:
+		$"../verify_ui/upload".disabled = false
 
 func _on_submit_button_pressed():
 	prompt.visible = true
@@ -508,21 +515,21 @@ func _on_submit_button_pressed():
 func addScore():
 	var username = setting_data.player_name
 	var section = setting_data.section
-	var scores = "Completed"
 	var table_name = setting_data.online_level
 	var data = {
 		"command": "upload_score",
 		"username": username,
 		"section": section,
-		"scores": scores,
+		"scores": "Completed",
 		"table_name": table_name
 	}
 	var command = "upload_score"
 	request_queue.push_back({"command": command, "data": data})
 	_send_request({"command": command, "data": data})
 	yield(get_tree().create_timer(1), "timeout")
+	setting_data.online_level = ""
+	SaveManager.save_game()
 	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
-
 
 func _on_no_pressed():
 	prompt.visible = false
@@ -567,22 +574,24 @@ func format_time(seconds):
 
 
 func _on_Timer_timeout():
-	var username = setting_data.player_name
-	var section = setting_data.section
-	var scores = "Incomplete"
-	var table_name = setting_data.online_level
-	var data = {
-		"command": "upload_score",
-		"username": username,
-		"section": section,
-		"scores": scores,
-		"table_name": table_name
-	}
-	var command = "upload_score"
-	request_queue.push_back({"command": command, "data": data})
-	_send_request({"command": command, "data": data})
-	yield(get_tree().create_timer(1), "timeout")
-	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+	if setting_data.online_level != "":
+		var username = setting_data.player_name
+		var section = setting_data.section
+		var table_name = setting_data.online_level
+		var data = {
+			"command": "upload_score",
+			"username": username,
+			"section": section,
+			"scores": "Not Completed",
+			"table_name": table_name
+		}
+		var command = "upload_score"
+		request_queue.push_back({"command": command, "data": data})
+		_send_request({"command": command, "data": data})
+		yield(get_tree().create_timer(1), "timeout")
+		Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+	else:
+		pass
 
 
 func _on_Button_pressed():

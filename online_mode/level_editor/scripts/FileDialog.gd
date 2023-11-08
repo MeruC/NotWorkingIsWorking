@@ -23,7 +23,6 @@ onready var file_dialog_title = $"../../FileDialogTopBar/FileDialogTitle"
 
 func _ready():
 	last_pos = Vector3(0, 0, 0)
-	#$"../../file/upload".disabled = true
 	SignalManager.connect( "confirm", self, "_on_confirm_pressed" )
 
 func _on_confirm_pressed(action):

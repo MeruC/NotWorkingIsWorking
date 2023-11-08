@@ -34,6 +34,8 @@ func _on_confirm_pressed(action):
 			get_tree().paused = false
 			action = ""
 			settings_data.quick_game = "notplaying"
+			settings_data.online_level = ""
+			SaveManager.save_game()
 			var ro = get_node("/root")
 			Load.load_scene(ro.get_child(ro.get_child_count()-1), "res://scenes/main_screen/main_screen.tscn")
 		"quit":
