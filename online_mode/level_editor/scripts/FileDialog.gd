@@ -29,6 +29,8 @@ func _ready():
 func _on_confirm_pressed(action):
 	match(action):
 		"new_level":
+			TransitionNode.animation_player.play("out")
+			yield(get_tree().create_timer(1), "timeout")
 			get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 		
 func _on_Save_pressed():
@@ -107,6 +109,8 @@ func load_level():
 	
 func new_level():
 	if level.saved:
+		TransitionNode.animation_player.play("out")
+		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 	else:
 		ConfirmDialog.mode = "Confirm Dialog"
@@ -175,6 +179,7 @@ func generate_qr(game_code):
 func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var original_file_name = game_code
 	var creator_name = settings_data.email
+	var levelname2 = $"%nameLE".text
 	var file_path = "user://saved_levels/" + original_file_name
 	var file = File.new()
 	file.open(file_path, File.READ)
@@ -186,7 +191,10 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var body = PoolByteArray()
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
-
+		
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"level_name\"\r\n\r\n%s\r\n" % levelname2).to_utf8())
+	
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % level_name).to_utf8())
 	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())

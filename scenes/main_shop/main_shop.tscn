@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=22]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=23]
 [ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=24]
+[ext_resource path="res://scenes/main_shop/main_shop.gd" type="Script" id=25]
 
 [sub_resource type="GDScript" id=13]
 script/source = "extends ParallaxBackground
@@ -163,6 +164,7 @@ func _on_cancel_pressed():
 "
 
 [node name="shop" type="CanvasLayer"]
+script = ExtResource( 25 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = SubResource( 13 )
@@ -905,5 +907,5 @@ script = SubResource( 36 )
 [connection signal="pressed" from="settings2/setting list/others/holder/save" to="settings2" method="_on_save_pressed"]
 [connection signal="pressed" from="settings2/setting list/others/holder/load" to="settings2" method="_on_load_pressed"]
 [connection signal="pressed" from="settings2/setting list/quit/quit" to="settings2" method="_on_quit_pressed"]
-[connection signal="pressed" from="save" to="save" method="_on_save_pressed"]
-[connection signal="pressed" from="cancel" to="cancel" method="_on_cancel_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]

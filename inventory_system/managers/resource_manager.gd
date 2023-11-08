@@ -39,6 +39,7 @@ var sprites = {
 	"Console_Cable": preload("res://inventory_system/resources/sprites/items/Console_Cable.png"),
 	"straight_through": preload("res://inventory_system/resources/sprites/items/straight_through.png"),
 	"cross_over": preload("res://inventory_system/resources/sprites/items/cross_over.png"),
+	"invalid": preload("res://inventory_system/resources/sprites/items/cross_over.png")
 }
 
 var fonts = {

@@ -399,6 +399,7 @@ tracks/8/keys = {
 }
 
 [node name="transition" type="CanvasLayer"]
+layer = 100
 visible = false
 script = SubResource( 5 )
 
