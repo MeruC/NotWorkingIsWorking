@@ -116,6 +116,8 @@ func _http_request_completed(result, response_code, headers, body):
 				file.close()
 				request_done = 1
 				get_json_file()
+				settings_data.online_level = $HBoxContainer/code.text
+				SaveManager.save_game()
 				print("File saved as:", newFilePath)
 				$loading_scrreen/AnimationPlayer.stop()
 				$loading_scrreen.visible = false

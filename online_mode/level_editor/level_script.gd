@@ -2,14 +2,16 @@ extends Spatial
 
 var level_name = "MyLevel"
 var level_desc = "Set a description for your level!"
-
 var player
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
 onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
-onready var submit_button
+onready var popups = $popups
+export (NodePath) onready var submit_button = find_node("submit_button")
+export (NodePath) onready var instruction = find_node("content")
+export (NodePath) onready var prompt = find_node("submit_button_prompt")
 var verified = false
 var saved = false
 var computer_list = []
@@ -63,6 +65,8 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	instruction.text = ""+level_desc
+	add_child(http_request)
 	Global.playerCanMove = true
 	#upload_btn.disabled = true
 	submit_button = task_manager.get_child(1)
@@ -72,6 +76,7 @@ func _ready():
 	
 	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
+		popups.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		tasks_ui.set_visible(true)
@@ -389,26 +394,6 @@ func starts_with(text, prefix):
 	return text.substr(0, prefix.length()) == prefix
 
 #online
-func addScore():
-	var username = setting_data.player_name
-	var section = setting_data.section
-	var scores = "complete"
-	var table_name = setting_data.online_level
-	var data = {
-		"command": "upload_score",
-		"username": username,
-		"section": section,
-		"scores": scores,
-		"table_name": table_name
-	}
-	print(data)
-	var command = "upload_score"
-	request_queue.push_back({"command": command, "data": data})
-	yield(get_tree().create_timer(1), "timeout")
-	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
-	# Handle the submission process (e.g., show a success message)
-	print("Score submitted successfully.")
-
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
 	# Re-enable UI elements here (e.g., $signup_btn)
@@ -424,7 +409,7 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 
 	var response = parse_json(response_body)
-
+	print(response)
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
 		print("Response Data:", _response_data)
@@ -462,3 +447,26 @@ func _send_request(request : Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return
+
+func _on_yes_pressed():
+	addScore()
+
+
+func _on_submit_button_pressed():
+	prompt.visible = true
+	
+func addScore():
+	var username = setting_data.player_name
+	var section = setting_data.section
+	var scores = "Completed"
+	var table_name = setting_data.online_level
+	var data = {
+		"command": "upload_score",
+		"username": username,
+		"section": section,
+		"scores": scores,
+		"table_name": table_name
+	}
+	var command = "upload_score"
+	request_queue.push_back({"command": command, "data": data})
+	_send_request({"command": command, "data": data})

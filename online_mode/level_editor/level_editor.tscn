@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=2]
+[gd_scene load_steps=151 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://resources/icons/OptionsA.png" type="Texture" id=35]
 [ext_resource path="res://online_mode/level_editor/menu.gd" type="Script" id=36]
 [ext_resource path="res://online_mode/level_editor/TextEdit.gd" type="Script" id=37]
+[ext_resource path="res://online_mode/level_editor/popups.tscn" type="PackedScene" id=38]
 [ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=39]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=40]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=41]
@@ -2814,6 +2815,9 @@ playback_process_mode = 0
 [node name="level" type="Spatial" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 25 )
+submit_button = NodePath("tasks_ui/task_manager/submit_button")
+instruction = NodePath("popups/instruction")
+prompt = NodePath("popups/submit_button_prompt")
 setting_data = ExtResource( 3 )
 
 [node name="floor" type="CSGMesh" parent="level"]
@@ -2848,6 +2852,9 @@ visible = false
 visible = false
 
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
+visible = false
+
+[node name="popups" parent="level" instance=ExtResource( 38 )]
 visible = false
 
 [node name="verify_ui" type="Control" parent="."]
@@ -3015,9 +3022,13 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_exited"]
 [connection signal="pressed" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_on_descdone_pressed"]
+[connection signal="pressed" from="level/tasks_ui/task_manager/submit_button" to="level" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="level/popups/submit_button_prompt/prompt/yes" to="level" method="_on_yes_pressed"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
 
 [editable path="level/environment"]
+[editable path="level/tasks_ui"]
+[editable path="level/popups"]
