@@ -13,12 +13,8 @@
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
-[sub_resource type="StreamTexture" id=26]
-flags = 2
-load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
-
 [sub_resource type="StyleBoxTexture" id=22]
-texture = SubResource( 26 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
 [sub_resource type="StyleBoxFlat" id=27]
@@ -43,10 +39,10 @@ font_data = ExtResource( 3 )
 layer = 12
 
 [node name="task_button" type="Button" parent="."]
-margin_left = 50.0
-margin_top = 50.0
+margin_left = 25.0
+margin_top = 175.0
 margin_right = 150.0
-margin_bottom = 150.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 125, 125 )
 custom_styles/hover = SubResource( 21 )
 custom_styles/pressed = SubResource( 22 )
