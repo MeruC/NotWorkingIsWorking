@@ -3384,10 +3384,6 @@ visible = false
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
 visible = false
 
-[node name="tasks_vbox" parent="level/tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="popups" parent="level" instance=ExtResource( 38 )]
 visible = false
 

@@ -113,12 +113,11 @@ func get_all_computer():
 			computer_list.append(node)
 			
 func _ready():
-	if setting_data.online_level == "":
-		pass
-	else:
+	if timer != null:
 		timer.start()
 	_enable_task()
-	instruction.text = ""+level_desc
+	if instruction != null:
+		instruction.text = ""+level_desc
 	add_child(http_request)
 	Global.playerCanMove = true
 	#upload_btn.disabled = true
@@ -129,8 +128,10 @@ func _ready():
 	
 	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
-		level_audio_loop_player.play()
-		popups.set_visible(true)
+		if level_audio_loop_player != null:
+			level_audio_loop_player.play()
+		if popups != null:
+			popups.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		tasks_ui.set_visible(true)
@@ -579,13 +580,16 @@ func _process(delta):
 
 	if remaining_time <= 0:
 		remaining_time = 0
-		timer.stop()
-	timer.set_wait_time(remaining_time)
+		if timer != null:
+			timer.stop()
+	if timer != null:
+		timer.set_wait_time(remaining_time)
 	update_time_label()
 
 func update_time_label():
 	# Assuming you have a label node named 'time' in your scene
-	time.text = format_time(timer.get_time_left())
+	if timer != null:
+		time.text = format_time(timer.get_time_left())
 
 func format_time(seconds):
 	var minutes = int(seconds / 60)
@@ -613,6 +617,10 @@ func _on_Timer_timeout():
 	else:
 		pass
 
+func _on_devices_pinged():
+	tasks_cbs[find_taskName(tasks_list, "task11")].pressed = true
+	enable_submit()
 
 func _on_Button_pressed():
-	timer.start()
+	if timer!= null:
+		timer.start()
