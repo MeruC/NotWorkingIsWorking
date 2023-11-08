@@ -3015,7 +3015,7 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_exited"]
 [connection signal="pressed" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_on_descdone_pressed"]
-[connection signal="pressed" from="verify_ui/upload" to="UI/editor/modes" method="_on_uploadVerify"]
+[connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]

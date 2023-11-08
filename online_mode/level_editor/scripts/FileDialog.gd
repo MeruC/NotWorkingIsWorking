@@ -143,6 +143,7 @@ func _on_upload_pressed():
 	var request = HTTPRequest.new()
 	request.connect("request_completed", self, "_request_callback")
 	add_child(request)
+	print(selected_file)
 	upload_file(request, selected_file)
 	
 
@@ -175,6 +176,7 @@ func generate_qr(game_code):
 func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var original_file_name = game_code
 	var creator_name = settings_data.email
+	var levelname2 = $"%nameLE".text
 	var file_path = "user://saved_levels/" + original_file_name
 	var file = File.new()
 	file.open(file_path, File.READ)
@@ -186,7 +188,10 @@ func upload_file(request: HTTPRequest, game_code: String) -> void:
 	var body = PoolByteArray()
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"creator\"\r\n\r\n%s\r\n" % creator_name).to_utf8())
-
+		
+	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
+	body.append_array(("Content-Disposition: form-data; name=\"level_name\"\r\n\r\n%s\r\n" % levelname2).to_utf8())
+	
 	body.append_array("\r\n--BodyBoundaryHere\r\n".to_utf8())
 	body.append_array(("Content-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n" % level_name).to_utf8())
 	body.append_array("Content-Type: application/octet-stream\r\n\r\n".to_utf8())
