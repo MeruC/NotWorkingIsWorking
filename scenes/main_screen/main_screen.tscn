@@ -124,6 +124,10 @@ onready var btn_down = $\"%btn_down\"
 
 onready var quick_animation = $\"../QuickAnimation\"
 onready var quicknav = $\"../ColorRect\"
+onready var online_btnQuick = $\"../ColorRect/ui_quick/CenterContainer/MarginContainer/VBoxContainer/online_btn\"
+
+export (float) var camera_speed = 0.5
+
 export (Resource) var settings_data
 
 var current = 0
@@ -140,7 +144,7 @@ func _on_btn_down_pressed():
 			quit_btn.set_visible(false)
 			offline_btn.disabled = true
 			quick_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, camera_speed), \"completed\")
 			if settings_data.email == \"\":
 				online_btn.disabled = true
 			else:
@@ -154,7 +158,7 @@ func _on_btn_down_pressed():
 			offline_btn.set_visible(false)
 			online_btn.disabled = true
 			shop_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, camera_speed), \"completed\")
 			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				quick_btn.disabled = false
 			else:
@@ -168,7 +172,7 @@ func _on_btn_down_pressed():
 			online_btn.set_visible(false)
 			quick_btn.disabled = true
 			dict_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, camera_speed), \"completed\")
 			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				shop_btn.disabled = false
 			else:
@@ -182,7 +186,7 @@ func _on_btn_down_pressed():
 			quick_btn.set_visible(false)
 			shop_btn.disabled = true
 			user_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, camera_speed), \"completed\")
 			dict_btn.disabled = false
 			btn_up.disabled = false
 			current += 1
@@ -193,7 +197,7 @@ func _on_btn_down_pressed():
 			shop_btn.set_visible(false)
 			dict_btn.disabled = true
 			settings_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, camera_speed), \"completed\")
 			user_btn.disabled = false
 			btn_up.disabled = false
 			current += 1
@@ -204,7 +208,7 @@ func _on_btn_down_pressed():
 			dict_btn.set_visible(false)
 			user_btn.disabled = true
 			quit_btn_2.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, camera_speed), \"completed\")
 			settings_btn.disabled = false
 			btn_up.disabled = false
 			current += 1
@@ -215,7 +219,7 @@ func _on_btn_down_pressed():
 			user_btn.set_visible(false)
 			settings_btn.disabled = true
 			offline_btn_2.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, camera_speed), \"completed\")
 			quit_btn_2.disabled = false
 			btn_up.disabled = false
 			current += 1
@@ -230,7 +234,7 @@ func _on_btn_down_pressed():
 			quit_btn.set_visible(true)
 			online_btn.set_visible(true)
 			offline_btn.set_visible(true)
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, camera_speed), \"completed\")
 			btn_up.disabled = false
 			offline_btn.disabled = false
 			current = 0
@@ -249,7 +253,7 @@ func _on_btn_up_pressed():
 			quit_btn_2.set_visible(true)
 			settings_btn.set_visible(true)
 			current = 7
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quit, camera_speed), \"completed\")
 			btn_up.disabled = false
 			quit_btn_2.disabled = false
 			btn_down.disabled = false
@@ -260,7 +264,7 @@ func _on_btn_up_pressed():
 			online_btn.disabled = true
 			quit_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_offline, camera_speed), \"completed\")
 			btn_up.disabled = false
 			offline_btn.disabled = false
 			btn_down.disabled = false
@@ -271,7 +275,7 @@ func _on_btn_up_pressed():
 			quick_btn.disabled = true
 			offline_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_online, camera_speed), \"completed\")
 			if settings_data.email == \"\":
 				online_btn.disabled = true
 			else:
@@ -285,7 +289,7 @@ func _on_btn_up_pressed():
 			shop_btn.disabled = true
 			online_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, camera_speed), \"completed\")
 			btn_up.disabled = false
 			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				quick_btn.disabled = false
@@ -299,7 +303,7 @@ func _on_btn_up_pressed():
 			dict_btn.disabled = true
 			quick_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, camera_speed), \"completed\")
 			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				shop_btn.disabled = false
 			else:
@@ -313,7 +317,7 @@ func _on_btn_up_pressed():
 			user_btn.disabled = true
 			shop_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_dictionary, camera_speed), \"completed\")
 			btn_up.disabled = false
 			dict_btn.disabled = false
 			btn_down.disabled = false
@@ -324,7 +328,7 @@ func _on_btn_up_pressed():
 			settings_btn.disabled = true
 			dict_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_user_profile, camera_speed), \"completed\")
 			btn_up.disabled = false
 			user_btn.disabled = false
 			btn_down.disabled = false
@@ -335,13 +339,17 @@ func _on_btn_up_pressed():
 			quit_btn_2.disabled = true
 			user_btn.set_visible(true)
 			current -= 1
-			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, 1), \"completed\")
+			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_settings, camera_speed), \"completed\")
 			btn_up.disabled = false
 			settings_btn.disabled = false
 			btn_down.disabled = false
 
 
 func _on_btn_quicknav_pressed():
+	if settings_data.email == \"\":
+		online_btnQuick.disabled = true
+	else:
+		online_btnQuick.disabled = false
 	quicknav.set_visible(true)
 	quick_animation.play(\"quick\")
 "
@@ -2757,6 +2765,7 @@ rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 394, 0 )
 theme = ExtResource( 10 )
 script = SubResource( 50 )
+camera_speed = 0.7
 settings_data = ExtResource( 27 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ui"]
@@ -3060,22 +3069,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -22.0
 margin_top = 443.0
-margin_right = 1942.0
-margin_bottom = 637.0
+margin_right = 22.0
+margin_bottom = -443.0
 rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 1031.45, 0 )
 theme = SubResource( 49 )
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect/ui_quick"]
-margin_right = 3884.0
+margin_right = 1964.0
 margin_bottom = 1473.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ui_quick/CenterContainer"]
-margin_left = 1617.0
-margin_right = 2267.0
+margin_left = 657.0
+margin_right = 1307.0
 margin_bottom = 1473.0
 mouse_filter = 2
 custom_constants/margin_top = 30
@@ -3148,10 +3157,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1350.0
-margin_top = 473.0
-margin_right = 1489.0
-margin_bottom = 605.0
+margin_left = 390.0
+margin_top = -67.0
+margin_right = 529.0
+margin_bottom = 65.0
 theme = ExtResource( 10 )
 text = "Q"
 

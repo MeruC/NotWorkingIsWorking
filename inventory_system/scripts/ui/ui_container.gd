@@ -7,7 +7,8 @@ onready var inventorybg = $inventorybg
 onready var animation_player = $"../AnimationPlayer"
 
 func _input( event ):
-	player_inventory.set_pivot_offset(player_inventory.get_size())
+	if get_parent().name != "shop":
+		player_inventory.set_pivot_offset(player_inventory.get_size())
 	if event.is_action_pressed( "inventory" ):
 		if player_inventory.visible == true:
 			animation_player.play_backwards("inventory")

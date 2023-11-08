@@ -24,7 +24,7 @@ onready var idle = $idle
 func _input(event):
 	if (event is InputEventScreenTouch or event is InputEventMouseButton) and tap.visible == true:
 		animation_player.play("start")
-		CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraOffline", 1)
+		CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), $"%CameraOffline", 0.75)
 		yield(animation_player, "animation_finished")
 		idle.play("idle")
 
