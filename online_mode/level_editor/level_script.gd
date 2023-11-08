@@ -28,6 +28,8 @@ export (NodePath) onready var instruction = find_node("content")
 export (NodePath) onready var prompt = find_node("submit_button_prompt")
 export (NodePath) onready var timer = find_node("Timer")
 export (NodePath) onready var time = find_node("time")
+var upload_button
+
 var verified = false
 var saved = false
 var computer_list = []
@@ -113,6 +115,11 @@ func get_all_computer():
 			computer_list.append(node)
 			
 func _ready():
+	
+	for node in self.get_parent().get_children():
+		if node.name == "verify_ui":
+			upload_button = node.get_child(0)
+			
 	if setting_data.online_level == "":
 		pass
 	else:
@@ -531,11 +538,12 @@ func _on_yes_pressed():
 	if setting_data.online_level != "":
 		addScore()
 	else:
-		$"../verify_ui/upload".disabled = false
+		upload_button.disabled = false
 
 func _on_submit_button_pressed():
 	prompt.visible = true
 	tasks_ui.visible = false
+	upload_button.disabled = false
 	
 func addScore():
 	var username = setting_data.player_name
