@@ -208,6 +208,7 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 		
 	response = parse_json(response_body)
+	print(response)
 	if response is Array:
 		if response.size() > 0:
 			var data = response  # The response is an array of dictionaries
@@ -245,7 +246,7 @@ func display_table(data):
 				cell_button.text = str(row[headers[j]])  # Set the button text to the email address
 			else:
 				var cell_label = Label.new()  # Create a label for other data
-				cell_label.text = str(row[headers[j]])
+				cell_label.text = str(row[headers[j]]).replace(\"\\\"\", \"\")
 				cell_label.add_font_override(\"font\", font_resource)
 				cell_label.add_color_override(\"font_color\", font_color)
 				cell_label.rect_min_size = Vector2(200, 90)  # Set the size here
@@ -261,13 +262,12 @@ func clear_grid():
 
 func get_3dlevelresult(value):
 	$\"../exit\".disabled = true
-	var command = \"get_3dlevelresult\"
+	var command = \"get_levelresult\"
 	var levelname = value.replace(\".tscn\", \"\")
+	currentLevelName = levelname
 	var data = {\"level_name\": levelname}
 	request_queue.push_back({\"command\": command, \"data\": data})
 	$\".\".visible = true
-	
-	currentLevelName = levelname
 
 func _on_back_pressed():
 	$\".\".visible = false
@@ -301,7 +301,7 @@ func export_csv_data(data, path):
 			var remarks = item.get(\"scores\", \"\")
 			var section = item.get(\"section\", \"\")
 			csv_data += '\"' + name + '\",' + '\"' + section + '\",' + '\"' + remarks + ',\"' + '\"\\n'
-
+			
 
 	# You can use responseData here to access the response data
 	var file = File.new()
@@ -495,6 +495,7 @@ margin_top = -838.0
 margin_right = 927.0
 rect_min_size = Vector2( 150, 52.5 )
 theme = ExtResource( 7 )
+access = 2
 
 [node name="message_prompt" type="CanvasLayer" parent="."]
 visible = false

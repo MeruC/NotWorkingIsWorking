@@ -690,12 +690,28 @@ const SERVER_URL = \"https://nwork.slarenasitsolutions.com/authentication.php\"
 const SERVER_HEADERS = [\"Content-Type: application/x-www-form-urlencoded\", \"Cache-Control: max-age=0\"]
 var request_queue : Array = []
 var is_requesting : bool = false
+var reset_question = \"\"
 
 func _ready():
 	# Connect our request handler:
+	$question.connect(\"item_selected\", self, \"_on_popup_item_selected\")
+	# Add items to the PopupMenu
+	$question.add_item(\"Choose Question\")
+	$question.add_item(\"What was the name of your first pet?\")
+	$question.add_item(\"In which city were you born?\")
+	$question.add_item(\"What is your favorite book or movie?\")
+	$question.add_item(\"What is the name of your childhood best friend?\")
+	$question.add_item(\"What is your mother's maiden name?\")
+	$question.add_item(\"What is the name of your favorite teacher?\")
 	add_child(http_request)
 	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
-		
+
+func _on_popup_item_selected(index):
+	# This function is called when an item is selected
+	var selected_item_text = $question.get_item_text(index)
+	print(\"Selected item: \", selected_item_text)
+	reset_question = selected_item_text
+	
 func _process(_delta):
 	# Check if we have pending requests in the queue:
 	if !request_queue.empty() and !is_requesting:
@@ -732,6 +748,10 @@ func _http_request_completed(result, response_code, headers, body):
 	else:
 		# Handle other response messages or scenarios here
 		prompt_successfully(settings_data.email)
+		$s_email.text = \"\"
+		$s_password.text = \"\"
+		$c_password.text = \"\"
+		$reset_password.text = \"\"
 	
 	if !request_queue.empty():
 		var next_request = request_queue.pop_front()
@@ -762,43 +782,48 @@ func _on_Button_pressed():
 	var username_input = $s_email
 	var password_input = $s_password
 	var cpassword_input = $c_password
+	var reset_answer = $reset_password
 
 	var username = username_input.text
 	var user_password = password_input.text
 	var cpassword = cpassword_input.text
-
+	var reset = reset_answer.text
+	
 	# Minimum and maximum password length requirements
 	var minLength = 8
 	var maxLength = 16
-
-	if user_password == cpassword:
-		if username.find(\"@gmail.com\") != -1 or username.find(\"@bulsu.edu.ph\") != -1:
-			var password_length = len(user_password)
-			# Check if the password meets the minimum and maximum length requirements
-			if password_length >= minLength and password_length <= maxLength:
-				var command = \"add_user\"
-				var data = {\"username\": username, \"password\": user_password}
-				request_queue.push_back({\"command\": command, \"data\": data})
-				settings_data.email = username
-				$\"../../user_profile/logout_bg/logout\".disabled = false
-				SaveManager.save_game()
+	if reset_question != \"\" and reset != \"\":
+		if user_password == cpassword:
+			if username.find(\"@gmail.com\") != -1 or username.find(\"@bulsu.edu.ph\") != -1:
+				var password_length = len(user_password)
+				# Check if the password meets the minimum and maximum length requirements
+				if password_length >= minLength and password_length <= maxLength:
+					var command = \"add_user\"
+					var data = {\"username\": username, \"password\": user_password, \"reset_question\": reset_question, \"reset_answer\": reset}
+					request_queue.push_back({\"command\": command, \"data\": data})
+					settings_data.email = username
+					$\"../../user_profile/logout_bg/logout\".disabled = false
+					SaveManager.save_game()
+				else:
+					$\"../../notification2\".visible = true
+					$\"../../notification2/message\".text = \"Password length must be between \" + str(minLength) + \" and \" + str(maxLength) + \" characters.\"
+					$s_email.text = \"\"
+					$s_password.text = \"\"
+					$c_password.text = \"\"
 			else:
 				$\"../../notification2\".visible = true
-				$\"../../notification2/message\".text = \"Password length must be between \" + str(minLength) + \" and \" + str(maxLength) + \" characters.\"
+				$\"../../notification2/message\".text = \"Invalid Email format.\"
 				$s_email.text = \"\"
 				$s_password.text = \"\"
 				$c_password.text = \"\"
 		else:
 			$\"../../notification2\".visible = true
-			$\"../../notification2/message\".text = \"Invalid Email format.\"
-			$s_email.text = \"\"
+			$\"../../notification2/message\".text = \"Password didn't match.\"
 			$s_password.text = \"\"
 			$c_password.text = \"\"
 	else:
 		$\"../../notification2\".visible = true
-		$\"../../notification2/message\".text = \"Password didn't match.\"
-		$s_password.text = \"\"
-		$c_password.text = \"\"
+		$\"../../notification2/message\".text = \"Please answer all textfields\"
 
 		
 func prompt_successfully(username):
@@ -1862,42 +1887,42 @@ settings_data = ExtResource( 18 )
 
 [node name="email" type="Label" parent="login/signin"]
 margin_left = 491.0
-margin_top = 392.0
+margin_top = 374.0
 margin_right = 722.0
-margin_bottom = 460.0
+margin_bottom = 442.0
 theme = ExtResource( 16 )
 text = "email:"
 
 [node name="password" type="Label" parent="login/signin"]
 margin_left = 312.0
-margin_top = 518.0
+margin_top = 500.0
 margin_right = 736.0
-margin_bottom = 586.0
+margin_bottom = 568.0
 theme = ExtResource( 16 )
 text = "password:"
 
 [node name="confirm_password" type="Label" parent="login/signin"]
 margin_left = 307.0
-margin_top = 648.0
+margin_top = 630.0
 margin_right = 1077.0
-margin_bottom = 716.0
+margin_bottom = 698.0
 theme = ExtResource( 16 )
 text = "Confirm Password:"
 
 [node name="s_email" type="LineEdit" parent="login/signin"]
 margin_left = 768.0
-margin_top = 367.0
-margin_right = 1577.0
-margin_bottom = 473.0
+margin_top = 349.0
+margin_right = 1656.0
+margin_bottom = 455.0
 theme = ExtResource( 6 )
 align = 1
 placeholder_text = "Enter email"
 
 [node name="s_password" type="LineEdit" parent="login/signin"]
 margin_left = 770.0
-margin_top = 498.0
-margin_right = 1584.0
-margin_bottom = 594.0
+margin_top = 480.0
+margin_right = 1654.0
+margin_bottom = 576.0
 theme = ExtResource( 6 )
 align = 1
 secret = true
@@ -1906,22 +1931,39 @@ placeholder_text = "Enter password"
 
 [node name="c_password" type="LineEdit" parent="login/signin"]
 margin_left = 1099.0
-margin_top = 634.0
-margin_right = 1584.0
-margin_bottom = 730.0
+margin_top = 616.0
+margin_right = 1652.0
+margin_bottom = 712.0
 theme = ExtResource( 6 )
 align = 1
 secret = true
 secret_character = "#"
 placeholder_text = "Re-type password"
 
+[node name="question" type="OptionButton" parent="login/signin"]
+margin_left = 315.0
+margin_top = 726.0
+margin_right = 975.0
+margin_bottom = 823.0
+theme = ExtResource( 36 )
+align = 1
+
+[node name="reset_password" type="LineEdit" parent="login/signin"]
+margin_left = 1102.0
+margin_top = 729.0
+margin_right = 1663.0
+margin_bottom = 825.0
+theme = ExtResource( 6 )
+align = 1
+placeholder_text = "Enter your answer"
+
 [node name="Button" type="Button" parent="login/signin"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 713.0
-margin_top = 808.0
-margin_right = 1095.0
-margin_bottom = 940.0
+margin_left = 751.0
+margin_top = 842.0
+margin_right = 1133.0
+margin_bottom = 974.0
 theme = ExtResource( 16 )
 text = "Submit"
 
