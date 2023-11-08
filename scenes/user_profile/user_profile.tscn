@@ -830,6 +830,7 @@ func prompt_successfully(username):
 		$\"../../notification\".visible = true
 		$\"../../notification/message\".text = \"Welcome \"+username
 		$\"../../user_profile/logout_bg/logout\".disabled = false
+		$\"../../cloud_storage\".visible = true
 
 
 func _on_confirm_pressed():
