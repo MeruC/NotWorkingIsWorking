@@ -68,7 +68,7 @@ func _on_craft_pressed():
 	coins.text = str(current_coins - price)
 	settings_data.gold_coins = int(coins.text)
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
-	settings_data.has_crimp = true
+	#settings_data.has_crimp = true
 	craft_btn.disabled = true
 
 # Check to see if it's possible to craft after a change in the player/crafting inventories.
