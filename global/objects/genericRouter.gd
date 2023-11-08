@@ -24,6 +24,9 @@ export(bool) var ge1_port_up = false
 export(String) var console_port_connection = null
 export(int) var port_count = 2
 export(Array) var connected_to = []
+onready var pointge_0 = $ge/pointge0
+onready var pointge_1 = $ge/pointge1
+onready var console_0_point = $console0/console0point
 
 func reset_level():
 	SaveManager.load_game()
@@ -72,11 +75,13 @@ func _set_connector( connection , type):
 		ge0_type = type
 		#label.text = "Connected to " + str(ge0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(ge0.device_name)
+		pointge_0.global_translation = ge0.global_translation
 	elif ge1 == null:
 		ge1 = connection
 		ge1_type = type
 		#label.text = "Connected to " + str(ge1.device_name) + "\nUsing: " + str(type)
 		connected_to.append(ge1.device_name)
+		pointge_1.global_translation = ge1.global_translation
 	else:
 		print("no port available")
 		
@@ -89,6 +94,7 @@ func _set_connectorConsole( connection, type ):
 		console_portType = type
 		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(console_port0.device_name)
+		console_0_point.global_translation = console_port0.global_translation
 		#emit_signal("cable_connected")
 	else:
 		pass

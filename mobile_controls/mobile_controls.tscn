@@ -103,3 +103,16 @@ scale = Vector2( 12, 12 )
 normal = ExtResource( 6 )
 pressed = ExtResource( 8 )
 action = "cam_test"
+
+[node name="cable_ui2" type="Control" parent="."]
+visible = false
+margin_left = 1697.0
+margin_top = 883.0
+margin_right = 1737.0
+margin_bottom = 923.0
+
+[node name="bButton" type="TouchScreenButton" parent="cable_ui2"]
+scale = Vector2( 12, 12 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 8 )
+action = "cable_back"

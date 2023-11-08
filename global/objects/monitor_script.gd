@@ -8,13 +8,14 @@ var fe0_type
 var console_port0 : StaticBody
 var console_portType
 #var other_end : StaticBody
-var isSaved = false
+var isSaved = false#onready var cables = $"%cables"
 var test = "test"
 var rj = true
 var console = true
 var main_scene
 var devices = []
 var connected_router
+onready var draw = $draw
 
 signal configuration_saved()
 
@@ -95,6 +96,10 @@ func resetLevel():
 	dns_server = ""
 	console_port_connection = ""
 
+var p = Array()
+onready var fe0_point = $fe0/fe0point
+onready var console0_point = $console0/console0point
+
 func _process(delta):
 	pass
 	
@@ -143,6 +148,12 @@ func _set_connector( connection, type ):
 		connected_to.append(fe0.device_name)
 		
 		level_scene.check_progress()
+		print(self.translation)
+		print(fe0.translation)
+		print(self.translation.distance_to(fe0.translation))
+		#if fe0 != null:
+		fe0_point.global_translation = fe0.global_translation
+		#if console_port0 != null:
 		#emit_signal("cable_connected")
 	else:
 		pass
@@ -157,6 +168,7 @@ func _set_connectorConsole( connection, type ):
 		console_port0 = connection
 		console_port_connection = connection.device_name
 		console_portType = type
+		console0_point.global_translation = console_port0.global_translation
 		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		#emit_signal("cable_connected")
 	else:

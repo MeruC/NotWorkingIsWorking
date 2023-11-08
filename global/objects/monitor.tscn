@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=2]
+[gd_scene load_steps=110 format=2]
 
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://resources/Models/Materials/computer/monitor-3-screen.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://resources/computer_applications/cmd.png" type="Texture" id=34]
 [ext_resource path="res://resources/computer_applications/terminal.png" type="Texture" id=35]
 [ext_resource path="res://resources/computer_applications/ip_add.png" type="Texture" id=36]
+[ext_resource path="res://addons/Line3D/Line3D.tscn" type="PackedScene" id=37]
 
 [sub_resource type="DynamicFont" id=76]
 size = 12
@@ -2032,6 +2033,24 @@ h_offset = 0.055
 v_offset = -1.0
 projection = 1
 size = 1.679
+
+[node name="fe0" type="Spatial" parent="."]
+
+[node name="fe0line" parent="fe0" instance=ExtResource( 37 )]
+end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point_node = NodePath("../fe0point")
+
+[node name="fe0point" type="Position3D" parent="fe0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
+
+[node name="console0" type="Spatial" parent="."]
+
+[node name="console0line" parent="console0" instance=ExtResource( 37 )]
+end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point_node = NodePath("../console0point")
+
+[node name="console0point" type="Position3D" parent="console0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
 
 [connection signal="pressed" from="ui/io/holder/to_pc" to="ui" method="_on_to_pc_pressed"]
 [connection signal="pressed" from="ui/io/cpu_ui/disconnect_button" to="." method="_on_disconnect_button_pressed"]
