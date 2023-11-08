@@ -1,5 +1,15 @@
 extends Spatial
 
+###ENABLED TASK
+export(bool) var setConn = true
+export(bool) var testConn = true
+export(bool) var confIP = false
+export(bool) var confPC = false
+export(bool) var confRouter = false
+export(String) var confIPClass = "Class A"
+export(String) var confRouterClass = "Class A"
+var all_task = []
+
 var level_name = "MyLevel"
 var level_desc = "Set a description for your level!"
 var player
@@ -31,7 +41,36 @@ var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
 
-
+func _enable_task():
+	for task in tasks_container.get_children():
+			all_task.append(task)
+	all_task[0].visible = setConn
+	all_task[10].visible = testConn
+	if confIP:
+		match(confIPClass):
+			"Class A":
+				all_task[1].visible = true
+			"Class B":
+				all_task[2].visible = true
+			"Class C":
+				all_task[3].visible = true
+	if confRouter:
+		match(confRouterClass):
+			"Class A":
+				all_task[4].visible = true
+			"Class B":
+				all_task[6].visible = true
+			"Class C":
+				all_task[8].visible = true
+	if confPC:
+		match(confIPClass):
+			"Class A":
+				all_task[5].visible = true
+			"Class B":
+				all_task[7].visible = true
+			"Class C":
+				all_task[9].visible = true
+	
 var nodes : Array = []
 func get_all_monitor(node) -> Array:
 	for N in node.get_children():
@@ -42,6 +81,7 @@ func get_all_monitor(node) -> Array:
 	return nodes
 	
 func reset_level():
+	_enable_task()
 	get_all_tasks()
 	
 	for cb in tasks_cbs:
@@ -65,6 +105,7 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	_enable_task()
 	instruction.text = ""+level_desc
 	add_child(http_request)
 	Global.playerCanMove = true

@@ -84,6 +84,13 @@ normal = ExtResource( 6 )
 pressed = ExtResource( 8 )
 action = "hotbar_1"
 
+[node name="cButton" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 911, 883 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 8 )
+action = "cable"
+
 [node name="cable_ui" type="Control" parent="."]
 visible = false
 margin_left = 1697.0
