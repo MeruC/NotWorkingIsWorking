@@ -30,6 +30,9 @@ export(String) var default_gateway
 export(String) var dns_server
 export(String) var console_port_connection = null
 
+onready var fe_0_line = $fe0/fe0line
+onready var console_0_line = $console0/console0line
+
 #export(String) var ipv6_allocation = "static"
 #export(Array) var link_local_address = [0, 0, 0, 0]
 #export(Array) var subnet_mask = [0, 0, 0, 0]
@@ -153,6 +156,7 @@ func _set_connector( connection, type ):
 		print(self.translation.distance_to(fe0.translation))
 		#if fe0 != null:
 		fe0_point.global_translation = fe0.global_translation
+		fe_0_line.visible = true
 		#if console_port0 != null:
 		#emit_signal("cable_connected")
 	else:
@@ -171,6 +175,8 @@ func _set_connectorConsole( connection, type ):
 		console0_point.global_translation = console_port0.global_translation
 		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		#emit_signal("cable_connected")
+		console_0_line.visible = true
+		
 	else:
 		pass
 #	elif other_end == null:
@@ -311,6 +317,7 @@ func _on_disconnect_console_pressed():
 func _on_confirm_pressed():
 	if cableType_label.text == "Cross-Over" or cableType_label.text == "Straight-Through":
 		if fe0.device_type == "computer":
+			fe0.fe_0_line.visible = false
 			fe0.fe0 = null
 			fe0.fe0_type = null
 		elif fe0.device_type == "router":
@@ -326,12 +333,14 @@ func _on_confirm_pressed():
 		if fe0.connected_to.has(device_name):
 			fe0.connected_to.remove(device_name)
 		return_cable(fe0_type)
+		fe_0_line.visible = false
 		fe0 = null
 		fe0_type = null
 		#label.text = ""
 		fe_cable.visible = false
 		fe_disconnectBtn.visible = false
 	elif cableType_label.text == "Console":
+		console_port0.console_0_line.visible = false
 		console_port0.console_port0 = null
 		console_port0.console_portType = null
 		return_cable("Console_Cable")
@@ -340,6 +349,7 @@ func _on_confirm_pressed():
 		#label.text = ""
 		console_cable.visible = false
 		consolde_disconnectBtn.visible = false
+		console_0_line.visible = false
 ##
 
 func return_cable(cable_type):
