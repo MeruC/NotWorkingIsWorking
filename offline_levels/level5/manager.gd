@@ -28,6 +28,8 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var gameover_anim = get_node(gameover_anim) as AnimationPlayer
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var net1_skills = get_node(net1_skills) as Label
+export(NodePath) onready var coins = get_node(coins) as Label
 ##
 
 # Instructions popup paths
@@ -98,6 +100,8 @@ func _on_submit_pressed():
 		score = 7
 		if score == 7:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+100"
 		popup_score_label.text = "Your Score: " + str(score) + " / 7"
 		popup_next_button.disabled = false
 		score_validation()
@@ -112,12 +116,18 @@ func _on_submit_pressed():
 			i -= 1
 		if score == 0:
 			crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
+			net1_skills.text = "Networking 1 skills: 0"
+			coins.text = "+0"
 		elif score >= 4 and score <= 6:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+			net1_skills.text = "Networking 1 skills: 0"
+			coins.text = "+0"
 		elif score <= 3:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+			net1_skills.text = "Networking 1 skills: 0"
+			coins.text = "+0"
 			
-		popup_score_label.text = "Your Score: " + str(score) + " / 7"
+		popup_score_label.text = "Score: " + str(score)
 		popup_next_button.disabled = true
 	
 	game_over_popup.visible = true
@@ -142,10 +152,13 @@ func _on_restart_pressed():
 
 func score_validation():
 	if settings_data.level5 > 0:
+		net1_skills.text = "Networking 1 knowledge: 0"
+		coins.text = "+0"
 		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
+		net1_skills.text = "Networking 1 knowledge: 0"
 		if settings_data.reset_timer >= 10800:
 			if score >= 4:
 				var current_coins = settings_data.gold_coins
