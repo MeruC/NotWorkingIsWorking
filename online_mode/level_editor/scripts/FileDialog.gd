@@ -29,6 +29,8 @@ func _ready():
 func _on_confirm_pressed(action):
 	match(action):
 		"new_level":
+			TransitionNode.animation_player.play("out")
+			yield(get_tree().create_timer(1), "timeout")
 			get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 		
 func _on_Save_pressed():
@@ -107,6 +109,8 @@ func load_level():
 	
 func new_level():
 	if level.saved:
+		TransitionNode.animation_player.play("out")
+		yield(get_tree().create_timer(1), "timeout")
 		get_tree().change_scene_to(load("res://online_mode/level_create_Menu/level_create.tscn"))
 	else:
 		ConfirmDialog.mode = "Confirm Dialog"
