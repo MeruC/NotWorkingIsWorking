@@ -3487,7 +3487,6 @@ anims/task_option = SubResource( 123 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 19 )
-autoplay = true
 bus = "Music"
 
 [connection signal="pressed" from="UI/editor/rotate/rotate" to="UI/editor/rotate" method="_on_rotate_pressed"]

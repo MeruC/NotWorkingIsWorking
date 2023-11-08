@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://inventory_system/settings_node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory_system/resources/sprites/inner_panel.png" type="Texture" id=2]
@@ -25,6 +25,10 @@
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=23]
 [ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=24]
 [ext_resource path="res://scenes/main_shop/main_shop.gd" type="Script" id=25]
+[ext_resource path="res://inventory_system/scripts/ui/item_quantity.gd" type="Script" id=26]
+[ext_resource path="res://inventory_system/resources/sprites/arrow.png" type="Texture" id=27]
+[ext_resource path="res://scenes/main_shop/shop_option.gd" type="Script" id=28]
+[ext_resource path="res://inventory_system/resources/sprites/item_slot.png" type="Texture" id=29]
 
 [sub_resource type="GDScript" id=13]
 script/source = "extends ParallaxBackground
@@ -122,7 +126,77 @@ func _on_crafting_out_of_range():
 	close()
 "
 
-[sub_resource type="StyleBoxTexture" id=17]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 0.294118 )
+expand_margin_right = 7.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 40
+extra_spacing_top = 5
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.243137, 0, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 1, 0.392157, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0.27451, 0.133333, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="Theme" id=38]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.392157 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 14 )
+Button/styles/disabled = SubResource( 18 )
+Button/styles/hover = SubResource( 15 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 17 )
+
+[sub_resource type="StyleBoxTexture" id=39]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 212.231, 212.181 )
 margin_left = 22.0
@@ -132,7 +206,7 @@ margin_bottom = 22.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=40]
 size = 40
 font_data = ExtResource( 11 )
 
@@ -560,6 +634,7 @@ mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list" instance=ExtResource( 15 )]
+visible = false
 margin_right = 591.0
 margin_bottom = 187.0
 size_flags_vertical = 3
@@ -568,14 +643,167 @@ price = 299
 item_id = "cable_tester"
 quantity = 1
 
-[node name="shop_option2" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list" instance=ExtResource( 15 )]
+[node name="shop_option2" type="PanelContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list"]
 margin_right = 591.0
 margin_bottom = 187.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
 size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 28 )
+lbl_panel_title = NodePath("title/TextureRect/Label")
+price_list = NodePath("MarginContainer/HBoxContainer/price")
+produce_list = NodePath("MarginContainer/HBoxContainer/produce")
+craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
+price_lbl = NodePath("MarginContainer/HBoxContainer/price/item_quantity/price")
 panel_title = "Crimping Tool"
-price = 98
+price = 749
 item_id = "crimping"
 quantity = 1
+settings_data = ExtResource( 14 )
+player_data = ExtResource( 24 )
+
+[node name="title" type="Control" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 602.0
+margin_bottom = 133.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 29.0
+margin_right = 18.0
+margin_bottom = 31.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/title/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -116.5
+margin_top = -26.0
+margin_right = 116.5
+margin_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 117, 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "-  ITEM NAME -"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 602.0
+margin_bottom = 133.0
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_top = 50
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer"]
+margin_left = 10.0
+margin_top = 50.0
+margin_right = 584.0
+margin_bottom = 105.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="price" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer"]
+margin_right = 171.0
+margin_bottom = 55.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="item_quantity" type="ColorRect" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/price"]
+margin_top = 27.0
+margin_right = 171.0
+margin_bottom = 27.0
+color = Color( 0, 0, 0, 0.392157 )
+script = ExtResource( 26 )
+item_container = NodePath("inventory_slot/item_container")
+lbl_quantity = NodePath("price")
+
+[node name="inventory_slot" type="TextureRect" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/price/item_quantity"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -28.0
+margin_bottom = 27.0
+mouse_filter = 0
+texture = ExtResource( 29 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="item_container" type="CenterContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/price/item_quantity/inventory_slot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/price/item_quantity/inventory_slot/item_container"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 47.0
+margin_bottom = 47.0
+texture = ExtResource( 22 )
+
+[node name="price" type="Label" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/price/item_quantity"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -26.0
+margin_right = -64.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 37 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="arrow" type="TextureRect" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer"]
+margin_left = 187.0
+margin_right = 200.0
+margin_bottom = 55.0
+mouse_filter = 2
+texture = ExtResource( 27 )
+stretch_mode = 4
+
+[node name="produce" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer"]
+margin_left = 216.0
+margin_right = 387.0
+margin_bottom = 55.0
+mouse_filter = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="commands" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer"]
+margin_left = 403.0
+margin_right = 574.0
+margin_bottom = 55.0
+mouse_filter = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="craft" type="Button" parent="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/commands"]
+margin_top = 2.0
+margin_right = 171.0
+margin_bottom = 53.0
+focus_mode = 0
+mouse_filter = 1
+theme = SubResource( 38 )
+enabled_focus_mode = 0
+text = "BUY"
 
 [node name="ColorRect" type="ColorRect" parent="ui_container/windows/crafting_list"]
 show_behind_parent = true
@@ -627,7 +855,7 @@ margin_right = -559.0
 margin_bottom = 67.0
 rect_pivot_offset = Vector2( 191, 156 )
 mouse_filter = 1
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 39 )
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
@@ -660,7 +888,7 @@ margin_bottom = -37.0
 grow_vertical = 0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 40 )
 text = "Settings"
 align = 1
 valign = 1
@@ -901,6 +1129,7 @@ script = SubResource( 36 )
 
 [node name="manager" parent="." instance=ExtResource( 23 )]
 
+[connection signal="pressed" from="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2/MarginContainer/HBoxContainer/commands/craft" to="ui_container/windows/crafting_list/TabContainer/Equipments/ScrollContainer2/recipe_list/shop_option2" method="_on_craft_pressed"]
 [connection signal="pressed" from="settings2/title/close" to="settings2" method="_on_close_pressed"]
 [connection signal="gui_input" from="settings2/setting list/scale/HSlider" to="settings2" method="_on_scale_slider_gui_input"]
 [connection signal="toggled" from="settings2/setting list/fullscreen/CheckBox" to="settings2" method="_on_CheckBox_toggled"]
