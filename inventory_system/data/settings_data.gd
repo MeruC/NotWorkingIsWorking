@@ -9,7 +9,7 @@ export( int ) var sound_volume = -10
 export( bool ) var pixelize = true
 export( int ) var pixel_size = 4
 
-export( int ) var gold_coins = 10000
+export( int ) var gold_coins = 500
 
 export (String) var player_name
 export (String) var gender
@@ -24,7 +24,7 @@ export (int) var level7 = 0
 export (int) var level8 = 0
 export (int) var level9 = 0
 export (int) var level10 = 0
-export (int) var reset_timer = 10800
+export (int) var reset_timer = 900
 export (int) var net1_skills = 0
 export (int) var net2_skills = 0
 export (int) var crowns = 0

@@ -24,7 +24,7 @@ func _ready():
 func _process(delta):
 	var reset_timer_float = settings_data.reset_timer
 	var reset_timer_int = int(reset_timer_float)
-	var total_seconds = 10800
+	var total_seconds = 900
 	var remaining_seconds = total_seconds - reset_timer_int
 	var remaining_minutes = int(remaining_seconds / 60)
 	var remaining_seconds_remainder = remaining_seconds % 60
@@ -58,7 +58,7 @@ func _on_level8_pressed():
 	Load.load_scene(self,"res://offline_levels/level8/level8_discussion.tscn")
 
 func _on_level9_pressed():
-	get_tree().change_scene("res://offline_levels/level9/level9.tscn")
+	Load.load_scene(self,"res://offline_levels/level9/level9.tscn")
 
 func _on_back_pressed():
 	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
@@ -131,4 +131,4 @@ func levels_completed():
 
 
 func _on_level10_pressed():
-	get_tree().change_scene("res://offline_levels/level10/level10.tscn")
+	Load.load_scene(self,"res://offline_levels/level10/level10.tscn")

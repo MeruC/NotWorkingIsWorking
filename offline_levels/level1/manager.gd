@@ -156,7 +156,7 @@ func _on_data_changed():
 		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
-		if setting_data.reset_timer >= 10800:
+		if setting_data.reset_timer >= 900:
 			if score >= 7 and score <= 9:
 				var coins = setting_data.gold_coins
 				var current = coins+100
@@ -197,7 +197,7 @@ func _on_data_changed():
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
-			setting_data.reset_timer = 10800
+			setting_data.reset_timer = 900
 			SaveManager.save_game()			
 		elif score == 10:
 			setting_data.crowns = 3
@@ -208,7 +208,7 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			setting_data.level1 = score
-			setting_data.reset_timer = 10800
+			setting_data.reset_timer = 900
 			SaveManager.save_game()
 			
 func _on_retry_pressed():

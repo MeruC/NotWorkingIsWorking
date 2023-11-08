@@ -275,7 +275,7 @@ func score_validation():
 		net1_skills.text = "Networking 1 skills: 0"
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
-		if settings_data.reset_timer >= 10800:
+		if settings_data.reset_timer >= 900:
 			if score == 5:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
@@ -316,7 +316,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level3 = score
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 900
 			SaveManager.save_game()
 			
 		elif score >= 3 or score == 4:
@@ -328,7 +328,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level3 = score
-			settings_data.reset_timer = 10800
+			settings_data.reset_timer = 900
 			SaveManager.save_game()
 		elif score <= 2 or score > 0:
 			settings_data.level3 = score
