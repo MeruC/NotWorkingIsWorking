@@ -9,28 +9,25 @@ var playable = false
 
 func _ready():
 	Pixelizer.set_visible(false)
-	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7 and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 		$shop.disabled = false
-	#if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7:
-	if $level9.visible == true:
+		$reset_time.visible = true
+	elif settings_data.level1 >= 7 and settings_data.level2 >= 2 and settings_data.level3 >= 2 and settings_data.level4 >= 4 and settings_data.level5 == 7:
 		$quick_game.disabled = false
 		$reset_time.visible = true
 	else:
-		$reset_time.visible = false
-		$quick_game.disabled = true
 		$shop.disabled = true
-		
+		$quick_game.disabled = true
+		$reset_time.visible = false
 func _process(delta):
-	if settings_data.reset_timer <= 10799:
-		var reset_timer_float = settings_data.reset_timer
-		var reset_timer_int = int(reset_timer_float)
-		var total_seconds = 10800
-		var remaining_seconds = total_seconds - reset_timer_int
-		var remaining_minutes = int(remaining_seconds / 60)
-		var remaining_seconds_remainder = remaining_seconds % 60
-		$reset_time.text = str(remaining_minutes) + ":" + str(remaining_seconds_remainder)
-	else:
-		$reset_time.text = ""
+	var reset_timer_float = settings_data.reset_timer
+	var reset_timer_int = int(reset_timer_float)
+	var total_seconds = 10800
+	var remaining_seconds = total_seconds - reset_timer_int
+	var remaining_minutes = int(remaining_seconds / 60)
+	var remaining_seconds_remainder = remaining_seconds % 60
+	$reset_time.text = str(remaining_minutes) + ":" + str(remaining_seconds_remainder)
+
 
 func _on_level1_pressed():
 	Load.load_scene(self, "res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
