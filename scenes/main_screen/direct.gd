@@ -79,6 +79,7 @@ func _on_quick_game_pressed():
 	else:
 		var random_level = pick_random_level(completed_levels)
 		Load.load_scene(self, random_level)
+	
 # To play a random Networking 1 Level
 
 func pick_random_level(completed_levels):
