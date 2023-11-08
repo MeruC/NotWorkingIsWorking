@@ -2037,8 +2037,9 @@ size = 1.679
 [node name="fe0" type="Spatial" parent="."]
 
 [node name="fe0line" parent="fe0" instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14048, 0 )
 visible = false
-end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point = Vector3( -2.61639e-08, -0.14048, 0.29928 )
 end_point_node = NodePath("../fe0point")
 
 [node name="fe0point" type="Position3D" parent="fe0"]
@@ -2047,8 +2048,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61639e-08, 0, 0.29928 )
 [node name="console0" type="Spatial" parent="."]
 
 [node name="console0line" parent="console0" instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14048, 0 )
 visible = false
-end_point = Vector3( -2.61639e-08, 0, 0.29928 )
+end_point = Vector3( -2.61639e-08, -0.14048, 0.29928 )
 end_point_node = NodePath("../console0point")
 
 [node name="console0point" type="Position3D" parent="console0"]

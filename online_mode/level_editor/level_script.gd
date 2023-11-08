@@ -145,6 +145,8 @@ func _ready():
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
 	SignalManager.connect( "cable_used", self, "_on_cable_used" )
 	SignalManager.connect( "cable_done", self, "_on_cable_done" )
+	SignalManager.connect( "cable_ui", self, "_on_cable_ui" )
+	SignalManager.connect( "cable_back", self, "_on_cable_back" )
 	SignalManager.connect( "router_open", self, "_on_router_open" )
 	SignalManager.connect( "router_close", self, "_on_router_close" )
 	SignalManager.connect( "craft", self, "_craft")
@@ -209,6 +211,23 @@ func _on_cable_used():
 	tasks_ui.get_child(0).pressed = false
 
 func _on_cable_done():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(true)
+	inventory.ui_container.set_visible(true)
+	mobile_controls.buttons.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
+	#mobile_controls.cable_ui.set_visible(false)
+	
+func _on_cable_ui():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(false)
+	inventory.ui_container.set_visible(false)
+	mobile_controls.buttons.set_visible(false)
+	yield(get_tree().create_timer(1), "timeout")
+	mobile_controls.cable_ui2.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
+
+func _on_cable_back():
 	if (get_parent().name == "editor"):
 		get_parent().other_ui.set_visible(true)
 	inventory.ui_container.set_visible(true)
