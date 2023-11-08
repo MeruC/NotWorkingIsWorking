@@ -303,8 +303,13 @@ _global_script_class_icons={
 [application]
 
 config/name="NotWorking"
+config/description="A Computer Networking Game"
 run/main_scene="res://open.tscn"
-config/icon="res://iconNW.png"
+boot_splash/show_image=false
+boot_splash/image="res://iconNotWorking.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://iconNotWorking.png"
 
 [autoload]
 
