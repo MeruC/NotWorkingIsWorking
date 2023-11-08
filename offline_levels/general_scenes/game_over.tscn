@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=1]
+[ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/Game buttons/game_menu.png" type="Texture" id=2]
-[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=3]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=3]
 [ext_resource path="res://resources/Game buttons/retry2.png" type="Texture" id=4]
 [ext_resource path="res://resources/Game buttons/retry1.png" type="Texture" id=5]
 [ext_resource path="res://resources/Game buttons/home1.png" type="Texture" id=6]
@@ -15,6 +15,11 @@
 [ext_resource path="res://resources/soundtrack/AudioLoopPlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/soundtrack/game_over/100_victories.wav" type="AudioStream" id=14]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=15]
+[ext_resource path="res://resources/Sprites/coin.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=21]
+size = 60
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 6 )
@@ -180,7 +185,6 @@ margin_top = -345.0
 margin_right = 526.5
 margin_bottom = 345.0
 rect_min_size = Vector2( 666, 375 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="crowns" type="TextureRect" parent="main_popup"]
@@ -194,12 +198,13 @@ texture = ExtResource( 10 )
 [node name="indicator" type="Label" parent="main_popup"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -352.0
-margin_top = 219.0
-margin_right = 348.0
-margin_bottom = 299.0
+margin_left = -353.0
+margin_top = 178.0
+margin_right = 347.0
+margin_bottom = 258.0
 rect_min_size = Vector2( 700, 80 )
-theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
 text = "LEVEL COMPLETE!"
 align = 1
 valign = 1
@@ -210,14 +215,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -18.0
-margin_right = 250.0
-margin_bottom = 121.0
+margin_left = -160.5
+margin_top = -77.0
+margin_right = 339.5
+margin_bottom = -17.0
 rect_min_size = Vector2( 500, 60 )
 theme = ExtResource( 3 )
-text = "Your Score:     / 5"
-align = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score:"
 valign = 1
 autowrap = true
 
@@ -261,6 +266,38 @@ rect_min_size = Vector2( 100, 100 )
 focus_mode = 0
 theme = SubResource( 14 )
 
+[node name="net1_skills" type="Label" parent="main_popup"]
+margin_left = 363.0
+margin_top = 330.0
+margin_right = 842.0
+margin_bottom = 385.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Networking skills: 0"
+
+[node name="GridContainer2" type="GridContainer" parent="main_popup"]
+margin_left = 358.5
+margin_top = 401.0
+margin_right = 558.5
+margin_bottom = 500.0
+columns = 2
+
+[node name="coins" type="Label" parent="main_popup/GridContainer2"]
+margin_right = 46.0
+margin_bottom = 55.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "+0"
+align = 1
+valign = 1
+
+[node name="coins_texture" type="TextureRect" parent="main_popup/GridContainer2"]
+margin_left = 50.0
+margin_right = 90.0
+margin_bottom = 55.0
+texture = ExtResource( 16 )
+stretch_mode = 4
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/level1 = SubResource( 17 )
 anims/lose = SubResource( 18 )
@@ -273,6 +310,7 @@ position = Vector2( 960.5, 539.5 )
 scale = Vector2( 2.95216, 2.52064 )
 texture = ExtResource( 12 )
 hframes = 13
+frame = 12
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

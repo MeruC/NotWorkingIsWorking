@@ -454,7 +454,8 @@ func _http_request_completed(result, response_code, headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
 		print("Response Data:", _response_data)
-
+	# Handle the submission process (e.g., show a success message)
+	
 	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
 		var response_dict = response["response"]
 		if "authenticated" in response_dict and response_dict["authenticated"] == true:
@@ -495,6 +496,7 @@ func _on_yes_pressed():
 
 func _on_submit_button_pressed():
 	prompt.visible = true
+	tasks_ui.visible = false
 	
 func addScore():
 	var username = setting_data.player_name
@@ -511,3 +513,9 @@ func addScore():
 	var command = "upload_score"
 	request_queue.push_back({"command": command, "data": data})
 	_send_request({"command": command, "data": data})
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_no_pressed():
+	prompt.visible = false

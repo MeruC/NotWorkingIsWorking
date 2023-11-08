@@ -793,6 +793,8 @@ gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 tutorial_player = NodePath("popup_layer/instructions/main_popup/AnimationPlayer")
 instruction_sprite = NodePath("popup_layer/instructions/main_popup/AnimationPlayer/level8")
+net1_skills = NodePath("popup_layer/game_over/main_popup/net1_skills")
+coins = NodePath("popup_layer/game_over/main_popup/GridContainer2/coins")
 settings_data = ExtResource( 8 )
 
 [node name="popup_layer" type="CanvasLayer" parent="."]

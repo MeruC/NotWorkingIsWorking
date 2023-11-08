@@ -866,6 +866,8 @@ animation_player = NodePath("../popup_layer/game_over/AnimationPlayer")
 celebrate = NodePath("../popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("../popup_layer/game_over/AudioStreamPlayer")
 tutorial_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
+net1_skills = NodePath("../popup_layer/game_over/main_popup/net1_skills")
+coins = NodePath("../popup_layer/game_over/main_popup/GridContainer2/coins")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/level2")
 

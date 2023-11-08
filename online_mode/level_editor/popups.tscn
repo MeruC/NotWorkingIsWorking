@@ -33,10 +33,6 @@ func _on_Button_pressed():
 	
 
 
-func _on_no_pressed():
-	$\"../submit_button_prompt\".visible = true
-
-
 func _on_instruction_btn_pressed():
 	$\".\".visible = true
 "
@@ -205,6 +201,5 @@ margin_bottom = 751.0
 theme = ExtResource( 7 )
 text = "Submit"
 
-[connection signal="pressed" from="submit_button_prompt/prompt/no" to="instruction" method="_on_no_pressed"]
 [connection signal="pressed" from="instruction/Button" to="instruction" method="_on_Button_pressed"]
 [connection signal="pressed" from="instruction_btn" to="instruction_btn" method="_on_instruction_btn_pressed"]
