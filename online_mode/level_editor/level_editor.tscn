@@ -3446,6 +3446,8 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/upload" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/upload" to="." method="_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
