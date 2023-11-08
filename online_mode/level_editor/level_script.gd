@@ -74,6 +74,7 @@ func _ready():
 	if get_parent().name != "editor":
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
+		tasks_ui.set_visible(true)
 		if setting_data.gender == "male":
 			player = preload("res://global/player/player.tscn")
 			add_child(player.instance())
