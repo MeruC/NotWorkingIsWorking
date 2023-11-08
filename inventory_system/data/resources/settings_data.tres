@@ -12,6 +12,7 @@ music_volume = -10
 sound_volume = -10
 pixelize = true
 pixel_size = 4
+has_crimp = false
 gold_coins = 10000
 player_name = "Player"
 gender = "male"

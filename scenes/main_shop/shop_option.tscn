@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://resources/font/Tiktok.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://inventory_system/data/resources/player_data.tres" type="Resource" id=2]
 [ext_resource path="res://inventory_system/resources/sprites/arrow.png" type="Texture" id=5]
 [ext_resource path="res://scenes/main_shop/shop_option.gd" type="Script" id=7]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=8]
@@ -92,6 +93,7 @@ produce_list = NodePath("MarginContainer/HBoxContainer/produce")
 craft_btn = NodePath("MarginContainer/HBoxContainer/commands/craft")
 price_lbl = NodePath("MarginContainer/HBoxContainer/price/item_quantity/price")
 settings_data = ExtResource( 8 )
+player_data = ExtResource( 2 )
 
 [node name="title" type="Control" parent="."]
 margin_left = 8.0

@@ -21,6 +21,7 @@ onready var coins = $"%player_coins"
 
 
 export( Resource ) var settings_data
+export( Resource ) var player_data
 
 func _ready():
 	SignalManager.connect( "inventory_group_content_changed", self, "_on_inventory_group_changed" )
@@ -49,6 +50,14 @@ func set_craft_button():
 	print(settings_data.gold_coins)
 	var can_craft = settings_data.gold_coins >= 50
 	craft_btn.disabled = not can_craft
+	#print(settings_data.has_crimp)
+	if item_id == "crimping":
+		for N in player_data.inventories["inventory_left"]:
+			if player_data.inventories["inventory_left"][N]["id"] == "crimping":
+				craft_btn.disabled = true
+		for N in player_data.inventories["inventory_right"]:
+			if player_data.inventories["inventory_right"][N]["id"] == "crimping":
+				craft_btn.disabled = true
 	pass
 
 # When crafting, remove the price tiems, adds the produces.
@@ -59,6 +68,8 @@ func _on_craft_pressed():
 	coins.text = str(current_coins - price)
 	settings_data.gold_coins = int(coins.text)
 	InventoryManager.add_items( ItemManager.get_items( produce ), "player" )
+	#settings_data.has_crimp = true
+	craft_btn.disabled = true
 
 # Check to see if it's possible to craft after a change in the player/crafting inventories.
 func _on_inventory_group_changed( groups ):
