@@ -17,6 +17,9 @@ var devices = []
 var connected_router
 onready var draw = $draw
 
+var cross = preload("res://addons/Line3D/cross_over.tres")
+var straight = preload("res://addons/Line3D/straight_through.tres")
+
 signal configuration_saved()
 
 signal cable_connected()
@@ -157,6 +160,10 @@ func _set_connector( connection, type ):
 		#if fe0 != null:
 		fe0_point.global_translation = fe0.global_translation
 		fe_0_line.visible = true
+		if fe0_type == "cross_over":
+			fe_0_line.set_material_override(cross)
+		elif fe0_type == "straight_through":
+			fe_0_line.set_material_override(straight)
 		#if console_port0 != null:
 		#emit_signal("cable_connected")
 	else:
@@ -322,12 +329,15 @@ func _on_confirm_pressed():
 			fe0.fe0_type = null
 		elif fe0.device_type == "router":
 			if fe0.ge0.device_name == device_name:
+				fe0.ge_0_line.visible = false
 				fe0.ge0 = null
 				fe0.ge0_type = null
 			elif fe0.ge1.device_name == device_name:
+				fe0.ge_1_line.visible = false
 				fe0.ge1 = null
 				fe0.ge1_type = null
 			elif fe0.ge2.device_name == device_name:
+				fe0.ge_2_line.visible = false
 				fe0.ge2 = null
 				fe0.ge2_type = null
 		if fe0.connected_to.has(device_name):

@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/Line3D/Line3D.gd" type="Script" id=1]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0, 0.00784314, 1, 1 )
+[ext_resource path="res://addons/Line3D/console.tres" type="Material" id=2]
 
 [node name="Line3D" type="ImmediateGeometry"]
-material_override = SubResource( 1 )
+material_override = ExtResource( 2 )
 script = ExtResource( 1 )
 end_point = Vector3( 0, 0, 0.001 )
 width = 0.15

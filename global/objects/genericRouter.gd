@@ -12,6 +12,18 @@ var rj = true
 var console = true
 var dhcp_pools = []
 
+onready var ge_0_line = $ge0/ge0line
+onready var pointge_0 = $ge0/pointge0
+onready var ge_1_line = $ge0/ge1line
+onready var pointge_1 = $ge0/pointge1
+onready var console_0_line = $console0/console0line
+onready var console_0_point = $console0/console0point
+
+
+var cross = preload("res://addons/Line3D/cross_over.tres")
+var straight = preload("res://addons/Line3D/straight_through.tres")
+
+
 export(String) var priveleged_password = null
 export(String) var device_type = "router"
 export(String) var device_name = self.name
@@ -24,9 +36,6 @@ export(bool) var ge1_port_up = false
 export(String) var console_port_connection = null
 export(int) var port_count = 2
 export(Array) var connected_to = []
-onready var pointge_0 = $ge/pointge0
-onready var pointge_1 = $ge/pointge1
-onready var console_0_point = $console0/console0point
 
 func reset_level():
 	SaveManager.load_game()
@@ -76,12 +85,20 @@ func _set_connector( connection , type):
 		#label.text = "Connected to " + str(ge0.device_name) + "\nUsing: " + str(type)
 		connected_to.append(ge0.device_name)
 		pointge_0.global_translation = ge0.global_translation
+		if ge0_type == "cross_over":
+			ge_0_line.set_material_override(cross)
+		elif ge0_type == "straight_through":
+			ge_0_line.set_material_override(straight)
 	elif ge1 == null:
 		ge1 = connection
 		ge1_type = type
 		#label.text = "Connected to " + str(ge1.device_name) + "\nUsing: " + str(type)
 		connected_to.append(ge1.device_name)
 		pointge_1.global_translation = ge1.global_translation
+		if ge1_type == "cross_over":
+			ge_1_line.set_material_override(cross)
+		elif ge1_type == "straight_through":
+			ge_1_line.set_material_override(straight)
 	else:
 		print("no port available")
 		
