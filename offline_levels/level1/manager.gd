@@ -152,10 +152,6 @@ func _on_tap_pressed():
 	
 func _on_data_changed():
 	#update coins
-	if setting_data.level1 > 0:
-		net1_skills.text = "Networking 1 skills: 0"
-		coins.text = "+0"
-		return
 	if setting_data.quick_game == "isplaying":
 		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
@@ -181,9 +177,14 @@ func _on_data_changed():
 				SaveManager.save_game()
 				
 		else:
+			coins.text = "+0"
 			setting_data.quick_game = "notplaying"
 			SaveManager.save_game()
 			
+	elif setting_data.level1 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
 	else:
 		if score >= 6 and score <= 9:
 			setting_data.crowns = 2
@@ -194,7 +195,7 @@ func _on_data_changed():
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
-			setting_data.reset_timer = 10800.18888
+			setting_data.reset_timer = 10800
 			SaveManager.save_game()			
 		elif score == 10:
 			setting_data.crowns = 3
@@ -205,7 +206,7 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			setting_data.level1 = score
-			setting_data.reset_timer = 10800.18888
+			setting_data.reset_timer = 10800
 			SaveManager.save_game()
 			
 func _on_retry_pressed():

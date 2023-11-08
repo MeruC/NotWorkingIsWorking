@@ -104,6 +104,7 @@ func _on_crimp_pressed():
 				coins.text = "+0"			
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 				score = 0
+				popup_next_button.disabled = true
 		elif type_label.text.to_upper() == "WIRING STANDARD: T-568B":
 			if slot_textures == arrangement_B:
 				gameover_anim.play("win")
@@ -126,13 +127,10 @@ func _on_crimp_pressed():
 				coins.text = "+0"		
 				crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 				score = 0
+				popup_next_button.disabled = true
 		game_over.visible = true
 
 func score_validation():
-	if settings_data.level6 > 0:
-		net1_skills.text = "Networking 1 skills: 0"
-		coins.text = "+0"
-		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -150,8 +148,14 @@ func score_validation():
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 		else:
+			coins.text = "+0"
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
+			
+	elif settings_data.level6 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
 	else:
 		if score == 5:
 			settings_data.crowns += 3
@@ -162,7 +166,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level6 = 5
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 		elif score == 0:
 			return

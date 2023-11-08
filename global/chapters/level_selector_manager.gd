@@ -8,17 +8,19 @@ var net1_levels = ["res://offline_levels/level1/level_1.tscn", "res://offline_le
 var playable = false
 
 func _ready():
+	print(settings_data.reset_timer)
 	Pixelizer.set_visible(false)
 	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7 and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 		$shop.disabled = false
-		$reset_time.visible = true
-	elif settings_data.level1 >= 7 and settings_data.level2 >= 2 and settings_data.level3 >= 2 and settings_data.level4 >= 4 and settings_data.level5 == 7:
+	else:
+		$shop.disabled = true
+	if settings_data.level1 >= 7 and settings_data.level2 >= 2 and settings_data.level3 >= 2 and settings_data.level4 >= 4 and settings_data.level5 == 7:
 		$quick_game.disabled = false
 		$reset_time.visible = true
 	else:
-		$shop.disabled = true
 		$quick_game.disabled = true
 		$reset_time.visible = false
+		
 func _process(delta):
 	var reset_timer_float = settings_data.reset_timer
 	var reset_timer_int = int(reset_timer_float)

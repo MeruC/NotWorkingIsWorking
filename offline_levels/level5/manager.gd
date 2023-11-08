@@ -102,7 +102,7 @@ func _on_submit_pressed():
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			net1_skills.text = "Networking 1 skills: 10"
 			coins.text = "+100"
-		popup_score_label.text = "Your Score: " + str(score) + " / 7"
+		popup_score_label.text = "Score: " + str(score)
 		popup_next_button.disabled = false
 		score_validation()
 	else:
@@ -151,10 +151,7 @@ func _on_restart_pressed():
 	Load.load_scene(self,level5_scene)
 
 func score_validation():
-	if settings_data.level5 > 0:
-		net1_skills.text = "Networking 1 skills: 0"
-		coins.text = "+0"
-		return
+	
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -186,9 +183,15 @@ func score_validation():
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 		else:
+			coins.text = "+0"
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
 			
+	elif settings_data.level5 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
+		
 	else:
 		if score == 0:
 			return
@@ -214,7 +217,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 		elif score == 7:
 			settings_data.crowns += 3
@@ -226,7 +229,7 @@ func score_validation():
 			settings_data.net1_skills = update_skills
 			settings_data.level5 = score
 			settings_data.orange_shirt = "unlock"
-			settings_data.reset_timer = 10800.18888		
+			settings_data.reset_timer = 10800		
 			SaveManager.save_game()
 
 

@@ -13,7 +13,7 @@ var current_time = 0
 var istop = false
 
 func _ready():
-	if settings_data.reset_timer >= 10700:  # Ensure settings_data.reset_timer is greater than 5
+	if settings_data.reset_timer >= 10799:  # Ensure settings_data.reset_timer is greater than 5
 		current_time = settings_data.reset_timer
 		reset_time.wait_time = current_time
 		reset_time.stop()

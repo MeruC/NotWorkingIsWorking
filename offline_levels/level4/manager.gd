@@ -222,10 +222,6 @@ func _on_restart_pressed():
 
 func score_validation():
 	
-	if settings_data.level4 > 0:
-		net1_skills.text = "Networking 1 skills: 0"
-		coins.text = "+0"
-		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
@@ -258,8 +254,14 @@ func score_validation():
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 		else:
+			coins.text = "+0"
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
+			
+	elif settings_data.level4 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
 	else:
 		if score == 0:
 			return
@@ -272,7 +274,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level4 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 		elif score >= 3 and score <= 4:
 			settings_data.crowns+= 2
@@ -283,7 +285,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level4 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 			
 		elif score <= 2 and score > 0:
@@ -295,7 +297,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level4 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 
 

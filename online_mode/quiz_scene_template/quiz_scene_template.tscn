@@ -948,7 +948,7 @@ margin_right = 100.0
 margin_bottom = -21.0
 rect_min_size = Vector2( 200, 100 )
 theme = ExtResource( 8 )
-text = "Exit"
+text = "Submit"
 
 [node name="level_name" type="Label" parent="."]
 anchor_left = 0.5
