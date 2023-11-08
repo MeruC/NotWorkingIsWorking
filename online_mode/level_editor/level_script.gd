@@ -22,6 +22,7 @@ onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
 onready var popups = $popups
+onready var level_audio_loop_player = $LevelAudioLoopPlayer
 export (NodePath) onready var submit_button = find_node("submit_button")
 export (NodePath) onready var instruction = find_node("content")
 export (NodePath) onready var prompt = find_node("submit_button_prompt")
@@ -110,6 +111,8 @@ func get_all_computer():
 	for node in self.get_children():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
+			
+
 func _ready():
 	timer.start()
 	_enable_task()
@@ -124,6 +127,7 @@ func _ready():
 	
 	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
+		level_audio_loop_player.play()
 		popups.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)

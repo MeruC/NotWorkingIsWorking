@@ -7,6 +7,8 @@ const SAVE_FOLDER = "user://saved_levels/"
 # var a = 2
 # var b = "text"
 onready var level = $"%level"
+#onready var level = $"%level"
+onready var level_audio_loop_player = $level/LevelAudioLoopPlayer
 onready var wall = $"%wall"
 onready var playarea = $"%playarea"
 onready var floormesh = $level/floor
@@ -56,6 +58,7 @@ func _ready():
 	playarea.owner = level
 	inventory.owner = level
 	tasks_ui.owner = level
+	level_audio_loop_player.owner = level
 	mobile_controls.owner = level
 	playarea.set_width(Global.w * 2)
 	playarea.set_depth(Global.d * 2)

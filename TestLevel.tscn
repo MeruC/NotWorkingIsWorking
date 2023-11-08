@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
+[ext_resource path="res://resources/soundtrack/menu/Curious Critters (Extended Version) 1.mp3" type="AudioStream" id=1]
 [ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=6]
@@ -114,6 +115,16 @@ func _on_instruction_btn_pressed():
 size = 70
 extra_spacing_bottom = 28
 font_data = ExtResource( 6 )
+
+[sub_resource type="GDScript" id=54]
+script/source = "extends AudioStreamPlayer
+
+export (bool) var loop_sound = true
+
+func _on_AudioStreamPlayer_finished():
+	if loop_sound == true:
+		play()
+"
 
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
@@ -318,9 +329,15 @@ device_name = "@object_monitor@798"
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, 8 )
 device_name = "@object_monitor@856"
 
+[node name="LevelAudioLoopPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Music"
+script = SubResource( 54 )
+
 [connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_button_prompt/prompt/yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="popups/submit_button_prompt/prompt/no" to="." method="_on_no_pressed"]
+[connection signal="finished" from="LevelAudioLoopPlayer" to="LevelAudioLoopPlayer" method="_on_AudioStreamPlayer_finished"]
 
 [editable path="environment"]
 [editable path="tasks_ui"]
