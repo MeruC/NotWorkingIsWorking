@@ -50,7 +50,7 @@ func set_craft_button():
 	print(settings_data.gold_coins)
 	var can_craft = settings_data.gold_coins >= 50
 	craft_btn.disabled = not can_craft
-	print(settings_data.has_crimp)
+	#print(settings_data.has_crimp)
 	if item_id == "crimping":
 		for N in player_data.inventories["inventory_left"]:
 			if player_data.inventories["inventory_left"][N]["id"] == "crimping":
