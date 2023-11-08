@@ -4,6 +4,7 @@
 [ext_resource path="res://resources/Models/Materials/computer/parts-4-table.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 4.32194, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 2 )
