@@ -196,7 +196,6 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.93
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 12 )]
 stream = ExtResource( 13 )
-autoplay = true
 bus = "Music"
 
 [editable path="environment"]

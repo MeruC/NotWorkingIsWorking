@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://online_mode/createQuiz_student/selected_container.gd" type="Script" id=1]
 [ext_resource path="res://online_mode/createQuiz_student/delete.png" type="Texture" id=2]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=3]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=5]
-[ext_resource path="res://resources/Game buttons/edit.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=7]
 size = 24
@@ -16,19 +15,6 @@ font_data = ExtResource( 4 )
 size = 32
 extra_spacing_bottom = 16
 font_data = ExtResource( 4 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 512, 512 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 512, 512 )
-modulate_color = Color( 0.588235, 0.588235, 0.588235, 1 )
-
-[sub_resource type="Theme" id=9]
-Button/styles/normal = SubResource( 10 )
-Button/styles/pressed = SubResource( 8 )
 
 [sub_resource type="Theme" id=2]
 
@@ -116,16 +102,9 @@ custom_fonts/font = SubResource( 5 )
 text = "asdaasdlk"
 autowrap = true
 
-[node name="edit" type="Button" parent="."]
-margin_left = 1737.0
-margin_right = 1817.0
-margin_bottom = 168.0
-rect_min_size = Vector2( 80, 0 )
-theme = SubResource( 9 )
-
 [node name="delete" type="Button" parent="."]
-margin_left = 1821.0
-margin_right = 1921.0
+margin_left = 1737.0
+margin_right = 1837.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 100, 50 )
 theme = SubResource( 2 )

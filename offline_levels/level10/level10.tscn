@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://global/objects/huaweiRouter.tscn" type="PackedScene" id=16]
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=18]
+[ext_resource path="res://scenes/tutorials/tutorials.tscn" type="PackedScene" id=19]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -526,6 +527,7 @@ func _on_submit_button_pressed():
 
 
 func _on_yes_button_pressed():
+	SaveManager.save_game()
 	gameover_popup.visible = true
 	animationplayer.play(\"win\")
 	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
@@ -632,12 +634,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 [node name="object_monitor" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="object_monitor300" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9375, -4 )
 
@@ -648,26 +644,48 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.93
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, -8 )
 device_name = "Router0"
 
+[node name="tutorial_popup" parent="." instance=ExtResource( 19 )]
+layer = 20
+
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
+layer = 20
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
+margin_right = 1325.0
+margin_bottom = 1144.0
+
+[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+visible = true
+
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+margin_top = 258.0
+margin_bottom = 466.0
+
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+margin_top = 258.0
+margin_bottom = 562.0
 
 [node name="task7" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="6"]
 margin_top = 258.0
 margin_bottom = 562.0
 
 [node name="task9" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="8"]
+visible = true
 margin_top = 258.0
 margin_bottom = 562.0
 
 [node name="task10" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="9"]
+visible = true
 margin_top = 612.0
 margin_bottom = 916.0
 
+[node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
+visible = true
+margin_top = 966.0
+margin_bottom = 1144.0
+
 [node name="popups" type="CanvasLayer" parent="."]
-layer = 11
+layer = 128
 
 [node name="submit_confirmation_popup" type="Panel" parent="popups"]
 visible = false

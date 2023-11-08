@@ -113,9 +113,7 @@ func get_all_computer():
 			computer_list.append(node)
 			
 func _ready():
-	if setting_data.online_level == "":
-		pass
-	else:
+	if timer != null:
 		timer.start()
 	_enable_task()
 	if instruction != null:
@@ -619,6 +617,10 @@ func _on_Timer_timeout():
 	else:
 		pass
 
+func _on_devices_pinged():
+	tasks_cbs[find_taskName(tasks_list, "task11")].pressed = true
+	enable_submit()
 
 func _on_Button_pressed():
-	timer.start()
+	if timer!= null:
+		timer.start()
