@@ -113,11 +113,15 @@ func get_all_computer():
 			computer_list.append(node)
 			
 func _ready():
-	if timer != null:
+	if setting_data.online_level == "":
+		pass
+	else:
 		timer.start()
+		
 	_enable_task()
 	if instruction != null:
 		instruction.text = ""+level_desc
+		
 	add_child(http_request)
 	Global.playerCanMove = true
 	#upload_btn.disabled = true
