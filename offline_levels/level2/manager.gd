@@ -219,11 +219,11 @@ func _on_next_pressed():
 
 func score_validation():
 	if settings_data.level2 > 0:
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		coins.text = "+0"
 		return
 	if settings_data.quick_game == "isplaying":
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
 		if settings_data.reset_timer >= 10800:

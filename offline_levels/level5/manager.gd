@@ -152,13 +152,13 @@ func _on_restart_pressed():
 
 func score_validation():
 	if settings_data.level5 > 0:
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		coins.text = "+0"
 		return
 	if settings_data.quick_game == "isplaying":
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		if settings_data.reset_timer >= 10800:
 			if score >= 4:
 				var current_coins = settings_data.gold_coins

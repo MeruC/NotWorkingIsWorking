@@ -135,7 +135,7 @@ func spawn_new():
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 		audioplayer.play()
 		popup_indicator_label.text = "Level Failed!"
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		coins.text = "+0"
 		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 	game_over_popup.visible = true
@@ -153,11 +153,11 @@ func _on_tap_pressed():
 func _on_data_changed():
 	#update coins
 	if setting_data.level1 > 0:
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		coins.text = "+0"
 		return
 	if setting_data.quick_game == "isplaying":
-		net1_skills.text = "Networking 1 knowledge: 0"
+		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
 		if setting_data.reset_timer >= 10800:

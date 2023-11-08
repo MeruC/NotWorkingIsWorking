@@ -987,7 +987,6 @@ autowrap = true
 anims/login_sucessful = SubResource( 13 )
 
 [node name="permission" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource( 74 )
 
 [node name="ColorRect" type="ColorRect" parent="permission"]

@@ -274,7 +274,6 @@ margin_bottom = 385.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Networking skills: 0"
-autowrap = true
 
 [node name="GridContainer2" type="GridContainer" parent="main_popup"]
 margin_left = 358.5
