@@ -99,6 +99,7 @@ func _on_info_pressed():
 
 onready var description = $"%description"
 
+
 func _on_done_pressed():
 	Global.editor_mode = last_mode
 	menu_animations.play("info")
@@ -111,6 +112,7 @@ func _on_done_pressed():
 	wall.set_material(grid_out)
 	level.level_name = name_le.text
 	level.level_desc = description.get_text()
+	level.timerChoice = timerChoice.text
 	#print(level.level_desc)
 	Global.on_save_load = false
 	

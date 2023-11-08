@@ -10,8 +10,9 @@ export(String) var confIPClass = "Class A"
 export(String) var confRouterClass = "Class A"
 var all_task = []
 
-var level_name = "MyLevel"
-var level_desc = "Set a description for your level!"
+export(String) var level_name = "MyLevel"
+export(String) var level_desc = "Set a description for your level!"
+export(String) var timerChoice = "5:00"
 var player
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
