@@ -90,7 +90,7 @@ func _on_crimp_pressed():
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Score: 5"
 				net1_skills.text = "Networking 1 skills: 10"
-				coins.text = "+100"
+				coins.text = "+200"
 				score = 5
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
@@ -113,7 +113,7 @@ func _on_crimp_pressed():
 				gameover_indicator.text = "Level Complete!"
 				gameover_score.text = "Score: 5"
 				net1_skills.text = "Networking 1 skills: 10"
-				coins.text = "+100"
+				coins.text = "+200"
 				score = 5
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				score_validation()
@@ -141,10 +141,12 @@ func score_validation():
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
 				settings_data.gold_coins = new_coins
+				coins.text = "+100"
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 			else:
 				settings_data.reset_timer = 0
+				coins.text = "+0"
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 		else:
@@ -160,7 +162,7 @@ func score_validation():
 		if score == 5:
 			settings_data.crowns += 3
 			var current_coins = settings_data.gold_coins
-			var new_coins = current_coins+100
+			var new_coins = current_coins+200
 			var skills = settings_data.net1_skills
 			var update_skills = skills+10
 			settings_data.gold_coins = new_coins

@@ -544,7 +544,7 @@ func _on_yes_button_pressed():
 			if points == 30:
 				settings_data.reset_timer = 0
 				var current_coins = settings_data.gold_coins
-				var new_coins = current_coins+100
+				var new_coins = current_coins+200
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = \"notplaying\"
 				SaveManager.save_game()
@@ -565,7 +565,7 @@ func _on_yes_button_pressed():
 		if points == 5:
 			settings_data.crowns += 3
 			net1_skills.text = \"Networking 2 skills: 50\"
-			coins.text = \"+100\"
+			coins.text = \"+200\"
 			celebrate.visible = true
 			settings_data.level9 = 30
 			settings_data.gold_coins += 100
@@ -638,12 +638,24 @@ device_name = "PC1"
 [node name="ipConfig_button" parent="object_monitor/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
+[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -275.5
+margin_right = -707.0
+margin_bottom = 275.5
+
 [node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
 
 [node name="ipConfig_button" parent="object_monitor153/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
+
+[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
+margin_left = -2110.0
+margin_top = -275.5
+margin_right = -707.0
+margin_bottom = 275.5
 
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 layer = 128

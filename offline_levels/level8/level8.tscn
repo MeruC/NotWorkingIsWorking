@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://nodes/level_pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://offline_levels/general_scenes/game_over.tscn" type="PackedScene" id=2]
@@ -16,666 +16,6 @@
 [ext_resource path="res://resources/offline_mode_Asset/level_8/20.png" type="Texture" id=14]
 [ext_resource path="res://resources/font/OpenSans-Light.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=16]
-
-[sub_resource type="Animation" id=1]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("settings:rect_scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("settings:rect_scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("settingsubmenu:rect_scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("settingsubmenu:rect_scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("videoSubmenu:rect_scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("videoSubmenu:rect_scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/6/type = "bezier"
-tracks/6/path = NodePath("musicSubmenu:rect_scale:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/7/type = "bezier"
-tracks/7/path = NodePath("musicSubmenu:rect_scale:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("settings:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("settingsubmenu:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("musicSubmenu:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("videoSubmenu:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/12/type = "bezier"
-tracks/12/path = NodePath("Label:rect_scale:y")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath("Label:rect_scale:x")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("pausemenu:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/15/type = "bezier"
-tracks/15/path = NodePath("pausemenu:rect_scale:x")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/16/type = "bezier"
-tracks/16/path = NodePath("pausemenu:rect_scale:y")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/17/type = "bezier"
-tracks/17/path = NodePath(".:color:r")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/18/type = "bezier"
-tracks/18/path = NodePath(".:color:g")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/19/type = "bezier"
-tracks/19/path = NodePath(".:color:b")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/20/type = "bezier"
-tracks/20/path = NodePath(".:color:a")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/keys = {
-"points": PoolRealArray( 0.686275, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "intro"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("pausemenu:rect_scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("pausemenu:rect_scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("settings:rect_scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("settings:rect_scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("Label:rect_scale:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("Label:rect_scale:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/6/type = "bezier"
-tracks/6/path = NodePath("videoSubmenu:rect_scale:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/7/type = "bezier"
-tracks/7/path = NodePath("videoSubmenu:rect_scale:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/8/type = "bezier"
-tracks/8/path = NodePath("musicSubmenu:rect_scale:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/9/type = "bezier"
-tracks/9/path = NodePath("musicSubmenu:rect_scale:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/10/type = "bezier"
-tracks/10/path = NodePath("settingsubmenu:rect_scale:x")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/11/type = "bezier"
-tracks/11/path = NodePath("settingsubmenu:rect_scale:y")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:color:r")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath(".:color:g")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/14/type = "bezier"
-tracks/14/path = NodePath(".:color:b")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/15/type = "bezier"
-tracks/15/path = NodePath(".:color:a")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.686275, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "music"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("settingsubmenu:rect_scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("settingsubmenu:rect_scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("settings:rect_scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("settings:rect_scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("musicSubmenu:rect_scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("musicSubmenu:rect_scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("settings:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("settingsubmenu:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("musicSubmenu:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "submenu"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("settingsubmenu:rect_scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("settingsubmenu:rect_scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("settings:rect_scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("settings:rect_scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("settingsubmenu:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, false, true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("pausemenu:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "bezier"
-tracks/6/path = NodePath("pausemenu:rect_scale:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/7/type = "bezier"
-tracks/7/path = NodePath("pausemenu:rect_scale:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "video"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("settings:rect_scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("settings:rect_scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("settingsubmenu:rect_scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("settingsubmenu:rect_scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath("videoSubmenu:rect_scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("videoSubmenu:rect_scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1 )
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("settingsubmenu:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("videoSubmenu:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -797,78 +137,65 @@ net1_skills = NodePath("popup_layer/game_over/main_popup/net1_skills")
 coins = NodePath("popup_layer/game_over/main_popup/GridContainer2/coins")
 settings_data = ExtResource( 8 )
 
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_h_scroll2" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_v_scroll2" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_h_scroll3" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_v_scroll3" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_h_scroll4" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_v_scroll4" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_h_scroll5" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@musicSubmenu@musicPanel@_v_scroll5" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_h_scroll2" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_v_scroll2" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_h_scroll3" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_v_scroll3" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_h_scroll4" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_v_scroll4" type="VScrollBar" parent="."]
+margin_right = 25.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_h_scroll5" type="HScrollBar" parent="."]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="popup_layer@pause@settings@videoSubmenu@videoPanel@_v_scroll5" type="VScrollBar" parent="."]
+margin_right = 25.0
+
 [node name="popup_layer" type="CanvasLayer" parent="."]
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 1 )]
-
-[node name="settingsubmenu" parent="popup_layer/pause/settings" index="2"]
-visible = true
-
-[node name="videoSubmenu" parent="popup_layer/pause/settings" index="3"]
-visible = true
-
-[node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="0"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll2" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="1"]
-margin_right = 25.0
-
-[node name="_h_scroll3" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="2"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="3"]
-margin_right = 25.0
-
-[node name="_h_scroll4" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="4"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll4" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="5"]
-margin_right = 25.0
-
-[node name="_h_scroll5" type="HScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="6"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll5" type="VScrollBar" parent="popup_layer/pause/settings/videoSubmenu/videoPanel" index="7"]
-margin_right = 25.0
-
-[node name="_h_scroll2" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="0"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll2" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="1"]
-margin_right = 25.0
-
-[node name="_h_scroll3" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="2"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll3" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="3"]
-margin_right = 25.0
-
-[node name="_h_scroll4" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="4"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll4" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="5"]
-margin_right = 25.0
-
-[node name="_h_scroll5" type="HScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="6"]
-margin_right = 12.0
-margin_bottom = 12.0
-
-[node name="_v_scroll5" type="VScrollBar" parent="popup_layer/pause/settings/musicSubmenu/musicPanel" index="7"]
-margin_right = 25.0
-
-[node name="AnimationPlayer" parent="popup_layer/pause/settings" index="5"]
-anims/RESET = SubResource( 1 )
-anims/intro = SubResource( 2 )
-anims/music = SubResource( 3 )
-anims/submenu = SubResource( 4 )
-anims/video = SubResource( 5 )
 
 [node name="game_over" parent="popup_layer" instance=ExtResource( 2 )]
 visible = false
@@ -1145,6 +472,6 @@ theme = ExtResource( 9 )
 [connection signal="pressed" from="instruction" to="." method="_on_instruction_pressed"]
 
 [editable path="popup_layer/pause"]
-[editable path="popup_layer/pause/settings"]
+[editable path="popup_layer/pause/CanvasLayer/settings"]
 [editable path="popup_layer/game_over"]
 [editable path="popup_layer/instructions"]

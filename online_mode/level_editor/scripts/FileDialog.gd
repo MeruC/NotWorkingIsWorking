@@ -96,7 +96,6 @@ func save_level():
 	var result = ResourceSaver.save(popup.current_path,toSave)
 	level.saved = true
 	
-	
 func load_level():
 	var toLoad : PackedScene = PackedScene.new()
 	toLoad = ResourceLoader.load(popup.current_path)

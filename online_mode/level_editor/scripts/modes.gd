@@ -196,7 +196,6 @@ func _on_uploadVerify():
 	$"%MenuAnimations".play_backwards("menu")
 	level = get_node("/root/editor/level")
 	if level.saved:
-		$"../../../verify_ui/upload".disabled = true
 		ConfirmDialog.mode = "Confirm Dialog"
 		ConfirmDialog._ready()
 		ConfirmDialog.set_visible(true)
@@ -204,7 +203,6 @@ func _on_uploadVerify():
 		ConfirmDialog.label.text = "Complete the level first to upload it!"
 		ConfirmDialog.action = "verify"
 	else:
-		$"../../../verify_ui/upload".disabled = true
 		ConfirmDialog.mode = "OK Dialog"
 		ConfirmDialog._ready()
 		ConfirmDialog.set_visible(true)

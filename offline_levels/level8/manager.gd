@@ -196,7 +196,7 @@ func calculate_score():
 		gameover_score.text = "Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 		net1_skills.text = "Networking 1 skills: 30"
-		coins.text = "+100"
+		coins.text = "+200"
 		gameover_next.disabled = false
 		score_validation()
 	elif score >= 150:
@@ -208,7 +208,7 @@ func calculate_score():
 		gameover_score.text = "Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 		net1_skills.text = "Networking 1 skills: 30"
-		coins.text = "+100"
+		coins.text = "+300"
 		gameover_next.disabled = false
 		score_validation()
 		
@@ -227,6 +227,7 @@ func score_validation():
 				settings_data.reset_timer = 0
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
+				coins.text = "+100"
 				SaveManager.save_game()
 			elif score >= 400:
 				var current_coins = settings_data.gold_coins
@@ -234,6 +235,7 @@ func score_validation():
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
+				coins.text = "+150"
 				SaveManager.save_game()
 			else:
 				settings_data.reset_timer = 0

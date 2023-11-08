@@ -182,7 +182,7 @@ func display_next():
 			celebrate.visible = true
 			audioplayer.play()
 			net1_skills.text = "Networking 1 skills: 10"
-			coins.text = "+100"
+			coins.text = "+200"
 		score_validation()
 	else:
 		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
@@ -228,11 +228,12 @@ func score_validation():
 				var new_coins = current_coins+90
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
-				settings_data.reset_timer = 0			
+				settings_data.reset_timer = 0	
+				coins.text = "+90"
 				SaveManager.save_game()
 			elif score == 5:
 				var current_coins = settings_data.gold_coins
-				var new_coins = current_coins+100
+				var new_coins = current_coins+200
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
@@ -240,11 +241,13 @@ func score_validation():
 			elif score == 3:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+80
+				coins.text = "+80"
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
 				SaveManager.save_game()
 			else:
+				coins.text = "+0"
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
 				SaveManager.save_game()

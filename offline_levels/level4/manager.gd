@@ -196,7 +196,7 @@ func _on_continue_pressed():
 			elif score == 5:
 				crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 				net1_skills.text = "Networking 1 skills: 10"
-				coins.text = "+100"
+				coins.text = "+200"
 			elif score == 3:
 				crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 				net1_skills.text = "Networking 1 skills: 10"
@@ -234,10 +234,12 @@ func score_validation():
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
+				coins.text = "+100"
 				SaveManager.save_game()
 			elif score == 4:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+90
+				coins.text = "+90"
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
@@ -245,11 +247,13 @@ func score_validation():
 			elif score <= 3 and score > 0:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+80
+				coins.text = "+80"
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 			else:
+				coins.text = "+0"
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()

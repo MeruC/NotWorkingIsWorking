@@ -148,7 +148,7 @@ func _on_choice1_pressed():
 			celebration.visible = true
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			net1_skills.text = "Networking 1 skills: 10"
-			coins.text = "+100"	
+			coins.text = "+200"	
 		if score == 3:
 			game_over_popup.visible = true
 			audioplayer.stream = preload("res://resources/soundtrack/game_over/Won!.wav")
@@ -275,7 +275,6 @@ func score_validation():
 		net1_skills.text = "Networking 1 skills: 0"
 		popup_next_button.disabled = true
 		popup_retry_button.disabled = true
-		
 		if settings_data.reset_timer >= 10800:
 			if score == 5:
 				var current_coins = settings_data.gold_coins
@@ -283,6 +282,7 @@ func score_validation():
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
+				coins.text = "+100"
 				SaveManager.save_game()
 			elif score > 3 or score == 4:
 				var current_coins = settings_data.gold_coins
@@ -290,8 +290,10 @@ func score_validation():
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
+				coins.text = "+90"
 				SaveManager.save_game()
 			else:
+				coins.text = "+0"
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()

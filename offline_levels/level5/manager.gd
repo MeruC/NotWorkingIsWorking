@@ -101,7 +101,7 @@ func _on_submit_pressed():
 		if score == 7:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			net1_skills.text = "Networking 1 skills: 10"
-			coins.text = "+100"
+			coins.text = "+200"
 		popup_score_label.text = "Score: " + str(score)
 		popup_next_button.disabled = false
 		score_validation()
@@ -174,6 +174,7 @@ func score_validation():
 			elif score == 7:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
+				coins.text = "+100"
 				settings_data.gold_coins = new_coins
 				settings_data.reset_timer = 0
 				settings_data.quick_game = "notplaying"

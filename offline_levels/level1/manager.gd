@@ -127,7 +127,7 @@ func spawn_new():
 			celebrate.visible = true
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			net1_skills.text = "Networking 1 skills: 10"
-			coins.text = "+100"
+			coins.text = "+200"
 		_on_data_changed()
 	else:
 		popup_next_button.disabled = true
@@ -167,12 +167,14 @@ func _on_data_changed():
 			elif score == 10:
 				var coins = setting_data.gold_coins
 				var current = coins+100
+				coins.text = "+100"
 				setting_data.reset_timer = 0
 				setting_data.gold_coins = current
 				setting_data.quick_game = "notplaying"
 				SaveManager.save_game()
 			else:
 				setting_data.reset_timer = 0
+				coins.text = "+0"
 				setting_data.quick_game = "notplaying"
 				SaveManager.save_game()
 				
@@ -200,7 +202,7 @@ func _on_data_changed():
 		elif score == 10:
 			setting_data.crowns = 3
 			var coins = setting_data.gold_coins
-			var current = coins+100
+			var current = coins+200
 			var skills = setting_data.net1_skills
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
