@@ -1536,6 +1536,7 @@ render_target_update_mode = 3
 [node name="Camera" type="Camera" parent="user_profile/ViewportContainer/Viewport/Spatial2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73063, 4.09754 )
 environment = ExtResource( 23 )
+current = true
 
 [node name="CSGMesh" type="CSGMesh" parent="user_profile/ViewportContainer/Viewport/Spatial2"]
 mesh = ExtResource( 19 )
@@ -1696,6 +1697,7 @@ render_target_update_mode = 0
 
 [node name="Camera" type="Camera" parent="edit_avatar/current_character/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4888, 2.54809, 4.0694 )
+current = true
 
 [node name="CSGMesh" type="CSGMesh" parent="edit_avatar/current_character/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7517, 0, 0 )
@@ -1729,6 +1731,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9393, 0, 0 )
 
 [node name="Camera" type="Camera" parent="edit_avatar/select_character/Viewport/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59687, 4.07747 )
+current = true
 
 [node name="CSGMesh" type="CSGMesh" parent="edit_avatar/select_character/Viewport/Spatial"]
 mesh = ExtResource( 19 )
