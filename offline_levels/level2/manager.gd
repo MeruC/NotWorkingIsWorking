@@ -26,6 +26,8 @@ export(NodePath) onready var animation_player = get_node(animation_player) as An
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
 export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
+export(NodePath) onready var net1_skills = get_node(net1_skills) as Label
+export(NodePath) onready var coins = get_node(coins) as Label
 ##
 
 # Instructions popup paths
@@ -156,7 +158,7 @@ func display_next():
 	
 		
 	# To show popup and set its contents
-	popup_score_label.text = "Your Score: " + score_label.text + " / 5"
+	popup_score_label.text = "Score: " + score_label.text
 	if int(score_label.text) >= 3:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
@@ -165,16 +167,22 @@ func display_next():
 			animation_player.play("win")
 			audioplayer.play()
 			celebrate.visible = true
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+80"
 		if score == 4:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			animation_player.play("win")
 			audioplayer.play()
 			celebrate.visible = true
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+90"
 		elif score == 5:
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
 			animation_player.play("win")
 			celebrate.visible = true
 			audioplayer.play()
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+100"
 		score_validation()
 	else:
 		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
@@ -182,6 +190,8 @@ func display_next():
 		popup_indicator_label.text = "Level Failed!"
 		animation_player.play("lose")
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
 		audioplayer.play()
 	game_over_popup.visible = true
 	##
@@ -208,9 +218,8 @@ func _on_next_pressed():
 	Load.load_scene(self, "res://global/chapters/chapter1.tscn")
 
 func score_validation():
-	if settings_data.level2 > 0:
-		return
 	if settings_data.quick_game == "isplaying":
+		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
 		if settings_data.reset_timer >= 10800:
@@ -219,11 +228,18 @@ func score_validation():
 				var new_coins = current_coins+90
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
-				settings_data.reset_timer = 0
+				settings_data.reset_timer = 0			
 				SaveManager.save_game()
 			elif score == 5:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = "notplaying"
+				settings_data.reset_timer = 0
+				SaveManager.save_game()
+			elif score == 3:
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+80
 				settings_data.gold_coins = new_coins
 				settings_data.quick_game = "notplaying"
 				settings_data.reset_timer = 0
@@ -233,8 +249,15 @@ func score_validation():
 				settings_data.reset_timer = 0
 				SaveManager.save_game()
 		else:
+			coins.text = "+0"
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
+			
+	elif settings_data.level2 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
+		
 	else:
 		if score == 4:
 			settings_data.crowns += 2
@@ -248,12 +271,22 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
-		elif score <= 3:
+		elif score == 3:
+			settings_data.crowns += 1
+			var current_coins = settings_data.gold_coins
+			var new_coins = current_coins+80
+			var skills = settings_data.net1_skills
+			var update_skills = skills+10
+			settings_data.crowns+=2
+			settings_data.blue_shirt = "unlock"
+			settings_data.girl_pants = "unlock"
+			settings_data.gold_coins = new_coins
+			settings_data.net1_skills = update_skills
 			settings_data.level2 = score
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
-			pass
 		elif score == 5:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+100
@@ -264,9 +297,11 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.crowns+=3
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			settings_data.level2 = score
 			SaveManager.save_game()
+		else:
+			return
 	
 
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/Line3D/Line3D.gd" type="Script" id=1]
+[ext_resource path="res://addons/Line3D/console.tres" type="Material" id=2]
+
+[node name="Line3D" type="ImmediateGeometry"]
+material_override = ExtResource( 2 )
+script = ExtResource( 1 )
+end_point = Vector3( 0, 0, 0.001 )
+width = 0.15

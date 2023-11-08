@@ -125,7 +125,8 @@ onready var btn_down = $\"%btn_down\"
 onready var quick_animation = $\"../QuickAnimation\"
 onready var quicknav = $\"../ColorRect\"
 onready var online_btnQuick = $\"../ColorRect/ui_quick/CenterContainer/MarginContainer/VBoxContainer/online_btn\"
-
+onready var shop_btnQuick = $\"../ColorRect/ui_quick/CenterContainer/MarginContainer/VBoxContainer/shop_btn\"
+onready var quick_btnQuick = $\"../ColorRect/ui_quick/CenterContainer/MarginContainer/VBoxContainer/quick_btn\"
 export (float) var camera_speed = 0.5
 
 export (Resource) var settings_data
@@ -159,7 +160,7 @@ func _on_btn_down_pressed():
 			online_btn.disabled = true
 			shop_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, camera_speed), \"completed\")
-			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7:
 				quick_btn.disabled = false
 			else:
 				quick_btn.disabled = true
@@ -173,7 +174,7 @@ func _on_btn_down_pressed():
 			quick_btn.disabled = true
 			dict_btn.set_visible(true)
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, camera_speed), \"completed\")
-			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7 and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				shop_btn.disabled = false
 			else:
 				shop_btn.disabled = true
@@ -291,7 +292,7 @@ func _on_btn_up_pressed():
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_quick, camera_speed), \"completed\")
 			btn_up.disabled = false
-			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7:
 				quick_btn.disabled = false
 			else:
 				quick_btn.disabled = true
@@ -304,7 +305,7 @@ func _on_btn_up_pressed():
 			quick_btn.set_visible(true)
 			current -= 1
 			yield(CameraTransitionDefault.transition_camera3D(get_viewport().get_camera(), camera_shop, camera_speed), \"completed\")
-			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+			if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7 and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
 				shop_btn.disabled = false
 			else:
 				shop_btn.disabled = true
@@ -350,6 +351,17 @@ func _on_btn_quicknav_pressed():
 		online_btnQuick.disabled = true
 	else:
 		online_btnQuick.disabled = false
+		
+	if settings_data.level1 >= 7 and settings_data.level2 >= 4 and settings_data.level3 >= 4 and settings_data.level4 >= 4 and settings_data.level5 == 7 and settings_data.level6 == 5 and settings_data.level7 >= 3 and settings_data.level8 >= 30:
+		shop_btnQuick.disabled = false
+	else:
+		shop_btnQuick.disabled = true
+		
+	if settings_data.level1 >= 7 and settings_data.level2 >= 2 and settings_data.level3 >= 2 and settings_data.level4 >= 4 and settings_data.level5 == 7:
+		quick_btnQuick.disabled = false
+	else:
+		quick_btnQuick.disabled = true
+		
 	quicknav.set_visible(true)
 	quick_animation.play(\"quick\")
 "
@@ -2144,6 +2156,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.216,
 [node name="CameraMain" type="Camera" parent="main_screen"]
 unique_name_in_owner = true
 transform = Transform( -0.625924, -0.0274204, 0.779402, -0.110683, 0.992389, -0.0539741, -0.77199, -0.12005, -0.624195, -2.722, 1.317, 13.408 )
+current = true
 
 [node name="CameraOffline" type="Camera" parent="main_screen"]
 unique_name_in_owner = true

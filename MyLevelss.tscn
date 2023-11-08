@@ -1,0 +1,838 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=2]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://online_mode/level_editor/popups.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=8]
+[ext_resource path="res://resources/Materials/grid_out.tres" type="Material" id=9]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=11]
+[ext_resource path="res://resources/Themes/ui_theme2.tres" type="Theme" id=12]
+[ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=13]
+[ext_resource path="res://resources/Game buttons/touch/task_button.png" type="Texture" id=14]
+[ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=15]
+[ext_resource path="res://resources/Game buttons/check.png" type="Texture" id=16]
+[ext_resource path="res://scenes/task_button_script.gd" type="Script" id=17]
+[ext_resource path="res://inventory_system/inventory.gd" type="Script" id=18]
+[ext_resource path="res://resources/Themes/warning_font.tres" type="DynamicFont" id=19]
+[ext_resource path="res://mobile_controls/mobile_controls.gd" type="Script" id=20]
+[ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=21]
+[ext_resource path="res://resources/Game buttons/question_panel.png" type="Texture" id=22]
+[ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=23]
+[ext_resource path="res://resources/Themes/result_quiz.tres" type="Theme" id=24]
+[ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=25]
+
+[sub_resource type="PlaneMesh" id=51]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 1080, 1080 )
+
+[sub_resource type="StreamTexture" id=26]
+flags = 2
+load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = SubResource( 26 )
+region_rect = Rect2( 0, 0, 1080, 1080 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.984314, 0.92549, 0.698039, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=28]
+size = 36
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 32
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 4 )
+
+[sub_resource type="GDScript" id=52]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button_pressed():
+	$\".\".visible = false
+	
+
+
+func _on_no_pressed():
+	$\"../submit_button_prompt\".visible = true
+
+
+func _on_instruction_btn_pressed():
+	$\".\".visible = true
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_instruction_btn_pressed():
+	$\"../instruction\".visible = true
+"
+
+[sub_resource type="DynamicFont" id=53]
+size = 70
+extra_spacing_bottom = 28
+font_data = ExtResource( 3 )
+
+[node name="level" type="Spatial"]
+unique_name_in_owner = true
+script = ExtResource( 21 )
+setConn = true
+testConn = true
+confIP = false
+confPC = false
+confRouter = false
+confIPClass = "Class A"
+confRouterClass = "Class A"
+level_name = "MyLevel"
+level_desc = "Set a description for your level!"
+timerChoice = "5:00"
+submit_button = Object(Button,"_import_path":NodePath(""),"pause_mode":0,"physics_interpolation_mode":0,"unique_name_in_owner":false,"process_priority":0,"visible":false,"modulate":Color( 1, 1, 1, 1 ),"self_modulate":Color( 1, 1, 1, 1 ),"show_behind_parent":false,"light_mask":1,"material":null,"use_parent_material":false,"anchor_left":0.5,"anchor_top":1.0,"anchor_right":0.5,"anchor_bottom":1.0,"margin_left":-75.0,"margin_top":0.0,"margin_right":75.0,"margin_bottom":50.0,"grow_horizontal":1,"grow_vertical":1,"rect_min_size":Vector2( 0, 0 ),"rect_rotation":0.0,"rect_scale":Vector2( 1, 1 ),"rect_pivot_offset":Vector2( 0, 0 ),"rect_clip_content":false,"hint_tooltip":"","focus_neighbour_left":NodePath(""),"focus_neighbour_top":NodePath(""),"focus_neighbour_right":NodePath(""),"focus_neighbour_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_default_cursor_shape":0,"input_pass_on_modal_close_click":true,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"theme":ExtResource( 1 ),"theme_type_variation":"","custom_fonts/font":SubResource( 19 ),"disabled":false,"toggle_mode":false,"shortcut_in_tooltip":true,"pressed":false,"action_mode":1,"button_mask":1,"enabled_focus_mode":2,"keep_pressed_outside":false,"shortcut":null,"group":null,"text":"SUBMIT","icon":null,"flat":false,"clip_text":false,"align":1,"icon_align":0,"expand_icon":false,"script":null)
+
+instruction = Object(Label,"_import_path":NodePath(""),"pause_mode":0,"physics_interpolation_mode":0,"unique_name_in_owner":false,"process_priority":0,"visible":true,"modulate":Color( 1, 1, 1, 1 ),"self_modulate":Color( 1, 1, 1, 1 ),"show_behind_parent":false,"light_mask":1,"material":null,"use_parent_material":false,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"margin_left":332.0,"margin_top":403.0,"margin_right":1569.0,"margin_bottom":859.0,"grow_horizontal":1,"grow_vertical":1,"rect_min_size":Vector2( 0, 0 ),"rect_rotation":0.0,"rect_scale":Vector2( 1, 1 ),"rect_pivot_offset":Vector2( 0, 0 ),"rect_clip_content":false,"hint_tooltip":"","focus_neighbour_left":NodePath(""),"focus_neighbour_top":NodePath(""),"focus_neighbour_right":NodePath(""),"focus_neighbour_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_default_cursor_shape":0,"input_pass_on_modal_close_click":true,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"theme":ExtResource( 13 ),"theme_type_variation":"","custom_colors/font_color":Color( 0, 0, 0, 1 ),"text":"Set a description for your level!","align":0,"valign":0,"autowrap":false,"clip_text":false,"uppercase":false,"percent_visible":1.0,"lines_skipped":0,"max_lines_visible":-1,"script":null)
+
+prompt = Object(Panel,"_import_path":NodePath(""),"pause_mode":0,"physics_interpolation_mode":0,"unique_name_in_owner":false,"process_priority":0,"visible":false,"modulate":Color( 1, 1, 1, 1 ),"self_modulate":Color( 1, 1, 1, 1 ),"show_behind_parent":false,"light_mask":1,"material":null,"use_parent_material":false,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"margin_left":-16.0,"margin_top":-4.0,"margin_right":1925.0,"margin_bottom":1081.0,"grow_horizontal":1,"grow_vertical":1,"rect_min_size":Vector2( 0, 0 ),"rect_rotation":0.0,"rect_scale":Vector2( 1, 1 ),"rect_pivot_offset":Vector2( 0, 0 ),"rect_clip_content":false,"hint_tooltip":"","focus_neighbour_left":NodePath(""),"focus_neighbour_top":NodePath(""),"focus_neighbour_right":NodePath(""),"focus_neighbour_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_default_cursor_shape":0,"input_pass_on_modal_close_click":true,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"theme":null,"theme_type_variation":"","script":null)
+
+setting_data = ExtResource( 2 )
+
+[node name="floor" type="CSGMesh" parent="."]
+transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
+use_collision = true
+mesh = SubResource( 51 )
+material = ExtResource( 8 )
+
+[node name="environment" parent="." instance=ExtResource( 11 )]
+
+[node name="actual_wall2" parent="environment" index="0"]
+transform = Transform( 1, 0, 0, 0, 16.8432, 0, 0, 0, 1, 0, 32, 0 )
+cast_shadow = 0
+use_collision = true
+width = 142.0
+height = 4.0
+depth = 142.0
+material = SubResource( 1 )
+
+[node name="hollow" parent="environment/actual_wall2" index="0"]
+cast_shadow = 0
+operation = 2
+width = 138.0
+height = 6.0
+depth = 138.0
+material = SubResource( 2 )
+
+[node name="light" parent="environment" index="1"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="light" parent="environment/light" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
+light_energy = 0.3
+light_indirect_energy = 0.0
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_normal_bias = 0.1
+
+[node name="wall" type="CSGBox" parent="."]
+unique_name_in_owner = true
+use_collision = true
+width = 138.0
+height = 8.0
+depth = 138.0
+material = ExtResource( 9 )
+
+[node name="playarea" type="CSGBox" parent="wall"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+operation = 2
+width = 20.0
+height = 10.0
+depth = 20.0
+material = ExtResource( 8 )
+
+[node name="inventory" type="CanvasLayer" parent="." instance=ExtResource( 25 )]
+layer = 10
+visible = false
+script = ExtResource( 18 )
+
+[node name="mobile_controls" type="CanvasLayer" parent="." instance=ExtResource( 5 )]
+layer = 11
+visible = false
+script = ExtResource( 20 )
+
+[node name="tasks_ui" parent="." instance=ExtResource( 6 )]
+layer = 12
+visible = false
+
+[node name="task_button" parent="tasks_ui" index="0"]
+margin_left = 25.0
+margin_top = 175.0
+margin_right = 150.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 125, 125 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 21 )
+toggle_mode = true
+icon_align = 1
+expand_icon = true
+script = ExtResource( 17 )
+
+[node name="task_manager" parent="tasks_ui" index="1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -700.0
+margin_top = -375.0
+margin_right = 700.0
+margin_bottom = 375.0
+rect_min_size = Vector2( 1400, 750 )
+custom_styles/panel = SubResource( 27 )
+
+[node name="ScrollContainer" parent="tasks_ui/task_manager" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -675.0
+margin_top = -350.0
+margin_right = 675.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 1350, 700 )
+scroll_horizontal_enabled = false
+
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_right = 1325.0
+margin_bottom = 436.0
+custom_constants/separation = 50
+
+[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
+margin_right = 1325.0
+margin_bottom = 208.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Set The Connection"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1325, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Use an Ethernet Cable to connect Devices"
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="2"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
+visible = false
+margin_top = 258.0
+margin_right = 1325.0
+margin_bottom = 466.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure IP Addresses"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class A IP addresses."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="2"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
+visible = false
+margin_top = 516.0
+margin_right = 1325.0
+margin_bottom = 724.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure IP Addresses"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class B IP addresses."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="2"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
+visible = false
+margin_top = 774.0
+margin_right = 1325.0
+margin_bottom = 982.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure IP Addresses"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class C IP addresses."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="2"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
+visible = false
+margin_top = 1032.0
+margin_right = 1325.0
+margin_bottom = 1336.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure Router"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Use a console cable to connect any of the PCs into the router.
+- On a pc with console cable connected, open the Terminal.
+- Configure the IP address of each port using Class A IP Addresses"
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task6" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="5"]
+visible = false
+margin_top = 1386.0
+margin_right = 1325.0
+margin_bottom = 1690.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure PCs"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class A IP addresses.
+- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task7" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="6"]
+visible = false
+margin_top = 1740.0
+margin_right = 1325.0
+margin_bottom = 2044.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure Router"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Use a console cable to connect any of the PCs into the router.
+- On a pc with console cable connected, open the Terminal.
+- Configure the IP address of each port using Class B IP Addresses"
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task8" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="7"]
+visible = false
+margin_top = 2094.0
+margin_right = 1325.0
+margin_bottom = 2398.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure PCs"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class B IP addresses.
+- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task9" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="8"]
+visible = false
+margin_top = 2448.0
+margin_right = 1325.0
+margin_bottom = 2752.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure Router"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Use a console cable to connect any of the PCs into the router.
+- On a pc with console cable connected, open the Terminal.
+- Configure the IP address of each port using Class C IP Addresses"
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task10" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="9"]
+visible = false
+margin_top = 2802.0
+margin_right = 1325.0
+margin_bottom = 3106.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Configure PCs"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Open each PC and configure their IP addresses using Class C IP addresses.
+- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
+autowrap = true
+
+[node name="ColorRect" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="2"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
+margin_top = 3156.0
+margin_right = 1325.0
+margin_bottom = 3334.0
+custom_constants/separation = 25
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task11" index="0"]
+margin_right = 1325.0
+margin_bottom = 108.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 16 )
+custom_icons/checked = ExtResource( 16 )
+custom_icons/unchecked_disabled = ExtResource( 15 )
+custom_icons/unchecked = ExtResource( 15 )
+disabled = true
+text = "Test the Connection"
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task11" index="1"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "- Go to any PC and try to ping any of the connected devices"
+autowrap = true
+
+[node name="submit_button" parent="tasks_ui/task_manager" index="1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_right = 75.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 19 )
+text = "SUBMIT"
+
+[node name="popups" parent="." instance=ExtResource( 7 )]
+layer = 70
+visible = false
+
+[node name="submit_button_prompt" parent="popups" index="0"]
+visible = false
+margin_left = -16.0
+margin_top = -4.0
+margin_right = 1925.0
+margin_bottom = 1081.0
+
+[node name="prompt" parent="popups/submit_button_prompt" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -471.0
+margin_top = -249.0
+margin_right = 471.0
+margin_bottom = 249.0
+theme = ExtResource( 1 )
+
+[node name="Label" parent="popups/submit_button_prompt/prompt" index="0"]
+margin_left = 107.0
+margin_top = 102.0
+margin_right = 901.0
+margin_bottom = 170.0
+text = "Confirm submition?"
+
+[node name="yes" parent="popups/submit_button_prompt/prompt" index="1"]
+margin_left = 563.5
+margin_top = 256.5
+margin_right = 784.5
+margin_bottom = 388.5
+text = "Yes"
+
+[node name="no" parent="popups/submit_button_prompt/prompt" index="2"]
+margin_left = 147.5
+margin_top = 249.5
+margin_right = 349.5
+margin_bottom = 381.5
+theme = ExtResource( 12 )
+text = "no"
+
+[node name="instruction" parent="popups" index="1"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = SubResource( 52 )
+
+[node name="ColorRect" parent="popups/instruction" index="0"]
+margin_right = 1931.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.54902 )
+
+[node name="panel" parent="popups/instruction" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 252.0
+margin_top = 159.0
+margin_right = 548.0
+margin_bottom = 385.0
+rect_scale = Vector2( 4.58763, 3.25418 )
+texture = ExtResource( 22 )
+
+[node name="title" parent="popups/instruction" index="2"]
+margin_left = 601.0
+margin_top = 251.0
+margin_right = 1233.0
+margin_bottom = 341.0
+custom_fonts/font = ExtResource( 19 )
+text = "Instruction"
+
+[node name="content" parent="popups/instruction" index="3"]
+margin_left = 332.0
+margin_top = 403.0
+margin_right = 1569.0
+margin_bottom = 859.0
+theme = ExtResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Set a description for your level!"
+
+[node name="Button" parent="popups/instruction" index="4"]
+margin_right = 1912.0
+margin_bottom = 1084.0
+flat = true
+
+[node name="Label" parent="popups/instruction" index="5"]
+margin_left = 660.0
+margin_top = 922.0
+margin_right = 1103.0
+margin_bottom = 977.0
+theme = ExtResource( 13 )
+text = "tap the screen to start"
+
+[node name="instruction_btn" parent="popups" index="2"]
+margin_left = 1823.0
+margin_top = 988.0
+margin_right = 1911.0
+margin_bottom = 1065.0
+theme = ExtResource( 23 )
+script = SubResource( 3 )
+
+[node name="gameover" parent="popups" index="3"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" parent="popups/gameover" index="0"]
+margin_right = 1959.0
+margin_bottom = 1105.0
+color = Color( 0, 0, 0, 0.572549 )
+
+[node name="Panel" parent="popups/gameover" index="1"]
+margin_left = 500.0
+margin_top = 273.0
+margin_right = 1423.0
+margin_bottom = 809.0
+theme = ExtResource( 1 )
+
+[node name="Label" parent="popups/gameover" index="2"]
+margin_left = 627.0
+margin_top = 444.0
+margin_right = 1289.0
+margin_bottom = 544.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 53 )
+text = "Congratulations !"
+
+[node name="submit" parent="popups/gameover" index="3"]
+margin_left = 757.0
+margin_top = 619.0
+margin_right = 1139.0
+margin_bottom = 751.0
+theme = ExtResource( 24 )
+text = "Submit"
+
+[connection signal="toggled" from="tasks_ui/task_button" to="tasks_ui/task_button" method="_on_task_button_toggled"]
+[connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="popups/submit_button_prompt/prompt/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="popups/submit_button_prompt/prompt/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="popups/instruction/Button" to="popups/instruction" method="_on_Button_pressed"]
+[connection signal="pressed" from="popups/instruction_btn" to="popups/instruction_btn" method="_on_instruction_btn_pressed"]
+
+[editable path="environment"]
+[editable path="tasks_ui"]
+[editable path="popups"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func _ready():
+	update()
+
+func _draw() -> void:
+	draw_line(Vector2.ZERO, Vector2.RIGHT * 300, Color.black, 10.0)
+"
+
+[node name="Node2D" type="Spatial"]
+script = SubResource( 1 )

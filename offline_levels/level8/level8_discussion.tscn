@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=1]
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://offline_levels/level8/decimal_to_binary.png" type="Texture" id=7]
 [ext_resource path="res://offline_levels/level1/level1_discussion/play_button.png" type="Texture" id=8]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/Themes/skip_button_theme.tres" type="Theme" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -109,6 +110,11 @@ func _on_play_pressed():
 	$video_player.visible = true
 	$video_cover.visible = false
 	touch = false
+
+
+func _on_skip_pressed():
+	$\".\".queue_free()
+	get_tree().change_scene(game_scene)
 "
 
 [node name="level8" type="Node2D"]
@@ -170,6 +176,16 @@ stream = ExtResource( 6 )
 
 [node name="manager" parent="." instance=ExtResource( 9 )]
 
+[node name="skip" type="Button" parent="."]
+margin_left = 1771.0
+margin_top = 18.0
+margin_right = 1908.0
+margin_bottom = 85.0
+theme = ExtResource( 10 )
+text = "skip"
+flat = true
+
 [connection signal="pressed" from="video_cover/play" to="." method="_on_play_pressed"]
 [connection signal="cancel" from="video_player" to="." method="_on_video_player_cancel"]
 [connection signal="finish" from="video_player" to="." method="_on_video_player_finish"]
+[connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]

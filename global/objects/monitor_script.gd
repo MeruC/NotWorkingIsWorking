@@ -8,13 +8,17 @@ var fe0_type
 var console_port0 : StaticBody
 var console_portType
 #var other_end : StaticBody
-var isSaved = false
+var isSaved = false#onready var cables = $"%cables"
 var test = "test"
 var rj = true
 var console = true
 var main_scene
 var devices = []
 var connected_router
+onready var draw = $draw
+
+var cross = preload("res://addons/Line3D/cross_over.tres")
+var straight = preload("res://addons/Line3D/straight_through.tres")
 
 signal configuration_saved()
 
@@ -28,6 +32,9 @@ export(String) var subnet_mask
 export(String) var default_gateway
 export(String) var dns_server
 export(String) var console_port_connection = null
+
+onready var fe_0_line = $fe0/fe0line
+onready var console_0_line = $console0/console0line
 
 #export(String) var ipv6_allocation = "static"
 #export(Array) var link_local_address = [0, 0, 0, 0]
@@ -95,6 +102,10 @@ func resetLevel():
 	dns_server = ""
 	console_port_connection = ""
 
+var p = Array()
+onready var fe0_point = $fe0/fe0point
+onready var console0_point = $console0/console0point
+
 func _process(delta):
 	pass
 	
@@ -143,6 +154,17 @@ func _set_connector( connection, type ):
 		connected_to.append(fe0.device_name)
 		
 		level_scene.check_progress()
+		print(self.translation)
+		print(fe0.translation)
+		print(self.translation.distance_to(fe0.translation))
+		#if fe0 != null:
+		fe0_point.global_translation = fe0.global_translation
+		fe_0_line.visible = true
+		if fe0_type == "cross_over":
+			fe_0_line.set_material_override(cross)
+		elif fe0_type == "straight_through":
+			fe_0_line.set_material_override(straight)
+		#if console_port0 != null:
 		#emit_signal("cable_connected")
 	else:
 		pass
@@ -157,8 +179,11 @@ func _set_connectorConsole( connection, type ):
 		console_port0 = connection
 		console_port_connection = connection.device_name
 		console_portType = type
+		console0_point.global_translation = console_port0.global_translation
 		#label.text = "Connected to " + str(console_port0.device_name) + "\nUsing: " + str(type)
 		#emit_signal("cable_connected")
+		console_0_line.visible = true
+		
 	else:
 		pass
 #	elif other_end == null:
@@ -299,27 +324,33 @@ func _on_disconnect_console_pressed():
 func _on_confirm_pressed():
 	if cableType_label.text == "Cross-Over" or cableType_label.text == "Straight-Through":
 		if fe0.device_type == "computer":
+			fe0.fe_0_line.visible = false
 			fe0.fe0 = null
 			fe0.fe0_type = null
 		elif fe0.device_type == "router":
 			if fe0.ge0.device_name == device_name:
+				fe0.ge_0_line.visible = false
 				fe0.ge0 = null
 				fe0.ge0_type = null
 			elif fe0.ge1.device_name == device_name:
+				fe0.ge_1_line.visible = false
 				fe0.ge1 = null
 				fe0.ge1_type = null
 			elif fe0.ge2.device_name == device_name:
+				fe0.ge_2_line.visible = false
 				fe0.ge2 = null
 				fe0.ge2_type = null
 		if fe0.connected_to.has(device_name):
 			fe0.connected_to.remove(device_name)
 		return_cable(fe0_type)
+		fe_0_line.visible = false
 		fe0 = null
 		fe0_type = null
 		#label.text = ""
 		fe_cable.visible = false
 		fe_disconnectBtn.visible = false
 	elif cableType_label.text == "Console":
+		console_port0.console_0_line.visible = false
 		console_port0.console_port0 = null
 		console_port0.console_portType = null
 		return_cable("Console_Cable")
@@ -328,6 +359,7 @@ func _on_confirm_pressed():
 		#label.text = ""
 		console_cable.visible = false
 		consolde_disconnectBtn.visible = false
+		console_0_line.visible = false
 ##
 
 func return_cable(cable_type):

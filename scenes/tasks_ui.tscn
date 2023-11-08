@@ -1,6 +1,5 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://resources/Game buttons/touch/close_task_button.png" type="Texture" id=1]
 [ext_resource path="res://resources/Themes/ui_theme1.tres" type="Theme" id=2]
 [ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=4]
@@ -13,8 +12,12 @@
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
+[sub_resource type="StreamTexture" id=26]
+flags = 2
+load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
+
 [sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 1 )
+texture = SubResource( 26 )
 region_rect = Rect2( 0, 0, 1080, 1080 )
 
 [sub_resource type="StyleBoxFlat" id=27]
@@ -83,6 +86,7 @@ margin_bottom = 3334.0
 custom_constants/separation = 50
 
 [node name="task1" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_right = 1325.0
 margin_bottom = 208.0
 custom_constants/separation = 25
@@ -119,6 +123,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task2" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 258.0
 margin_right = 1325.0
 margin_bottom = 466.0
@@ -156,6 +161,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task3" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 516.0
 margin_right = 1325.0
 margin_bottom = 724.0
@@ -193,6 +199,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task4" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 774.0
 margin_right = 1325.0
 margin_bottom = 982.0
@@ -230,6 +237,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task5" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 1032.0
 margin_right = 1325.0
 margin_bottom = 1336.0
@@ -269,6 +277,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task6" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 1386.0
 margin_right = 1325.0
 margin_bottom = 1690.0
@@ -307,6 +316,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task7" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 1740.0
 margin_right = 1325.0
 margin_bottom = 2044.0
@@ -346,6 +356,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task8" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 2094.0
 margin_right = 1325.0
 margin_bottom = 2398.0
@@ -384,6 +395,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task9" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 2448.0
 margin_right = 1325.0
 margin_bottom = 2752.0
@@ -423,6 +435,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task10" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 2802.0
 margin_right = 1325.0
 margin_bottom = 3106.0
@@ -461,6 +474,7 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="task11" type="VBoxContainer" parent="task_manager/ScrollContainer/tasks_vbox"]
+visible = false
 margin_top = 3156.0
 margin_right = 1325.0
 margin_bottom = 3334.0

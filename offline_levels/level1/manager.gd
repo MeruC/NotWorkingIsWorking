@@ -22,6 +22,8 @@ export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
 export(NodePath) onready var audioplayer = get_node(audioplayer) as AudioStreamPlayer
+export(NodePath) onready var net1_skills = get_node(net1_skills) as Label
+export(NodePath) onready var coins = get_node(coins) as Label
 # Instructions popup paths
 export(NodePath) onready var animation_player = get_node(animation_player) as AnimationPlayer
 export(NodePath) onready var instructions_popup = get_node(instructions_popup) as Control
@@ -94,7 +96,7 @@ func spawn_new():
 	notepad.queue_free()
 	
 	# To show popup and set its contents
-	popup_score_label.text = "Your Score: " + score_label.text + " / 10"
+	popup_score_label.text = "Score: " + score_label.text
 	if int(score_label.text) >= 6:
 		popup_next_button.disabled = false
 		popup_indicator_label.text = "Level Complete!"
@@ -103,21 +105,29 @@ func spawn_new():
 			audioplayer.play()
 			animationplayer.play("win")
 			celebrate.visible = true
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+70"
 		elif score == 7:
 			crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 			audioplayer.play()
 			animationplayer.play("win")
 			celebrate.visible = true
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+80"
 		elif score >= 8 and score <= 9:
 			crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
 			audioplayer.play()
 			animationplayer.play("win")
 			celebrate.visible = true
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+90"
 		elif score == 10:
 			audioplayer.play()
 			animationplayer.play("win")
 			celebrate.visible = true
 			crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+			net1_skills.text = "Networking 1 skills: 10"
+			coins.text = "+100"
 		_on_data_changed()
 	else:
 		popup_next_button.disabled = true
@@ -125,6 +135,8 @@ func spawn_new():
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 		audioplayer.play()
 		popup_indicator_label.text = "Level Failed!"
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
 		crowns.texture = preload("res://resources/Game buttons/0_crowns.png")
 	game_over_popup.visible = true
 	##
@@ -140,9 +152,8 @@ func _on_tap_pressed():
 	
 func _on_data_changed():
 	#update coins
-	if setting_data.level1 > 0:
-		return
 	if setting_data.quick_game == "isplaying":
+		net1_skills.text = "Networking 1 skills: 0"
 		pop_retry_button.disabled = true
 		popup_next_button.disabled = true
 		if setting_data.reset_timer >= 10800:
@@ -166,11 +177,16 @@ func _on_data_changed():
 				SaveManager.save_game()
 				
 		else:
+			coins.text = "+0"
 			setting_data.quick_game = "notplaying"
 			SaveManager.save_game()
 			
+	elif setting_data.level1 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
 	else:
-		if score >= 7 and score <= 9:
+		if score >= 6 and score <= 9:
 			setting_data.crowns = 2
 			setting_data.level1 = score
 			var coins = setting_data.gold_coins
@@ -179,9 +195,8 @@ func _on_data_changed():
 			var update_skills = skills+10
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
-			setting_data.reset_timer = 10800.18888
-			SaveManager.save_game()
-			
+			setting_data.reset_timer = 10800
+			SaveManager.save_game()			
 		elif score == 10:
 			setting_data.crowns = 3
 			var coins = setting_data.gold_coins
@@ -191,7 +206,7 @@ func _on_data_changed():
 			setting_data.net1_skills = update_skills
 			setting_data.gold_coins = current
 			setting_data.level1 = score
-			setting_data.reset_timer = 10800.18888
+			setting_data.reset_timer = 10800
 			SaveManager.save_game()
 			
 func _on_retry_pressed():

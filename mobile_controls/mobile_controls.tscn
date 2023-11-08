@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://resources/Game buttons/touch/cam2.png" type="Texture" id=1]
 [ext_resource path="res://mobile_controls/joystick/virtual_joystick.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_19.png" type="Texture" id=3]
 [ext_resource path="res://mobile_controls/mobile_controls.gd" type="Script" id=4]
+[ext_resource path="res://resources/Game buttons/touch/cable_pressed.png" type="Texture" id=5]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_16.png" type="Texture" id=6]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_18.png" type="Texture" id=7]
 [ext_resource path="res://resources/Game buttons/touch/gamepad7_17.png" type="Texture" id=8]
@@ -12,6 +13,7 @@
 [ext_resource path="res://resources/Game buttons/touch/cam2pressed.png" type="Texture" id=11]
 [ext_resource path="res://resources/Game buttons/touch/bag.png" type="Texture" id=12]
 [ext_resource path="res://resources/Game buttons/touch/bagPressed.png" type="Texture" id=13]
+[ext_resource path="res://resources/Game buttons/touch/cable.png" type="Texture" id=14]
 
 [node name="mobile_controls" type="CanvasLayer"]
 layer = 11
@@ -84,6 +86,13 @@ normal = ExtResource( 6 )
 pressed = ExtResource( 8 )
 action = "hotbar_1"
 
+[node name="cButton" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 911, 883 )
+scale = Vector2( 12, 12 )
+normal = ExtResource( 14 )
+pressed = ExtResource( 5 )
+action = "cable"
+
 [node name="cable_ui" type="Control" parent="."]
 visible = false
 margin_left = 1697.0
@@ -96,3 +105,16 @@ scale = Vector2( 12, 12 )
 normal = ExtResource( 6 )
 pressed = ExtResource( 8 )
 action = "cam_test"
+
+[node name="cable_ui2" type="Control" parent="."]
+visible = false
+margin_left = 1697.0
+margin_top = 883.0
+margin_right = 1737.0
+margin_bottom = 923.0
+
+[node name="bButton" type="TouchScreenButton" parent="cable_ui2"]
+scale = Vector2( 12, 12 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 8 )
+action = "cable_back"

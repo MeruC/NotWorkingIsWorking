@@ -866,6 +866,8 @@ animation_player = NodePath("../popup_layer/game_over/AnimationPlayer")
 celebrate = NodePath("../popup_layer/game_over/AnimationPlayer/Sprite")
 audioplayer = NodePath("../popup_layer/game_over/AudioStreamPlayer")
 tutorial_player = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer")
+net1_skills = NodePath("../popup_layer/game_over/main_popup/net1_skills")
+coins = NodePath("../popup_layer/game_over/main_popup/GridContainer2/coins")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/level2")
 
@@ -904,12 +906,13 @@ autowrap = true
 [node name="score" type="Label" parent="."]
 margin_left = 368.0
 margin_top = 45.0
-margin_right = 408.0
-margin_bottom = 184.0
+margin_right = 433.0
+margin_bottom = 113.0
 rect_min_size = Vector2( 40, 50 )
 theme = ExtResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
+align = 1
 autowrap = true
 
 [node name="letter_CenterContainer" type="CenterContainer" parent="."]

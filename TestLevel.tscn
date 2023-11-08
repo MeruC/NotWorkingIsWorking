@@ -1,0 +1,327 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://inventory_system/data/resources/settings_data.tres" type="Resource" id=3]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/Materials/grid.tres" type="Material" id=8]
+[ext_resource path="res://resources/Materials/grid_out.tres" type="Material" id=9]
+[ext_resource path="res://resources/font/OpenSans-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://inventory_system/inventory.tscn" type="PackedScene" id=11]
+[ext_resource path="res://mobile_controls/mobile_controls.tscn" type="PackedScene" id=12]
+[ext_resource path="res://global/objects/huaweiRouter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tasks_ui.tscn" type="PackedScene" id=14]
+[ext_resource path="res://online_mode/level_editor/popups.tscn" type="PackedScene" id=15]
+[ext_resource path="res://global/objects/genericRouter.tscn" type="PackedScene" id=20]
+[ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=21]
+[ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=22]
+[ext_resource path="res://global/objects/ciscoRouter.tscn" type="PackedScene" id=25]
+[ext_resource path="res://resources/Game buttons/touch/task_button.png" type="Texture" id=32]
+[ext_resource path="res://online_mode/level_editor/level_script.gd" type="Script" id=35]
+
+[sub_resource type="PlaneMesh" id=51]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 32 )
+region_rect = Rect2( 0, 0, 1080, 1080 )
+
+[sub_resource type="StreamTexture" id=26]
+flags = 2
+load_path = "res://.import/task_button-pressed.png-a588a004232f35a8e7edd68794609b03.stex"
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = SubResource( 26 )
+region_rect = Rect2( 0, 0, 1080, 1080 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.984314, 0.92549, 0.698039, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=28]
+size = 36
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 32
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=52]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button_pressed():
+	$\".\".visible = false
+	
+
+
+func _on_instruction_btn_pressed():
+	$\".\".visible = true
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_instruction_btn_pressed():
+	$\"../instruction\".visible = true
+"
+
+[sub_resource type="DynamicFont" id=53]
+size = 70
+extra_spacing_bottom = 28
+font_data = ExtResource( 6 )
+
+[node name="level" type="Spatial"]
+unique_name_in_owner = true
+script = ExtResource( 35 )
+setting_data = ExtResource( 3 )
+
+[node name="floor" type="CSGMesh" parent="."]
+transform = Transform( 69, 0, 0, 0, 1, 0, 0, 0, 69, 0, 0, 0 )
+use_collision = true
+mesh = SubResource( 51 )
+material = ExtResource( 8 )
+
+[node name="environment" parent="." instance=ExtResource( 7 )]
+
+[node name="actual_wall2" parent="environment" index="0"]
+material = SubResource( 1 )
+
+[node name="hollow" parent="environment/actual_wall2" index="0"]
+material = SubResource( 2 )
+
+[node name="wall" type="CSGBox" parent="."]
+unique_name_in_owner = true
+use_collision = true
+width = 138.0
+height = 8.0
+depth = 138.0
+material = ExtResource( 9 )
+
+[node name="playarea" type="CSGBox" parent="wall"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+operation = 2
+width = 20.0
+height = 10.0
+depth = 20.0
+material = ExtResource( 8 )
+
+[node name="inventory" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="mobile_controls" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="tasks_ui" parent="." instance=ExtResource( 14 )]
+visible = false
+
+[node name="task_button" parent="tasks_ui" index="0"]
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 21 )
+
+[node name="task_manager" parent="tasks_ui" index="1"]
+custom_styles/panel = SubResource( 27 )
+
+[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task2" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task3" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task4" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task5" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task6" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task7" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task8" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task9" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task10" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task11" index="0"]
+custom_fonts/font = SubResource( 28 )
+
+[node name="Label" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task11" index="1"]
+custom_fonts/font = SubResource( 29 )
+
+[node name="submit_button" parent="tasks_ui/task_manager" index="1"]
+custom_fonts/font = SubResource( 19 )
+
+[node name="popups" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="instruction" parent="popups" index="2"]
+script = SubResource( 52 )
+
+[node name="content" parent="popups/instruction" index="3"]
+text = "Set a description for your level!"
+
+[node name="instruction_btn" parent="popups" index="3"]
+script = SubResource( 3 )
+
+[node name="Label" parent="popups/gameover" index="2"]
+custom_fonts/font = SubResource( 53 )
+
+[node name="object_table" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10 )
+
+[node name="@object_table@128" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8 )
+
+[node name="@object_table@129" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10 )
+
+[node name="@object_table@130" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8 )
+
+[node name="@object_table@132" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+
+[node name="@object_table@133" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+
+[node name="object_huaweiRouter" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.9375, -10 )
+
+[node name="object_monitor" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -8 )
+device_name = "object_monitor"
+
+[node name="object_genericRouter" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.9375, -10 )
+device_name = "object_genericRouter"
+
+[node name="object_ciscoRouter" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.9375, -8 )
+device_name = "object_ciscoRouter"
+
+[node name="@object_monitor@507" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0.9375, -2 )
+device_name = "@object_monitor@507"
+
+[node name="@object_monitor@565" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -4 )
+device_name = "@object_monitor@565"
+
+[node name="@object_table@566" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2 )
+
+[node name="object_table567" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6 )
+
+[node name="@object_table@568" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8 )
+
+[node name="@object_monitor@740" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, 2 )
+device_name = "@object_monitor@740"
+
+[node name="@object_monitor@798" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0.9375, 6 )
+device_name = "@object_monitor@798"
+
+[node name="@object_monitor@856" parent="." instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, 8 )
+device_name = "@object_monitor@856"
+
+[connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="popups/submit_button_prompt/prompt/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="popups/submit_button_prompt/prompt/no" to="." method="_on_no_pressed"]
+
+[editable path="environment"]
+[editable path="tasks_ui"]
+[editable path="popups"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=2]
+[gd_scene load_steps=161 format=2]
 
 [ext_resource path="res://global/objects/place.tscn" type="PackedScene" id=1]
 [ext_resource path="res://online_mode/level_editor/EditorPremade/environment.tscn" type="PackedScene" id=2]
@@ -37,10 +37,17 @@
 [ext_resource path="res://resources/icons/OptionsA.png" type="Texture" id=35]
 [ext_resource path="res://online_mode/level_editor/menu.gd" type="Script" id=36]
 [ext_resource path="res://online_mode/level_editor/TextEdit.gd" type="Script" id=37]
+[ext_resource path="res://online_mode/level_editor/popups.tscn" type="PackedScene" id=38]
 [ext_resource path="res://resources/Textures/button_01_pressed.png" type="Texture" id=39]
 [ext_resource path="res://resources/Textures/button_01_normal.png" type="Texture" id=40]
 [ext_resource path="res://resources/Themes/buttons1.tres" type="Theme" id=41]
 [ext_resource path="res://demo/visuals/fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=42]
+[ext_resource path="res://resources/Game buttons/not_check.png" type="Texture" id=43]
+[ext_resource path="res://resources/Game buttons/check.png" type="Texture" id=44]
+[ext_resource path="res://online_mode/level_editor/confIPoption.gd" type="Script" id=45]
+[ext_resource path="res://online_mode/level_editor/task_choice2.gd" type="Script" id=46]
+[ext_resource path="res://online_mode/level_editor/confRouterPoption.gd" type="Script" id=47]
+[ext_resource path="res://online_mode/level_editor/task_option.gd" type="Script" id=48]
 
 [sub_resource type="DynamicFont" id=40]
 size = 90
@@ -1266,6 +1273,21 @@ VScrollBar/styles/scroll = SubResource( 81 )
 [sub_resource type="DynamicFont" id=83]
 size = 1
 
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.984314, 0.92549, 0.698039, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=28]
+size = 36
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=122]
+size = 32
+font_data = ExtResource( 34 )
+
 [sub_resource type="PlaneMesh" id=51]
 
 [sub_resource type="BoxShape" id=13]
@@ -1419,7 +1441,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"points": PoolRealArray( 420, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 852.863, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/15/type = "bezier"
@@ -1439,7 +1461,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"points": PoolRealArray( 478, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 910.863, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/17/type = "bezier"
@@ -1459,7 +1481,7 @@ tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"points": PoolRealArray( -580, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -348, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/19/type = "bezier"
@@ -1469,7 +1491,7 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"points": PoolRealArray( -1157, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -1355, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/20/type = "bezier"
@@ -1589,6 +1611,66 @@ tracks/31/loop_wrap = true
 tracks/31/imported = false
 tracks/31/enabled = true
 tracks/31/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/32/type = "bezier"
+tracks/32/path = NodePath("UI/infopanel/Control/task_option/tasks:rect_scale:x")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/33/type = "bezier"
+tracks/33/path = NodePath("UI/infopanel/Control/task_option/tasks:rect_scale:y")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/34/type = "bezier"
+tracks/34/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:r")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/35/type = "bezier"
+tracks/35/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:g")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/36/type = "bezier"
+tracks/36/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:b")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/37/type = "bezier"
+tracks/37/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:a")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
@@ -1926,6 +2008,69 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.3 )
 }
 
+[sub_resource type="Animation" id=123]
+resource_name = "task_option"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("UI/infopanel/Control/task_option/tasks:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("UI/infopanel/Control/task_option/tasks:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("UI/infopanel/Control/task_option/infopanel:color:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.686275, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="editor" type="Spatial"]
 script = ExtResource( 12 )
 
@@ -2116,9 +2261,9 @@ icon = SubResource( 14 )
 
 [node name="upload" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 830.0
+margin_left = 852.863
 margin_top = 36.0
-margin_right = 1308.0
+margin_right = 1330.86
 margin_bottom = 210.0
 rect_rotation = 5.74959
 rect_scale = Vector2( 2, 2 )
@@ -2129,10 +2274,10 @@ text = "Upload"
 
 [node name="play" type="Button" parent="UI/editor/file/menu"]
 show_behind_parent = true
-margin_left = 464.0
-margin_top = -346.0
-margin_right = 929.0
-margin_bottom = -131.0
+margin_left = 910.863
+margin_top = 144.0
+margin_right = 1375.86
+margin_bottom = 359.0
 rect_rotation = 3.32205
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 65, 40 )
@@ -2528,9 +2673,9 @@ margin_bottom = 506.0
 theme = ExtResource( 30 )
 
 [node name="name" type="Label" parent="UI/infopanel/Control/PanelContainer"]
-margin_left = 10.0
+margin_left = -102.0
 margin_top = 69.0
-margin_right = 1450.0
+margin_right = 1338.0
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 1796, -70 )
 custom_fonts/font = SubResource( 85 )
@@ -2539,9 +2684,9 @@ align = 1
 
 [node name="nameLE" type="LineEdit" parent="UI/infopanel/Control/PanelContainer"]
 unique_name_in_owner = true
-margin_left = 173.0
+margin_left = 113.0
 margin_top = 170.0
-margin_right = 1247.0
+margin_right = 1187.0
 margin_bottom = 333.0
 theme = SubResource( 110 )
 custom_fonts/font = SubResource( 84 )
@@ -2555,9 +2700,9 @@ margin_right = 1310.0
 margin_bottom = 917.0
 
 [node name="timer" type="Label" parent="UI/infopanel/Control/PanelContainer"]
-margin_left = -226.0
+margin_left = 188.0
 margin_top = 382.0
-margin_right = 1214.0
+margin_right = 472.0
 margin_bottom = 439.0
 rect_pivot_offset = Vector2( 2291, -89 )
 custom_fonts/font = SubResource( 85 )
@@ -2570,9 +2715,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -395.0
+margin_left = -211.0
 margin_top = 71.5
-margin_right = 391.0
+margin_right = 207.0
 margin_bottom = 203.5
 rect_pivot_offset = Vector2( 380, 0 )
 theme = ExtResource( 30 )
@@ -2682,9 +2827,9 @@ text = "Width"
 [node name="color2" type="Label" parent="UI/infopanel/Control"]
 unique_name_in_owner = true
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 1265.0
+margin_left = 855.0
 margin_top = 417.0
-margin_right = 1493.0
+margin_right = 1083.0
 margin_bottom = 474.0
 rect_pivot_offset = Vector2( 1796, -70 )
 custom_fonts/font = SubResource( 85 )
@@ -2692,9 +2837,9 @@ text = "Color: "
 align = 1
 
 [node name="color" type="HBoxContainer" parent="UI/infopanel/Control"]
-margin_left = 1108.0
+margin_left = 698.0
 margin_top = 520.0
-margin_right = 1791.0
+margin_right = 1381.0
 margin_bottom = 685.0
 rect_scale = Vector2( 0.75, 0.75 )
 custom_constants/separation = 79
@@ -2742,15 +2887,48 @@ rect_scale = Vector2( 1.5, 1.5 )
 theme = ExtResource( 30 )
 text = "DONE"
 
+[node name="set2" type="Label" parent="UI/infopanel/Control"]
+unique_name_in_owner = true
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1242.0
+margin_top = 103.0
+margin_right = 1805.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 1796, -70 )
+custom_fonts/font = SubResource( 85 )
+text = "Set Description:"
+align = 1
+
 [node name="description" type="Button" parent="UI/infopanel/Control"]
 modulate = Color( 1, 0.470588, 0, 1 )
 anchor_right = 1.0
-margin_left = 1449.0
+margin_left = 1405.0
 margin_top = 213.0
-margin_right = -164.0
+margin_right = -208.0
 margin_bottom = 345.0
 theme = ExtResource( 30 )
 text = "Desc."
+
+[node name="set" type="Label" parent="UI/infopanel/Control"]
+unique_name_in_owner = true
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1395.0
+margin_top = 417.0
+margin_right = 1713.0
+margin_bottom = 474.0
+rect_pivot_offset = Vector2( 1796, -70 )
+custom_fonts/font = SubResource( 85 )
+text = "Set Task:"
+align = 1
+
+[node name="set_task" type="Button" parent="UI/infopanel/Control"]
+anchor_right = 1.0
+margin_left = 1389.0
+margin_top = 512.0
+margin_right = -224.0
+margin_bottom = 644.0
+theme = ExtResource( 30 )
+text = "Task"
 
 [node name="desc" type="Control" parent="UI/infopanel/Control"]
 visible = false
@@ -2808,6 +2986,303 @@ margin_bottom = 320.0
 theme = ExtResource( 30 )
 text = "DONE"
 
+[node name="task_option" type="Control" parent="UI/infopanel/Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 960, 0 )
+script = ExtResource( 48 )
+
+[node name="infopanel" type="ColorRect" parent="UI/infopanel/Control/task_option"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tasks" type="Panel" parent="UI/infopanel/Control/task_option"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -700.0
+margin_top = -465.0
+margin_right = 700.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 1400, 750 )
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 700, 0 )
+custom_styles/panel = SubResource( 27 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/infopanel/Control/task_option/tasks"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -675.0
+margin_top = -350.0
+margin_right = 675.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 1350, 700 )
+scroll_horizontal_enabled = false
+
+[node name="tasks_vbox" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer"]
+margin_right = 1325.0
+margin_bottom = 1048.0
+custom_constants/separation = 50
+
+[node name="taskSetConn" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
+unique_name_in_owner = true
+margin_right = 1325.0
+margin_bottom = 208.0
+custom_constants/separation = 25
+
+[node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskSetConn"]
+margin_right = 1325.0
+margin_bottom = 108.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 44 )
+custom_icons/checked = ExtResource( 44 )
+custom_icons/unchecked_disabled = ExtResource( 43 )
+custom_icons/unchecked = ExtResource( 43 )
+pressed = true
+enabled_focus_mode = 0
+text = "Set The Connection"
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskSetConn"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1325, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 122 )
+text = "- Use an Ethernet Cable to connect Devices"
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskSetConn"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="taskTestConn" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
+unique_name_in_owner = true
+margin_top = 258.0
+margin_right = 1325.0
+margin_bottom = 466.0
+custom_constants/separation = 25
+
+[node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskTestConn"]
+margin_right = 1325.0
+margin_bottom = 108.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 44 )
+custom_icons/checked = ExtResource( 44 )
+custom_icons/unchecked_disabled = ExtResource( 43 )
+custom_icons/unchecked = ExtResource( 43 )
+pressed = true
+enabled_focus_mode = 0
+text = "Test the Connection"
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskTestConn"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 122 )
+text = "- Go to any PC and try to ping any of the connected devices"
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskTestConn"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="taskConfIP" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
+unique_name_in_owner = true
+margin_top = 516.0
+margin_right = 1325.0
+margin_bottom = 724.0
+custom_constants/separation = 25
+
+[node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
+margin_right = 1325.0
+margin_bottom = 108.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 44 )
+custom_icons/checked = ExtResource( 44 )
+custom_icons/unchecked_disabled = ExtResource( 43 )
+custom_icons/unchecked = ExtResource( 43 )
+enabled_focus_mode = 0
+text = "Configure IP Addresses"
+script = ExtResource( 46 )
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 122 )
+text = "- Open each PC and configure their IP addresses using                      IP addresses."
+autowrap = true
+
+[node name="confIPoption" type="OptionButton" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/Label"]
+margin_left = 851.0
+margin_top = -3.0
+margin_right = 993.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 122 )
+text = "Class A"
+script = ExtResource( 45 )
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP"]
+margin_top = 203.0
+margin_right = 1325.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="taskConfPC" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
+unique_name_in_owner = true
+visible = false
+margin_top = 516.0
+margin_right = 1325.0
+margin_bottom = 820.0
+custom_constants/separation = 25
+
+[node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfPC"]
+margin_right = 1325.0
+margin_bottom = 108.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 44 )
+custom_icons/checked = ExtResource( 44 )
+custom_icons/unchecked_disabled = ExtResource( 43 )
+custom_icons/unchecked = ExtResource( 43 )
+enabled_focus_mode = 0
+text = "Configure PCs"
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfPC"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+rect_pivot_offset = Vector2( 1595, -54 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 122 )
+text = "- Open each PC and configure their IP addresses using Class A IP addresses.
+- Configure the Default Gateway of each PC based on the IP of the port to which it is connected."
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfPC"]
+margin_top = 299.0
+margin_right = 1325.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="taskConfRouter" type="VBoxContainer" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox"]
+unique_name_in_owner = true
+margin_top = 774.0
+margin_right = 1325.0
+margin_bottom = 1048.0
+custom_constants/separation = 25
+
+[node name="task_cb" type="CheckBox" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter"]
+margin_right = 1325.0
+margin_bottom = 108.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_constants/hseparation = 50
+custom_fonts/font = SubResource( 28 )
+custom_icons/checked_disabled = ExtResource( 44 )
+custom_icons/checked = ExtResource( 44 )
+custom_icons/unchecked_disabled = ExtResource( 43 )
+custom_icons/unchecked = ExtResource( 43 )
+enabled_focus_mode = 0
+text = "Configure Router"
+
+[node name="Label" type="Label" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter"]
+margin_top = 133.0
+margin_right = 1325.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 1100, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 122 )
+text = "- Use a console cable to connect any of the PCs into the router.
+- On a pc with console cable connected, open the Terminal.
+- Configure the IP address of each port using                     IP Addresses"
+autowrap = true
+
+[node name="confRouterPoption" type="OptionButton" parent="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfRouter/Label"]
+margin_left = 702.0
+margin_top = 88.0
+margin_right = 844.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 122 )
+text = "Class A"
+script = ExtResource( 47 )
+
+[node name="taskdone" type="Button" parent="UI/infopanel/Control/task_option/tasks"]
+modulate = Color( 0.113725, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = 416.0
+margin_right = 141.0
+margin_bottom = 549.0
+theme = ExtResource( 30 )
+text = "DONE"
+
+[node name="PanelContainer" type="Panel" parent="UI/infopanel/Control/task_option"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -727.0
+margin_top = -425.0
+margin_right = 727.0
+margin_bottom = 425.0
+rect_pivot_offset = Vector2( 727, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 30 )
+
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
 
@@ -2848,6 +3323,13 @@ visible = false
 visible = false
 
 [node name="tasks_ui" parent="level" instance=ExtResource( 10 )]
+visible = false
+
+[node name="tasks_vbox" parent="level/tasks_ui/task_manager/ScrollContainer" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="popups" parent="level" instance=ExtResource( 38 )]
 visible = false
 
 [node name="verify_ui" type="Control" parent="."]
@@ -2937,6 +3419,7 @@ anims/desc = SubResource( 121 )
 anims/info = SubResource( 120 )
 anims/menu = SubResource( 92 )
 anims/mode = SubResource( 93 )
+anims/task_option = SubResource( 123 )
 
 [node name="AudioLoopPlayer" parent="." instance=ExtResource( 13 )]
 stream = ExtResource( 19 )
@@ -2963,6 +3446,8 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/Save" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/Save" to="UI/editor/FileDialog/FileDialog" method="_on_Save_pressed"]
+[connection signal="mouse_entered" from="UI/editor/file/menu/upload" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/editor/file/menu/upload" to="." method="_exited"]
 [connection signal="pressed" from="UI/editor/file/menu/upload" to="UI/editor/modes" method="_on_uploadVerify"]
 [connection signal="mouse_entered" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="UI/editor/file/menu/play" to="UI/editor/modes" method="_on_modes_mouse_exited"]
@@ -3011,13 +3496,26 @@ bus = "Music"
 [connection signal="mouse_entered" from="UI/infopanel/Control/description" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/infopanel/Control/description" to="." method="_exited"]
 [connection signal="pressed" from="UI/infopanel/Control/description" to="." method="_on_description_pressed"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/set_task" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/set_task" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/set_task" to="UI/infopanel/Control/task_option" method="_on_set_task_pressed"]
 [connection signal="text_changed" from="UI/infopanel/Control/desc/PanelContainer/description" to="UI/infopanel/Control/desc/PanelContainer/description" method="_on_TextEdit_text_changed"]
 [connection signal="mouse_entered" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_entered"]
 [connection signal="mouse_exited" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_exited"]
 [connection signal="pressed" from="UI/infopanel/Control/desc/PanelContainer/descdone" to="." method="_on_descdone_pressed"]
+[connection signal="pressed" from="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/task_cb" to="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/task_cb" method="_on_task_cb_pressed"]
+[connection signal="item_selected" from="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/Label/confIPoption" to="UI/infopanel/Control/task_option/tasks/ScrollContainer/tasks_vbox/taskConfIP/Label/confIPoption" method="_on_confIPoption_item_selected"]
+[connection signal="mouse_entered" from="UI/infopanel/Control/task_option/tasks/taskdone" to="." method="_entered"]
+[connection signal="mouse_exited" from="UI/infopanel/Control/task_option/tasks/taskdone" to="." method="_exited"]
+[connection signal="pressed" from="UI/infopanel/Control/task_option/tasks/taskdone" to="UI/infopanel/Control/task_option" method="_on_taskdone_pressed"]
+[connection signal="pressed" from="level/tasks_ui/task_manager/submit_button" to="level" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="level/popups/submit_button_prompt/prompt/yes" to="level" method="_on_yes_pressed"]
+[connection signal="pressed" from="level/popups/submit_button_prompt/prompt/no" to="level" method="_on_no_pressed"]
 [connection signal="pressed" from="verify_ui/upload" to="UI/editor/FileDialog/FileDialog" method="_on_upload_pressed"]
 [connection signal="mouse_entered" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_entered"]
 [connection signal="mouse_exited" from="other_ui/edit" to="UI/editor/modes" method="_on_modes_mouse_exited"]
 [connection signal="pressed" from="other_ui/edit" to="UI/editor/modes" method="_on_play_pressed"]
 
 [editable path="level/environment"]
+[editable path="level/tasks_ui"]
+[editable path="level/popups"]

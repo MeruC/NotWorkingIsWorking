@@ -14,6 +14,7 @@ onready var inventory = $level/inventory
 onready var other_ui = $"%other_ui"
 onready var mobile_controls = $level/mobile_controls
 onready var tasks_ui = $level/tasks_ui
+onready var popups = $level/popups
 onready var item__select__menu = $"%Item_Select_Menu"
 onready var infopanel = $"%infopanel"
 
@@ -51,6 +52,7 @@ func _ready():
 	grid = Global.grid
 	grid_out = Global.grid_out
 	wall.owner = level
+	popups.owner = level
 	playarea.owner = level
 	inventory.owner = level
 	tasks_ui.owner = level
@@ -97,6 +99,7 @@ func _on_info_pressed():
 
 onready var description = $"%description"
 
+
 func _on_done_pressed():
 	Global.editor_mode = last_mode
 	menu_animations.play("info")
@@ -108,7 +111,8 @@ func _on_done_pressed():
 	floormesh.set_material(grid)
 	wall.set_material(grid_out)
 	level.level_name = name_le.text
-	level.level_desc = description.get_text()
+	level.level_desc = description.text
+	level.timerChoice = timerChoice.text
 	#print(level.level_desc)
 	Global.on_save_load = false
 	
@@ -139,6 +143,7 @@ func _on_description_pressed():
 	
 func _on_descdone_pressed():
 	menu_animations.play_backwards("desc")
+	#level.level_desc = description.text
 	yield(menu_animations, "animation_finished")
 	desc.set_visible(false)
 

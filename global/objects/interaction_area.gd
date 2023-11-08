@@ -15,6 +15,7 @@ func _ready():
 	object_name = pc_name
 	
 func interact():
+	pass
 	Global.playerInteractLbl.set_visible(false)
 	SignalManager.emit_signal( "router_open")
 	Global.player.get_node("Pivot").set_visible(false)

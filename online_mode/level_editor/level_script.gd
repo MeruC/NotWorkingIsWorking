@@ -1,15 +1,32 @@
 extends Spatial
 
-var level_name = "MyLevel"
-var level_desc = "Set a description for your level!"
+###ENABLED TASK
+export(bool) var setConn = true
+export(bool) var testConn = true
+export(bool) var confIP = false
+export(bool) var confPC = false
+export(bool) var confRouter = false
+export(String) var confIPClass = "Class A"
+export(String) var confRouterClass = "Class A"
+var all_task = []
 
+export(String) var level_name = "MyLevel"
+export(String) var level_desc = "Set a description for your level!"
+export(String) var timerChoice = "5:00"
+var initialTimerDuration: int = 300
 var player
+
 onready var inventory = $inventory
 onready var mobile_controls = $mobile_controls
 onready var tasks_ui = $tasks_ui
 onready var task_manager = $tasks_ui/task_manager
 onready var tasks_container = $tasks_ui/task_manager/ScrollContainer/tasks_vbox
-onready var submit_button
+onready var popups = $popups
+export (NodePath) onready var submit_button = find_node("submit_button")
+export (NodePath) onready var instruction = find_node("content")
+export (NodePath) onready var prompt = find_node("submit_button_prompt")
+export (NodePath) onready var timer = find_node("Timer")
+export (NodePath) onready var time = find_node("time")
 var verified = false
 var saved = false
 var computer_list = []
@@ -22,6 +39,7 @@ const SERVER_URL = "https://nwork.slarenasitsolutions.com/authentication.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 var request_queue : Array = []
 var is_requesting : bool = false
+var current_time = 0
 
 var joystick
 export (Resource) var setting_data
@@ -29,7 +47,36 @@ var onMenu = false
 #var lesson = preload("res://offline_levels/level1/level1_discussion/level1_discussion.tscn")
 
 
-
+func _enable_task():
+	for task in tasks_container.get_children():
+			all_task.append(task)
+	all_task[0].visible = setConn
+	all_task[10].visible = testConn
+	if confIP:
+		match(confIPClass):
+			"Class A":
+				all_task[1].visible = true
+			"Class B":
+				all_task[2].visible = true
+			"Class C":
+				all_task[3].visible = true
+	if confRouter:
+		match(confRouterClass):
+			"Class A":
+				all_task[4].visible = true
+			"Class B":
+				all_task[6].visible = true
+			"Class C":
+				all_task[8].visible = true
+	if confPC:
+		match(confIPClass):
+			"Class A":
+				all_task[5].visible = true
+			"Class B":
+				all_task[7].visible = true
+			"Class C":
+				all_task[9].visible = true
+	
 var nodes : Array = []
 func get_all_monitor(node) -> Array:
 	for N in node.get_children():
@@ -40,6 +87,7 @@ func get_all_monitor(node) -> Array:
 	return nodes
 	
 func reset_level():
+	_enable_task()
 	get_all_tasks()
 	
 	for cb in tasks_cbs:
@@ -63,6 +111,10 @@ func get_all_computer():
 		if "object_monitor" in node.name:
 			computer_list.append(node)
 func _ready():
+	timer.start()
+	_enable_task()
+	instruction.text = ""+level_desc
+	add_child(http_request)
 	Global.playerCanMove = true
 	#upload_btn.disabled = true
 	submit_button = task_manager.get_child(1)
@@ -72,6 +124,7 @@ func _ready():
 	
 	LevelGlobal.object_hold = null
 	if get_parent().name != "editor":
+		popups.set_visible(true)
 		inventory.set_visible(true)
 		mobile_controls.set_visible(true)
 		tasks_ui.set_visible(true)
@@ -98,6 +151,8 @@ func _ready():
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )
 	SignalManager.connect( "cable_used", self, "_on_cable_used" )
 	SignalManager.connect( "cable_done", self, "_on_cable_done" )
+	SignalManager.connect( "cable_ui", self, "_on_cable_ui" )
+	SignalManager.connect( "cable_back", self, "_on_cable_back" )
 	SignalManager.connect( "router_open", self, "_on_router_open" )
 	SignalManager.connect( "router_close", self, "_on_router_close" )
 	SignalManager.connect( "craft", self, "_craft")
@@ -162,6 +217,23 @@ func _on_cable_used():
 	tasks_ui.get_child(0).pressed = false
 
 func _on_cable_done():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(true)
+	inventory.ui_container.set_visible(true)
+	mobile_controls.buttons.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
+	#mobile_controls.cable_ui.set_visible(false)
+	
+func _on_cable_ui():
+	if (get_parent().name == "editor"):
+		get_parent().other_ui.set_visible(false)
+	inventory.ui_container.set_visible(false)
+	mobile_controls.buttons.set_visible(false)
+	yield(get_tree().create_timer(1), "timeout")
+	mobile_controls.cable_ui2.set_visible(true)
+	tasks_ui.get_child(0).pressed = false
+
+func _on_cable_back():
 	if (get_parent().name == "editor"):
 		get_parent().other_ui.set_visible(true)
 	inventory.ui_container.set_visible(true)
@@ -389,26 +461,6 @@ func starts_with(text, prefix):
 	return text.substr(0, prefix.length()) == prefix
 
 #online
-func addScore():
-	var username = setting_data.player_name
-	var section = setting_data.section
-	var scores = "complete"
-	var table_name = setting_data.online_level
-	var data = {
-		"command": "upload_score",
-		"username": username,
-		"section": section,
-		"scores": scores,
-		"table_name": table_name
-	}
-	print(data)
-	var command = "upload_score"
-	request_queue.push_back({"command": command, "data": data})
-	yield(get_tree().create_timer(1), "timeout")
-	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
-	# Handle the submission process (e.g., show a success message)
-	print("Score submitted successfully.")
-
 func _http_request_completed(result, response_code, headers, body):
 	is_requesting = false
 	# Re-enable UI elements here (e.g., $signup_btn)
@@ -424,11 +476,12 @@ func _http_request_completed(result, response_code, headers, body):
 		return
 
 	var response = parse_json(response_body)
-
+	print(response)
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var _response_data = body.get_string_from_utf8()
 		print("Response Data:", _response_data)
-
+	# Handle the submission process (e.g., show a success message)
+	
 	if "response" in response and typeof(response["response"]) == TYPE_DICTIONARY:
 		var response_dict = response["response"]
 		if "authenticated" in response_dict and response_dict["authenticated"] == true:
@@ -462,3 +515,94 @@ func _send_request(request : Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return
+
+func _on_yes_pressed():
+	addScore()
+
+
+func _on_submit_button_pressed():
+	prompt.visible = true
+	tasks_ui.visible = false
+	
+func addScore():
+	var username = setting_data.player_name
+	var section = setting_data.section
+	var scores = "Completed"
+	var table_name = setting_data.online_level
+	var data = {
+		"command": "upload_score",
+		"username": username,
+		"section": section,
+		"scores": scores,
+		"table_name": table_name
+	}
+	var command = "upload_score"
+	request_queue.push_back({"command": command, "data": data})
+	_send_request({"command": command, "data": data})
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_no_pressed():
+	prompt.visible = false
+
+func _on_set_time():
+	match timerChoice:
+		"5:00":
+			set_timer_duration(300)
+		"10:00":
+			set_timer_duration(600)
+		"15:00":
+			set_timer_duration(900)
+		"30:00":
+			set_timer_duration(1800)
+		"60:00":
+			set_timer_duration(3600)
+
+func set_timer_duration(duration):
+	initialTimerDuration = duration
+	timer.set_wait_time(duration)
+	current_time = 0.0
+	update_time_label()
+
+func _process(delta):
+	current_time += delta
+	var remaining_time = initialTimerDuration - current_time
+
+	if remaining_time <= 0:
+		remaining_time = 0
+		timer.stop()
+	timer.set_wait_time(remaining_time)
+	update_time_label()
+
+func update_time_label():
+	# Assuming you have a label node named 'time' in your scene
+	time.text = format_time(timer.get_time_left())
+
+func format_time(seconds):
+	var minutes = int(seconds / 60)
+	var remainingSeconds = int(seconds) % 60
+	return str(minutes).pad_zeros(2) + ":" + str(remainingSeconds).pad_zeros(2)
+
+
+func _on_Timer_timeout():
+	var username = setting_data.player_name
+	var section = setting_data.section
+	var scores = "Incomplete"
+	var table_name = setting_data.online_level
+	var data = {
+		"command": "upload_score",
+		"username": username,
+		"section": section,
+		"scores": scores,
+		"table_name": table_name
+	}
+	var command = "upload_score"
+	request_queue.push_back({"command": command, "data": data})
+	_send_request({"command": command, "data": data})
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load_scene(self, "res://scenes/main_screen/main_screen.tscn")
+
+
+func _on_Button_pressed():
+	timer.start()

@@ -515,14 +515,62 @@ onready var introduction_popup = $\"../popups/introduction\"
 export(NodePath) onready var crowns = get_node(crowns) as TextureRect
 export(NodePath) onready var animationplayer = get_node(animationplayer) as AnimationPlayer
 export(NodePath) onready var celebrate = get_node(celebrate) as Sprite
-
+export(Resource) onready var settings_data
+export(NodePath) onready var score = get_node(score) as Label
+export(NodePath) onready var net1_skills = get_node(net1_skills) as Label
+export(NodePath) onready var coins = get_node(coins) as Label
+export(NodePath) onready var popup_next_button = get_node(popup_next_button) as Button
+export(NodePath) onready var popup_retry_button = get_node(popup_retry_button) as Button
 func _on_submit_button_pressed():
 	submit_popup.visible = true
 
 
 func _on_yes_button_pressed():
 	gameover_popup.visible = true
-
+	animationplayer.play(\"win\")
+	crowns.texture = preload(\"res://resources/Game buttons/3_crowns.png\")
+	var points = 30
+	score.text = \"Score: \" + str(points)
+	
+	if settings_data.quick_game == \"isplaying\":
+		net1_skills.text = \"Networking 2 knowledge: 0\"
+		popup_next_button.disabled = true
+		popup_retry_button.disabled = true
+		if settings_data.reset_timer >= 10800:
+			if score == 30:
+				settings_data.reset_timer = 0
+				var current_coins = settings_data.gold_coins
+				var new_coins = current_coins+100
+				settings_data.gold_coins = new_coins
+				settings_data.quick_game = \"notplaying\"
+				SaveManager.save_game()
+			else:
+				settings_data.reset_timer = 0
+				settings_data.quick_game = \"notplaying\"
+				SaveManager.save_game()
+		else:
+			coins.text = \"+0\"
+			settings_data.quick_game = \"notplaying\"
+			SaveManager.save_game()
+			
+	if settings_data.level10 > 0:
+		net1_skills.text = \"Networking 2 knowledge: 0\"
+		coins.text = \"+0\"
+		return
+		
+	else:
+		popup_next_button.disabled = true
+		if score == 5:
+			settings_data.crowns += 3
+			net1_skills.text = \"Networking 2 skills: 50\"
+			coins.text = \"+100\"
+			celebrate.visible = true
+			settings_data.level9 = 30
+			settings_data.gold_coins += 100
+			settings_data.net2_skills += 50
+			SaveManager.save_game()
+		elif score == 0:
+			return
 
 func _on_tap_pressed():
 	introduction_popup.visible = false
@@ -585,19 +633,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0.9375, -4 )
 
 [node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -1150.0
-margin_top = 264.5
-margin_right = 253.0
-margin_bottom = 815.5
-
-[node name="exit_confirmation" parent="object_monitor/ui/ip_config_app/ip_config_screen" index="4"]
-rect_min_size = Vector2( 150, 52.5 )
-
-[node name="exit_confirmation" parent="object_monitor/ui/cmd_app/cmd_screen" index="3"]
-rect_min_size = Vector2( 150, 52.5 )
-
-[node name="exit_confirmation" parent="object_monitor/ui/terminal_app/cmd_screen" index="3"]
-rect_min_size = Vector2( 150, 52.5 )
+margin_left = -2110.0
+margin_top = -275.5
+margin_right = -707.0
+margin_bottom = 275.5
 
 [node name="object_monitor300" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9375, -4 )
@@ -612,30 +651,12 @@ device_name = "Router0"
 [node name="tasks_ui" parent="." instance=ExtResource( 14 )]
 
 [node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_bottom = 1144.0
-
-[node name="task2" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="1"]
-visible = false
-
-[node name="task3" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="2"]
-visible = false
-
-[node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
-visible = false
-
-[node name="task5" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="4"]
-visible = false
-
-[node name="task6" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="5"]
-visible = false
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="task7" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="6"]
-visible = false
 margin_top = 258.0
 margin_bottom = 562.0
-
-[node name="task8" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="7"]
-visible = false
 
 [node name="task9" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="8"]
 margin_top = 258.0
@@ -801,6 +822,12 @@ script = SubResource( 70 )
 crowns = NodePath("../popups/game_over/main_popup/crowns")
 animationplayer = NodePath("../popups/game_over/AnimationPlayer")
 celebrate = NodePath("../popups/game_over/AnimationPlayer/Sprite")
+settings_data = ExtResource( 4 )
+score = NodePath("../popups/game_over/main_popup/score")
+net1_skills = NodePath("../popups/game_over/main_popup/net1_skills")
+coins = NodePath("../popups/game_over/main_popup/GridContainer2/coins")
+popup_next_button = NodePath("../popups/game_over/main_popup/GridContainer/next")
+popup_retry_button = NodePath("../popups/game_over/main_popup/GridContainer/retry")
 
 [connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
 

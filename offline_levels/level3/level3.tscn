@@ -726,6 +726,8 @@ crowns = NodePath("popup_layer/game_over/main_popup/crowns")
 celebration = NodePath("popup_layer/game_over/AnimationPlayer/Sprite")
 gameover_anim = NodePath("popup_layer/game_over/AnimationPlayer")
 audioplayer = NodePath("popup_layer/game_over/AudioStreamPlayer")
+net1_skills = NodePath("popup_layer/game_over/main_popup/net1_skills")
+coins = NodePath("popup_layer/game_over/main_popup/GridContainer2/coins")
 mascot = NodePath("animation_player/AnimationPlayer/correct")
 bg = NodePath("animation_player/ColorRect")
 animationplayer = NodePath("animation_player/AnimationPlayer")
@@ -833,7 +835,7 @@ text = "Score:   /5"
 autowrap = true
 
 [node name="score" type="Label" parent="."]
-margin_left = 309.0
+margin_left = 275.0
 margin_top = 12.0
 margin_right = 349.0
 margin_bottom = 151.0
@@ -841,6 +843,7 @@ rect_min_size = Vector2( 40, 50 )
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
+align = 1
 autowrap = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

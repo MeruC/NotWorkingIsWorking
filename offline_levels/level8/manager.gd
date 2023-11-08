@@ -21,6 +21,8 @@ export(NodePath) onready var gameover_anim = get_node(gameover_anim) as Animatio
 export(NodePath) onready var celebration = get_node(celebration) as Sprite
 export(NodePath) onready var tutorial_player = get_node(tutorial_player) as AnimationPlayer
 export(NodePath) onready var instruction_sprite = get_node(instruction_sprite) as Sprite
+export(NodePath) onready var net1_skills = get_node(net1_skills) as Label
+export(NodePath) onready var coins = get_node(coins) as Label
 export(Resource) var settings_data
 
 var score = 0
@@ -168,16 +170,20 @@ func calculate_score():
 		audioplayer.stream = preload("res://resources/soundtrack/game_over/losegamemusic.wav")
 		audioplayer.play()
 		gameover_indicator.text = "Level Failed"
-		gameover_score.text = "Your Score: " + str(score)
+		gameover_score.text = "Score: " + str(score)
 		gameover_next.disabled = true
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
 		
 	if score >= 50 and score <= 99:
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
 		gameover_anim.play("win")
 		audioplayer.play()
 		gameover_indicator.text = "Level Complete"
-		gameover_score.text = "Your Score: " + str(score)
+		gameover_score.text = "Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/1_crowns.png")
+		net1_skills.text = "Networking 1 skills: 30"
+		coins.text = "+100"
 		gameover_next.disabled = false
 		score_validation()
 		
@@ -187,8 +193,10 @@ func calculate_score():
 		celebration.visible = true
 		gameover_indicator.text = "Level Complete!"
 		gameover_anim.play("win")
-		gameover_score.text = "Your Score: " + str(score)
+		gameover_score.text = "Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/2_crowns.png")
+		net1_skills.text = "Networking 1 skills: 30"
+		coins.text = "+100"
 		gameover_next.disabled = false
 		score_validation()
 	elif score >= 150:
@@ -197,8 +205,10 @@ func calculate_score():
 		audioplayer.play()
 		celebration.visible = true
 		gameover_indicator.text = "Level Complete!"
-		gameover_score.text = "Your Score: " + str(score)
+		gameover_score.text = "Score: " + str(score)
 		crowns.texture = preload("res://resources/Game buttons/3_crowns.png")
+		net1_skills.text = "Networking 1 skills: 30"
+		coins.text = "+100"
 		gameover_next.disabled = false
 		score_validation()
 		
@@ -206,13 +216,12 @@ func calculate_score():
 ##
 
 func score_validation():
-	if settings_data.level8 > 0:
-		return
 	if settings_data.quick_game == "isplaying":
+		net1_skills.text = "Networking 1 skills: 0"
 		gameover_retry.disabled = true
 		gameover_next.disabled = true
 		if settings_data.reset_timer >= 10800:
-			if score >= 30 and score<=399:
+			if score >= 30 and score <= 399:
 				var current_coins = settings_data.gold_coins
 				var new_coins = current_coins+100
 				settings_data.reset_timer = 0
@@ -231,8 +240,15 @@ func score_validation():
 				settings_data.quick_game = "notplaying"
 				SaveManager.save_game()
 		else:
+			coins.text = "+0"
 			settings_data.quick_game = "notplaying"
 			SaveManager.save_game()
+			
+	elif settings_data.level8 > 0:
+		net1_skills.text = "Networking 1 skills: 0"
+		coins.text = "+0"
+		return
+		
 	else:
 		if score >= 30 and score>0:
 			var current_coins = settings_data.gold_coins
@@ -243,9 +259,9 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
-		elif score >= 400:
+		elif score >= 300:
 			var current_coins = settings_data.gold_coins
 			var new_coins = current_coins+200
 			var skills = settings_data.net1_skills
@@ -256,7 +272,7 @@ func score_validation():
 			settings_data.gold_coins = new_coins
 			settings_data.net1_skills = update_skills
 			settings_data.level8 = score
-			settings_data.reset_timer = 10800.18888
+			settings_data.reset_timer = 10800
 			SaveManager.save_game()
 		else:
 			return
