@@ -581,6 +581,11 @@ func _ready():
 	for child in self.get_parent().get_children():
 		if child.name == \"tasks_ui\":
 			submit_button = child.get_child(1).get_child(child.get_child(1).get_child_count() - 1)
+
+
+func _on_next_pressed():
+	var ro = get_node(\"/root\")
+	Load.load_scene(ro.get_child(ro.get_child_count()-1), \"res://global/chapters/chapter1.tscn\")
 "
 
 [node name="level" type="Spatial"]
@@ -884,6 +889,7 @@ bus = "Music"
 
 [connection signal="pressed" from="tasks_ui/task_manager/submit_button" to="manager" method="_on_submit_button_pressed"]
 [connection signal="pressed" from="popups/submit_confirmation_popup/main_panel/button_container/yes_button" to="manager" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="popups/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
 
 [editable path="environment"]

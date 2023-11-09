@@ -307,7 +307,6 @@ config/description="A Computer Networking Game"
 run/main_scene="res://open.tscn"
 boot_splash/show_image=false
 boot_splash/image="res://iconNotWorking.png"
-boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://iconNotWorking.png"
 
