@@ -541,12 +541,13 @@ scroll_horizontal_enabled = false
 
 [node name="recipe_list" type="VBoxContainer" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer"]
 margin_right = 591.0
-margin_bottom = 701.0
+margin_bottom = 569.0
 rect_min_size = Vector2( 591, 0 )
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="shop_option" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
+visible = false
 margin_right = 591.0
 margin_bottom = 137.0
 size_flags_vertical = 3
@@ -556,9 +557,9 @@ item_id = "cross_over"
 quantity = 1
 
 [node name="shop_option6" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 141.0
+visible = false
 margin_right = 591.0
-margin_bottom = 278.0
+margin_bottom = 139.0
 size_flags_vertical = 3
 panel_title = "RJ45 Cable (Straight Through)"
 price = 50
@@ -566,9 +567,8 @@ item_id = "straight_through"
 quantity = 1
 
 [node name="shop_option7" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 282.0
 margin_right = 591.0
-margin_bottom = 419.0
+margin_bottom = 187.0
 size_flags_vertical = 3
 panel_title = "RJ45 Head"
 price = 185
@@ -587,9 +587,9 @@ item_id = "hdmi"
 quantity = 1
 
 [node name="shop_option3" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 423.0
+margin_top = 191.0
 margin_right = 591.0
-margin_bottom = 560.0
+margin_bottom = 378.0
 size_flags_vertical = 3
 panel_title = "RJ45 Wire"
 price = 88
@@ -597,9 +597,9 @@ item_id = "blue_cable"
 quantity = 1
 
 [node name="shop_option5" parent="ui_container/windows/crafting_list/TabContainer/Materials/ScrollContainer/recipe_list" instance=ExtResource( 15 )]
-margin_top = 564.0
+margin_top = 382.0
 margin_right = 591.0
-margin_bottom = 701.0
+margin_bottom = 569.0
 size_flags_vertical = 3
 panel_title = "Console Cable"
 price = 185

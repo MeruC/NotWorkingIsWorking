@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://global/objects/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://global/objects/monitor.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://resources/font/Arcadepix Plus.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://resources/Themes/file_dialog.tres" type="Theme" id=18]
 [ext_resource path="res://scenes/tutorials/tutorials.tscn" type="PackedScene" id=19]
+[ext_resource path="res://resources/soundtrack/game_over/100_victories.wav" type="AudioStream" id=20]
 
 [sub_resource type="PlaneMesh" id=11]
 
@@ -579,9 +580,20 @@ func _on_tap_pressed():
 	introduction_popup.visible = false
 "
 
+[sub_resource type="GDScript" id=74]
+script/source = "extends AudioStreamPlayer
+
+export (bool) var loop_sound = true
+
+func _on_AudioStreamPlayer_finished():
+	if loop_sound == true:
+		play()
+"
+
 [node name="level" type="Spatial"]
 unique_name_in_owner = true
 script = ExtResource( 9 )
+level_desc = "Welcome to the next level of your networking journey! In this stage, we'll delve deeper into the world of networking by exploring how routers and PCs work together to create a network that can connect, communicate, and share information. In this level, you'll learn how to set up a basic network with a router and three PCs. By the end of this level, you'll be able to create a network where devices can talk to each other, and you'll understand the role of IP addresses, subnet masks, and default gateways in making it all happen. Let's get started on our journey to understanding how routers and PCs connect and communicate!"
 setting_data = ExtResource( 4 )
 
 [node name="floor" type="CSGMesh" parent="."]
@@ -854,7 +866,14 @@ coins = NodePath("../popups/game_over/main_popup/GridContainer2/coins")
 popup_next_button = NodePath("../popups/game_over/main_popup/GridContainer/next")
 popup_retry_button = NodePath("../popups/game_over/main_popup/GridContainer/retry")
 
+[node name="AudioLoopPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+autoplay = true
+bus = "Music"
+script = SubResource( 74 )
+
 [connection signal="pressed" from="popups/introduction/tap" to="manager" method="_on_tap_pressed"]
+[connection signal="finished" from="AudioLoopPlayer" to="AudioLoopPlayer" method="_on_AudioStreamPlayer_finished"]
 
 [editable path="environment"]
 [editable path="object_monitor"]

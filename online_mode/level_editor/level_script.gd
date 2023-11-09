@@ -90,8 +90,11 @@ func get_all_monitor(node) -> Array:
 	return nodes
 	
 func reset_level():
+	_on_set_time()
 	_enable_task()
 	get_all_tasks()
+	if instruction != null:
+		instruction.text = ""+level_desc
 	
 	for cb in tasks_cbs:
 		cb.pressed = false
@@ -100,6 +103,8 @@ func reset_level():
 		if N.has_method("resetLevel"):
 			N.resetLevel()
 	SaveManager.load_game()
+	timer.start()
+	
 	
 func check_ip(ip, subnetmask):
 	for N in nodes:
@@ -115,7 +120,7 @@ func get_all_computer():
 			computer_list.append(node)
 			
 func _ready():
-	
+	_on_set_time()
 	for node in self.get_parent().get_children():
 		if node.name == "verify_ui":
 			upload_button = node.get_child(0)
@@ -124,7 +129,7 @@ func _ready():
 		pass
 	else:
 		timer.start()
-		
+	
 	_enable_task()
 	if instruction != null:
 		instruction.text = ""+level_desc
