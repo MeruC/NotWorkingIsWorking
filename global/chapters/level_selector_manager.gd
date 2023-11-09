@@ -87,19 +87,19 @@ func levels_completed():
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level1/level_1.tscn")
-	if settings_data.level2 >= 4:
+	if settings_data.level2 >= 3:
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level2/level2.tscn")
-	if settings_data.level3 >= 4:
+	if settings_data.level3 >= 3:
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level3/level3.tscn")
-	if settings_data.level4 >= 5:
+	if settings_data.level4 >= 3:
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()	
 		completed.append("res://offline_levels/level4/level4.tscn")
-	if settings_data.level5 >= 4:
+	if settings_data.level5 >= 3:
 		settings_data.quick_game = "isplaying"
 		SaveManager.save_game()
 		completed.append("res://offline_levels/level5/level5.tscn")

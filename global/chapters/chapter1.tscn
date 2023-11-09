@@ -115,7 +115,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 6
-	elif settings_data.level5 >= 4:
+	elif settings_data.level5 >= 3:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
@@ -124,7 +124,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 5
-	elif settings_data.level4 >= 5:
+	elif settings_data.level4 >= 3:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
@@ -133,7 +133,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 4
-	elif settings_data.level3 >= 4:
+	elif settings_data.level3 >= 3:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
@@ -142,7 +142,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 3
-	elif settings_data.level2 >= 4:
+	elif settings_data.level2 >= 3:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
@@ -151,7 +151,7 @@ func _ready():
 		$\"../back\".disabled = false
 		$\"../crowns\".visible = true
 		current = 2
-	elif settings_data.level1 >= 7:
+	elif settings_data.level1 >= 6:
 		$\"../back\".disabled = true
 		$\"../crowns\".visible = false
 		TransitionNode.animation_player.play(\"in\")
@@ -181,7 +181,7 @@ func _on_left_pressed():
 			$\"../crowns\".visible = false
 			yield(CameraTransitionDefault.transition_camera3D(level2_camera, level1_camera, 1), \"completed\")
 			$\"../level1\".visible = true
-			if settings_data.level1 >= 7 and settings_data.level1 <= 9:
+			if settings_data.level1 >= 6 and settings_data.level1 <= 9:
 				$\"../crowns\".texture = preload(\"res://resources/Game buttons/2_crowns.png\")
 				$\"../crowns\".visible = true
 			elif settings_data.level1 == 10:

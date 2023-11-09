@@ -584,12 +584,11 @@ func _ready():
 
 
 func _on_next_pressed():
-	var ro = get_node(\"/root\")
-	Load.load_scene(ro.get_child(ro.get_child_count()-1), \"res://global/chapters/chapter1.tscn\")
+	Load.load_scene($\"..\",\"res://global/chapters/chapter1.tscn\")
+
 "
 
 [node name="level" type="Spatial"]
-unique_name_in_owner = true
 script = ExtResource( 8 )
 level_desc = "In the world of networking, the ability to establish connections between devices is at the heart of everything we do. Whether you're browsing the web, sending emails, streaming videos, or accessing shared resources, it all begins with a basic understanding of how devices communicate with eachother. In this level, you'll start with the most fundamental building block: connecting two PCs directly to each other.In this level, you’ll learn how to establish a direct connection between two PCs and enable communication between them. Let’s start!"
 setting_data = ExtResource( 3 )
@@ -644,12 +643,6 @@ device_name = "PC1"
 [node name="ipConfig_button" parent="object_monitor/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
-[node name="ColorRect" parent="object_monitor/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="object_monitor153" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0.9375, -6 )
 device_name = "PC2"
@@ -657,21 +650,8 @@ device_name = "PC2"
 [node name="ipConfig_button" parent="object_monitor153/ui/pc_screen/apps/VBoxContainer" index="0"]
 margin_right = 167.0
 
-[node name="ColorRect" parent="object_monitor153/ui/disconnect_confirm/ColorRect2" index="0"]
-margin_left = -2110.0
-margin_top = -275.5
-margin_right = -707.0
-margin_bottom = 275.5
-
 [node name="tasks_ui" parent="." instance=ExtResource( 9 )]
 layer = 128
-
-[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 1325.0
-margin_bottom = 694.0
-
-[node name="task1" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="0"]
-visible = true
 
 [node name="task4" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="3"]
 visible = true
@@ -703,7 +683,6 @@ margin_top = 516.0
 margin_bottom = 820.0
 
 [node name="task11" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox" index="10"]
-visible = true
 margin_top = 516.0
 margin_bottom = 694.0
 
