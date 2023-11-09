@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://resources/Themes/checkbox.tres" type="Theme" id=5]
 [ext_resource path="res://resources/Themes/question_theme.tres" type="DynamicFont" id=6]
 
-[sub_resource type="DynamicFontData" id=25]
+[sub_resource type="DynamicFontData" id=28]
 font_path = "res://resources/font/OpenSans-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=27]
@@ -16,13 +16,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 4
 extra_spacing_bottom = 16
-font_data = SubResource( 25 )
-
-[sub_resource type="DynamicFont" id=26]
-size = 40
-extra_spacing_top = 4
-extra_spacing_bottom = 16
-font_data = SubResource( 25 )
+font_data = SubResource( 28 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
@@ -30,6 +24,8 @@ extra_spacing_bottom = 16
 font_data = ExtResource( 4 )
 
 [node name="question" type="HBoxContainer"]
+margin_right = 1445.0
+margin_bottom = 301.0
 script = ExtResource( 2 )
 selected_question = ExtResource( 3 )
 question_content = NodePath("VBoxContainer/question_container/question_content")
@@ -63,9 +59,9 @@ text = "Question: "
 
 [node name="question_content" type="Label" parent="VBoxContainer/question_container"]
 margin_left = 304.0
-margin_right = 1329.0
+margin_right = 1304.0
 margin_bottom = 216.0
-rect_min_size = Vector2( 1025, 0 )
+rect_min_size = Vector2( 1000, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "lkasjdlasj dasdlaj sklasjd laksjdlasjdalk jalsk djlska djalskd jalks djaskld ajsd lkajd lkasdj alksd jalksd jaslkd jadlkja  dlkajs dlkadsj alksdj alksd jaldk jadlkjadk"
@@ -81,7 +77,7 @@ margin_right = 304.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 300, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 27 )
 text = "Correct Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]

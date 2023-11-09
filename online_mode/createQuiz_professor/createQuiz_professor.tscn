@@ -384,9 +384,10 @@ margin_top = -197.5
 margin_right = 700.0
 margin_bottom = 277.5
 rect_min_size = Vector2( 1400, 475 )
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/TabContainer/Ready Made Questions/ScrollContainer"]
-custom_constants/separation = 20
+custom_constants/separation = 75
 
 [node name="My Questions" type="Tabs" parent="TabContainer/Question List/TabContainer"]
 visible = false
@@ -407,9 +408,10 @@ margin_top = -279.5
 margin_right = 700.0
 margin_bottom = 279.5
 rect_min_size = Vector2( 1400, 475 )
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Question List/TabContainer/My Questions/ScrollContainer"]
-custom_constants/separation = 20
+custom_constants/separation = 75
 
 [node name="View Selected Questions" type="Tabs" parent="TabContainer"]
 visible = false
@@ -433,7 +435,7 @@ margin_bottom = 300.0
 rect_min_size = Vector2( 1450, 600 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/View Selected Questions/ScrollContainer"]
-custom_constants/separation = 20
+custom_constants/separation = 75
 alignment = 1
 
 [node name="create_button" type="Button" parent="."]

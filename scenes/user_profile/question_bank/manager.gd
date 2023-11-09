@@ -103,6 +103,12 @@ func _on_continue_button_pressed():
 
 func _on_add_button_pressed():
 	add_popup.visible = true
+	question_textEdit.text = ""
+	question_textEdit.grab_focus()
+	correct_lineEdit.text = ""
+	incorrect1_lineEdit.text = ""
+	incorrect2_lineEdit.text = ""
+	incorrect3_lineEdit.text = ""
 
 
 func _on_back_button_pressed():

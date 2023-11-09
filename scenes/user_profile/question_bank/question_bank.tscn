@@ -960,11 +960,13 @@ margin_left = -900.0
 margin_top = -349.0
 margin_right = 900.0
 margin_bottom = 332.0
+scroll_horizontal_enabled = false
 
 [node name="questions_container" type="VBoxContainer" parent="ColorRect/ScrollContainer"]
 margin_right = 1800.0
 rect_min_size = Vector2( 1800, 0 )
 theme = ExtResource( 11 )
+custom_constants/separation = 50
 
 [node name="add_button" type="Button" parent="ColorRect"]
 anchor_left = 0.5
@@ -979,9 +981,10 @@ theme = SubResource( 40 )
 text = "Add Question"
 
 [node name="popup" type="CanvasLayer" parent="."]
-visible = false
+layer = 7
 
 [node name="delete_confirmation" type="Control" parent="popup"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1127,6 +1130,7 @@ margin_right = 850.0
 margin_bottom = -100.0
 rect_min_size = Vector2( 1700, 700 )
 follow_focus = true
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="popup/add_popup/Panel/ColorRect/ScrollContainer"]
 margin_right = 1680.0

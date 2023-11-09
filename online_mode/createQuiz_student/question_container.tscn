@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/font/openSans_regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://online_mode/createQuiz_professor/question_container.gd" type="Script" id=2]
@@ -30,6 +30,17 @@ size = 36
 extra_spacing_top = 4
 extra_spacing_bottom = 16
 font_data = SubResource( 25 )
+
+[sub_resource type="DynamicFontData" id=28]
+font_path = "res://resources/font/OpenSans-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=27]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 4
+extra_spacing_bottom = 16
+font_data = SubResource( 28 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 32
@@ -92,7 +103,7 @@ margin_right = 304.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 300, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 27 )
 text = "Correct Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]

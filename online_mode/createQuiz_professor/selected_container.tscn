@@ -78,7 +78,7 @@ margin_right = 202.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 202, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 6 )
 text = "Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]
