@@ -5,16 +5,16 @@
 [ext_resource path="res://online_mode/createQuiz_student/selected_container.gd" type="Script" id=3]
 [ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=7]
 font_path = "res://resources/font/OpenSans-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 40
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 4
 extra_spacing_bottom = 16
-font_data = SubResource( 1 )
+font_data = SubResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
@@ -54,7 +54,7 @@ margin_top = 22.0
 margin_right = 191.0
 margin_bottom = 97.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Question: "
 
 [node name="question_content" type="Label" parent="VBoxContainer/question_container"]
@@ -78,7 +78,7 @@ margin_right = 202.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 202, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Answer: "
 
 [node name="answer_content" type="Label" parent="VBoxContainer/answer_container"]

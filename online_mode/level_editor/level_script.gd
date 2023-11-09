@@ -103,7 +103,8 @@ func reset_level():
 		if N.has_method("resetLevel"):
 			N.resetLevel()
 	SaveManager.load_game()
-	timer.start()
+	if timer != null:
+		timer.start()
 	
 	
 func check_ip(ip, subnetmask):
@@ -128,7 +129,8 @@ func _ready():
 	if setting_data.online_level == "":
 		pass
 	else:
-		timer.start()
+		if timer != null:
+			timer.start()
 	
 	_enable_task()
 	if instruction != null:
@@ -587,7 +589,8 @@ func _on_set_time():
 
 func set_timer_duration(duration):
 	initialTimerDuration = duration
-	timer.set_wait_time(duration)
+	if timer != null:
+		timer.set_wait_time(duration)
 	current_time = 0.0
 	update_time_label()
 
