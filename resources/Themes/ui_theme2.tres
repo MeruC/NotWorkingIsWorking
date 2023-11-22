@@ -24,19 +24,20 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 shadow_offset = Vector2( 20, 20 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-content_margin_left = 50.0
-content_margin_bottom = 5.0
-bg_color = Color( 0.054902, 1, 0, 1 )
+[sub_resource type="StyleBoxFlat" id=53]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
 skew = Vector2( 0.5, 0 )
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
 border_color = Color( 0, 0, 0, 1 )
 corner_detail = 20
-expand_margin_right = 28.0
-expand_margin_bottom = 20.0
+expand_margin_bottom = 2.0
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_size = 1
 
@@ -64,7 +65,7 @@ Button/fonts/font = SubResource( 4 )
 Button/styles/focus = SubResource( 21 )
 Button/styles/hover = SubResource( 5 )
 Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/pressed = SubResource( 53 )
 CheckBox/icons/checked = SubResource( 7 )
 CheckBox/icons/unchecked = SubResource( 7 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )

@@ -9,6 +9,7 @@ var json_data = ""
 var answer
 var score = 0
 var i
+var hint_list = []
 export(NodePath) onready var clue_label = get_node(clue_label) as Label
 export(NodePath) onready var score_label = get_node(score_label) as Label
 onready var letter_container = $"../letter_CenterContainer/letter_container"
@@ -152,7 +153,11 @@ func display_next():
 				new_letter.rect_min_size = Vector2(100, 100)
 				#new_letter.blank_container = blank_container
 				x += 1
+		shuffle_letters(answer)
 		give_hints(answer)
+		for bc in blank_container.get_children():
+			if bc.text != "":
+				hint_list.append(bc.text)
 		return i
 	##
 	
@@ -311,3 +316,43 @@ func score_validation():
 func _on_instruction_pressed():
 	$"../popup_layer/instructions".visible = true
 	instructions_sprite.visible = true
+
+
+func shuffle_letters(answer):
+	for lc in letter_container.get_children():
+		lc.text = ""
+		lc.disabled = false
+	
+	var char_array = stringToCharArray(answer)
+	var shuffled_answer = fisherYatesShuffle(char_array)
+	var i = 0
+	for c in shuffled_answer:
+		letter_container.get_child(i).text = c
+		i += 1
+		
+	for bc in blank_container.get_children():
+		if bc.text != null:
+			for letter in letter_container.get_children():
+				if letter.text == bc.text:
+					letter.disabled = true
+					break
+		
+func stringToCharArray(input_string: String) -> Array:
+	var char_array = []
+	for i in range(input_string.length()):
+		char_array.append(input_string[i])
+	return char_array
+
+func fisherYatesShuffle(arr: Array) -> Array:
+	var shuffled_array = arr.duplicate()
+	for i in range(shuffled_array.size() - 1, 0, -1):
+		var j = randi() % (i + 1)
+		# Swap elements manually
+		var temp = shuffled_array[i]
+		shuffled_array[i] = shuffled_array[j]
+		shuffled_array[j] = temp
+	return shuffled_array
+
+
+func _on_shuffle_pressed():
+	shuffle_letters(answer)

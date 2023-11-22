@@ -194,6 +194,7 @@ margin_bottom = 12.0
 margin_right = 25.0
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pause" parent="popup_layer" instance=ExtResource( 1 )]
 

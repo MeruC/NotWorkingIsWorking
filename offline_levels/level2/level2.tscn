@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://resources/Game buttons/cat_win.png" type="Texture" id=1]
 [ext_resource path="res://offline_levels/level2/letter.tscn" type="PackedScene" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://resources/Themes/instruction.tres" type="Theme" id=15]
 [ext_resource path="res://resources/Game buttons/question_bg.png" type="Texture" id=16]
 [ext_resource path="res://scenes/others/reset_timer.tscn" type="PackedScene" id=17]
+[ext_resource path="res://resources/font/BD_Cartoon_Shout.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://resources/Themes/window.tres" type="StyleBox" id=19]
+[ext_resource path="res://resources/font/OpenSans-Regular.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://resources/font/SERIO___.TTF" type="DynamicFontData" id=21]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -48,6 +52,367 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
+
+[sub_resource type="StyleBoxFlat" id=53]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="DynamicFont" id=59]
+size = 64
+font_data = ExtResource( 18 )
+
+[sub_resource type="StyleBoxFlat" id=70]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0, 0.542969, 0.123499, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxEmpty" id=61]
+
+[sub_resource type="StyleBoxFlat" id=71]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 0, 1, 0.227451, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=63]
+
+[sub_resource type="StyleBoxFlat" id=54]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 8.0
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 8.0
+expand_margin_right = 16.0
+expand_margin_top = 25.0
+expand_margin_bottom = 25.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 60
+font_data = ExtResource( 18 )
+
+[sub_resource type="StyleBoxFlat" id=64]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+skew = Vector2( -0.5, 0 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 130
+corner_radius_bottom_left = 130
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="ImageTexture" id=48]
+
+[sub_resource type="StyleBoxFlat" id=43]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=65]
+
+[sub_resource type="StyleBoxFlat" id=44]
+content_margin_left = 40.0
+content_margin_right = 35.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 54
+outline_size = 1
+extra_spacing_top = 20
+extra_spacing_bottom = 20
+font_data = ExtResource( 18 )
+
+[sub_resource type="ImageTexture" id=47]
+
+[sub_resource type="StyleBoxFlat" id=45]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 20.0
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 20
+expand_margin_left = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=46]
+content_margin_left = 40.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=55]
+size = 38
+font_data = ExtResource( 21 )
+
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.27451, 0.258824, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 1, 0.941176, 0, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=57]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 18 )
+
+[sub_resource type="StyleBoxFlat" id=58]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 0.941176, 0, 1 )
+skew = Vector2( 0.5, 0 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 4.0
+expand_margin_top = 15.0
+expand_margin_bottom = 2.0
+shadow_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=68]
+size = 48
+font_data = ExtResource( 20 )
+
+[sub_resource type="StyleBoxFlat" id=69]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+bg_color = Color( 0.392157, 0.784314, 1, 1 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=67]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 25
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="Theme" id=72]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 59 )
+Button/styles/disabled = SubResource( 70 )
+Button/styles/focus = SubResource( 61 )
+Button/styles/hover = SubResource( 71 )
+Button/styles/normal = SubResource( 71 )
+Button/styles/pressed = SubResource( 71 )
+HSlider/icons/grabber = SubResource( 63 )
+HSlider/icons/grabber_disabled = SubResource( 63 )
+HSlider/icons/grabber_highlight = SubResource( 63 )
+HSlider/icons/tick = SubResource( 63 )
+HSlider/styles/grabber_area = SubResource( 54 )
+HSlider/styles/grabber_area_highlight = SubResource( 54 )
+HSlider/styles/slider = SubResource( 8 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 37 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = SubResource( 59 )
+LineEdit/styles/focus = SubResource( 64 )
+LineEdit/styles/normal = SubResource( 64 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/fonts/font = SubResource( 59 )
+OptionButton/icons/arrow = SubResource( 48 )
+OptionButton/styles/disabled = SubResource( 43 )
+OptionButton/styles/focus = SubResource( 65 )
+OptionButton/styles/hover = SubResource( 44 )
+OptionButton/styles/normal = SubResource( 44 )
+OptionButton/styles/pressed = SubResource( 43 )
+Panel/styles/panel = ExtResource( 19 )
+PanelContainer/styles/panel = ExtResource( 19 )
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 42 )
+PopupMenu/fonts/font_separator = SubResource( 59 )
+PopupMenu/icons/checked = SubResource( 47 )
+PopupMenu/icons/radio_checked = SubResource( 47 )
+PopupMenu/icons/radio_unchecked = SubResource( 47 )
+PopupMenu/icons/submenu = SubResource( 47 )
+PopupMenu/icons/unchecked = SubResource( 47 )
+PopupMenu/styles/hover = SubResource( 45 )
+PopupMenu/styles/panel = SubResource( 46 )
+PopupMenu/styles/panel_disabled = SubResource( 45 )
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = SubResource( 55 )
+ProgressBar/styles/bg = SubResource( 56 )
+ProgressBar/styles/fg = SubResource( 66 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/fonts/font = SubResource( 57 )
+TabContainer/styles/panel = ExtResource( 19 )
+TabContainer/styles/tab_bg = SubResource( 53 )
+TabContainer/styles/tab_fg = SubResource( 58 )
+TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_readonly = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+TextEdit/fonts/font = SubResource( 68 )
+TextEdit/styles/completion = SubResource( 69 )
+TextEdit/styles/focus = SubResource( 69 )
+TextEdit/styles/normal = SubResource( 69 )
+TextEdit/styles/read_only = SubResource( 69 )
+VScrollBar/styles/grabber = SubResource( 67 )
+VScrollBar/styles/grabber_highlight = SubResource( 67 )
+VScrollBar/styles/grabber_pressed = SubResource( 67 )
+VScrollBar/styles/scroll = SubResource( 38 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "win"
@@ -142,11 +507,18 @@ visible = false
 [node name="level6" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="6"]
 visible = false
 
+[node name="level2" parent="popup_layer/instructions/main_popup/AnimationPlayer" index="7"]
+visible = false
+
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
-margin_left = 395.0
-margin_top = 23.0
-margin_right = 1622.0
-margin_bottom = 648.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -613.5
+margin_top = -517.0
+margin_right = 613.5
+margin_bottom = 108.0
 texture = ExtResource( 16 )
 
 [node name="clue" type="Label" parent="."]
@@ -154,9 +526,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -450.0
+margin_left = -500.0
 margin_top = -351.0
-margin_right = 550.0
+margin_right = 500.0
 margin_bottom = -49.0
 rect_min_size = Vector2( 1000, 150 )
 theme = ExtResource( 13 )
@@ -167,10 +539,14 @@ valign = 1
 autowrap = true
 
 [node name="title" type="Label" parent="."]
-margin_left = 949.0
-margin_top = 113.0
-margin_right = 1049.0
-margin_bottom = 168.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -427.0
+margin_right = 50.0
+margin_bottom = -372.0
 theme = ExtResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLUE"
@@ -182,7 +558,7 @@ blank_scene = ExtResource( 4 )
 settings_data = ExtResource( 9 )
 clue_label = NodePath("../clue")
 score_label = NodePath("../score")
-submit_button = NodePath("../submit")
+submit_button = NodePath("../buttons_container/submit")
 popup_score_label = NodePath("../popup_layer/game_over/main_popup/score")
 game_over_popup = NodePath("../popup_layer/game_over")
 popup_next_button = NodePath("../popup_layer/game_over/main_popup/GridContainer/next")
@@ -198,26 +574,44 @@ coins = NodePath("../popup_layer/game_over/main_popup/GridContainer2/coins")
 instructions_popup = NodePath("../popup_layer/instructions")
 instructions_sprite = NodePath("../popup_layer/instructions/main_popup/AnimationPlayer/level2")
 
-[node name="submit" type="Button" parent="."]
-margin_left = 1015.0
-margin_top = 897.0
-margin_right = 1353.0
-margin_bottom = 1019.0
-rect_min_size = Vector2( 300, 63 )
+[node name="buttons_container" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -800.0
+margin_top = -180.0
+margin_right = 800.0
+margin_bottom = -58.0
+custom_constants/separation = 200
+
+[node name="clear" type="Button" parent="buttons_container"]
+margin_right = 400.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 400, 63 )
+theme = ExtResource( 11 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/pressed = SubResource( 53 )
+text = "CLEAR"
+
+[node name="shuffle" type="Button" parent="buttons_container"]
+margin_left = 600.0
+margin_right = 1000.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 400, 63 )
 theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 5 )
+text = "SHUFFLE"
+
+[node name="submit" type="Button" parent="buttons_container"]
+margin_left = 1200.0
+margin_right = 1600.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 400, 63 )
+theme = SubResource( 72 )
 custom_fonts/font = ExtResource( 5 )
 disabled = true
 text = "SUBMIT"
-
-[node name="clear" type="Button" parent="."]
-margin_left = 582.0
-margin_top = 897.0
-margin_right = 884.0
-margin_bottom = 1019.0
-rect_min_size = Vector2( 300, 63 )
-theme = ExtResource( 11 )
-custom_fonts/font = ExtResource( 5 )
-text = "CLEAR"
 
 [node name="score_board" type="Label" parent="."]
 margin_left = 34.0
@@ -317,8 +711,9 @@ theme = ExtResource( 15 )
 
 [connection signal="pressed" from="popup_layer/game_over/main_popup/GridContainer/next" to="manager" method="_on_next_pressed"]
 [connection signal="pressed" from="popup_layer/instructions/tap" to="manager" method="_on_tap_pressed"]
-[connection signal="pressed" from="submit" to="manager" method="_on_submit_pressed"]
-[connection signal="pressed" from="clear" to="manager" method="_on_clear_pressed"]
+[connection signal="pressed" from="buttons_container/clear" to="manager" method="_on_clear_pressed"]
+[connection signal="pressed" from="buttons_container/shuffle" to="manager" method="_on_shuffle_pressed"]
+[connection signal="pressed" from="buttons_container/submit" to="manager" method="_on_submit_pressed"]
 [connection signal="pressed" from="instruction" to="manager" method="_on_instruction_pressed"]
 
 [editable path="popup_layer/pause"]
