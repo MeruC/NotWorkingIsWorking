@@ -31,6 +31,7 @@ var question_bank = "res://scenes/user_profile/question_bank/json/question_bank.
 var fetched_questions = ""
 var initial_text = ""
 var game_code
+
 func _ready():
 	var folderName1 = "saved_levels"
 	var folderName2 = "json"

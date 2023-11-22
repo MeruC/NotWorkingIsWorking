@@ -34,6 +34,22 @@ func _ready():
 	add_child(http_request)
 	http_request.connect(\"request_completed\", self, \"_http_request_completed\")
 	get_createlevels()
+	var folderName1 = \"exported_excel\"
+
+	# Construct the full path to the first folder within the user directory
+	var folderPath1 = \"user://\" + folderName1
+
+	# Construct the full path to the second folder within the user directory
+
+	# Create the first folder if it doesn't exist
+	var dir = Directory.new()
+	if not dir.dir_exists(folderPath1):
+		if dir.make_dir(folderPath1) == OK:
+			print(\"Folder 1 created:\", folderPath1)
+		else:
+			printerr(\"Failed to create Folder 1:\", folderPath1)
+	else:
+		print(\"Folder 1 already exists:\", folderPath1)
 	
 func _process(_delta):
 	# Check if we have pending requests in the queue:
@@ -402,7 +418,7 @@ margin_right = 1883.0
 margin_bottom = 1039.0
 rect_min_size = Vector2( 150, 52.5 )
 theme = SubResource( 13 )
-access = 2
+access = 1
 
 [node name="message_prompt" type="CanvasLayer" parent="."]
 visible = false

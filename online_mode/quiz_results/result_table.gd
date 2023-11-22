@@ -28,7 +28,7 @@ func _send_request(request : Dictionary):
 		# If a request is already in progress, add the request to the queue
 		request_queue.push_back(request)
 		return
-
+	
 	is_requesting = true
 
 	var client = HTTPClient.new()
@@ -127,11 +127,14 @@ func _on_export_pressed():
 	$"../file_dialog_title".visible = true
 	$"../file_dialog".visible = true
 	$"../file_dialog/FileDialog".popup()
+	$"../file_dialog/FileDialog".current_dir = "user://exported_excel/"
 	$"../file_dialog/FileDialog".mode = FileDialog.MODE_SAVE_FILE  # Corrected line
 	$"../file_dialog/FileDialog".filters = ["*.csv"]
 	# Connect the "file_selected" signal of the FileDialog to this function
 	$"../file_dialog/FileDialog".connect("file_selected", self, "_on_SaveFileDialog_file_selected")
+
 # Connect the "file_selected" signal of the FileDialog to this function
+
 func _on_SaveFileDialog_file_selected(path):
 	if path.empty():
 		return  # User canceled the dialog
@@ -178,3 +181,5 @@ func _on_FileDialog_popup_hide():
 
 func _on_FileDialog_custom_action(action):
 	pass # Replace with function body.
+
+
