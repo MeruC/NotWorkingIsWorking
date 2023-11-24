@@ -178,10 +178,6 @@ custom_styles/normal = SubResource( 21 )
 [node name="task_manager" parent="tasks_ui" index="1"]
 custom_styles/panel = SubResource( 27 )
 
-[node name="tasks_vbox" parent="tasks_ui/task_manager/ScrollContainer" index="0"]
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="task_cb" parent="tasks_ui/task_manager/ScrollContainer/tasks_vbox/task1" index="0"]
 custom_fonts/font = SubResource( 28 )
 
