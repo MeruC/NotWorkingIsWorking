@@ -13,7 +13,7 @@ func _ready():
 			player = preload("res://global/player/player.tscn")
 			add_child(player.instance())
 		"female":
-			player = preload("res://global/player_girl/player-girl.tscn")
+			player = preload("res://global/Player_girl/player-girl.tscn")
 			add_child(player.instance())
 	SignalManager.connect( "pc_opened", self, "_on_pc_opened" )
 	SignalManager.connect( "pc_closed", self, "_on_pc_closed" )

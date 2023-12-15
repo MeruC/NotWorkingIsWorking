@@ -23,7 +23,7 @@ func _ready():
 		colortop.color = Color8(0, 175, 255, 255)
 		colorbottom.color = Color8(0, 175, 255, 255)
 	elif setting_data.gender == "female":
-		player = preload("res://global/player_girl/player-girl.tscn")
+		player = preload("res://global/Player_girl/player-girl.tscn")
 		add_child(player.instance())
 		Global.playerCamera = get_node("Player/Camera/Camera")
 		#Global.playerCamera.current = true
